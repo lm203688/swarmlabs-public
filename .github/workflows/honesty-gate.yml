@@ -107,5 +107,14 @@ jobs:
       #       (c) HEADLINE_SCENARIO_COUNT 与 data/public_facts.json 里的
       #           validated_scenarios 一致（改数字必须同时改两处）。
       #     任何一条破裂 exit 1，fail-closed。
+      #
+      #     依赖说明（2026-11-15 修正）：registry 的动态装配（load_registry）
+      #     真实 import engine.scenarios_* 来源，而这些来源依赖 numpy/scipy。
+      #     Actions 最小环境缺它们会让全部来源 ImportError → registry 数=0
+      #     → 误报 DRIFT（假红）。此步补装 numpy+scipy 让装配**真实运行**；
+      #     rdkit 仍不装（molecular 来源诚实降级为 DEGRADED，不判失败）。
+      #     (b) 是纯 AST，不依赖环境；(a)(c) 的真实性靠 numpy/scipy 保证。
       - name: 场景注册表契约
-        run: python scripts/check_scenario_registry.py
+        run: |
+          python -m pip install --quiet numpy scipy
+          python scripts/check_scenario_registry.py
