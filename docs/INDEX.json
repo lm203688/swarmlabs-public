@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-15T13:18:55.578937+00:00",
+  "generated_at": "2026-11-15T13:40:24.141375+00:00",
   "root": "docs",
   "stale_days": 180,
   "total": 19,
@@ -8,7 +8,7 @@
   "deprecated_number_count": 2,
   "entries": [
     {
-      "path": "pubdocs_zo5b8uzr/agent_output_contract.md",
+      "path": "pubdocs_b70soirk/agent_output_contract.md",
       "rel": "agent_output_contract.md",
       "title": "Agent 输出契约（证据 · 置信度 · 反事实）",
       "mtime": "2026-09-20",
@@ -19,7 +19,7 @@
       "deprecated_hits": []
     },
     {
-      "path": "pubdocs_zo5b8uzr/api_credits.md",
+      "path": "pubdocs_b70soirk/api_credits.md",
       "rel": "api_credits.md",
       "title": "SwarmLabs 模型 API / 算力免费额度申请追踪（本地，不进 git）",
       "mtime": "2026-10-08",
@@ -30,7 +30,7 @@
       "deprecated_hits": []
     },
     {
-      "path": "pubdocs_zo5b8uzr/conformal_methods_guide.md",
+      "path": "pubdocs_b70soirk/conformal_methods_guide.md",
       "rel": "conformal_methods_guide.md",
       "title": "保形预测方法选择指引（板块 03 P1，2026-10-15）",
       "mtime": "2026-10-29",
@@ -41,7 +41,7 @@
       "deprecated_hits": []
     },
     {
-      "path": "pubdocs_zo5b8uzr/engine-operator-taxonomy.md",
+      "path": "pubdocs_b70soirk/engine-operator-taxonomy.md",
       "rel": "engine-operator-taxonomy.md",
       "title": "engine 算子分类学（2026-09-27）",
       "mtime": "2026-10-15",
@@ -57,7 +57,7 @@
       ]
     },
     {
-      "path": "pubdocs_zo5b8uzr/GEO-LLM-experiment-benchmark.md",
+      "path": "pubdocs_b70soirk/GEO-LLM-experiment-benchmark.md",
       "rel": "GEO-LLM-experiment-benchmark.md",
       "title": "开源 GEO / LLM 实验技术借鉴分析 —— SwarmLabs 采纳映射",
       "mtime": "2026-08-09",
@@ -68,7 +68,7 @@
       "deprecated_hits": []
     },
     {
-      "path": "pubdocs_zo5b8uzr/gp-hyperparameter-ablation-2026-08-10.md",
+      "path": "pubdocs_b70soirk/gp-hyperparameter-ablation-2026-08-10.md",
       "rel": "gp-hyperparameter-ablation-2026-08-10.md",
       "title": "GP 超参消融实验：branin 为什么收敛不了",
       "mtime": "2026-08-10",
@@ -79,7 +79,7 @@
       "deprecated_hits": []
     },
     {
-      "path": "pubdocs_zo5b8uzr/mhs-virtual-instrument.md",
+      "path": "pubdocs_b70soirk/mhs-virtual-instrument.md",
       "rel": "mhs-virtual-instrument.md",
       "title": "SwarmLabs × MHS：把虚拟实验做成「虚拟仪器」驱动",
       "mtime": "2026-09-20",
@@ -90,7 +90,7 @@
       "deprecated_hits": []
     },
     {
-      "path": "pubdocs_zo5b8uzr/microbiology-parity-analysis.md",
+      "path": "pubdocs_b70soirk/microbiology-parity-analysis.md",
       "rel": "microbiology-parity-analysis.md",
       "title": "微生物领域：模拟实验室加速真实实验验证 —— 可行性分析与接线方案",
       "mtime": "2026-08-10",
@@ -101,7 +101,7 @@
       "deprecated_hits": []
     },
     {
-      "path": "pubdocs_zo5b8uzr/paddle_access_guide.md",
+      "path": "pubdocs_b70soirk/paddle_access_guide.md",
       "rel": "paddle_access_guide.md",
       "title": "对接百度飞桨 AI Studio · 分步指导（SwarmLabs PINN 原型）",
       "mtime": "2026-08-12",
@@ -112,7 +112,7 @@
       "deprecated_hits": []
     },
     {
-      "path": "pubdocs_zo5b8uzr/QUICKSTART.md",
+      "path": "pubdocs_b70soirk/QUICKSTART.md",
       "rel": "QUICKSTART.md",
       "title": "快速开始（30 秒上手）",
       "mtime": "2026-10-28",
@@ -123,7 +123,7 @@
       "deprecated_hits": []
     },
     {
-      "path": "pubdocs_zo5b8uzr/swarmlabs-platform-overview.md",
+      "path": "pubdocs_b70soirk/swarmlabs-platform-overview.md",
       "rel": "swarmlabs-platform-overview.md",
       "title": "SwarmLabs 平台总览 · 对外材料（功能 / 优势 / 用法）",
       "mtime": "2026-10-08",
@@ -134,7 +134,7 @@
       "deprecated_hits": []
     },
     {
-      "path": "pubdocs_zo5b8uzr/technical-assessment-2026-08-16.md",
+      "path": "pubdocs_b70soirk/technical-assessment-2026-08-16.md",
       "rel": "technical-assessment-2026-08-16.md",
       "title": "SwarmLabs 技术阶段评估与迭代路线图（2026-08-16）",
       "mtime": "2026-09-20",
@@ -145,7 +145,7 @@
       "deprecated_hits": []
     },
     {
-      "path": "pubdocs_zo5b8uzr/trust_layer.md",
+      "path": "pubdocs_b70soirk/trust_layer.md",
       "rel": "trust_layer.md",
       "title": "SwarmLabs Trust Layer (VeritasGuard)",
       "mtime": "2026-09-20",
@@ -156,7 +156,7 @@
       "deprecated_hits": []
     },
     {
-      "path": "pubdocs_zo5b8uzr/UNIFIED_SYSTEM.md",
+      "path": "pubdocs_b70soirk/UNIFIED_SYSTEM.md",
       "rel": "UNIFIED_SYSTEM.md",
       "title": "SwarmLabs 统一体系（One System）整合文档",
       "mtime": "2026-10-08",
@@ -167,7 +167,7 @@
       "deprecated_hits": []
     },
     {
-      "path": "pubdocs_zo5b8uzr/validation-output-standard.md",
+      "path": "pubdocs_b70soirk/validation-output-standard.md",
       "rel": "validation-output-standard.md",
       "title": "SwarmLabs 实验成果形式标准（对标竞品升级）",
       "mtime": "2026-08-10",
@@ -178,7 +178,7 @@
       "deprecated_hits": []
     },
     {
-      "path": "pubdocs_zo5b8uzr/virtual-experiment-parity.md",
+      "path": "pubdocs_b70soirk/virtual-experiment-parity.md",
       "rel": "virtual-experiment-parity.md",
       "title": "虚拟实验对等现实 —— 战略与路线",
       "mtime": "2026-08-09",
@@ -189,7 +189,7 @@
       "deprecated_hits": []
     },
     {
-      "path": "pubdocs_zo5b8uzr/wetlab_protocol_2026-09-15.md",
+      "path": "pubdocs_b70soirk/wetlab_protocol_2026-09-15.md",
       "rel": "wetlab_protocol_2026-09-15.md",
       "title": "低成本湿实验对照协议（Wet-Lab Parity Protocol）",
       "mtime": "2026-10-15",
@@ -200,7 +200,7 @@
       "deprecated_hits": []
     },
     {
-      "path": "pubdocs_zo5b8uzr/why_swarmlabs.md",
+      "path": "pubdocs_b70soirk/why_swarmlabs.md",
       "rel": "why_swarmlabs.md",
       "title": "Why SwarmLabs · 诚实差异化与合规对标",
       "mtime": "2026-09-20",
@@ -218,7 +218,7 @@
       ]
     },
     {
-      "path": "pubdocs_zo5b8uzr/zenodo-upload-guide.md",
+      "path": "pubdocs_b70soirk/zenodo-upload-guide.md",
       "rel": "zenodo-upload-guide.md",
       "title": "Zenodo 存档上传指南（A-5）",
       "mtime": "2026-10-18",
