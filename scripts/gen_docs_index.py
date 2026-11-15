@@ -309,7 +309,29 @@ def main(argv: list[str] | None = None) -> int:
     md = render(entries)
 
     # 条目数护栏：文档数不该突然缩水（防误删 / 防 glob 失效）。
-    if len(entries) < 100:
+    #
+    # 公开裁剪场景：`swarmlabs-public` 公开仓库只携带可安全发布的 docs
+    # （剔除融资/竞争情报/真实机构等敏感内容，有意裁剪而非误删）。该仓库
+    # 携带 `docs/.public_crop.json`（含 `expected` 数字），存在时要求
+    # **精确等式** len(entries) == expected —— 比 >=100 更严，因为裁剪数
+    # 是显式声明的，任何偏离（多删一篇或多加一篇）都失败，防误删能力不降级。
+    # 完整仓库无此声明，维持 >=100 语义。
+    crop_file = DOCS / ".public_crop.json"
+    if crop_file.exists():
+        try:
+            crop = json.loads(crop_file.read_text(encoding="utf-8"))
+            expected = int(crop["expected"])
+        except Exception as exc:  # noqa: BLE001
+            print(f"[FAIL] docs/.public_crop.json 解析失败：{exc}", file=sys.stderr)
+            return 1
+        if len(entries) != expected:
+            print(
+                f"[FAIL] 公开裁剪声明 {expected} 篇，实际 {len(entries)} 篇。"
+                f"裁剪集合与声明不一致，请核对 .public_crop.json 与白名单。",
+                file=sys.stderr,
+            )
+            return 1
+    elif len(entries) < 100:
         print(
             f"[FAIL] 只收集到 {len(entries)} 篇文档（预期 >= 100）。"
             f"请检查 docs/ 目录是否被误改或 .gitignore 是否吞掉了内容。",
