@@ -1,7 +1,7 @@
 {
   "name": "SwarmLabs verification gate ledger",
   "version": "2026-11-15",
-  "generated_at_utc": "2026-11-15T08:39:12Z",
+  "generated_at_utc": "2026-11-15T09:54:34Z",
   "standard": "ASME V&V 10-2019 / FDA CM&S report outline",
   "build": {
     "complete": true,
@@ -70,13 +70,18 @@
   },
   "provenance": {
     "engine": {
-      "git_commit": "cf312bd5f61e02cbcb65d72a9fb14dd53b1ee6ee",
-      "git_commit_source": "local .git HEAD",
-      "git_commit_binding_tier": "local",
-      "git_commit_binding": "tier=local: local HEAD only — run scripts/write_remote_commit_pin.py to promote to remote tier",
-      "remote_commit_meta": {},
-      "local_head": "cf312bd5f61e02cbcb65d72a9fb14dd53b1ee6ee",
-      "n_modules": 104,
+      "git_commit": "1b65bbe08d2b356b1341df72276087653d6429f0",
+      "git_commit_source": "remote via Contents API (pinned .workbuddy-ai/last_push.json)",
+      "git_commit_binding_tier": "remote",
+      "git_commit_binding": "tier=remote: authoritative remote SHA pinned from Contents API; local HEAD may be behind (Contents API pushes create server-side commits that never advance local HEAD)",
+      "remote_commit_meta": {
+        "message": "Add scripts/error_taxonomy.py [硬骨头 3 error taxonomy]",
+        "author": "lm203688",
+        "committer_date": "2026-10-16T09:13:11Z",
+        "pinned_at_utc": "2026-10-16T09:23:03Z"
+      },
+      "local_head": "d6beb6cad1e658371d533645d30ba94a20723d86",
+      "n_modules": 116,
       "core": {
         "surrogate.py": "43231fddc23f1d92f19418281c3305faf19b0b6c37fa30b362a268d6e3139cd9",
         "microbiology_full.py": "ec8f209839ae7fbaa69690e11e867d6e3b55fb90a12d21afb4a829ad36ea40c7",
@@ -87,7 +92,7 @@
         "report_generator.py": "8b91cf0c967fc07db76a1483c0683d37f76883717350a3808c200bcdd281aa47"
       },
       "core_digest": "c71efa73ade1b73c2a7c74087bd081325926b2b531430ed3c92b362c4017cfd3",
-      "all_digest": "c955a931da2755dabd2167d1ceeefa91cbd154cb4ad153670d79842a28b36729"
+      "all_digest": "7ef140fba7f1170dd77a885729916835820ba3c3028d29ae3b2e135cc897c54a"
     },
     "oracle": {
       "files": {
