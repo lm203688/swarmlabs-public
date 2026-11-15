@@ -99,8 +99,13 @@ def check_basic(tex: str) -> None:
             if " " in env:
                 failures.append(f"ENV NAME HAS SPACE: \\begin{{{env}}}")
 
-    print(f"  basic: documentclass={'yes' if r'\\documentclass' in tex else 'NO'}, "
-          f"begin/end document={'yes' if r'\\begin{document}' in tex and r'\\end{document}' in tex else 'NO'}")
+    # 2026-11-16：f-string 表达式里不能含反斜杠（PEP 701 前 Python <3.12 是
+    # SyntaxError，CI 用 3.11 红、本地 3.14 绿）。把反斜杠字面量提取到变量。
+    has_docclass = r"\documentclass" in tex
+    has_begin_doc = r"\begin{document}" in tex
+    has_end_doc = r"\end{document}" in tex
+    print(f"  basic: documentclass={'yes' if has_docclass else 'NO'}, "
+          f"begin/end document={'yes' if has_begin_doc and has_end_doc else 'NO'}")
 
 
 def main() -> int:

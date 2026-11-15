@@ -38,6 +38,11 @@ pytest-asyncio>=0.20.0
 # CI pytest-unit 曾因此假红（与 L-03 scipy、L-19 openpyxl 同一病根：
 # 新增测试依赖未同步到依赖真源）。
 hypothesis>=6.80
+# pynacl：tests/test_jwks.py 覆盖 scripts/jwks/jwks_tool.py 的签名/验签。
+# jwks_tool.py:58 `from nacl.signing import SigningKey, VerifyKey` 是硬依赖；
+# 缺包时 8 个 jwks 用例 SystemExit「缺少 PyNaCl」（与 L-03 scipy、L-19 openpyxl
+# 同一病根：新增测试依赖未同步到依赖真源）。
+pynacl>=1.5.0
 
 # --- 开发工具（本地开发；CI 可选） ---
 black>=22.0.0
