@@ -51,6 +51,7 @@ import sys
 import tempfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, ROOT)
 ENGINE = os.path.join(ROOT, "engine")
 VLAB_MODULES = (
     "vlab_stdlib", "vlab_contract", "discipline_registry",
