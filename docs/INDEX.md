@@ -2,7 +2,7 @@
 
 > **本文件由 `scripts/gen_docs_index.py` 自动生成，请勿手改。** 重新生成：`python scripts/gen_docs_index.py`
 
-生成时间：2026-11-15 11:46 UTC
+生成时间：2026-11-15 12:00 UTC
 
 ## 概览
 

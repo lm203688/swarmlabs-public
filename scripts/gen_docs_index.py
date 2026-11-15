@@ -344,11 +344,24 @@ def main(argv: list[str] | None = None) -> int:
             print("[FAIL] docs/INDEX.md 不存在，请先运行 python scripts/gen_docs_index.py")
             return 1
         old = INDEX_MD.read_text(encoding="utf-8")
-        # 忽略「生成时间」行后比较
-        strip = lambda s: "\n".join(
-            l for l in s.splitlines() if not l.startswith("生成时间：")
-        )
-        if strip(old) != strip(md):
+        # 比较时归一化，只保留**内容事实**，豁免两类派生/环境差异：
+        #   1. 「生成时间：」行 —— 每次生成必不同；
+        #   2. 表格里的「最后更新日期」列 —— push 时用文件 mtime 生成
+        #      （无 git 历史），CI 复算用 git 提交日期，两者必然不同。
+        #      日期是展示性派生信息，非内容事实；内容事实（path/title/
+        #      flags/旧口径命中）仍严格逐行比对。防误删能力由上面的条目数
+        #      护栏独立承担，不因此削弱。
+        def _norm(s: str) -> list[str]:
+            out = []
+            for l in s.splitlines():
+                if l.startswith("生成时间："):
+                    continue
+                # 剔除表格里的 ISO 日期列（| 2026-11-15 |）
+                l = re.sub(r"\|\s*\d{4}-\d{2}-\d{2}\s*\|", "| - |", l)
+                out.append(l)
+            return out
+
+        if _norm(old) != _norm(md):
             print("[FAIL] docs/INDEX.md 已过期，请重新生成：python scripts/gen_docs_index.py")
             return 1
         print(f"[ok] docs/INDEX.md 与源同步（{len(entries)} 篇）")
