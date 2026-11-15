@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文件总线演示 — SwarmLabs 信任闸门</title>
+  <style>
+    :root {
+      --green: #16a34a;
+      --red: #dc2626;
+      --amber: #f59e0b;
+      --blue: #2563eb;
+      --gray-50: #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-700: #334155;
+      --gray-900: #0f172a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--gray-50);
+      color: var(--gray-900);
+      min-height: 100vh;
+    }
+    .nav {
+      background: white;
+      border-bottom: 1px solid var(--gray-200);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .nav-logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.875rem;
+    }
+    .nav-links a {
+      color: var(--gray-700);
+      text-decoration: none;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .container { max-width: 960px; margin: 0 auto; padding: 2rem; }
+    h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.125rem; margin: 1.5rem 0 0.75rem; color: var(--gray-700); }
+    .subtitle { color: #64748b; margin-bottom: 2rem; }
+    
+    .card {
+      background: white;
+      border-radius: 8px;
+      border: 1px solid var(--gray-200);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .card-title { font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem; }
+    
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .badge-proceed { background: #dcfce7; color: #15803d; }
+    .badge-block { background: #fee2e2; color: #b91c1c; }
+    .badge-human { background: #fef3c7; color: #92400e; }
+    .badge-error { background: var(--gray-100); color: var(--gray-700); }
+    .badge-unreachable { background: #f3f4f6; color: #6b7280; }
+    
+    table { width: 100%; border-collapse: collapse; margin-top: 0.75rem; }
+    th, td { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--gray-200); font-size: 0.875rem; }
+    th { font-weight: 600; color: var(--gray-700); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    
+    .code {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 1rem;
+      border-radius: 6px;
+      font-family: "JetBrains Mono", "Fira Code", monospace;
+      font-size: 0.8125rem;
+      overflow-x: auto;
+      white-space: pre;
+      line-height: 1.6;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.15s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-green { background: var(--green); color: white; }
+    .btn-red { background: var(--red); color: white; }
+    .btn-blue { background: var(--blue); color: white; }
+    .btn-gray { background: var(--gray-200); color: var(--gray-700); }
+    
+    .status {
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      margin-top: 1rem;
+      font-size: 0.875rem;
+    }
+    .status-success { background: #dcfce7; color: #15803d; }
+    .status-fail { background: #fee2e2; color: #b91c1c; }
+    .status-info { background: #dbeafe; color: #1d4ed8; }
+    
+    .exit-code-table td:first-child { font-family: monospace; font-weight: 600; }
+    .exit-code-table td:nth-child(2) { color: #64748b; }
+    
+    .demo-section { margin-top: 1.5rem; }
+    .demo-output { margin-top: 0.75rem; }
+    
+    @media (max-width: 640px) {
+      .container { padding: 1rem; }
+      .nav { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a class="nav-logo" href="/index.html">SwarmLabs</a>
+    <div class="nav-links">
+      <a href="/index.html">首页</a>
+      <a href="/capability-map.html">能力图谱</a>
+      <a href="/verdicts.html">判决表</a>
+      <a href="/functions.html">功能参考</a>
+      <a href="/file-as-bus-demo.html">文件总线演示</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>📦 文件总线演示</h1>
+    <p class="subtitle">Agentic-Science Agent ↔ SwarmLabs Trust Gate 的无网络通信模式</p>
+
+    <div class="card">
+      <div class="card-title">架构概述</div>
+      <p style="font-size:0.875rem;color:#64748b;margin-bottom:1rem;">
+        Agentic-Science Agent 不直接调用 HTTPS API，而是将预测写入 <code>bus/inbox/</code> 目录。
+        SwarmLabs 信任闸门进程监听该目录，消费预测后调用真实验证 API，将 verdict 回写到 <code>bus/outbox/</code> 目录。
+        Agent 读取 verdict 文件后的退出码决定后续行为：
+      </p>
+      <table class="exit-code-table">
+        <thead><tr><th>退出码</th><th>状态</th><th>语义</th></tr></thead>
+        <tbody>
+          <tr><td>0</td><td><span class="badge badge-proceed">PROCEED</span></td><td>验证通过，可以继续</td></tr>
+          <tr><td>2</td><td><span class="badge badge-block">BLOCK</span></td><td>验证失败，禁止自主动作</td></tr>
+          <tr><td>3</td><td><span class="badge badge-human">HUMAN_CHECK</span></td><td>需要人工签字</td></tr>
+          <tr><td>4</td><td><span class="badge badge-unreachable">UNREACHABLE</span></td><td>无法到达裁决者（网络失败）</td></tr>
+          <tr><td>1</td><td><span class="badge badge-error">ERROR</span></td><td>调用/参数错误</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title">运行演示</div>
+      <p style="font-size:0.875rem;color:#64748b;margin-bottom:1rem;">
+        点击按钮执行模拟演示。演示使用真实 SwarmLabs 验证 API，但预测数据由脚本生成：
+      </p>
+      <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+        <button class="btn btn-green" onclick="runDemo('proceed')">▶ 演示 PROCEED（完美预测）</button>
+        <button class="btn btn-red" onclick="runDemo('block')">▶ 演示 BLOCK（故意偏离）</button>
+        <button class="btn btn-gray" onclick="clearBus()">🗑 清空 bus 目录</button>
+      </div>
+      <div id="demo-output" class="demo-output"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">目录结构</div>
+      <div class="code">bus/
+├── inbox/          # agent 写入预测文件（*.json）
+│   └── bio_logistic_predictions.json
+├── outbox/         # gate 回写 verdict 文件
+│   └── bio_logistic_verdict.json
+└── logs/           # 执行日志
+    └── demo_*.log
+
+文件内容示例：
+{
+  "scenario_key": "bio_logistic",
+  "predictions": [
+    {"x": [0.1], "y_pred": 0.35, "y_std": 0.05}
+  ],
+  "agent_name": "agentic-science-demo",
+  "timestamp": 1793264164.0
+}
+
+Verdict 文件示例：
+{
+  "scenario_key": "bio_logistic",
+  "exit_code": 0,
+  "gate": "PROCEED",
+  "status": "PROCEED",
+  "message": "验证通过，可以继续",
+  "timestamp": 1793264164.5
+}</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">使用方式</div>
+      <div class="code"># 1. 演示两种典型场景
+python demo_file_as_bus.py --demo-proceed
+python demo_file_as_bus.py --demo-block
+
+# 2. 使用真实场景和预测文件
+python demo_file_as_bus.py \
+  --scenario bio_logistic \
+  --predictions my_predictions.json
+
+# 3. 清理演示产生的文件
+python demo_file_as_bus.py --clean
+
+# 4. 直接使用 vv_gate 验证单个预测文件
+python engine-kit/skills/vv-gate/scripts/vv_gate.py verify \
+  --base https://swarmlabs.tools \
+  --key bio_logistic \
+  --pred my_predictions.json</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">离线模式说明</div>
+      <p style="font-size:0.875rem;color:#64748b;">
+        在无网络环境中，可信硬件代理可以本地缓存最近一次公开的验证报告作为 <strong>本地裁决者</strong>。
+        验证闸门消费预测时，若无网络访问能力，会返回退出码 <code>4 (UNREACHABLE)</code>，
+        调用方应在此时触发人工评估流程，禁止 agent 继续执行潜在有害操作。
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">代码位置</div>
+      <table>
+        <thead><tr><th>文件</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td><code>engine-kit/skills/vv-gate/scripts/vv_gate.py</code></td><td>核心验证 API（已迁移到 /v3）</td></tr>
+          <tr><td><code>engine-kit/skills/vv-gate/scripts/publish_verdict.py</code></td><td>判决回写发布工具</td></tr>
+          <tr><td><code>demo_file_as_bus.py</code></td><td>本演示脚本</td></tr>
+          <tr><td><code>.well-known/mcp.json</code></td><td>远程可发现性配置</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    function runDemo(type) {
+      const output = document.getElementById('demo-output');
+      output.innerHTML = '<div class="status status-info">⏳ 正在运行演示...请等待 5-10 秒</div>';
+      
+      fetch(`/api/v3/demo/${type}`)
+        .then(r => r.json())
+        .then(data => {
+          if (data.exit_code === 0) {
+            output.innerHTML = `<div class="status status-success">✅ PROCEED 演示成功！退出码=${data.exit_code}，${data.message}</div>`;
+          } else {
+            output.innerHTML = `<div class="status status-fail">❌ BLOCK 演示成功！退出码=${data.exit_code}，${data.message}</div>`;
+          }
+        })
+        .catch(err => {
+          output.innerHTML = `<div class="status status-fail">❌ 演示执行失败: ${err.message}</div>
+            <p style="font-size:0.8125rem;color:#64748b;margin-top:0.5rem;">请在终端手动运行: python demo_file_as_bus.py --demo-${type}</p>`;
+        });
+    }
+    
+    function clearBus() {
+      fetch('/api/v3/demo/clean')
+        .then(r => r.json())
+        .then(data => {
+          document.getElementById('demo-output').innerHTML = 
+            `<div class="status status-info">🗑 已清空 bus 目录</div>`;
+        })
+        .catch(() => {
+          document.getElementById('demo-output').innerHTML = 
+            `<div class="status status-fail">❌ 清空失败，请手动运行: python demo_file_as_bus.py --clean</div>`;
+        });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Virtual Experiment V&amp;V Report — micro_putida_toluene</title>
+<style>
+:root{--ink:#1a1d23;--muted:#5b6472;--line:#dfe3ea;--bg:#ffffff;--soft:#f6f8fa;
+--brand:#1f4fd8;--pass:#0f7b3f;--marginal:#a06700;--refuted:#b3261e;}
+*{box-sizing:border-box}
+body{margin:0 auto;max-width:960px;padding:48px 32px;background:var(--bg);color:var(--ink);
+font:15px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",Helvetica,Arial,sans-serif;}
+h1{font-size:26px;line-height:1.35;margin:0 0 16px}
+h2{font-size:19px;margin:38px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--line)}
+h3{font-size:15px;margin:22px 0 8px;color:var(--muted)}
+p{margin:10px 0}
+ul{margin:10px 0;padding-left:22px}
+li{margin:5px 0}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:600}
+code{background:var(--soft);padding:2px 6px;border-radius:4px;font-size:13px}
+pre{background:var(--soft);padding:12px 14px;border-radius:6px;overflow-x:auto}
+pre code{background:none;padding:0}
+.meta{background:var(--soft);border-left:4px solid var(--brand);padding:14px 18px;
+border-radius:0 6px 6px 0;margin-bottom:8px}
+.badge{display:inline-block;padding:3px 12px;border-radius:999px;color:#fff;
+font-weight:600;font-size:13px;letter-spacing:.03em}
+.badge.PASS{background:var(--pass)}.badge.MARGINAL{background:var(--marginal)}
+.badge.REFUTED{background:var(--refuted)}
+.toolbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.94);
+border-bottom:1px solid var(--line);padding:10px 14px;margin:-48px -32px 22px;
+display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.toolbar a,.toolbar button{font:600 13px/1 inherit;border:1px solid var(--line);
+background:var(--soft);color:var(--ink);padding:8px 14px;border-radius:6px;cursor:pointer;
+text-decoration:none}
+.toolbar a:hover,.toolbar button:hover{border-color:var(--brand);color:var(--brand)}
+.toolbar .spacer{flex:1}
+.toc{background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:14px 18px;margin:6px 0 26px}
+.toc h2{border:none;margin:0 0 8px;font-size:15px;padding:0}
+.toc ol{margin:0;padding-left:20px;columns:2;column-gap:34px}
+.toc a{color:var(--brand);text-decoration:none}
+.toc a:hover{text-decoration:underline}
+a.anchor{color:inherit;text-decoration:none}
+footer{margin-top:44px;padding-top:14px;border-top:1px solid var(--line);
+color:var(--muted);font-size:13px}
+@media print{
+  body{max-width:none;padding:0 12mm;font-size:10.5pt;color:#000}
+  .toolbar{display:none}
+  .toc{border:none;background:none;padding:0;margin:0 0 16px}
+  .toc ol{columns:1}
+  h1{font-size:21pt}h2{font-size:14pt;page-break-after:avoid;border-color:#999}
+  h3{page-break-after:avoid}
+  table,pre,img{page-break-inside:avoid}tr{page-break-inside:avoid}
+  thead{display:table-header-group}
+  .meta{background:none;border-left:3px solid #000;padding-left:10px}
+  footer{border-top:1px solid #999}
+  a{color:#000;text-decoration:none}
+}
+</style>
+</head>
+<body>
+<h1>Virtual Experiment V&amp;V Report — micro_putida_toluene</h1>
+<div class="meta">
+<div>场景：<strong>micro_putida_toluene</strong>　微生物 / 假单胞菌甲苯降解（Andrews 底物抑制）</div>
+<div style="margin-top:6px">判定：<span class="badge PASS">PASS</span></div>
+<div style="margin-top:6px;color:var(--muted);font-size:13px">生成时间（UTC）：2026-11-02T19:11:29Z　·　结构对齐：ASME V&amp;V 10-2019 / FDA CM&amp;S report outline</div>
+</div>
+<div class="toolbar"><a href="/report-gallery">← 报告库</a><button onclick="window.print()">导出 PDF / 打印</button><span class="spacer"></span><span style="color:var(--muted);font-size:13px">场景：micro_putida_toluene</span></div>
+<div class="toc"><h2>目录</h2><ol>
+<li><a href="#sec-1">1. Executive Summary</a></li>
+<li><a href="#sec-2">2. Context of Use</a></li>
+<li><a href="#sec-3">3. Method</a></li>
+<li><a href="#sec-4">4. Code Verification</a></li>
+<li><a href="#sec-5">5. Uncertainty Quantification</a></li>
+<li><a href="#sec-6">6. Validation Metrics</a></li>
+<li><a href="#sec-6.5">6.5. Baseline Comparison (RF vs GP)</a></li>
+<li><a href="#sec-7">7. Out-of-Disposition Gate</a></li>
+<li><a href="#sec-8">8. Recommendations</a></li>
+<li><a href="#sec-9">9. Reproducibility Manifest</a></li>
+<li><a href="#sec-10">10. References</a></li>
+</ol></div>
+<h2 id="sec-1"><a class="anchor" href="#sec-1">1. Executive Summary</a></h2>
+<p>场景 <strong>micro_putida_toluene</strong>（微生物 / 假单胞菌甲苯降解（Andrews 底物抑制））在 30 个虚拟实验点拟合后，对 40 个独立测试点的对等度判定为 <strong>PASS</strong>。</p>
+<table><thead><tr><th>指标</th><th>数值</th><th>判定</th></tr></thead><tbody>
+<tr><td>Out-of-sample R²</td><td>0.9999</td><td>≥0.90 通过</td></tr>
+<tr><td>核心工况 R²（剔除局地极端 20%）</td><td>0.9999</td><td>操作工况下的拟合质量</td></tr>
+<tr><td>RMSE</td><td>0.0002</td><td>相对 0.010</td></tr>
+<tr><td>95% 区间覆盖率</td><td>1.000</td><td>偏离名义 +0.050</td></tr>
+<tr><td>校准误差 abs(cov−0.95)</td><td>0.050</td><td>≤0.05 通过</td></tr>
+</tbody></table>
+<p>判定依据：out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）。</p>
+<h3>局限性（Limitations）</h3>
+<ul><li>GP 噪声地板固定 3%（不随拟合下调）：低于此量级的差异在本方法中不可分辨，不代表真实体系没有差异。本次未注入观测噪声（虚拟实验直接查询真值函数）。</li><li>覆盖率 1.000 基于 40 个测试点，其自身标准误约 ±0.034；覆盖率读数在 ±0.069 内的波动不应被解读为模型变化。</li><li>结论仅在 bounds 内成立（维度 1）；越界查询由门禁显式拒绝，不代表外推可用。</li><li>本报告对标的是场景自带的解析解 / 发表基准函数，不是湿实验实测值；用于真实决策前需按 mirror-run 做一次对等度验收。</li><li>核函数为 RBF (ARD)，长度尺度来源：auto (marginal-likelihood ARD)；核选择错误时 UQ 会系统性地过自信或过保守，本报告不自动排除该风险。</li><li>报告全文由确定性计算生成，无 LLM 参与，因此不含自然语言综述——代价是可读性低于人工综述，收益是无幻觉引用、可逐行复现。</li></ul>
+<h2 id="sec-2"><a class="anchor" href="#sec-2">2. Context of Use</a></h2>
+<p>本报告的结论仅在下列参数区间内成立。区间由场景自带的物理/实验定义给出，不接受外推；越界查询在第 7 章的门禁中被显式拒绝，而不是返回一个无依据的标量。</p>
+<table><thead><tr><th>维度</th><th>下界</th><th>上界</th></tr></thead><tbody>
+<tr><td>x0</td><td>0.001</td><td>5</td></tr>
+</tbody></table>
+<p>适用用途：微生物 / 假单胞菌甲苯降解（Andrews 底物抑制）。发布基准：P. putida MT-2: μmax=0.35 h⁻¹, Ks=0.02 g/L, Ki(toluene)=2.5 g/L (Rothman et al. 1993)</p>
+<h2 id="sec-3"><a class="anchor" href="#sec-3">3. Method</a></h2>
+<p>代理模型为高斯过程（GP）回归，纯 numpy 实现，无外部求解器依赖。不确定性一等公民：噪声地板不随拟合下调，避免把观测噪声误当成可解释信号。</p>
+<table><thead><tr><th>项</th><th>取值</th></tr></thead><tbody>
+<tr><td>代理模型</td><td>Gaussian Process (RBF)</td></tr>
+<tr><td>核函数</td><td>RBF (ARD)</td></tr>
+<tr><td>长度尺度来源</td><td>auto (marginal-likelihood ARD)</td></tr>
+<tr><td>噪声模型</td><td>Gaussian, relative to response scale (honest-UQ floor, never relaxed)</td></tr>
+<tr><td>GP 噪声地板</td><td>3%（归一化空间，红线：不随拟合下调）</td></tr>
+<tr><td>方差标定系数 κ</td><td>1.000（≥1，只放宽预测区间，避免过度自信）</td></tr>
+<tr><td>场景典型观测噪声</td><td>8%（场景声明值）</td></tr>
+<tr><td>本次注入观测噪声</td><td>0%（虚拟实验直接查询真值函数，故默认不注入）</td></tr>
+<tr><td>训练集</td><td>30 点，Latin Hypercube in modelling coordinates (log10 on decades-spanning axes)</td></tr>
+<tr><td>测试集</td><td>40 点，与训练集不相交</td></tr>
+</tbody></table>
+<p>长度尺度配置（各向同性 ls 的 0.5/1/2 档 vs 各向异性 ARD）已在<strong>与训练集、测试集都独立的验证集</strong>上自动选定（见第 5 章），官方测试集全程不参与——因此该选择不构成对验证指标的乐观偏差。这是 ASME V&amp;V 10 对「验证数据不得用于挑配置」的落实。</p>
+<h2 id="sec-4"><a class="anchor" href="#sec-4">4. Code Verification</a></h2>
+<p>同一实验在两组独立随机初始化（seed 不同）下重跑，比较指标差异。差异在阈值内说明方法本身稳定，本次结论不是抽样运气。</p>
+<table><thead><tr><th>种子</th><th>R²</th><th>RMSE</th><th>覆盖率</th></tr></thead><tbody>
+<tr><td>A</td><td>1.0000</td><td>0.0001</td><td>1.000</td></tr>
+<tr><td>B</td><td>1.0000</td><td>0.0001</td><td>1.000</td></tr>
+</tbody></table>
+<p>相对 RMSE 差异 0.0000，覆盖率差异 0.0000，阈值 0.1 → <strong>通过</strong>。</p>
+<h2 id="sec-5"><a class="anchor" href="#sec-5">5. Uncertainty Quantification</a></h2>
+<table><thead><tr><th>指标</th><th>数值</th><th>说明</th></tr></thead><tbody>
+<tr><td>Out-of-sample R²</td><td>0.9999</td><td>正式判定依据（全测试集）</td></tr>
+<tr><td>核心工况 R²</td><td>0.9999</td><td>剔除真值两端各 10% 后的 R²，反映操作工况质量</td></tr>
+<tr><td>RMSE</td><td>0.0002</td><td>预测均值对基准的均方根误差</td></tr>
+<tr><td>相对 RMSE</td><td>0.0098</td><td>除以响应标准差，跨场景可比</td></tr>
+<tr><td>95% 覆盖率</td><td>1.000</td><td>名义 0.95</td></tr>
+<tr><td>覆盖率偏差</td><td>+0.050</td><td>负=过自信，正=保守</td></tr>
+<tr><td>校准误差</td><td>0.050</td><td>abs(coverage − 0.95)</td></tr>
+<tr><td>平均后验 std</td><td>0.0013</td><td>测试集上的平均不确定度</td></tr>
+</tbody></table>
+<p>留一交叉验证（30 折）：R²=1.0000，RMSE=0.000136，覆盖率=1.000。与留出集结果互为交叉印证。</p>
+<h3>长度尺度配置选择</h3>
+<p>选中 <strong>ARD (auto)</strong>：数据量达到 ARD 门槛 n&gt;=4d+6：长度尺度由边际似然学习，并受 LOO 守卫约束（不劣于先验才采用）；不使用人工先验网格，避免边界层响应下网格选型失明。。</p>
+<h2 id="sec-6"><a class="anchor" href="#sec-6">6. Validation Metrics</a></h2>
+<p>判定结果：<strong>PASS</strong></p>
+<p>依据：out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）</p>
+<table><thead><tr><th>等级</th><th>条件</th><th>本份</th></tr></thead><tbody>
+<tr><td>PASS</td><td>R² ≥ 0.9 且 coverage ≥ 0.90（保守亦可）</td><td>命中</td></tr>
+<tr><td>MARGINAL</td><td>R² ≥ 0.7 且 coverage ≥ 0.80</td><td>未命中</td></tr>
+<tr><td>REFUTED</td><td>其余（拟合不足或过度自信 coverage&lt;0.80）</td><td>未命中</td></tr>
+</tbody></table>
+<p>阈值口径与 skills/paper-claim-validation 的 claim 分级一致，同一项目不出现两套「什么叫通过」的标准。</p>
+<h2 id="sec-6.5"><a class="anchor" href="#sec-6.5">6.5. Baseline Comparison (RF vs GP)</a></h2>
+<p>RandomForest+Conformal 基线在同一批 train/test 数据上的得分，作为验证闸门区分能力的锚点。RF 不参与生产预测，仅作外部对标。</p>
+<table><thead><tr><th>指标</th><th>GP</th><th>RF+Conformal</th><th>差异</th></tr></thead><tbody>
+<tr><td>R²</td><td>0.9999</td><td>0.0365</td><td>-0.9634</td></tr>
+<tr><td>95% Coverage</td><td>1.0000</td><td>0.8000</td><td>-0.2000</td></tr>
+<tr><td>Conformal Q</td><td>N/A</td><td>3.7783</td><td>—</td></tr>
+<tr><td>Grade</td><td>PASS</td><td>REFUTED</td><td>GP 优于 RF</td></tr>
+</tbody></table>
+<p>GP R²=0.9999 / cov=1.0000 (PASS) vs RF R²=0.0365 / cov=0.8000 (REFUTED)</p>
+<p>RF 配置：20 棵 CART 树（max_depth=4），cross-conformal 校准（k=5, 3 repeats）。RMSE_rel=0.5757，NMPIW=0.4719。</p>
+<p>RF 仅作外部对标基线，不参与生产预测；两者用同一批 train/test 数据</p>
+<h2 id="sec-7"><a class="anchor" href="#sec-7">7. Out-of-Disposition Gate</a></h2>
+<p>「替代真实实验」的前提是不可信的区必须自己说出来。本门禁对域内点放行，对域外点（bounds 外扩 1.6–2.2 倍）显式拒绝。</p>
+<table><thead><tr><th>探针集</th><th>点数</th><th>trusted</th><th>caution</th><th>out_of_distribution</th></tr></thead><tbody>
+<tr><td>域内</td><td>120</td><td>120</td><td>0</td><td>0</td></tr>
+<tr><td>域外</td><td>60</td><td>0</td><td>0</td><td>60</td></tr>
+</tbody></table>
+<p>域外拒绝率 1.000 → 门禁有效。OOD 判定阈值 0.0498（归一化距离）。</p>
+<h2 id="sec-8"><a class="anchor" href="#sec-8">8. Recommendations</a></h2>
+<p>下一步最该做的实验点（若做真实实验校验，优先这两点；在虚拟实验体系内，这两点用于最快降低后验不确定度）。</p>
+<table><thead><tr><th>策略</th><th>推荐点</th></tr></thead><tbody>
+<tr><td>最大后验方差（主动学习）</td><td>4.812</td></tr>
+<tr><td>BALD（集成分歧，信息量最大）</td><td>0.001</td></tr>
+</tbody></table>
+<h2 id="sec-9"><a class="anchor" href="#sec-9">9. Reproducibility Manifest</a></h2>
+<p>以下信息足以让第三方重跑出同一组数值。本报告不依赖网络与实验设备。</p>
+<table><thead><tr><th>项</th><th>值</th></tr></thead><tbody>
+<tr><td>scenario key</td><td>micro_putida_toluene</td></tr>
+<tr><td>seed</td><td>0</td></tr>
+<tr><td>n_train / n_test</td><td>30 / 40</td></tr>
+<tr><td>采样</td><td>Latin Hypercube in modelling coordinates (log10 on decades-spanning axes)</td></tr>
+<tr><td>核 / 长度尺度</td><td>RBF (ARD) / auto (marginal-likelihood ARD)</td></tr>
+<tr><td>GP 噪声地板 / 注入观测噪声</td><td>3% / 0%</td></tr>
+<tr><td>代码 commit</td><td>67b0c6f</td></tr>
+<tr><td>Python / numpy</td><td>3.13.14 / 2.5.2</td></tr>
+<tr><td>引擎</td><td>engine/surrogate.py :: SurrogateEngine (GP + UQ)</td></tr>
+<tr><td>生成时间(UTC)</td><td>2026-11-02T19:11:29Z</td></tr>
+<tr><td>需要网络</td><td>否</td></tr>
+<tr><td>需要实验设备</td><td>否</td></tr>
+</tbody></table>
+<pre><code>python engine/report_generator.py --scenario micro_putida_toluene --n-train 30 --n-test 40 --seed 0 --format md</code></pre>
+<h2 id="sec-10"><a class="anchor" href="#sec-10">10. References</a></h2>
+<p>下列文献由场景定义自带（发表公式 / 系数来源），非 LLM 生成，因此不存在幻觉引用。</p>
+<ul><li>P. putida MT-2: μmax=0.35 h⁻¹, Ks=0.02 g/L, Ki(toluene)=2.5 g/L (Rothman et al. 1993)</li></ul>
+<p>发布基准值：P. putida MT-2: μmax=0.35 h⁻¹, Ks=0.02 g/L, Ki(toluene)=2.5 g/L (Rothman et al. 1993)</p>
+<footer>本报告由 SwarmLabs 虚拟实验引擎确定性生成：全部数值可重跑，无 LLM 参与，无幻觉引用。浏览器 Ctrl/Cmd+P 可直接打印或另存为 PDF。</footer>
+</body></html>

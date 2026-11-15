@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SwarmLabs KPI Dashboard · 18 项可度量指标</title>
+<meta name="description" content="SwarmLabs Phase 1 KPI Dashboard：18 项科学/产品/业务可度量指标，每项都有 target、baseline、data_source、status。诚实标注 2 项 meeting / 16 项 unmeasurable（需真实用户数据或前瞻实验）。单一真源：data/kpi_registry.json，schema：schemas/kpi_metric.schema.json。">
+<meta property="og:title" content="SwarmLabs KPI Dashboard">
+<meta property="og:description" content="18 项 KPI：7 科学 + 10 产品 + 1 业务。诚实标注 2 meeting / 16 unmeasurable。">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://swarmlabs.tools/kpi-dashboard">
+<link rel="stylesheet" href="/assets/shared.css">
+<script src="/js/status-badge.js"></script>
+<style>
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 32px 24px 80px; }
+  .page-head h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .page-head p { color: var(--muted); margin-top: 10px; max-width: 900px; line-height: 1.7; }
+  .page-head .subtitle { color: var(--muted); font-size: 13px; margin-top: 10px; max-width: 900px; }
+  .page-head code { background: var(--bg2); padding: 1px 6px; border-radius: 4px; font-size: 12.5px; }
+
+  .callout { background: var(--card); border: 1px solid var(--border);
+    border-left: 4px solid var(--orange); padding: 14px 18px;
+    border-radius: var(--radius); margin: 22px 0; }
+  .callout h3 { font-size: 14px; margin: 0 0 4px; }
+  .callout p { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .callout b { color: var(--text); }
+
+  /* Summary band */
+  .summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 26px 0 18px; }
+  .summary .tile { background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 16px 18px; }
+  .summary .tile .n { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; color: var(--accent); line-height: 1; }
+  .summary .tile .l { font-size: 12px; color: var(--muted); margin-top: 8px; }
+  .summary .tile.meeting .n { color: var(--green); }
+  .summary .tile.unmeas .n { color: var(--orange); }
+  .summary .tile.total .n { color: var(--text); }
+
+  /* Group filter */
+  .filters { display: flex; gap: 8px; flex-wrap: wrap; margin: 18px 0 12px; }
+  .filter-btn { padding: 6px 14px; background: var(--card); border: 1px solid var(--border);
+    color: var(--muted); border-radius: 999px; font-size: 12.5px; cursor: pointer; font-weight: 600; }
+  .filter-btn.active { background: var(--accent); color: #04141a; border-color: var(--accent); }
+
+  /* KPI table */
+  .kpi-table { width: 100%; border-collapse: collapse; margin-top: 12px;
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .kpi-table thead { background: var(--bg2); }
+  .kpi-table th { text-align: left; padding: 10px 12px; font-size: 12px; font-weight: 700;
+    color: var(--muted); border-bottom: 1px solid var(--border); letter-spacing: 0.02em; }
+  .kpi-table td { padding: 12px; font-size: 13px; border-bottom: 1px solid var(--border);
+    vertical-align: top; }
+  .kpi-table tr:last-child td { border-bottom: none; }
+  .kpi-table .id { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11.5px;
+    color: var(--muted); }
+  .kpi-table .name { font-weight: 700; color: var(--text); font-size: 13.5px; margin-bottom: 3px; }
+  .kpi-table .def { font-size: 12px; color: var(--muted); line-height: 1.5; max-width: 460px; }
+  .kpi-table .target { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px;
+    color: var(--accent); background: rgba(56,189,248,0.08); padding: 2px 6px; border-radius: 4px; }
+  .kpi-table .cur { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12.5px; color: var(--text); }
+  .kpi-table .cur.na { color: var(--muted); font-style: italic; }
+  .kpi-table .blocker { font-size: 11.5px; color: var(--muted); line-height: 1.5; margin-top: 4px; }
+
+  .status-badge { display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px;
+    border-radius: 999px; font-size: 11.5px; font-weight: 700; }
+  .status-badge.meeting { background: rgba(34,197,94,0.14); color: var(--green); }
+  .status-badge.unmeasurable { background: rgba(245,158,11,0.14); color: var(--orange); }
+  .status-badge.missing { background: rgba(107,114,128,0.15); color: var(--muted); }
+
+  .group-tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10.5px;
+    font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; margin-right: 6px; }
+  .group-tag.science { background: rgba(56,189,248,0.15); color: #0ea5e9; }
+  .group-tag.product { background: rgba(139,92,246,0.15); color: #7c3aed; }
+  .group-tag.business { background: rgba(245,158,11,0.15); color: #b45309; }
+
+  /* Deliverables */
+  .deliverables { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-top: 30px; }
+  .deliverables .card { background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 16px 18px; }
+  .deliverables .card h3 { margin: 0 0 6px; font-size: 14px; }
+  .deliverables .card p { margin: 0 0 8px; font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+  .deliverables .card code { background: var(--bg2); padding: 1px 5px; border-radius: 3px; font-size: 11.5px; }
+  .deliverables .card .path { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px;
+    color: var(--accent); margin-top: 6px; word-break: break-all; }
+
+  footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border);
+    color: var(--muted); font-size: 12px; }
+</style>
+</head>
+<body>
+<nav class="nav-bar">
+  <a href="/" class="nav-logo">🐝 <span>SwarmLabs</span> <span class="beta-badge">Beta</span></a>
+  <ul class="nav-links">
+    <li><a href="/mission">Mission</a></li>
+    <li><a href="/kpi-dashboard">KPI Dashboard</a></li>
+    <li><a href="/vocabulary">Vocabulary</a></li>
+    <li><a href="/trust-dashboard">Trust</a></li>
+    <li><a href="/pricing">Pricing</a></li>
+    <li><a href="/login" class="btn btn-primary" style="color:#fff">Sign in</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+  <div class="page-head">
+    <h1>KPI Dashboard · 18 项可度量指标</h1>
+    <p>Phase 1 交付的诚实度量框架。18 项 KPI 覆盖 <b>科学质量 · 产品体验 · 业务转化</b>，每项都有明确 target、baseline、data_source 和 status。<b>2 项 meeting / 16 项 unmeasurable</b> —— unmeasurable 不是"没做"，是"需真实用户数据或前瞻实验"的显式边界标注。</p>
+    <p class="subtitle">单一真源 <code>data/kpi_registry.json</code> · Schema <code>schemas/kpi_metric.schema.json</code> · 构建 <code>scripts/build_kpi_registry.py</code> · 报告来源 <code>docs/PROJECT_ELEVATION_REPORT_2026-10-26.md §7</code> · 上次更新 2026-10-26</p>
+  </div>
+
+  <div class="callout">
+    <h3>⚠️ 为什么要显式标注 unmeasurable</h3>
+    <p>报告 §7 的原话：<b>「Replace scenario-count vanity metrics with measurable science/product/business KPIs.」</b>过去"95 场景 / 91-3-1-0 判决 / 10 学科"是<b>交付量指标</b>，不是<b>科学质量指标</b>。KPI registry 强制每一项声明"当前是否可测量"—— unmeasurable 有 16 项不是失败，是<b>让"当前可测"与"接入真实数据后可测"的边界显式化</b>。</p>
+  </div>
+
+  <div class="summary">
+    <div class="tile total"><div class="n">18</div><div class="l">总 KPI 数</div></div>
+    <div class="tile"><div class="n">7</div><div class="l">🔬 科学（science）</div></div>
+    <div class="tile"><div class="n">10</div><div class="l">📦 产品（product）</div></div>
+    <div class="tile"><div class="n">1</div><div class="l">💼 业务（business）</div></div>
+    <div class="tile meeting"><div class="n">2</div><div class="l">✅ Meeting（可测且达标）</div></div>
+    <div class="tile unmeas"><div class="n">16</div><div class="l">🟡 Unmeasurable（需真实数据）</div></div>
+    <div class="tile"><div class="n">23</div><div class="l">📦 已交付 PR</div></div>
+    <div class="tile"><div class="n">8+1</div><div class="l">🛡️ CI 治理门禁</div></div>
+  </div>
+
+  <div class="filters">
+    <button class="filter-btn active" data-group="all">全部（18）</button>
+    <button class="filter-btn" data-group="science">🔬 科学（7）</button>
+    <button class="filter-btn" data-group="product">📦 产品（10）</button>
+    <button class="filter-btn" data-group="business">💼 业务（1）</button>
+    <button class="filter-btn" data-group="meeting">✅ Meeting（2）</button>
+    <button class="filter-btn" data-group="unmeasurable">🟡 Unmeasurable（16）</button>
+  </div>
+
+  <table class="kpi-table" id="kpi-table">
+    <thead>
+      <tr>
+        <th style="width: 260px">KPI ID</th>
+        <th>定义 / 公式 / 数据源</th>
+        <th style="width: 140px">Target</th>
+        <th style="width: 110px">当前值</th>
+        <th style="width: 130px">Status</th>
+      </tr>
+    </thead>
+    <tbody id="kpi-body">
+      <tr data-group="science" data-status="unmeasurable">
+        <td><div class="name"><span class="group-tag science">Science</span>批次留出误差</div><div class="id">kpi-sci-batch-holdout</div></td>
+        <td>
+          <div class="def">完全未见过的 batch_id 上的预先指定主指标。检验模型是否只对训练批次过拟合。<br><code>mean(|y_hat - y_true| / range(y))</code> over held-out batches</div>
+          <div class="blocker"><b>阻断：</b>至少一组 E2/E3 真实批次数据 + 预登记 batch_id split</div>
+        </td>
+        <td><span class="target">≤ 5.0 %</span></td>
+        <td><span class="cur na">— 待接入</span></td>
+        <td><span class="status-badge unmeasurable">🟡 Unmeasurable</span></td>
+      </tr>
+
+      <tr data-group="science" data-status="unmeasurable">
+        <td><div class="name"><span class="group-tag science">Science</span>区间有效性</div><div class="id">kpi-sci-interval-validity</div></td>
+        <td>
+          <div class="def">PICP/coverage 达预登记目标；宽度也须报告，避免 vacuous interval。<br><code>coverage = mean(y_true ∈ [q_lo, q_hi])</code>; <code>width = mean(q_hi - q_lo) / range(y)</code></div>
+          <div class="blocker"><b>阻断：</b>真实前瞻实验的覆盖率测量（合成场景已达 0.95，但非真实数据）</div>
+        </td>
+        <td><span class="target">≥ 0.95</span></td>
+        <td><span class="cur na">0.95（合成）</span></td>
+        <td><span class="status-badge unmeasurable">🟡 Unmeasurable</span></td>
+      </tr>
+
+      <tr data-group="science" data-status="unmeasurable">
+        <td><div class="name"><span class="group-tag science">Science</span>OOD 安全性</div><div class="id">kpi-sci-ood-safety</div></td>
+        <td>
+          <div class="def">proximity() 过滤后 OOD 检出率与误拒率同时报告；selective risk 是拒答条件下的风险上界。</div>
+          <div class="blocker"><b>阻断：</b>真实前瞻 OOD 套件 + 在分布集对偶标签</div>
+        </td>
+        <td><span class="target">检出 ≥ 0.90 / 误拒 ≤ 0.05</span></td>
+        <td><span class="cur na">— 待接入</span></td>
+        <td><span class="status-badge unmeasurable">🟡 Unmeasurable</span></td>
+      </tr>
+
+      <tr data-group="science" data-status="unmeasurable">
+        <td><div class="name"><span class="group-tag science">Science</span>建议兑现率</div><div class="id">kpi-sci-fulfillment-rate</div></td>
+        <td>
+          <div class="def">真实实验完成后兑现的建议比例。<b>诚实分母</b>：排除未量化和等待执行的建议。</div>
+          <div class="blocker"><b>阻断：</b>真实实验执行反馈（scripts/fulfillment_replay.py 已实现诚实分母口径）</div>
+        </td>
+        <td><span class="target">≥ 0.40</span></td>
+        <td><span class="cur na">— 待接入</span></td>
+        <td><span class="status-badge unmeasurable">🟡 Unmeasurable</span></td>
+      </tr>
+
+      <tr data-group="science" data-status="unmeasurable">
+        <td><div class="name"><span class="group-tag science">Science</span>信息增益 / 成本</div><div class="id">kpi-sci-info-gain-cost</span></div></td>
+        <td>
+          <div class="def">Expected Improvement / 实验成本。主动学习每步的信息增益与实验花费之比。</div>
+          <div class="blocker"><b>阻断：</b>真实实验成本数据（当前无成本标签）</div>
+        </td>
+        <td><span class="target">越高越好</span></td>
+        <td><span class="cur na">— 待接入</span></td>
+        <td><span class="status-badge unmeasurable">🟡 Unmeasurable</span></td>
+      </tr>
+
+      <tr data-group="science" data-status="unmeasurable">
+        <td><div class="name"><span class="group-tag science">Science</span>负对照识别</div><div class="id">kpi-sci-negative-control</div></td>
+        <td>
+          <div class="def">零函数/常数函数等负对照在系统输出中应被识别为 REFUTED（不可用）。当前 fin_put_call_parity 已作 selftest。</div>
+          <div class="blocker"><b>阻断：</b>需前瞻负对照套件（真实数据）验证</div>
+        </td>
+        <td><span class="target">零假阳性</span></td>
+        <td><span class="cur na">仅 selftest</span></td>
+        <td><span class="status-badge unmeasurable">🟡 Unmeasurable</span></td>
+      </tr>
+
+      <tr data-group="science" data-status="unmeasurable">
+        <td><div class="name"><span class="group-tag science">Science</span>外部复现</div><div class="id">kpi-sci-external-reproduction</div></td>
+        <td>
+          <div class="def">第二后端/团队/设备对同一 manifest 的复现率。SLSA v1.2 provenance 已就绪，缺"另一后端"验证。</div>
+          <div class="blocker"><b>阻断：</b>Phase 2 Second Backend 骨架 + 外部团队 pilot</div>
+        </td>
+        <td><span class="target">≥ 0.85</span></td>
+        <td><span class="cur na">— 待接入</span></td>
+        <td><span class="status-badge unmeasurable">🟡 Unmeasurable</span></td>
+      </tr>
+
+      <tr data-group="product" data-status="unmeasurable">
+        <td><div class="name"><span class="group-tag product">Product</span>干净安装成功率</div><div class="id">kpi-prod-clean-install</div></td>
+        <td>
+          <div class="def">pip install 在干净虚拟环境中的成功率，跨 Python 版本 + OS。</div>
+          <div class="blocker"><b>阻断：</b>需真实用户环境采样</div>
+        </td>
+        <td><span class="target">≥ 0.99</span></td>
+        <td><span class="cur na">— 待接入</span></td>
+        <td><span class="status-badge unmeasurable">🟡 Unmeasurable</span></td>
+      </tr>
+
+      <tr data-group="product" data-status="unmeasurable">
+        <td><div class="name"><span class="group-tag product">Product</span>首个 demo 完成时间</div><div class="id">kpi-prod-first-demo-time</div></td>
+        <td>
+          <div class="def">从注册到看到第一个可解读输出的中位时间。Time-to-Value 主指标。</div>
+          <div class="blocker"><b>阻断：</b>真实用户行为埋点</div>
+        </td>
+        <td><span class="target">≤ 15 min</span></td>
+        <td><span class="cur na">— 待接入</span></td>
+        <td><span class="status-badge unmeasurable">🟡 Unmeasurable</span></td>
+      </tr>
+
+      <tr data-group="product" data-status="unmeasurable">
+        <td><div class="name"><span class="group-tag product">Product</span>首次真实数据接入时间</div><div class="id">kpi-prod-first-real-data-time</div></td>
+        <td>
+          <div class="def">用户上传第一批真实数据并走完 batch 验证链路的中位时间。</div>
+          <div class="blocker"><b>阻断：</b>真实数据 pilot（Phase 1 硬门槛，见 §11）</div>
+        </td>
+        <td><span class="target">≤ 30 min</span></td>
+        <td><span class="cur na">— 未启动</span></td>
+        <td><span class="status-badge unmeasurable">🟡 Unmeasurable</span></td>
+      </tr>
+
+      <tr data-group="product" data-status="unmeasurable">
+        <td><div class="name"><span class="group-tag product">Product</span>任务成功率</div><div class="id">kpi-prod-task-completion</div></td>
+        <td>
+          <div class="def">导入 → 验证 → 推荐 → 导出的端到端成功率，按用户 session 计数。</div>
+          <div class="blocker"><b>阻断：</b>需真实用户 session 埋点</div>
+        </td>
+        <td><span class="target">≥ 0.75</span></td>
+        <td><span class="cur na">— 待接入</span></td>
+        <td><span class="status-badge unmeasurable">🟡 Unmeasurable</span></td>
+      </tr>
+
+      <tr data-group="product" data-status="unmeasurable">
+        <td><div class="name"><span class="group-tag product">Product</span>Manifest 复现率</div><div class="id">kpi-prod-manifest-repro-rate</div></td>
+        <td>
+          <div class="def">同一 manifest 在同一环境二次执行的 bit-exact 复现率。RO-Crate + SLSA provenance 已实现。</div>
+          <div class="blocker"><b>阻断：</b>需跨环境（不同机器、不同时间点）复现采样</div>
+        </td>
+        <td><span class="target">1.00</span></td>
+        <td><span class="cur na">— 待接入</span></td>
+        <td><span class="status-badge unmeasurable">🟡 Unmeasurable</span></td>
+      </tr>
+
+      <tr data-group="product" data-status="meeting">
+        <td><div class="name"><span class="group-tag product">Product</span>公开事实漂移数</div><div class="id">kpi-prod-fact-drift</div></td>
+        <td>
+          <div class="def">公开数字（95 场景 / 10 学科 / 115 engine modules 等）与 public_facts.json 声明不一致的数量。<b>CI 门禁 scripts/check_public_numbers.py</b>。</div>
+          <div class="blocker"><b>可测量：</b>每次 CI run 都测。</div>
+        </td>
+        <td><span class="target">= 0</span></td>
+        <td><span class="cur">0</span></td>
+        <td><span class="status-badge meeting">✅ Meeting</span></td>
+      </tr>
+
+      <tr data-group="product" data-status="meeting">
+        <td><div class="name"><span class="group-tag product">Product</span>Schema 失败数</div><div class="id">kpi-prod-schema-failures</div></td>
+        <td>
+          <div class="def">JSON Schema 校验失败的字段数。KPI registry / status vocabulary / RO-Crate 元数据 / CycloneDX SBOM 均入 schema 校验。</div>
+          <div class="blocker"><b>可测量：</b>每次 CI run 都测。</div>
+        </td>
+        <td><span class="target">= 0</span></td>
+        <td><span class="cur">0</span></td>
+        <td><span class="status-badge meeting">✅ Meeting</span></td>
+      </tr>
+
+      <tr data-group="product" data-status="unmeasurable">
+        <td><div class="name"><span class="group-tag product">Product</span>科学结论谱系覆盖率</div><div class="id">kpi-prod-provenance-coverage</div></td>
+        <td>
+          <div class="def">RO-Crate 1.1 PROV-O 元数据覆盖的科学结论数量 / 全部结论数量。目标 100%。</div>
+          <div class="blocker"><b>阻断：</b>需真实结论清单 + RO-Crate 覆盖统计</div>
+        </td>
+        <td><span class="target">≥ 0.95</span></td>
+        <td><span class="cur na">— 待接入</span></td>
+        <td><span class="status-badge unmeasurable">🟡 Unmeasurable</span></td>
+      </tr>
+
+      <tr data-group="product" data-status="unmeasurable">
+        <td><div class="name"><span class="group-tag product">Product</span>人工接管率</div><div class="id">kpi-prod-human-takeover-rate</div></td>
+        <td>
+          <div class="def">用户主动接管（人工审核 / 修改建议 / 覆写系统输出）的比例。</div>
+          <div class="blocker"><b>阻断：</b>需真实用户行为埋点</div>
+        </td>
+        <td><span class="target">≤ 0.15</span></td>
+        <td><span class="cur na">— 待接入</span></td>
+        <td><span class="status-badge unmeasurable">🟡 Unmeasurable</span></td>
+      </tr>
+
+      <tr data-group="product" data-status="unmeasurable">
+        <td><div class="name"><span class="group-tag product">Product</span>单建议成本</div><div class="id">kpi-prod-cost-per-recommendation</div></td>
+        <td>
+          <div class="def">单条有效实验建议的模型调用 / token / 计算成本（¥ / 建议）。经济学指标。</div>
+          <div class="blocker"><b>阻断：</b>需真实 token 消耗计量 + 建议质量过滤</div>
+        </td>
+        <td><span class="target">≤ 0.50 ¥</span></td>
+        <td><span class="cur na">— 待接入</span></td>
+        <td><span class="status-badge unmeasurable">🟡 Unmeasurable</span></td>
+      </tr>
+
+      <tr data-group="business" data-status="unmeasurable">
+        <td><div class="name"><span class="group-tag business">Business</span>Pilot 转化率</div><div class="id">kpi-biz-pilot-conversion</div></td>
+        <td>
+          <div class="def">真实用户从试用到付费 pilot 的转化率。唯一业务 KPI。</div>
+          <div class="blocker"><b>阻断：</b>需真实销售漏斗（Phase 1 不承诺）</div>
+        </td>
+        <td><span class="target">≥ 0.10</span></td>
+        <td><span class="cur na">— 未启动</span></td>
+        <td><span class="status-badge unmeasurable">🟡 Unmeasurable</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 style="margin-top: 42px; font-size: 22px;">📦 支撑资产 · 23 PR 已交付</h2>
+  <p style="color: var(--muted); font-size: 13.5px; margin: 6px 0 12px;">KPI dashboard 不是空壳——每一项"可测量"背后都有具体代码资产。以下列出 23 PR 的核心交付，构成度量与治理基础。</p>
+
+  <div class="deliverables">
+    <div class="card">
+      <h3>📊 KPI Registry（PR-9）</h3>
+      <p>18 项 KPI schema 化，target/baseline/status 三态强制标注，unmeasurable 显式化。</p>
+      <div class="path">data/kpi_registry.json<br>schemas/kpi_metric.schema.json<br>scripts/build_kpi_registry.py</div>
+    </div>
+    <div class="card">
+      <h3>🎨 状态词汇表（PR-19/23）</h3>
+      <p>6 个受控状态码替代自由文本，前端 badge 渲染，同步守防止漂移。</p>
+      <div class="path">data/status_vocabulary.json<br>frontend_fixed/js/status-badge.js<br>scripts/check_status_vocabulary.py</div>
+    </div>
+    <div class="card">
+      <h3>🎯 基线阶梯级联准入（PR-17）</h3>
+      <p>baseline ladder 强制"先击败纯机理/纯数据基线"才可上线，对应 kpi-sci-batch-holdout。</p>
+      <div class="path">engine/baseline_ladder.py<br>schemas/baseline_ladder.schema.json</div>
+    </div>
+    <div class="card">
+      <h3>🎓 选择性预测（PR-18）</h3>
+      <p>coverage / width / OOD 检出 / 误拒率四指标，拒答条件即"边界标注"。</p>
+      <div class="path">engine/selective_prediction.py<br>schemas/selective_prediction.schema.json</div>
+    </div>
+    <div class="card">
+      <h3>📦 RO-Crate + SBOM（PR-2/3）</h3>
+      <p>14 PROV-O 实体 + CycloneDX 1.5 SBOM，支撑 provenance-coverage KPI。</p>
+      <div class="path">scripts/export_repro_package.py<br>scripts/build_sbom.py</div>
+    </div>
+    <div class="card">
+      <h3>🛡️ 8+1 CI 治理门禁（PR-14）</h3>
+      <p>B1-B4 架构边界 + honesty-gate 挂载，schema-failures KPI = 0 由此保证。</p>
+      <div class="path">.github/workflows/ci-baseline.yml<br>scripts/check_architecture_boundaries.py</div>
+    </div>
+    <div class="card">
+      <h3>🎲 兑现率诚实分母（PR-15）</h3>
+      <p>fulfillment_replay.py 排除未量化与等待执行，对应 kpi-sci-fulfillment-rate。</p>
+      <div class="path">scripts/fulfillment_replay.py<br>data/fulfillment_metrics.json</div>
+    </div>
+    <div class="card">
+      <h3>🚫 证据撤销（PR-20）</h3>
+      <p>REVOKE_KEY_MAP 分类撤销 data/model/proposal/report，支撑谱系覆盖率。</p>
+      <div class="path">scripts/revoke_evidence.py<br>docs/GOVERNANCE.md</div>
+    </div>
+  </div>
+
+  <div class="callout" style="border-left-color: var(--red); margin-top: 24px;">
+    <h3>🔴 下一步硬门槛 · Phase 1 未完成</h3>
+    <p>16 项 unmeasurable 中，<b>kpi-prod-first-real-data-time</b> 是 Phase 1 的完成判据。没有真实数据 pilot，只能称"格式兼容"，不能称"真实实验验证"。这是<b>用户侧决策</b>（选实验室 + 数据接入 + 前瞻实验）——AI 只能搭骨架，不能替用户拍板。</p>
+  </div>
+
+  <footer>
+    <p><b>SwarmLabs · KPI Dashboard · 2026-10-26</b> · 单一真源 <code>data/kpi_registry.json</code> · CI 门禁 <code>scripts/check_public_numbers.py</code> · 报告来源 <code>docs/PROJECT_ELEVATION_REPORT_2026-10-26.md §7</code> · 状态词汇表 <a href="/vocabulary" style="color:var(--accent)">/vocabulary</a> · Trust Surface <a href="/trust-dashboard" style="color:var(--accent)">/trust-dashboard</a></p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  const btns = document.querySelectorAll('.filter-btn');
+  const rows = document.querySelectorAll('#kpi-body tr');
+  btns.forEach(b => b.addEventListener('click', () => {
+    btns.forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    const g = b.dataset.group;
+    rows.forEach(r => {
+      const match = (g === 'all')
+        || (g === r.dataset.group)
+        || (g === r.dataset.status);
+      r.style.display = match ? '' : 'none';
+    });
+  }));
+})();
+</script>
+</body>
+</html>

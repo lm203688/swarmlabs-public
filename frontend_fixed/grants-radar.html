@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SwarmLabs · Grants Radar（资助与算力券雷达）</title>
+<meta name="description" content="SwarmLabs Grants Radar：AI4S 相关的算力券与科研资助机会，按截止日排序、状态徽章、直达链接，明确标注 AI 能做什么 vs 用户必须做什么。当前焦点：Digital Science Catalyst Grant（评审中，26 天到截止）。">
+<meta property="og:title" content="SwarmLabs · Grants Radar">
+<meta property="og:description" content="AI4S grants & compute-credit radar, sorted by deadline with AI-can-do vs user-must-do split.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://swarmlabs.tools/grants-radar">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebPage",
+  "name":"SwarmLabs · Grants Radar",
+  "url":"https://swarmlabs.tools/grants-radar",
+  "description":"AI4S grants & compute-credit opportunities radar with deadline tracking and AI/user action split.",
+  "about":{"@type":"Thing","name":"AI for Science funding"},
+  "dateModified":"2026-10-25"
+}
+</script>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#ffffff; --ink:#1c2330; --muted:#647084;
+    --line:#e4e8ef; --accent:#2f6df0; --good:#1f9d57; --warn:#d98a00; --bad:#d23b3b;
+    --purple:#7c5cf0; --teal:#0f9b8e;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;
+       line-height:1.55;}
+  header{padding:22px 26px;border-bottom:1px solid var(--line);background:#fff;}
+  h1{margin:0 0 4px;font-size:20px}
+  .sub{color:var(--muted);font-size:13px}
+  .wrap{max-width:1140px;margin:0 auto;padding:20px 26px 60px}
+  .banner{background:#fff7e6;border:1px solid #ffd591;color:#8a5a00;
+          padding:12px 14px;border-radius:10px;font-size:13px;margin:18px 0}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:14px 0 22px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .card .n{font-size:26px;font-weight:700}
+  .card .l{color:var(--muted);font-size:12px;margin-top:2px}
+  h2{font-size:16px;margin:26px 0 10px}
+  .pill{display:inline-block;padding:1px 8px;border-radius:999px;font-size:11px;font-weight:600;white-space:nowrap}
+  .pill.critical{background:#fdeaea;color:var(--bad)}
+  .pill.high{background:#fdeee0;color:#b85c00}
+  .pill.medium{background:#eef1f6;color:var(--muted)}
+  .pill.low{background:#eef1f6;color:var(--muted);opacity:.7}
+  .pill.none{background:#eef1f6;color:var(--muted);opacity:.55}
+  .pill.open{background:#e6f6ec;color:var(--good)}
+  .pill.pending_review{background:#eef5ff;color:var(--accent)}
+  .pill.not_started{background:#f3edff;color:var(--purple)}
+  .pill.closed{background:#eef1f6;color:var(--muted)}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:13px}
+  th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#f1f4f9;color:var(--muted);font-weight:600}
+  tr:last-child td{border-bottom:none}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  code{background:#eef1f6;padding:1px 5px;border-radius:5px;font-size:12px}
+  .tiny{color:var(--muted);font-size:11px}
+  .fitbar{display:inline-block;width:70px;height:8px;background:#eef1f6;border-radius:4px;overflow:hidden;vertical-align:middle}
+  .fitfill{height:100%;background:linear-gradient(90deg,var(--accent),var(--purple))}
+  .days-urgent{color:var(--bad);font-weight:700}
+  .days-soon{color:#b85c00;font-weight:600}
+  .days-mid{color:var(--muted)}
+  .days-closed{color:var(--muted);text-decoration:line-through}
+  .deadline-cell{white-space:nowrap}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;margin-top:6px}
+  .split ul{margin:0;padding-left:14px}
+  .split li{margin:1px 0}
+  .split .ai{color:var(--good)}
+  .split .user{color:#b85c00}
+  .expand{cursor:pointer;color:var(--accent);font-size:12px}
+  .expand:hover{text-decoration:underline}
+  .hidden{display:none}
+  details.notes{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-top:6px}
+  details.notes summary{cursor:pointer;font-size:12px;color:var(--muted)}
+  .split-detail{margin-top:8px}
+  .split-detail h4{margin:0 0 4px;font-size:12px;color:var(--muted);font-weight:600}
+  /* nav */
+  .sl-nav{display:flex;flex-wrap:wrap;gap:14px;align-items:center;font-size:13px;margin-bottom:10px}
+  .sl-nav a{color:var(--muted);text-decoration:none}
+  .sl-nav a:hover{color:var(--accent)}
+  .sl-nav a.active{color:var(--accent);font-weight:600}
+  .sl-nav .sl-logo{font-weight:700;color:var(--ink)}
+  .filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;font-size:12px}
+  .filter-btn{background:#fff;border:1px solid var(--line);color:var(--muted);padding:4px 10px;border-radius:999px;cursor:pointer;font-size:12px}
+  .filter-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+</style>
+</head>
+<body>
+<header>
+  <nav class="sl-nav">
+    <a class="sl-logo" href="/">🐝 SwarmLabs</a>
+    <a href="/workbench">Workbench</a>
+    <a href="/report-gallery">V&amp;V Reports</a>
+    <a href="/trust-dashboard">Trust Surface</a>
+    <a href="/failure-cases">Failure Cases</a>
+    <a href="/grants-radar" class="active">Grants Radar</a>
+    <a href="/why-swarmlabs">Why SwarmLabs</a>
+    <a href="/pricing">Pricing</a>
+  </nav>
+  <h1>SwarmLabs · Grants Radar</h1>
+  <div class="sub">资助与算力券雷达 · 数据生成于 <span id="gen">加载中…</span></div>
+</header>
+<div class="wrap">
+  <div class="banner" id="banner"></div>
+
+  <div class="cards" id="cards"></div>
+
+  <h2>Top 4 按截止日排序</h2>
+  <div id="top" class="cards"></div>
+
+  <h2>全部机会</h2>
+  <div class="filter-bar" id="filter"></div>
+  <div id="rows"></div>
+
+  <h2>AI 能做的 vs 用户必须做的</h2>
+  <p class="sub" style="font-size:13px">SwarmLabs 严格遵守 AI 边界：AI 可以起草文档、模板、分析、技术附录；<b>不代发邮件、不代提交申请、不代签授权</b>。所有 <span style="color:#b85c00">user_must_do</span> 项必须用户本人完成。</p>
+
+  <details class="notes">
+    <summary>数据来源与更新约定</summary>
+    <div style="margin-top:8px">
+      <p style="font-size:12px;margin:4px 0">本页数据来自 <code>data/grants_radar.json</code>，由 <code>scripts/build_grants_radar.py</code> 生成。数据源：</p>
+      <ul style="font-size:12px;color:var(--muted);margin:4px 0;padding-left:20px">
+        <li>官方 grant 页面（Digital Science / NVIDIA / OpenAI / Anthropic / Horizon Europe / MSRA / NSF / AWS / Rockefeller Foundation）</li>
+        <li>Georgia Tech Research Bulletin、Miami Funding Rundown 等机构转发</li>
+        <li>用户 <code>docs/USER_COOPERATION_GUIDE.md</code> 与 <code>docs/nvidia_grant_faculty_pitch.md</code></li>
+      </ul>
+      <p style="font-size:12px;margin:4px 0">媒体口径的 deadline（如 Q4 call 预计日期）已加 <code>[预计]</code> 或 <code>[media]</code> 标注，请以官方页面为准。</p>
+      <p style="font-size:12px;margin:4px 0"><b>AI 不代发邮件、不代提交、不代签</b>。任何申请动作必须由用户本人完成。</p>
+    </div>
+  </details>
+</div>
+
+<script>
+const GRANTS_URL = 'data/grants_radar.json';
+
+fetch(GRANTS_URL)
+  .then(r => { if(!r.ok) throw new Error(r.status); return r.json(); })
+  .then(render)
+  .catch(e => {
+    document.getElementById('banner').innerHTML =
+      '<strong>⚠ 数据加载失败</strong> — <code>' + GRANTS_URL + '</code> 未找到：' + e.message;
+    document.getElementById('gen').textContent = '加载失败';
+  });
+
+function render(D) {
+  const today = D.meta.today || '2026-10-25';
+  document.getElementById('gen').textContent = today + ' (v' + (D.grants?.length||0) + ')';
+
+  // ---- banner ----
+  const cat = D.grants.find(g => g.id === 'digital-science-catalyst');
+  if (cat) {
+    document.getElementById('banner').innerHTML =
+      '<b>🔥 焦点：Digital Science Catalyst Grant</b> 已提交，' +
+      '评审开始 2026-10-12（已推进 ' + (D.meta.days_to_catalyst_deadline + D.meta.days_to_catalyst_results - 36 - 26 + 13) + ' 天）；' +
+      '截止 <b>2026-11-20</b>（剩 ' + D.meta.days_to_catalyst_deadline + ' 天），公布 <b>2026-11-30</b>（剩 ' + D.meta.days_to_catalyst_results + ' 天）。' +
+      '<br><span class="tiny">AI 可做：更新答辩预演稿、公开进展博文。AI 不做：代发邮件、代签授权。用户需：确认已提交、关注评审更新。</span>';
+  }
+
+  // ---- summary cards ----
+  const s = D.summary;
+  const openCount = D.grants.filter(g => g.status === 'open').length;
+  const pendingCount = D.grants.filter(g => g.status === 'pending_review').length;
+  const notStarted = D.grants.filter(g => g.status === 'not_started').length;
+  const cards = [
+    {n: s.total, l:'在雷达上的机会'},
+    {n: s.critical, l:'Critical（≤30 天）'},
+    {n: s.high, l:'High priority'},
+    {n: openCount + pendingCount, l:'开放 / 评审中'},
+    {n: notStarted, l:'待准备'},
+    {n: s.closed, l:'已截止'},
+  ];
+  document.getElementById('cards').innerHTML = cards.map(c =>
+    `<div class="card"><div class="n">${c.n}</div><div class="l">${c.l}</div></div>`).join('');
+
+  // ---- top 4 by deadline ----
+  const top = D.grants
+    .filter(g => g.status !== 'closed')
+    .sort((a,b) => (a.days_to_deadline < 0 ? 9999 : a.days_to_deadline) - (b.days_to_deadline < 0 ? 9999 : b.days_to_deadline))
+    .slice(0, 4);
+  document.getElementById('top').innerHTML = top.map(g => {
+    const cls = g.days_to_deadline < 0 ? 'days-closed' : g.days_to_deadline <= 30 ? 'days-urgent' : g.days_to_deadline <= 60 ? 'days-soon' : 'days-mid';
+    const fitPct = Math.round(g.fit_score * 10);
+    return `<div class="card" style="min-height:110px">
+      <div style="font-weight:600;font-size:13px;margin-bottom:6px"><a href="${g.url}" target="_blank">${g.name}</a></div>
+      <div class="tiny">截止 <b>${g.deadline}</b> <span class="${cls}">${g.days_to_deadline < 0 ? '已过' : g.days_to_deadline + ' 天'}</span></div>
+      <div class="tiny" style="margin-top:4px">${g.amount}</div>
+      <div style="margin-top:8px">
+        <span class="fitbar"><span class="fitfill" style="width:${fitPct}%"></span></span>
+        <span class="tiny" style="margin-left:6px">契合度 ${g.fit_score}/10</span>
+      </div>
+    </div>`;
+  }).join('');
+
+  // ---- filter bar ----
+  const filters = [
+    {k:'all', label:'全部 (' + D.grants.length + ')'},
+    {k:'critical', label:'Critical'},
+    {k:'high', label:'High'},
+    {k:'open', label:'Open / Reviewing'},
+    {k:'closed', label:'已截止'},
+  ];
+  document.getElementById('filter').innerHTML = filters.map((f,i) =>
+    `<button class="filter-btn ${i===0?'active':''}" data-k="${f.k}">${f.label}</button>`).join('');
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.onclick = () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderRows(D, btn.dataset.k);
+    };
+  });
+  renderRows(D, 'all');
+}
+
+function renderRows(D, filter) {
+  const grants = D.grants.filter(g => {
+    if (filter === 'all') return true;
+    if (filter === 'critical') return g.priority === 'critical';
+    if (filter === 'high') return g.priority === 'high' || g.priority === 'critical';
+    if (filter === 'open') return g.status === 'open' || g.status === 'pending_review';
+    if (filter === 'closed') return g.status === 'closed';
+    return true;
+  }).sort((a,b) => (a.days_to_deadline < 0 ? 9999 : a.days_to_deadline) - (b.days_to_deadline < 0 ? 9999 : b.days_to_deadline));
+
+  let html = '<table><tr>' +
+    '<th>机会</th>' +
+    '<th>类别 / 资助方</th>' +
+    '<th>金额</th>' +
+    '<th>截止日</th>' +
+    '<th>状态</th>' +
+    '<th>契合度</th>' +
+    '<th>操作</th>' +
+    '</tr>';
+
+  grants.forEach((g, i) => {
+    const id = 'g-' + i;
+    const days = g.days_to_deadline;
+    const cls = days < 0 ? 'days-closed' : days <= 30 ? 'days-urgent' : days <= 60 ? 'days-soon' : 'days-mid';
+    const fitPct = Math.round(g.fit_score * 10);
+    html += `<tr>
+      <td>
+        <a href="${g.url}" target="_blank"><b>${g.name}</b></a>
+        <div class="tiny">${g.fit_reason}</div>
+      </td>
+      <td class="tiny">${g.category}<br>${g.funder}</td>
+      <td class="tiny">${g.amount}</td>
+      <td class="deadline-cell"><b>${g.deadline}</b><br><span class="${cls}">${days < 0 ? '已过 ' + Math.abs(days) + ' 天' : days + ' 天'}</span></td>
+      <td>
+        <span class="pill ${g.priority}">${g.priority}</span><br>
+        <span class="pill ${g.status}">${g.status}</span>
+      </td>
+      <td>
+        <span class="fitbar"><span class="fitfill" style="width:${fitPct}%"></span></span>
+        <div class="tiny">${g.fit_score}/10</div>
+      </td>
+      <td>
+        <a href="${g.url}" target="_blank" style="font-size:12px">↗ 官方</a><br>
+        <a href="#${id}" class="expand" onclick="toggleDetail('${id}');return false;">详情</a>
+      </td>
+    </tr>
+    <tr id="${id}" class="hidden">
+      <td colspan="7">
+        <div class="split split-detail">
+          <div>
+            <h4 style="color:var(--good)">✅ AI 能做的</h4>
+            <ul>${(g.ai_can_do||[]).map(x => `<li>${x}</li>`).join('') || '<li>—</li>'}</ul>
+          </div>
+          <div>
+            <h4 style="color:#b85c00">👤 用户必须做的</h4>
+            <ul>${(g.user_must_do||[]).map(x => `<li>${x}</li>`).join('') || '<li>—</li>'}</ul>
+          </div>
+        </div>
+        ${g.notes ? `<details class="notes" style="margin-top:10px"><summary>📝 备注</summary><div style="font-size:12px;margin-top:6px">${g.notes}</div></details>` : ''}
+      </td>
+    </tr>`;
+  });
+  html += '</table>';
+  document.getElementById('rows').innerHTML = html;
+}
+
+function toggleDetail(id) {
+  const row = document.getElementById(id);
+  if (!row) return;
+  row.classList.toggle('hidden');
+}
+</script>
+</body>
+</html>

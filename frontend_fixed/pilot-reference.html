@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SwarmLabs Pilot Reference · 真实数据 Pilot 参考实现</title>
+<meta name="description" content="SwarmLabs Phase 1 §11 硬门槛：没有真实数据 pilot，只能称'格式兼容'，不能称'真实实验验证'。参考实现把'接入真实数据'拆成纯配置工作：CSV→BatchRecord→batch_id 隔离划分→holdout 评估→RO-Crate 1.1 导出→PilotReport。默认跑合成数据，换成 --input 即可跑真实数据。">
+<meta property="og:title" content="SwarmLabs Pilot Reference">
+<meta property="og:description" content="Phase 1 §11 硬门槛：真实数据 pilot 参考实现。CLI 端到端，纯配置换真实数据。">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://swarmlabs.tools/pilot-reference">
+<link rel="stylesheet" href="/assets/shared.css">
+<style>
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 32px 24px 80px; }
+  .page-head h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .page-head p { color: var(--muted); margin-top: 10px; max-width: 900px; line-height: 1.7; }
+  .page-head code { background: var(--bg2); padding: 1px 6px; border-radius: 4px; font-size: 12.5px; }
+
+  .callout { background: var(--card); border: 1px solid var(--border);
+    border-left: 4px solid var(--accent3); padding: 14px 18px;
+    border-radius: var(--radius); margin: 22px 0; }
+  .callout.red { border-left-color: var(--red); }
+  .callout.orange { border-left-color: var(--orange); }
+  .callout.green { border-left-color: var(--green); }
+  .callout h3 { font-size: 14px; margin: 0 0 6px; }
+  .callout p { margin: 0 0 4px; font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .callout b { color: var(--text); }
+  .callout code { background: var(--bg2); padding: 1px 6px; border-radius: 4px; font-size: 12px; }
+
+  /* Steps */
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px; margin: 26px 0; }
+  .step { background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 16px 18px; position: relative; }
+  .step::before { content: attr(data-n); position: absolute; top: -12px; left: 14px;
+    background: var(--accent); color: #04141a; font-size: 11px; font-weight: 800;
+    padding: 3px 10px; border-radius: 999px; }
+  .step h3 { margin: 0 0 6px; font-size: 15px; }
+  .step p { margin: 0 0 8px; font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+  .step code { background: var(--bg2); padding: 1px 6px; border-radius: 4px; font-size: 11.5px; display: inline-block; }
+  .step .path { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px;
+    color: var(--accent); margin-top: 6px; word-break: break-all; }
+
+  /* Code block */
+  pre.code { background: var(--bg2); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 16px 18px; font-size: 13px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace; overflow-x: auto;
+    color: var(--text); line-height: 1.6; margin: 12px 0; }
+  pre.code .c { color: var(--muted); }
+  pre.code .k { color: var(--accent); }
+  pre.code .s { color: var(--green); }
+
+  /* Result table */
+  .result-table { width: 100%; border-collapse: collapse; margin-top: 12px;
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .result-table th, .result-table td { padding: 10px 14px; text-align: left; font-size: 13px;
+    border-bottom: 1px solid var(--border); }
+  .result-table th { background: var(--bg2); color: var(--muted); font-weight: 700; font-size: 12px; }
+  .result-table tr:last-child td { border-bottom: none; }
+  .result-table .k { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px;
+    color: var(--accent); }
+  .result-table .v { font-family: 'JetBrains Mono', ui-monospace, monospace; color: var(--text); }
+  .status-badge { display: inline-block; padding: 2px 10px; border-radius: 999px;
+    font-size: 11.5px; font-weight: 700; }
+  .status-badge.needs_data { background: rgba(245,158,11,0.15); color: var(--orange); }
+  .status-badge.advisable { background: rgba(34,197,94,0.15); color: var(--green); }
+  .status-badge.unmeasurable { background: rgba(107,114,128,0.15); color: var(--muted); }
+
+  /* Config table */
+  .config-table { width: 100%; border-collapse: collapse; margin-top: 12px;
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .config-table th, .config-table td { padding: 10px 14px; text-align: left; font-size: 13px;
+    border-bottom: 1px solid var(--border); }
+  .config-table th { background: var(--bg2); color: var(--muted); font-weight: 700; font-size: 12px; }
+  .config-table tr:last-child td { border-bottom: none; }
+  .config-table td:first-child { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px;
+    color: var(--accent); }
+
+  h2 { font-size: 22px; margin-top: 40px; margin-bottom: 12px; }
+  h3 { font-size: 17px; margin-top: 24px; margin-bottom: 8px; }
+
+  footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border);
+    color: var(--muted); font-size: 12px; }
+</style>
+</head>
+<body>
+<nav class="nav-bar">
+  <a href="/" class="nav-logo">🐝 <span>SwarmLabs</span> <span class="beta-badge">Beta</span></a>
+  <ul class="nav-links">
+    <li><a href="/kpi-dashboard">KPI</a></li>
+    <li><a href="/pilot-reference">Pilot Reference</a></li>
+    <li><a href="/vocabulary">Vocabulary</a></li>
+    <li><a href="/trust-dashboard">Trust</a></li>
+    <li><a href="/pricing">Pricing</a></li>
+    <li><a href="/login" class="btn btn-primary" style="color:#fff">Sign in</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+  <div class="page-head">
+    <h1>Pilot Reference · 真实数据 Pilot 参考实现</h1>
+    <p>Phase 1 报告 §11 硬门槛：<b>「没有真实数据 pilot，只能称'格式兼容'，不能称'真实实验验证'」</b>。本页把"接入真实数据"这个门槛拆成<b>纯配置工作</b>——CLI 已跑通 CSV→BatchRecord→batch_id 隔离→holdout 评估→RO-Crate 1.1 导出→PilotReport 全流程。<b>要跑真实数据，只需把 <code>--input</code> 换成真实 CSV</b>。</p>
+  </div>
+
+  <div class="callout red">
+    <h3>🔴 当前状态 · verdict = needs_data</h3>
+    <p>合成数据（8 批次 / 56 观测点）跑通全流程，但 <b>RMSE_rel = 0.44 / Coverage = 1.00</b>。原因：poly3 拟合不了 sigmoidal 生物量生长曲线。这<b>不是缺陷</b>——正说明这是"参考骨架"而非"生产级模型"。换成真实数据 + 换代理模型（engine/surrogate.py GP）即可。诚实标注边界，比虚假达标重要。</p>
+  </div>
+
+  <h2>📋 五步端到端流水线</h2>
+  <div class="steps">
+    <div class="step" data-n="1">
+      <h3>CSV → BatchRecord</h3>
+      <p>纯 stdlib，复用 PR-08 脚本。必需列 <code>batch_id</code>，其他列按 BatchRecord 语义自动映射。</p>
+      <div class="path">scripts/import_batch_csv.py</div>
+    </div>
+    <div class="step" data-n="2">
+      <h3>batch_id 隔离划分</h3>
+      <p>按 batch_id 隔离划分训练/校准/测试，防信息泄漏。默认 4/2/2，可配置。</p>
+      <div class="path">scripts/split_by_batch_id.py</div>
+    </div>
+    <div class="step" data-n="3">
+      <h3>Holdout 评估</h3>
+      <p>训练代理 → 校准 conformal 区间 → 在测试批次算 RMSE_rel + coverage。诚实报告两个指标。</p>
+      <div class="path">pilot_reference.py::evaluate_holdout</div>
+    </div>
+    <div class="step" data-n="4">
+      <h3>RO-Crate 1.1 导出</h3>
+      <p>12 PROV-O 实体：CreativeWork + DataSet + SoftwareSourceCode + Association + Plan + Generation。</p>
+      <div class="path">scripts/pilot_reference.py::_emit_minimal_rocrate</div>
+    </div>
+    <div class="step" data-n="5">
+      <h3>PilotReport</h3>
+      <p>诚实 verdict（advisable / needs_data / unmeasurable）+ 数据 sha + 证据等级 + KPI 达标判定。</p>
+      <div class="path">outputs/pilot_reference/pilot_report.json</div>
+    </div>
+  </div>
+
+  <h2>🚀 跑合成数据（默认）</h2>
+  <pre class="code"><span class="c"># 默认跑 data/pilot_reference/synthetic_batch.csv</span>
+<span class="c"># 8 批次 / 56 观测点 / evidence_grade=development_demo</span>
+python scripts/pilot_reference.py</pre>
+
+  <h2>🧪 换真实数据</h2>
+  <pre class="code"><span class="c"># 把 --input 换成真实 CSV 即可</span>
+python scripts/pilot_reference.py \
+  <span class="k">--input</span> /path/to/real/batch_biomass.csv \
+  <span class="k">--evidence-grade</span> retrospective \
+  <span class="k">--output-dir</span> outputs/pilot_real_001 \
+  <span class="k">--pilot-id</span> REAL-001</pre>
+
+  <h3>CSV 必需列</h3>
+  <table class="config-table">
+    <thead><tr><th style="width: 240px">列名</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>batch_id</td><td>批次标识（必需）。建议含日期前缀以便按时间序划分，如 <code>2026-10-01-B01</code>。</td></tr>
+      <tr><td>t_h</td><td>时间点（小时）。同一 batch_id 下可有多个 t_h 观测点。</td></tr>
+      <tr><td>biomass_od600</td><td>主指标（生物量 OD600）。当前参考实现用作 y。</td></tr>
+      <tr><td>reactor_id</td><td>设备 ID（可选，映射到 BatchRecord.process_context）</td></tr>
+      <tr><td>organism / strain</td><td>生物体标识（可选）</td></tr>
+      <tr><td>media_lot</td><td>培养基批次（可选，映射到 materials）</td></tr>
+      <tr><td>ph / do_pct / temperature_c / glucose_g_l / iptg_mm</td><td>过程变量（可选，自动收进 variables）</td></tr>
+    </tbody>
+  </table>
+
+  <h2>📊 当前合成数据结果</h2>
+  <table class="result-table">
+    <thead><tr><th>指标</th><th>值</th><th>目标</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="k">n_batches</td>
+        <td class="v">8（train=4 / calib=2 / test=2）</td>
+        <td class="v">≥ 5（batch_id 隔离最低要求）</td>
+        <td><span class="status-badge advisable">meeting</span></td>
+      </tr>
+      <tr>
+        <td class="k">RMSE_rel mean</td>
+        <td class="v">0.44</td>
+        <td class="v">≤ 0.05</td>
+        <td><span class="status-badge needs_data">未达标</span></td>
+      </tr>
+      <tr>
+        <td class="k">Coverage mean</td>
+        <td class="v">1.00</td>
+        <td class="v">≥ 0.95</td>
+        <td><span class="status-badge advisable">meeting</span></td>
+      </tr>
+      <tr>
+        <td class="k">evidence_grade</td>
+        <td class="v">development_demo</td>
+        <td class="v">—</td>
+        <td><span class="status-badge unmeasurable">合成</span></td>
+      </tr>
+      <tr>
+        <td class="k">verdict</td>
+        <td class="v"><b>needs_data</b></td>
+        <td class="v">—</td>
+        <td><span class="status-badge needs_data">needs_data</span></td>
+      </tr>
+      <tr>
+        <td class="k">原因</td>
+        <td class="v" colspan="2">poly3 拟合不了 sigmoidal 生物量生长曲线。这不是缺陷——正说明这是"参考骨架"而非"生产级模型"。换成 <code>engine/surrogate.py</code> 的 GP 或换真实数据 + 换模型即可。</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>🎯 verdict 判据</h2>
+  <table class="config-table">
+    <thead><tr><th style="width: 200px">verdict</th><th>触发条件</th></tr></thead>
+    <tbody>
+      <tr><td><b>advisable</b></td><td><code>RMSE_rel ≤ 0.05</code> 且 <code>coverage ≥ 0.95</code>（同时达标 Phase 1 KPI）</td></tr>
+      <tr><td><b>needs_data</b></td><td>两者未同时达标（可能需补数据，可能模型不合适）</td></tr>
+      <tr><td><b>unmeasurable</b></td><td>holdout 评估未能执行（如 numpy/scipy 缺失、无测试批次）</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout orange">
+    <h3>⚠️ 诚实边界</h3>
+    <p><b>这不是"生产级" pilot</b>。它证明的是<b>骨架</b>：CSV→BatchRecord→batch_id 隔离→评估→RO-Crate 全流程能跑通，且<b>每一步都有可审计的产物</b>。要升级为生产级 pilot 需要：</p>
+    <p>1️⃣ <b>真实数据</b>（evidence_grade=retrospective 或 prospective）<br>
+    2️⃣ <b>更合适的代理</b>（engine/surrogate.py GP / FNO，不是 poly3）<br>
+    3️⃣ <b>足够批次</b>（≥ 10 训练 + ≥ 3 校准 + ≥ 2 测试）<br>
+    4️⃣ <b>预登记</b> batch_id split（在见到测试数据前锁定划分）</p>
+  </div>
+
+  <h2>📁 产物清单</h2>
+  <table class="config-table">
+    <thead><tr><th>路径</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td><code>data/pilot_reference/synthetic_batch.csv</code></td><td>合成参考数据（8 批次 / 56 观测点）</td></tr>
+      <tr><td><code>scripts/pilot_reference.py</code></td><td>CLI 主脚本（250 行，纯 stdlib + numpy/scipy）</td></tr>
+      <tr><td><code>outputs/pilot_reference/pilot_report.json</code></td><td>当前合成数据 pilot 报告</td></tr>
+      <tr><td><code>outputs/pilot_reference/holdout_metrics.json</code></td><td>holdout 评估细节（逐批次 RMSE_rel / coverage）</td></tr>
+      <tr><td><code>outputs/pilot_reference/rocrate/ro-crate-metadata.json</code></td><td>RO-Crate 1.1（12 PROV-O 实体）</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout green">
+    <h3>✅ 与 KPI Dashboard 的关系</h3>
+    <p>本页面是 <a href="/kpi-dashboard" style="color: var(--accent)">KPI Dashboard</a> 中 <b>kpi-prod-first-real-data-time</b> 的实现路径。当真实数据 pilot 跑通且 verdict=advisable，KPI 可从 unmeasurable 转为 meeting，Phase 1 才算完成。</p>
+  </div>
+
+  <footer>
+    <p><b>SwarmLabs · Pilot Reference · 2026-10-26</b> · CLI <code>scripts/pilot_reference.py</code> · 报告来源 <code>docs/PROJECT_ELEVATION_REPORT_2026-10-26.md §11</code> · 关联 <a href="/kpi-dashboard" style="color:var(--accent)">KPI Dashboard</a> · <a href="/vocabulary" style="color:var(--accent)">状态词汇表</a></p>
+  </footer>
+</div>
+</body>
+</html>

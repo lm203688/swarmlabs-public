@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SwarmLabs Phase 2 Roadmap · 从基准测试集到 AI4S Trust Layer</title>
+<meta name="description" content="SwarmLabs 第二阶段战略层：2026 AI4S 前沿研判（trust is the bottleneck / agentic science / SDL 2.0 / 开源协议栈收敛 MCP+A2A+SKILL.md），三视角评估，六项可落地提升战略与 Q-by-Q 路线图。与 phase2-scaffolds（基础设施骨架层）互补。">
+<meta property="og:title" content="SwarmLabs Phase 2 Roadmap · 战略层">
+<meta property="og:description" content="从「代理模型基准测试集」升维为「AI4S 可信验证层 / 科研仪器的验证闸门」。">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://swarmlabs.tools/phase2-roadmap">
+<link rel="stylesheet" href="/assets/shared.css">
+<style>
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 32px 24px 80px; }
+  .page-head h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2; }
+  .page-head .sub { color: var(--muted); margin-top: 12px; max-width: 940px; line-height: 1.75; font-size: 15px; }
+  .page-head code { background: var(--bg2); padding: 1px 6px; border-radius: 4px; font-size: 12.5px; }
+
+  .thesis { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 26px 0; }
+  .thesis .box { background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent);
+    border-radius: var(--radius); padding: 18px 20px; }
+  .thesis .box h3 { font-size: 14px; margin: 0 0 8px; color: var(--accent); }
+  .thesis .box p { font-size: 13.5px; color: var(--text); line-height: 1.7; margin: 0; }
+  .thesis .box .src { font-size: 11.5px; color: var(--muted); margin-top: 8px; }
+
+  .callout { background: var(--card); border: 1px solid var(--border);
+    border-left: 4px solid var(--orange); padding: 14px 18px; border-radius: var(--radius); margin: 22px 0; }
+  .callout.red { border-left-color: var(--red); }
+  .callout.green { border-left-color: var(--green); }
+  .callout.blue { border-left-color: var(--accent); }
+  .callout h3 { font-size: 14px; margin: 0 0 6px; }
+  .callout p { margin: 0 0 4px; font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .callout b { color: var(--text); }
+  .callout code { background: var(--bg2); padding: 1px 6px; border-radius: 4px; font-size: 12px; }
+
+  h2.section { font-size: 22px; font-weight: 800; margin: 40px 0 6px; letter-spacing: -0.01em; }
+  .section-sub { color: var(--muted); font-size: 13.5px; margin: 0 0 18px; }
+
+  table.tbl { width: 100%; border-collapse: collapse; margin: 14px 0;
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  table.tbl th, table.tbl td { padding: 11px 14px; text-align: left; font-size: 13px;
+    border-bottom: 1px solid var(--border); vertical-align: top; }
+  table.tbl th { background: var(--bg2); color: var(--muted); font-weight: 700; font-size: 12px; }
+  table.tbl tr:last-child td { border-bottom: none; }
+  table.tbl td.k { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: var(--accent); white-space: nowrap; }
+  table.tbl .good { color: var(--green); font-weight: 700; }
+  table.tbl .warn { color: var(--orange); font-weight: 700; }
+  table.tbl .bad { color: var(--red); font-weight: 700; }
+
+  .strat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px; margin: 22px 0; }
+  .strat-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 20px; position: relative; overflow: hidden; }
+  .strat-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--accent); }
+  .strat-card h3 { font-size: 16px; margin: 0 0 4px; }
+  .strat-card .en { color: var(--muted); font-size: 12px; margin-bottom: 10px; }
+  .strat-card .desc { font-size: 13px; color: var(--text); line-height: 1.65; margin-bottom: 10px; }
+  .strat-card .act { font-size: 12.5px; color: var(--muted); line-height: 1.6;
+    padding: 10px 12px; background: var(--bg2); border-radius: 6px; }
+  .strat-card .act b { color: var(--text); }
+
+  .roadmap { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 20px 0; }
+  .phase { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; }
+  .phase .q { font-size: 12px; font-weight: 800; color: var(--accent); letter-spacing: 0.04em; }
+  .phase h4 { font-size: 14px; margin: 6px 0 8px; }
+  .phase ul { margin: 0; padding-left: 18px; font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+  .phase ul li { margin-bottom: 4px; }
+
+  .trend-row { display: grid; grid-template-columns: 160px 1fr 1fr; gap: 10px; align-items: start;
+    padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .trend-row:last-child { border-bottom: none; }
+  .trend-row .t { font-weight: 700; color: var(--text); }
+  .trend-row .e { color: var(--muted); font-size: 12px; }
+  .trend-row .m { color: var(--accent); font-size: 12.5px; }
+
+  .nav-links-inline { margin: 18px 0; font-size: 13px; color: var(--muted); }
+  .nav-links-inline a { color: var(--accent); text-decoration: none; }
+  .nav-links-inline a:hover { text-decoration: underline; }
+  .footer-note { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted); line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="page-head">
+    <h1>Phase 2 Roadmap · 战略层</h1>
+    <p class="sub">SwarmLabs 第二阶段不是"堆更多场景"，而是<b>定位升维</b>：从「代理模型基准测试集」升级为 <b>AI4S 可信验证层 / 科研仪器的验证闸门（fail-closed）</b>。本页是<b>战略层</b>，与 <a href="/phase2-scaffolds" style="color:var(--accent)">Phase 2 Scaffolds（基础设施骨架层）</a> 互补——后者解决"内核怎么长"，本页解决"项目往哪走、怎么卡位 2026 价值高地"。</p>
+  </div>
+
+  <div class="callout blue">
+    <h3>诚实起点（来自 data/public_facts.json，2026-10-29）</h3>
+    <p>95 已验证场景 · 91 PASS / 3 MARGINAL / 1 REFUTED · 0/95 真实实验真值 · 138 引擎 pending · G1/G2/G3 通过率全 0.0 · 外推压力测试 <b>73/95 REFUTED</b>。这些不是缺陷清单，而是本战略的<b>起点资产</b>——诚实是唯一不可被竞品复制的护城河。</p>
+  </div>
+
+  <h2 class="section">0. 执行摘要：两个 2026 结构性拐点</h2>
+  <p class="section-sub">SwarmLabs 的诚实 V&V 定位恰好踩中 AI4S 从 demo 跨越到 instrument 的临界点。</p>
+  <div class="thesis">
+    <div class="box">
+      <h3>Trust is the bottleneck（Heimdall 2026）</h3>
+      <p>模型已能 propose mechanisms，瓶颈从"模型够不够聪明"变成"实验室敢不敢相信推理去<b>真跑</b>实验"。这是<b>产品问题</b>，不是研究问题——而 SwarmLabs 的 V&V 正是信任中间件。</p>
+      <div class="src">含义：SwarmLabs 在正确赛道，且卡位正当时。</div>
+    </div>
+    <div class="box">
+      <h3>Evaluations caught up</h3>
+      <p>能力从 demo 跨越到 instrument（科研仪器）的临界点，正是"可信验证 / 评估"成为独立品类的时刻。V&V 赛道就此打开。</p>
+      <div class="src">含义：SwarmLabs 的品类从"被时代甩在身后"变为"时代刚需"。</div>
+    </div>
+  </div>
+
+  <h2 class="section">1. 三视角评估（节选）</h2>
+  <p class="section-sub">完整版见 outputs/PROJECT_PHASE2_ELEVATION_STRATEGY_2026-10-29.md</p>
+  <table class="tbl">
+    <thead><tr><th>视角</th><th>核心判断</th><th>关键证据</th></tr></thead>
+    <tbody>
+      <tr><td class="k">领域专家</td><td>科技价值高且稀缺（量化"代理模型何时不可信"是真实贡献）；但可用性停留在自检层，缺真实 wet-lab 闭环。</td><td class="warn">0/95 真值 · 138 pending</td></tr>
+      <tr><td class="k">AI 项目专家</td><td>架构干净可复算（纯 numpy+CPU、内容决定论）；护城河=诚实+可复算，但未产品化；唯一硬阻塞是 CI 账户级红。</td><td class="good">115 模块 · A2A 已就位</td></tr>
+      <tr><td class="k">用户</td><td>体验链路已通（70/100 互动性），但"诚实叙事"与"可用性缺口"存在张力，须用产品边界让用户自见"哪里能用、哪里不能"。</td><td class="warn">pre-revenue</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="section">2. 2026 AI4S 前沿趋势研判</h2>
+  <p class="section-sub">4 轮 WebSearch 实证；结论：SwarmLabs 应卡位"agentic science + SDL 2.0 闭环里的 trust layer"。</p>
+  <div class="trend-row"><div class="t">Agentic Science 爆发</div><div class="e">Stanford Virtual Lab（Nature 2025，1% 人类干预）；Virtual Biotech（2026-02，11 agent，184× 加速）；VB Transform 2026（37,000 agent，CD276 ADC，Merck 独立验证）</div><div class="m">这些 agent 需要"验证闸门"——SwarmLabs 应做它们的 trust layer，而非抢"提假设"</div></div>
+  <div class="trend-row"><div class="t">科学基础模型</div><div class="e">MACE-MP-0（材料）、BioNeMo（生物）</div><div class="m">SwarmLabs 做模态无关的验证层，兼容这些 foundation model 输出</div></div>
+  <div class="trend-row"><div class="t">SDL 2.0 基础设施</div><div class="e">Lilly–NVIDIA $1B、Ginkgo Cloud Lab、Automata LINQ；自治 Level 2-3；2026 市场 $8–9B → 中期 $20–24B</div><div class="m">SwarmLabs 是 SDL 闭环里的"验证 gate"，位置卡在价值最高点</div></div>
+  <div class="trend-row"><div class="t">开源协议栈收敛</div><div class="e">MCP（工具层，Harvard ToolUniverse 1000+，SEP-2243 HTTP）+ A2A（agent 间，Linux Foundation AAIF v1.0 签名 Agent Card）+ SKILL.md（K-Dense 27.2k★/141 skills）+ File-as-Bus</div><div class="m">SwarmLabs 已有 agent-card，下一步把验证引擎做成 MCP server + A2A agent</div></div>
+
+  <h2 class="section">3. 六项可落地提升战略</h2>
+  <p class="section-sub">S1 定位 · S2 诚实护城河 · S3 验证即服务 · S4 生态嵌入 · S5 补齐硬阻塞 · S6 竞赛/资助</p>
+  <div class="strat-grid">
+    <div class="strat-card">
+      <h3>S1 · 定位升维</h3>
+      <div class="en">Benchmark → Trust Layer / Evaluation Instrument</div>
+      <div class="desc">全站叙事从"基准测试集"改为"AI4S 可信验证层 / 科研仪器的验证闸门"。保留"不做跨学科通用验证"红线——把 G3=0、73/95 REFUTED 当荣誉徽章。</div>
+      <div class="act"><b>落地：</b>重写 index hero / llms.txt 首段 / mission；本页作定位层入口。</div>
+    </div>
+    <div class="strat-card">
+      <h3>S2 · 诚实即护城河</h3>
+      <div class="en">Honesty as Moat</div>
+      <div class="desc">将"诚实失败"从被动披露升级为主动产品——"Trust Surface"成为可售卖的核心差异化能力。在竞品普遍报喜不报忧时，诚实不可复制。</div>
+      <div class="act"><b>落地：</b>trust-dashboard.html 升级为 Trust Surface Product，演示 calibrated coverage + 适用域边界 + OOD 自动阻断。</div>
+    </div>
+    <div class="strat-card">
+      <h3>S3 · 验证即服务</h3>
+      <div class="en">Verification-as-a-Service</div>
+      <div class="desc">把 engine/ 验证内核包装为 MCP server + A2A agent（agent-card 已就位，需生产化：JWS 签名、capabilities、健康检查），暴露 verify_claim / rank_next_experiments / proximity_check。</div>
+      <div class="act"><b>落地：</b>engine/mcp_server.py + SKILL.md，让 K-Dense 科学 agent 一键调用。</div>
+    </div>
+    <div class="strat-card">
+      <h3>S4 · 嵌入生态</h3>
+      <div class="en">Plug into the Agentic Stack</div>
+      <div class="desc">发布"SwarmLabs as the trust gate for agentic science"定位与 File-as-Bus 对接 demo。从"自建闭环"转为"成为别人闭环的必要一环"——零获客成本卡位生态。</div>
+      <div class="act"><b>落地：</b>最小可运行 demo（agent → SwarmLabs verify → fail-closed 阻断）。</div>
+    </div>
+    <div class="strat-card">
+      <h3>S5 · 补齐硬阻塞</h3>
+      <div class="en">De-risk</div>
+      <div class="desc">CI 账户级红（需用户侧 billing 或转公开仓）；清退五处 UNSOURCED 声称（143/900k+）；138 pending 改为"诚实待实现"标识而非硬补数量。</div>
+      <div class="act"><b>落地：</b>本地门禁全绿 + 手动部署；index/lab/login/pricing/terms 改用 engine_modules / store_points_total。</div>
+    </div>
+    <div class="strat-card">
+      <h3>S6 · 竞赛 / 资助</h3>
+      <div class="en">Pipeline</div>
+      <div class="desc">维护 grants-radar（已 12 项）+ 竞赛追踪；纳入 Chen Prize / EOSA / ICLR Workshop 状态。投稿 / 申报 / 签名 / 出席须用户本人。</div>
+      <div class="act"><b>落地：</b>grants-radar 新增 3–5 个 2026-2027 可投竞赛条目。</div>
+    </div>
+  </div>
+
+  <h2 class="section">4. Q-by-Q 路线图</h2>
+  <div class="roadmap">
+    <div class="phase"><div class="q">P2-Q1 · 即刻</div><h4>定位</h4><ul><li>phase2-roadmap.html 上线</li><li>全站叙事重写</li><li>llms.txt / sitemap 更新 + 推送部署</li></ul></div>
+    <div class="phase"><div class="q">P2-Q2 · 1–2 月</div><h4>服务化</h4><ul><li>engine/mcp_server.py</li><li>agent-card 生产化（JWS）</li><li>SKILL.md 发布</li></ul></div>
+    <div class="phase"><div class="q">P2-Q3 · 2–3 月</div><h4>生态 demo</h4><ul><li>File-as-Bus 对接 demo</li><li>"trust gate for agentic science" 页</li></ul></div>
+    <div class="phase"><div class="q">P2-Q4 · 3–6 月</div><h4>真实闭环</h4><ul><li>1 个 wet-lab 合作场景真值闭环（破 0/95）</li><li>依赖用户侧 PI 合作</li></ul></div>
+  </div>
+
+  <div class="callout red">
+    <h3>风险与诚实边界</h3>
+    <p><b>最大风险：</b>把"诚实"当营销话术却隐瞒 0/95 真值 / 73/95 REFUTED——一旦被领域专家识破，信任资产归零。永远把失败当徽章。</p>
+    <p><b>CI 红：</b>本交付通过本地门禁 + 手动部署保证可达；CI 绿需用户侧 billing 动作，非 AI 可解。</p>
+    <p><b>AI 边界：</b>本报告与页面由 AI 起草与执行；投稿 / 申报 / 签名 / 出席 / 账号充值 / wet-lab 合作须用户本人。</p>
+  </div>
+
+  <div class="nav-links-inline">
+    关联页：
+    <a href="/phase2-scaffolds">Phase 2 Scaffolds（基础设施骨架层）</a> ·
+    <a href="/grants-radar">Grants Radar</a> ·
+    <a href="/trust-dashboard">Trust Surface</a> ·
+    <a href="/failure-cases">Failure Cases（73/95 REFUTED）</a> ·
+    <a href="/why-swarmlabs">Why us</a>
+  </div>
+
+  <div class="footer-note">
+    本报告与页面基于一手数据 data/public_facts.json（2026-10-29）与 outputs/PROJECT_PHASE2_ELEVATION_STRATEGY_2026-10-29.md。与 phase2-scaffolds.html（基础设施骨架层）互补，不重复其范畴。SwarmLabs 定位：AI4S 可信验证层，fail-closed 适用域边界，纯 numpy+CPU、零付费 API、内容决定论、可独立复算。
+  </div>
+
+</div>
+</body>
+</html>
