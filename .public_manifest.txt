@@ -950,6 +950,7 @@ schemas/gate_ledger.schema.json
 schemas/heldout_index.schema.json
 schemas/public_facts.schema.json
 schemas/real_anchors.schema.json
+reports/README.md
 schemas/trust_surface.schema.json
 schemas/wet_lab_anchors.schema.json
 scripts/api_push_tree.py
