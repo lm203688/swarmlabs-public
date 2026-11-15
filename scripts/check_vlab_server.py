@@ -30,6 +30,13 @@ _HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(_HERE)
 ENGINE = os.path.join(ROOT, "engine")
 
+# 以文件路径加载 engine/vlab_* 时，verification_gate.py:49 顶层绝对导入
+# `from engine.ablation_verdict` 要求仓库根在 sys.path（与 scripts/vlab.py、
+# scripts/fault_injection_check.py、scripts/check_vlab_gates.py 同一先例）。
+# 缺了会 ModuleNotFoundError: No module named 'engine'（ci-cd vlab-gate
+# 「服务层」步骤实测红）。python -S 下 sys.path.insert 仍有效。
+sys.path.insert(0, ROOT)
+
 
 def _load(alias: str, path: str):
     spec = importlib.util.spec_from_file_location(alias, path)

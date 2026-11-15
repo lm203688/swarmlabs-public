@@ -955,6 +955,7 @@ schemas/trust_surface.schema.json
 schemas/wet_lab_anchors.schema.json
 scripts/api_push_tree.py
 scripts/check_anchor_quality.py
+scripts/build_second_backend_replication.py
 scripts/check_data_contracts.py
 scripts/check_engine_contract.py
 scripts/check_engine_gate.py
