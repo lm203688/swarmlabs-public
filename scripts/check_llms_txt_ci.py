@@ -140,15 +140,34 @@ def check_consistency_with_builder() -> tuple[bool, str]:
     except Exception as e:
         return False, f"调用 build_llms_txt 失败: {e}"
     finally:
-        # 回滚到磁盘原状（避免 CI 检查本身改变产物）
-        with open(path, "w", encoding="utf-8") as f:
-            f.write(disk_before)
+        # 回滚到磁盘原状（避免 CI 检查本身改变产物）。
+        # 仅在 build_llms_txt() 成功（path 已绑定）时回滚；build 抛异常时
+        # path 未绑定，走 except 分支返回，不能再引用 path（否则
+        # UnboundLocalError 掩盖真实失败原因）。
+        if "path" in locals():
+            with open(path, "w", encoding="utf-8") as f:
+                f.write(disk_before)
 
-    if disk_before == fresh:
-        return True, "与 build_llms_txt() 一致"
+    # 2026-11-16：`Last updated` 是**元数据日期**，`build_llms_txt()` 用
+    # `datetime.date.today()` 生成（跨天必然更新），但磁盘版本是上次提交时的
+    # 日期——严格逐字节比较会在跨天后**必然**红，把「日期元数据更新」误判成
+    # 「静默漂移」。真正的防漂移目标是**内容与结构**（分组/链接/主张），日期
+    # 是已知必然的元数据，不是漂移信号。
+    # 因此：比较前归一化 `Last updated: <date>` 的日期部分，只比非日期内容。
+    # 结构/内容任何真实漂移（回退 v1、删分组、改主张）仍会被逐行严格捕获。
+    _DATE_LINE_RE = re.compile(r"^Last updated:\s*\d{4}-\d{2}-\d{2}\s*$")
+
+    def _norm(text: str) -> list[str]:
+        return [
+            "Last updated: <DATE>" if _DATE_LINE_RE.match(line) else line
+            for line in text.splitlines()
+        ]
+
+    a = _norm(disk_before)
+    b = _norm(fresh)
+    if a == b:
+        return True, "与 build_llms_txt() 一致（日期元数据已归一化）"
     # 报 diff 摘要（前 3 行不同）
-    a = disk_before.splitlines()
-    b = fresh.splitlines()
     diffs = [
         (i + 1, a[i] if i < len(a) else "", b[i] if i < len(b) else "")
         for i in range(max(len(a), len(b)))

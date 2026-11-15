@@ -35,6 +35,14 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ENGINE = os.path.join(ROOT, "engine")
 
+# 本 CLI 以「文件路径」加载 engine/vlab_* 模块（绕开 engine/__init__.py 的
+# numpy 依赖链），但 verification_gate.py 顶层用绝对导入
+# `from engine.ablation_verdict import ...`——该导入要求 `engine` 包可解析，
+# 而包名解析依赖仓库根在 sys.path 上。与 scripts/check_vlab_gates.py 同一
+# 先例（它也 insert ROOT），这里补齐，否则 vlab.py run 在干净解释器里会
+# ModuleNotFoundError: No module named 'engine'（ci-cd vlab-gate 实测红）。
+sys.path.insert(0, ROOT)
+
 
 def _load(name: str):
     path = os.path.join(ENGINE, f"{name}.py")

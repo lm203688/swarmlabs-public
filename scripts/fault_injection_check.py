@@ -55,6 +55,13 @@ ROOT = Path(__file__).resolve().parent.parent
 TESTS_DIR = ROOT / "tests"
 INVAR_TEST_FILE = TESTS_DIR / "test_verification_gate_invariants.py"
 
+# verify_baseline()/verify_felt_by_tests() 用 `import engine.verification_gate`
+# （绝对导入），要求仓库根在 sys.path 上。与 scripts/check_vlab_gates.py、
+# scripts/vlab.py 同一先例；缺了会 ModuleNotFoundError: No module named 'engine'
+# （ci-cd fault-injection-gate 实测红）。子进程 wrapper 已自行 insert，
+# 但主进程没有——这里补齐。
+sys.path.insert(0, str(ROOT))
+
 ENGINE_GATE_MODULE = "engine.verification_gate"
 FAULTY_MARKER = "_FAULT_INJECTED_ASSERT_PASS_HAS_ANCHOR"  # attribute name tag
 
