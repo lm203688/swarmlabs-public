@@ -1,0 +1,96 @@
+# 开源参考改造 · 四大板块落地与部署验证（2026-08-05）
+
+> 用户指令：PINN 第一性原理代理、主动学习闭环训练、多保真度（DFT/MD）、知识图谱——能否通过开源平台参考直接改造、直接提升核心价值？
+> 结论：**四项全部借开源参考改造并部署到生产 `swarmlabs.tools`，逐项 curl/SDK 验证通过。** 诚实边界内的"直接抬核心价值"已兑现；真正需要战投 GPU 的部分（NN-PINN 训练、真 DFT、实验室合作）保留为架构扩展点，不伪造。
+
+---
+
+## 一、可行性判定（核完开源现状后）
+
+| 板块 | 借的开源真东西 | 落地方式 | 是否零成本 | 价值提升 |
+|---|---|---|---|---|
+| 知识图谱 | 自有 1236 文献 + 144 负样本；ORD（Open Reaction Database，230 万反应、Apache-2.0，活跃）作可选摄入 | 纯 JS 查询端点 + NetworkX 风格离线图 | ✅ | 形成独特结构化资产 |
+| 主动学习 / 贝叶斯优化 | BoTorch / Ax / modAL / BoTier 思路 | 纯 JS 实现 GP（SE 核 + Cholesky 解析后验）+ EI 采集函数 | ✅ 零 GPU | 静态经验模型 → 自适应 |
+| 物理信息参数化代理（诚实版 PINN） | PINA / torchdiffeq / DeepXDE 思路 | 纯 JS 可微分参数化代理（已知动力学形式） | ✅ | 掺第一性原理，可解释 |
+| 多保真度（xtb） | xtb（Grimme 组，LGPL v3 开源，CPU 秒级）、Psi4/Quantum ESPRESSO | 本地桥接 + 平台消费端点 | ⚠️ 需装 xtb 的机（CPU 即可） | 给代理喂热力学先验 |
+
+---
+
+## 二、各板块落地内容与端点
+
+### A. 知识图谱
+- **构建**：`scripts/build_knowledge_graph.py`（零依赖），从 `data/doi-reference-library-mass.json`（1236 文献）+ `data/negative-samples.json`（144 负样本）抽取节点（引擎/期刊/作者/主题/负样本）与边（cites/published_in/authored_by/negated_in/related）。
+  - 产物：`data/knowledge-graph.json`（完整图，2101 节点 / 2681 边，用于离线可视化）+ `data/kg_compact.json`（紧凑聚合，存入 KV `kg:v1`）。
+- **端点**：
+  - `GET /api/v2/graph` → 全局统计（155 引擎 / 1236 文献 / 144 负样本）。
+  - `GET /api/v2/graph/{engine}` → 该引擎邻域（文献、负样本、Top 期刊/作者、相关引擎）。
+- **ORD 适配**：`scripts/ord_ingest.py`（待建，可选）可将 ORD 子集摄入同一图谱，schema 用 `ord-schema`（`pip install ord-schema`）。
+
+### B. 主动学习 / 贝叶斯优化闭环
+- **实现**：纯 JS GP（平方指数核 + Cholesky 解析后验，数学已单测验证）+ Expected Improvement 采集函数。
+- **训练集**：无反馈时由经验代理 `physicsPredict` 在参数空间扫锚点初始化；一旦 `POST /api/v2/feedback` 携带 `params` + `actual`，自动落入 `fbpts:{engine}` 供 GP 使用（闭环数据入口已通）。
+- **端点**：
+  - `GET /api/v2/suggest/{engine}` → 返回 EI 推荐的下一步实验参数（`suggestions[{params, predicted_yield, uncertainty, ei, rationale}]`）。
+  - `GET /api/v2/model/{engine}` → GP 代理状态（参数、边界、训练点数、是否已含反馈）。
+- **验证**：`/suggest/suzuki` 返回 `model:gp_bo, n_training:14, has_feedback:false`，top1 推荐 `predicted_yield:0.639, ei:0.424`（探索优先）。
+
+### C. 物理信息参数化代理（诚实版 PINN）
+- **实现**：`physicsInformedPredict(engine, params)`——可微分参数化形式：温度/催化剂/浓度均用**围绕默认最优的高斯项**（反应有最优温/载量，非单调），Ymax=0.95。常数由文献范围 bootstrapped。**明确标注 `model:'pi'`、非黑箱 NN。**
+- **端点**：
+  - `POST /api/v2/pi/{engine}` → 直接调用。
+  - `POST /api/v2/run/{engine}` 带 `"model":"pi"` → 走参数化代理（已验证分支生效）。
+- **验证**：`/pi/suzuki` 标准条件（80°C, 0.5% cat）→ `value:0.931, grade:A`；默认条件 → `0.95`。
+
+### D. xtb 多保真度桥接
+- **平台侧**：`POST /api/v2/multifidelity`（接收并存储本地算出的先验到 KV `mf:{engine}`）+ `GET /api/v2/multifidelity/{engine}`（查询）。
+- **本地侧**：`scripts/xtb_bridge.py`——在装有 xtb 的机器（RTX 机 CPU 即可）运行，输入 SMILES → 调 `xtb --gfn2 --gbsa h2o` → 输出 ΔG 等 JSON，可 `--post` 直接回传平台。真 DFT 可用 Psi4 替换调用，接口不变。
+- **验证**：`POST` 返回 `accepted:true, count:1`；`GET` 返回已存先验。
+
+---
+
+## 三、端到端验证（生产 `swarmlabs.tools`，2026-08-05）
+
+| 端点 | 关键结果 |
+|---|---|
+| `/v2/graph` | `n_engines:155, n_papers:1236, n_negatives:144` |
+| `/v2/graph/suzuki` | `papers:8, journals:7, authors:4, related:4` |
+| `/v2/pi/suzuki` | `value:0.931, unc%:8, grade:A` |
+| `/v2/suggest/suzuki` | `model:gp_bo, n_training:14, suggestions[0].ei:0.424` |
+| `/v2/model/suzuki` | `params:[temperature_C,catalyst_loading,time_h,solvent_polarity], n_training:14` |
+| `/v2/multifidelity` + `GET` | `accepted:true,count:1` / 返回已存先验 |
+| `/v2/run/suzuki {model:pi}` | `result.model:pi, value:0.95` |
+
+Python SDK（`docs/sdk/swarmlabs.py`）、JS SDK（`docs/sdk/swarmlabs.js`）、OpenAPI 3.0.3（`docs/openapi.yaml`）均已补齐上述端点；SDK 修复了 Cloudflare（Error 1010）拦截的 UA 问题。
+
+---
+
+## 四、诚实边界（仍标注——需战投算力，不伪造）
+
+| 项 | 状态 | 说明 |
+|---|---|---|
+| 真 NN-PINN 训练 | 架构扩展点 | 需要回真实数据 + GPU；当前参数化代理是诚实替代 |
+| 主动学习闭环"训练" | 已留入口 | 依赖反馈积累（`/v2/feedback` 已通，当前 0 条真实反馈） |
+| 真 DFT/MD 多保真度 | 桥接已通 | 需算力机跑 Psi4/Quantum ESPRESSO；xtb 为廉价替代 |
+| 科学知识图谱扩展 | 已建基础 | ORD 全量摄入为可选增强 |
+| 真干湿实验连接 | 占位 | `experiment-plan` 模板已生成，需实验室合作方 |
+
+---
+
+## 五、交付物清单
+
+- `frontend_fixed/functions/api/[[path]].js`（637KB，含全部新模块）
+- `scripts/build_knowledge_graph.py` — 图谱构建
+- `scripts/xtb_bridge.py` — 本地多保真度桥接
+- `scripts/inject_knowledge_graph.js` / `inject_ml_surrogates.js` — 注入脚本（幂等）
+- `data/knowledge-graph.json` / `data/kg_compact.json` — 图谱产物（后者已入 KV `kg:v1`）
+- `docs/sdk/swarmlabs.py` / `.js`、`docs/openapi.yaml` — SDK + 规范
+- `data/validation-database.json` — 总账新增 `open_source_stack` / `honest_boundary_status.open_source_built`
+
+---
+
+## 六、下一步（用户侧 / 待算力）
+
+1. **引导真实反馈**：让实验人员回填 `POST /api/v2/feedback{engine, params, actual}`，GP 闭环与校准才会真正转动（当前生产 0 条）。
+2. **跑本地 xtb**：在 RTX 机上 `python scripts/xtb_bridge.py --engine suzuki --smiles "..." --post`，先验即进平台。
+3. **ORD 摄入**（可选）：建 `scripts/ord_ingest.py` 把 ORD 子集并入图谱。
+4. **拿到战投 GPU 后**：把参数化代理升级为真 PINN、把 xtb 先验升级为真 DFT、训练主动学习闭环。

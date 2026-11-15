@@ -1,6 +1,6 @@
 {
   "name": "SwarmLabs public facts — 公开页数字的单一真源",
-  "generated_at_utc": "2026-11-03T01:45:28Z",
+  "generated_at_utc": "2026-11-15T08:27:50Z",
   "sources": {
     "reports_index": {
       "path": "frontend_fixed/reports/index.json",
@@ -14,8 +14,8 @@
     },
     "trust_surface": {
       "path": "data/trust_surface.json",
-      "sha256_12": "3fd239ba7497",
-      "generated_at": "2026-11-03T03:01:32"
+      "sha256_12": "7ff36efa254a",
+      "generated_at": "2026-11-15T16:27:36"
     },
     "heldout_index": {
       "path": "frontend_fixed/reports/heldout_index.json",
@@ -147,7 +147,7 @@
       "note": "evidence_type 取值集合 = ['simulated']；0 = 尚无湿实验真值，这与门禁中「pre-revenue / bus factor=1」并列，属主动披露项。来源必须指向 honesty 块（脚本写入的真值），不能指向 rows[].evidence_type——补丁缺失时那个投影会 KeyError，值也就永远算不出来"
     },
     "engine_modules": {
-      "value": 115,
+      "value": 103,
       "unit": "modules",
       "source": "count(engine/*.py excluding __init__.py)",
       "note": "engine/ 下的 Python 模块数。若对外要用「引擎」一词，只能写「engine modules」并说明它计数的是模块而非已验证场景。来源写成 count(...) 而非裸 glob：裸 glob 会被口径门禁整条跳过，于是这条事实**永远不参与陈旧性检查**（2026-09-21 实测：引擎 57→64，事实表与前端 5 处仍写 57，门禁却报 0 违规）。**L-01 修复（2026-10-17）**：真源统一到 scripts/engine_module_count.py，排除 __init__.py，与 build_frontend_metrics.ENGINE_MODULES 严格一致。"

@@ -1,0 +1,303 @@
+{
+  "meta": {
+    "generated_at": "2026-10-25T17:30:00+08:00",
+    "catalyst_review_start": "2026-10-12",
+    "today": "2026-10-25",
+    "days_to_catalyst_deadline": 26,
+    "days_to_catalyst_results": 36,
+    "source_notes": "所有 deadline 与状态基于 2026-10-25 公开信息；官方口径优先，媒体口径标注 [media]。用户需自行复核。",
+    "eligibility_note": "SwarmLabs 目前主体是个人/独立开发者，多数 grant 需机构 PI；标注 ai_can_do=false 的项目必须通过高校合作。"
+  },
+  "grants": [
+    {
+      "id": "digital-science-catalyst",
+      "name": "Digital Science Catalyst Grant",
+      "category": "算力券/科研资助",
+      "funder": "Digital Science",
+      "amount": "$5000–$10000 + Google Cloud credits",
+      "deadline": "2026-11-20",
+      "results": "2026-11-30",
+      "url": "https://research.digitalscience.org/grants/",
+      "status": "pending_review",
+      "priority": "critical",
+      "fit_score": 10,
+      "fit_reason": "SwarmLabs 已在评审中；直接契合 AI4S 可信验证层叙事。",
+      "days_to_deadline": 26,
+      "ai_can_do": [
+        "更新 docs 中 Catalyst 相关材料",
+        "准备答辩预演稿（若入选）",
+        "撰写公开进展博文"
+      ],
+      "user_must_do": [
+        "登录 https://github.com/lm203688/swarmlabs 账户确认已提交",
+        "关注 Digital Science 邮箱（评审状态更新）",
+        "如获邀答辩，AI 不代发邮件"
+      ],
+      "notes": "评审开始于 2026-10-12，已推进 13 天；截止 11-20，公布 11-30。"
+    },
+    {
+      "id": "openai-teen-development",
+      "name": "OpenAI Grants: AI & Teen Development Research",
+      "category": "研究资助",
+      "funder": "OpenAI Group PBC",
+      "amount": "单项目最高 $1,000,000（总池 $5,000,000）",
+      "deadline": "2026-10-06",
+      "results": "2026-11-13",
+      "url": "https://openai.com/index/teen-development-research-grants/",
+      "status": "closed",
+      "priority": "none",
+      "fit_score": 0,
+      "fit_reason": "领域错位：主题是青少年发展，与 SwarmLabs 的 AI4S 可信验证无重叠。",
+      "days_to_deadline": -19,
+      "ai_can_do": [],
+      "user_must_do": [],
+      "notes": "已截止，仅作生态背景参考。"
+    },
+    {
+      "id": "nvidia-academic-simulation",
+      "name": "NVIDIA Academic Grant — Simulation & Modeling",
+      "category": "算力券",
+      "funder": "NVIDIA",
+      "amount": "最高 30,000 NVIDIA H100 80GB hours",
+      "deadline": "2026-12-31 [预计 Q4 call]",
+      "results": "2027-02 [预计]",
+      "url": "https://www.nvidia.com/en-us/industries/higher-education-research/academic-grant-program/",
+      "status": "not_started",
+      "priority": "high",
+      "fit_score": 9,
+      "fit_reason": "SwarmLabs 的核心价值是 AI4S 代理建模 + WebGPU 数值计算，与 Simulation & Modeling 完美契合；已有 docs/nvidia_grant_faculty_pitch.md 一页纸。",
+      "days_to_deadline": 67,
+      "ai_can_do": [
+        "更新 docs/nvidia_grant_faculty_pitch.md（当前已存在，可迭代）",
+        "生成 3 个候选合作教授清单模板（用户填）",
+        "准备 1-page technical appendix（GP surrogate + WebGPU architecture）"
+      ],
+      "user_must_do": [
+        "联系高校教授做主 PI（SwarmLabs 个人主体不符合资格）",
+        "申请 NVIDIA Developer Program 会员",
+        "提交申请（AI 不代发邮件/提交）"
+      ],
+      "notes": "Q1 3-31 与 Q2 6-30 截止已过，Q3/Q4 call 预计 9-30/12-31；官方页面每季度更新。"
+    },
+    {
+      "id": "anthropic-rare-disease",
+      "name": "Anthropic AI for Science — Rare Disease Track",
+      "category": "算力券",
+      "funder": "Anthropic",
+      "amount": "最高 $50,000 Claude API credits / 6 个月",
+      "deadline": "2026-08-02",
+      "results": "TBD",
+      "url": "https://www.anthropic.com/news/ai-for-science",
+      "status": "closed",
+      "priority": "none",
+      "fit_score": 3,
+      "fit_reason": "领域错位（罕见病），但生态上预示 Anthropic 后续会开 AI4S 主题 call。",
+      "days_to_deadline": -84,
+      "ai_can_do": [
+        "订阅 Anthropic AI for Science 后续 call 更新"
+      ],
+      "user_must_do": [],
+      "notes": "Anthropic 于 2026-07-20 宣布将陆续开启主题 call，生物学之后可能覆盖材料/化学。"
+    },
+    {
+      "id": "anthropic-claude-scientists",
+      "name": "Anthropic Claude for Scientists — Free Academic Seats",
+      "category": "算力券/座位",
+      "funder": "Anthropic",
+      "amount": "10,000 免费标准座位 + 每项目最高 $50,000 API credits",
+      "deadline": "rolling",
+      "results": "TBD",
+      "url": "https://www.anthropic.com/news/claude-for-scientists",
+      "status": "open",
+      "priority": "medium",
+      "fit_score": 6,
+      "fit_reason": "不针对机构 PI 时是备选；SwarmLabs 个人开发者可用免费标准座位做日常分析工作。",
+      "days_to_deadline": -1,
+      "ai_can_do": [
+        "整理申请材料清单（AI 起草）",
+        "准备 research statement 模板"
+      ],
+      "user_must_do": [
+        "确认是否有机构 PI 资格（若没有则需高校合作）",
+        "填写申请表（AI 不代填）"
+      ],
+      "notes": "标准座位免费，premium $15/月锁定一年；面向高校 PI。"
+    },
+    {
+      "id": "horizon-raise-ai-science",
+      "name": "Horizon Europe RAISE — Thematic Networks of Excellence for AI in Science",
+      "category": "科研资助",
+      "funder": "European Commission",
+      "amount": "€13,000,000–€15,000,000 / project",
+      "deadline": "2026-04-21",
+      "results": "2026-Q4",
+      "url": "https://hadea.ec.europa.eu/calls-proposals/thematic-networks-excellence-ai-science_en",
+      "status": "closed",
+      "priority": "none",
+      "fit_score": 4,
+      "fit_reason": "完美契合主题但需要欧洲 consortium + 主 PI；SwarmLabs 无法独立申请。2027-01 call 2-02 截止可关注。",
+      "days_to_deadline": -187,
+      "ai_can_do": [
+        "撰写 SwarmLabs 定位文档供未来 consortium 邀请时引用",
+        "跟踪 HORIZON-RAISE-2027-01（2027-02-02 截止）"
+      ],
+      "user_must_do": [
+        "关注 2027-01 call（Automated Scientific Discovery，2027-02-02 截止）",
+        "如被邀请加入欧洲 consortium 才可能作为 sub-beneficiary"
+      ],
+      "notes": "2027-01 call 打开于 2026-09-22，deadline 2027-02-02，主题更泛。"
+    },
+    {
+      "id": "microsoft-startrack-2027",
+      "name": "Microsoft Research Asia — StarTrack Scholars 2027",
+      "category": "驻场研究",
+      "funder": "Microsoft Research Asia",
+      "amount": "3 个月全职驻场 + 差旅",
+      "deadline": "2026-12-15",
+      "results": "2027-03",
+      "url": "https://www.microsoft.com/en-us/research/",
+      "status": "not_started",
+      "priority": "medium",
+      "fit_score": 5,
+      "fit_reason": "需要 PhD 内 7 年的大学 faculty，SwarmLabs 个人主体不符；若用户能拉到合作教授可考虑。",
+      "days_to_deadline": 51,
+      "ai_can_do": [
+        "梳理 MSRA 六大主题与 SwarmLabs 技术叙事映射"
+      ],
+      "user_must_do": [
+        "确认是否有合作教授（PhD within 7 years + faculty）",
+        "提交申请"
+      ],
+      "notes": "6 主题：AI-transformed medical research / agentic AI / brain-AI / AI-era systems / societal AI / spatial intelligence。SwarmLabs 更贴近 'agentic AI' 与 'AI-era systems'。"
+    },
+    {
+      "id": "amazon-research-credits",
+      "name": "AWS DeepRanger / Amazon Research Credits",
+      "category": "算力券",
+      "funder": "Amazon",
+      "amount": "最高 $50,000+ AWS credits / project",
+      "deadline": "rolling",
+      "results": "TBD",
+      "url": "https://aws.amazon.com/blogs/machine-learning/",
+      "status": "open",
+      "priority": "medium",
+      "fit_score": 7,
+      "fit_reason": "SwarmLabs 现有 Cloudflare Pages 部署，AWS 是替代栈；算力券可降低未来 scaling 成本。",
+      "days_to_deadline": -1,
+      "ai_can_do": [
+        "起草 AWS Research Credits 申请研究计划模板",
+        "生成技术附录（WebGPU + GP + AWS SageMaker 集成图）"
+      ],
+      "user_must_do": [
+        "确认是否有机构 PI（Amazon 通常需要）",
+        "填写申请（AI 不代填）"
+      ],
+      "notes": "DeepRanger 面向企业研究，学术线通常走 Amazon Research Credits。"
+    },
+    {
+      "id": "cities-deliver-ai",
+      "name": "Cities Deliver: AI Solutions for Public Services",
+      "category": "科研资助",
+      "funder": "Rockefeller Foundation + OpenAI Foundation",
+      "amount": "$500,000–$2,000,000 / 24 个月",
+      "deadline": "2026-11-29",
+      "results": "2027-04",
+      "url": "https://opportunities.rockefellerfoundation.org/cities-deliver-ai/",
+      "status": "not_started",
+      "priority": "low",
+      "fit_score": 2,
+      "fit_reason": "需要城市政府 partner，SwarmLabs 是研究工具不是城市 AI 服务；主题错位。",
+      "days_to_deadline": 35,
+      "ai_can_do": [],
+      "user_must_do": [],
+      "notes": "仅作生态参考。"
+    },
+    {
+      "id": "aid4sme-open-call-3",
+      "name": "AID4SME Open Call #3（AI4SME Horizon Europe）",
+      "category": "科研资助",
+      "funder": "AID4SME Consortium",
+      "amount": "最高 €200,000 / project",
+      "deadline": "预计 2027-Q1",
+      "results": "TBD",
+      "url": "https://aid4sme.eu/open-call-2",
+      "status": "not_started",
+      "priority": "medium",
+      "fit_score": 5,
+      "fit_reason": "面向欧洲 SME/初创，SwarmLabs 若在欧盟有实体或合作方，可考虑；否则需 European associated country。",
+      "days_to_deadline": 120,
+      "ai_can_do": [
+        "整理 SwarmLabs 商业模式与 AID4SME 挑战主题匹配分析"
+      ],
+      "user_must_do": [
+        "确认是否有欧盟/英国/加拿大实体或合作方"
+      ],
+      "notes": "Open Call #2 已截止（2026-07-15）；#3 预计 2027 Q1。"
+    },
+    {
+      "id": "nsfc-liaoning",
+      "name": "国家自然科学基金委（NSFC）面上/青年项目",
+      "category": "科研资助",
+      "funder": "NSFC / 辽宁省科技厅",
+      "amount": "面上 ~50 万人民币 / 青年 ~30 万人民币",
+      "deadline": "每年 3 月（青年/面上）",
+      "results": "每年 8 月",
+      "url": "https://www.nsfc.gov.cn/",
+      "status": "not_started",
+      "priority": "high",
+      "fit_score": 8,
+      "fit_reason": "如果用户在中国高校/研究所，AI4S 可信验证是当前国家重点方向（'人工智能+'行动）。",
+      "days_to_deadline": 86,
+      "ai_can_do": [
+        "起草中文研究计划（可参考 outputs/product-force/assessment.md）",
+        "撰写国内外研究现状综述",
+        "准备技术路线图与预算表"
+      ],
+      "user_must_do": [
+        "确认是否有中国高校/研究所 PI 资格",
+        "通过依托单位提交（AI 不代提交）",
+        "拉 2-3 名合作者签名"
+      ],
+      "notes": "2026 年度指南通常 12 月发布；2027 年申报窗口预计 2027-03 截止。辽宁省科技厅同期接受匹配支持。"
+    },
+    {
+      "id": "nvidia-gtc-sponsor",
+      "name": "GTC 2027 Startup Program / Research Sponsor",
+      "category": "路演/曝光",
+      "funder": "NVIDIA",
+      "amount": "N/A（曝光+co-marketing）",
+      "deadline": "2026-Q4（预计）",
+      "results": "GTC 2027（预计 3-2027）",
+      "url": "https://www.nvidia.com/en-us/gtc/",
+      "status": "not_started",
+      "priority": "medium",
+      "fit_score": 6,
+      "fit_reason": "GTC 是 AI4S 领域的年度盛会，SwarmLabs 的 95 场景 rubric 结果可作 talk。",
+      "days_to_deadline": 90,
+      "ai_can_do": [
+        "准备 GTC talk 大纲 + 幻灯片模板",
+        "起草 speaker abstract（5 段结构）"
+      ],
+      "user_must_do": [
+        "填写 CFP 表单（AI 不代提交）",
+        "准备现场演示视频（WebGPU + 95 场景 rubric）"
+      ],
+      "notes": "GTC 2027 CFP 通常 10-11 月开放。"
+    }
+  ],
+  "summary": {
+    "total": 12,
+    "critical": 1,
+    "high": 2,
+    "medium": 4,
+    "low": 1,
+    "closed": 4,
+    "open_or_not_started": 8,
+    "top_actionable_by_deadline": [
+      "digital-science-catalyst (2026-11-20, 26 天)",
+      "microsoft-startrack-2027 (2026-12-15, 51 天)",
+      "nvidia-academic-simulation (2026-12-31 Q4, 67 天)",
+      "nsfc-liaoning (2027-03, 86 天)"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "available": true,
+  "checked": 62,
+  "pass_count": 62,
+  "pass_with_anchor": 62,
+  "violations": [],
+  "n_violations": 0,
+  "generated_by": "engine.verification_gate.cite_check_ledger",
+  "generated_at_utc": "2026-09-15T23:59:28Z"
+}

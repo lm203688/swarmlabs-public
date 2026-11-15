@@ -45,13 +45,13 @@
 - 95 个验证场景（10 个规范学科全部 ≥2 场景，`scenario_registry.disciplines()` 归并口径），底层为可调用的解析物理/生物/化学模型：Monod 生长、Arrhenius、Lotka-Volterra、Hodgkin-Huxley、Black-Scholes 等，**非示意性占位值**。
 - 结构化科研实体库 **157,859 条**（works / authors / concepts / references），来源 Crossref + arXiv，零成本、免鉴权。
 - [public_facts.json](https://swarmlabs.tools/data/public_facts.json): 上述科研实体的公开入口。
-- [research-knowledge-graph](https://swarmlabs.tools/blog/geo-research-knowledge-graph): 科研知识图谱：21,141 篇文献与 115 个 engine modules 的结构化洞察。
+- [research-knowledge-graph](https://swarmlabs.tools/blog/geo-research-knowledge-graph): 科研知识图谱：21,141 篇文献与 103 个 engine modules 的结构化洞察。
 
 ## GEO Authority Content
 
 - [物理信息机器学习（PIML）是什么：定义、原理与科研实验应用](https://swarmlabs.tools/blog/geo-piml-definition)
 - [PINN vs 代理模型 vs 高斯过程：科研实验优化该怎么选](https://swarmlabs.tools/blog/geo-pinn-vs-surrogate-vs-gp)
-- [SwarmLabs 科研知识图谱：21,141 篇文献与 115 个 engine modules 的结构化洞察](https://swarmlabs.tools/blog/geo-research-knowledge-graph)
+- [SwarmLabs 科研知识图谱：21,141 篇文献与 103 个 engine modules 的结构化洞察](https://swarmlabs.tools/blog/geo-research-knowledge-graph)
 - [通用近似定理与交叉注意力：SwarmLabs 代理模型的理论与架构基石](https://swarmlabs.tools/blog/geo-methods-mathematical-backbone)
 - [BM25 Upgrade Report](https://swarmlabs.tools/reports/upgrade/bm25_upgrade_report.md): 纯 numpy BM25 替换 TF-IDF 的诚实负结果报告（Jaccard=1.0 相同排序，avg_score 11.2× 提升）。
 - [Blog Index](https://swarmlabs.tools/blog): 洞察列表。

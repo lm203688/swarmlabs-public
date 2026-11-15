@@ -1,0 +1,144 @@
+# license / api 子域修复 — 逐步操作指引
+
+日期：2026-09-19 ｜ 账户：`8162aa3b2241c132e43a81f526d7f758`（61960005@qq.com）
+完整证据链：[`license-subdomain-reachability-20260918.md`](./license-subdomain-reachability-20260918.md)
+
+---
+
+## 一、结论先行
+
+`license.swarmlabs.tools` 和 `api.swarmlabs.tools` 目前**全球 0% 可达**，跟"国内被墙"无关。
+两个 Worker 在 workers.dev 上**没有任何入口**（返 `error code: 1042`），最可能是**根本没部署**。
+
+**能自己试的路已经全部试完并证伪**（见第四节）。剩下的修法必须用到
+`Account → Workers Scripts → Edit` 权限，而本机两枚 token 都没有这一组权限。
+
+---
+
+## 二、方案 1：建一枚 token 给我（推荐——我一次做完，你只点 5 下）
+
+### 第 1 步
+打开（**必须已登录 61960005 那个账号**，不是其他两个）：
+
+```
+https://dash.cloudflare.com/profile/api-tokens
+```
+
+### 第 2 步
+点页面右上角的蓝色按钮 **Create Token**。
+
+### 第 3 步（关键，别走错路）
+页面上半部分是**模板卡片区**。找到名为 **`Edit Cloudflare Workers`** 的那张卡片，
+点它那一行右侧的 **`Use template`**。
+
+> ⚠️ **不要去碰**上面 "Create Custom Token" 下面的三个下拉框。
+> `Workers Scripts` 这一组权限在下拉里很不好找，模板已经替你填好了。
+
+### 第 4 步
+往下滚到 **Account Resources**：
+- 前缀下拉：`Include`
+- 账户下拉：选 **61960005 那一个**
+
+> 认账户的诀窍：这个账户的 workers.dev 前缀就是 `61960005`
+> （对照：`oraclemind-manifold-proxy.61960005.workers.dev` 是活的）。
+> 下拉里如果出现多个账户，选错了 token 就用不了。
+
+### 第 5 步
+继续往下 **Zone Resources**：
+- 前缀下拉：`Include`
+- 中间下拉：`Specific zone`
+- 右侧下拉：**`swarmlabs.tools`**
+
+### 第 6 步
+拉到最底部 → **`Continue to summary`** → **`Create Token`** →
+界面会显示一串 `cfut_` 开头的字符串，**立刻复制**（只显示一次，关掉就再也看不到），贴到对话框里给我。
+
+**权限检查（可选）**：summary 页面的权限表里应该能看到
+`Account | Workers Scripts | Edit` 这一行。模板默认还附带 R2 / Pages / Containers 等，
+不用管，留着也不影响。
+
+---
+
+## 三、方案 2：你自己在 Dashboard 点（无 token，但能力有限）
+
+这条路**只能做「绑域名」，做不了「重部署」**。而当前最大嫌疑是 Worker 没部署——
+所以先做下面这一件事：
+
+### 先确认 Worker 到底在不在（1 次点击，无需 token）
+
+```
+https://dash.cloudflare.com/8162aa3b2241c132e43a81f526d7f758/workers-and-pages
+```
+
+看列表里**有没有 `unified-license` 和 `genetech-api-guard`**：
+
+| 你看到的 | 说明 | 下一步 |
+|---|---|---|
+| **两个都在** | 脚本存在，只缺域名绑定 | 走下面「绑域名」3 步即可 |
+| **一个或都不在** | 脚本没部署 | **必须回到方案 1**，我需要 token 从源码重部署 |
+
+### 绑域名（仅当上面确认脚本存在）
+1. 点进 `unified-license` → **Settings** → **Domains & Routes** → **Add** → **Custom Domain** → 填 `license.swarmlabs.tools`
+2. 点进 `genetech-api-guard` → 同样操作 → 填 `api.swarmlabs.tools`
+3. 绑之前先告诉我，我用现有 token 删掉 zone 里那两条指向死目标的 CNAME（否则会冲突提示记录已存在）
+
+---
+
+## 四、我拿到 token 后会做的 4 件事（全部自动化 + 实测复验）
+
+| # | 动作 | 判据 |
+|---|---|---|
+| 1 | `GET /accounts/{a}/workers/scripts` | 确认 `unified-license` / `genetech-api-guard` 是否存在 |
+| 2 | 若不存在 → `wrangler deploy` 从源码重部署 | 需你提供 `ADMIN_SECRET`、`HUPIJIAO_APP_ID`、`HUPIJIAO_APP_SECRET`（本机无这三项） |
+| 3 | `DELETE` zone 里两条指向死目标的 CNAME | 现有 token 已可做 |
+| 4 | `POST /accounts/{a}/workers/domains` 绑两个自定义域 | CF 自动建橙云 DNS + 证书，国内可达 |
+
+**完成后我用真实端点复验**：`https://license.swarmlabs.tools/api/license/status`、`/health`，
+并跑 `node .workbuddy/tools/endpoint-health-check.mjs`（exit 应转 0）。
+
+---
+
+## 五、为什么必须这样——三条自服务路径的证伪证据
+
+| 路径 | 判定 | 证据 |
+|---|---|---|
+| CNAME 改主机名 | ❌ | `unified-license` / `genetech-api-guard` / `genetech-license` 四个候选名**全是 1042** |
+| CNAME + 橙云 | ❌ | 用**正确**主机名重做对照实验，仍 **522**（CF 禁止橙云回源自身 workers.dev） |
+| Pages Functions 代理 | ❌ | 见下行——代理目标本身就是 1042 |
+| Worker Route | ⛔ | `Authentication error`（无权限） |
+| **Worker Custom Domain + 重部署** | ✅ | **唯一正解** |
+
+### 决定性证据（09-19，从 CF 自己的边缘 SJC 取证）
+
+在 `swarmlabs` Pages 项目部署探针到**预览分支**，由 CF 边缘发起 fetch（绕开本机全部网络干扰）：
+
+| 目标 | 结果 |
+|---|---|
+| `unified-license.61960005.workers.dev/` `/health` `/api/license/status` `/api/license/validate` `/api/hupijiao/order` | **`error code: 1042`**（全路径） |
+| `genetech-api-guard.61960005.workers.dev/` `/health` | **`error code: 1042`** |
+| `genetech-license.61960005.workers.dev/` | **`error code: 1042`** |
+| **对照组** `oraclemind-manifold-proxy.61960005.workers.dev/` | **404 + Worker 自身 JSON** ✅ |
+
+对照组正常 ⇒ 账户的 workers.dev 子域健康、探测方法有效 ⇒ **是这三个主机名没有任何 Worker 绑定**。
+源码 `unified-license/wrangler.toml` 明明写着 `workers_dev = true`，所以最合理的解释是
+**这两个 Worker 根本没部署**（或部署后被删除）。
+
+> 探针与预览部署已全部删除（本地目录 + `DELETE deployments/c2db5181?force=true`），
+> 生产 23 个部署未受影响。
+
+### 判据口径（勿混）
+- `1042` = 该主机名**无任何 Worker 绑定**
+- `404`（**无 1042 body**）= Worker **已绑定并在执行**
+- 两者必须在**同一 vantage point** 下比较才成立
+
+---
+
+## 六、前面的两次误判（留痕）
+
+1. 09-18：「国内被墙 = 网络硬约束」→ 错。根域同属 CF 平台域名却可达。
+2. 09-19：「404 = 已部署，正确主机名是 unified-license」→ **也错**。
+   那组 404 是**从本机**用明文 HTTP/80 探到的，被本机常驻的 TLS 拦截代理污染了——
+   在 80 端口没有 TLS 可拦，代理返回了自己的 404，被我读成了"Worker 已绑定"。
+
+**病根**：拿被污染的测量当证据。此后凡涉境外可达性，一律以 CF 边缘或第三方通道为准，
+本机结果只作参考。

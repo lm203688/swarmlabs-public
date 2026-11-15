@@ -1,31 +1,31 @@
 {
-  "generated_at": "2026-11-14T11:02:25",
+  "generated_at": "2026-11-15T16:27:36",
   "overall": {
-    "scenarios": 93,
+    "scenarios": 95,
     "rubric_full_pass": 62,
-    "gold_traced": 93,
+    "gold_traced": 95,
     "coverage_under": 2,
     "coverage_over": 0,
-    "coverage_ok": 91,
-    "coverage_under_gaussian": 63,
-    "n_conformal_calibrated": 90,
+    "coverage_ok": 93,
+    "coverage_under_gaussian": 65,
+    "n_conformal_calibrated": 92,
     "degenerate": 0,
     "uq_calibration": "cross-conformal Q·sd（rubric 报告校准后实际发货区间；gaussian 为未校准基线）",
-    "sharpness_ok": 79,
+    "sharpness_ok": 81,
     "sharpness_overwide": 14,
     "flagship": 24,
     "total_store_points": 269,
     "multifidelity_adopted": 58,
     "multifidelity_rejected_coverage": 0,
-    "multifidelity_rejected_error": 35,
+    "multifidelity_rejected_error": 37,
     "n_out_of_applicability": 5,
-    "rmse_rel_fail_in_applicability": 17,
+    "rmse_rel_fail_in_applicability": 19,
     "rmse_rel_fail_out_of_applicability": 5,
     "coverage_scope": {
-      "validated": 93,
-      "registered_total": 93,
+      "validated": 95,
+      "registered_total": 95,
       "cross_domain": 10,
-      "science_registered": 31,
+      "science_registered": 33,
       "microbio_registered": 52,
       "microbio_in_rubric": 52,
       "sharpness_cap": 2.0,
@@ -34,21 +34,21 @@
     "honesty": {
       "schema_version": 2,
       "all_evidence_simulated": true,
-      "simulated_count": 93,
+      "simulated_count": 95,
       "experimental_ground_truth_count": 0,
       "reference_quality": {
         "doi": 1,
         "web": 0,
-        "textbook": 92
+        "textbook": 94
       },
       "validation_type_distribution": {
-        "synthetic_surrogate": 4,
+        "synthetic_surrogate": 6,
         "published_benchmark": 89
       },
       "physics_validated_count": 0,
-      "purely_simulated_count": 93,
+      "purely_simulated_count": 95,
       "gold_source_traced_note": "gold_source_traced 仅表示存在文献字符串溯源（多为教材/网络资源），不等于同行评审 DOI 级溯源。",
-      "validated_vs_registered": "validated=93 即 registered=93，不存在“已注册但未验证”的额外项。",
+      "validated_vs_registered": "validated=95 即 registered=95，不存在“已注册但未验证”的额外项。",
       "positioning_note": "项目定位为「面向生物工艺的可信代理建模与实验设计层」；不再以赛事参赛作为对外叙事，边界见 docs/why_swarmlabs.md。",
       "trust_labels_source": "engine/trust_honesty.py:attach_honesty + engine/scenario_trust_labels.py:labels_for (schema v2)"
     }
@@ -6616,6 +6616,156 @@
         "en": "published benchmark",
         "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
         "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "physics_or_simulated": "purely-simulated"
+    },
+    {
+      "key": "mol_suzuki_yield",
+      "domain": "chemistry",
+      "published": "12 substrate pairs with known yields (Gaussian response surface gold)",
+      "ref_papers": [
+        "Pd-catalyzed cross-coupling yield benchmarks",
+        "Fischer esterification yield data"
+      ],
+      "n_store": 0,
+      "rmse_seed": 0.0095,
+      "rmse_seed_rel": 0.3876,
+      "rmse_after": 0.0095,
+      "rmse_rel": 0.3876,
+      "coverage_after": 1.0,
+      "coverage_state": "ok",
+      "cal_err_after": 0.05,
+      "ls_source": "prior(数据量未达门槛 n>=4d+6)",
+      "coverage_gaussian": 0.4,
+      "cal_err_gaussian": 0.55,
+      "conformal_q": 18.1805,
+      "std_in": 0.0014,
+      "std_out": 0.0244,
+      "extrap_std_ratio": 17.204,
+      "sharpness_nmpiw": 0.0515,
+      "degenerate": false,
+      "scale": 0.02450983466192029,
+      "y_train_std": 0.0243028237,
+      "flagship": false,
+      "multifidelity": {
+        "dim": 10,
+        "adopted": false,
+        "reason": "dim>2 或低保真非有限 → 不适用",
+        "stage": "oof-error",
+        "mode": "auto"
+      },
+      "in_applicability": true,
+      "roughness": null,
+      "n_extrema": -1,
+      "applicability_note": "dim=10 未检测（不阻断）",
+      "rubric": {
+        "gold_source_traced": true,
+        "rmse_rel_ok": false,
+        "coverage_two_sided_ok": true,
+        "cal_err_ok": true,
+        "ls_source_traced": true,
+        "sharpness_ok": true,
+        "function_nonconstant": true
+      },
+      "rubric_passed": 6,
+      "rubric_total": 7,
+      "evidence_type": "simulated",
+      "reference_quality": "textbook",
+      "validation_type": "synthetic_surrogate",
+      "validation_type_label": {
+        "zh": "合成代理基准",
+        "en": "synthetic surrogate",
+        "desc_zh": "无真实生物/化学含义，仅用于优化算法压测",
+        "desc_en": "No real biological/chemical meaning; for optimization benchmarks only"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "physics_or_simulated": "purely-simulated"
+    },
+    {
+      "key": "mol_esterification_yield",
+      "domain": "chemistry",
+      "published": "12 substrate pairs with known yields (Gaussian response surface gold)",
+      "ref_papers": [
+        "Pd-catalyzed cross-coupling yield benchmarks",
+        "Fischer esterification yield data"
+      ],
+      "n_store": 0,
+      "rmse_seed": 0.0009,
+      "rmse_seed_rel": 0.2596,
+      "rmse_after": 0.0009,
+      "rmse_rel": 0.2596,
+      "coverage_after": 0.9,
+      "coverage_state": "ok",
+      "cal_err_after": 0.05,
+      "ls_source": "prior(数据量未达门槛 n>=4d+6)",
+      "coverage_gaussian": 0.75,
+      "cal_err_gaussian": 0.2,
+      "conformal_q": 8.6741,
+      "std_in": 0.0002,
+      "std_out": 0.0034,
+      "extrap_std_ratio": 17.928,
+      "sharpness_nmpiw": 0.0033,
+      "degenerate": false,
+      "scale": 0.0034667579135108013,
+      "y_train_std": 0.0033562166,
+      "flagship": false,
+      "multifidelity": {
+        "dim": 10,
+        "adopted": false,
+        "reason": "dim>2 或低保真非有限 → 不适用",
+        "stage": "oof-error",
+        "mode": "auto"
+      },
+      "in_applicability": true,
+      "roughness": null,
+      "n_extrema": -1,
+      "applicability_note": "dim=10 未检测（不阻断）",
+      "rubric": {
+        "gold_source_traced": true,
+        "rmse_rel_ok": false,
+        "coverage_two_sided_ok": true,
+        "cal_err_ok": true,
+        "ls_source_traced": true,
+        "sharpness_ok": true,
+        "function_nonconstant": true
+      },
+      "rubric_passed": 6,
+      "rubric_total": 7,
+      "evidence_type": "simulated",
+      "reference_quality": "textbook",
+      "validation_type": "synthetic_surrogate",
+      "validation_type_label": {
+        "zh": "合成代理基准",
+        "en": "synthetic surrogate",
+        "desc_zh": "无真实生物/化学含义，仅用于优化算法压测",
+        "desc_en": "No real biological/chemical meaning; for optimization benchmarks only"
       },
       "applicable_domain": {
         "zh": "定性探索 / 参数敏感性分析",

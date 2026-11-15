@@ -1,7 +1,7 @@
 {
   "name": "SwarmLabs verification gate ledger",
-  "version": "2026-11-02",
-  "generated_at_utc": "2026-11-02T19:13:08Z",
+  "version": "2026-11-15",
+  "generated_at_utc": "2026-11-15T08:39:12Z",
   "standard": "ASME V&V 10-2019 / FDA CM&S report outline",
   "build": {
     "complete": true,
@@ -70,37 +70,32 @@
   },
   "provenance": {
     "engine": {
-      "git_commit": "1b65bbe08d2b356b1341df72276087653d6429f0",
-      "git_commit_source": "remote via Contents API (pinned .workbuddy-ai/last_push.json)",
-      "git_commit_binding_tier": "remote",
-      "git_commit_binding": "tier=remote: authoritative remote SHA pinned from Contents API; local HEAD may be behind (Contents API pushes create server-side commits that never advance local HEAD)",
-      "remote_commit_meta": {
-        "message": "Add scripts/error_taxonomy.py [硬骨头 3 error taxonomy]",
-        "author": "lm203688",
-        "committer_date": "2026-10-16T09:13:11Z",
-        "pinned_at_utc": "2026-10-16T09:23:03Z"
-      },
-      "local_head": "67b0c6f3e4ffd3f9338aed121894a709911216c5",
-      "n_modules": 116,
+      "git_commit": "cf312bd5f61e02cbcb65d72a9fb14dd53b1ee6ee",
+      "git_commit_source": "local .git HEAD",
+      "git_commit_binding_tier": "local",
+      "git_commit_binding": "tier=local: local HEAD only — run scripts/write_remote_commit_pin.py to promote to remote tier",
+      "remote_commit_meta": {},
+      "local_head": "cf312bd5f61e02cbcb65d72a9fb14dd53b1ee6ee",
+      "n_modules": 104,
       "core": {
         "surrogate.py": "43231fddc23f1d92f19418281c3305faf19b0b6c37fa30b362a268d6e3139cd9",
-        "microbiology_full.py": "ea84e841b999d5cb76f7a952e858fc2c9c648fc3a08a0a55dcc9997076d7ff20",
+        "microbiology_full.py": "ec8f209839ae7fbaa69690e11e867d6e3b55fb90a12d21afb4a829ad36ea40c7",
         "scenarios_extra.py": "6be3fa64dd69f60c9c18c6f330fdbb21d52bdf7febdc174b6ec9dd7cdb82c6ca",
-        "verification_gate.py": "97b62b560e0ddedcd10ceb3fd64a19a6d4da68d864b2284a9d1f7369197a7932",
-        "guard.py": "4d005d4ad127a41612758be5a5ae661151628f4e115045fe6ecc49c245d16a6f",
+        "verification_gate.py": "9830e85d1754a965cceb0a35c343c64519227b8b3eaec21b56c57b76822426a1",
+        "guard.py": "731549641b7f6f7d6939ca8e7e56ebf0262d237f1b6a0076a14be93bca0a1c0f",
         "wet_lab_anchors.py": "6980b62210640290066c88e09561829b1e0a500255abe3b848cbfefa2dfca2fe",
         "report_generator.py": "8b91cf0c967fc07db76a1483c0683d37f76883717350a3808c200bcdd281aa47"
       },
-      "core_digest": "4e3e970e99337f2e81a10804a068b86a6303a932e740da39feb5cbeb294dc6a7",
-      "all_digest": "10c3a6b4b1880cbd2ee0adf300392bf73ec9e1dcbd67adacd6658191030e3cc3"
+      "core_digest": "c71efa73ade1b73c2a7c74087bd081325926b2b531430ed3c92b362c4017cfd3",
+      "all_digest": "c955a931da2755dabd2167d1ceeefa91cbd154cb4ad153670d79842a28b36729"
     },
     "oracle": {
       "files": {
-        "microbiology_full.py": "ea84e841b999d5cb76f7a952e858fc2c9c648fc3a08a0a55dcc9997076d7ff20",
+        "microbiology_full.py": "ec8f209839ae7fbaa69690e11e867d6e3b55fb90a12d21afb4a829ad36ea40c7",
         "scenarios_extra.py": "6be3fa64dd69f60c9c18c6f330fdbb21d52bdf7febdc174b6ec9dd7cdb82c6ca",
         "surrogate.py": "43231fddc23f1d92f19418281c3305faf19b0b6c37fa30b362a268d6e3139cd9"
       },
-      "digest": "5af299482fef9b941b5f5d904e146c1fe06a7b2dd29f56b29a1bb369e360da18"
+      "digest": "4e88833559932a064e9c07cf39b105a7406e5bef71864c1e5d619583a2f25125"
     },
     "report_index_sha256": "aef193bbf2ac2e28df368c76c135c8a363eda8451bdf4daf11ef69a1fd614f51",
     "builder": "scripts/build_gate_ledger.py",

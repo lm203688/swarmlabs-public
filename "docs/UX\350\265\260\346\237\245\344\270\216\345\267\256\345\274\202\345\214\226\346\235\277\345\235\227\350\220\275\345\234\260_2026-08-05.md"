@@ -1,0 +1,88 @@
+# SwarmLabs 用户体验走查 + 三大差异化板块落地报告
+
+> 日期：2026-08-05 · 走查方式：以真实用户视角，用生产域名 `swarmlabs.tools` 完整走完注册→贡献→再应用→积分→自带API 全闭环（curl 模拟 + 前端接线核对）。
+> 结论：**三大差异化能力（实验结果再应用 / 贡献积分体系 / 自带API）后端已全部落地并通过生产验证；前端「我的工作台」已补齐提交入口，形成自包含闭环。**
+
+---
+
+## 一、作为用户走查的结论
+
+我模拟一个新用户 `uxwalk-...@swarmlabs.tools` 走了一遍完整流程，每一步都是生产真实响应：
+
+| 步骤 | 动作 | 生产实测结果 |
+|---|---|---|
+| 1 | 注册 | ✅ 200，赠送 50 初始积分 |
+| 2 | 查看账户 | ✅ 余额 50、earned 0、实验 0 |
+| 3 | 提交实验结果（Suzuki，actual=0.85，predicted=0.80） | ✅ accepted，写入平台自有数据 |
+| 4 | 我的实验 | ✅ count=1，返回 `expv2:...` 唯一 id，标记 `validated:true, earned:50` |
+| 5 | **再应用**（reapply，注入 GP） | ✅ `injected_points=1, n_training=17, best_known_yield=0.85`，返回 3 条下一轮建议 |
+| 6 | 再看账户 | ✅ 余额 100（50+50）、earned 50、实验 1、已验证 1 |
+| 7 | 贡献榜 | ✅ 邮箱脱敏 `ux***@swarmlabs.tools`，按赚取积分排名 |
+| 8 | 配置自带API（DeepSeek/Qwen/OpenAI…） | ✅ 保存返回掩码 `sk-u••••cdef`，读取不返回明文 |
+| 9 | /v2/llm 代理 | ✅ 请求经用户密钥转发至上游（实测触达 OpenAI，返回其地理限制报错，证明代理路由生效、平台零成本） |
+| 10 | 移除自带API | ✅ `{status:'removed'}`，再读 `configured:false` |
+
+**判断：三大差异化板块不是 PPT 概念，是能跑通的真实闭环。**
+
+---
+
+## 二、本轮发现并修复的 UX 断点
+
+### 断点 1：自带API 删除被 Cloudflare 边缘 405 拦截（高危）
+- **现象**：`curl -X DELETE /v2/account/apikey` 稳定返回 `405 Method Not Allowed`，且响应头是 `access-control-allow-origin: *`（小写）——说明请求**根本没进到函数**，被 CDN 边缘在方法层拦掉（空 body 证明 DELETE 分支从未执行）。
+- **根因**：Cloudflare Pages Functions 对 catch-all 路由的 `DELETE` 方法做了边缘层限制，函数代码无法干预。
+- **修复**：删除改用 `POST {action:'delete'}`（POST 正常可用），前端 `workbench.html` 的「移除」按钮同步改为该路径。
+- **验证**：`POST {action:'delete'}` → `{status:'removed'}` → 再 GET 为 `configured:false`。✅
+
+### 断点 2：用户没有入口把实验喂进「再应用」（高危）
+- **现象**：`/lab` 页面**没有**提交反馈的 UI；「我的工作台」旧文案让用户「去实验室提交反馈」，但实验室里没有这个按钮。结果真实用户无法从网站把实验填进「我的实验」，再应用对普通用户是死路。
+- **修复**：在「我的工作台 → 我的实验」面板新增 **「提交实验结果」表单**（引擎下拉 + 预测/实际产率 + 信号 + 参数 JSON），提交即写入「我的实验」并刷新积分。整个数据飞轮现在**完全可在工作台内自闭环**，无需写代码、无需调 API。
+- **验证**：`/workbench` 已返回 200 且含「提交实验结果」；提交→列表→再应用 链路生产实测通过。✅
+
+### 断点 3：产率显示单位错误（中危）
+- **现象**：产率后端以 0–1 小数存储（GP `best_known_yield=0.85`），前端却直接拼 `%`，显示成 `0.85%`（应为 85%）。
+- **修复**：新增 `pct()` 展示函数，兼容用户直接填 0–100 的情况（>1.5 视为已百分比）。实验列表、锚定框、再应用建议的产率/不确定度/EI 统一修正。
+- 同时优化 `/v2/llm` 上游报错展示，避免把 JSON 错误对象显示成 `[object Object]`。
+
+---
+
+## 三、三大差异化板块设计说明
+
+### ① 实验结果再应用（Re-Apply）— 别人没有的「数据回流→模型增强」
+- **设计**：用户提交的已验证实验，作为高斯过程（GP）的**训练点**注入对应引擎代理模型，生成下一轮贝叶斯优化建议（`injected_points / n_training / best_known_yield / suggestions[EI]`）。
+- **防越权**：`source_id` 强制 `expv2:{本人邮箱}:` 前缀，服务端校验归属；也支持 `use_my_experiments` 自动取本人最新实验。
+- **证据**：实测 `injected=1, n_training=17, best=0.85, 3 条建议`。
+- **为何别人没有**：主流平台只给「预测」，不给「把你的真实结果喂回去改良模型」的闭环。
+
+### ② 贡献积分体系（Contribution Credits）— 「别人只扣积分，这里贡献能赚」
+- **规则**（前端透明公示）：
+  - 提交带实际结果的反馈：`+10`
+  - 被判定「已验证」（实际≈预测 或 信号 success/improved）：`+30`
+  - 某引擎首次提交：`额外 +20`
+  - 负样本/失败案例：`+15`（行业稀缺资产）
+- **一致性保障**：赚取记录走 **append-only 日志 `contriblog:{email}`**（直接 GET，强一致），彻底规避 KV `list()`/read-modify-write 最终一致性导致的丢增量；账户与贡献榜实时聚合该日志。
+- **证据**：实测单条验证实验 → 余额 50→100、earned 50、贡献榜上榜。
+
+### ③ 自带 API（BYO-LLM）— 「用你自己的密钥，平台零成本、数据不出你账号」
+- **设计**：用户填入自有大模型密钥（DeepSeek / 通义千问 / OpenAI / Kimi / 本地 Ollama / 自定义兼容），经 `/v2/llm` 代理转发。平台不消耗积分、不留存提示词。
+- **安全**：密钥存储掩码返回（`sk-u••••cdef`），明文不出后端；删除走 `POST {action:'delete'}`。
+- **证据**：保存/读取掩码正确；`/v2/llm` 实测把请求转发到用户配置的提供商。
+- **为何别人没有**：这是把「算力成本」转嫁给用户自己额度的原生 BYO 模式，对国内用户尤其友好（直接接 DeepSeek/通义，绕开 OpenAI 地域限制）。
+
+---
+
+## 四、已知边界（诚实披露，不夸大）
+
+1. **积分余额的最终一致性**：`credits_balance` 来自用户记录（`user.credits`），偶发 KV 副本延迟会短暂显示旧值（实测曾短暂显示 50，约数十秒后自愈为 100）。**权威「已赚取」数以 `contriblog` 为准（`earned_credits`），强一致**。后续若需余额也强一致，可改为「初始 50 + 赚取日志 − 消耗日志」派生（需把 run 消耗也写日志，属下一轮增强）。
+2. **OpenAI 地域限制**：用 OpenAI 密钥时，若服务器/密钥所在区域受限，上游会直接返回地理限制报错（这是 OpenAI 的，不是平台问题）。国内用户建议用 DeepSeek / 通义千问 / 本地 Ollama。
+3. **DELETE 方法**：生产环境 `DELETE /v2/account/apikey` 被边缘 405，前端统一走 `POST {action:'delete'}`；本地开发仍可用 DELETE。
+
+---
+
+## 五、配套交付物
+- `docs/openapi.yaml`：新增 `/v2/my-experiments`、`/v2/reapply`、`/v2/leaderboard`、`/v2/account/apikey`、`/v2/llm` 五个端点的 schema，版本升到 3.4.0。
+- `docs/sdk/swarmlabs.py` / `swarmlabs.js`：补齐上述方法的 SDK 封装（含 `delete_apikey` 走 action 方式），零依赖，已通过语法校验与生产自测。
+- `frontend_fixed/workbench.html`：三栏合一（我的实验/再应用、贡献积分/榜单、自带API），新增提交入口，产率显示修正。
+- `frontend_fixed/functions/api/[[path]].js`：后端 apikey 删除兼容 `POST {action:'delete'}`，CORS 允许方法补全。
+
+> 验证记录见 `reports/ux_walkthrough_*.txt`、`reports/ux_delete_test_*.txt`、`reports/ux_final_*.txt`。

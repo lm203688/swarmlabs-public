@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0.0",
+  "source": "PROJECT_ELEVATION_REPORT_2026-10-26.md §3.3「所有状态用同一语言」",
+  "vocabulary": [
+    {
+      "code": "ADVISABLE",
+      "zh": "可建议",
+      "en": "Advisable",
+      "severity": "info",
+      "allow_ai_generated": true,
+      "requires_evidence": false,
+      "definition": "系统基于校准内插值和证据等级，可以给出一条明确的下一步建议；用户可自主选择是否执行。",
+      "trigger_examples": [
+        "训练/校准域内的下一点候选推荐",
+        "已有 ≥19 个 wet_lab_anchor 的场景，且区间覆盖达标",
+        "成本、约束、许可均通过静态检查的候选"
+      ],
+      "forbidden_variants": ["可以执行", "放心执行", "可以操作", "建议执行"]
+    },
+    {
+      "code": "NEEDS_DATA",
+      "zh": "需补数据",
+      "en": "Needs Data",
+      "severity": "warn",
+      "allow_ai_generated": true,
+      "requires_evidence": false,
+      "definition": "当前决策域缺少充分证据（样本量不足、单位不明、批次隔离不完整、校准集空），系统只给出补数据建议，不出结论。",
+      "trigger_examples": [
+        "批次留出样本量低于阈值",
+        "CSV 缺单位字段或跨批时间轴不明",
+        "校准集 n < 20 导致 PICP 不可估"
+      ],
+      "forbidden_variants": ["数据不足", "缺数据", "数据不够", "样本不足", "数据缺乏", "不够样本", "样本量不够", "需要更多数据"]
+    },
+    {
+      "code": "SIMULATION_ONLY",
+      "zh": "仅模拟",
+      "en": "Simulation Only",
+      "severity": "warn",
+      "allow_ai_generated": true,
+      "requires_evidence": false,
+      "definition": "结论仅来自代理模型在训练域内的模拟结果，未经真实湿实验/设备验证，不可作为生产决策依据。",
+      "trigger_examples": [
+        "wet_lab_anchor=0 的场景",
+        "仅有合成数据训练，无真实批次对照",
+        "conformal 覆盖率仅由模拟数据支撑"
+      ],
+      "forbidden_variants": ["只是模拟", "纯模拟", "仅仿真", "只是仿真", "未经实验"]
+    },
+    {
+      "code": "OUT_OF_SCOPE",
+      "zh": "越界拒答",
+      "en": "Out of Scope",
+      "severity": "block",
+      "allow_ai_generated": false,
+      "requires_evidence": false,
+      "definition": "请求超出设计域（外推/跨学科/未接入的设备协议/未覆盖的决策场景），系统拒绝回答并给出边界说明。B1 边界下 LLM 不得自行生成此状态。",
+      "trigger_examples": [
+        "参数值落在 bounds 外（触发 A15 外推不可达）",
+        "请求非生物工艺学科的迁移（G3 已证伪 0/14）",
+        "请求 SiLA 2/OPC UA 未实现的设备动作",
+        "roughness > ROUGHNESS_CAP=0.3 的请求"
+      ],
+      "forbidden_variants": ["超出范围", "不在范围内", "超出能力", "超出领域", "超范围"]
+    },
+    {
+      "code": "PENDING_APPROVAL",
+      "zh": "等待审批",
+      "en": "Pending Approval",
+      "severity": "warn",
+      "allow_ai_generated": false,
+      "requires_evidence": true,
+      "definition": "决策已生成但涉及高风险操作（真实设备、成本超阈值、生物双用途 L2+），需人工签名确认后执行。B1 边界下 LLM 不得自行生成或变更此状态。",
+      "trigger_examples": [
+        "cost_fn(candidate) 超过批次预算 80%",
+        "涉及生物双用途 L2/L3 操作",
+        "设备任务写入真实设备而非模拟器",
+        "签名意图字段缺失"
+      ],
+      "forbidden_variants": ["等审批", "待批准", "等待批准", "待审批", "待确认", "等确认"]
+    },
+    {
+      "code": "REFUTED",
+      "zh": "已证伪",
+      "en": "Refuted",
+      "severity": "block",
+      "allow_ai_generated": false,
+      "requires_evidence": true,
+      "definition": "经独立验证（留出测试/负对照/形式化证明）证伪的结论。REFUTED 状态不可逆（formal_invariants INV-2），必须附带 DOI 或场景 hash 作为证据。B1 边界下 LLM 不得自行生成。",
+      "trigger_examples": [
+        "批次留出失败率超过阈值",
+        "G3 留一学科外推（已实测 0/14）",
+        "形式化不变量违例",
+        "重复实验结果与预期方向相反"
+      ],
+      "forbidden_variants": ["已否定", "已推翻", "推翻结论", "否定结论"]
+    }
+  ],
+  "canonical_form": "可建议|需补数据|仅模拟|越界拒答|等待审批|已证伪",
+  "usage": {
+    "allowed_surfaces": [
+      "frontend_fixed/**/*.html badge 字段",
+      "frontend_fixed/functions/api/** 响应 status 字段",
+      "docs/*.md 中对外决策标签",
+      "agent-card.json capabilities.status 字段",
+      "repro package 的 verdict_line 字段",
+      "reports/**/*.md|html 结论章节"
+    ],
+    "gate": "scripts/check_status_vocabulary.py",
+    "excluded_contexts": [
+      "falsification_test 字段（描述未来证伪条件，非状态标签）",
+      "自然语言正文的 '被证伪' / '不成立' / '不支持' 等语义描述",
+      "英文 'waiting' / 'pending' 等状态枚举值（属于英文生态通用词）",
+      "code 内的英文 tag（如 REFUTED / OUT_OF_SCOPE）"
+    ],
+    "rationale": "本 gate 只抓「中文状态标签歧义」，不抓自然语言描述。若变体词出现在自然语言里描述能力边界、假设条件、语义关系，不算违规。"
+  }
+}

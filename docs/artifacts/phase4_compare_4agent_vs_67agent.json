@@ -1,0 +1,119 @@
+{
+  "baseline_dir": "C:\\Users\\xing\\Desktop\\swarmlabs\\agentteams\\runs\\run-20260917-150553",
+  "candidate_dir": "C:\\Users\\xing\\Desktop\\swarmlabs\\agentteams\\runs\\run-20260917-150554",
+  "scenarios": {
+    "common": [
+      "microbio_inhibition",
+      "microbio_monod"
+    ],
+    "only_baseline": [],
+    "only_candidate": []
+  },
+  "judgement_identical": true,
+  "judgement_diffs": [],
+  "rows": [
+    {
+      "key": "microbio_inhibition",
+      "rel": {
+        "baseline": 0.0232,
+        "candidate": 0.0232
+      },
+      "coverage": {
+        "baseline": 1.0,
+        "candidate": 1.0
+      },
+      "cal_err": {
+        "baseline": 0.05,
+        "candidate": 0.05
+      },
+      "maturity": {
+        "baseline": "已收敛",
+        "candidate": "已收敛"
+      },
+      "identical": true
+    },
+    {
+      "key": "microbio_monod",
+      "rel": {
+        "baseline": 0.0432,
+        "candidate": 0.0432
+      },
+      "coverage": {
+        "baseline": 1.0,
+        "candidate": 1.0
+      },
+      "cal_err": {
+        "baseline": 0.05,
+        "candidate": 0.05
+      },
+      "maturity": {
+        "baseline": "已收敛",
+        "candidate": "已收敛"
+      },
+      "identical": true
+    }
+  ],
+  "topology_source": {
+    "baseline": null,
+    "candidate": {
+      "source": "topology_file",
+      "path": "C:/Users/xing/Desktop/flybrain-connectome/flybrain-connectome-mcp/generated_organisms/swarmlabs/specialized_cycled.swarm.json",
+      "name": "specialized_cycled",
+      "schema_version": "1.1",
+      "topology": "guardrail-hub + module-cells + recurrent + reservoir",
+      "leader": "coordinator",
+      "n_agents": 67,
+      "n_edges": 36,
+      "n_modules": 6,
+      "n_workers_registered": 69,
+      "validation_ok": true
+    },
+    "candidate_records_topology": true,
+    "n_agents_baseline": null,
+    "n_agents_candidate": 67
+  },
+  "module_routing": {
+    "baseline_present": false,
+    "candidate_present": true,
+    "candidate_summary": {
+      "n_modules": 6,
+      "n_agents_indexed": 67,
+      "capabilities": [
+        "actuate",
+        "arbitrate",
+        "buffer",
+        "elo_score",
+        "execute",
+        "gp_surrogate",
+        "ingest",
+        "numeric_integration",
+        "perceive",
+        "rank",
+        "remember",
+        "replay",
+        "state_carry",
+        "synthesize",
+        "verify_output"
+      ],
+      "profiles": [
+        "integration",
+        "memory",
+        "motor",
+        "sensory"
+      ],
+      "n_steps_routed": 6,
+      "n_fallback": 0,
+      "fallback_steps": [],
+      "note": "按 module.capability 路由；未命中者回退到 role 硬编码路径（Executor 仍按 role 执行已授权 Skill）"
+    }
+  },
+  "local_model_advisory": {
+    "baseline_status": "ok",
+    "candidate_status": "ok",
+    "baseline_model": "flybrain:latest",
+    "candidate_model": "flybrain:latest",
+    "affects_judgement": false,
+    "note": "顾问层为旁路；其输出未进入任何判定字段（本工具已逐一比对）"
+  },
+  "PASS": true
+}

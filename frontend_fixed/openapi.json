@@ -3,7 +3,7 @@
   "info": {
     "title": "SwarmLabs API",
     "version": "3.5.0",
-    "description": "面向科学研发的 AI 多智能体计算引擎平台。提供 115 个科学计算引擎，每次预测均返回真实文献溯源(DOI)、单点不确定度(UQ)与 A/B/C 数据驱动分级。95 个跨域验证场景，V&V 归档包可离线复验（发布口径 91 PASS / 3 MARGINAL / 1 REFUTED）。认证：Bearer 用户会话 token(stk_ 前缀)或 x-api-key。v2/ 前缀端点免 API key。"
+    "description": "面向科学研发的 AI 多智能体计算引擎平台。提供 103 个科学计算引擎，每次预测均返回真实文献溯源(DOI)、单点不确定度(UQ)与 A/B/C 数据驱动分级。95 个跨域验证场景，V&V 归档包可离线复验（发布口径 91 PASS / 3 MARGINAL / 1 REFUTED）。认证：Bearer 用户会话 token(stk_ 前缀)或 x-api-key。v2/ 前缀端点免 API key。"
   },
   "servers": [
     {
