@@ -254,7 +254,10 @@ def render(entries: list[DocEntry]) -> str:
         lines.append("")
         lines.append("| 文档 | 标题 | 更新 | 大小 | 标记 |")
         lines.append("|---|---|---|---|---|")
-        for e in sorted(items, key=lambda x: (-x.days_old, x.rel)):
+        # 桶内按路径稳定排序：不依赖 days_old —— days_old 随「mtime vs git
+        # 提交日期」来源变化（push 生成时无 git 历史），会导致行序漂移、
+        # --check 误判「已过期」。按 rel 排序完全确定，且 INDEX 更稳定可读。
+        for e in sorted(items, key=lambda x: x.rel):
             flag = " ".join(e.flags) or "—"
             kb = f"{e.bytes / 1024:.0f} KB"
             lines.append(f"| [`{e.rel}`]({e.rel}) | {e.title} | {e.mtime} | {kb} | {flag} |")
