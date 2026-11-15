@@ -956,6 +956,9 @@ schemas/wet_lab_anchors.schema.json
 scripts/api_push_tree.py
 scripts/check_anchor_quality.py
 scripts/build_second_backend_replication.py
+scripts/scenario_library_density.py
+scripts/jwks/jwks_tool.py
+scripts/x402/x402_facilitator.py
 scripts/check_data_contracts.py
 scripts/check_engine_contract.py
 scripts/check_engine_gate.py
@@ -1226,3 +1229,11 @@ frontend_fixed/reports/html/surrogate_forrester.html
 frontend_fixed/reports/html/surrogate_hartmann6.html
 frontend_fixed/reports/scenario_library_density.html
 frontend_fixed/vocabulary.html
+outputs/paper-1-applied-intelligence/applied_intelligence_submission.zip
+outputs/paper-1-applied-intelligence/cover_letter.txt
+outputs/paper-1-applied-intelligence/highlights.txt
+outputs/paper-1-applied-intelligence/paper.tex
+outputs/paper-1-applied-intelligence/references.bib
+outputs/paper-1-applied-intelligence/figures/fig1_tdea_anchor_triple.png
+outputs/paper-1-applied-intelligence/figures/fig2_scenario_distribution.png
+outputs/paper-1-applied-intelligence/figures/fig3_extrapolation_failure.png

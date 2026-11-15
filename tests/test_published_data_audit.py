@@ -41,6 +41,7 @@ def test_verify_source_ok():
     assert all("sha256" in v for v in src["files"].values())
 
 
+@needs_raw
 def test_verify_source_rejects_tampered_manifest(monkeypatch, tmp_path):
     """否定性：manifest 的 sha256 被改 ⇒ 必须抛错，绝不放过。"""
     good = json.load(open(pda.MANIFEST_PATH, encoding="utf-8"))
@@ -53,6 +54,7 @@ def test_verify_source_rejects_tampered_manifest(monkeypatch, tmp_path):
         pda.verify_source()
 
 
+@needs_raw
 def test_verify_source_rejects_missing_file(monkeypatch, tmp_path):
     """否定性：文件缺失 ⇒ FileNotFoundError。"""
     good = json.load(open(pda.MANIFEST_PATH, encoding="utf-8"))

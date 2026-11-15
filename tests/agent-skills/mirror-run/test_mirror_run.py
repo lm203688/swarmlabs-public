@@ -6,7 +6,10 @@ import json
 import subprocess
 import sys
 
-PY = "C:/Users/xing/.workbuddy/binaries/python/envs/default/Scripts/python.exe"
+# 2026-11-16：原值硬编码作者本机路径（C:/Users/xing/.workbuddy/.../python.exe），
+# CI 在 Linux runner 上必然 FileNotFoundError。改为当前解释器 sys.executable，
+# 与仓库其余子进程测试（如 check_verifier_gate）同一做法。
+PY = sys.executable
 SCRIPT = "skills/agent-skills/mirror-run/scripts/mirror_run.py"
 
 # A scenario that IS live on the current v3 API (pre-52-deploy).
