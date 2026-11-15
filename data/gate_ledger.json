@@ -1,0 +1,3246 @@
+{
+  "name": "SwarmLabs verification gate ledger",
+  "version": "2026-11-15",
+  "generated_at_utc": "2026-11-15T09:54:34Z",
+  "standard": "ASME V&V 10-2019 / FDA CM&S report outline",
+  "build": {
+    "complete": true,
+    "source": "scripts/build_gate_ledger.py",
+    "reads_from": "frontend_fixed/reports/index.json",
+    "registry_total": 95,
+    "optional_deps": {
+      "rdkit_available": true,
+      "dropped_molecular_scenarios": []
+    },
+    "dropped_scenarios": [],
+    "note": "本次构建未丢弃任何场景（registry_total == total），账本覆盖注册表中的全部场景。"
+  },
+  "policy": {
+    "noise_floor": 0.03,
+    "nominal_coverage": 0.95,
+    "pass": "R2>=0.9 and one-sided coverage>=0.9",
+    "marginal": "R2>=0.7 and coverage>=0.8",
+    "refuted": "below the MARGINAL bars",
+    "kappa": "variance-scale, only widens uncertainty, capped at 40",
+    "gate_map": {
+      "PASS": "PROCEED",
+      "MARGINAL": "PROCEED_WITH_HUMAN_CHECK",
+      "REFUTED": "BLOCK_AUTONOMOUS_ACTION",
+      "ERROR": "BLOCK_AUTONOMOUS_ACTION"
+    },
+    "note": "Confidence below the MARGINAL bar blocks autonomous action on that scenario. Verifying a model's OWN predictions at arbitrary inputs requires the engine and is served by the MCP server (mcp/swarmlabs_vv_server.py) and, on the published held-out test sets, by POST /v3/verify. This ledger answers the static question \"can this scenario be trusted right now?\" for any HTTP agent."
+  },
+  "counts": {
+    "PASS": 91,
+    "MARGINAL": 3,
+    "REFUTED": 1,
+    "ERROR": 0
+  },
+  "total": 95,
+  "n_blocked": 1,
+  "n_human_check_required": 3,
+  "blocked": [
+    "mol_suzuki_yield"
+  ],
+  "human_check_required": [
+    "eco_lv_peak_ratio",
+    "neuro_hh_spike_amplitude",
+    "neuro_lif_fi"
+  ],
+  "calibration": {
+    "method": "linear_softmax_rlcd_log_likelihood",
+    "steps": 3000,
+    "lr": 0.05,
+    "ece": 0.0116,
+    "ece_references": {
+      "laya_zero_shot": 0.466,
+      "laya_refit_temperature": 0.081,
+      "jev_1_13": 0.246
+    },
+    "label_distribution": {
+      "PASS": 91,
+      "MARGINAL": 3,
+      "REFUTED": 1,
+      "UNVALIDATED": 0
+    },
+    "mean_log_likelihood": -0.012,
+    "mean_p_pass": 0.9502,
+    "n_scenarios": 95,
+    "note": "ECE (Expected Calibration Error) 度量报告概率与真实频率的匹配程度；越低越好。当前 91/95 PASS，训练集仍不均衡（账本已含 MARGINAL/REFUTED 场景），ECE 偏低主要是分布内验证，不代表生产泛化能力；外推域（A15）一律不给出 PASS。"
+  },
+  "provenance": {
+    "engine": {
+      "git_commit": "1b65bbe08d2b356b1341df72276087653d6429f0",
+      "git_commit_source": "remote via Contents API (pinned .workbuddy-ai/last_push.json)",
+      "git_commit_binding_tier": "remote",
+      "git_commit_binding": "tier=remote: authoritative remote SHA pinned from Contents API; local HEAD may be behind (Contents API pushes create server-side commits that never advance local HEAD)",
+      "remote_commit_meta": {
+        "message": "Add scripts/error_taxonomy.py [硬骨头 3 error taxonomy]",
+        "author": "lm203688",
+        "committer_date": "2026-10-16T09:13:11Z",
+        "pinned_at_utc": "2026-10-16T09:23:03Z"
+      },
+      "local_head": "d6beb6cad1e658371d533645d30ba94a20723d86",
+      "n_modules": 116,
+      "core": {
+        "surrogate.py": "43231fddc23f1d92f19418281c3305faf19b0b6c37fa30b362a268d6e3139cd9",
+        "microbiology_full.py": "ec8f209839ae7fbaa69690e11e867d6e3b55fb90a12d21afb4a829ad36ea40c7",
+        "scenarios_extra.py": "6be3fa64dd69f60c9c18c6f330fdbb21d52bdf7febdc174b6ec9dd7cdb82c6ca",
+        "verification_gate.py": "9830e85d1754a965cceb0a35c343c64519227b8b3eaec21b56c57b76822426a1",
+        "guard.py": "731549641b7f6f7d6939ca8e7e56ebf0262d237f1b6a0076a14be93bca0a1c0f",
+        "wet_lab_anchors.py": "6980b62210640290066c88e09561829b1e0a500255abe3b848cbfefa2dfca2fe",
+        "report_generator.py": "8b91cf0c967fc07db76a1483c0683d37f76883717350a3808c200bcdd281aa47"
+      },
+      "core_digest": "c71efa73ade1b73c2a7c74087bd081325926b2b531430ed3c92b362c4017cfd3",
+      "all_digest": "7ef140fba7f1170dd77a885729916835820ba3c3028d29ae3b2e135cc897c54a"
+    },
+    "oracle": {
+      "files": {
+        "microbiology_full.py": "ec8f209839ae7fbaa69690e11e867d6e3b55fb90a12d21afb4a829ad36ea40c7",
+        "scenarios_extra.py": "6be3fa64dd69f60c9c18c6f330fdbb21d52bdf7febdc174b6ec9dd7cdb82c6ca",
+        "surrogate.py": "43231fddc23f1d92f19418281c3305faf19b0b6c37fa30b362a268d6e3139cd9"
+      },
+      "digest": "4e88833559932a064e9c07cf39b105a7406e5bef71864c1e5d619583a2f25125"
+    },
+    "report_index_sha256": "aef193bbf2ac2e28df368c76c135c8a363eda8451bdf4daf11ef69a1fd614f51",
+    "builder": "scripts/build_gate_ledger.py",
+    "note": "判定钉死在 engine.all_digest 上：引擎或场景 oracle 任一改动都会改变该摘要，ledger_is_stale() 随即报 stale。这不是说旧结论错，而是说它尚未针对当前引擎重算过。"
+  },
+  "scenarios": {
+    "bio_logistic": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "Biology/Population Dynamics",
+      "published": "Logistic Growth N(t)=K/(1+Ae^{-rt}), K=100,r=0.6,A=19",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 1.0,
+        "r2_core": 1.0,
+        "rmse_rel": 0.0021
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/bio_logistic.html",
+        "json": "/reports/json/bio_logistic.json",
+        "docx": "/reports/docx/bio_logistic.docx"
+      }
+    },
+    "chem_bet": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "chemical / BET 多层吸附等温线",
+      "published": "Brunauer-Emmett-Teller (1938) 多层吸附等温线，q=q_m·bC/[(1−C/C_m)(1+(b−1)C)]",
+      "dim": 4,
+      "n_train": 60,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9999,
+        "r2_core": 1.0,
+        "rmse_rel": 0.0092
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/chem_bet.html",
+        "json": "/reports/json/chem_bet.json",
+        "docx": "/reports/docx/chem_bet.docx"
+      }
+    },
+    "chem_freundlich": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "chemical / Freundlich 经验吸附等温线",
+      "published": "Freundlich (1926) q=K·C^(1/n)，经验指数 1/n∈(0,1]（多相非饱和吸附）",
+      "dim": 3,
+      "n_train": 80,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 1.0,
+        "r2_core": 1.0,
+        "rmse_rel": 0.0069
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/chem_freundlich.html",
+        "json": "/reports/json/chem_freundlich.json",
+        "docx": "/reports/docx/chem_freundlich.docx"
+      }
+    },
+    "chem_langmuir": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.998 ≥ 0.9, coverage=0.950 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "Chemical/Adsorption Isotherm (Langmuir 1916)",
+      "published": "Langmuir 1916 Adsorption Isotherm θ=KP/(1+KP); K Takes Representative Value 1.5 (Adsorption Isotherm Literature Range 0.1–10)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.95,
+        "calibration_scale_kappa": 1.0593,
+        "cal_err": 0.0,
+        "r2": 0.9979,
+        "r2_core": 0.9981,
+        "rmse_rel": 0.0461
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/chem_langmuir.html",
+        "json": "/reports/json/chem_langmuir.json",
+        "docx": "/reports/docx/chem_langmuir.docx"
+      }
+    },
+    "chem_reactor_conversion": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "Chemistry / First-Order Reactor Conversion (Arrhenius Kinetics, 2D)",
+      "published": "First-Order CSTR/PFR Conversion X=1-exp(-k0·exp(-Ea/RT)·τ); Ea takes representative 30 kJ/mol, k0 is normalized to ensure X(410K,τ=5)≈0.9 (Homogeneous Reaction Kinetics Literature Range; Levenspiel 1999 Reactor Design)",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 1.0,
+        "r2_core": 1.0,
+        "rmse_rel": 0.0027
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/chem_reactor_conversion.html",
+        "json": "/reports/json/chem_reactor_conversion.json",
+        "docx": "/reports/docx/chem_reactor_conversion.docx"
+      }
+    },
+    "cheminfo_hydration": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "cheminformatics",
+      "published": "642 分子真实实验值（freesolv），线性响应面 oracle 从 200 训练分子 lstsq 拟合；目标变量：exp_hydration_free_energy_kcal_mol",
+      "dim": 7,
+      "n_train": 80,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9997,
+        "r2_core": 0.9996,
+        "rmse_rel": 0.0174
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/cheminfo_hydration.html",
+        "json": "/reports/json/cheminfo_hydration.json",
+        "docx": "/reports/docx/cheminfo_hydration.docx"
+      }
+    },
+    "cheminfo_logD": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "cheminformatics",
+      "published": "4200 分子真实实验值（chembl_lipophilicity），线性响应面 oracle 从 800 训练分子 lstsq 拟合；目标变量：exp_logD",
+      "dim": 8,
+      "n_train": 80,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9998,
+        "r2_core": 0.9997,
+        "rmse_rel": 0.0156
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/cheminfo_logD.html",
+        "json": "/reports/json/cheminfo_logD.json",
+        "docx": "/reports/docx/cheminfo_logD.docx"
+      }
+    },
+    "cheminfo_logS": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "cheminformatics",
+      "published": "1128 分子真实实验值（esol_delaney），线性响应面 oracle 从 400 训练分子 lstsq 拟合；目标变量：exp_logS",
+      "dim": 9,
+      "n_train": 80,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9999,
+        "r2_core": 0.9999,
+        "rmse_rel": 0.0082
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/cheminfo_logS.html",
+        "json": "/reports/json/cheminfo_logS.json",
+        "docx": "/reports/docx/cheminfo_logS.docx"
+      }
+    },
+    "cheminfo_pIC50": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "cheminformatics",
+      "published": "1513 分子真实实验值（bace），线性响应面 oracle 从 400 训练分子 lstsq 拟合；目标变量：exp_pIC50",
+      "dim": 7,
+      "n_train": 80,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9996,
+        "r2_core": 0.9994,
+        "rmse_rel": 0.0207
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/cheminfo_pIC50.html",
+        "json": "/reports/json/cheminfo_pIC50.json",
+        "docx": "/reports/docx/cheminfo_pIC50.docx"
+      }
+    },
+    "eco_lv_peak_ratio": {
+      "gate": "PROCEED_WITH_HUMAN_CHECK",
+      "verdict": "MARGINAL",
+      "rationale": "R²=0.734 ≥ 0.7 且 coverage=0.967 ≥ 0.8，但有一项未达 PASS 门槛",
+      "domain": "ecology",
+      "published": "Lotka-Volterra 捕食者-猎物 ODE，RK4 数值积分",
+      "dim": 4,
+      "n_train": 60,
+      "n_test": 30,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.967,
+        "calibration_scale_kappa": 17.8949,
+        "cal_err": 0.017,
+        "r2": 0.7338,
+        "r2_core": 0.4313,
+        "rmse_rel": 0.5162
+      },
+      "actionable_next_step": {
+        "action": "人工复核：查看 report/html 与 traceability 字段",
+        "why": "整体接近门槛但未越界",
+        "expected_effect": "确定是否可降级使用",
+        "effort": "S"
+      },
+      "high_freq": true,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/eco_lv_peak_ratio.html",
+        "json": "/reports/json/eco_lv_peak_ratio.json",
+        "docx": "/reports/docx/eco_lv_peak_ratio.docx"
+      }
+    },
+    "eco_nicholson_bailey": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.960 ≥ 0.9, coverage=0.933 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "ecology / Nicholson-Bailey 宿主-寄生物平衡",
+      "published": "Nicholson-Bailey (1935) 宿主-寄生物平衡 H*=m/(b·a)（离散世代，含周期解）",
+      "dim": 5,
+      "n_train": 60,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.933,
+        "calibration_scale_kappa": 5.069,
+        "cal_err": 0.017,
+        "r2": 0.9596,
+        "r2_core": 0.9915,
+        "rmse_rel": 0.201
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/eco_nicholson_bailey.html",
+        "json": "/reports/json/eco_nicholson_bailey.json",
+        "docx": "/reports/docx/eco_nicholson_bailey.docx"
+      }
+    },
+    "eco_ricker_population": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "ecology / Ricker 种群调控（10 代）",
+      "published": "Ricker (1957) N_{t+1}=N·e^{r(1−N/K)}，密度制约调控的经典离散模型",
+      "dim": 3,
+      "n_train": 80,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 1.0,
+        "r2_core": 1.0,
+        "rmse_rel": 0.0046
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/eco_ricker_population.html",
+        "json": "/reports/json/eco_ricker_population.json",
+        "docx": "/reports/docx/eco_ricker_population.docx"
+      }
+    },
+    "energy_ccpp_output": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "energy",
+      "published": "NASA CCPP 联合循环电厂 6 年 9,568 行实测；4 环境特征 → 功率输出 MW；oracle = 训练集 lstsq 线性响应面",
+      "dim": 4,
+      "n_train": 80,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 1.0,
+        "r2_core": 1.0,
+        "rmse_rel": 0.0056
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/energy_ccpp_output.html",
+        "json": "/reports/json/energy_ccpp_output.json",
+        "docx": "/reports/docx/energy_ccpp_output.docx"
+      }
+    },
+    "energy_isothermal_work": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "energy / 等温可逆膨胀功",
+      "published": "可逆等温膨胀功 W=nRT·ln(V₂/V₁)（理想气体，定义式，无近似）",
+      "dim": 5,
+      "n_train": 60,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 1.0,
+        "r2_core": 1.0,
+        "rmse_rel": 0.0055
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/energy_isothermal_work.html",
+        "json": "/reports/json/energy_isothermal_work.json",
+        "docx": "/reports/docx/energy_isothermal_work.docx"
+      }
+    },
+    "energy_rankine_efficiency": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "energy / Rankine 循环实际效率与 Carnot 之比",
+      "published": "简化 Rankine 循环效率：η=1−T_c/T_h 乘以部件效率因子（火电厂「可逆进程」度量）",
+      "dim": 4,
+      "n_train": 60,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 1.0,
+        "r2_core": 1.0,
+        "rmse_rel": 0.0048
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/energy_rankine_efficiency.html",
+        "json": "/reports/json/energy_rankine_efficiency.json",
+        "docx": "/reports/docx/energy_rankine_efficiency.docx"
+      }
+    },
+    "fin_merton_call_div": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "finance / Merton 连续红利欧式看涨",
+      "published": "Merton (1973) C=S·e^(−qT)N(d1)−K·e^(−rT)N(d2)，d1 含连续红利率 q（BS 的推广）",
+      "dim": 6,
+      "n_train": 120,
+      "n_test": 80,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9999,
+        "r2_core": 0.9999,
+        "rmse_rel": 0.009
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/fin_merton_call_div.html",
+        "json": "/reports/json/fin_merton_call_div.json",
+        "docx": "/reports/docx/fin_merton_call_div.docx"
+      }
+    },
+    "heat_radiation_flux": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.999 ≥ 0.9, coverage=0.950 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "heat conduction (physics-informed) / Stefan-Boltzmann 净辐射换热",
+      "published": "Stefan-Boltzmann 定律 εσA(T1⁴−T2⁴)，σ=5.670374419e-8 W/m²K⁴（CODATA 2018）",
+      "dim": 4,
+      "n_train": 60,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.95,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.0,
+        "r2": 0.9991,
+        "r2_core": 0.9999,
+        "rmse_rel": 0.0306
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/heat_radiation_flux.html",
+        "json": "/reports/json/heat_radiation_flux.json",
+        "docx": "/reports/docx/heat_radiation_flux.docx"
+      }
+    },
+    "heat_series_resistance": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "heat conduction (physics-informed) / 串联热阻稳态导热",
+      "published": "1D 稳态导热的傅里叶定律精确解（串联热阻相加）——无任何近似，oracle 即物理定律本身",
+      "dim": 8,
+      "n_train": 60,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9999,
+        "r2_core": 0.9999,
+        "rmse_rel": 0.0083
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/heat_series_resistance.html",
+        "json": "/reports/json/heat_series_resistance.json",
+        "docx": "/reports/docx/heat_series_resistance.docx"
+      }
+    },
+    "llm_chinchilla_loss": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.998 ≥ 0.9, coverage=0.967 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "llm / Chinchilla 计算最优训练损失",
+      "published": "Kaplan et al. (2020) Eq. 1.1: L(N,D)=A/N^α+B/D^β，系数 A=406.4 α=0.34 B=410.7 β=0.28",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.967,
+        "calibration_scale_kappa": 1.145,
+        "cal_err": 0.017,
+        "r2": 0.9983,
+        "r2_core": 0.9986,
+        "rmse_rel": 0.0414
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/llm_chinchilla_loss.html",
+        "json": "/reports/json/llm_chinchilla_loss.json",
+        "docx": "/reports/docx/llm_chinchilla_loss.docx"
+      }
+    },
+    "llm_compute_optimal_ratio": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "llm / Chinchilla 最优 D/N 比",
+      "published": "Kaplan et al. (2020) §4 理论最优 D/N=(Bα/(Aβ))^(1/(α−β))≈20.7",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9999,
+        "r2_core": 1.0,
+        "rmse_rel": 0.0079
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/llm_compute_optimal_ratio.html",
+        "json": "/reports/json/llm_compute_optimal_ratio.json",
+        "docx": "/reports/docx/llm_compute_optimal_ratio.docx"
+      }
+    },
+    "llm_scaling": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "LLM/Scaling Law (Kaplan 2020)",
+      "published": "Scaling Law L(N)=(N_c/N)^α, α=0.076, N_c=6.4e13 (Kaplan 2020 Published Coefficient, nats)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 1.0,
+        "r2_core": 1.0,
+        "rmse_rel": 0.0065
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/llm_scaling.html",
+        "json": "/reports/json/llm_scaling.json",
+        "docx": "/reports/docx/llm_scaling.docx"
+      }
+    },
+    "micro_acetobacter_acetate": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=0.983 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / 醋酸杆菌醋酸利用（温度效应 + Monod）",
+      "published": "A. calcoaceticus: μmax=0.78 h⁻¹, Ks=0.03 g/L, T_opt=37°C (Rogness et al. 1961)",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.983,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.033,
+        "r2": 0.9995,
+        "r2_core": 0.9993,
+        "rmse_rel": 0.021
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/micro_acetobacter_acetate.html",
+        "json": "/reports/json/micro_acetobacter_acetate.json",
+        "docx": "/reports/docx/micro_acetobacter_acetate.docx"
+      }
+    },
+    "micro_antibiotic_2d": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_antibiotic_2d",
+      "published": "Andrews 2001 (time-kill 2D)",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9999,
+        "r2_core": 0.9999,
+        "rmse_rel": 0.0
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/micro_antibiotic_2d.html",
+        "json": "/reports/json/micro_antibiotic_2d.json",
+        "docx": "/reports/docx/micro_antibiotic_2d.docx"
+      }
+    },
+    "micro_antibiotic_timekill": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_antibiotic_timekill",
+      "published": "Andrews 2001 (time-kill kinetics)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9997,
+        "r2_core": 0.9997,
+        "rmse_rel": 0.0
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/micro_antibiotic_timekill.html",
+        "json": "/reports/json/micro_antibiotic_timekill.json",
+        "docx": "/reports/docx/micro_antibiotic_timekill.docx"
+      }
+    },
+    "micro_biofilm_ecoli": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_biofilm_ecoli",
+      "published": "Costerton et al. 1995 (biofilm)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 1.0,
+        "r2_core": 1.0,
+        "rmse_rel": 0.0051
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/micro_biofilm_ecoli.html",
+        "json": "/reports/json/micro_biofilm_ecoli.json",
+        "docx": "/reports/docx/micro_biofilm_ecoli.docx"
+      }
+    },
+    "micro_cerevisiae_ethanol": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / 酿酒酵母乙醇发酵（Monod + 乙醇产物抑制）",
+      "published": "S. cerevisiae: μmax=0.42 h⁻¹, Ks=0.025 g/L, Ki(ethanol)=40 g/L (Dussaut & Cooney 1980)",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9999,
+        "r2_core": 0.9999,
+        "rmse_rel": 0.0068
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/micro_cerevisiae_ethanol.html",
+        "json": "/reports/json/micro_cerevisiae_ethanol.json",
+        "docx": "/reports/docx/micro_cerevisiae_ethanol.docx"
+      }
+    },
+    "micro_chemostat_cerevisiae": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.954 ≥ 0.9, coverage=0.933 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / 酿酒酵母 Chemostat 稳态（稀释率+进料浓度→生物量）",
+      "published": "Chemostat S. cerevisiae, S_f=20 g/L glucose (Dussaut & Cooney 1980)",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.933,
+        "calibration_scale_kappa": 5.3802,
+        "cal_err": 0.017,
+        "r2": 0.954,
+        "r2_core": 0.9606,
+        "rmse_rel": 0.2146
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": true,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/micro_chemostat_cerevisiae.html",
+        "json": "/reports/json/micro_chemostat_cerevisiae.json",
+        "docx": "/reports/docx/micro_chemostat_cerevisiae.docx"
+      }
+    },
+    "micro_chemostat_ecoli": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.996 ≥ 0.9, coverage=0.975 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / E. coli Chemostat 稳态（稀释率→生物量）",
+      "published": "Chemostat E. coli K-12, S_f=10 g/L glucose (Rogness et al. 1961)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.975,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.025,
+        "r2": 0.9959,
+        "r2_core": 0.9998,
+        "rmse_rel": 0.0576
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": true,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/micro_chemostat_ecoli.html",
+        "json": "/reports/json/micro_chemostat_ecoli.json",
+        "docx": "/reports/docx/micro_chemostat_ecoli.docx"
+      }
+    },
+    "micro_chemostat_transient": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_chemostat_transient",
+      "published": "Shuler & Kargi 2002 (chemostat transient)",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9999,
+        "r2_core": 0.9998,
+        "rmse_rel": 0.0107
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": true,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/micro_chemostat_transient.html",
+        "json": "/reports/json/micro_chemostat_transient.json",
+        "docx": "/reports/docx/micro_chemostat_transient.docx"
+      }
+    },
+    "micro_coculture_mutualism": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_coculture_mutualism",
+      "published": "Grosu et al. 2014 (co-culture mutualism)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9995,
+        "r2_core": 0.9993,
+        "rmse_rel": 0.0213
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/micro_coculture_mutualism.html",
+        "json": "/reports/json/micro_coculture_mutualism.json",
+        "docx": "/reports/docx/micro_coculture_mutualism.docx"
+      }
+    },
+    "micro_competition_2d": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.999 ≥ 0.9, coverage=0.975 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_competition_2d",
+      "published": "Tilman 1982 (smooth competition)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.975,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.025,
+        "r2": 0.9991,
+        "r2_core": 0.9998,
+        "rmse_rel": 0.0281
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/micro_competition_2d.html",
+        "json": "/reports/json/micro_competition_2d.json",
+        "docx": "/reports/docx/micro_competition_2d.docx"
+      }
+    },
+    "micro_competition_ecoli_yeast": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.996 ≥ 0.9, coverage=0.950 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_competition_ecoli_yeast",
+      "published": "Tilman 1982 Resource Competition (multi-species)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.95,
+        "calibration_scale_kappa": 1.3763,
+        "cal_err": 0.0,
+        "r2": 0.9958,
+        "r2_core": 0.9991,
+        "rmse_rel": 0.0646
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": true,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/micro_competition_ecoli_yeast.html",
+        "json": "/reports/json/micro_competition_ecoli_yeast.json",
+        "docx": "/reports/docx/micro_competition_ecoli_yeast.docx"
+      }
+    },
+    "micro_contois_ecoli": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_contois_ecoli",
+      "published": "Contois 1959 Biotech Bioeng 2:264 (Contois model)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9998,
+        "r2_core": 0.9999,
+        "rmse_rel": 0.0136
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/micro_contois_ecoli.html",
+        "json": "/reports/json/micro_contois_ecoli.json",
+        "docx": "/reports/docx/micro_contois_ecoli.docx"
+      }
+    },
+    "micro_crabtree_2d": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_crabtree_2d",
+      "published": "Crabtree 1929 (Crabtree 2D)",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 1.0,
+        "r2_core": 1.0,
+        "rmse_rel": 0.0039
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/micro_crabtree_2d.html",
+        "json": "/reports/json/micro_crabtree_2d.json",
+        "docx": "/reports/docx/micro_crabtree_2d.docx"
+      }
+    },
+    "micro_crabtree_cerevisiae": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.998 ≥ 0.9, coverage=0.925 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_crabtree_cerevisiae",
+      "published": "Crabtree 1929 JPB 53:394 (Crabtree effect)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.925,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.025,
+        "r2": 0.9978,
+        "r2_core": 0.9971,
+        "rmse_rel": 0.047
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/micro_crabtree_cerevisiae.html",
+        "json": "/reports/json/micro_crabtree_cerevisiae.json",
+        "docx": "/reports/docx/micro_crabtree_cerevisiae.docx"
+      }
+    },
+    "micro_dead_volume": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=0.967 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_dead_volume",
+      "published": "Froment & Bischoff 2012 (CSTR-in-series, dead volume)",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.967,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.017,
+        "r2": 0.9995,
+        "r2_core": 0.9999,
+        "rmse_rel": 0.022
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/micro_dead_volume.html",
+        "json": "/reports/json/micro_dead_volume.json",
+        "docx": "/reports/docx/micro_dead_volume.docx"
+      }
+    },
+    "micro_diauxic_2d": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.997 ≥ 0.9, coverage=0.967 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_diauxic_2d",
+      "published": "Monod 1947 (diauxie 2D)",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.967,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.017,
+        "r2": 0.9969,
+        "r2_core": 0.9998,
+        "rmse_rel": 0.0
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/micro_diauxic_2d.html",
+        "json": "/reports/json/micro_diauxic_2d.json",
+        "docx": "/reports/docx/micro_diauxic_2d.docx"
+      }
+    },
+    "micro_diauxic_ecoli": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.997 ≥ 0.9, coverage=0.950 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_diauxic_ecoli",
+      "published": "Monod 1947 (diauxie)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.95,
+        "calibration_scale_kappa": 1.2472,
+        "cal_err": 0.0,
+        "r2": 0.9974,
+        "r2_core": 0.9905,
+        "rmse_rel": 0.06
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/micro_diauxic_ecoli.html",
+        "json": "/reports/json/micro_diauxic_ecoli.json",
+        "docx": "/reports/docx/micro_diauxic_ecoli.docx"
+      }
+    },
+    "micro_doe_ecoli_monod": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.998 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_doe_ecoli_monod",
+      "published": "Montgomery 2012 DOE",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9983,
+        "r2_core": 0.8856,
+        "rmse_rel": 0.0463
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/micro_doe_ecoli_monod.html",
+        "json": "/reports/json/micro_doe_ecoli_monod.json",
+        "docx": "/reports/docx/micro_doe_ecoli_monod.docx"
+      }
+    },
+    "micro_ecoli_glucose": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.992 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / E. coli 批次培养（Monod, 文献参数）",
+      "published": "E. coli K-12: μmax=0.81 h⁻¹, Ks=0.004 g/L (Monod 1949; Shuler & Kargi 2002)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9922,
+        "r2_core": 0.7009,
+        "rmse_rel": 0.0764
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/micro_ecoli_glucose.html",
+        "json": "/reports/json/micro_ecoli_glucose.json",
+        "docx": "/reports/docx/micro_ecoli_glucose.docx"
+      }
+    },
+    "micro_fba_flux": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.956 ≥ 0.9, coverage=0.983 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_fba_flux",
+      "published": "Edwards & Palsson 2000 (FBA framework, E. coli)",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.983,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.033,
+        "r2": 0.9557,
+        "r2_core": 0.9116,
+        "rmse_rel": 0.2106
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/micro_fba_flux.html",
+        "json": "/reports/json/micro_fba_flux.json",
+        "docx": "/reports/docx/micro_fba_flux.docx"
+      }
+    },
+    "micro_fedbatch_2d": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_fedbatch_2d",
+      "published": "Shuler & Kargi 2002 (fed-batch 2D)",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 1.0,
+        "r2_core": 1.0,
+        "rmse_rel": 0.0035
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/micro_fedbatch_2d.html",
+        "json": "/reports/json/micro_fedbatch_2d.json",
+        "docx": "/reports/docx/micro_fedbatch_2d.docx"
+      }
+    },
+    "micro_fedbatch_3d": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_fedbatch_3d",
+      "published": "Shuler & Kargi 2002 (fed-batch 3D)",
+      "dim": 3,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 1.0,
+        "r2_core": 1.0,
+        "rmse_rel": 0.0047
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/micro_fedbatch_3d.html",
+        "json": "/reports/json/micro_fedbatch_3d.json",
+        "docx": "/reports/docx/micro_fedbatch_3d.docx"
+      }
+    },
+    "micro_fedbatch_ecoli": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.999 ≥ 0.9, coverage=0.950 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_fedbatch_ecoli",
+      "published": "Shuler & Kargi 2002 (fed-batch)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.95,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.0,
+        "r2": 0.9994,
+        "r2_core": 0.9993,
+        "rmse_rel": 0.025
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/micro_fedbatch_ecoli.html",
+        "json": "/reports/json/micro_fedbatch_ecoli.json",
+        "docx": "/reports/docx/micro_fedbatch_ecoli.docx"
+      }
+    },
+    "micro_foam_dynamics": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_foam_dynamics",
+      "published": "Krebes & Scharaschkin 1996 (foam in bioreactors)",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9998,
+        "r2_core": 0.9999,
+        "rmse_rel": 0.0134
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": true,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/micro_foam_dynamics.html",
+        "json": "/reports/json/micro_foam_dynamics.json",
+        "docx": "/reports/docx/micro_foam_dynamics.docx"
+      }
+    },
+    "micro_gene_expression": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_gene_expression",
+      "published": "Bashor & Meyer 2017 (gene expression dynamics)",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9998,
+        "r2_core": 0.9998,
+        "rmse_rel": 0.0138
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/micro_gene_expression.html",
+        "json": "/reports/json/micro_gene_expression.json",
+        "docx": "/reports/docx/micro_gene_expression.docx"
+      }
+    },
+    "micro_haldane_2d": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_haldane_2d",
+      "published": "Haldane 1956 (2D)",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9999,
+        "r2_core": 0.9999,
+        "rmse_rel": 0.0081
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/micro_haldane_2d.html",
+        "json": "/reports/json/micro_haldane_2d.json",
+        "docx": "/reports/docx/micro_haldane_2d.docx"
+      }
+    },
+    "micro_haldane_putida": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_haldane_putida",
+      "published": "Haldane 1956 Biochemistry of Industrial Fermentation (Haldane model)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9999,
+        "r2_core": 0.9999,
+        "rmse_rel": 0.009
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": true,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/micro_haldane_putida.html",
+        "json": "/reports/json/micro_haldane_putida.json",
+        "docx": "/reports/docx/micro_haldane_putida.docx"
+      }
+    },
+    "micro_heavy_metal_ecoli": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_heavy_metal_ecoli",
+      "published": "Kumar et al. 2012 (heavy metal stress)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 1.0,
+        "r2_core": 1.0,
+        "rmse_rel": 0.0078
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/micro_heavy_metal_ecoli.html",
+        "json": "/reports/json/micro_heavy_metal_ecoli.json",
+        "docx": "/reports/docx/micro_heavy_metal_ecoli.docx"
+      }
+    },
+    "micro_immobilized_cell": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.998 ≥ 0.9, coverage=0.917 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_immobilized_cell",
+      "published": "Shuler & Kargi 2002 (immobilized cells)",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.917,
+        "calibration_scale_kappa": 1.0461,
+        "cal_err": 0.033,
+        "r2": 0.9982,
+        "r2_core": 0.9985,
+        "rmse_rel": 0.0418
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": true,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/micro_immobilized_cell.html",
+        "json": "/reports/json/micro_immobilized_cell.json",
+        "docx": "/reports/docx/micro_immobilized_cell.docx"
+      }
+    },
+    "micro_lactococcus_lactose": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / 乳酸乳球菌乳酸发酵（pH 效应 + 底物抑制）",
+      "published": "L. lactis NZ9000: μmax=0.55 h⁻¹, Ks=0.3 g/L, Ki(lactose)=80 g/L (Luedtke & Schlegel 1973)",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9998,
+        "r2_core": 0.9999,
+        "rmse_rel": 0.0
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/micro_lactococcus_lactose.html",
+        "json": "/reports/json/micro_lactococcus_lactose.json",
+        "docx": "/reports/docx/micro_lactococcus_lactose.docx"
+      }
+    },
+    "micro_lag_ecoli": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_lag_ecoli",
+      "published": "Baranyi & Roberts 1994 IJF 10:300 (lag phase)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9999,
+        "r2_core": 0.9999,
+        "rmse_rel": 0.0085
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/micro_lag_ecoli.html",
+        "json": "/reports/json/micro_lag_ecoli.json",
+        "docx": "/reports/docx/micro_lag_ecoli.docx"
+      }
+    },
+    "micro_lifecycle_ecoli": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_lifecycle_ecoli",
+      "published": "Baranyi 1993 (full lifecycle)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 1.0,
+        "r2_core": 1.0,
+        "rmse_rel": 0.005
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/micro_lifecycle_ecoli.html",
+        "json": "/reports/json/micro_lifecycle_ecoli.json",
+        "docx": "/reports/docx/micro_lifecycle_ecoli.docx"
+      }
+    },
+    "micro_methanobacterium_methane": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / 产甲烷古菌甲烷利用（低 μmax 极端场景）",
+      "published": "M. trichosporium OB3b: μmax=0.08 h⁻¹, Ks=0.02 g/L (Whitmanet al. 1995)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9998,
+        "r2_core": 0.9999,
+        "rmse_rel": 0.0136
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": true,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/micro_methanobacterium_methane.html",
+        "json": "/reports/json/micro_methanobacterium_methane.json",
+        "docx": "/reports/docx/micro_methanobacterium_methane.docx"
+      }
+    },
+    "micro_mixed_substrate": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.997 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_mixed_substrate",
+      "published": "Roels 1983 (mixed substrate utilization)",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9974,
+        "r2_core": 0.9932,
+        "rmse_rel": 0.0512
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/micro_mixed_substrate.html",
+        "json": "/reports/json/micro_mixed_substrate.json",
+        "docx": "/reports/docx/micro_mixed_substrate.docx"
+      }
+    },
+    "micro_mle_ecoli_monod": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.999 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_mle_ecoli_monod",
+      "published": "Vogel 2004 (Bayesian estimation)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9989,
+        "r2_core": 0.9209,
+        "rmse_rel": 0.0303
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/micro_mle_ecoli_monod.html",
+        "json": "/reports/json/micro_mle_ecoli_monod.json",
+        "docx": "/reports/docx/micro_mle_ecoli_monod.docx"
+      }
+    },
+    "micro_osmotic_ecoli": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_osmotic_ecoli",
+      "published": "Rose 2008 Bacterial Osmotic Stress",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9996,
+        "r2_core": 0.9995,
+        "rmse_rel": 0.0192
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": true,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/micro_osmotic_ecoli.html",
+        "json": "/reports/json/micro_osmotic_ecoli.json",
+        "docx": "/reports/docx/micro_osmotic_ecoli.docx"
+      }
+    },
+    "micro_oxidative_stress": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_oxidative_stress",
+      "published": "Imlay 2008 (oxidative stress)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 1.0,
+        "r2_core": 1.0,
+        "rmse_rel": 0.0064
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/micro_oxidative_stress.html",
+        "json": "/reports/json/micro_oxidative_stress.json",
+        "docx": "/reports/docx/micro_oxidative_stress.docx"
+      }
+    },
+    "micro_oxygen_2d": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_oxygen_2d",
+      "published": "Shuler & Kargi 2002 (O2 2D)",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9997,
+        "r2_core": 0.9989,
+        "rmse_rel": 0.0178
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/micro_oxygen_2d.html",
+        "json": "/reports/json/micro_oxygen_2d.json",
+        "docx": "/reports/docx/micro_oxygen_2d.docx"
+      }
+    },
+    "micro_oxygen_ecoli": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.995 ≥ 0.9, coverage=0.975 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_oxygen_ecoli",
+      "published": "Shuler & Kargi 2002 (oxygen limitation)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.975,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.025,
+        "r2": 0.9949,
+        "r2_core": 0.9998,
+        "rmse_rel": 0.0713
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": true,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/micro_oxygen_ecoli.html",
+        "json": "/reports/json/micro_oxygen_ecoli.json",
+        "docx": "/reports/docx/micro_oxygen_ecoli.docx"
+      }
+    },
+    "micro_ph_control": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_ph_control",
+      "published": "Shuler & Kargi 2002 (pH control)",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9999,
+        "r2_core": 0.9999,
+        "rmse_rel": 0.0105
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/micro_ph_control.html",
+        "json": "/reports/json/micro_ph_control.json",
+        "docx": "/reports/docx/micro_ph_control.docx"
+      }
+    },
+    "micro_phage_infection": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_phage_infection",
+      "published": "Luria & Delbrück 1943 (phage infection)",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 1.0,
+        "r2_core": 1.0,
+        "rmse_rel": 0.0036
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/micro_phage_infection.html",
+        "json": "/reports/json/micro_phage_infection.json",
+        "docx": "/reports/docx/micro_phage_infection.docx"
+      }
+    },
+    "micro_pirt_ecoli": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_pirt_ecoli",
+      "published": "Pirt 1965 Newer Studies in Microbiology (Pirt maintenance)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9999,
+        "r2_core": 0.9255,
+        "rmse_rel": 0.0118
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/micro_pirt_ecoli.html",
+        "json": "/reports/json/micro_pirt_ecoli.json",
+        "docx": "/reports/docx/micro_pirt_ecoli.docx"
+      }
+    },
+    "micro_plasmid_stability": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_plasmid_stability",
+      "published": "Stewart 1978 (plasmid stability)",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 1.0,
+        "r2_core": 1.0,
+        "rmse_rel": 0.0035
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/micro_plasmid_stability.html",
+        "json": "/reports/json/micro_plasmid_stability.json",
+        "docx": "/reports/docx/micro_plasmid_stability.docx"
+      }
+    },
+    "micro_putida_toluene": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / 假单胞菌甲苯降解（Andrews 底物抑制）",
+      "published": "P. putida MT-2: μmax=0.35 h⁻¹, Ks=0.02 g/L, Ki(toluene)=2.5 g/L (Rothman et al. 1993)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9999,
+        "r2_core": 0.9999,
+        "rmse_rel": 0.0098
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/micro_putida_toluene.html",
+        "json": "/reports/json/micro_putida_toluene.json",
+        "docx": "/reports/docx/micro_putida_toluene.docx"
+      }
+    },
+    "micro_quorum_ecoli": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_quorum_ecoli",
+      "published": "Basler & Bassler 2011 (quorum sensing)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9998,
+        "r2_core": 0.9997,
+        "rmse_rel": 0.0141
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/micro_quorum_ecoli.html",
+        "json": "/reports/json/micro_quorum_ecoli.json",
+        "docx": "/reports/docx/micro_quorum_ecoli.docx"
+      }
+    },
+    "micro_scaleup_kla": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.999 ≥ 0.9, coverage=0.975 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_scaleup_kla",
+      "published": "Shuler & Kargi 2002 (scale-up)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.975,
+        "calibration_scale_kappa": 1.2812,
+        "cal_err": 0.025,
+        "r2": 0.9989,
+        "r2_core": 0.9992,
+        "rmse_rel": 0.0297
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/micro_scaleup_kla.html",
+        "json": "/reports/json/micro_scaleup_kla.json",
+        "docx": "/reports/docx/micro_scaleup_kla.docx"
+      }
+    },
+    "micro_secondary_metabolite": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_secondary_metabolite",
+      "published": "Luedeking & Piret 1959 (secondary metabolite, Gaden III)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9998,
+        "r2_core": 0.9999,
+        "rmse_rel": 0.0145
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/micro_secondary_metabolite.html",
+        "json": "/reports/json/micro_secondary_metabolite.json",
+        "docx": "/reports/docx/micro_secondary_metabolite.docx"
+      }
+    },
+    "micro_sensor_fusion": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_sensor_fusion",
+      "published": "Gelb 1974 (Kalman filter / Bayesian fusion)",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 1.0,
+        "r2_core": 1.0,
+        "rmse_rel": 0.0068
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/micro_sensor_fusion.html",
+        "json": "/reports/json/micro_sensor_fusion.json",
+        "docx": "/reports/docx/micro_sensor_fusion.docx"
+      }
+    },
+    "micro_sobol_ecoli": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.994 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_sobol_ecoli",
+      "published": "Sobol 2001 (global sensitivity)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9944,
+        "r2_core": 0.9578,
+        "rmse_rel": 0.0716
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/micro_sobol_ecoli.html",
+        "json": "/reports/json/micro_sobol_ecoli.json",
+        "docx": "/reports/docx/micro_sobol_ecoli.docx"
+      }
+    },
+    "micro_tessier_ecoli": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_tessier_ecoli",
+      "published": "Tessier 1956 Arch Mikrobiol 25:102 (Tessier model)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9999,
+        "r2_core": 0.9999,
+        "rmse_rel": 0.0078
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": true,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/micro_tessier_ecoli.html",
+        "json": "/reports/json/micro_tessier_ecoli.json",
+        "docx": "/reports/docx/micro_tessier_ecoli.docx"
+      }
+    },
+    "micro_thermal_death": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_thermal_death",
+      "published": "Earley 1976 (F-value sterilization)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 1.0,
+        "r2_core": 1.0,
+        "rmse_rel": 0.0058
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/micro_thermal_death.html",
+        "json": "/reports/json/micro_thermal_death.json",
+        "docx": "/reports/docx/micro_thermal_death.docx"
+      }
+    },
+    "micro_uq_ecoli_monod": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.997 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "微生物 / micro_uq_ecoli_monod",
+      "published": "Svensson 1999 (UQ in bioprocess)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9966,
+        "r2_core": 0.9133,
+        "rmse_rel": 0.0581
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/micro_uq_ecoli_monod.html",
+        "json": "/reports/json/micro_uq_ecoli_monod.json",
+        "docx": "/reports/docx/micro_uq_ecoli_monod.docx"
+      }
+    },
+    "microbio_inhibition": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=0.975 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "Microorganisms/Substrate Inhibition (Andrews)",
+      "published": "Andrews 1968 Substrate Inhibition μ=μmax·S/(Ks+S+S²/Ki), Ki≈1.0 g/L (literature representative values)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.975,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.025,
+        "r2": 0.9997,
+        "r2_core": 0.9994,
+        "rmse_rel": 0.0189
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": true,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/microbio_inhibition.html",
+        "json": "/reports/json/microbio_inhibition.json",
+        "docx": "/reports/docx/microbio_inhibition.docx"
+      }
+    },
+    "microbio_monod": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "Microorganisms/Growth Kinetics (Monod)",
+      "published": "Monod 1949: μ(S)=μmax·S/(Ks+S), E.coli μmax=0.81 h⁻¹, Ks=0.22 g/L (literature representative values)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9997,
+        "r2_core": 0.9998,
+        "rmse_rel": 0.0172
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": true,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/microbio_monod.html",
+        "json": "/reports/json/microbio_monod.json",
+        "docx": "/reports/docx/microbio_monod.docx"
+      }
+    },
+    "mol_esterification_yield": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.965 ≥ 0.9, coverage=0.983 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "chemistry",
+      "published": "12 substrate pairs with known yields (Gaussian response surface gold)",
+      "dim": 10,
+      "n_train": 60,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.983,
+        "calibration_scale_kappa": 3.3249,
+        "cal_err": 0.033,
+        "r2": 0.9647,
+        "r2_core": 0.9918,
+        "rmse_rel": 0.2024
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/mol_esterification_yield.html",
+        "json": "/reports/json/mol_esterification_yield.json",
+        "docx": "/reports/docx/mol_esterification_yield.docx"
+      }
+    },
+    "mol_suzuki_yield": {
+      "gate": "BLOCK_AUTONOMOUS_ACTION",
+      "verdict": "REFUTED",
+      "rationale": "R²=0.330 < 0.7（拟合不足）",
+      "domain": "chemistry",
+      "published": "12 substrate pairs with known yields (Gaussian response surface gold)",
+      "dim": 10,
+      "n_train": 60,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.95,
+        "calibration_scale_kappa": 1.174,
+        "cal_err": 0.0,
+        "r2": 0.3299,
+        "r2_core": 0.9611,
+        "rmse_rel": 0.8192
+      },
+      "actionable_next_step": {
+        "action": "先加密训练点或改用 multifidelity：见 engine/multifidelity.py::decide_mean_fn",
+        "why": "r²=0.3299 < 0.95；代理模型欠拟合",
+        "expected_effect": "若仍不达 → 目标函数超出平滑代理适用域（A14 roughness > 0.3）",
+        "effort": "M"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/mol_suzuki_yield.html",
+        "json": "/reports/json/mol_suzuki_yield.json",
+        "docx": "/reports/docx/mol_suzuki_yield.docx"
+      }
+    },
+    "neuro_hh_spike_amplitude": {
+      "gate": "PROCEED_WITH_HUMAN_CHECK",
+      "verdict": "MARGINAL",
+      "rationale": "R²=0.975 ≥ 0.7 且 coverage=0.833 ≥ 0.8，但有一项未达 PASS 门槛",
+      "domain": "neuroscience",
+      "published": "Hodgkin-Huxley 四变量神经元模型，数值积分求解",
+      "dim": 7,
+      "n_train": 60,
+      "n_test": 30,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.833,
+        "calibration_scale_kappa": 2.1403,
+        "cal_err": 0.117,
+        "r2": 0.9754,
+        "r2_core": 0.9246,
+        "rmse_rel": 0.1569
+      },
+      "actionable_next_step": {
+        "action": "跑 adaptive_conformal 滚动更新分位数",
+        "why": "coverage=0.833 边缘低于阈值",
+        "expected_effect": "覆盖回升到标称附近",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/neuro_hh_spike_amplitude.html",
+        "json": "/reports/json/neuro_hh_spike_amplitude.json",
+        "docx": "/reports/docx/neuro_hh_spike_amplitude.docx"
+      }
+    },
+    "neuro_izhikevich_rate": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.978 ≥ 0.9, coverage=0.933 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "neuroscience / Izhikevich 神经元放电频率",
+      "published": "Izhikevich (2003) 4 参数二维神经元模型，Euler 积分 1000ms 统计放电数",
+      "dim": 5,
+      "n_train": 60,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.933,
+        "calibration_scale_kappa": 4.0217,
+        "cal_err": 0.017,
+        "r2": 0.978,
+        "r2_core": 0.9627,
+        "rmse_rel": 0.1485
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/neuro_izhikevich_rate.html",
+        "json": "/reports/json/neuro_izhikevich_rate.json",
+        "docx": "/reports/docx/neuro_izhikevich_rate.docx"
+      }
+    },
+    "neuro_lif_fi": {
+      "gate": "PROCEED_WITH_HUMAN_CHECK",
+      "verdict": "MARGINAL",
+      "rationale": "R²=0.794 ≥ 0.7 且 coverage=0.950 ≥ 0.8，但有一项未达 PASS 门槛",
+      "domain": "neuroscience / LIF 神经元 f-I 曲线",
+      "published": "LIF 稳态放电频率解析解 f=1/[T_ref+τ·ln((V_th−V_rest)/(V_th−V_reset−R·I))]",
+      "dim": 7,
+      "n_train": 60,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.95,
+        "calibration_scale_kappa": 1.0452,
+        "cal_err": 0.0,
+        "r2": 0.7935,
+        "r2_core": 0.9902,
+        "rmse_rel": 0.4556
+      },
+      "actionable_next_step": {
+        "action": "人工复核：查看 report/html 与 traceability 字段",
+        "why": "整体接近门槛但未越界",
+        "expected_effect": "确定是否可降级使用",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/neuro_lif_fi.html",
+        "json": "/reports/json/neuro_lif_fi.json",
+        "docx": "/reports/docx/neuro_lif_fi.docx"
+      }
+    },
+    "ode_lotka_volterra": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "biology",
+      "published": "Lotka-Volterra 参数-响应代理（非拟态基准，供 GP 代理练习）",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9995,
+        "r2_core": 0.9997,
+        "rmse_rel": 0.0216
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/ode_lotka_volterra.html",
+        "json": "/reports/json/ode_lotka_volterra.json",
+        "docx": "/reports/docx/ode_lotka_volterra.docx"
+      }
+    },
+    "opt_ackley2d": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.978 ≥ 0.9, coverage=0.967 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "optimization",
+      "published": "global min = 0 at x=(0,0)",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.967,
+        "calibration_scale_kappa": 4.2429,
+        "cal_err": 0.017,
+        "r2": 0.9781,
+        "r2_core": 0.9582,
+        "rmse_rel": 0.1479
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/opt_ackley2d.html",
+        "json": "/reports/json/opt_ackley2d.json",
+        "docx": "/reports/docx/opt_ackley2d.docx"
+      }
+    },
+    "opt_gramacylee1d": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.997 ≥ 0.9, coverage=0.950 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "optimization",
+      "published": "Gramacy & Lee 2012 test function (1D multimodal)",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.95,
+        "calibration_scale_kappa": 1.2944,
+        "cal_err": 0.0,
+        "r2": 0.9973,
+        "r2_core": 0.9959,
+        "rmse_rel": 0.0519
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": true,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/opt_gramacylee1d.html",
+        "json": "/reports/json/opt_gramacylee1d.json",
+        "docx": "/reports/docx/opt_gramacylee1d.docx"
+      }
+    },
+    "opt_hartmann3d": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "optimization",
+      "published": "global min ≈ -3.86278",
+      "dim": 3,
+      "n_train": 80,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9998,
+        "r2_core": 0.9997,
+        "rmse_rel": 0.0134
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": true,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/opt_hartmann3d.html",
+        "json": "/reports/json/opt_hartmann3d.json",
+        "docx": "/reports/docx/opt_hartmann3d.docx"
+      }
+    },
+    "opt_levy2d": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.999 ≥ 0.9, coverage=0.967 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "optimization",
+      "published": "global min = 0 at x=(1,1)",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.967,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.017,
+        "r2": 0.9985,
+        "r2_core": 0.999,
+        "rmse_rel": 0.0382
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/opt_levy2d.html",
+        "json": "/reports/json/opt_levy2d.json",
+        "docx": "/reports/docx/opt_levy2d.docx"
+      }
+    },
+    "opt_michalewicz2d": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.991 ≥ 0.9, coverage=0.933 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "optimization",
+      "published": "approx min = -1.8013 at m=10",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.933,
+        "calibration_scale_kappa": 1.7669,
+        "cal_err": 0.017,
+        "r2": 0.9907,
+        "r2_core": 0.9773,
+        "rmse_rel": 0.0963
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": true,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/opt_michalewicz2d.html",
+        "json": "/reports/json/opt_michalewicz2d.json",
+        "docx": "/reports/docx/opt_michalewicz2d.docx"
+      }
+    },
+    "opt_rastrigin2d": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.956 ≥ 0.9, coverage=0.917 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "optimization",
+      "published": "global min = 0 at x=(0,0)",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.917,
+        "calibration_scale_kappa": 2.921,
+        "cal_err": 0.033,
+        "r2": 0.9563,
+        "r2_core": 0.9072,
+        "rmse_rel": 0.2091
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/opt_rastrigin2d.html",
+        "json": "/reports/json/opt_rastrigin2d.json",
+        "docx": "/reports/docx/opt_rastrigin2d.docx"
+      }
+    },
+    "opt_rosenbrock2d": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=0.967 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "optimization",
+      "published": "global min = 0 at x=(1,1)",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 0.967,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.017,
+        "r2": 0.9997,
+        "r2_core": 0.9997,
+        "rmse_rel": 0.0183
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": true,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/opt_rosenbrock2d.html",
+        "json": "/reports/json/opt_rosenbrock2d.json",
+        "docx": "/reports/docx/opt_rosenbrock2d.docx"
+      }
+    },
+    "opt_schwefel2d": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.999 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "optimization",
+      "published": "global min = 0 at x=(420.9687, 420.9687)",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9993,
+        "r2_core": 0.9981,
+        "rmse_rel": 0.0256
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/opt_schwefel2d.html",
+        "json": "/reports/json/opt_schwefel2d.json",
+        "docx": "/reports/docx/opt_schwefel2d.docx"
+      }
+    },
+    "pde_heat1d": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "heat conduction (physics-informed) / 1D 热传导方程解析解",
+      "published": "1D Heat Equation Analytical Solution u=sin(πx)e^{-π²t}",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9999,
+        "r2_core": 1.0,
+        "rmse_rel": 0.0095
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": true,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/pde_heat1d.html",
+        "json": "/reports/json/pde_heat1d.json",
+        "docx": "/reports/docx/pde_heat1d.docx"
+      }
+    },
+    "quant_bs_call": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "finance",
+      "published": "Black-Scholes 看涨期权定价解析公式",
+      "dim": 5,
+      "n_train": 80,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9997,
+        "r2_core": 0.9995,
+        "rmse_rel": 0.0184
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/quant_bs_call.html",
+        "json": "/reports/json/quant_bs_call.json",
+        "docx": "/reports/docx/quant_bs_call.docx"
+      }
+    },
+    "resp_welch2d": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "optimization",
+      "published": "Welch et al. 1992 SDOE test function",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9999,
+        "r2_core": 0.9999,
+        "rmse_rel": 0.0076
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": true,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/resp_welch2d.html",
+        "json": "/reports/json/resp_welch2d.json",
+        "docx": "/reports/docx/resp_welch2d.docx"
+      }
+    },
+    "surrogate_branin": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "Surrogate Modeling/Optimization (2D Benchmark)",
+      "published": "Branin min ≈ 0.397887 @ 3 known points",
+      "dim": 2,
+      "n_train": 50,
+      "n_test": 60,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9999,
+        "r2_core": 0.9998,
+        "rmse_rel": 0.0122
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": false,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/surrogate_branin.html",
+        "json": "/reports/json/surrogate_branin.json",
+        "docx": "/reports/docx/surrogate_branin.docx"
+      }
+    },
+    "surrogate_forrester": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "Surrogate Modeling/Optimization (Bayesian Optimization Benchmark)",
+      "published": "Forrester et al. 2008: min ≈ -6.0208 @ x≈0.7572",
+      "dim": 1,
+      "n_train": 30,
+      "n_test": 40,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9999,
+        "r2_core": 0.9999,
+        "rmse_rel": 0.0105
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": true,
+      "replication_passed": false,
+      "report": {
+        "html": "/reports/html/surrogate_forrester.html",
+        "json": "/reports/json/surrogate_forrester.json",
+        "docx": "/reports/docx/surrogate_forrester.docx"
+      }
+    },
+    "surrogate_hartmann6": {
+      "gate": "PROCEED",
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "domain": "Surrogate Modeling/Optimization (6D High-Dimensional Benchmark)",
+      "published": "Hartmann 6D min ≈ -3.32237",
+      "dim": 6,
+      "n_train": 120,
+      "n_test": 80,
+      "uncertainty": {
+        "noise_floor": 0.03,
+        "nominal_coverage": 0.95,
+        "coverage": 1.0,
+        "calibration_scale_kappa": 1.0,
+        "cal_err": 0.05,
+        "r2": 0.9998,
+        "r2_core": 0.9999,
+        "rmse_rel": 0.0149
+      },
+      "actionable_next_step": {
+        "action": "已可信，直接使用；结论附带校准区间与适用域边界",
+        "why": "所有 rubric 维度通过（r² ≥ 0.99、coverage ≥ 0.95、cal_err < 0.05）",
+        "expected_effect": "结论可直接落地到决策",
+        "effort": "S"
+      },
+      "high_freq": true,
+      "replication_passed": true,
+      "report": {
+        "html": "/reports/html/surrogate_hartmann6.html",
+        "json": "/reports/json/surrogate_hartmann6.json",
+        "docx": "/reports/docx/surrogate_hartmann6.docx"
+      }
+    }
+  }
+}
