@@ -1,0 +1,3156 @@
+{
+  "version": 1,
+  "updated_at": "2026-10-11T23:19:12",
+  "records": [
+    {
+      "key": "bio_logistic",
+      "domain": "Biology/Population Dynamics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:06",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "chem_bet",
+      "domain": "chemical / BET 多层吸附等温线",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:06",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "chem_freundlich",
+      "domain": "chemical / Freundlich 经验吸附等温线",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:06",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "chem_langmuir",
+      "domain": "Chemical/Adsorption Isotherm (Langmuir 1916)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:06",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "chem_reactor_conversion",
+      "domain": "Chemistry / First-Order Reactor Conversion (Arrhenius Kinetics, 2D)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:06",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "cheminfo_hydration",
+      "domain": "cheminformatics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:06",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "cheminfo_logD",
+      "domain": "cheminformatics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:06",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "cheminfo_logS",
+      "domain": "cheminformatics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:06",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "cheminfo_pIC50",
+      "domain": "cheminformatics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:06",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "eco_lv_peak_ratio",
+      "domain": "ecology",
+      "predicted_rmse_rel": 0.3,
+      "observed_rmse_rel": 0.0,
+      "verdict": "unverified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:06",
+      "improvement_ratio": 300000000000.0
+    },
+    {
+      "key": "bio_logistic",
+      "domain": "Biology/Population Dynamics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "chem_bet",
+      "domain": "chemical / BET 多层吸附等温线",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "chem_freundlich",
+      "domain": "chemical / Freundlich 经验吸附等温线",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "chem_langmuir",
+      "domain": "Chemical/Adsorption Isotherm (Langmuir 1916)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "chem_reactor_conversion",
+      "domain": "Chemistry / First-Order Reactor Conversion (Arrhenius Kinetics, 2D)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "cheminfo_hydration",
+      "domain": "cheminformatics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "cheminfo_logD",
+      "domain": "cheminformatics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "cheminfo_logS",
+      "domain": "cheminformatics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "cheminfo_pIC50",
+      "domain": "cheminformatics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "eco_lv_peak_ratio",
+      "domain": "ecology",
+      "predicted_rmse_rel": 0.3,
+      "observed_rmse_rel": 0.0,
+      "verdict": "unverified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 300000000000.0
+    },
+    {
+      "key": "eco_nicholson_bailey",
+      "domain": "ecology / Nicholson-Bailey 宿主-寄生物平衡",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "eco_ricker_population",
+      "domain": "ecology / Ricker 种群调控（10 代）",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "energy_ccpp_output",
+      "domain": "energy",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "energy_isothermal_work",
+      "domain": "energy / 等温可逆膨胀功",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "energy_rankine_efficiency",
+      "domain": "energy / Rankine 循环实际效率与 Carnot 之比",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "fin_merton_call_div",
+      "domain": "finance / Merton 连续红利欧式看涨",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "heat_radiation_flux",
+      "domain": "heat conduction (physics-informed) / Stefan-Boltzmann 净辐射换热",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "heat_series_resistance",
+      "domain": "heat conduction (physics-informed) / 串联热阻稳态导热",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "llm_chinchilla_loss",
+      "domain": "llm / Chinchilla 计算最优训练损失",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "llm_compute_optimal_ratio",
+      "domain": "llm / Chinchilla 最优 D/N 比",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "llm_scaling",
+      "domain": "LLM/Scaling Law (Kaplan 2020)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_acetobacter_acetate",
+      "domain": "微生物 / 醋酸杆菌醋酸利用（温度效应 + Monod）",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_antibiotic_2d",
+      "domain": "微生物 / micro_antibiotic_2d",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_antibiotic_timekill",
+      "domain": "微生物 / micro_antibiotic_timekill",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_biofilm_ecoli",
+      "domain": "微生物 / micro_biofilm_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_cerevisiae_ethanol",
+      "domain": "微生物 / 酿酒酵母乙醇发酵（Monod + 乙醇产物抑制）",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_chemostat_cerevisiae",
+      "domain": "微生物 / 酿酒酵母 Chemostat 稳态（稀释率+进料浓度→生物量）",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_chemostat_ecoli",
+      "domain": "微生物 / E. coli Chemostat 稳态（稀释率→生物量）",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_chemostat_transient",
+      "domain": "微生物 / micro_chemostat_transient",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_coculture_mutualism",
+      "domain": "微生物 / micro_coculture_mutualism",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_competition_2d",
+      "domain": "微生物 / micro_competition_2d",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_competition_ecoli_yeast",
+      "domain": "微生物 / micro_competition_ecoli_yeast",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_contois_ecoli",
+      "domain": "微生物 / micro_contois_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_crabtree_2d",
+      "domain": "微生物 / micro_crabtree_2d",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_crabtree_cerevisiae",
+      "domain": "微生物 / micro_crabtree_cerevisiae",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_dead_volume",
+      "domain": "微生物 / micro_dead_volume",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_diauxic_2d",
+      "domain": "微生物 / micro_diauxic_2d",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_diauxic_ecoli",
+      "domain": "微生物 / micro_diauxic_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_doe_ecoli_monod",
+      "domain": "微生物 / micro_doe_ecoli_monod",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_ecoli_glucose",
+      "domain": "微生物 / E. coli 批次培养（Monod, 文献参数）",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_fba_flux",
+      "domain": "微生物 / micro_fba_flux",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_fedbatch_2d",
+      "domain": "微生物 / micro_fedbatch_2d",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_fedbatch_3d",
+      "domain": "微生物 / micro_fedbatch_3d",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_fedbatch_ecoli",
+      "domain": "微生物 / micro_fedbatch_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_foam_dynamics",
+      "domain": "微生物 / micro_foam_dynamics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_gene_expression",
+      "domain": "微生物 / micro_gene_expression",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_haldane_2d",
+      "domain": "微生物 / micro_haldane_2d",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_haldane_putida",
+      "domain": "微生物 / micro_haldane_putida",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_heavy_metal_ecoli",
+      "domain": "微生物 / micro_heavy_metal_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_immobilized_cell",
+      "domain": "微生物 / micro_immobilized_cell",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_lactococcus_lactose",
+      "domain": "微生物 / 乳酸乳球菌乳酸发酵（pH 效应 + 底物抑制）",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_lag_ecoli",
+      "domain": "微生物 / micro_lag_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_lifecycle_ecoli",
+      "domain": "微生物 / micro_lifecycle_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_methanobacterium_methane",
+      "domain": "微生物 / 产甲烷古菌甲烷利用（低 μmax 极端场景）",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_mixed_substrate",
+      "domain": "微生物 / micro_mixed_substrate",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_mle_ecoli_monod",
+      "domain": "微生物 / micro_mle_ecoli_monod",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_osmotic_ecoli",
+      "domain": "微生物 / micro_osmotic_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_oxidative_stress",
+      "domain": "微生物 / micro_oxidative_stress",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_oxygen_2d",
+      "domain": "微生物 / micro_oxygen_2d",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_oxygen_ecoli",
+      "domain": "微生物 / micro_oxygen_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_ph_control",
+      "domain": "微生物 / micro_ph_control",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_phage_infection",
+      "domain": "微生物 / micro_phage_infection",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_pirt_ecoli",
+      "domain": "微生物 / micro_pirt_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_plasmid_stability",
+      "domain": "微生物 / micro_plasmid_stability",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_putida_toluene",
+      "domain": "微生物 / 假单胞菌甲苯降解（Andrews 底物抑制）",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_quorum_ecoli",
+      "domain": "微生物 / micro_quorum_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_scaleup_kla",
+      "domain": "微生物 / micro_scaleup_kla",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_secondary_metabolite",
+      "domain": "微生物 / micro_secondary_metabolite",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_sensor_fusion",
+      "domain": "微生物 / micro_sensor_fusion",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_sobol_ecoli",
+      "domain": "微生物 / micro_sobol_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_tessier_ecoli",
+      "domain": "微生物 / micro_tessier_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_thermal_death",
+      "domain": "微生物 / micro_thermal_death",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_uq_ecoli_monod",
+      "domain": "微生物 / micro_uq_ecoli_monod",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "microbio_inhibition",
+      "domain": "Microorganisms/Substrate Inhibition (Andrews)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "microbio_monod",
+      "domain": "Microorganisms/Growth Kinetics (Monod)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "mol_esterification_yield",
+      "domain": "chemistry",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "mol_suzuki_yield",
+      "domain": "chemistry",
+      "predicted_rmse_rel": 0.3,
+      "observed_rmse_rel": 0.0,
+      "verdict": "prediction_missed",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 300000000000.0
+    },
+    {
+      "key": "neuro_hh_spike_amplitude",
+      "domain": "neuroscience",
+      "predicted_rmse_rel": 0.3,
+      "observed_rmse_rel": 0.0,
+      "verdict": "unverified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 300000000000.0
+    },
+    {
+      "key": "neuro_izhikevich_rate",
+      "domain": "neuroscience / Izhikevich 神经元放电频率",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "neuro_lif_fi",
+      "domain": "neuroscience / LIF 神经元 f-I 曲线",
+      "predicted_rmse_rel": 0.3,
+      "observed_rmse_rel": 0.0,
+      "verdict": "unverified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 300000000000.0
+    },
+    {
+      "key": "ode_lotka_volterra",
+      "domain": "biology",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "opt_ackley2d",
+      "domain": "optimization",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "opt_gramacylee1d",
+      "domain": "optimization",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "opt_hartmann3d",
+      "domain": "optimization",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "opt_levy2d",
+      "domain": "optimization",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "opt_michalewicz2d",
+      "domain": "optimization",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "opt_rastrigin2d",
+      "domain": "optimization",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "opt_rosenbrock2d",
+      "domain": "optimization",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "opt_schwefel2d",
+      "domain": "optimization",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "pde_heat1d",
+      "domain": "heat conduction (physics-informed) / 1D 热传导方程解析解",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "quant_bs_call",
+      "domain": "finance",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "resp_welch2d",
+      "domain": "optimization",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "surrogate_branin",
+      "domain": "Surrogate Modeling/Optimization (2D Benchmark)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "surrogate_forrester",
+      "domain": "Surrogate Modeling/Optimization (Bayesian Optimization Benchmark)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "surrogate_hartmann6",
+      "domain": "Surrogate Modeling/Optimization (6D High-Dimensional Benchmark)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:13:39",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "bio_logistic",
+      "domain": "Biology/Population Dynamics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "chem_bet",
+      "domain": "chemical / BET 多层吸附等温线",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "chem_freundlich",
+      "domain": "chemical / Freundlich 经验吸附等温线",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "chem_langmuir",
+      "domain": "Chemical/Adsorption Isotherm (Langmuir 1916)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "chem_reactor_conversion",
+      "domain": "Chemistry / First-Order Reactor Conversion (Arrhenius Kinetics, 2D)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "cheminfo_hydration",
+      "domain": "cheminformatics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "cheminfo_logD",
+      "domain": "cheminformatics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "cheminfo_logS",
+      "domain": "cheminformatics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "cheminfo_pIC50",
+      "domain": "cheminformatics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "eco_lv_peak_ratio",
+      "domain": "ecology",
+      "predicted_rmse_rel": 0.3,
+      "observed_rmse_rel": 0.0,
+      "verdict": "unverified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 300000000000.0
+    },
+    {
+      "key": "eco_nicholson_bailey",
+      "domain": "ecology / Nicholson-Bailey 宿主-寄生物平衡",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "eco_ricker_population",
+      "domain": "ecology / Ricker 种群调控（10 代）",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "energy_ccpp_output",
+      "domain": "energy",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "energy_isothermal_work",
+      "domain": "energy / 等温可逆膨胀功",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "energy_rankine_efficiency",
+      "domain": "energy / Rankine 循环实际效率与 Carnot 之比",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "fin_merton_call_div",
+      "domain": "finance / Merton 连续红利欧式看涨",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "heat_radiation_flux",
+      "domain": "heat conduction (physics-informed) / Stefan-Boltzmann 净辐射换热",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "heat_series_resistance",
+      "domain": "heat conduction (physics-informed) / 串联热阻稳态导热",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "llm_chinchilla_loss",
+      "domain": "llm / Chinchilla 计算最优训练损失",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "llm_compute_optimal_ratio",
+      "domain": "llm / Chinchilla 最优 D/N 比",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "llm_scaling",
+      "domain": "LLM/Scaling Law (Kaplan 2020)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_acetobacter_acetate",
+      "domain": "微生物 / 醋酸杆菌醋酸利用（温度效应 + Monod）",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_antibiotic_2d",
+      "domain": "微生物 / micro_antibiotic_2d",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_antibiotic_timekill",
+      "domain": "微生物 / micro_antibiotic_timekill",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_biofilm_ecoli",
+      "domain": "微生物 / micro_biofilm_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_cerevisiae_ethanol",
+      "domain": "微生物 / 酿酒酵母乙醇发酵（Monod + 乙醇产物抑制）",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_chemostat_cerevisiae",
+      "domain": "微生物 / 酿酒酵母 Chemostat 稳态（稀释率+进料浓度→生物量）",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_chemostat_ecoli",
+      "domain": "微生物 / E. coli Chemostat 稳态（稀释率→生物量）",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_chemostat_transient",
+      "domain": "微生物 / micro_chemostat_transient",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_coculture_mutualism",
+      "domain": "微生物 / micro_coculture_mutualism",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_competition_2d",
+      "domain": "微生物 / micro_competition_2d",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_competition_ecoli_yeast",
+      "domain": "微生物 / micro_competition_ecoli_yeast",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_contois_ecoli",
+      "domain": "微生物 / micro_contois_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_crabtree_2d",
+      "domain": "微生物 / micro_crabtree_2d",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_crabtree_cerevisiae",
+      "domain": "微生物 / micro_crabtree_cerevisiae",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_dead_volume",
+      "domain": "微生物 / micro_dead_volume",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_diauxic_2d",
+      "domain": "微生物 / micro_diauxic_2d",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_diauxic_ecoli",
+      "domain": "微生物 / micro_diauxic_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_doe_ecoli_monod",
+      "domain": "微生物 / micro_doe_ecoli_monod",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_ecoli_glucose",
+      "domain": "微生物 / E. coli 批次培养（Monod, 文献参数）",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_fba_flux",
+      "domain": "微生物 / micro_fba_flux",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_fedbatch_2d",
+      "domain": "微生物 / micro_fedbatch_2d",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_fedbatch_3d",
+      "domain": "微生物 / micro_fedbatch_3d",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_fedbatch_ecoli",
+      "domain": "微生物 / micro_fedbatch_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_foam_dynamics",
+      "domain": "微生物 / micro_foam_dynamics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_gene_expression",
+      "domain": "微生物 / micro_gene_expression",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_haldane_2d",
+      "domain": "微生物 / micro_haldane_2d",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_haldane_putida",
+      "domain": "微生物 / micro_haldane_putida",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_heavy_metal_ecoli",
+      "domain": "微生物 / micro_heavy_metal_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_immobilized_cell",
+      "domain": "微生物 / micro_immobilized_cell",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_lactococcus_lactose",
+      "domain": "微生物 / 乳酸乳球菌乳酸发酵（pH 效应 + 底物抑制）",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_lag_ecoli",
+      "domain": "微生物 / micro_lag_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_lifecycle_ecoli",
+      "domain": "微生物 / micro_lifecycle_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_methanobacterium_methane",
+      "domain": "微生物 / 产甲烷古菌甲烷利用（低 μmax 极端场景）",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_mixed_substrate",
+      "domain": "微生物 / micro_mixed_substrate",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_mle_ecoli_monod",
+      "domain": "微生物 / micro_mle_ecoli_monod",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_osmotic_ecoli",
+      "domain": "微生物 / micro_osmotic_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_oxidative_stress",
+      "domain": "微生物 / micro_oxidative_stress",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_oxygen_2d",
+      "domain": "微生物 / micro_oxygen_2d",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_oxygen_ecoli",
+      "domain": "微生物 / micro_oxygen_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_ph_control",
+      "domain": "微生物 / micro_ph_control",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_phage_infection",
+      "domain": "微生物 / micro_phage_infection",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_pirt_ecoli",
+      "domain": "微生物 / micro_pirt_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_plasmid_stability",
+      "domain": "微生物 / micro_plasmid_stability",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_putida_toluene",
+      "domain": "微生物 / 假单胞菌甲苯降解（Andrews 底物抑制）",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_quorum_ecoli",
+      "domain": "微生物 / micro_quorum_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_scaleup_kla",
+      "domain": "微生物 / micro_scaleup_kla",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_secondary_metabolite",
+      "domain": "微生物 / micro_secondary_metabolite",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_sensor_fusion",
+      "domain": "微生物 / micro_sensor_fusion",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_sobol_ecoli",
+      "domain": "微生物 / micro_sobol_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_tessier_ecoli",
+      "domain": "微生物 / micro_tessier_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_thermal_death",
+      "domain": "微生物 / micro_thermal_death",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "micro_uq_ecoli_monod",
+      "domain": "微生物 / micro_uq_ecoli_monod",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "microbio_inhibition",
+      "domain": "Microorganisms/Substrate Inhibition (Andrews)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "microbio_monod",
+      "domain": "Microorganisms/Growth Kinetics (Monod)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "mol_esterification_yield",
+      "domain": "chemistry",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "mol_suzuki_yield",
+      "domain": "chemistry",
+      "predicted_rmse_rel": 0.3,
+      "observed_rmse_rel": 0.0,
+      "verdict": "prediction_missed",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 300000000000.0
+    },
+    {
+      "key": "neuro_hh_spike_amplitude",
+      "domain": "neuroscience",
+      "predicted_rmse_rel": 0.3,
+      "observed_rmse_rel": 0.0,
+      "verdict": "unverified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 300000000000.0
+    },
+    {
+      "key": "neuro_izhikevich_rate",
+      "domain": "neuroscience / Izhikevich 神经元放电频率",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "neuro_lif_fi",
+      "domain": "neuroscience / LIF 神经元 f-I 曲线",
+      "predicted_rmse_rel": 0.3,
+      "observed_rmse_rel": 0.0,
+      "verdict": "unverified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 300000000000.0
+    },
+    {
+      "key": "ode_lotka_volterra",
+      "domain": "biology",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "opt_ackley2d",
+      "domain": "optimization",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "opt_gramacylee1d",
+      "domain": "optimization",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "opt_hartmann3d",
+      "domain": "optimization",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "opt_levy2d",
+      "domain": "optimization",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "opt_michalewicz2d",
+      "domain": "optimization",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "opt_rastrigin2d",
+      "domain": "optimization",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "opt_rosenbrock2d",
+      "domain": "optimization",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "opt_schwefel2d",
+      "domain": "optimization",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "pde_heat1d",
+      "domain": "heat conduction (physics-informed) / 1D 热传导方程解析解",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "quant_bs_call",
+      "domain": "finance",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "resp_welch2d",
+      "domain": "optimization",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "surrogate_branin",
+      "domain": "Surrogate Modeling/Optimization (2D Benchmark)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "surrogate_forrester",
+      "domain": "Surrogate Modeling/Optimization (Bayesian Optimization Benchmark)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "surrogate_hartmann6",
+      "domain": "Surrogate Modeling/Optimization (6D High-Dimensional Benchmark)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T14:15:09",
+      "improvement_ratio": 150000000000.0
+    },
+    {
+      "key": "bio_logistic",
+      "domain": "Biology/Population Dynamics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0021,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:18:21",
+      "improvement_ratio": 71.4286
+    },
+    {
+      "key": "chem_bet",
+      "domain": "chemical / BET 多层吸附等温线",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0092,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:18:21",
+      "improvement_ratio": 16.3043
+    },
+    {
+      "key": "chem_freundlich",
+      "domain": "chemical / Freundlich 经验吸附等温线",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0069,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:18:21",
+      "improvement_ratio": 21.7391
+    },
+    {
+      "key": "chem_langmuir",
+      "domain": "Chemical/Adsorption Isotherm (Langmuir 1916)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0461,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:18:21",
+      "improvement_ratio": 3.2538
+    },
+    {
+      "key": "chem_reactor_conversion",
+      "domain": "Chemistry / First-Order Reactor Conversion (Arrhenius Kinetics, 2D)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0027,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:18:21",
+      "improvement_ratio": 55.5556
+    },
+    {
+      "key": "cheminfo_hydration",
+      "domain": "cheminformatics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0174,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:18:21",
+      "improvement_ratio": 8.6207
+    },
+    {
+      "key": "cheminfo_logD",
+      "domain": "cheminformatics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0156,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:18:21",
+      "improvement_ratio": 9.6154
+    },
+    {
+      "key": "cheminfo_logS",
+      "domain": "cheminformatics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0082,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:18:21",
+      "improvement_ratio": 18.2927
+    },
+    {
+      "key": "cheminfo_pIC50",
+      "domain": "cheminformatics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0207,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:18:21",
+      "improvement_ratio": 7.2464
+    },
+    {
+      "key": "eco_lv_peak_ratio",
+      "domain": "ecology",
+      "predicted_rmse_rel": 0.3,
+      "observed_rmse_rel": 0.5162,
+      "verdict": "unverified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:18:21",
+      "improvement_ratio": 0.5812
+    },
+    {
+      "key": "bio_logistic",
+      "domain": "Biology/Population Dynamics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0021,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:18:54",
+      "improvement_ratio": 71.4286
+    },
+    {
+      "key": "chem_bet",
+      "domain": "chemical / BET 多层吸附等温线",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0092,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:18:54",
+      "improvement_ratio": 16.3043
+    },
+    {
+      "key": "chem_freundlich",
+      "domain": "chemical / Freundlich 经验吸附等温线",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0069,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:18:54",
+      "improvement_ratio": 21.7391
+    },
+    {
+      "key": "chem_langmuir",
+      "domain": "Chemical/Adsorption Isotherm (Langmuir 1916)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0461,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:18:54",
+      "improvement_ratio": 3.2538
+    },
+    {
+      "key": "chem_reactor_conversion",
+      "domain": "Chemistry / First-Order Reactor Conversion (Arrhenius Kinetics, 2D)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0027,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:18:54",
+      "improvement_ratio": 55.5556
+    },
+    {
+      "key": "cheminfo_hydration",
+      "domain": "cheminformatics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0174,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:18:54",
+      "improvement_ratio": 8.6207
+    },
+    {
+      "key": "cheminfo_logD",
+      "domain": "cheminformatics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0156,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:18:54",
+      "improvement_ratio": 9.6154
+    },
+    {
+      "key": "cheminfo_logS",
+      "domain": "cheminformatics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0082,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:18:54",
+      "improvement_ratio": 18.2927
+    },
+    {
+      "key": "cheminfo_pIC50",
+      "domain": "cheminformatics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0207,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:18:54",
+      "improvement_ratio": 7.2464
+    },
+    {
+      "key": "eco_lv_peak_ratio",
+      "domain": "ecology",
+      "predicted_rmse_rel": 0.3,
+      "observed_rmse_rel": 0.5162,
+      "verdict": "unverified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:18:54",
+      "improvement_ratio": 0.5812
+    },
+    {
+      "key": "bio_logistic",
+      "domain": "Biology/Population Dynamics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0021,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 71.4286
+    },
+    {
+      "key": "chem_bet",
+      "domain": "chemical / BET 多层吸附等温线",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0092,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 16.3043
+    },
+    {
+      "key": "chem_freundlich",
+      "domain": "chemical / Freundlich 经验吸附等温线",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0069,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 21.7391
+    },
+    {
+      "key": "chem_langmuir",
+      "domain": "Chemical/Adsorption Isotherm (Langmuir 1916)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0461,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 3.2538
+    },
+    {
+      "key": "chem_reactor_conversion",
+      "domain": "Chemistry / First-Order Reactor Conversion (Arrhenius Kinetics, 2D)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0027,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 55.5556
+    },
+    {
+      "key": "cheminfo_hydration",
+      "domain": "cheminformatics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0174,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 8.6207
+    },
+    {
+      "key": "cheminfo_logD",
+      "domain": "cheminformatics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0156,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 9.6154
+    },
+    {
+      "key": "cheminfo_logS",
+      "domain": "cheminformatics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0082,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 18.2927
+    },
+    {
+      "key": "cheminfo_pIC50",
+      "domain": "cheminformatics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0207,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 7.2464
+    },
+    {
+      "key": "eco_lv_peak_ratio",
+      "domain": "ecology",
+      "predicted_rmse_rel": 0.3,
+      "observed_rmse_rel": 0.5162,
+      "verdict": "unverified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 0.5812
+    },
+    {
+      "key": "eco_nicholson_bailey",
+      "domain": "ecology / Nicholson-Bailey 宿主-寄生物平衡",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.201,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 0.7463
+    },
+    {
+      "key": "eco_ricker_population",
+      "domain": "ecology / Ricker 种群调控（10 代）",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0046,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 32.6087
+    },
+    {
+      "key": "energy_ccpp_output",
+      "domain": "energy",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0056,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 26.7857
+    },
+    {
+      "key": "energy_isothermal_work",
+      "domain": "energy / 等温可逆膨胀功",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0055,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 27.2727
+    },
+    {
+      "key": "energy_rankine_efficiency",
+      "domain": "energy / Rankine 循环实际效率与 Carnot 之比",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0048,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 31.25
+    },
+    {
+      "key": "fin_merton_call_div",
+      "domain": "finance / Merton 连续红利欧式看涨",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.009,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 16.6667
+    },
+    {
+      "key": "heat_radiation_flux",
+      "domain": "heat conduction (physics-informed) / Stefan-Boltzmann 净辐射换热",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0306,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 4.902
+    },
+    {
+      "key": "heat_series_resistance",
+      "domain": "heat conduction (physics-informed) / 串联热阻稳态导热",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0083,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 18.0723
+    },
+    {
+      "key": "llm_chinchilla_loss",
+      "domain": "llm / Chinchilla 计算最优训练损失",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0414,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 3.6232
+    },
+    {
+      "key": "llm_compute_optimal_ratio",
+      "domain": "llm / Chinchilla 最优 D/N 比",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0079,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 18.9873
+    },
+    {
+      "key": "llm_scaling",
+      "domain": "LLM/Scaling Law (Kaplan 2020)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0065,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 23.0769
+    },
+    {
+      "key": "micro_acetobacter_acetate",
+      "domain": "微生物 / 醋酸杆菌醋酸利用（温度效应 + Monod）",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.021,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 7.1429
+    },
+    {
+      "key": "micro_antibiotic_2d",
+      "domain": "微生物 / micro_antibiotic_2d",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.001,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 150.0
+    },
+    {
+      "key": "micro_antibiotic_timekill",
+      "domain": "微生物 / micro_antibiotic_timekill",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.001,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 150.0
+    },
+    {
+      "key": "micro_biofilm_ecoli",
+      "domain": "微生物 / micro_biofilm_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0051,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 29.4118
+    },
+    {
+      "key": "micro_cerevisiae_ethanol",
+      "domain": "微生物 / 酿酒酵母乙醇发酵（Monod + 乙醇产物抑制）",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0068,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 22.0588
+    },
+    {
+      "key": "micro_chemostat_cerevisiae",
+      "domain": "微生物 / 酿酒酵母 Chemostat 稳态（稀释率+进料浓度→生物量）",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.2146,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 0.699
+    },
+    {
+      "key": "micro_chemostat_ecoli",
+      "domain": "微生物 / E. coli Chemostat 稳态（稀释率→生物量）",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0576,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 2.6042
+    },
+    {
+      "key": "micro_chemostat_transient",
+      "domain": "微生物 / micro_chemostat_transient",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0107,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 14.0187
+    },
+    {
+      "key": "micro_coculture_mutualism",
+      "domain": "微生物 / micro_coculture_mutualism",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0213,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 7.0423
+    },
+    {
+      "key": "micro_competition_2d",
+      "domain": "微生物 / micro_competition_2d",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0281,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 5.3381
+    },
+    {
+      "key": "micro_competition_ecoli_yeast",
+      "domain": "微生物 / micro_competition_ecoli_yeast",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0646,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 2.322
+    },
+    {
+      "key": "micro_contois_ecoli",
+      "domain": "微生物 / micro_contois_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0136,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 11.0294
+    },
+    {
+      "key": "micro_crabtree_2d",
+      "domain": "微生物 / micro_crabtree_2d",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0039,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 38.4615
+    },
+    {
+      "key": "micro_crabtree_cerevisiae",
+      "domain": "微生物 / micro_crabtree_cerevisiae",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.047,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 3.1915
+    },
+    {
+      "key": "micro_dead_volume",
+      "domain": "微生物 / micro_dead_volume",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.022,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 6.8182
+    },
+    {
+      "key": "micro_diauxic_2d",
+      "domain": "微生物 / micro_diauxic_2d",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0030999999999999917,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 48.3871
+    },
+    {
+      "key": "micro_diauxic_ecoli",
+      "domain": "微生物 / micro_diauxic_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.06,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 2.5
+    },
+    {
+      "key": "micro_doe_ecoli_monod",
+      "domain": "微生物 / micro_doe_ecoli_monod",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0463,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 3.2397
+    },
+    {
+      "key": "micro_ecoli_glucose",
+      "domain": "微生物 / E. coli 批次培养（Monod, 文献参数）",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0764,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 1.9634
+    },
+    {
+      "key": "micro_fba_flux",
+      "domain": "微生物 / micro_fba_flux",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.2106,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 0.7123
+    },
+    {
+      "key": "micro_fedbatch_2d",
+      "domain": "微生物 / micro_fedbatch_2d",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0035,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 42.8571
+    },
+    {
+      "key": "micro_fedbatch_3d",
+      "domain": "微生物 / micro_fedbatch_3d",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0047,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 31.9149
+    },
+    {
+      "key": "micro_fedbatch_ecoli",
+      "domain": "微生物 / micro_fedbatch_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.025,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 6.0
+    },
+    {
+      "key": "micro_foam_dynamics",
+      "domain": "微生物 / micro_foam_dynamics",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0134,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 11.194
+    },
+    {
+      "key": "micro_gene_expression",
+      "domain": "微生物 / micro_gene_expression",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0138,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 10.8696
+    },
+    {
+      "key": "micro_haldane_2d",
+      "domain": "微生物 / micro_haldane_2d",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0081,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 18.5185
+    },
+    {
+      "key": "micro_haldane_putida",
+      "domain": "微生物 / micro_haldane_putida",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.009,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 16.6667
+    },
+    {
+      "key": "micro_heavy_metal_ecoli",
+      "domain": "微生物 / micro_heavy_metal_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0078,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 19.2308
+    },
+    {
+      "key": "micro_immobilized_cell",
+      "domain": "微生物 / micro_immobilized_cell",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0418,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 3.5885
+    },
+    {
+      "key": "micro_lactococcus_lactose",
+      "domain": "微生物 / 乳酸乳球菌乳酸发酵（pH 效应 + 底物抑制）",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.001,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 150.0
+    },
+    {
+      "key": "micro_lag_ecoli",
+      "domain": "微生物 / micro_lag_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0085,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 17.6471
+    },
+    {
+      "key": "micro_lifecycle_ecoli",
+      "domain": "微生物 / micro_lifecycle_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.005,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 30.0
+    },
+    {
+      "key": "micro_methanobacterium_methane",
+      "domain": "微生物 / 产甲烷古菌甲烷利用（低 μmax 极端场景）",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0136,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 11.0294
+    },
+    {
+      "key": "micro_mixed_substrate",
+      "domain": "微生物 / micro_mixed_substrate",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0512,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 2.9297
+    },
+    {
+      "key": "micro_mle_ecoli_monod",
+      "domain": "微生物 / micro_mle_ecoli_monod",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0303,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 4.9505
+    },
+    {
+      "key": "micro_osmotic_ecoli",
+      "domain": "微生物 / micro_osmotic_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0192,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 7.8125
+    },
+    {
+      "key": "micro_oxidative_stress",
+      "domain": "微生物 / micro_oxidative_stress",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0064,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 23.4375
+    },
+    {
+      "key": "micro_oxygen_2d",
+      "domain": "微生物 / micro_oxygen_2d",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0178,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 8.427
+    },
+    {
+      "key": "micro_oxygen_ecoli",
+      "domain": "微生物 / micro_oxygen_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0713,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 2.1038
+    },
+    {
+      "key": "micro_ph_control",
+      "domain": "微生物 / micro_ph_control",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0105,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 14.2857
+    },
+    {
+      "key": "micro_phage_infection",
+      "domain": "微生物 / micro_phage_infection",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0036,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 41.6667
+    },
+    {
+      "key": "micro_pirt_ecoli",
+      "domain": "微生物 / micro_pirt_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0118,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 12.7119
+    },
+    {
+      "key": "micro_plasmid_stability",
+      "domain": "微生物 / micro_plasmid_stability",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0035,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 42.8571
+    },
+    {
+      "key": "micro_putida_toluene",
+      "domain": "微生物 / 假单胞菌甲苯降解（Andrews 底物抑制）",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0098,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 15.3061
+    },
+    {
+      "key": "micro_quorum_ecoli",
+      "domain": "微生物 / micro_quorum_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0141,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 10.6383
+    },
+    {
+      "key": "micro_scaleup_kla",
+      "domain": "微生物 / micro_scaleup_kla",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0297,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 5.0505
+    },
+    {
+      "key": "micro_secondary_metabolite",
+      "domain": "微生物 / micro_secondary_metabolite",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0145,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 10.3448
+    },
+    {
+      "key": "micro_sensor_fusion",
+      "domain": "微生物 / micro_sensor_fusion",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0068,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 22.0588
+    },
+    {
+      "key": "micro_sobol_ecoli",
+      "domain": "微生物 / micro_sobol_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0716,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 2.095
+    },
+    {
+      "key": "micro_tessier_ecoli",
+      "domain": "微生物 / micro_tessier_ecoli",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0078,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 19.2308
+    },
+    {
+      "key": "micro_thermal_death",
+      "domain": "微生物 / micro_thermal_death",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0058,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 25.8621
+    },
+    {
+      "key": "micro_uq_ecoli_monod",
+      "domain": "微生物 / micro_uq_ecoli_monod",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0581,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 2.5818
+    },
+    {
+      "key": "microbio_inhibition",
+      "domain": "Microorganisms/Substrate Inhibition (Andrews)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0189,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 7.9365
+    },
+    {
+      "key": "microbio_monod",
+      "domain": "Microorganisms/Growth Kinetics (Monod)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0172,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 8.7209
+    },
+    {
+      "key": "mol_esterification_yield",
+      "domain": "chemistry",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.2024,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 0.7411
+    },
+    {
+      "key": "mol_suzuki_yield",
+      "domain": "chemistry",
+      "predicted_rmse_rel": 0.3,
+      "observed_rmse_rel": 0.8192,
+      "verdict": "prediction_missed",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 0.3662
+    },
+    {
+      "key": "neuro_hh_spike_amplitude",
+      "domain": "neuroscience",
+      "predicted_rmse_rel": 0.3,
+      "observed_rmse_rel": 0.1569,
+      "verdict": "unverified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 1.912
+    },
+    {
+      "key": "neuro_izhikevich_rate",
+      "domain": "neuroscience / Izhikevich 神经元放电频率",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.1485,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 1.0101
+    },
+    {
+      "key": "neuro_lif_fi",
+      "domain": "neuroscience / LIF 神经元 f-I 曲线",
+      "predicted_rmse_rel": 0.3,
+      "observed_rmse_rel": 0.4556,
+      "verdict": "unverified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 0.6585
+    },
+    {
+      "key": "ode_lotka_volterra",
+      "domain": "biology",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0216,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 6.9444
+    },
+    {
+      "key": "opt_ackley2d",
+      "domain": "optimization",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.1479,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 1.0142
+    },
+    {
+      "key": "opt_gramacylee1d",
+      "domain": "optimization",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0519,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 2.8902
+    },
+    {
+      "key": "opt_hartmann3d",
+      "domain": "optimization",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0134,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 11.194
+    },
+    {
+      "key": "opt_levy2d",
+      "domain": "optimization",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0382,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 3.9267
+    },
+    {
+      "key": "opt_michalewicz2d",
+      "domain": "optimization",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0963,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 1.5576
+    },
+    {
+      "key": "opt_rastrigin2d",
+      "domain": "optimization",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.2091,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 0.7174
+    },
+    {
+      "key": "opt_rosenbrock2d",
+      "domain": "optimization",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0183,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 8.1967
+    },
+    {
+      "key": "opt_schwefel2d",
+      "domain": "optimization",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0256,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 5.8594
+    },
+    {
+      "key": "pde_heat1d",
+      "domain": "heat conduction (physics-informed) / 1D 热传导方程解析解",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0095,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 15.7895
+    },
+    {
+      "key": "quant_bs_call",
+      "domain": "finance",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0184,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 8.1522
+    },
+    {
+      "key": "resp_welch2d",
+      "domain": "optimization",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0076,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 19.7368
+    },
+    {
+      "key": "surrogate_branin",
+      "domain": "Surrogate Modeling/Optimization (2D Benchmark)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0122,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 12.2951
+    },
+    {
+      "key": "surrogate_forrester",
+      "domain": "Surrogate Modeling/Optimization (Bayesian Optimization Benchmark)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0105,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 14.2857
+    },
+    {
+      "key": "surrogate_hartmann6",
+      "domain": "Surrogate Modeling/Optimization (6D High-Dimensional Benchmark)",
+      "predicted_rmse_rel": 0.15,
+      "observed_rmse_rel": 0.0149,
+      "verdict": "verified",
+      "tolerance": 0.3,
+      "timestamp": "2026-10-11T23:19:12",
+      "improvement_ratio": 10.0671
+    }
+  ]
+}

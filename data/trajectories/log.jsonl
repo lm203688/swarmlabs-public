@@ -1,0 +1,8 @@
+{"recorded_at": "2026-09-25T12:55:15.891+00:00", "work_order_id": "wo-73850396ea48c940", "outcome": "STALE_LEDGER_FAIL_CLOSED", "verdict": "UNVALIDATED", "duration_ms": 151.78, "snapshot": "wo-73850396ea48c940.json"}
+{"recorded_at": "2026-09-25T13:00:39.181+00:00", "work_order_id": "wo-73850396ea48c940", "outcome": "STALE_LEDGER_FAIL_CLOSED", "verdict": "UNVALIDATED", "duration_ms": 94.87, "snapshot": "wo-73850396ea48c940.json"}
+{"recorded_at": "2026-09-26T01:06:27.581+00:00", "work_order_id": "wo-73850396ea48c940", "outcome": "PROCEED", "verdict": "PASS", "duration_ms": 40.88, "snapshot": "wo-73850396ea48c940.json"}
+{"recorded_at": "2026-09-26T01:06:42.734+00:00", "work_order_id": "wo-73850396ea48c940", "outcome": "PROCEED", "verdict": "PASS", "duration_ms": 65.47, "snapshot": "wo-73850396ea48c940.json"}
+{"recorded_at": "2026-10-23T09:25:16.572+00:00", "work_order_id": "wo-73850396ea48c940", "outcome": "PROCEED", "verdict": "PASS", "duration_ms": 621.92, "snapshot": "wo-73850396ea48c940.json"}
+{"recorded_at": "2026-10-23T09:25:32.099+00:00", "work_order_id": "wo-73850396ea48c940", "outcome": "PROCEED", "verdict": "PASS", "duration_ms": 84.07, "snapshot": "wo-73850396ea48c940.json"}
+{"recorded_at": "2026-10-26T00:37:23.711+00:00", "work_order_id": "wo-73850396ea48c940", "outcome": "PROCEED", "verdict": "PASS", "duration_ms": 78.17, "snapshot": "wo-73850396ea48c940.json"}
+{"recorded_at": "2026-11-14T02:58:14.162+00:00", "work_order_id": "wo-73850396ea48c940", "outcome": "PROCEED", "verdict": "PASS", "duration_ms": 29.2, "snapshot": "wo-73850396ea48c940.json"}

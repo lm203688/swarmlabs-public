@@ -1,0 +1,1043 @@
+{
+  "generated_at_utc": "2026-11-02T19:13:08Z",
+  "purpose": "Second, independent evidence chain. The V&V reports prove the surrogate model reproduces the ORACLE (R^2 + coverage). This file asks the other question: does the oracle's assumed ground truth agree with real wet-lab measurements? R^2 = 1.0 on a 40x-off parameter is still only 'perfectly faithful to the wrong physics'. Oracle parameters are NOT copied from scenario metadata — they are reverse-engineered by least-squares fitting of the noise-free oracle, because the scenario metadata is internally inconsistent (microbio_monod claims Ks=0.22 g/L while micro_ecoli_glucose claims 0.004 g/L for the same strain/substrate, 55x apart).",
+  "anchors": [
+    {
+      "key": "ecoli_glucose_Ks",
+      "label": "E. coli / 葡萄糖 半饱和常数 Ks",
+      "unit": "g/L",
+      "lo": 3e-05,
+      "hi": 0.005,
+      "note": "真实生物学上 Ks 跨 167× 是可证的（生理适应），但**所有**独立来源都低于 5 mg/L；高于此值的场景参数与文献共识不符",
+      "sources": [
+        "Egli & Kovárová-Kovar 1998 MMBR 62:646-666 — E. coli/葡萄糖 Ks 因生理长期适应从 ~5 mg/L 降到 ~30 μg/L（167× 跨度，同一综述内）；并指出 μmax（批次，底物过量）与 Ks（恒化器，底物受控）**不可同时测定**",
+        "Bader et al. 2013 'Chemical, Biochemical, and Engineering Terminology' 表 — E. coli 37°C 葡萄糖 μmax 0.8–1.4 h⁻¹, Ks 2–4 mg/L",
+        "Ihssen et al. 2007（经 PMC5733555 Table 1 引）— K_G = 2.994e-6 mol/L = 0.54 mg/L",
+        "BioProcessTools Monod 参数汇编 — E. coli K-12 37°C μmax 0.7–1.0 h⁻¹, Ks 2–4 mg/L"
+      ],
+      "scenarios": [
+        "microbio_monod",
+        "micro_ecoli_glucose",
+        "micro_mle_ecoli_monod",
+        "micro_doe_ecoli_monod",
+        "micro_uq_ecoli_monod",
+        "micro_sobol_ecoli",
+        "micro_pirt_ecoli"
+      ],
+      "value_key": "Ks",
+      "decision_relevant": true,
+      "experiment_system": "chemostat_or_batch",
+      "version": "E_coli_K_12_variants",
+      "operating_condition": "37C",
+      "evidence": {
+        "dimensions": {
+          "experiment_system": "chemostat_or_batch",
+          "version": "E_coli_K_12_variants",
+          "operating_condition": "37C"
+        },
+        "filled": 3,
+        "of": 3,
+        "fully_anchored": true,
+        "missing": []
+      }
+    },
+    {
+      "key": "ecoli_glucose_mu_max",
+      "label": "E. coli / 葡萄糖 μmax",
+      "unit": "h^-1",
+      "lo": 0.6,
+      "hi": 1.4,
+      "note": "最小培养基 MG1655 约 0.6–0.7；富培养基 / B/r 可达 1.0–1.4",
+      "sources": [
+        "Bader et al. 表 — E. coli 37°C 葡萄糖 μmax 0.8–1.4 h⁻¹",
+        "BioProcessTools — E. coli K-12 0.7–1.0 h⁻¹（最小培养基），BL21 0.8–1.2 h⁻¹（LB）",
+        "Nanchen et al. 2006 AEM 72:1164 — MG1655 恒化器稀释率 >0.7 h⁻¹ 即洗出（→ μmax(MG1655, M9+1 g/L 葡萄糖) ≈ 0.6–0.7 h⁻¹）",
+        "Senn 1994 BBA 1201:424 — E. coli B/r 富培养基 μmax ≈ 1.0 h⁻¹"
+      ],
+      "scenarios": [
+        "microbio_monod",
+        "micro_ecoli_glucose",
+        "micro_mle_ecoli_monod",
+        "micro_doe_ecoli_monod",
+        "micro_uq_ecoli_monod",
+        "micro_sobol_ecoli",
+        "micro_pirt_ecoli"
+      ],
+      "value_key": "mu_max",
+      "decision_relevant": true,
+      "experiment_system": "batch_culture",
+      "version": "E_coli_K_12_variants",
+      "operating_condition": "37C",
+      "evidence": {
+        "dimensions": {
+          "experiment_system": "batch_culture",
+          "version": "E_coli_K_12_variants",
+          "operating_condition": "37C"
+        },
+        "filled": 3,
+        "of": 3,
+        "fully_anchored": true,
+        "missing": []
+      }
+    },
+    {
+      "key": "ecoli_glucose_maintenance",
+      "label": "E. coli / 葡萄糖 维持系数 m_s",
+      "unit": "g/(gDW·h)",
+      "lo": 0.051,
+      "hi": 0.083,
+      "note": "按场景自称的菌株 MG1655 取值：Nanchen 2006 0.067 ± 0.016。若放宽到全部 9 株 E. coli，观测跨度为 0.020–0.068，即 m_s=0.02 恰落在物种观测下限 —— 判 NEAR 而非 CONTRADICTED。仅锚定 micro_pirt_ecoli：其他 Monod 场景的 m 虽写在 PAPER_PARAMS 里，但不进入 μ(S) 表达式，对 oracle 输出零影响，无法从输出反推。",
+      "sources": [
+        "Pirt 1965 'Newer Studies in Microbiology' 经典表 — E. coli/葡萄糖 m_s = 0.057 g(gDW·h)⁻¹, Y_true = 2.27 g(gDW)⁻¹",
+        "Nanchen et al. 2006 AEM 72:1164 Table 1 — MG1655 m_glc = 0.37 ± 0.09 mmol(gDW·h)⁻¹（= 0.067 g(gDW·h)⁻¹）；9 株 E. coli 跨度 0.11–0.38 mmol/(gDW·h)",
+        "Nanchen 2006 — Y_max = 76 ± 3 gDW/mol 葡萄糖（= 0.42 g/g，注意与 Pirt 0.5 的差异）"
+      ],
+      "scenarios": [
+        "micro_pirt_ecoli"
+      ],
+      "value_key": "m",
+      "decision_relevant": true,
+      "experiment_system": "chemostat",
+      "version": "E_coli_K_12_variants",
+      "operating_condition": "37C",
+      "evidence": {
+        "dimensions": {
+          "experiment_system": "chemostat",
+          "version": "E_coli_K_12_variants",
+          "operating_condition": "37C"
+        },
+        "filled": 3,
+        "of": 3,
+        "fully_anchored": true,
+        "missing": []
+      }
+    },
+    {
+      "key": "cerevisiae_glucose_mu_max",
+      "label": "S. cerevisiae / 葡萄糖 μmax",
+      "unit": "h^-1",
+      "lo": 0.31,
+      "hi": 0.6,
+      "note": "0.31（低值）– 0.60（Bader 表）；Kompala 发酵途径 0.45",
+      "sources": [
+        "Bader et al. 表 — S. cerevisiae 30°C 葡萄糖 μmax 0.5–0.6 h⁻¹, Ks 25 mg/L",
+        "BioProcessTools — μmax 0.35–0.45 h⁻¹, Ks 25–180 mg/L（7.2× 跨度，由 Hxt6/7 与 Hxt1/3 转运体在不同浓度下的切换导致）",
+        "Kompala et al. 2003 IECR 42:4175（经 Fogler 教材引）— 发酵途径 μmax=0.45 h⁻¹, Ks=0.05 g/L; 葡萄糖氧化途径 μmax=0.33 h⁻¹, Ks=0.001 g/L",
+        "Sorg et al. 2013 PLOS Genet（PMC3840306）— 自然分离株高通量显微成像 μmax 0.43–0.52 h⁻¹, Ks 0.1–0.2 mM = 10.8–21.6 mg/L"
+      ],
+      "scenarios": [
+        "micro_cerevisiae_ethanol",
+        "micro_crabtree_cerevisiae"
+      ],
+      "value_key": "mu_max",
+      "decision_relevant": true,
+      "experiment_system": "batch_culture",
+      "version": "S_cerevisiae",
+      "operating_condition": "30C",
+      "evidence": {
+        "dimensions": {
+          "experiment_system": "batch_culture",
+          "version": "S_cerevisiae",
+          "operating_condition": "30C"
+        },
+        "filled": 3,
+        "of": 3,
+        "fully_anchored": true,
+        "missing": []
+      }
+    },
+    {
+      "key": "cerevisiae_glucose_Ks",
+      "label": "S. cerevisiae / 葡萄糖 Ks",
+      "unit": "g/L",
+      "lo": 0.001,
+      "hi": 0.18,
+      "note": "1–180 mg/L，7.2× 跨度源于葡萄糖转运体切换（Hxt6/7 高亲和 vs Hxt1/3 低亲和）",
+      "sources": [
+        "Bader et al. 表 — S. cerevisiae 30°C 葡萄糖 μmax 0.5–0.6 h⁻¹, Ks 25 mg/L",
+        "BioProcessTools — μmax 0.35–0.45 h⁻¹, Ks 25–180 mg/L（7.2× 跨度，由 Hxt6/7 与 Hxt1/3 转运体在不同浓度下的切换导致）",
+        "Kompala et al. 2003 IECR 42:4175（经 Fogler 教材引）— 发酵途径 μmax=0.45 h⁻¹, Ks=0.05 g/L; 葡萄糖氧化途径 μmax=0.33 h⁻¹, Ks=0.001 g/L",
+        "Sorg et al. 2013 PLOS Genet（PMC3840306）— 自然分离株高通量显微成像 μmax 0.43–0.52 h⁻¹, Ks 0.1–0.2 mM = 10.8–21.6 mg/L"
+      ],
+      "scenarios": [
+        "micro_cerevisiae_ethanol"
+      ],
+      "value_key": "Ks",
+      "decision_relevant": true,
+      "experiment_system": "batch_culture",
+      "version": "S_cerevisiae",
+      "operating_condition": "30C",
+      "evidence": {
+        "dimensions": {
+          "experiment_system": "batch_culture",
+          "version": "S_cerevisiae",
+          "operating_condition": "30C"
+        },
+        "filled": 3,
+        "of": 3,
+        "fully_anchored": true,
+        "missing": []
+      }
+    },
+    {
+      "key": "ecoli_thermal_D60",
+      "label": "E. coli 热死灭 D 值 @60°C",
+      "unit": "s",
+      "lo": 25,
+      "hi": 132,
+      "note": "31.5 s（人乳，Morgan 1988）– 118 s（Fellows 表）– 132 s（单株最大值，Nechifor 2013）",
+      "sources": [
+        "GermEcological Meta 分析（actavetscand.biomedcentral.com/10.1186/1751-0147-44-1 表3）— E. coli D = 266 s @55°C, 39 s @60°C, 5.6 s @65°C, 0.4 s @72°C（95% CI 已给出）",
+        "Morgan et al. 1988 JFP 51:132 — 人乳中 E. coli D60 = 31.5 s, z = 3.2°C",
+        "Nechifor et al. 2013 JDS 117:4992 — 9 株 E. coli，D65 跨度 3.0–47.9 s（16× 株间差），z = 3.4–6.1°C",
+        "Fellows 1988 食品工艺表 — E. coli D = 1.97 min @60°C（= 118 s），z = 4.67°C"
+      ],
+      "scenarios": [
+        "micro_thermal_death"
+      ],
+      "value_key": "D60",
+      "decision_relevant": true,
+      "experiment_system": "thermal_inactivation_in_vitro",
+      "version": "E_coli_various_strains",
+      "operating_condition": "60C",
+      "evidence": {
+        "dimensions": {
+          "experiment_system": "thermal_inactivation_in_vitro",
+          "version": "E_coli_various_strains",
+          "operating_condition": "60C"
+        },
+        "filled": 3,
+        "of": 3,
+        "fully_anchored": true,
+        "missing": []
+      }
+    },
+    {
+      "key": "ammonia_haber_bosch_yield",
+      "label": "Haber-Bosch 氨合成转化率 @ 400-500°C 100bar",
+      "unit": "%",
+      "lo": 5.0,
+      "hi": 25.0,
+      "note": "31 条 Haber-Bosch Fe 催化剂实测行（400-500°C，100 bar）；温度升高 100°C 转化率翻倍。",
+      "sources": [
+        "swarmlabs_real_paper_data.json: ammonia (31 rows, Haber-Bosch Fe cat)"
+      ],
+      "scenarios": [],
+      "value_key": "",
+      "decision_relevant": false,
+      "experiment_system": "fixed_bed_reactor",
+      "version": "Fe_catalyst",
+      "operating_condition": "400_500C_100bar",
+      "evidence": {
+        "dimensions": {
+          "experiment_system": "fixed_bed_reactor",
+          "version": "Fe_catalyst",
+          "operating_condition": "400_500C_100bar"
+        },
+        "filled": 3,
+        "of": 3,
+        "fully_anchored": true,
+        "missing": []
+      }
+    },
+    {
+      "key": "adsorption_acid_carbon_capacity",
+      "label": "活性炭对亚甲基蓝的吸附容量 @ 25°C",
+      "unit": "mg/g",
+      "lo": 25.0,
+      "hi": 280.0,
+      "note": "30 条活性炭-亚甲基蓝实测行；50 mg/L 底物浓度下 45 mg/g，200 mg/L 下 150 mg/g，1000 mg/L 下 280 mg/g（Langmuir 上渐近）。",
+      "sources": [
+        "swarmlabs_real_paper_data.json: adsorption (30 rows, activated carbon/MB)"
+      ],
+      "scenarios": [
+        "chem_langmuir"
+      ],
+      "value_key": "",
+      "decision_relevant": true,
+      "experiment_system": "batch_adsorption",
+      "version": "activated_carbon",
+      "operating_condition": "25C",
+      "evidence": {
+        "dimensions": {
+          "experiment_system": "batch_adsorption",
+          "version": "activated_carbon",
+          "operating_condition": "25C"
+        },
+        "filled": 3,
+        "of": 3,
+        "fully_anchored": true,
+        "missing": []
+      }
+    },
+    {
+      "key": "bioreactor_ecoli_biomass",
+      "label": "E. coli 批次反应器生物量（g/L, 37°C pH7）",
+      "unit": "g/L",
+      "lo": 1.0,
+      "hi": 12.0,
+      "note": "30 条批次实测行；24h 时间窗内生物量 1-12 g/L，随接种量与时间单调。",
+      "sources": [
+        "swarmlabs_real_paper_data.json: bioreactor (30 rows, e_coli batch)"
+      ],
+      "scenarios": [],
+      "value_key": "",
+      "decision_relevant": false,
+      "experiment_system": "batch_culture",
+      "version": "E_coli",
+      "operating_condition": "37C_pH7",
+      "evidence": {
+        "dimensions": {
+          "experiment_system": "batch_culture",
+          "version": "E_coli",
+          "operating_condition": "37C_pH7"
+        },
+        "filled": 3,
+        "of": 3,
+        "fully_anchored": true,
+        "missing": []
+      }
+    },
+    {
+      "key": "enzyme_lipase_activity",
+      "label": "脂肪酶活 @ pH 7.5 温度响应",
+      "unit": "UM/mg",
+      "lo": 0.4,
+      "hi": 9.0,
+      "note": "30 条脂肪酶实测行；最适 37°C 4.5 UM/mg，25°C 2.2，50°C 2.8（失活前）。",
+      "sources": [
+        "swarmlabs_real_paper_data.json: enzyme (30 rows, lipase)"
+      ],
+      "scenarios": [],
+      "value_key": "",
+      "decision_relevant": false,
+      "experiment_system": "enzymatic_assay",
+      "version": "lipase",
+      "operating_condition": "25_37_50C_pH7.5",
+      "evidence": {
+        "dimensions": {
+          "experiment_system": "enzymatic_assay",
+          "version": "lipase",
+          "operating_condition": "25_37_50C_pH7.5"
+        },
+        "filled": 3,
+        "of": 3,
+        "fully_anchored": true,
+        "missing": []
+      }
+    },
+    {
+      "key": "corrosion_carbon_steel_rate",
+      "label": "碳钢腐蚀速率 @ 25°C (3.5%NaCl / 1M H2SO4)",
+      "unit": "mm/y",
+      "lo": 0.17,
+      "hi": 1.39,
+      "note": "30 条碳钢腐蚀实测行；3.5% NaCl 25°C 15 mm/y 0.17 mm/y，1M H2SO4 120 mm/y 1.39 mm/y（8× 加速）。",
+      "sources": [
+        "swarmlabs_real_paper_data.json: corrosion (30 rows, carbon steel)"
+      ],
+      "scenarios": [],
+      "value_key": "",
+      "decision_relevant": false,
+      "experiment_system": "immersion_corrosion",
+      "version": "carbon_steel",
+      "operating_condition": "25C_various_electrolytes",
+      "evidence": {
+        "dimensions": {
+          "experiment_system": "immersion_corrosion",
+          "version": "carbon_steel",
+          "operating_condition": "25C_various_electrolytes"
+        },
+        "filled": 3,
+        "of": 3,
+        "fully_anchored": true,
+        "missing": []
+      }
+    },
+    {
+      "key": "photoFenton_removal_efficiency",
+      "label": "光-Fenton 亚甲基蓝去除率 @ 25°C 60 min",
+      "unit": "%",
+      "lo": 40.0,
+      "hi": 96.0,
+      "note": "30 条光-Fenton 去除率实测行；无光 60 min 40-50%，加可见光升至 85-95%。",
+      "sources": [
+        "swarmlabs_real_paper_data.json: photoFenton (30 rows, methylene blue)"
+      ],
+      "scenarios": [],
+      "value_key": "",
+      "decision_relevant": false,
+      "experiment_system": "photoFenton_decoding",
+      "version": "MB_substrate",
+      "operating_condition": "25C_60min",
+      "evidence": {
+        "dimensions": {
+          "experiment_system": "photoFenton_decoding",
+          "version": "MB_substrate",
+          "operating_condition": "25C_60min"
+        },
+        "filled": 3,
+        "of": 3,
+        "fully_anchored": true,
+        "missing": []
+      }
+    },
+    {
+      "key": "membrane_nf_rejection",
+      "label": "NF90 纳滤膜对 NaCl/Na2SO4 的截留率",
+      "unit": "%",
+      "lo": 92.0,
+      "hi": 98.0,
+      "note": "30 条 NF90 纳滤实测行；1000 mg/L NaCl @5bar 92%，Na2SO4 98%（二价离子截留更高）。",
+      "sources": [
+        "swarmlabs_real_paper_data.json: membrane (30 rows, NF90)"
+      ],
+      "scenarios": [],
+      "value_key": "",
+      "decision_relevant": false,
+      "experiment_system": "membrane_filtration",
+      "version": "NF90",
+      "operating_condition": "25C_5bar",
+      "evidence": {
+        "dimensions": {
+          "experiment_system": "membrane_filtration",
+          "version": "NF90",
+          "operating_condition": "25C_5bar"
+        },
+        "filled": 3,
+        "of": 3,
+        "fully_anchored": true,
+        "missing": []
+      }
+    },
+    {
+      "key": "pcr_amplification_efficiency",
+      "label": "PCR 扩增效率 @ 95°C 解链 35 循环",
+      "unit": "%",
+      "lo": 82.0,
+      "hi": 96.0,
+      "note": "30 条 PCR 实测行；模板 10^4 copies 22.5 Cq 效率 95%，10^2 copies 29.1 Cq 效率 94%。",
+      "sources": [
+        "swarmlabs_real_paper_data.json: pcr (30 rows)"
+      ],
+      "scenarios": [],
+      "value_key": "",
+      "decision_relevant": false,
+      "experiment_system": "PCR_thermal_cycling",
+      "version": "unknown_primer_set",
+      "operating_condition": "95C_denat_35_cycles",
+      "evidence": {
+        "dimensions": {
+          "experiment_system": "PCR_thermal_cycling",
+          "version": "unknown_primer_set",
+          "operating_condition": "95C_denat_35_cycles"
+        },
+        "filled": 3,
+        "of": 3,
+        "fully_anchored": true,
+        "missing": []
+      }
+    },
+    {
+      "key": "perovskite_solar_pce",
+      "label": "钙钛矿太阳能电池功率转换效率",
+      "unit": "%",
+      "lo": 8.5,
+      "hi": 23.5,
+      "note": "30 条钙钛矿太阳能电池实测行；薄膜制备工艺差异导致 PCE 8.5-23.5% 跨度。",
+      "sources": [
+        "swarmlabs_real_paper_data.json: perovskite (30 rows)"
+      ],
+      "scenarios": [],
+      "value_key": "",
+      "decision_relevant": false,
+      "experiment_system": "thin_film_solar_cell",
+      "version": "UNANCHORED",
+      "operating_condition": "UNANCHORED",
+      "evidence": {
+        "dimensions": {
+          "experiment_system": "thin_film_solar_cell",
+          "version": "UNANCHORED",
+          "operating_condition": "UNANCHORED"
+        },
+        "filled": 1,
+        "of": 3,
+        "fully_anchored": false,
+        "missing": [
+          "version",
+          "operating_condition"
+        ]
+      }
+    },
+    {
+      "key": "battery_energy_density",
+      "label": "锂离子电池体积能量密度",
+      "unit": "Wh/L",
+      "lo": 95.0,
+      "hi": 160.0,
+      "note": "29 条锂电实测行；三元正极 140 Wh/L 均值，硅负极 95-120 Wh/L。",
+      "sources": [
+        "swarmlabs_real_paper_data.json: battery (29 rows)"
+      ],
+      "scenarios": [],
+      "value_key": "",
+      "decision_relevant": false,
+      "experiment_system": "lab_cell_assembly",
+      "version": "UNANCHORED",
+      "operating_condition": "UNANCHORED",
+      "evidence": {
+        "dimensions": {
+          "experiment_system": "lab_cell_assembly",
+          "version": "UNANCHORED",
+          "operating_condition": "UNANCHORED"
+        },
+        "filled": 1,
+        "of": 3,
+        "fully_anchored": false,
+        "missing": [
+          "version",
+          "operating_condition"
+        ]
+      }
+    },
+    {
+      "key": "distillation_separation_factor",
+      "label": "精馏塔分离因子（乙醇-水）",
+      "unit": "dimensionless",
+      "lo": 0.79,
+      "hi": 0.98,
+      "note": "30 条乙醇精馏实测行；95% 塔板数下分离因子 0.79-0.98。",
+      "sources": [
+        "swarmlabs_real_paper_data.json: distillation (30 rows)"
+      ],
+      "scenarios": [],
+      "value_key": "",
+      "decision_relevant": false,
+      "experiment_system": "distillation_column",
+      "version": "UNANCHORED",
+      "operating_condition": "UNANCHORED",
+      "evidence": {
+        "dimensions": {
+          "experiment_system": "distillation_column",
+          "version": "UNANCHORED",
+          "operating_condition": "UNANCHORED"
+        },
+        "filled": 1,
+        "of": 3,
+        "fully_anchored": false,
+        "missing": [
+          "version",
+          "operating_condition"
+        ]
+      }
+    },
+    {
+      "key": "flocculation_removal_rate",
+      "label": "絮凝去除率 @ 30 min 沉降",
+      "unit": "%",
+      "lo": 75.0,
+      "hi": 96.0,
+      "note": "30 条絮凝实测行；PAM 5 mg/L 75-85%，PAC 30 mg/L 90-96%。",
+      "sources": [
+        "swarmlabs_real_paper_data.json: flocculation (30 rows)"
+      ],
+      "scenarios": [],
+      "value_key": "",
+      "decision_relevant": false,
+      "experiment_system": "jar_test_flocculation",
+      "version": "PAM_or_PAC_coagulant",
+      "operating_condition": "30min_settling",
+      "evidence": {
+        "dimensions": {
+          "experiment_system": "jar_test_flocculation",
+          "version": "PAM_or_PAC_coagulant",
+          "operating_condition": "30min_settling"
+        },
+        "filled": 3,
+        "of": 3,
+        "fully_anchored": true,
+        "missing": []
+      }
+    },
+    {
+      "key": "combustion_efficiency_gcc",
+      "label": "燃气轮机燃烧效率 @ 100% 负荷",
+      "unit": "%",
+      "lo": 88.0,
+      "hi": 95.0,
+      "note": "30 条燃气轮机实测行；1800-3080 °C 燃烧室温度下效率 88-95%。",
+      "sources": [
+        "swarmlabs_real_paper_data.json: combustion (30 rows)"
+      ],
+      "scenarios": [],
+      "value_key": "",
+      "decision_relevant": false,
+      "experiment_system": "gas_combustion_turbine",
+      "version": "UNANCHORED",
+      "operating_condition": "1800_3080C_100pct_load",
+      "evidence": {
+        "dimensions": {
+          "experiment_system": "gas_combustion_turbine",
+          "version": "UNANCHORED",
+          "operating_condition": "1800_3080C_100pct_load"
+        },
+        "filled": 2,
+        "of": 3,
+        "fully_anchored": false,
+        "missing": [
+          "version"
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "total": 11,
+    "grade_counts": {
+      "AGREE": 3,
+      "NEAR": 3,
+      "CONTRADICTED": 2,
+      "UNANCHORED": 3
+    },
+    "anchor_gate_map": {
+      "AGREE": "PROCEED",
+      "NEAR": "PROCEED_WITH_HUMAN_CHECK",
+      "CONTRADICTED": "BLOCK_AUTONOMOUS_ACTION",
+      "UNANCHORED": "NO_WET_LAB_ANCHOR"
+    },
+    "blocked": [
+      "micro_thermal_death",
+      "microbio_monod"
+    ],
+    "evidence_3d": {
+      "total_anchors": 19,
+      "by_completeness": {
+        "0": 0,
+        "1": 3,
+        "2": 1,
+        "3": 15
+      },
+      "decision_relevant_count": 7,
+      "decision_relevant_not_fully_anchored": [],
+      "dim_unanchored_marker": "UNANCHORED"
+    }
+  },
+  "scenarios": [
+    {
+      "scenario_key": "chem_langmuir",
+      "grade": "UNANCHORED",
+      "gate": "NO_WET_LAB_ANCHOR",
+      "implied_params": {
+        "mu_max": null,
+        "Ks": null,
+        "m": null,
+        "m_s": null,
+        "kill_at_60C": null,
+        "kill_at_100C": null,
+        "implied_z_degC": null
+      },
+      "checks": [
+        {
+          "anchor_key": "diagnosis",
+          "value": null,
+          "unit": "",
+          "lit_range": null,
+          "grade": "NO_CLOSED_FORM",
+          "ratio": null,
+          "why": "无可锚定的闭式模型"
+        }
+      ]
+    },
+    {
+      "scenario_key": "micro_cerevisiae_ethanol",
+      "grade": "UNANCHORED",
+      "gate": "BLOCK_AUTONOMOUS_ACTION",
+      "implied_params": {
+        "mu_max": null,
+        "Ks": null,
+        "m": null,
+        "m_s": null,
+        "kill_at_60C": null,
+        "kill_at_100C": null,
+        "implied_z_degC": null
+      },
+      "checks": [
+        {
+          "anchor_key": "diagnosis",
+          "value": null,
+          "unit": "",
+          "lit_range": null,
+          "grade": "SEMANTIC_MISMATCH",
+          "ratio": null,
+          "why": "轴语义错配：第二轴标注为产物抑制（0.0–50.0），但 oracle 在该轴上非单调、峰值出现在 x[1]=30（μ=0.0481574），两端 x[1]=0/50 处 μ≈7.33437e-10/1.6155e-05。产物抑制轴的预期形态是 x[1]=0 最大、随抑制剂增多单调下降——实际观测到的是钟形响应，与该轴被当作温度处理（钟形高斯 f_T）一致。无法从此切片反推 μmax/Ks。"
+        }
+      ]
+    },
+    {
+      "scenario_key": "micro_crabtree_cerevisiae",
+      "grade": "UNANCHORED",
+      "gate": "NO_WET_LAB_ANCHOR",
+      "implied_params": {
+        "mu_max": null,
+        "Ks": null,
+        "m": null,
+        "m_s": null,
+        "kill_at_60C": null,
+        "kill_at_100C": null,
+        "implied_z_degC": null
+      },
+      "checks": [
+        {
+          "anchor_key": "diagnosis",
+          "value": null,
+          "unit": "",
+          "lit_range": null,
+          "grade": "NO_CLOSED_FORM",
+          "ratio": null,
+          "why": "无可锚定的闭式模型"
+        }
+      ]
+    },
+    {
+      "scenario_key": "micro_doe_ecoli_monod",
+      "grade": "AGREE",
+      "gate": "PROCEED",
+      "implied_params": {
+        "mu_max": 0.8099984711294127,
+        "Ks": 0.003999976423244798,
+        "m": null,
+        "m_s": null,
+        "kill_at_60C": null,
+        "kill_at_100C": null,
+        "implied_z_degC": null,
+        "fit_rel_resid": 8.110844931630746e-06,
+        "fit_ok": 1.0,
+        "fixed": {
+          "T": 37.0
+        }
+      },
+      "checks": [
+        {
+          "anchor_key": "ecoli_glucose_Ks",
+          "value": 0.003999976423244798,
+          "unit": "g/L",
+          "lit_range": [
+            3e-05,
+            0.005
+          ],
+          "grade": "AGREE",
+          "ratio": 1.0,
+          "why": "0.00399998 落在文献区间 [3e-05, 0.005] g/L 内"
+        },
+        {
+          "anchor_key": "ecoli_glucose_mu_max",
+          "value": 0.8099984711294127,
+          "unit": "h^-1",
+          "lit_range": [
+            0.6,
+            1.4
+          ],
+          "grade": "AGREE",
+          "ratio": 1.0,
+          "why": "0.809998 落在文献区间 [0.6, 1.4] h^-1 内"
+        }
+      ]
+    },
+    {
+      "scenario_key": "micro_ecoli_glucose",
+      "grade": "AGREE",
+      "gate": "PROCEED",
+      "implied_params": {
+        "mu_max": 0.8099984711294127,
+        "Ks": 0.003999976423244798,
+        "m": null,
+        "m_s": null,
+        "kill_at_60C": null,
+        "kill_at_100C": null,
+        "implied_z_degC": null,
+        "fit_rel_resid": 8.110844931630746e-06,
+        "fit_ok": 1.0
+      },
+      "checks": [
+        {
+          "anchor_key": "ecoli_glucose_Ks",
+          "value": 0.003999976423244798,
+          "unit": "g/L",
+          "lit_range": [
+            3e-05,
+            0.005
+          ],
+          "grade": "AGREE",
+          "ratio": 1.0,
+          "why": "0.00399998 落在文献区间 [3e-05, 0.005] g/L 内"
+        },
+        {
+          "anchor_key": "ecoli_glucose_mu_max",
+          "value": 0.8099984711294127,
+          "unit": "h^-1",
+          "lit_range": [
+            0.6,
+            1.4
+          ],
+          "grade": "AGREE",
+          "ratio": 1.0,
+          "why": "0.809998 落在文献区间 [0.6, 1.4] h^-1 内"
+        }
+      ]
+    },
+    {
+      "scenario_key": "micro_mle_ecoli_monod",
+      "grade": "AGREE",
+      "gate": "PROCEED",
+      "implied_params": {
+        "mu_max": 0.8099991323057221,
+        "Ks": 0.003999986833008314,
+        "m": null,
+        "m_s": null,
+        "kill_at_60C": null,
+        "kill_at_100C": null,
+        "implied_z_degC": null,
+        "fit_rel_resid": 3.92740164533827e-06,
+        "fit_ok": 1.0
+      },
+      "checks": [
+        {
+          "anchor_key": "ecoli_glucose_Ks",
+          "value": 0.003999986833008314,
+          "unit": "g/L",
+          "lit_range": [
+            3e-05,
+            0.005
+          ],
+          "grade": "AGREE",
+          "ratio": 1.0,
+          "why": "0.00399999 落在文献区间 [3e-05, 0.005] g/L 内"
+        },
+        {
+          "anchor_key": "ecoli_glucose_mu_max",
+          "value": 0.8099991323057221,
+          "unit": "h^-1",
+          "lit_range": [
+            0.6,
+            1.4
+          ],
+          "grade": "AGREE",
+          "ratio": 1.0,
+          "why": "0.809999 落在文献区间 [0.6, 1.4] h^-1 内"
+        }
+      ]
+    },
+    {
+      "scenario_key": "micro_pirt_ecoli",
+      "grade": "NEAR",
+      "gate": "PROCEED_WITH_HUMAN_CHECK",
+      "implied_params": {
+        "mu_max": 0.49999999999999994,
+        "Ks": 0.01,
+        "m": 0.01999999999999998,
+        "m_s": 0.01999999999999998,
+        "kill_at_60C": null,
+        "kill_at_100C": null,
+        "implied_z_degC": null,
+        "fit_rel_resid": 3.388266214636175e-16,
+        "fit_ok": 1.0,
+        "Y_GS_assumed": 0.4
+      },
+      "checks": [
+        {
+          "anchor_key": "ecoli_glucose_Ks",
+          "value": 0.01,
+          "unit": "g/L",
+          "lit_range": [
+            3e-05,
+            0.005
+          ],
+          "grade": "NEAR",
+          "ratio": 2.0,
+          "why": "0.01 偏离文献区间 [3e-05, 0.005] g/L 约 2.00×（同数量级）"
+        },
+        {
+          "anchor_key": "ecoli_glucose_mu_max",
+          "value": 0.49999999999999994,
+          "unit": "h^-1",
+          "lit_range": [
+            0.6,
+            1.4
+          ],
+          "grade": "NEAR",
+          "ratio": 1.2000000000000002,
+          "why": "0.5 偏离文献区间 [0.6, 1.4] h^-1 约 1.20×（同数量级）"
+        },
+        {
+          "anchor_key": "ecoli_glucose_maintenance",
+          "value": 0.01999999999999998,
+          "unit": "g/(gDW·h)",
+          "lit_range": [
+            0.051,
+            0.083
+          ],
+          "grade": "NEAR",
+          "ratio": 2.5500000000000025,
+          "why": "0.02 偏离文献区间 [0.051, 0.083] g/(gDW·h) 约 2.55×（同数量级）"
+        }
+      ]
+    },
+    {
+      "scenario_key": "micro_sobol_ecoli",
+      "grade": "NEAR",
+      "gate": "PROCEED_WITH_HUMAN_CHECK",
+      "implied_params": {
+        "mu_max": 0.4999993615870455,
+        "Ks": 0.009999963972911393,
+        "m": null,
+        "m_s": null,
+        "kill_at_60C": null,
+        "kill_at_100C": null,
+        "implied_z_degC": null,
+        "fit_rel_resid": 3.720378741956469e-06,
+        "fit_ok": 1.0
+      },
+      "checks": [
+        {
+          "anchor_key": "ecoli_glucose_Ks",
+          "value": 0.009999963972911393,
+          "unit": "g/L",
+          "lit_range": [
+            3e-05,
+            0.005
+          ],
+          "grade": "NEAR",
+          "ratio": 1.9999927945822784,
+          "why": "0.00999996 偏离文献区间 [3e-05, 0.005] g/L 约 2.00×（同数量级）"
+        },
+        {
+          "anchor_key": "ecoli_glucose_mu_max",
+          "value": 0.4999993615870455,
+          "unit": "h^-1",
+          "lit_range": [
+            0.6,
+            1.4
+          ],
+          "grade": "NEAR",
+          "ratio": 1.200001532193047,
+          "why": "0.499999 偏离文献区间 [0.6, 1.4] h^-1 约 1.20×（同数量级）"
+        }
+      ]
+    },
+    {
+      "scenario_key": "micro_thermal_death",
+      "grade": "CONTRADICTED",
+      "gate": "BLOCK_AUTONOMOUS_ACTION",
+      "implied_params": {
+        "mu_max": null,
+        "Ks": null,
+        "m": null,
+        "m_s": null,
+        "kill_at_60C": 0.0,
+        "kill_at_100C": 3.6,
+        "implied_z_degC": null,
+        "t_reference_s": 30.0,
+        "note": "oracle 为温度线性函数（kill = 0.003·(T-60)·t），60°C 处灭活量为 0 —— 真实 E. coli 在 60°C 有有限 D 值"
+      },
+      "checks": [
+        {
+          "anchor_key": "ecoli_thermal_D60",
+          "value": 0.0,
+          "unit": "s",
+          "lit_range": [
+            25,
+            132
+          ],
+          "grade": "CONTRADICTED",
+          "ratio": null,
+          "why": "oracle 在 60°C 的灭活量为 0（≈0），而实测 E. coli D60 = 25–132 s，即 60°C 必然有有限灭活速率；且该 oracle 为温度线性函数，隐含 z 值不存在（实测 z = 2.8–6.74°C）"
+        }
+      ]
+    },
+    {
+      "scenario_key": "micro_uq_ecoli_monod",
+      "grade": "NEAR",
+      "gate": "PROCEED_WITH_HUMAN_CHECK",
+      "implied_params": {
+        "mu_max": 0.4999993470432415,
+        "Ks": 0.009999962641230003,
+        "m": null,
+        "m_s": null,
+        "kill_at_60C": null,
+        "kill_at_100C": null,
+        "implied_z_degC": null,
+        "fit_rel_resid": 3.891268751324145e-06,
+        "fit_ok": 1.0
+      },
+      "checks": [
+        {
+          "anchor_key": "ecoli_glucose_Ks",
+          "value": 0.009999962641230003,
+          "unit": "g/L",
+          "lit_range": [
+            3e-05,
+            0.005
+          ],
+          "grade": "NEAR",
+          "ratio": 1.9999925282460005,
+          "why": "0.00999996 偏离文献区间 [3e-05, 0.005] g/L 约 2.00×（同数量级）"
+        },
+        {
+          "anchor_key": "ecoli_glucose_mu_max",
+          "value": 0.4999993470432415,
+          "unit": "h^-1",
+          "lit_range": [
+            0.6,
+            1.4
+          ],
+          "grade": "NEAR",
+          "ratio": 1.2000015670982669,
+          "why": "0.499999 偏离文献区间 [0.6, 1.4] h^-1 约 1.20×（同数量级）"
+        }
+      ]
+    },
+    {
+      "scenario_key": "microbio_monod",
+      "grade": "CONTRADICTED",
+      "gate": "BLOCK_AUTONOMOUS_ACTION",
+      "implied_params": {
+        "mu_max": 0.81,
+        "Ks": 0.22,
+        "m": null,
+        "m_s": null,
+        "kill_at_60C": null,
+        "kill_at_100C": null,
+        "implied_z_degC": null,
+        "fit_rel_resid": 0.0,
+        "fit_ok": 1.0
+      },
+      "checks": [
+        {
+          "anchor_key": "ecoli_glucose_Ks",
+          "value": 0.22,
+          "unit": "g/L",
+          "lit_range": [
+            3e-05,
+            0.005
+          ],
+          "grade": "CONTRADICTED",
+          "ratio": 44.0,
+          "why": "0.22 偏离文献区间 [3e-05, 0.005] g/L 达 44.0×（跨数量级）"
+        },
+        {
+          "anchor_key": "ecoli_glucose_mu_max",
+          "value": 0.81,
+          "unit": "h^-1",
+          "lit_range": [
+            0.6,
+            1.4
+          ],
+          "grade": "AGREE",
+          "ratio": 1.0,
+          "why": "0.81 落在文献区间 [0.6, 1.4] h^-1 内"
+        }
+      ]
+    }
+  ],
+  "note": "UNANCHORED is not a failure — most of the 62 scenarios are dimensional / mathematical test functions with no physical counterpart, and only the kinetics-anchored ones can be checked this way. What this file does NOT do: edit scenario parameters to match literature. Contradictions are reported, not papered over.",
+  "elapsed_s": 0.51
+}

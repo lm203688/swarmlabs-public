@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SwarmLabs · 可信面仪表盘 (Trust Surface)</title>
+<meta name="description" content="SwarmLabs trust surface: per-scenario V&amp;V rubric results, R², interval coverage, uncertainty calibration and store-point counts for every registered virtual-experiment scenario — including the ones that fail.">
+<meta property="og:title" content="SwarmLabs · Trust Surface dashboard">
+<meta property="og:description" content="Per-scenario verification evidence: R², 95% coverage, calibration and honest failure flags across the whole scenario library.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://swarmlabs.tools/trust-dashboard">
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#ffffff; --ink:#1c2330; --muted:#647084;
+    --line:#e4e8ef; --accent:#2f6df0; --good:#1f9d57; --warn:#d98a00; --bad:#d23b3b;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;
+       line-height:1.55;}
+  header{padding:22px 26px;border-bottom:1px solid var(--line);background:#fff;}
+  h1{margin:0 0 4px;font-size:20px}
+  .sub{color:var(--muted);font-size:13px}
+  .wrap{max-width:1080px;margin:0 auto;padding:20px 26px 60px}
+  .banner{background:#fff7e6;border:1px solid #ffd591;color:#8a5a00;
+          padding:12px 14px;border-radius:10px;font-size:13px;margin:18px 0}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0 22px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .card .n{font-size:26px;font-weight:700}
+  .card .l{color:var(--muted);font-size:12px;margin-top:2px}
+  h2{font-size:16px;margin:26px 0 10px}
+  .bar-row{display:flex;align-items:center;gap:12px;margin:7px 0}
+  .bar-row .name{width:230px;font-size:13px;color:var(--muted);flex:none}
+  .track{flex:1;height:18px;background:#eef1f6;border-radius:9px;overflow:hidden}
+  .fill{height:100%;background:var(--accent);border-radius:9px}
+  .bar-row .v{width:74px;text-align:right;font-size:13px;font-variant-numeric:tabular-nums;flex:none}
+  table{border-collapse:collapse;width:100%;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:13px}
+  th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line)}
+  th{background:#f1f4f9;color:var(--muted);font-weight:600}
+  tr:last-child td{border-bottom:none}
+  .pill{display:inline-block;padding:1px 8px;border-radius:999px;font-size:11px;font-weight:600}
+  .pill.ok{background:#e6f6ec;color:var(--good)}
+  .pill.no{background:#fdeaea;color:var(--bad)}
+  .pill.sim{background:#eef1f6;color:var(--muted)}
+  details{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-top:8px}
+  summary{cursor:pointer;font-weight:600;font-size:14px}
+  .tiny{color:var(--muted);font-size:11px}
+  code{background:#eef1f6;padding:1px 5px;border-radius:5px;font-size:12px}
+  /* 站点导航（2026-09-21 加）：本页是自包含文档，此前无任何站内链接，
+     而它恰恰是「可信验证层」定位最核心的公开证据页 —— 完全孤立。 */
+  .sl-nav{display:flex;flex-wrap:wrap;gap:14px;align-items:center;font-size:13px;margin-bottom:10px}
+  .sl-nav a{color:var(--muted);text-decoration:none}
+  .sl-nav a:hover{color:var(--accent)}
+  .sl-nav a.active{color:var(--accent);font-weight:600}
+  .sl-nav .sl-logo{font-weight:700;color:var(--ink)}
+</style>
+</head>
+<body>
+<header>
+  <nav class="sl-nav">
+    <a class="sl-logo" href="/">🐝 SwarmLabs</a>
+    <a href="/workbench">Workbench</a>
+    <a href="/report-gallery">V&amp;V Reports</a>
+    <a href="/verify">Verify</a>
+    <a href="/trust-dashboard" class="active">Trust Surface</a>
+    <a href="/failure-cases">Failure Cases</a>
+    <a href="/grants-radar">Grants Radar</a><a href="/why-swarmlabs">Why SwarmLabs</a>
+    <a href="/pricing">Pricing</a>
+  </nav>
+  <h1>SwarmLabs · 可信面仪表盘</h1>
+  <div class="sub">Trust Surface · 数据生成于 <span id="gen"></span></div>
+</header>
+<div class="wrap">
+  <div class="banner" id="banner"></div>
+
+  <div class="cards" id="cards"></div>
+
+  <h2>七项 rubric 通过率</h2>
+  <div id="rubric"></div>
+
+  <h2>按领域分布（场景数 / 满通过数）</h2>
+  <div id="domains"></div>
+
+  <h2>全部 95 个场景</h2>
+  <details open>
+    <summary>展开场景清单</summary>
+    <div id="rows" style="margin-top:10px"></div>
+  </details>
+</div>
+
+<script>
+let DATA = null;
+document.getElementById('gen').textContent = '加载中...';
+
+fetch('data/trust-dashboard.json')
+  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(d => {
+    DATA = d;
+    document.getElementById('gen').textContent = fmt(DATA.generated_at);
+    renderAll();
+  })
+  .catch(e => {
+    document.getElementById('gen').textContent = '加载失败: ' + e.message;
+    document.querySelector('.honesty-banner').innerHTML =
+      '<strong>⚠ 数据加载失败</strong> — 请确保 data/trust-dashboard.json 已生成。';
+  });
+
+function fmt(s){return (s||'').replace(/T/,' ').slice(0,19);}
+
+function renderAll() {
+// ---- honesty banner ----
+const h = DATA.overall.honesty || {};
+const banner = document.getElementById('banner');
+if(h.all_evidence_simulated){
+  banner.innerHTML = "<b>诚实声明：</b>全部 "+h.simulated_count+" 个场景均为<b>已发表模型/公式的 GP 代理（simulated）</b>，"
+    +"非独立实验复测；引用 "+ (h.reference_quality?("（DOI "+h.reference_quality.doi+" / web "+h.reference_quality.web+" / 教材 "+h.reference_quality.textbook+"）"):"")
+    +"，多为教材/网络资源，<b>非同行评审 DOI</b>。<br>"
+    + (h.validated_vs_registered||"") + " " + (h.competition_status||"")
+    + "<br><span class='tiny'>gold_source_traced 仅表示存在文献字符串溯源，不等于 DOI 级溯源。</span>";
+}
+
+// ---- summary cards ----
+const ov = DATA.overall;
+const fullPass = ov.rubric_full_pass;
+const total = ov.scenarios;
+const rmse = (DATA.rows.filter(r=>r.rubric&&r.rubric.rmse_rel_ok).length);
+const sharp = (DATA.rows.filter(r=>r.rubric&&r.rubric.sharpness_ok).length);
+const cov = (DATA.rows.filter(r=>r.rubric&&r.rubric.coverage_two_sided_ok).length);
+const cards = [
+  {n:total, l:"已验证场景 (scenarios)"},
+  {n:fullPass, l:"七项 rubric 全通过 (full-pass)"},
+  {n:Math.round(100*fullPass/total)+"%", l:"满通过率"},
+  {n:rmse+"/"+total, l:"rmse_rel_ok 通过"},
+  {n:sharp+"/"+total, l:"sharpness_ok 通过"},
+  {n:cov+"/"+total, l:"coverage 双侧通过"},
+  {n:h.simulated_count||total, l:"证据类型 = simulated"},
+  {n:0, l:"experimental ground-truth"},
+];
+document.getElementById('cards').innerHTML = cards.map(c=>
+  `<div class="card"><div class="n">${c.n}</div><div class="l">${c.l}</div></div>`).join("");
+
+// ---- rubric bars ----
+const order = ["gold_source_traced","ls_source_traced","function_nonconstant","cal_err_ok","sharpness_ok","coverage_two_sided_ok","rmse_rel_ok"];
+const labels = {
+  gold_source_traced:"文献溯源 gold_source_traced",
+  ls_source_traced:"长度尺度溯源 ls_source_traced",
+  function_nonconstant:"非退化检测 function_nonconstant",
+  cal_err_ok:"校准误差 cal_err_ok",
+  sharpness_ok:"锐度合理 sharpness_ok",
+  coverage_two_sided_ok:"覆盖率双侧 coverage_two_sided_ok",
+  rmse_rel_ok:"相对 RMSE rmse_rel_ok"
+};
+let rb="";
+order.forEach(k=>{
+  const pass = DATA.rows.filter(r=>r.rubric&&r.rubric[k]).length;
+  const pct = Math.round(100*pass/total);
+  const col = pct>=90?"var(--good)":pct>=50?"var(--warn)":"var(--bad)";
+  rb += `<div class="bar-row"><div class="name">${labels[k]}</div>`
+      + `<div class="track"><div class="fill" style="width:${pct}%;background:${col}"></div></div>`
+      + `<div class="v">${pass}/${total}</div></div>`;
+});
+document.getElementById('rubric').innerHTML = rb;
+
+// ---- domains ----
+const dom = {};
+DATA.rows.forEach(r=>{
+  const k = (r.domain||"?").split("(")[0].trim();
+  dom[k] = dom[k]||{n:0,fp:0};
+  dom[k].n++;
+  if(r.rubric_passed===r.rubric_total) dom[k].fp++;
+});
+let dt = "<table><tr><th>领域</th><th>场景数</th><th>满通过</th><th>占比</th></tr>";
+Object.entries(dom).sort((a,b)=>b[1].n-a[1].n).forEach(([k,v])=>{
+  const pct = Math.round(100*v.fp/v.n);
+  dt += `<tr><td>${k}</td><td>${v.n}</td><td>${v.fp}</td><td>${pct}%</td></tr>`;
+});
+dt += "</table>";
+document.getElementById('domains').innerHTML = dt;
+
+// ---- rows ----
+let rt = "<table><tr><th>key</th><th>领域</th><th>rmse_rel</th><th>coverage</th><th>rubric</th><th>证据</th></tr>";
+DATA.rows.forEach(r=>{
+  const fp = r.rubric_passed===r.rubric_total;
+  rt += `<tr><td><code>${r.key}</code></td><td>${(r.domain||"").slice(0,46)}</td>`
+      + `<td>${r.rmse_rel!=null?r.rmse_rel.toFixed(4):"-"}</td>`
+      + `<td>${r.coverage_after!=null?r.coverage_after.toFixed(2):"-"}</td>`
+      + `<td><span class="pill ${fp?'ok':'no'}">${r.rubric_passed||0}/${r.rubric_total||0}</span></td>`
+      + `<td><span class="pill sim">${r.evidence_type||"simulated"}</span></td></tr>`;
+});
+rt += "</table>";
+document.getElementById('rows').innerHTML = rt;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+# Cloudflare Pages redirects
+
+# Serve .well-known/* as static files (explicit paths for hidden directory support)
+/.well-known/agent-card.json /.well-known/agent-card.json 200
+/.well-known/jwks.json /.well-known/jwks.json 200
+/.well-known/mcp.json /.well-known/mcp.json 200
+/.well-known/keys/swarmlabs-tools-2026-primary.key /.well-known/keys/swarmlabs-tools-2026-primary.key 200
+/.well-known/keys/swarmlabs-tools-2026-primary.pub /.well-known/keys/swarmlabs-tools-2026-primary.pub 200
+
+# Serve reports/html/* as static files (prevent timeout issues)
+/reports/html/*.html /reports/html/:splat 200
+
+# SPA fallback for all other routes
+/* /index.html 200

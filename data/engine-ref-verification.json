@@ -1,0 +1,1413 @@
+{
+  "generated_at": "2026-08-05T02:11:33.539Z",
+  "total_checked": 156,
+  "valid": 156,
+  "invalid": 0,
+  "invalid_list": [],
+  "valid_list": [
+    {
+      "engine": "suzuki",
+      "doi": "10.3390/molecules15042124",
+      "title": "Recent Advances in Noble Metal Nanocatalysts for Suzuki and Heck Cross-Coupling Reactions",
+      "verified_via": "crossref",
+      "actual_title": "Recent Advances in Noble Metal Nanocatalysts for Suzuki and Heck Cross-Coupling Reactions",
+      "actual_journal": "Molecules",
+      "actual_year": 2010
+    },
+    {
+      "engine": "heck",
+      "doi": "10.1016/0040-4020(95)01056-4",
+      "title": "Aqueous Barbier-Grignard type reaction: Scope, mechanism, and synthetic applications",
+      "verified_via": "crossref",
+      "actual_title": "Aqueous Barbier-Grignard type reaction: Scope, mechanism, and synthetic applications",
+      "actual_journal": "Tetrahedron",
+      "actual_year": 1996
+    },
+    {
+      "engine": "sonogashira",
+      "doi": "10.1039/c4ra09105a",
+      "title": "Recent mechanistic developments and next generation catalysts for the Sonogashira coupling reaction",
+      "verified_via": "crossref",
+      "actual_title": "Recent mechanistic developments and next generation catalysts for the Sonogashira coupling reaction",
+      "actual_journal": "RSC Adv.",
+      "actual_year": 2014
+    },
+    {
+      "engine": "buchwald",
+      "doi": "10.1038/s41598-021-95931-6",
+      "title": "A new nanomagnetic Pd-Co bimetallic alloy as catalyst in the Mizoroki–Heck and Buchwald–Hartwig amination reac",
+      "verified_via": "crossref",
+      "actual_title": "A new nanomagnetic Pd-Co bimetallic alloy as catalyst in the Mizoroki–Heck and Buchwald–Hartwig amination reactions in aqueous media",
+      "actual_journal": "Scientific Reports",
+      "actual_year": 2021
+    },
+    {
+      "engine": "olefin_metathesis",
+      "doi": "10.1002/chin.197746170",
+      "title": "ChemInform Abstract: OLEFIN METATHESIS. IV. HOMOGENEOUS OLEFIN METATHESIS WITH TETRACARBONYLCYCLODIENYLTUNGSTE",
+      "verified_via": "crossref",
+      "actual_title": "ChemInform Abstract: OLEFIN METATHESIS. IV. HOMOGENEOUS OLEFIN METATHESIS WITH TETRACARBONYLCYCLODIENYLTUNGSTEN CATALYSTS",
+      "actual_journal": "Chemischer Informationsdienst",
+      "actual_year": 1977
+    },
+    {
+      "engine": "hydroformylation",
+      "doi": "10.1021/om00010a031",
+      "title": ".beta.-Hydride Elimination and Regioselectivity in the Rhodium-Catalyzed Hydroformylation of Open Chain Unsatu",
+      "verified_via": "crossref",
+      "actual_title": ".beta.-Hydride Elimination and Regioselectivity in the Rhodium-Catalyzed Hydroformylation of Open Chain Unsaturated Ethers",
+      "actual_journal": "Organometallics",
+      "actual_year": 1995
+    },
+    {
+      "engine": "esterification",
+      "doi": "10.1002/kin.21167",
+      "title": "Homogeneous and Heterogeneous Catalyzed Esterification of Acrylic Acid with Ethanol: Reaction Kinetics and Mod",
+      "verified_via": "crossref",
+      "actual_title": "Homogeneous and Heterogeneous Catalyzed Esterification of Acrylic Acid with Ethanol: Reaction Kinetics and Modeling",
+      "actual_journal": "International Journal of Chemical Kinetics",
+      "actual_year": 2018
+    },
+    {
+      "engine": "hydrolysis",
+      "doi": "10.1021/ic50127a015",
+      "title": "Metal ion catalyzed hydrolysis of acidopentaaminecobalt(III)complexes. Kinetics and mechanism of spontaneous a",
+      "verified_via": "crossref",
+      "actual_title": "Metal ion catalyzed hydrolysis of acidopentaaminecobalt(III)complexes. Kinetics and mechanism of spontaneous acid and metal ion catalyzed hydrolysis of salicylatopentaaminecobalt(III) ion",
+      "actual_journal": "Inorganic Chemistry",
+      "actual_year": 1973
+    },
+    {
+      "engine": "alkylation",
+      "doi": "10.1016/0040-4039(93)85120-l",
+      "title": "Explanation of a paradoxical selectivity in friedel-crafts alkylation under heterogeneous catalysis.",
+      "verified_via": "crossref",
+      "actual_title": "Explanation of a paradoxical selectivity in friedel-crafts alkylation under heterogeneous catalysis.",
+      "actual_journal": "Tetrahedron Letters",
+      "actual_year": 1993
+    },
+    {
+      "engine": "isomerization",
+      "doi": "10.1039/b306137j",
+      "title": "Isomerization around a C=N double bond and a C=C double bond with a nitrogen atom attached: thermal and photoc",
+      "verified_via": "crossref",
+      "actual_title": "Isomerization around a C=N double bond and a C=C double bond with a nitrogen atom attached: thermal and photochemical routes",
+      "actual_journal": "Photochemical &amp; Photobiological Sciences",
+      "actual_year": 2003
+    },
+    {
+      "engine": "hydrogenation",
+      "doi": "10.1016/0021-9517(73)90060-2",
+      "title": "Alkene hydrogenation and related reactions A comparison of heterogeneous with homogeneous catalysis",
+      "verified_via": "crossref",
+      "actual_title": "Alkene hydrogenation and related reactions A comparison of heterogeneous with homogeneous catalysis",
+      "actual_journal": "Journal of Catalysis",
+      "actual_year": 1973
+    },
+    {
+      "engine": "photocatalysis",
+      "doi": "10.1016/j.jcou.2016.07.004",
+      "title": "On the general mechanism of photocatalytic reduction of CO2",
+      "verified_via": "crossref",
+      "actual_title": "On the general mechanism of photocatalytic reduction of CO2",
+      "actual_journal": "Journal of CO2 Utilization",
+      "actual_year": 2016
+    },
+    {
+      "engine": "photoFenton",
+      "doi": "10.3923/jas.2010.3236.3242",
+      "title": "Effect of Photo-Fenton Operating Conditions on the Performance of Photo-Fenton-SBR Process for Recalcitrant Wa",
+      "verified_via": "crossref",
+      "actual_title": "Effect of Photo-Fenton Operating Conditions on the Performance of Photo-Fenton-SBR Process for Recalcitrant Wastewater Treatment",
+      "actual_journal": "Journal of Applied Sciences",
+      "actual_year": 2010
+    },
+    {
+      "engine": "photolysis",
+      "doi": "10.1016/j.chemosphere.2012.06.012",
+      "title": "Recent progress on application of UV excilamps for degradation of organic pollutants and microbial inactivatio",
+      "verified_via": "crossref",
+      "actual_title": "Recent progress on application of UV excilamps for degradation of organic pollutants and microbial inactivation",
+      "actual_journal": "Chemosphere",
+      "actual_year": 2012
+    },
+    {
+      "engine": "photoelectrochemical",
+      "doi": "10.1002/cssc.201802558",
+      "title": "Kinetic Competition between Water‐Splitting and Photocorrosion Reactions in Photoelectrochemical Devices",
+      "verified_via": "crossref",
+      "actual_title": "Kinetic Competition between Water‐Splitting and Photocorrosion Reactions in Photoelectrochemical Devices",
+      "actual_journal": "ChemSusChem",
+      "actual_year": 2019
+    },
+    {
+      "engine": "co2",
+      "doi": "10.1246/bcsj.6.241",
+      "title": "THE CATALYTIC HYDROGENATION OF AROMATIC HYDROCARBONS UNDER HIGH PRESSURE AND HIGH TEMPERATURE",
+      "verified_via": "crossref",
+      "actual_title": "THE CATALYTIC HYDROGENATION OF AROMATIC HYDROCARBONS UNDER HIGH PRESSURE AND HIGH TEMPERATURE",
+      "actual_journal": "Bulletin of the Chemical Society of Japan",
+      "actual_year": 1931
+    },
+    {
+      "engine": "wetland",
+      "doi": "10.1016/s0273-1223(99)00478-3",
+      "title": "Nutrient removal mechanisms in constructed wetlands and sustainable water management",
+      "verified_via": "crossref",
+      "actual_title": "Nutrient removal mechanisms in constructed wetlands and sustainable water management",
+      "actual_journal": "Water Science and Technology",
+      "actual_year": 1999
+    },
+    {
+      "engine": "incineration",
+      "doi": "10.1016/j.energy.2020.118426",
+      "title": "Dynamic modeling of municipal solid waste incineration",
+      "verified_via": "crossref",
+      "actual_title": "Dynamic modeling of municipal solid waste incineration",
+      "actual_journal": "Energy",
+      "actual_year": 2020
+    },
+    {
+      "engine": "pyrolysis",
+      "doi": "10.1007/s12649-016-9815-7",
+      "title": "Effects of Biomass Particle Size on Slow Pyrolysis Kinetics and Fast Pyrolysis Product Distribution",
+      "verified_via": "crossref",
+      "actual_title": "Effects of Biomass Particle Size on Slow Pyrolysis Kinetics and Fast Pyrolysis Product Distribution",
+      "actual_journal": "Waste and Biomass Valorization",
+      "actual_year": 2017
+    },
+    {
+      "engine": "gasification",
+      "doi": "10.1016/j.jclepro.2019.118499",
+      "title": "Production of syngas via gasification using optimum blends of biomass",
+      "verified_via": "crossref",
+      "actual_title": "Production of syngas via gasification using optimum blends of biomass",
+      "actual_journal": "Journal of Cleaner Production",
+      "actual_year": 2020
+    },
+    {
+      "engine": "catalytic_cracking",
+      "doi": "10.1016/j.fuproc.2014.09.037",
+      "title": "Reaction mechanism and kinetic modeling of hydroisomerization and hydroaromatization of fluid catalytic cracki",
+      "verified_via": "crossref",
+      "actual_title": "Reaction mechanism and kinetic modeling of hydroisomerization and hydroaromatization of fluid catalytic cracking naphtha",
+      "actual_journal": "Fuel Processing Technology",
+      "actual_year": 2015
+    },
+    {
+      "engine": "steam_reforming",
+      "doi": "10.1016/j.cattod.2016.08.024",
+      "title": "Steam reforming of toluene, methane and mixtures over Ni/ZrO 2 catalysts",
+      "verified_via": "crossref",
+      "actual_title": "Steam reforming of toluene, methane and mixtures over Ni/ZrO 2 catalysts",
+      "actual_journal": "Catalysis Today",
+      "actual_year": 2017
+    },
+    {
+      "engine": "water_splitting",
+      "doi": "10.1016/j.nanoen.2024.109608",
+      "title": "Searching for breakthrough in seesaw-like contradictions to achieve high-efficiency solar-driven overall water",
+      "verified_via": "crossref",
+      "actual_title": "Searching for breakthrough in seesaw-like contradictions to achieve high-efficiency solar-driven overall water splitting",
+      "actual_journal": "Nano Energy",
+      "actual_year": 2024
+    },
+    {
+      "engine": "electrocoagulation",
+      "doi": "10.1007/s43938-024-00053-w",
+      "title": "Overview of integrated electrocoagulation-adsorption strategies for the removal of heavy metal pollutants from",
+      "verified_via": "crossref",
+      "actual_title": "Overview of integrated electrocoagulation-adsorption strategies for the removal of heavy metal pollutants from wastewater",
+      "actual_journal": "Discover Chemical Engineering",
+      "actual_year": 2024
+    },
+    {
+      "engine": "ozonation",
+      "doi": "10.1016/j.cej.2016.11.118",
+      "title": "Fe-based catalysts for heterogeneous catalytic ozonation of emerging contaminants in water and wastewater",
+      "verified_via": "crossref",
+      "actual_title": "Fe-based catalysts for heterogeneous catalytic ozonation of emerging contaminants in water and wastewater",
+      "actual_journal": "Chemical Engineering Journal",
+      "actual_year": 2017
+    },
+    {
+      "engine": "chlorination",
+      "doi": "10.1021/ac100708u",
+      "title": "Characterization and Determination of Chloro- and Bromo-Benzoquinones as New Chlorination Disinfection Byprodu",
+      "verified_via": "crossref",
+      "actual_title": "Characterization and Determination of Chloro- and Bromo-Benzoquinones as New Chlorination Disinfection Byproducts in Drinking Water",
+      "actual_journal": "Analytical Chemistry",
+      "actual_year": 2010
+    },
+    {
+      "engine": "fluoridation",
+      "doi": "10.1016/j.denabs.2022.05.037",
+      "title": "Community Water Fluoridation and Water Consumption Patterns",
+      "verified_via": "crossref",
+      "actual_title": "Community Water Fluoridation and Water Consumption Patterns",
+      "actual_journal": "Dental Abstracts",
+      "actual_year": 2022
+    },
+    {
+      "engine": "biofilter",
+      "doi": "10.1080/10473289.1991.10466898",
+      "title": "Biofiltration: An Innovative Air Pollution Control Technology For VOC Emissions",
+      "verified_via": "crossref",
+      "actual_title": "Biofiltration: An Innovative Air Pollution Control Technology For VOC Emissions",
+      "actual_journal": "Journal of the Air &amp; Waste Management Association",
+      "actual_year": 1991
+    },
+    {
+      "engine": "activated_sludge",
+      "doi": "10.1038/s41545-021-00106-5",
+      "title": "Activated sludge models at the crossroad of artificial intelligence—A perspective on advancing process modelin",
+      "verified_via": "crossref",
+      "actual_title": "Activated sludge models at the crossroad of artificial intelligence—A perspective on advancing process modeling",
+      "actual_journal": "npj Clean Water",
+      "actual_year": 2021
+    },
+    {
+      "engine": "battery",
+      "doi": "10.1038/s41467-025-57968-3",
+      "title": "The importance of degradation mode analysis in parameterising lifetime prediction models of lithium-ion batter",
+      "verified_via": "crossref",
+      "actual_title": "The importance of degradation mode analysis in parameterising lifetime prediction models of lithium-ion battery degradation",
+      "actual_journal": "Nature Communications",
+      "actual_year": 2025
+    },
+    {
+      "engine": "battery_li_ion",
+      "doi": "10.1038/s41467-025-57968-3",
+      "title": "The importance of degradation mode analysis in parameterising lifetime prediction models of lithium-ion batter",
+      "verified_via": "crossref",
+      "actual_title": "The importance of degradation mode analysis in parameterising lifetime prediction models of lithium-ion battery degradation",
+      "actual_journal": "Nature Communications",
+      "actual_year": 2025
+    },
+    {
+      "engine": "battery_flow",
+      "doi": "10.55893/jt.vol25no1.795",
+      "title": "An Overview of The Open-Circuit Voltage Thermodynamics on Vanadium Redox Flow Battery and Zn-Air Redox Flow Ba",
+      "verified_via": "crossref",
+      "actual_title": "An Overview of The Open-Circuit Voltage Thermodynamics on Vanadium Redox Flow Battery and Zn-Air Redox Flow Battery",
+      "actual_journal": "Jurnal Teknik: Media Pengembangan Ilmu dan Aplikasi Teknik",
+      "actual_year": 2026
+    },
+    {
+      "engine": "battery_solid_state",
+      "doi": "10.1002/adfm.202521740",
+      "title": "Deciphering Solid‐State Battery Interface Failure: Plasma‐Assisted Bulk‐Interface Lithium Diffusion Kinetics R",
+      "verified_via": "crossref",
+      "actual_title": "Deciphering Solid‐State Battery Interface Failure: Plasma‐Assisted Bulk‐Interface Lithium Diffusion Kinetics Regulation",
+      "actual_journal": "Advanced Functional Materials",
+      "actual_year": 2025
+    },
+    {
+      "engine": "fuel_cell",
+      "doi": "10.1016/j.etran.2021.100104",
+      "title": "Performance of a PEM fuel cell with oscillating air flow velocity: A modeling study based on cell impedance",
+      "verified_via": "crossref",
+      "actual_title": "Performance of a PEM fuel cell with oscillating air flow velocity: A modeling study based on cell impedance",
+      "actual_journal": "eTransportation",
+      "actual_year": 2021
+    },
+    {
+      "engine": "supercapacitor",
+      "doi": "10.1016/j.est.2026.121233",
+      "title": "Effects of supercapacitor self-discharge on the performance of battery– supercapacitor hybrid energy storage s",
+      "verified_via": "crossref",
+      "actual_title": "Effects of supercapacitor self-discharge on the performance of battery– supercapacitor hybrid energy storage system",
+      "actual_journal": "Journal of Energy Storage",
+      "actual_year": 2026
+    },
+    {
+      "engine": "nuclear_fission",
+      "doi": "10.1016/j.nucengdes.2009.03.010",
+      "title": "A three-dimensional neutronics-thermohydraulics simulation of core disruptive accident in sodium-cooled fast r",
+      "verified_via": "crossref",
+      "actual_title": "A three-dimensional neutronics-thermohydraulics simulation of core disruptive accident in sodium-cooled fast reactor",
+      "actual_journal": "Nuclear Engineering and Design",
+      "actual_year": 2009
+    },
+    {
+      "engine": "nuclear_fusion",
+      "doi": "10.13182/fst95-a11947060",
+      "title": "Development of a Tokamak Plasma Optimized for Stability and Confinement",
+      "verified_via": "crossref",
+      "actual_title": "Development of a Tokamak Plasma Optimized for Stability and Confinement",
+      "actual_journal": "Fusion Technology",
+      "actual_year": 1995
+    },
+    {
+      "engine": "combustion",
+      "doi": "10.1016/j.combustflame.2022.112509",
+      "title": "Frhodo: A program for simulating chemical kinetic measurements and optimizing kinetic mechanisms",
+      "verified_via": "crossref",
+      "actual_title": "Frhodo: A program for simulating chemical kinetic measurements and optimizing kinetic mechanisms",
+      "actual_journal": "Combustion and Flame",
+      "actual_year": 2023
+    },
+    {
+      "engine": "ammonia",
+      "doi": "10.1595/205651322x16334238659301",
+      "title": "Review of Recent Progress in Green Ammonia Synthesis",
+      "verified_via": "crossref",
+      "actual_title": "Review of Recent Progress in Green Ammonia Synthesis",
+      "actual_journal": "Johnson Matthey Technology Review",
+      "actual_year": 2022
+    },
+    {
+      "engine": "electrolysis",
+      "doi": "10.1016/s0013-4686(98)00002-4",
+      "title": "Current losses in a bipolar cell — II: An analysis of the Butler–Volmer regime",
+      "verified_via": "crossref",
+      "actual_title": "Current losses in a bipolar cell — II: An analysis of the Butler–Volmer regime",
+      "actual_journal": "Electrochimica Acta",
+      "actual_year": 1998
+    },
+    {
+      "engine": "perovskite",
+      "doi": "10.1016/j.optmat.2021.111891",
+      "title": "Optimization of a Pb-free all-perovskite tandem solar cell with 30.85% efficiency",
+      "verified_via": "crossref",
+      "actual_title": "Optimization of a Pb-free all-perovskite tandem solar cell with 30.85% efficiency",
+      "actual_journal": "Optical Materials",
+      "actual_year": 2022
+    },
+    {
+      "engine": "coating",
+      "doi": "10.1016/j.tsf.2011.04.062",
+      "title": "Numerical modeling of SiH4 discharge for Si thin film deposition for thin film transistor and solar cells",
+      "verified_via": "crossref",
+      "actual_title": "Numerical modeling of SiH4 discharge for Si thin film deposition for thin film transistor and solar cells",
+      "actual_journal": "Thin Solid Films",
+      "actual_year": 2011
+    },
+    {
+      "engine": "deposition_cvd",
+      "doi": "10.1016/s0042-207x(02)00133-1",
+      "title": "What is the difference between catalytic CVD and plasma-enhanced CVD? Gas-phase kinetics and film properties",
+      "verified_via": "crossref",
+      "actual_title": "What is the difference between catalytic CVD and plasma-enhanced CVD? Gas-phase kinetics and film properties",
+      "actual_journal": "Vacuum",
+      "actual_year": 2002
+    },
+    {
+      "engine": "epitaxy",
+      "doi": "10.1016/0022-0248(94)00781-0",
+      "title": "p-Type GaAs doped by diiodomethane (CI2H2) in molecular beam epitaxy, metalorganic molecular beam epitaxy, and",
+      "verified_via": "crossref",
+      "actual_title": "p-Type GaAs doped by diiodomethane (CI2H2) in molecular beam epitaxy, metalorganic molecular beam epitaxy, and chemical beam epitaxy",
+      "actual_journal": "Journal of Crystal Growth",
+      "actual_year": 1995
+    },
+    {
+      "engine": "sintering",
+      "doi": "10.1111/j.1151-2916.1963.tb14607.x",
+      "title": "Diffusion Sintering: II, Initial Sintering Kinetics of Alumina",
+      "verified_via": "crossref",
+      "actual_title": "Diffusion Sintering: II, Initial Sintering Kinetics of Alumina",
+      "actual_journal": "Journal of the American Ceramic Society",
+      "actual_year": 1963
+    },
+    {
+      "engine": "annealing",
+      "doi": "10.1016/j.jallcom.2017.11.360",
+      "title": "Strain-induced precipitation kinetics during non-isothermal annealing of Al-Mn alloys",
+      "verified_via": "crossref",
+      "actual_title": "Strain-induced precipitation kinetics during non-isothermal annealing of Al-Mn alloys",
+      "actual_journal": "Journal of Alloys and Compounds",
+      "actual_year": 2018
+    },
+    {
+      "engine": "calcination",
+      "doi": "10.1016/j.ces.2021.116987",
+      "title": "Effects of steam on the kinetics of calcium carbonate calcination",
+      "verified_via": "crossref",
+      "actual_title": "Effects of steam on the kinetics of calcium carbonate calcination",
+      "actual_journal": "Chemical Engineering Science",
+      "actual_year": 2021
+    },
+    {
+      "engine": "crystallization_antisolvent",
+      "doi": "10.1002/aic.11868",
+      "title": "Multivariable real‐time optimal control of a cooling and antisolvent semibatch crystallization process",
+      "verified_via": "crossref",
+      "actual_title": "Multivariable real‐time optimal control of a cooling and antisolvent semibatch crystallization process",
+      "actual_journal": "AIChE Journal",
+      "actual_year": 2009
+    },
+    {
+      "engine": "polymerization_addition",
+      "doi": "10.1016/j.polymer.2005.12.054",
+      "title": "Probing the reaction kinetics of vinyl acetate free radical polymerization via living free radical polymerizat",
+      "verified_via": "crossref",
+      "actual_title": "Probing the reaction kinetics of vinyl acetate free radical polymerization via living free radical polymerization (MADIX)",
+      "actual_journal": "Polymer",
+      "actual_year": 2006
+    },
+    {
+      "engine": "polymerization_condensation",
+      "doi": "10.14314/polimery.1992.304",
+      "title": "Kinetic models of the step-growth polymerization (condensation polymerization and addition polymerization) pro",
+      "verified_via": "crossref",
+      "actual_title": "Kinetic models of the step-growth polymerization (condensation polymerization and addition polymerization) processes",
+      "actual_journal": "Polimery",
+      "actual_year": 1992
+    },
+    {
+      "engine": "milling",
+      "doi": "10.1016/j.measurement.2017.08.021",
+      "title": "Study on particle size and X-ray peak area ratios in high energy ball milling and optimization of the milling ",
+      "verified_via": "crossref",
+      "actual_title": "Study on particle size and X-ray peak area ratios in high energy ball milling and optimization of the milling parameters using response surface method",
+      "actual_journal": "Measurement",
+      "actual_year": 2017
+    },
+    {
+      "engine": "extrusion",
+      "doi": "10.3390/polym13040622",
+      "title": "Rheological Basics for Modeling of Extrusion Process of Wood Polymer Composites",
+      "verified_via": "crossref",
+      "actual_title": "Rheological Basics for Modeling of Extrusion Process of Wood Polymer Composites",
+      "actual_journal": "Polymers",
+      "actual_year": 2021
+    },
+    {
+      "engine": "injection_molding",
+      "doi": "10.3139/217.1643",
+      "title": "Three-dimensional Filling and Post-filling Simulation of Polymer Injection Molding",
+      "verified_via": "crossref",
+      "actual_title": "Three-dimensional Filling and Post-filling Simulation of Polymer Injection Molding",
+      "actual_journal": "International Polymer Processing",
+      "actual_year": 2001
+    },
+    {
+      "engine": "blow_molding",
+      "doi": "10.1002/adv.1986.060060309",
+      "title": "Process optimization in stretch blow molding",
+      "verified_via": "crossref",
+      "actual_title": "Process optimization in stretch blow molding",
+      "actual_journal": "Advances in Polymer Technology",
+      "actual_year": 1986
+    },
+    {
+      "engine": "casting",
+      "doi": "10.1016/j.jmst.2020.06.051",
+      "title": "Multi-scale modeling of liquid-metal cooling directional solidification and solidification behavior of nickel-",
+      "verified_via": "crossref",
+      "actual_title": "Multi-scale modeling of liquid-metal cooling directional solidification and solidification behavior of nickel-based superalloy casting",
+      "actual_journal": "Journal of Materials Science &amp; Technology",
+      "actual_year": 2021
+    },
+    {
+      "engine": "forging",
+      "doi": "10.1002/srin.201000114",
+      "title": "Modelling of Microstructure and Flow Stress Evolution during Hot Forging",
+      "verified_via": "crossref",
+      "actual_title": "Modelling of Microstructure and Flow Stress Evolution during Hot Forging",
+      "actual_journal": "steel research international",
+      "actual_year": 2010
+    },
+    {
+      "engine": "welding",
+      "doi": "10.1016/j.ijheatmasstransfer.2011.08.046",
+      "title": "Predicting the influence of groove angle on heat transfer and fluid flow for new gas metal arc welding process",
+      "verified_via": "crossref",
+      "actual_title": "Predicting the influence of groove angle on heat transfer and fluid flow for new gas metal arc welding processes",
+      "actual_journal": "International Journal of Heat and Mass Transfer",
+      "actual_year": 2012
+    },
+    {
+      "engine": "smelting",
+      "doi": "10.4028/www.scientific.net/amr.721.164",
+      "title": "Experimental Investigation on Reduction Kinetics of Stainless Steel-Making Slag in Iron Bath Smelting Reductio",
+      "verified_via": "crossref",
+      "actual_title": "Experimental Investigation on Reduction Kinetics of Stainless Steel-Making Slag in Iron Bath Smelting Reduction",
+      "actual_journal": "Advanced Materials Research",
+      "actual_year": 2013
+    },
+    {
+      "engine": "roasting",
+      "doi": "10.1016/j.jiec.2022.09.012",
+      "title": "Phase transformation and roasting kinetics of cobalt-rich copper sulfide ore in oxygen atmosphere assisted by ",
+      "verified_via": "crossref",
+      "actual_title": "Phase transformation and roasting kinetics of cobalt-rich copper sulfide ore in oxygen atmosphere assisted by sodium sulfate",
+      "actual_journal": "Journal of Industrial and Engineering Chemistry",
+      "actual_year": 2022
+    },
+    {
+      "engine": "nanoparticle_synthesis",
+      "doi": "10.1021/acs.chemmater.9b02839",
+      "title": "Particle Size Is a Primary Determinant for Sigmoidal Kinetics of Nanoparticle Formation: A “Disproof” of the F",
+      "verified_via": "crossref",
+      "actual_title": "Particle Size Is a Primary Determinant for Sigmoidal Kinetics of Nanoparticle Formation: A “Disproof” of the Finke–Watzky (F-W) Nanoparticle Nucleation and Growth Mechanism",
+      "actual_journal": "Chemistry of Materials",
+      "actual_year": 2020
+    },
+    {
+      "engine": "nanotube_growth",
+      "doi": "10.1016/j.cplett.2006.04.028",
+      "title": "Mechanism of carbon nanotube growth by CVD",
+      "verified_via": "crossref",
+      "actual_title": "Mechanism of carbon nanotube growth by CVD",
+      "actual_journal": "Chemical Physics Letters",
+      "actual_year": 2006
+    },
+    {
+      "engine": "quantum_dot",
+      "doi": "10.1126/science.320.5877.713e",
+      "title": "Quantum Dot Optoelectronics",
+      "verified_via": "crossref",
+      "actual_title": "Quantum Dot Optoelectronics",
+      "actual_journal": "Science",
+      "actual_year": 2008
+    },
+    {
+      "engine": "crystal",
+      "doi": "10.1016/j.jcrysgro.2008.09.005",
+      "title": "Effect of polymer admixtures on the growth habit of ionic crystals. Study on crystal growth kinetics of potass",
+      "verified_via": "crossref",
+      "actual_title": "Effect of polymer admixtures on the growth habit of ionic crystals. Study on crystal growth kinetics of potassium dihydrogen phosphate in water/polyol mixtures",
+      "actual_journal": "Journal of Crystal Growth",
+      "actual_year": 2008
+    },
+    {
+      "engine": "polymer",
+      "doi": "10.1007/s10118-025-3514-4",
+      "title": "Short-chain Length Dependence of Equilibrium Dynamics and Nonlinear Rheology in Unentangled Long-chain/Short-c",
+      "verified_via": "crossref",
+      "actual_title": "Short-chain Length Dependence of Equilibrium Dynamics and Nonlinear Rheology in Unentangled Long-chain/Short-chain Polymer Blends",
+      "actual_journal": "Chinese Journal of Polymer Science",
+      "actual_year": 2026
+    },
+    {
+      "engine": "corrosion",
+      "doi": "10.1016/j.corsci.2021.109763",
+      "title": "Bridge for the thermodynamics and kinetics of electrochemical corrosion: Modeling on dissolution, ionization, ",
+      "verified_via": "crossref",
+      "actual_title": "Bridge for the thermodynamics and kinetics of electrochemical corrosion: Modeling on dissolution, ionization, diffusion and deposition in metal/solution interface",
+      "actual_journal": "Corrosion Science",
+      "actual_year": 2021
+    },
+    {
+      "engine": "fermentation_ethanol",
+      "doi": "10.1016/s1004-9541(08)60130-5",
+      "title": "Improve Ethanol Yield Through Minimizing Glycerol Yield in Ethanol Fermentation of Saccharomyces cerevisiae",
+      "verified_via": "crossref",
+      "actual_title": "Improve Ethanol Yield Through Minimizing Glycerol Yield in Ethanol Fermentation of Saccharomyces cerevisiae",
+      "actual_journal": "Chinese Journal of Chemical Engineering",
+      "actual_year": 2008
+    },
+    {
+      "engine": "fermentation_lactic",
+      "doi": "10.3390/fermentation6010037",
+      "title": "Production of Lactic Acid from Seaweed Hydrolysates via Lactic Acid Bacteria Fermentation",
+      "verified_via": "crossref",
+      "actual_title": "Production of Lactic Acid from Seaweed Hydrolysates via Lactic Acid Bacteria Fermentation",
+      "actual_journal": "Fermentation",
+      "actual_year": 2020
+    },
+    {
+      "engine": "enzymatic_hydrolysis",
+      "doi": "10.1016/j.indcrop.2023.117884",
+      "title": "Recycling enzymatic hydrolysis lignin residues saved cellulase in enzymatic hydrolysis of lignocellulose: An i",
+      "verified_via": "crossref",
+      "actual_title": "Recycling enzymatic hydrolysis lignin residues saved cellulase in enzymatic hydrolysis of lignocellulose: An insight from cellulase adsorption mechanism",
+      "actual_journal": "Industrial Crops and Products",
+      "actual_year": 2024
+    },
+    {
+      "engine": "protein_denaturation",
+      "doi": "10.1021/ja01074a013",
+      "title": "The Thermodynamics of Protein Denaturation. I. The Denaturation of Chymotrypsinogen",
+      "verified_via": "crossref",
+      "actual_title": "The Thermodynamics of Protein Denaturation. I. The Denaturation of Chymotrypsinogen",
+      "actual_journal": "Journal of the American Chemical Society",
+      "actual_year": 1964
+    },
+    {
+      "engine": "leaching_bio",
+      "doi": "10.1016/j.watres.2018.01.042",
+      "title": "Ozonation of municipal wastewater effluent containing metal sulfides and metal complexes: Kinetics and mechani",
+      "verified_via": "crossref",
+      "actual_title": "Ozonation of municipal wastewater effluent containing metal sulfides and metal complexes: Kinetics and mechanisms",
+      "actual_journal": "Water Research",
+      "actual_year": 2018
+    },
+    {
+      "engine": "enzyme",
+      "doi": "10.5194/gmd-8-3823-2015",
+      "title": "On the relationships between the Michaelis–Menten kinetics, reverse Michaelis–Menten kinetics, equilibrium che",
+      "verified_via": "crossref",
+      "actual_title": "On the relationships between the Michaelis–Menten kinetics, reverse Michaelis–Menten kinetics, equilibrium chemistry approximation kinetics, and quadratic kinetics",
+      "actual_journal": "Geoscientific Model Development",
+      "actual_year": 2015
+    },
+    {
+      "engine": "membrane",
+      "doi": "10.1016/j.seppur.2020.117297",
+      "title": "Pore structure optimization of electrospun PTFE nanofiber membrane and its application in membrane emulsificat",
+      "verified_via": "crossref",
+      "actual_title": "Pore structure optimization of electrospun PTFE nanofiber membrane and its application in membrane emulsification",
+      "actual_journal": "Separation and Purification Technology",
+      "actual_year": 2020
+    },
+    {
+      "engine": "membrane_distillation",
+      "doi": "10.4172/2155-9589.1000154",
+      "title": "Modelisation of Membrane Distillation: Mass and Heat Transfer in Air Gap Membrane Distillation",
+      "verified_via": "crossref",
+      "actual_title": "Modelisation of Membrane Distillation: Mass and Heat Transfer in Air Gap Membrane Distillation",
+      "actual_journal": "Journal of Membrane Science &amp; Technology",
+      "actual_year": 2016
+    },
+    {
+      "engine": "pervaporation",
+      "doi": "10.1016/0260-8774(94)00050-j",
+      "title": "Aroma compound recovery with pervaporation — Temperature effects during pervaporation of a muscat wine",
+      "verified_via": "crossref",
+      "actual_title": "Aroma compound recovery with pervaporation — Temperature effects during pervaporation of a muscat wine",
+      "actual_journal": "Journal of Food Engineering",
+      "actual_year": 1995
+    },
+    {
+      "engine": "forward_osmosis",
+      "doi": "10.1016/j.desal.2018.09.019",
+      "title": "Serially connected forward osmosis membrane elements of pressure-assisted forward osmosis-reverse osmosis hybr",
+      "verified_via": "crossref",
+      "actual_title": "Serially connected forward osmosis membrane elements of pressure-assisted forward osmosis-reverse osmosis hybrid system: Process performance and economic analysis",
+      "actual_journal": "Desalination",
+      "actual_year": 2018
+    },
+    {
+      "engine": "ultrafiltration",
+      "doi": "10.3390/membranes10070149",
+      "title": "Fouling Mechanisms Analysis via Combined Fouling Models for Surface Water Ultrafiltration Process",
+      "verified_via": "crossref",
+      "actual_title": "Fouling Mechanisms Analysis via Combined Fouling Models for Surface Water Ultrafiltration Process",
+      "actual_journal": "Membranes",
+      "actual_year": 2020
+    },
+    {
+      "engine": "microfiltration",
+      "doi": "10.1080/00986448608911751",
+      "title": "A CONCENTRATION POLARIZATION MODEL FOR THE FILTRATE FLUX IN CROSS-FLOW MICROFILTRATION OF PARTICULATE SUSPENSI",
+      "verified_via": "crossref",
+      "actual_title": "A CONCENTRATION POLARIZATION MODEL FOR THE FILTRATE FLUX IN CROSS-FLOW MICROFILTRATION OF PARTICULATE SUSPENSIONS",
+      "actual_journal": "Chemical Engineering Communications",
+      "actual_year": 1986
+    },
+    {
+      "engine": "nanofiltration",
+      "doi": "10.1039/c0cp00230e",
+      "title": "Mechanisms of solute rejection in solvent resistant nanofiltration: the effect of solvent on solute rejection",
+      "verified_via": "crossref",
+      "actual_title": "Mechanisms of solute rejection in solvent resistant nanofiltration: the effect of solvent on solute rejection",
+      "actual_journal": "Physical Chemistry Chemical Physics",
+      "actual_year": 2010
+    },
+    {
+      "engine": "reverse_osmosis",
+      "doi": "10.1016/j.desal.2014.01.002",
+      "title": "Comparison between Forward Osmosis-Reverse Osmosis and Reverse Osmosis processes for seawater desalination",
+      "verified_via": "crossref",
+      "actual_title": "Comparison between Forward Osmosis-Reverse Osmosis and Reverse Osmosis processes for seawater desalination",
+      "actual_journal": "Desalination",
+      "actual_year": 2014
+    },
+    {
+      "engine": "ion_exchange",
+      "doi": "10.1080/07366299408918209",
+      "title": "UPTAKE OF METAL IONS BY A NEW CHELATING ION-EXCHANGE RESIN. PART 4 : KINETICS",
+      "verified_via": "crossref",
+      "actual_title": "UPTAKE OF METAL IONS BY A NEW CHELATING ION-EXCHANGE RESIN. PART 4 : KINETICS",
+      "actual_journal": "Solvent Extraction and Ion Exchange",
+      "actual_year": 1994
+    },
+    {
+      "engine": "adsorption",
+      "doi": "10.1016/j.envres.2023.117702",
+      "title": "Adsorption of trace heavy metals through organic compounds enriched biochar using isotherm adsorption and kine",
+      "verified_via": "crossref",
+      "actual_title": "Adsorption of trace heavy metals through organic compounds enriched biochar using isotherm adsorption and kinetic models",
+      "actual_journal": "Environmental Research",
+      "actual_year": 2024
+    },
+    {
+      "engine": "absorption_chemical",
+      "doi": "10.1016/j.cej.2024.152699",
+      "title": "Novel tri-solvent amines absorption for flue gas CO2 capture: Efficient absorption and regeneration with low e",
+      "verified_via": "crossref",
+      "actual_title": "Novel tri-solvent amines absorption for flue gas CO2 capture: Efficient absorption and regeneration with low energy consumption",
+      "actual_journal": "Chemical Engineering Journal",
+      "actual_year": 2024
+    },
+    {
+      "engine": "solvent_extraction",
+      "doi": "10.1080/07366298708918551",
+      "title": "THE INTERPRETATION OF EQUILIBRIUM DATA FROM SYNERGISTIC SOLVENT EXTRACTION SYSTEMS",
+      "verified_via": "crossref",
+      "actual_title": "THE INTERPRETATION OF EQUILIBRIUM DATA FROM SYNERGISTIC SOLVENT EXTRACTION SYSTEMS",
+      "actual_journal": "Solvent Extraction and Ion Exchange",
+      "actual_year": 1987
+    },
+    {
+      "engine": "supercritical_extraction",
+      "doi": "10.1016/j.supflu.2019.04.005",
+      "title": "Extraction of vetiver (Chrysopogon zizanioides) root oil by supercritical CO2, pressurized-liquid, and ultraso",
+      "verified_via": "crossref",
+      "actual_title": "Extraction of vetiver (Chrysopogon zizanioides) root oil by supercritical CO2, pressurized-liquid, and ultrasound-assisted methods and modeling of supercritical extraction kinetics",
+      "actual_journal": "The Journal of Supercritical Fluids",
+      "actual_year": 2019
+    },
+    {
+      "engine": "azeotropic_distillation",
+      "doi": "10.1002/aic.690380902",
+      "title": "The curious behavior of homogeneous azeotropic distillation—implications for entrainer selection",
+      "verified_via": "crossref",
+      "actual_title": "The curious behavior of homogeneous azeotropic distillation—implications for entrainer selection",
+      "actual_journal": "AIChE Journal",
+      "actual_year": 1992
+    },
+    {
+      "engine": "extractive_distillation",
+      "doi": "10.1016/j.ces.2015.05.003",
+      "title": "Design/optimization of energy-saving extractive distillation process by combining preconcentration column and ",
+      "verified_via": "crossref",
+      "actual_title": "Design/optimization of energy-saving extractive distillation process by combining preconcentration column and extractive distillation column",
+      "actual_journal": "Chemical Engineering Science",
+      "actual_year": 2015
+    },
+    {
+      "engine": "sublimation",
+      "doi": "10.1016/0022-0248(81)90034-8",
+      "title": "Sublimation kinetics of organic molecular crystals",
+      "verified_via": "crossref",
+      "actual_title": "Sublimation kinetics of organic molecular crystals",
+      "actual_journal": "Journal of Crystal Growth",
+      "actual_year": 1981
+    },
+    {
+      "engine": "lyophilization",
+      "doi": "10.1111/jfpp.16016",
+      "title": "Screening of the freeze‐drying protective agent for high‐quality milk beer yeast ( Kluyveromyces marxianus ) a",
+      "verified_via": "crossref",
+      "actual_title": "Screening of the freeze‐drying protective agent for high‐quality milk beer yeast (\n            <i>Kluyveromyces marxianus</i>\n            ) and optimization of freeze‐drying process conditions",
+      "actual_journal": "Journal of Food Processing and Preservation",
+      "actual_year": 2021
+    },
+    {
+      "engine": "spray_drying",
+      "doi": "10.3390/pharmaceutics12070625",
+      "title": "Unraveling Particle Formation: From Single Droplet Drying to Spray Drying and Electrospraying",
+      "verified_via": "crossref",
+      "actual_title": "Unraveling Particle Formation: From Single Droplet Drying to Spray Drying and Electrospraying",
+      "actual_journal": "Pharmaceutics",
+      "actual_year": 2020
+    },
+    {
+      "engine": "evaporation",
+      "doi": "10.1016/j.ijrefrig.2011.10.020",
+      "title": "Falling film evaporation on enhanced tubes, part 1: Experimental results for pool boiling, onset-of-dryout and",
+      "verified_via": "crossref",
+      "actual_title": "Falling film evaporation on enhanced tubes, part 1: Experimental results for pool boiling, onset-of-dryout and falling film evaporation",
+      "actual_journal": "International Journal of Refrigeration",
+      "actual_year": 2012
+    },
+    {
+      "engine": "centrifugation",
+      "doi": "10.1016/j.mineng.2003.07.001",
+      "title": "The “fish-hook” phenomenon in centrifugal separation of fine particles",
+      "verified_via": "crossref",
+      "actual_title": "The “fish-hook” phenomenon in centrifugal separation of fine particles",
+      "actual_journal": "Minerals Engineering",
+      "actual_year": 2003
+    },
+    {
+      "engine": "filtration",
+      "doi": "10.1016/s0376-7388(01)00691-3",
+      "title": "Experimental techniques for quantifying the cake mass, the cake and membrane resistances and the specific cake",
+      "verified_via": "crossref",
+      "actual_title": "Experimental techniques for quantifying the cake mass, the cake and membrane resistances and the specific cake resistance during crossflow filtration of microbial suspensions",
+      "actual_journal": "Journal of Membrane Science",
+      "actual_year": 2002
+    },
+    {
+      "engine": "sedimentation",
+      "doi": "10.1016/s0301-7516(03)00069-3",
+      "title": "Settling velocities of particulate systems: 13. A simulator for batch and continuous sedimentation of floccula",
+      "verified_via": "crossref",
+      "actual_title": "Settling velocities of particulate systems: 13. A simulator for batch and continuous sedimentation of flocculated suspensions",
+      "actual_journal": "International Journal of Mineral Processing",
+      "actual_year": 2004
+    },
+    {
+      "engine": "flotation",
+      "doi": "10.1016/s0140-6701(99)98710-6",
+      "title": "99/03504 Kinetic flotation modeling using froth imaging data",
+      "verified_via": "crossref",
+      "actual_title": "99/03504 Kinetic flotation modeling using froth imaging data",
+      "actual_journal": "Fuel and Energy Abstracts",
+      "actual_year": 1999
+    },
+    {
+      "engine": "flocculation",
+      "doi": "10.1016/s0301-7516(00)00036-3",
+      "title": "Shear flocculation—kinetics of floc coalescence and breakage",
+      "verified_via": "crossref",
+      "actual_title": "Shear flocculation—kinetics of floc coalescence and breakage",
+      "actual_journal": "International Journal of Mineral Processing",
+      "actual_year": 2001
+    },
+    {
+      "engine": "coagulation",
+      "doi": "10.1080/19443994.2015.1052568",
+      "title": "Operating conditions on the optimization and water quality analysis on the advanced treatment of papermaking w",
+      "verified_via": "crossref",
+      "actual_title": "Operating conditions on the optimization and water quality analysis on the advanced treatment of papermaking wastewater by coagulation/Fenton process",
+      "actual_journal": "Desalination and Water Treatment",
+      "actual_year": 2016
+    },
+    {
+      "engine": "precipitation",
+      "doi": "10.1016/j.jcrysgro.2019.125150",
+      "title": "Effects of solvents and impurity on crystallization kinetics and crystal properties in a reactive crystallizat",
+      "verified_via": "crossref",
+      "actual_title": "Effects of solvents and impurity on crystallization kinetics and crystal properties in a reactive crystallization of paracetamol",
+      "actual_journal": "Journal of Crystal Growth",
+      "actual_year": 2019
+    },
+    {
+      "engine": "leaching",
+      "doi": "10.1007/bf02644133",
+      "title": "In-place leaching of primary sulfide ores: Laboratory leaching data and kinetics model",
+      "verified_via": "crossref",
+      "actual_title": "In-place leaching of primary sulfide ores: Laboratory leaching data and kinetics model",
+      "actual_journal": "Metallurgical transactions",
+      "actual_year": 1974
+    },
+    {
+      "engine": "desorption",
+      "doi": "10.1002/chin.199530282",
+      "title": "ChemInform Abstract: Temperature‐Programmed Desorption and Temperature‐Programmed Reaction as Methods for Stud",
+      "verified_via": "crossref",
+      "actual_title": "ChemInform Abstract: Temperature‐Programmed Desorption and Temperature‐Programmed Reaction as Methods for Studying the Kinetics and Mechanism of Heterogeneous Catalytic Processes",
+      "actual_journal": "ChemInform",
+      "actual_year": 1995
+    },
+    {
+      "engine": "flash_distillation",
+      "doi": "10.1016/s0011-9164(00)80034-x",
+      "title": "An assessment of multiple effect boiling distillation in relation to multi-stage flash distillation",
+      "verified_via": "crossref",
+      "actual_title": "An assessment of multiple effect boiling distillation in relation to multi-stage flash distillation",
+      "actual_journal": "Desalination",
+      "actual_year": 1971
+    },
+    {
+      "engine": "steam_distillation",
+      "doi": "10.1007/s13369-025-10156-3",
+      "title": "Extraction of Essential Oils from Artemisia jordanica by Vacuum Distillation, Steam Distillation and Hydro-Dis",
+      "verified_via": "crossref",
+      "actual_title": "Extraction of Essential Oils from Artemisia jordanica by Vacuum Distillation, Steam Distillation and Hydro-Distillation Using Solar Energy",
+      "actual_journal": "Arabian Journal for Science and Engineering",
+      "actual_year": 2025
+    },
+    {
+      "engine": "distillation",
+      "doi": "10.1016/j.ces.2015.05.003",
+      "title": "Design/optimization of energy-saving extractive distillation process by combining preconcentration column and ",
+      "verified_via": "crossref",
+      "actual_title": "Design/optimization of energy-saving extractive distillation process by combining preconcentration column and extractive distillation column",
+      "actual_journal": "Chemical Engineering Science",
+      "actual_year": 2015
+    },
+    {
+      "engine": "titration_acid_base",
+      "doi": "10.3866/pku.dxhx201804014",
+      "title": "Relationship between Acid-Base Titration Curve and Acid-Base Equilibrium Curve",
+      "verified_via": "crossref",
+      "actual_title": "Relationship between Acid-Base Titration Curve and Acid-Base Equilibrium Curve",
+      "actual_journal": "University Chemistry",
+      "actual_year": 2018
+    },
+    {
+      "engine": "titration_redox",
+      "doi": "10.1021/ed073p547",
+      "title": "Improved End Point Detection in the Redox Titration of Vitamin C in Green Peppers",
+      "verified_via": "crossref",
+      "actual_title": "Improved End Point Detection in the Redox Titration of Vitamin C in Green Peppers",
+      "actual_journal": "Journal of Chemical Education",
+      "actual_year": 1996
+    },
+    {
+      "engine": "spectrophotometry",
+      "doi": "10.4172/2157-7145.1000247",
+      "title": "Ultraviolet-Visible Spectrophotometry (UV-VIS) and SALIgAE® Qualitative and Semi-quantitative Tools for the An",
+      "verified_via": "crossref",
+      "actual_title": "Ultraviolet-Visible Spectrophotometry (UV-VIS) and SALIgAE® Qualitative and Semi-quantitative Tools for the Analysis of Salivary Amylase",
+      "actual_journal": "Journal of Forensic Research",
+      "actual_year": 2014
+    },
+    {
+      "engine": "mass_spec",
+      "doi": "10.1002/mas.21790",
+      "title": "Advances in high‐resolution mass spectrometry techniques for analysis of high mass‐to‐charge ions",
+      "verified_via": "crossref",
+      "actual_title": "Advances in high‐resolution mass spectrometry techniques for analysis of high mass‐to‐charge ions",
+      "actual_journal": "Mass Spectrometry Reviews",
+      "actual_year": 2022
+    },
+    {
+      "engine": "chromatography",
+      "doi": "10.1038/s41598-019-55761-z",
+      "title": "The application of Box-Behnken-Design in the optimization of HPLC separation of fluoroquinolones",
+      "verified_via": "crossref",
+      "actual_title": "The application of Box-Behnken-Design in the optimization of HPLC separation of fluoroquinolones",
+      "actual_journal": "Scientific Reports",
+      "actual_year": 2019
+    },
+    {
+      "engine": "affinity_chromatography",
+      "doi": "10.1016/j.pep.2021.105976",
+      "title": "Immunoglobulin-binding protein-based affinity chromatography in bispecific antibody purification: Functions be",
+      "verified_via": "crossref",
+      "actual_title": "Immunoglobulin-binding protein-based affinity chromatography in bispecific antibody purification: Functions beyond product capture",
+      "actual_journal": "Protein Expression and Purification",
+      "actual_year": 2021
+    },
+    {
+      "engine": "size_exclusion",
+      "doi": "10.1002/app.1589",
+      "title": "Characterization of branched polymers by size exclusion chromatography coupled with multiangle light scatterin",
+      "verified_via": "crossref",
+      "actual_title": "Characterization of branched polymers by size exclusion chromatography coupled with multiangle light scattering detector. I. Size exclusion chromatography elution behavior of branched polymers",
+      "actual_journal": "Journal of Applied Polymer Science",
+      "actual_year": 2001
+    },
+    {
+      "engine": "molecular",
+      "doi": "10.1016/0144-8617(91)90031-7",
+      "title": "Comparison of different methods for determination of molecular weight and molecular weight distribution of alg",
+      "verified_via": "crossref",
+      "actual_title": "Comparison of different methods for determination of molecular weight and molecular weight distribution of alginates",
+      "actual_journal": "Carbohydrate Polymers",
+      "actual_year": 1991
+    },
+    {
+      "engine": "pasteurization",
+      "doi": "10.1111/j.1745-4549.1995.tb00292.x",
+      "title": "THERMAL KINETICS of STREPTOCOCCUS FAECIUM IN NUTRIENT BROTH/SOUS VIDE PRODUCTS UNDER PASTEURIZATION CONDITIONS",
+      "verified_via": "crossref",
+      "actual_title": "THERMAL KINETICS of STREPTOCOCCUS FAECIUM IN NUTRIENT BROTH/SOUS VIDE PRODUCTS UNDER PASTEURIZATION CONDITIONS",
+      "actual_journal": "Journal of Food Processing and Preservation",
+      "actual_year": 1995
+    },
+    {
+      "engine": "sterilization",
+      "doi": "10.1111/jfpe.12897",
+      "title": "Modeling sterilization value and nutrient degradation in the thermal processing of liquid foods under diffusiv",
+      "verified_via": "crossref",
+      "actual_title": "Modeling sterilization value and nutrient degradation in the thermal processing of liquid foods under diffusive laminar flow with associations of tubular heat exchangers",
+      "actual_journal": "Journal of Food Process Engineering",
+      "actual_year": 2018
+    },
+    {
+      "engine": "homogenization",
+      "doi": "10.1016/j.ces.2013.01.011",
+      "title": "A high-pressure homogenization emulsification model—Improved emulsifier transport and hydrodynamic coupling",
+      "verified_via": "crossref",
+      "actual_title": "A high-pressure homogenization emulsification model—Improved emulsifier transport and hydrodynamic coupling",
+      "actual_journal": "Chemical Engineering Science",
+      "actual_year": 2013
+    },
+    {
+      "engine": "emulsification",
+      "doi": "10.1016/s0376-7388(03)00212-6",
+      "title": "Influence of process parameters on droplet size distribution in SPG membrane emulsification and stability of p",
+      "verified_via": "crossref",
+      "actual_title": "Influence of process parameters on droplet size distribution in SPG membrane emulsification and stability of prepared emulsion droplets",
+      "actual_journal": "Journal of Membrane Science",
+      "actual_year": 2003
+    },
+    {
+      "engine": "tablet_compression",
+      "doi": "10.1016/j.powtec.2004.02.010",
+      "title": "Distinct element analysis and experimental evaluation of the Heckel analysis of bulk powder compression",
+      "verified_via": "crossref",
+      "actual_title": "Distinct element analysis and experimental evaluation of the Heckel analysis of bulk powder compression",
+      "actual_journal": "Powder Technology",
+      "actual_year": 2004
+    },
+    {
+      "engine": "granulation",
+      "doi": "10.3390/pharmaceutics13050645",
+      "title": "Parametric Study of Residence Time Distributions and Granulation Kinetics as a Basis for Process Modeling of T",
+      "verified_via": "crossref",
+      "actual_title": "Parametric Study of Residence Time Distributions and Granulation Kinetics as a Basis for Process Modeling of Twin-Screw Wet Granulation",
+      "actual_journal": "Pharmaceutics",
+      "actual_year": 2021
+    },
+    {
+      "engine": "classification",
+      "doi": "10.3847/1538-4357/ad374e",
+      "title": "Short-term Classification of Strong Solar Energetic Particle Events Using Multivariate Time-series Classifiers",
+      "verified_via": "crossref",
+      "actual_title": "Short-term Classification of Strong Solar Energetic Particle Events Using Multivariate Time-series Classifiers",
+      "actual_journal": "The Astrophysical Journal",
+      "actual_year": 2024
+    },
+    {
+      "engine": "screening",
+      "doi": "10.17580/or.2017.05.01",
+      "title": "Small size fractions preliminary screening efficiency in vibratory classification",
+      "verified_via": "crossref",
+      "actual_title": "Small size fractions preliminary screening efficiency in vibratory classification",
+      "actual_journal": "Obogashchenie Rud",
+      "actual_year": 2017
+    },
+    {
+      "engine": "separation",
+      "doi": "10.1080/03602548408068405",
+      "title": "Technological Innovations in Separation of Particulates in Solid-Liquid and Solid-Solid-Liquid Systems",
+      "verified_via": "crossref",
+      "actual_title": "Technological Innovations in Separation of Particulates in Solid-Liquid and Solid-Solid-Liquid Systems",
+      "actual_journal": "Separation and Purification Methods",
+      "actual_year": 1984
+    },
+    {
+      "engine": "mixing",
+      "doi": "10.1016/j.jfoodeng.2025.112936",
+      "title": "The quantitative assessment of the mixing time on the effect of mixing homogeneity in different food powder mi",
+      "verified_via": "crossref",
+      "actual_title": "The quantitative assessment of the mixing time on the effect of mixing homogeneity in different food powder mixers: Entropy-weighted grey relational analysis",
+      "actual_journal": "Journal of Food Engineering",
+      "actual_year": 2026
+    },
+    {
+      "engine": "blending",
+      "doi": "10.1002/jps.21595",
+      "title": "Effects of Electrostatic Charging on Pharmaceutical Powder Blending Homogeneity",
+      "verified_via": "crossref",
+      "actual_title": "Effects of Electrostatic Charging on Pharmaceutical Powder Blending Homogeneity",
+      "actual_journal": "Journal of Pharmaceutical Sciences",
+      "actual_year": 2009
+    },
+    {
+      "engine": "dissolution",
+      "doi": "10.1080/03639045.2025.2515999",
+      "title": "Establishing virtual bioequivalence and bio-related dissolution specifications for naproxen using physiologica",
+      "verified_via": "crossref",
+      "actual_title": "Establishing virtual bioequivalence and bio-related dissolution specifications for naproxen using physiologically based pharmacokinetic modeling and\n            <i>in vitro</i>\n            biorelevant dissolution testing",
+      "actual_journal": "Drug Development and Industrial Pharmacy",
+      "actual_year": 2025
+    },
+    {
+      "engine": "dilution",
+      "doi": "10.1016/j.chemgeo.2006.03.001",
+      "title": "Determination of cosmogenic 36Cl in rocks by isotope dilution: innovations, validation and error propagation",
+      "verified_via": "crossref",
+      "actual_title": "Determination of cosmogenic 36Cl in rocks by isotope dilution: innovations, validation and error propagation",
+      "actual_journal": "Chemical Geology",
+      "actual_year": 2006
+    },
+    {
+      "engine": "concentration",
+      "doi": "10.1103/physreve.81.046308",
+      "title": "Liquid-phase continuity and solute concentration dynamics during evaporation from porous media: Pore-scale pro",
+      "verified_via": "crossref",
+      "actual_title": "Liquid-phase continuity and solute concentration dynamics during evaporation from porous media: Pore-scale processes near vaporization surface",
+      "actual_journal": "Physical Review E",
+      "actual_year": 2010
+    },
+    {
+      "engine": "drying",
+      "doi": "10.1080/07373930903530337",
+      "title": "Theoretical Models of Single Droplet Drying Kinetics: A Review",
+      "verified_via": "crossref",
+      "actual_title": "Theoretical Models of Single Droplet Drying Kinetics: A Review",
+      "actual_journal": "Drying Technology",
+      "actual_year": 2010
+    },
+    {
+      "engine": "drug_release",
+      "doi": "10.1016/0168-3659(95)00107-7",
+      "title": "The kinetics of drug cleavage and release from matrices containing covalent polymer-drug conjugates [Journal o",
+      "verified_via": "crossref",
+      "actual_title": "The kinetics of drug cleavage and release from matrices containing covalent polymer-drug conjugates [Journal of Controlled Release 33 (1994) 391–395]",
+      "actual_journal": "Journal of Controlled Release",
+      "actual_year": 1996
+    },
+    {
+      "engine": "dissolution_usp",
+      "doi": "10.1177/009286159603000422",
+      "title": "Calibration—The USP Dissolution Apparatus Suitability Test",
+      "verified_via": "crossref",
+      "actual_title": "Calibration—The USP Dissolution Apparatus Suitability Test",
+      "actual_journal": "Drug Information Journal",
+      "actual_year": 1996
+    },
+    {
+      "engine": "dissolution_ph_change",
+      "doi": "10.14227/dt130406p18",
+      "title": "Developing Discriminatory Drug Dissolution Tests and Profiles: Some Thoughts for Consideration on the Concept ",
+      "verified_via": "crossref",
+      "actual_title": "Developing Discriminatory Drug Dissolution Tests and Profiles: Some Thoughts for Consideration on the Concept and Its Interpretation",
+      "actual_journal": "Dissolution Technologies",
+      "actual_year": 2006
+    },
+    {
+      "engine": "stability_study",
+      "doi": "10.26656/fr.2017.4(3).399",
+      "title": "Shelf-life prediction for Indian mango roll using accelerated shelf-life testing (ASLT) shelf-life plot approa",
+      "verified_via": "crossref",
+      "actual_title": "Shelf-life prediction for Indian mango roll using accelerated shelf-life testing (ASLT) shelf-life plot approach",
+      "actual_journal": "Food Research",
+      "actual_year": 2020
+    },
+    {
+      "engine": "preformulation",
+      "doi": "10.3109/03639048609048051",
+      "title": "Preformulation Studies of Drug Substances for Solid Dosage Forms",
+      "verified_via": "crossref",
+      "actual_title": "Preformulation Studies of Drug Substances for Solid Dosage Forms",
+      "actual_journal": "Drug Development and Industrial Pharmacy",
+      "actual_year": 1986
+    },
+    {
+      "engine": "pk_modeling",
+      "doi": "10.1023/a:1025775912051",
+      "title": "Pharmacokinetic Analysis of Mizolastine in Healthy Young Volunteers After Single Oral and Intravenous Doses: N",
+      "verified_via": "crossref",
+      "actual_title": "Pharmacokinetic Analysis of Mizolastine in Healthy Young Volunteers After Single Oral and Intravenous Doses: Noncompartmental Approach and Compartmental Modeling",
+      "actual_journal": "Journal of Pharmacokinetics and Biopharmaceutics",
+      "actual_year": 1997
+    },
+    {
+      "engine": "process_simulation",
+      "doi": "10.1002/jps.20583",
+      "title": "Process Simulation in the Pharmaceutical Industry: A Review of Some Basic Physical Models",
+      "verified_via": "crossref",
+      "actual_title": "Process Simulation in the Pharmaceutical Industry: A Review of Some Basic Physical Models",
+      "actual_journal": "Journal of Pharmaceutical Sciences",
+      "actual_year": 2006
+    },
+    {
+      "engine": "solid_state",
+      "doi": "10.1211/jpp.59.2.0011",
+      "title": "Time-of-flight secondary-ion mass spectrometry for the surface characterization of solid-state pharmaceuticals",
+      "verified_via": "crossref",
+      "actual_title": "Time-of-flight secondary-ion mass spectrometry for the surface characterization of solid-state pharmaceuticals",
+      "actual_journal": "Journal of Pharmacy and Pharmacology",
+      "actual_year": 2007
+    },
+    {
+      "engine": "biowaiver",
+      "doi": "10.22270/ijdra.v3i3.167",
+      "title": "COMPARISON OF GLOBAL REGULATORY GUIDELINES FOR AVAILABILITY OF DIFFERENT BIOWAIVER PROVISIONS AND APPLICATION ",
+      "verified_via": "crossref",
+      "actual_title": "COMPARISON OF GLOBAL REGULATORY GUIDELINES FOR AVAILABILITY OF DIFFERENT BIOWAIVER PROVISIONS AND APPLICATION REQUIREMENTS OF BIOPHARMACEUTICS CLASSIFICATION SYSTEM (BCS) BASED BIOWAIVER.",
+      "actual_journal": "International Journal of Drug Regulatory Affairs",
+      "actual_year": 2018
+    },
+    {
+      "engine": "release_fit",
+      "doi": "10.2202/1934-2659.1404",
+      "title": "Mathematical Modeling of Drug Release from Spherical Drug Particles: Analysis of the Effect of Absorption Rate",
+      "verified_via": "crossref",
+      "actual_title": "Mathematical Modeling of Drug Release from Spherical Drug Particles: Analysis of the Effect of Absorption Rate on Drug Release Rate",
+      "actual_journal": "Chemical Product and Process Modeling",
+      "actual_year": 2009
+    },
+    {
+      "engine": "release_data_fit",
+      "doi": "10.1039/b406581f",
+      "title": "Curve-fitting overlapped bands: quantification and improvement of curve-fitting robustness in the presence of ",
+      "verified_via": "crossref",
+      "actual_title": "Curve-fitting overlapped bands: quantification and improvement of curve-fitting robustness in the presence of errors in the model and in the data",
+      "actual_journal": "The Analyst",
+      "actual_year": 2004
+    },
+    {
+      "engine": "electroplating",
+      "doi": "10.1149/1945-7111/ac07c4",
+      "title": "Pulsed Current Plating Does Not Improve Microscale Current Distribution Uniformity Compared to Direct Current ",
+      "verified_via": "crossref",
+      "actual_title": "Pulsed Current Plating Does Not Improve Microscale Current Distribution Uniformity Compared to Direct Current Plating at Equivalent Time-Averaged Plating Rates",
+      "actual_journal": "Journal of The Electrochemical Society",
+      "actual_year": 2021
+    },
+    {
+      "engine": "electrodialysis",
+      "doi": "10.1039/a606373j",
+      "title": "Transport numbers of various anions relative to chloride ions in modified anion-exchange membranes during elec",
+      "verified_via": "crossref",
+      "actual_title": "Transport numbers of various anions relative to chloride ions in modified anion-exchange membranes during electrodialysis",
+      "actual_journal": "Journal of the Chemical Society, Faraday Transactions",
+      "actual_year": 1997
+    },
+    {
+      "engine": "electroflotation",
+      "doi": "10.1016/j.tsf.2003.11.300",
+      "title": "Fine particle removal by a negatively-charged fine particle collector in silane plasma",
+      "verified_via": "crossref",
+      "actual_title": "Fine particle removal by a negatively-charged fine particle collector in silane plasma",
+      "actual_journal": "Thin Solid Films",
+      "actual_year": 2004
+    },
+    {
+      "engine": "anodizing",
+      "doi": "10.5006/1.3283942",
+      "title": "Boric/Sulfuric Acid Anodizing of Aluminum Alloys 2024 and 7075: Film Growth and Corrosion Resistance",
+      "verified_via": "crossref",
+      "actual_title": "Boric/Sulfuric Acid Anodizing of Aluminum Alloys 2024 and 7075: Film Growth and Corrosion Resistance",
+      "actual_journal": "Corrosion",
+      "actual_year": 1999
+    },
+    {
+      "engine": "cfd_cylinder",
+      "doi": "10.1063/1.4866593",
+      "title": "The vortex shedding around four circular cylinders in an in-line square configuration",
+      "verified_via": "crossref",
+      "actual_title": "The vortex shedding around four circular cylinders in an in-line square configuration",
+      "actual_journal": "Physics of Fluids",
+      "actual_year": 2014
+    },
+    {
+      "engine": "cfd_lid_cavity",
+      "doi": "10.1016/s0045-7930(98)00002-4",
+      "title": "Benchmark spectral results on the lid-driven cavity flow",
+      "verified_via": "crossref",
+      "actual_title": "Benchmark spectral results on the lid-driven cavity flow",
+      "actual_journal": "Computers &amp; Fluids",
+      "actual_year": 1998
+    },
+    {
+      "engine": "cfd_darcy",
+      "doi": "10.1016/j.ijheatfluidflow.2020.108566",
+      "title": "Upscaling LBM-TPM simulation approach of Darcy and non-Darcy fluid flow in deformable, heterogeneous porous me",
+      "verified_via": "crossref",
+      "actual_title": "Upscaling LBM-TPM simulation approach of Darcy and non-Darcy fluid flow in deformable, heterogeneous porous media",
+      "actual_journal": "International Journal of Heat and Fluid Flow",
+      "actual_year": 2020
+    },
+    {
+      "engine": "cfd_shockwave",
+      "doi": "10.1260/1475-472x.13.3-4.261",
+      "title": "A Comparative Study of Accuracy of Shock Capturing Schemes for Simulation of Shock/Acoustic Wave Interactions",
+      "verified_via": "crossref",
+      "actual_title": "A Comparative Study of Accuracy of Shock Capturing Schemes for Simulation of Shock/Acoustic Wave Interactions",
+      "actual_journal": "International Journal of Aeroacoustics",
+      "actual_year": 2014
+    },
+    {
+      "engine": "cfd_aneurysm",
+      "doi": "10.1115/1.3148470",
+      "title": "Effect of Non-Newtonian Behavior on Hemodynamics of Cerebral Aneurysms",
+      "verified_via": "crossref",
+      "actual_title": "Effect of Non-Newtonian Behavior on Hemodynamics of Cerebral Aneurysms",
+      "actual_journal": "Journal of Biomechanical Engineering",
+      "actual_year": 2009
+    },
+    {
+      "engine": "cfd_vortex",
+      "doi": "10.1139/tcsme-1987-0004",
+      "title": "Vorticity and Vortex Dynamics in Complex Turbulent Flows",
+      "verified_via": "crossref",
+      "actual_title": "Vorticity and Vortex Dynamics in Complex Turbulent Flows",
+      "actual_journal": "Transactions of the Canadian Society for Mechanical Engineering",
+      "actual_year": 1987
+    },
+    {
+      "engine": "heat_2d",
+      "doi": "10.1080/10407788608913527",
+      "title": "FINITE-ELEMENT ANALYSIS OF QUASI-STEADY COUPLED NONLINEAR HEAT AND ELECTRIC CONDUCTION PROBLEMS",
+      "verified_via": "crossref",
+      "actual_title": "FINITE-ELEMENT ANALYSIS OF QUASI-STEADY COUPLED NONLINEAR HEAT AND ELECTRIC CONDUCTION PROBLEMS",
+      "actual_journal": "Numerical Heat Transfer",
+      "actual_year": 1986
+    },
+    {
+      "engine": "heat_chip",
+      "doi": "10.1016/j.energy.2025.134575",
+      "title": "Thermal management enhancement of electronic chips based on novel technologies",
+      "verified_via": "crossref",
+      "actual_title": "Thermal management enhancement of electronic chips based on novel technologies",
+      "actual_journal": "Energy",
+      "actual_year": 2025
+    },
+    {
+      "engine": "heat_exchanger",
+      "doi": "10.7176/jetp/9-8-03",
+      "title": "Design and Development of a Trapezoidal Plate Fin Heat Exchanger for the Prediction of Heat Exchanger Effectiv",
+      "verified_via": "crossref",
+      "actual_title": "Design and Development of a Trapezoidal Plate Fin Heat Exchanger for the Prediction of Heat Exchanger Effectiveness",
+      "actual_journal": "Journal of Energy Technologies and Policy",
+      "actual_year": 2019
+    },
+    {
+      "engine": "struct_beam",
+      "doi": "10.1016/j.matpr.2021.10.298",
+      "title": "Numerical and analytical analysis for deflection and stress in a simply supported beam",
+      "verified_via": "crossref",
+      "actual_title": "Numerical and analytical analysis for deflection and stress in a simply supported beam",
+      "actual_journal": "Materials Today: Proceedings",
+      "actual_year": 2022
+    },
+    {
+      "engine": "struct_plate",
+      "doi": "10.15587/2706-5448.2023.274348",
+      "title": "A study of mesh influence on extended finite element cracked plate and finite element plate bending",
+      "verified_via": "crossref",
+      "actual_title": "A study of mesh influence on extended finite element cracked plate and finite element plate bending",
+      "actual_journal": "Technology audit and production reserves",
+      "actual_year": 2023
+    },
+    {
+      "engine": "struct_bracket",
+      "doi": "10.1007/s12046-025-02810-1",
+      "title": "Topology optimization for manufacturing aircraft bearing brackets via laser powder bed fusion",
+      "verified_via": "crossref",
+      "actual_title": "Topology optimization for manufacturing aircraft bearing brackets via laser powder bed fusion",
+      "actual_journal": "Sādhanā",
+      "actual_year": 2025
+    },
+    {
+      "engine": "struct_topopt",
+      "doi": "10.1007/s00158-007-0217-0",
+      "title": "A critical review of established methods of structural topology optimization",
+      "verified_via": "crossref",
+      "actual_title": "A critical review of established methods of structural topology optimization",
+      "actual_journal": "Structural and Multidisciplinary Optimization",
+      "actual_year": 2008
+    },
+    {
+      "engine": "pde_solver",
+      "doi": "10.1016/j.jfds.2026.100176",
+      "title": "GARCH-PDE models for option pricing under stochastic volatility and their finite difference solvers",
+      "verified_via": "crossref",
+      "actual_title": "GARCH-PDE models for option pricing under stochastic volatility and their finite difference solvers",
+      "actual_journal": "The Journal of Finance and Data Science",
+      "actual_year": 2025
+    },
+    {
+      "engine": "pde_inverse",
+      "doi": "10.1088/0266-5611/20/1/001",
+      "title": "Recovery of the Lamé parameter in biological tissues",
+      "verified_via": "crossref",
+      "actual_title": "Recovery of the Lamé parameter   in biological tissues",
+      "actual_journal": "Inverse Problems",
+      "actual_year": 2003
+    },
+    {
+      "engine": "pde_param_id",
+      "doi": "10.1007/s00371-021-02162-x",
+      "title": "A weighted parameter identification PDE-constrained optimization for inverse image denoising problem",
+      "verified_via": "crossref",
+      "actual_title": "A weighted parameter identification PDE-constrained optimization for inverse image denoising problem",
+      "actual_journal": "The Visual Computer",
+      "actual_year": 2021
+    }
+  ]
+}

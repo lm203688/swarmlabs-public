@@ -1,0 +1,46 @@
+{
+  "system": {
+    "name": "Claude Triple Model System",
+    "version": "1.0.0",
+    "description": "gen-1.5 + Mythos Preview + Opus 4.8 协同系统"
+  },
+  "models": {
+    "gen15": {
+      "name": "gen-1.5",
+      "cost_tier": "low",
+      "speed_tier": "fast",
+      "enabled": true
+    },
+    "mythos": {
+      "name": "Mythos Preview",
+      "cost_tier": "medium",
+      "speed_tier": "medium",
+      "enabled": true
+    },
+    "opus": {
+      "name": "Opus 4.8",
+      "cost_tier": "high",
+      "speed_tier": "slow",
+      "enabled": true
+    }
+  },
+  "task_routing": {
+    "basic": "gen15",
+    "innovative": "mythos",
+    "stable": "opus",
+    "critical": "opus_mythos"
+  },
+  "scheduler": {
+    "max_concurrent_tasks": 5,
+    "retry_delay": 60,
+    "max_retries": 3
+  },
+  "experience_store": {
+    "max_experiences": 10000,
+    "cleanup_days": 30
+  },
+  "tech_radar": {
+    "update_interval": 86400,
+    "risk_threshold": 0.7
+  }
+}

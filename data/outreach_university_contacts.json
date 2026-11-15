@@ -1,0 +1,41 @@
+{
+  "compiled_at": "2026-08-06",
+  "source": "各大学官网公开的研究组/PI 联系页（非私人爬取，均为公开学术联系邮箱）",
+  "privacy_note": "含个人邮箱，未提交 git（隐私）。仅本地参考 + 邮件自动化读取。",
+  "domains": {
+    "materials": [
+      {"name": "Shenghong Ju", "title": "Assoc. Prof.", "email": "shenghong.ju@sjtu.edu.cn", "org": "Shanghai Jiao Tong Univ. (材料信息学/主动学习)", "source": "https://lcc.sjtu.edu.cn/Phone/View/2471"},
+      {"name": "Ryo Tamura", "title": "Group Leader", "email": "tamura.ryo@nims.go.jp", "org": "NIMS (材料信息学/Bayesian优化)", "source": "https://www.nims.go.jp/group/da/ryo_tamura/tamura_home_e.html"},
+      {"name": "Adrian Ehrenhofer", "title": "Research Group Leader", "email": "adrian.ehrenhofer@tu-dresden.de", "org": "TU Dresden (Materials Informatics Group)", "source": "https://www.dcim.science/matinf.html"},
+      {"name": "MIDS Office", "title": "Group Office", "email": "mids-office@rub.de", "org": "Ruhr-Univ. Bochum (Materials Informatics & Data Science)", "source": "https://www.icams.de/institute/departments-groups/materials-informatics-and-data-science"},
+      {"name": "Ashiq Muhammed Kozhikkattil", "title": "Doctoral Researcher", "email": "amkozh@utu.fi", "org": "Univ. of Turku (active learning for materials discovery)", "source": "https://www.utu.fi/en/people/ashiq-muhammed-kozhikkattil"}
+    ],
+    "synthetic_biology": [
+      {"name": "Yongtao Zhu", "title": "Primary PI (XJTLU iGEM)", "email": "SCI.iGEM@xjtlu.edu.cn", "org": "Xi'an Jiaotong-Liverpool Univ. (合成生物/iGEM)", "source": "https://www.xjtlu.edu.cn/en/news/2025/08/synthetic-biology-sparking-synergy-xjtlu-igem-team-shines-at-ccic-synbiopunk-in-beijing-co-creating-innovation"},
+      {"name": "Thorsten Mascher", "title": "Prof. (General Microbiology)", "email": "thorsten.mascher@tu-dresden.de", "org": "TU Dresden (合成生物/iGEM)", "source": "https://tu-dresden.de/tu-dresden/newsportal/news/bringing-home-the-gold-2022-tu-dresden-igem-team-successful-at-the-worlds-largest-synthetic-biology-competition"},
+      {"name": "David L. Bernick", "title": "Principal Investigator (iGEM)", "email": "dbernick@soe.ucsc.edu", "org": "UC Santa Cruz (合成生物)", "source": "https://2022.igem.wiki/ucsc/attributions"},
+      {"name": "Elizabeth Beer", "title": "Team Captain (iGEM)", "email": "ebeer@ucsc.edu", "org": "UC Santa Cruz (合成生物)", "source": "https://2022.igem.wiki/ucsc/attributions"}
+    ],
+    "quantum_computing": [
+      {"name": "Christine Muschik", "title": "Assoc. Prof.", "email": "cmuschik@uwaterloo.ca", "org": "Univ. of Waterloo / IQC", "source": "https://uwaterloo.ca/institute-for-quantum-computing/profiles/christine-muschik"},
+      {"name": "Siwei Tan", "title": "Researcher / 博导", "email": "siweitan@zju.edu.cn", "org": "Zhejiang Univ. (量子计算体系结构实验室)", "source": "http://www.cst.zju.edu.cn/_upload/article/files/8f/d5/7c78aa344b9e9b2d40f3ab475871/83d5132f-4ce5-4e1f-b483-5ec6f45ecab1.pdf"},
+      {"name": "Liqiang Lu", "title": "Researcher / 博导", "email": "liqianglu@zju.edu.cn", "org": "Zhejiang Univ. (量子计算软硬件)", "source": "http://www.cst.zju.edu.cn/_upload/article/files/8f/d5/7c78aa344b9e9b2d40f3ab475871/83d5132f-4ce5-4e1f-b483-5ec6f45ecab1.pdf"},
+      {"name": "Wenhui Ren", "title": "Researcher / 博导", "email": "wenhuiren@zju.edu.cn", "org": "Zhejiang Univ. (量子计算硬件)", "source": "http://www.cst.zju.edu.cn/_upload/article/files/8f/d5/7c78aa344b9e9b2d40f3ab475871/83d5132f-4ce5-4e1f-b483-5ec6f45ecab1.pdf"},
+      {"name": "Ziming Zhao", "title": "Researcher / 博导", "email": "zhaoziming@zju.edu.cn", "org": "Zhejiang Univ. (量子算法与AI)", "source": "http://www.cst.zju.edu.cn/_upload/article/files/8f/d5/7c78aa344b9e9b2d40f3ab475871/83d5132f-4ce5-4e1f-b483-5ec6f45ecab1.pdf"},
+      {"name": "Ye Wang", "title": "Prof. (Research)", "email": "yewang2022@ustc.edu.cn", "org": "USTC (囚禁离子量子计算/纠错)", "source": "https://quantum.ustc.edu.cn/web/en/node/1079/?page=1"},
+      {"name": "Haiou Li", "title": "Prof. / 博导", "email": "haiouli@ustc.edu.cn", "org": "USTC (硅基自旋量子比特)", "source": "http://dslx.ustc.edu.cn?expertid=4119&menu=expert_paper/"},
+      {"name": "Manpreet Singh Jattana", "title": "Deputy Group Leader", "email": "jattana@em.uni-frankfurt.de", "org": "Goethe Univ. Frankfurt (MSQC, 量子计算)", "source": "https://msqc.cgi-host6.rz.uni-frankfurt.de/team"}
+    ],
+    "brain_science": [
+      {"name": "Timothy Behrens", "title": "Prof. of Computational Neuroscience", "email": "behrens@fmrib.ox.ac.uk", "org": "Univ. of Oxford (WIN)", "source": "https://www.neuroscience.ox.ac.uk/research-directory/timothy-behrens"},
+      {"name": "Alon Baram", "title": "Senior Researcher", "email": "alon.baram@ndcn.ox.ac.uk", "org": "Univ. of Oxford (计算神经科学组)", "source": "https://www.win.ox.ac.uk/people/alon-baram"},
+      {"name": "Andrea Luppi", "title": "Wellcome Early Career Fellow", "email": "andrea.luppi@psych.ox.ac.uk", "org": "Univ. of Oxford (计算认知神经科学)", "source": "https://www.psych.ox.ac.uk/team/andrea-luppi/"},
+      {"name": "Jianguang Ni", "title": "青年研究员 / PI", "email": "jguangni@fudan.edu.cn", "org": "Fudan Univ. (脑科学研究院, 神经通讯与计算)", "source": "https://iobs.fudan.edu.cn/2f/99/c49985a733081/page.htm"},
+      {"name": "Songting Li", "title": "Prof.", "email": "songting@sjtu.edu.cn", "org": "Shanghai Jiao Tong Univ. (计算神经科学)", "source": "https://ins.sjtu.edu.cn/people/songtingli/"}
+    ]
+  },
+  "draft_email": {
+    "subject": "AI 主动学习加速您的{field}实验 — SwarmLabs 免费工作台",
+    "body_plain": "尊敬的 {title} {name}：\n\n您好。我关注到您在{field}方向的研究，想到您和团队可能也常遇到「实验成本高、参数空间大、试错慢」的普遍痛点。\n\nSwarmLabs 是一个面向科研的实验优化工作台：提交真实实验结果 → AI 主动学习（贝叶斯优化）自动生成下一轮最优参数建议，平均少走数倍弯路。亮点：\n· 实验结果「再应用」：已验证实验注入模型作训练点，越用越聪明\n· 自带 API（BYO-LLM）：用您自己的 DeepSeek / 通义 / OpenAI / Ollama 密钥，平台零成本、数据不出账号\n· 贡献积分体系：提交/验证实验赚积分，社区贡献榜脱敏排名\n· 注册即送 50 积分，免费开始\n\n若对您的研究有用，欢迎试用：https://swarmlabs.tools （附主动学习科普：https://swarmlabs.tools/blog/materials ）\n\n若您不希望收到此类邮件，回复「退订」即可，我会立即将您移出名单。\n\n祝研究顺利，\nSwarmLabs 团队"
+  }
+}

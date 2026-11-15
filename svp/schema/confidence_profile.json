@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://swarmlabs.tools/svp/schema/confidence_profile.json",
+  "title": "SVP ConfidenceProfile",
+  "description": "Distributional V&V output: multi-level confidence profile for a single scenario, computed via cross-conformal prediction at multiple alpha levels.",
+  "svp": "0.5",
+  "type": "object",
+  "required": ["key", "levels", "coverage_band", "calibration_grade", "profile_score"],
+  "properties": {
+    "key": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Scenario identifier, matching Scenario.schema's key"
+    },
+    "n_train": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Training set size"
+    },
+    "n_test": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Test set size"
+    },
+    "levels": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["alpha", "picp", "nmpiw", "verdict"],
+        "properties": {
+          "alpha": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "exclusiveMaximum": 1,
+            "description": "Nominal significance level (1 - target coverage)"
+          },
+          "conformal_Q": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Conformal quantile (calibrated)"
+          },
+          "gaussian_z": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Gaussian z-score for comparison"
+          },
+          "picp": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Empirical Prediction Interval Coverage Probability"
+          },
+          "nmpiw": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Normalized Mean Prediction Interval Width (lower = sharper)"
+          },
+          "interval_score": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Winkler interval score (lower = better)"
+          },
+          "miscal_area": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Miscalibration area under calibration curve"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": ["IMPROVED", "STILL_CONSERVATIVE", "NO_GAIN", "UNDER_COVERS"]
+          }
+        }
+      },
+      "description": "One entry per alpha level. Recommended: alpha in {0.01, 0.05, 0.10, 0.20, 0.30}"
+    },
+    "coverage_band": {
+      "type": "object",
+      "additionalProperties": {"type": "boolean"},
+      "description": "alpha → whether PICP meets the (1-alpha) target at that level"
+    },
+    "sharpness_band": {
+      "type": "object",
+      "additionalProperties": {"type": "number"},
+      "description": "alpha → nmpiw at that level"
+    },
+    "best_alpha": {
+      "oneOf": [{"type": "number"}, {"type": "null"}],
+      "description": "Alpha that maximizes sharpness subject to coverage meeting target"
+    },
+    "worst_calibration_alpha": {
+      "type": "number",
+      "description": "Alpha level where miscal_area is largest"
+    },
+    "calibration_grade": {
+      "type": "string",
+      "enum": ["A", "B", "C", "D"],
+      "description": "Weighted calibration grade. A: MCAL<=0.02, B: <=0.05, C: <=0.10, D: >0.10"
+    },
+    "verdict_stability": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Fraction of alpha levels agreeing on the majority verdict"
+    },
+    "profile_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Composite ranking score: (fraction coverage ok) * (sharpness normalized)"
+    }
+  },
+  "examples": [
+    {
+      "key": "surrogate_forrester",
+      "n_train": 12,
+      "n_test": 12,
+      "levels": [
+        {"alpha": 0.01, "conformal_Q": 2.56, "gaussian_z": 2.576, "picp": 1.0, "nmpiw": 0.0168, "interval_score": 0.031, "miscal_area": 0.312, "verdict": "IMPROVED"},
+        {"alpha": 0.05, "conformal_Q": 1.96, "gaaussian_z": 1.96, "picp": 1.0, "nmpiw": 0.0136, "interval_score": 0.025, "miscal_area": 0.326, "verdict": "IMPROVED"},
+        {"alpha": 0.10, "conformal_Q": 1.54, "gaussian_z": 1.645, "picp": 0.975, "nmpiw": 0.0098, "interval_score": 0.018, "miscal_area": 0.300, "verdict": "IMPROVED"},
+        {"alpha": 0.20, "conformal_Q": 1.05, "gaussian_z": 1.282, "picp": 0.95, "nmpiw": 0.0053, "interval_score": 0.010, "miscal_area": 0.226, "verdict": "IMPROVED"},
+        {"alpha": 0.30, "conformal_Q": 0.71, "gaussian_z": 1.036, "picp": 0.875, "nmpiw": 0.0033, "interval_score": 0.006, "miscal_area": 0.161, "verdict": "IMPROVED"}
+      ],
+      "coverage_band": {"0.01": true, "0.05": true, "0.10": true, "0.20": true, "0.30": true},
+      "sharpness_band": {"0.01": 0.0168, "0.05": 0.0136, "0.10": 0.0098, "0.20": 0.0053, "0.30": 0.0033},
+      "best_alpha": 0.30,
+      "worst_calibration_alpha": 0.05,
+      "calibration_grade": "D",
+      "verdict_stability": 1.0,
+      "profile_score": 1.0
+    }
+  ]
+}

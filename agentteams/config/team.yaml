@@ -1,0 +1,50 @@
+# SwarmLabs 团队拓扑（Leader-Worker，对齐 AgentTeams 协同设计基点）
+#
+# 说明：拓扑与执行载体解耦。runtime=local 时用内置执行器（零依赖、可复现）；
+# 换成 agentteams 时只替换 core/runtime.py 里的适配器，本文件与业务代码不变。
+team:
+  name: SwarmLabs Virtual-Experiment Team
+  topology: leader-worker
+  runtime: local            # local | agentteams
+  # 可选：指向 C1 生成的 .swarm.json（flybrain-connectome 合成的 motif 拓扑）。
+  # 设置后 build_workers() 会按其 agents 列表动态组建 N-agent 团队；留空则用
+  # 默认 4-agent（向后兼容）。CLI 的 --topology 覆盖此值。
+  topology_file: null
+  description: >
+    面向「虚拟实验对等现实」的三职能科学验证团队：Planner 选题、Executor 跑实验、
+    Verifier 判读并把关知识库入库。Leader 负责拆解、派发、汇总与飞轮驱动。
+
+  # 本地小模型顾问层（可选，默认关闭以保障既有 runs 可复现）。
+  # 开启后由 Leader 在渲染交付物前调用一次 local_model.advisory，把本轮判定
+  # 结果转成人类可读的复核叙述。**它没有任何裁决权**：rel/cov/cal/成熟度/门禁
+  # 全部仍由 engine/ 的确定性计算给出，顾问输出只进 loop_report。
+  # CLI 的 --local-model <name> 覆盖 model 并强制开启；--no-local-model 强制关闭。
+  local_model:
+    enabled: false
+    model: auto            # auto | flybrain:latest | minimind:latest | ornith-1.5:35b | ...
+    host: http://127.0.0.1:11434
+    timeout_s: 60
+    max_rows: 3
+
+  leader:
+    role: leader
+    duty: 任务拆解 / 派发 / 汇总 / AgentLoop 飞轮 / 交付物渲染
+
+  workers:
+    - role: planner
+      impl: agentteams.agents.planner.PlannerAgent
+      duty: 依据上一轮飞轮状态与场景目录选题排序，产出执行计划
+    - role: executor
+      impl: agentteams.agents.executor.ExecutorAgent
+      duty: 执行 GP 代理虚拟实验、计算 UQ 指标、排名候选下一步实验
+    - role: verifier
+      impl: agentteams.agents.verifier.VerifierAgent
+      duty: 判读校准与成熟度、产出新方向建议、发起（需审批的）知识库修正
+
+# 成熟度判定阈值——与线上公开仪表盘同一套口径，避免内外结论不一致
+thresholds:
+  rel_converged: 0.05     # 相对误差 ≤5% 视为收敛
+  cov_min: 0.8            # 95%CI 覆盖率下限
+  cal_max: 0.08           # 校准误差上限
+  cov_bad: 0.7            # 低于此覆盖率判为「需数据/校准」
+  rel_bad: 0.2            # 高于此相对误差判为「需数据/校准」

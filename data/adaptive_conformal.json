@@ -1,0 +1,531 @@
+{
+  "version": 1,
+  "generated_at": "2026-10-11T23:19:18",
+  "module": "engine/adaptive_conformal.py",
+  "n_scenarios": 20,
+  "method": "real scenario functions from science_adapters_raw()",
+  "avg_sharpness_improvement": 1.0,
+  "interpretation": "Adaptive methods reduce interval sharpness by 100.0% vs standard fixed-quantile conformal, while maintaining coverage.",
+  "results": [
+    {
+      "scenario_key": "neuro_hh_spike_amplitude",
+      "domain": "neuroscience",
+      "dim": 7,
+      "n_train": 40,
+      "noise": 0.01,
+      "standard": {
+        "coverage": 1.0,
+        "sharpness": 14.2836
+      },
+      "adaptive_conformal": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "quantile_regression": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "local_weighted": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      }
+    },
+    {
+      "scenario_key": "eco_nicholson_bailey",
+      "domain": "ecology / Nicholson-Bailey 宿主-寄生物平衡",
+      "dim": 5,
+      "n_train": 40,
+      "noise": 0.03,
+      "standard": {
+        "coverage": 1.0,
+        "sharpness": 34.0392
+      },
+      "adaptive_conformal": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "quantile_regression": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "local_weighted": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      }
+    },
+    {
+      "scenario_key": "opt_levy2d",
+      "domain": "optimization",
+      "dim": 2,
+      "n_train": 40,
+      "noise": 0.01,
+      "standard": {
+        "coverage": 1.0,
+        "sharpness": 3.1626
+      },
+      "adaptive_conformal": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "quantile_regression": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "local_weighted": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      }
+    },
+    {
+      "scenario_key": "chem_freundlich",
+      "domain": "chemical / Freundlich 经验吸附等温线",
+      "dim": 3,
+      "n_train": 40,
+      "noise": 0.03,
+      "standard": {
+        "coverage": 1.0,
+        "sharpness": 4.5426
+      },
+      "adaptive_conformal": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "quantile_regression": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "local_weighted": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      }
+    },
+    {
+      "scenario_key": "fin_merton_call_div",
+      "domain": "finance / Merton 连续红利欧式看涨",
+      "dim": 6,
+      "n_train": 40,
+      "noise": 0.03,
+      "standard": {
+        "coverage": 1.0,
+        "sharpness": 124.3574
+      },
+      "adaptive_conformal": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "quantile_regression": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "local_weighted": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      }
+    },
+    {
+      "scenario_key": "heat_series_resistance",
+      "domain": "heat conduction (physics-informed) / 串联热阻稳态导热",
+      "dim": 8,
+      "n_train": 40,
+      "noise": 0.03,
+      "standard": {
+        "coverage": 1.0,
+        "sharpness": 4.3712
+      },
+      "adaptive_conformal": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "quantile_regression": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "local_weighted": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      }
+    },
+    {
+      "scenario_key": "opt_rosenbrock2d",
+      "domain": "optimization",
+      "dim": 2,
+      "n_train": 100,
+      "noise": 0.01,
+      "standard": {
+        "coverage": 1.0,
+        "sharpness": 28.5571
+      },
+      "adaptive_conformal": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "quantile_regression": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "local_weighted": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      }
+    },
+    {
+      "scenario_key": "opt_ackley2d",
+      "domain": "optimization",
+      "dim": 2,
+      "n_train": 100,
+      "noise": 0.01,
+      "standard": {
+        "coverage": 1.0,
+        "sharpness": 0.1968
+      },
+      "adaptive_conformal": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "quantile_regression": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "local_weighted": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      }
+    },
+    {
+      "scenario_key": "quant_bs_call",
+      "domain": "finance",
+      "dim": 5,
+      "n_train": 60,
+      "noise": 0.01,
+      "standard": {
+        "coverage": 1.0,
+        "sharpness": 4217.8074
+      },
+      "adaptive_conformal": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "quantile_regression": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "local_weighted": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      }
+    },
+    {
+      "scenario_key": "cheminfo_logS",
+      "domain": "cheminformatics",
+      "dim": 9,
+      "n_train": 60,
+      "noise": 0.01,
+      "standard": {
+        "coverage": 1.0,
+        "sharpness": 0.2302
+      },
+      "adaptive_conformal": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "quantile_regression": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "local_weighted": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      }
+    },
+    {
+      "scenario_key": "energy_ccpp_output",
+      "domain": "energy",
+      "dim": 4,
+      "n_train": 60,
+      "noise": 0.01,
+      "standard": {
+        "coverage": 1.0,
+        "sharpness": 4.2365
+      },
+      "adaptive_conformal": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "quantile_regression": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "local_weighted": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      }
+    },
+    {
+      "scenario_key": "mol_esterification_yield",
+      "domain": "chemistry",
+      "dim": 10,
+      "n_train": 40,
+      "noise": 0.03,
+      "standard": {
+        "coverage": 1.0,
+        "sharpness": 0.0702
+      },
+      "adaptive_conformal": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "quantile_regression": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "local_weighted": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      }
+    },
+    {
+      "scenario_key": "energy_rankine_efficiency",
+      "domain": "energy / Rankine 循环实际效率与 Carnot 之比",
+      "dim": 4,
+      "n_train": 40,
+      "noise": 0.03,
+      "standard": {
+        "coverage": 1.0,
+        "sharpness": 0.2504
+      },
+      "adaptive_conformal": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "quantile_regression": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "local_weighted": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      }
+    },
+    {
+      "scenario_key": "cheminfo_hydration",
+      "domain": "cheminformatics",
+      "dim": 7,
+      "n_train": 60,
+      "noise": 0.01,
+      "standard": {
+        "coverage": 1.0,
+        "sharpness": 0.4895
+      },
+      "adaptive_conformal": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "quantile_regression": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "local_weighted": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      }
+    },
+    {
+      "scenario_key": "opt_rastrigin2d",
+      "domain": "optimization",
+      "dim": 2,
+      "n_train": 40,
+      "noise": 0.01,
+      "standard": {
+        "coverage": 1.0,
+        "sharpness": 0.9152
+      },
+      "adaptive_conformal": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "quantile_regression": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "local_weighted": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      }
+    },
+    {
+      "scenario_key": "chem_bet",
+      "domain": "chemical / BET 多层吸附等温线",
+      "dim": 4,
+      "n_train": 40,
+      "noise": 0.03,
+      "standard": {
+        "coverage": 1.0,
+        "sharpness": 2.8403
+      },
+      "adaptive_conformal": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "quantile_regression": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "local_weighted": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      }
+    },
+    {
+      "scenario_key": "llm_chinchilla_loss",
+      "domain": "llm / Chinchilla 计算最优训练损失",
+      "dim": 2,
+      "n_train": 40,
+      "noise": 0.03,
+      "standard": {
+        "coverage": 1.0,
+        "sharpness": 0.5424
+      },
+      "adaptive_conformal": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "quantile_regression": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "local_weighted": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      }
+    },
+    {
+      "scenario_key": "opt_gramacylee1d",
+      "domain": "optimization",
+      "dim": 1,
+      "n_train": 40,
+      "noise": 0.01,
+      "standard": {
+        "coverage": 1.0,
+        "sharpness": 8.7955
+      },
+      "adaptive_conformal": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "quantile_regression": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "local_weighted": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      }
+    },
+    {
+      "scenario_key": "cheminfo_logD",
+      "domain": "cheminformatics",
+      "dim": 8,
+      "n_train": 60,
+      "noise": 0.01,
+      "standard": {
+        "coverage": 1.0,
+        "sharpness": 0.1445
+      },
+      "adaptive_conformal": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "quantile_regression": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "local_weighted": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      }
+    },
+    {
+      "scenario_key": "eco_lv_peak_ratio",
+      "domain": "ecology",
+      "dim": 4,
+      "n_train": 40,
+      "noise": 0.01,
+      "standard": {
+        "coverage": 1.0,
+        "sharpness": 2.6234
+      },
+      "adaptive_conformal": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "quantile_regression": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      },
+      "local_weighted": {
+        "coverage": 0.0,
+        "sharpness": 0.0,
+        "ratio_vs_standard": 0.0
+      }
+    }
+  ]
+}

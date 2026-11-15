@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "snapshots": {
+    "run-1": {
+      "run_id": "run-1",
+      "captured_at": "2026-08-25T08:37:15",
+      "payload": {
+        "coverage": 0.95,
+        "rmse": 0.01
+      }
+    }
+  },
+  "updated_at": "2026-08-25T08:37:15"
+}

@@ -1,0 +1,583 @@
+{
+  "adsorption": [
+    {
+      "name": "Zeolite-13X",
+      "formula": "Na₈₆[(AlO₂)₈₆(SiO₂)₁₀₆]",
+      "surface_area_m2g": 725,
+      "pore_size_nm": 1,
+      "capacity_mmol_g": 4.5,
+      "source": "NIST/IZA"
+    },
+    {
+      "name": "Zeolite-5A",
+      "formula": "Ca₄.₉Na₂.₂[(AlO₂)₁₂(SiO₂)₁₂]",
+      "surface_area_m2g": 500,
+      "pore_size_nm": 0.5,
+      "capacity_mmol_g": 3.8,
+      "source": "IZA"
+    },
+    {
+      "name": "MOF-5",
+      "formula": "Zn₄O(BDC)₃",
+      "surface_area_m2g": 2900,
+      "pore_size_nm": 1.2,
+      "capacity_mmol_g": 8,
+      "source": "NIST/文献"
+    },
+    {
+      "name": "MOF-177",
+      "formula": "Zn₄O(BTB)₂",
+      "surface_area_m2g": 4500,
+      "pore_size_nm": 1.5,
+      "capacity_mmol_g": 12,
+      "source": "文献"
+    },
+    {
+      "name": "HKUST-1",
+      "formula": "Cu₃(BTC)₂",
+      "surface_area_m2g": 1500,
+      "pore_size_nm": 0.9,
+      "capacity_mmol_g": 5.5,
+      "source": "NIST"
+    },
+    {
+      "name": "ZIF-8",
+      "formula": "Zn(mIm)₂",
+      "surface_area_m2g": 1630,
+      "pore_size_nm": 1.16,
+      "capacity_mmol_g": 4.2,
+      "source": "文献"
+    },
+    {
+      "name": "MIL-101",
+      "formula": "Cr₃O(F/OH)(BDC)₃",
+      "surface_area_m2g": 3100,
+      "pore_size_nm": 2.9,
+      "capacity_mmol_g": 9,
+      "source": "文献"
+    },
+    {
+      "name": "Activated Carbon",
+      "formula": "C",
+      "surface_area_m2g": 1200,
+      "pore_size_nm": 2,
+      "capacity_mmol_g": 6,
+      "source": "NIST"
+    },
+    {
+      "name": "Silica Gel",
+      "formula": "SiO₂",
+      "surface_area_m2g": 800,
+      "pore_size_nm": 3,
+      "capacity_mmol_g": 3,
+      "source": "NIST"
+    },
+    {
+      "name": "MCM-41",
+      "formula": "SiO₂",
+      "surface_area_m2g": 1000,
+      "pore_size_nm": 3.5,
+      "capacity_mmol_g": 2.5,
+      "source": "文献"
+    }
+  ],
+  "ammonia": [
+    {
+      "name": "Fe-K2O-Al2O3",
+      "formula": "Fe·K₂O·Al₂O₃",
+      "activity_pct": 100,
+      "operating_temp_C": 450,
+      "pressure_bar": 150,
+      "source": "Haber-Bosch文献"
+    },
+    {
+      "name": "Ru-Ba-Cs",
+      "formula": "Ru·Ba·Cs",
+      "activity_pct": 150,
+      "operating_temp_C": 400,
+      "pressure_bar": 100,
+      "source": "文献"
+    },
+    {
+      "name": "Fe-Mo",
+      "formula": "Fe·Mo",
+      "activity_pct": 80,
+      "operating_temp_C": 500,
+      "pressure_bar": 200,
+      "source": "文献"
+    },
+    {
+      "name": "Co3Mo3N",
+      "formula": "Co₃Mo₃N",
+      "activity_pct": 120,
+      "operating_temp_C": 400,
+      "pressure_bar": 50,
+      "source": "文献"
+    },
+    {
+      "name": "Ni-Fe",
+      "formula": "Ni·Fe",
+      "activity_pct": 60,
+      "operating_temp_C": 450,
+      "pressure_bar": 100,
+      "source": "文献"
+    }
+  ],
+  "battery": [
+    {
+      "name": "LiCoO2",
+      "formula": "LiCoO₂",
+      "voltage_V": 3.7,
+      "capacity_mAhg": 140,
+      "cycle_life": 1000,
+      "crystal": "层状",
+      "source": "NIST/JARVIS"
+    },
+    {
+      "name": "LiFePO4",
+      "formula": "LiFePO₄",
+      "voltage_V": 3.3,
+      "capacity_mAhg": 170,
+      "cycle_life": 3000,
+      "crystal": "橄榄石",
+      "source": "JARVIS"
+    },
+    {
+      "name": "LiMn2O4",
+      "formula": "LiMn₂O₄",
+      "voltage_V": 4,
+      "capacity_mAhg": 120,
+      "cycle_life": 500,
+      "crystal": "尖晶石",
+      "source": "JARVIS"
+    },
+    {
+      "name": "NMC811",
+      "formula": "LiNi₀.₈Mn₀.₁Co₀.₁O₂",
+      "voltage_V": 3.8,
+      "capacity_mAhg": 200,
+      "cycle_life": 800,
+      "crystal": "层状",
+      "source": "文献"
+    },
+    {
+      "name": "Li4Ti5O12",
+      "formula": "Li₄Ti₅O₁₂",
+      "voltage_V": 1.5,
+      "capacity_mAhg": 175,
+      "cycle_life": 5000,
+      "crystal": "尖晶石",
+      "source": "JARVIS"
+    },
+    {
+      "name": "Graphite",
+      "formula": "C",
+      "voltage_V": 0.1,
+      "capacity_mAhg": 372,
+      "cycle_life": 2000,
+      "crystal": "层状",
+      "source": "NIST"
+    },
+    {
+      "name": "Si",
+      "formula": "Si",
+      "voltage_V": 0.4,
+      "capacity_mAhg": 4200,
+      "cycle_life": 300,
+      "crystal": "金刚石",
+      "source": "文献"
+    },
+    {
+      "name": "Li metal",
+      "formula": "Li",
+      "voltage_V": 0,
+      "capacity_mAhg": 3860,
+      "cycle_life": 100,
+      "crystal": "BCC",
+      "source": "文献"
+    },
+    {
+      "name": "Li2S",
+      "formula": "Li₂S",
+      "voltage_V": 2.2,
+      "capacity_mAhg": 1167,
+      "cycle_life": 200,
+      "crystal": "反萤石",
+      "source": "文献"
+    },
+    {
+      "name": "LiMnPO4",
+      "formula": "LiMnPO₄",
+      "voltage_V": 4.1,
+      "capacity_mAhg": 171,
+      "cycle_life": 1000,
+      "crystal": "橄榄石",
+      "source": "JARVIS"
+    }
+  ],
+  "combustion": [
+    {
+      "name": "CH4-air",
+      "formula": "CH₄+2O₂",
+      "adiabatic_temp_C": 1950,
+      "laminar_speed_cms": 40,
+      "source": "NIST"
+    },
+    {
+      "name": "H2-air",
+      "formula": "2H₂+O₂",
+      "adiabatic_temp_C": 2100,
+      "laminar_speed_cms": 230,
+      "source": "NIST"
+    },
+    {
+      "name": "C8H18-air",
+      "formula": "C₈H₁₈+12.5O₂",
+      "adiabatic_temp_C": 1980,
+      "laminar_speed_cms": 35,
+      "source": "NIST"
+    },
+    {
+      "name": "CO-air",
+      "formula": "2CO+O₂",
+      "adiabatic_temp_C": 1800,
+      "laminar_speed_cms": 18,
+      "source": "NIST"
+    },
+    {
+      "name": "C2H4-air",
+      "formula": "C₂H₄+3O₂",
+      "adiabatic_temp_C": 2050,
+      "laminar_speed_cms": 75,
+      "source": "NIST"
+    }
+  ],
+  "corrosion": [
+    {
+      "name": "SS316",
+      "formula": "Fe-17Cr-12Ni-2.5Mo",
+      "corrosion_rate_mmy": 0.01,
+      "pitting_potential_V": 0.85,
+      "source": "NIST/ASM"
+    },
+    {
+      "name": "SS304",
+      "formula": "Fe-19Cr-10Ni",
+      "corrosion_rate_mmy": 0.03,
+      "pitting_potential_V": 0.65,
+      "source": "NIST/ASM"
+    },
+    {
+      "name": "Carbon Steel",
+      "formula": "Fe-0.2C",
+      "corrosion_rate_mmy": 0.15,
+      "pitting_potential_V": 0.2,
+      "source": "NIST"
+    },
+    {
+      "name": "Aluminum 6061",
+      "formula": "Al-1Mg-0.6Si",
+      "corrosion_rate_mmy": 0.005,
+      "pitting_potential_V": 0.5,
+      "source": "ASM"
+    },
+    {
+      "name": "Titanium Grade 2",
+      "formula": "Ti",
+      "corrosion_rate_mmy": 0.001,
+      "pitting_potential_V": 1.2,
+      "source": "ASM"
+    },
+    {
+      "name": "Copper",
+      "formula": "Cu",
+      "corrosion_rate_mmy": 0.02,
+      "pitting_potential_V": 0.3,
+      "source": "NIST"
+    },
+    {
+      "name": "Hastelloy C-276",
+      "formula": "Ni-16Cr-16Mo-5Fe",
+      "corrosion_rate_mmy": 0.003,
+      "pitting_potential_V": 1,
+      "source": "ASM"
+    },
+    {
+      "name": "Duplex 2205",
+      "formula": "Fe-22Cr-5.5Ni-3Mo",
+      "corrosion_rate_mmy": 0.005,
+      "pitting_potential_V": 0.9,
+      "source": "ASM"
+    },
+    {
+      "name": "Nickel 200",
+      "formula": "Ni",
+      "corrosion_rate_mmy": 0.01,
+      "pitting_potential_V": 0.7,
+      "source": "ASM"
+    },
+    {
+      "name": "Monel 400",
+      "formula": "Ni-30Cu",
+      "corrosion_rate_mmy": 0.008,
+      "pitting_potential_V": 0.6,
+      "source": "ASM"
+    }
+  ],
+  "perovskite": [
+    {
+      "name": "MAPbI3",
+      "formula": "CH₃NH₃PbI₃",
+      "bandgap_eV": 1.55,
+      "efficiency_pct": 25.5,
+      "crystal": "四方钙钛矿",
+      "source": "NREL效率表"
+    },
+    {
+      "name": "FAPbI3",
+      "formula": "HC(NH₂)₂PbI₃",
+      "bandgap_eV": 1.48,
+      "efficiency_pct": 25.8,
+      "crystal": "立方钙钛矿",
+      "source": "NREL"
+    },
+    {
+      "name": "MAPbBr3",
+      "formula": "CH₃NH₃PbBr₃",
+      "bandgap_eV": 2.3,
+      "efficiency_pct": 18,
+      "crystal": "立方钙钛矿",
+      "source": "NREL"
+    },
+    {
+      "name": "CsPbI3",
+      "formula": "CsPbI₃",
+      "bandgap_eV": 1.73,
+      "efficiency_pct": 20,
+      "crystal": "立方钙钛矿",
+      "source": "文献"
+    },
+    {
+      "name": "MAPbCl3",
+      "formula": "CH₃NH₃PbCl₃",
+      "bandgap_eV": 3,
+      "efficiency_pct": 5,
+      "crystal": "立方钙钛矿",
+      "source": "文献"
+    },
+    {
+      "name": "FASnI3",
+      "formula": "HC(NH₂)₂SnI₃",
+      "bandgap_eV": 1.4,
+      "efficiency_pct": 14,
+      "crystal": "四方钙钛矿",
+      "source": "文献"
+    },
+    {
+      "name": "MASnI3",
+      "formula": "CH₃NH₃SnI₃",
+      "bandgap_eV": 1.3,
+      "efficiency_pct": 6,
+      "crystal": "四方钙钛矿",
+      "source": "文献"
+    },
+    {
+      "name": "CsPbBr3",
+      "formula": "CsPbBr₃",
+      "bandgap_eV": 2.3,
+      "efficiency_pct": 17,
+      "crystal": "立方钙钛矿",
+      "source": "文献"
+    },
+    {
+      "name": "MAPbI2Br",
+      "formula": "CH₃NH₃PbI₂Br",
+      "bandgap_eV": 1.75,
+      "efficiency_pct": 15,
+      "crystal": "四方钙钛矿",
+      "source": "文献"
+    },
+    {
+      "name": "Cs2AgBiBr6",
+      "formula": "Cs₂AgBiBr₆",
+      "bandgap_eV": 2.2,
+      "efficiency_pct": 3,
+      "crystal": "双钙钛矿",
+      "source": "文献"
+    }
+  ],
+  "photocatalysis": [
+    {
+      "name": "TiO2-P25",
+      "formula": "TiO₂",
+      "bandgap_eV": 3.2,
+      "crystal": "锐钛矿+金红石",
+      "surface_area_m2g": 50,
+      "quantum_efficiency": 0.4,
+      "source": "NIST/JARVIS"
+    },
+    {
+      "name": "TiO2-anatase",
+      "formula": "TiO₂",
+      "bandgap_eV": 3.2,
+      "crystal": "锐钛矿",
+      "surface_area_m2g": 80,
+      "quantum_efficiency": 0.45,
+      "source": "JARVIS"
+    },
+    {
+      "name": "TiO2-rutile",
+      "formula": "TiO₂",
+      "bandgap_eV": 3,
+      "crystal": "金红石",
+      "surface_area_m2g": 20,
+      "quantum_efficiency": 0.3,
+      "source": "JARVIS"
+    },
+    {
+      "name": "ZnO",
+      "formula": "ZnO",
+      "bandgap_eV": 3.37,
+      "crystal": "纤锌矿",
+      "surface_area_m2g": 30,
+      "quantum_efficiency": 0.35,
+      "source": "JARVIS"
+    },
+    {
+      "name": "WO3",
+      "formula": "WO₃",
+      "bandgap_eV": 2.7,
+      "crystal": "单斜",
+      "surface_area_m2g": 15,
+      "quantum_efficiency": 0.25,
+      "source": "JARVIS"
+    },
+    {
+      "name": "Fe2O3",
+      "formula": "Fe₂O₃",
+      "bandgap_eV": 2.1,
+      "crystal": "赤铁矿",
+      "surface_area_m2g": 40,
+      "quantum_efficiency": 0.15,
+      "source": "JARVIS"
+    },
+    {
+      "name": "CdS",
+      "formula": "CdS",
+      "bandgap_eV": 2.4,
+      "crystal": "纤锌矿",
+      "surface_area_m2g": 25,
+      "quantum_efficiency": 0.5,
+      "source": "文献"
+    },
+    {
+      "name": "g-C3N4",
+      "formula": "C₃N₄",
+      "bandgap_eV": 2.7,
+      "crystal": "石墨相",
+      "surface_area_m2g": 60,
+      "quantum_efficiency": 0.3,
+      "source": "文献"
+    },
+    {
+      "name": "BiVO4",
+      "formula": "BiVO₄",
+      "bandgap_eV": 2.4,
+      "crystal": "单斜白钨矿",
+      "surface_area_m2g": 10,
+      "quantum_efficiency": 0.4,
+      "source": "JARVIS"
+    },
+    {
+      "name": "SrTiO3",
+      "formula": "SrTiO₃",
+      "bandgap_eV": 3.2,
+      "crystal": "钙钛矿",
+      "surface_area_m2g": 5,
+      "quantum_efficiency": 0.5,
+      "source": "JARVIS"
+    }
+  ],
+  "polymer": [
+    {
+      "name": "PE",
+      "formula": "(C₂H₄)ₙ",
+      "Tg_C": -110,
+      "Tm_C": 135,
+      "tensile_MPa": 30,
+      "source": "NIST/Polymer Handbook"
+    },
+    {
+      "name": "PP",
+      "formula": "(C₃H₆)ₙ",
+      "Tg_C": -20,
+      "Tm_C": 165,
+      "tensile_MPa": 35,
+      "source": "NIST"
+    },
+    {
+      "name": "PVC",
+      "formula": "(C₂H₃Cl)ₙ",
+      "Tg_C": 80,
+      "Tm_C": 180,
+      "tensile_MPa": 50,
+      "source": "NIST"
+    },
+    {
+      "name": "PS",
+      "formula": "(C₈H₈)ₙ",
+      "Tg_C": 100,
+      "Tm_C": 240,
+      "tensile_MPa": 40,
+      "source": "NIST"
+    },
+    {
+      "name": "PET",
+      "formula": "(C₁₀H₈O₄)ₙ",
+      "Tg_C": 75,
+      "Tm_C": 260,
+      "tensile_MPa": 60,
+      "source": "NIST"
+    },
+    {
+      "name": "Nylon-6,6",
+      "formula": "(C₁₂H₂₂N₂O₂)ₙ",
+      "Tg_C": 50,
+      "Tm_C": 265,
+      "tensile_MPa": 80,
+      "source": "NIST"
+    },
+    {
+      "name": "PC",
+      "formula": "(C₁₆H₁₄O₃)ₙ",
+      "Tg_C": 145,
+      "Tm_C": 267,
+      "tensile_MPa": 65,
+      "source": "NIST"
+    },
+    {
+      "name": "PTFE",
+      "formula": "(C₂F₄)ₙ",
+      "Tg_C": -100,
+      "Tm_C": 327,
+      "tensile_MPa": 25,
+      "source": "NIST"
+    },
+    {
+      "name": "PMMA",
+      "formula": "(C₅O₂H₈)ₙ",
+      "Tg_C": 105,
+      "Tm_C": 160,
+      "tensile_MPa": 50,
+      "source": "NIST"
+    },
+    {
+      "name": "ABS",
+      "formula": "(C₈H₈·C₄H₆·C₃H₃N)ₙ",
+      "Tg_C": 105,
+      "Tm_C": 220,
+      "tensile_MPa": 45,
+      "source": "NIST"
+    }
+  ]
+}

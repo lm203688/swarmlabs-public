@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://swarmlabs.tools/svp/schema/anchor.json",
+  "title": "SVP Anchor",
+  "description": "A three-dimensional evidence anchor in the SwarmLabs Verification Protocol.",
+  "svp": "1.0",
+  "type": "object",
+  "required": ["id", "label", "unit", "sources", "scenarios", "evidence"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^anchor_[a-z0-9_]+$",
+      "description": "Unique anchor identifier"
+    },
+    "label": {
+      "type": "string",
+      "description": "Human-readable name of the anchored quantity"
+    },
+    "unit": {
+      "type": "string",
+      "description": "Physical unit of the anchored value"
+    },
+    "lo": {
+      "type": ["number", "null"],
+      "description": "Lower bound of the declared range (null if unbounded)"
+    },
+    "hi": {
+      "type": ["number", "null"],
+      "description": "Upper bound of the declared range (null if unbounded)"
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string"},
+      "description": "Citations with year or DOI (N8 gate requires checkable citations)"
+    },
+    "scenarios": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string"},
+      "description": "Scenario IDs this anchor applies to"
+    },
+    "value_key": {
+      "type": "string",
+      "description": "Key in the scenario's implicit parameter dict that this anchor anchors"
+    },
+    "decision_relevant": {
+      "type": "boolean",
+      "description": "If true, this anchor is used for automated decision-making; must be 3D complete",
+      "default": true
+    },
+    "evidence": {
+      "type": "object",
+      "description": "Three-dimensional evidence (2026-09-24 upgrade from 1D to 3D)",
+      "required": ["experiment_system", "version", "operating_condition"],
+      "properties": {
+        "experiment_system": {
+          "type": "string",
+          "description": "Experimental system (e.g. chemostat, batch_culture, thermal_inactivation)",
+          "default": "UNANCHORED"
+        },
+        "version": {
+          "type": "string",
+          "description": "Strain / material / version (e.g. E_coli_K_12_variants, NF90)",
+          "default": "UNANCHORED"
+        },
+        "operating_condition": {
+          "type": "string",
+          "description": "Operating conditions (temperature, pressure, substrate concentration)",
+          "default": "UNANCHORED"
+        }
+      },
+      "additionalProperties": false
+    },
+    "note": {
+      "type": "string",
+      "description": "Free-form notes on this anchor's provenance or caveats"
+    },
+    "evidence_completeness": {
+      "type": "string",
+      "enum": ["3D_complete", "2D", "1D", "UNANCHORED"],
+      "description": "Computed from evidence field. Gates N31-N33 enforce 3D_complete for DR anchors."
+    }
+  },
+  "additionalProperties": false
+}

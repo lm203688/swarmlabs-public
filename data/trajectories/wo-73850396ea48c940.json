@@ -1,0 +1,358 @@
+{
+  "schema": "svp.trajectory/v0.1",
+  "recorded_at": "2026-11-14T02:58:14.162+00:00",
+  "recorded_at_ms": 1794625094162,
+  "duration_ms": 29.2,
+  "work_order_id": "wo-73850396ea48c940",
+  "work_order_sha": "c2c008af54fdd9bc",
+  "job_sha": "cf411eaaa798292a",
+  "outcome": "PROCEED",
+  "verdict": {
+    "hard_verdict": "PASS",
+    "gate": "PROCEED",
+    "gate_label": "autonomous action permitted",
+    "reason": null,
+    "probabilities": {
+      "PASS": 0.9279,
+      "MARGINAL": 0.072,
+      "REFUTED": 0.0001,
+      "UNVALIDATED": 0.0
+    },
+    "confidence": 0.8919,
+    "recommendation": "ACT",
+    "cost_of_error": 2.0,
+    "cost_thresholds": {
+      "pass": 0.9,
+      "review": 0.6
+    },
+    "domain": "微生物 / E. coli 批次培养（Monod, 文献参数）",
+    "cite_ok": true,
+    "cite_reasons": [
+      "replication",
+      "report_has_refs"
+    ],
+    "cite_violations": [
+      "no_anchor_field"
+    ],
+    "cite_gate_block": null,
+    "thresholds_source": "engine/verification_gate.py::thresholds()"
+  },
+  "screening": {
+    "schema": "swarmlabs-vlab-anchor-screening/1.0",
+    "spec_unit": "g/L",
+    "plausible_range": [
+      0.0,
+      200.0
+    ],
+    "counts": {
+      "ACCEPTED": 1,
+      "NEEDS_HUMAN": 1,
+      "REJECTED": 2
+    },
+    "n": 4,
+    "accepted": [
+      {
+        "x": {
+          "T": 30,
+          "S0": 10
+        },
+        "y": 1.23,
+        "unit": "g/L",
+        "citation": "Client internal lab log 2026-08, run #7",
+        "confirmed_by": "client-lab-lead",
+        "conditions": "batch, 30 degC, 10 g/L initial glucose",
+        "label": "",
+        "value": 1.23,
+        "source_kind": "external",
+        "verdict": "ACCEPTED",
+        "reasons": [],
+        "normalized_value": 1.23,
+        "checks": {
+          "citation_checkable": true,
+          "unit_parsed": "mass_conc",
+          "dimension_ok": true,
+          "normalized_value": 1.23
+        }
+      }
+    ],
+    "needs_human": [
+      {
+        "x": {
+          "T": 32,
+          "S0": 10
+        },
+        "y": 0.98,
+        "unit": "g/L",
+        "citation": "Client internal lab log 2026-08, run #8",
+        "conditions": "not yet countersigned by the lab lead",
+        "label": "",
+        "value": 0.98,
+        "confirmed_by": "",
+        "source_kind": "external",
+        "verdict": "NEEDS_HUMAN",
+        "reasons": [
+          "awaiting_human_confirmation"
+        ],
+        "normalized_value": 0.98,
+        "checks": {
+          "citation_checkable": true,
+          "unit_parsed": "mass_conc",
+          "dimension_ok": true,
+          "normalized_value": 0.98
+        }
+      }
+    ],
+    "rejected": [
+      {
+        "x": {
+          "T": 30,
+          "S0": 10
+        },
+        "y": 35,
+        "unit": "degC",
+        "citation": "Instrument readout 2026-08 (wrong column pasted)",
+        "confirmed_by": "client-lab-lead",
+        "label": "",
+        "value": 35,
+        "conditions": "",
+        "source_kind": "external",
+        "verdict": "REJECTED",
+        "reasons": [
+          "dimension_mismatch"
+        ],
+        "normalized_value": null,
+        "checks": {
+          "citation_checkable": true,
+          "unit_parsed": "temperature_C",
+          "dimension_ok": false,
+          "expected_dimension": "mass_conc"
+        }
+      },
+      {
+        "x": {
+          "T": 31,
+          "S0": 12
+        },
+        "y": 2.1,
+        "unit": "g/L",
+        "citation": "unlabeled scribble on the whiteboard",
+        "label": "",
+        "value": 2.1,
+        "confirmed_by": "",
+        "conditions": "",
+        "source_kind": "external",
+        "verdict": "REJECTED",
+        "reasons": [
+          "unverifiable_citation"
+        ],
+        "normalized_value": null,
+        "checks": {
+          "citation_checkable": false
+        }
+      }
+    ],
+    "rows": [
+      {
+        "x": {
+          "T": 30,
+          "S0": 10
+        },
+        "y": 1.23,
+        "unit": "g/L",
+        "citation": "Client internal lab log 2026-08, run #7",
+        "confirmed_by": "client-lab-lead",
+        "conditions": "batch, 30 degC, 10 g/L initial glucose",
+        "label": "",
+        "value": 1.23,
+        "source_kind": "external",
+        "verdict": "ACCEPTED",
+        "reasons": [],
+        "normalized_value": 1.23,
+        "checks": {
+          "citation_checkable": true,
+          "unit_parsed": "mass_conc",
+          "dimension_ok": true,
+          "normalized_value": 1.23
+        }
+      },
+      {
+        "x": {
+          "T": 32,
+          "S0": 10
+        },
+        "y": 0.98,
+        "unit": "g/L",
+        "citation": "Client internal lab log 2026-08, run #8",
+        "conditions": "not yet countersigned by the lab lead",
+        "label": "",
+        "value": 0.98,
+        "confirmed_by": "",
+        "source_kind": "external",
+        "verdict": "NEEDS_HUMAN",
+        "reasons": [
+          "awaiting_human_confirmation"
+        ],
+        "normalized_value": 0.98,
+        "checks": {
+          "citation_checkable": true,
+          "unit_parsed": "mass_conc",
+          "dimension_ok": true,
+          "normalized_value": 0.98
+        }
+      },
+      {
+        "x": {
+          "T": 30,
+          "S0": 10
+        },
+        "y": 35,
+        "unit": "degC",
+        "citation": "Instrument readout 2026-08 (wrong column pasted)",
+        "confirmed_by": "client-lab-lead",
+        "label": "",
+        "value": 35,
+        "conditions": "",
+        "source_kind": "external",
+        "verdict": "REJECTED",
+        "reasons": [
+          "dimension_mismatch"
+        ],
+        "normalized_value": null,
+        "checks": {
+          "citation_checkable": true,
+          "unit_parsed": "temperature_C",
+          "dimension_ok": false,
+          "expected_dimension": "mass_conc"
+        }
+      },
+      {
+        "x": {
+          "T": 31,
+          "S0": 12
+        },
+        "y": 2.1,
+        "unit": "g/L",
+        "citation": "unlabeled scribble on the whiteboard",
+        "label": "",
+        "value": 2.1,
+        "confirmed_by": "",
+        "conditions": "",
+        "source_kind": "external",
+        "verdict": "REJECTED",
+        "reasons": [
+          "unverifiable_citation"
+        ],
+        "normalized_value": null,
+        "checks": {
+          "citation_checkable": false
+        }
+      }
+    ],
+    "policy": "ACCEPTED requires: finite value + citation with year/DOI + unit dimensionally compatible with the spec + within the declared plausible range + a named human confirmer. There is no automatic-accept path."
+  },
+  "scope": {
+    "mode": "existing_kernel",
+    "discipline_requested": "Biology",
+    "discipline_matched": "Microbiology",
+    "category": "Biology",
+    "discipline_status": "VALIDATED",
+    "scenario_key": "micro_ecoli_glucose",
+    "scenario_in_ledger": true,
+    "n_ledger_scenarios": 95
+  },
+  "work_order_summary": {
+    "work_order_id": "wo-73850396ea48c940",
+    "claim_id": "claim-fda9c2f4d4701a23",
+    "submitted_by": "example-client-microbio",
+    "discipline": "Biology",
+    "quantity": "biomass yield",
+    "n_variables": 2,
+    "method": "auto",
+    "scenario_key": "micro_ecoli_glucose",
+    "n_corroboration_points": 4,
+    "cost_of_error": 2.0,
+    "goal": {
+      "quantity": "biomass yield",
+      "unit": "g/L",
+      "direction": "characterize",
+      "plausible_range": [
+        0.0,
+        200.0
+      ]
+    }
+  },
+  "stages": [
+    {
+      "index": 0,
+      "stage": "intake",
+      "ok": true,
+      "at_utc": "2026-11-14T02:58:14Z",
+      "errors": [],
+      "warnings": [
+        {
+          "code": "goal_binding_warn",
+          "where": "goal",
+          "message": "goal.quantity 'biomass yield' is written differently from the declared output 'biomass concentration' — quantity names are free text, so this is a warning for human review, not a rejection"
+        },
+        {
+          "code": "unconfirmed",
+          "where": "corroboration.points[1].confirmed_by",
+          "message": "no human confirmer — screening can at best return NEEDS_HUMAN, never ACCEPTED"
+        },
+        {
+          "code": "unconfirmed",
+          "where": "corroboration.points[3].confirmed_by",
+          "message": "no human confirmer — screening can at best return NEEDS_HUMAN, never ACCEPTED"
+        },
+        {
+          "code": "auto_method",
+          "where": "method.family",
+          "message": "'auto' defers the method choice to scope"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "stage": "scope",
+      "ok": true,
+      "at_utc": "2026-11-14T02:58:14Z",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "index": 2,
+      "stage": "build",
+      "ok": true,
+      "at_utc": "2026-11-14T02:58:14Z",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "index": 3,
+      "stage": "verify",
+      "ok": true,
+      "at_utc": "2026-11-14T02:58:14Z",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "index": 4,
+      "stage": "corroborate",
+      "ok": true,
+      "at_utc": "2026-11-14T02:58:14Z",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "index": 5,
+      "stage": "deliver",
+      "ok": true,
+      "at_utc": "2026-11-14T02:58:14Z",
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "stage_count": 6,
+  "python": "3.14.6",
+  "meta": {}
+}

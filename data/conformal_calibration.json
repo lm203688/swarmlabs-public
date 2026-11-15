@@ -1,0 +1,307 @@
+{
+  "generated_at": "2026-09-07T22:13:40",
+  "alpha": 0.05,
+  "method": "repeated cross-conformal (K-fold out-of-fold standardized residuals, R repeats)",
+  "borrowed_from": [
+    "MAPIE (scikit-learn-contrib/MAPIE, BSD-3): conformal prediction interval construction",
+    "deel-ai/puncc: conformal + calibration workflow",
+    "uncertainty-toolbox (MIT): PICP/MPIW/miscalibration-area/interval-score metrics",
+    "Vovk cross-conformal; Angelopoulos & Bates 2021"
+  ],
+  "summary": {
+    "n_scenarios": 10,
+    "median_coverage_baseline": 1.0,
+    "median_coverage_conformal": 1.0,
+    "median_width_baseline": 0.0367,
+    "median_width_conformal": 0.0191,
+    "median_interval_score_baseline": 0.0571,
+    "median_interval_score_conformal": 0.0585,
+    "mean_coverage_baseline": 0.9825,
+    "mean_coverage_conformal": 0.985,
+    "n_improved": 6,
+    "n_still_conservative": 1,
+    "n_q_heavy_tail_warning": 3
+  },
+  "rows": [
+    {
+      "key": "surrogate_forrester",
+      "n_train": 30,
+      "n_test": 40,
+      "alpha": 0.05,
+      "conformal_Q": 0.8784,
+      "gaussian_z": 1.96,
+      "width_ratio_conformal_vs_gaussian": 0.4482,
+      "baseline": {
+        "picp": 1.0,
+        "nmpiw": 0.0304,
+        "interval_score": 0.6433,
+        "miscal_area": 0.4289
+      },
+      "conformal": {
+        "picp": 1.0,
+        "nmpiw": 0.0136,
+        "interval_score": 0.2883,
+        "miscal_area": 0.3263
+      },
+      "delta": {
+        "picp": 0.0,
+        "nmpiw": -0.0168,
+        "interval_score": -0.355
+      },
+      "q_explodes": false,
+      "verdict": "IMPROVED"
+    },
+    {
+      "key": "surrogate_branin",
+      "n_train": 50,
+      "n_test": 60,
+      "alpha": 0.05,
+      "conformal_Q": 0.9805,
+      "gaussian_z": 1.96,
+      "width_ratio_conformal_vs_gaussian": 0.5002,
+      "baseline": {
+        "picp": 1.0,
+        "nmpiw": 0.0309,
+        "interval_score": 8.928,
+        "miscal_area": 0.3798
+      },
+      "conformal": {
+        "picp": 0.9667,
+        "nmpiw": 0.0155,
+        "interval_score": 4.9652,
+        "miscal_area": 0.2658
+      },
+      "delta": {
+        "picp": -0.0333,
+        "nmpiw": -0.0154,
+        "interval_score": -3.9628
+      },
+      "q_explodes": false,
+      "verdict": "IMPROVED"
+    },
+    {
+      "key": "surrogate_hartmann6",
+      "n_train": 120,
+      "n_test": 80,
+      "alpha": 0.05,
+      "conformal_Q": 0.644,
+      "gaussian_z": 1.96,
+      "width_ratio_conformal_vs_gaussian": 0.3286,
+      "baseline": {
+        "picp": 1.0,
+        "nmpiw": 0.0469,
+        "interval_score": 0.0556,
+        "miscal_area": 0.3862
+      },
+      "conformal": {
+        "picp": 0.925,
+        "nmpiw": 0.0154,
+        "interval_score": 0.0326,
+        "miscal_area": 0.2191
+      },
+      "delta": {
+        "picp": -0.075,
+        "nmpiw": -0.0315,
+        "interval_score": -0.023
+      },
+      "q_explodes": false,
+      "verdict": "UNDER_COVERS"
+    },
+    {
+      "key": "pde_heat1d",
+      "n_train": 30,
+      "n_test": 40,
+      "alpha": 0.05,
+      "conformal_Q": 1.3401,
+      "gaussian_z": 1.96,
+      "width_ratio_conformal_vs_gaussian": 0.6838,
+      "baseline": {
+        "picp": 1.0,
+        "nmpiw": 0.0407,
+        "interval_score": 0.0239,
+        "miscal_area": 0.3618
+      },
+      "conformal": {
+        "picp": 1.0,
+        "nmpiw": 0.0278,
+        "interval_score": 0.0163,
+        "miscal_area": 0.2961
+      },
+      "delta": {
+        "picp": 0.0,
+        "nmpiw": -0.0129,
+        "interval_score": -0.0076
+      },
+      "q_explodes": false,
+      "verdict": "IMPROVED"
+    },
+    {
+      "key": "bio_logistic",
+      "n_train": 30,
+      "n_test": 40,
+      "alpha": 0.05,
+      "conformal_Q": 0.5224,
+      "gaussian_z": 1.96,
+      "width_ratio_conformal_vs_gaussian": 0.2665,
+      "baseline": {
+        "picp": 1.0,
+        "nmpiw": 0.0463,
+        "interval_score": 4.1623,
+        "miscal_area": 0.4882
+      },
+      "conformal": {
+        "picp": 1.0,
+        "nmpiw": 0.0124,
+        "interval_score": 1.1094,
+        "miscal_area": 0.4145
+      },
+      "delta": {
+        "picp": 0.0,
+        "nmpiw": -0.0339,
+        "interval_score": -3.0529
+      },
+      "q_explodes": false,
+      "verdict": "IMPROVED"
+    },
+    {
+      "key": "microbio_monod",
+      "n_train": 30,
+      "n_test": 40,
+      "alpha": 0.05,
+      "conformal_Q": 5.1336,
+      "gaussian_z": 1.96,
+      "width_ratio_conformal_vs_gaussian": 2.6193,
+      "baseline": {
+        "picp": 0.925,
+        "nmpiw": 0.0311,
+        "interval_score": 0.0473,
+        "miscal_area": 0.1145
+      },
+      "conformal": {
+        "picp": 1.0,
+        "nmpiw": 0.0815,
+        "interval_score": 0.0507,
+        "miscal_area": 0.3079
+      },
+      "delta": {
+        "picp": 0.075,
+        "nmpiw": 0.0504,
+        "interval_score": 0.0034
+      },
+      "q_explodes": true,
+      "verdict": "NO_GAIN"
+    },
+    {
+      "key": "microbio_inhibition",
+      "n_train": 30,
+      "n_test": 40,
+      "alpha": 0.05,
+      "conformal_Q": 9.4011,
+      "gaussian_z": 1.96,
+      "width_ratio_conformal_vs_gaussian": 4.7966,
+      "baseline": {
+        "picp": 0.975,
+        "nmpiw": 0.0494,
+        "interval_score": 0.016,
+        "miscal_area": 0.4066
+      },
+      "conformal": {
+        "picp": 1.0,
+        "nmpiw": 0.237,
+        "interval_score": 0.0663,
+        "miscal_area": 0.4789
+      },
+      "delta": {
+        "picp": 0.025,
+        "nmpiw": 0.1876,
+        "interval_score": 0.0503
+      },
+      "q_explodes": true,
+      "verdict": "STILL_CONSERVATIVE"
+    },
+    {
+      "key": "llm_scaling",
+      "n_train": 30,
+      "n_test": 40,
+      "alpha": 0.05,
+      "conformal_Q": 1.2094,
+      "gaussian_z": 1.96,
+      "width_ratio_conformal_vs_gaussian": 0.6171,
+      "baseline": {
+        "picp": 1.0,
+        "nmpiw": 0.0368,
+        "interval_score": 0.0585,
+        "miscal_area": 0.175
+      },
+      "conformal": {
+        "picp": 0.975,
+        "nmpiw": 0.0227,
+        "interval_score": 0.0443,
+        "miscal_area": 0.0645
+      },
+      "delta": {
+        "picp": -0.025,
+        "nmpiw": -0.0141,
+        "interval_score": -0.0142
+      },
+      "q_explodes": false,
+      "verdict": "IMPROVED"
+    },
+    {
+      "key": "chem_langmuir",
+      "n_train": 30,
+      "n_test": 40,
+      "alpha": 0.05,
+      "conformal_Q": 9.1011,
+      "gaussian_z": 1.96,
+      "width_ratio_conformal_vs_gaussian": 4.6435,
+      "baseline": {
+        "picp": 0.925,
+        "nmpiw": 0.029,
+        "interval_score": 0.0674,
+        "miscal_area": 0.2316
+      },
+      "conformal": {
+        "picp": 1.0,
+        "nmpiw": 0.1348,
+        "interval_score": 0.1062,
+        "miscal_area": 0.4158
+      },
+      "delta": {
+        "picp": 0.075,
+        "nmpiw": 0.1058,
+        "interval_score": 0.0388
+      },
+      "q_explodes": true,
+      "verdict": "NO_GAIN"
+    },
+    {
+      "key": "chem_reactor_conversion",
+      "n_train": 50,
+      "n_test": 60,
+      "alpha": 0.05,
+      "conformal_Q": 0.3193,
+      "gaussian_z": 1.96,
+      "width_ratio_conformal_vs_gaussian": 0.1629,
+      "baseline": {
+        "picp": 1.0,
+        "nmpiw": 0.0366,
+        "interval_score": 0.0282,
+        "miscal_area": 0.4702
+      },
+      "conformal": {
+        "picp": 0.9833,
+        "nmpiw": 0.006,
+        "interval_score": 0.0065,
+        "miscal_area": 0.2491
+      },
+      "delta": {
+        "picp": -0.0167,
+        "nmpiw": -0.0306,
+        "interval_score": -0.0217
+      },
+      "q_explodes": false,
+      "verdict": "IMPROVED"
+    }
+  ]
+}

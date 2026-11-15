@@ -1,0 +1,36 @@
+{
+  "name": "physics_predict",
+  "version": "1.0.0",
+  "purpose": "调用 SwarmLabs 真实物理/数学模型完成计算（如 surrogate / PDE / 动力学 / 缩放律），输出可审计结果与文献支撑。",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "engine": { "type": "string", "description": "引擎名，如 surrogate_forrester / pde_heat1d / bio_logistic" },
+      "params": { "type": "object", "description": "引擎输入参数" },
+      "model": { "type": "string", "description": "可选：指定模型变体" }
+    },
+    "required": ["engine", "params"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "result": { "type": "number" },
+      "secondary_result": {},
+      "primary_metric": {},
+      "secondary_metric": {},
+      "model": { "type": "string" },
+      "model_details": {},
+      "validation_stats": { "type": "object", "description": "RMSE/覆盖率/校准误差等，对应 trust_surface.json 的 rubric" },
+      "literature_support": { "type": "array", "items": { "type": "string" }, "description": "支撑文献（证据链）" },
+      "paper_reference": { "type": "string" }
+    },
+    "required": ["result", "validation_stats", "literature_support"]
+  },
+  "invocation_condition": "已知引擎名与合法参数时由 ExecutorAgent 调用。",
+  "depend_tools": ["SwarmLabs v2/run/{engine} API", "MCP Server (公开版契约见 mcp/ 目录)"],
+  "failure_handling": "引擎不存在 → 返回候选引擎列表；参数缺失 → 返回参数 schema；参数非法 → 返回具体错误与修正建议。",
+  "safety_boundary": "只读计算，不修改外部状态；不记录用户敏感参数。",
+  "reuse_value": "可被任何 Agent/场景复用，覆盖 163 个学科引擎。",
+  "multi_agent_role": "ExecutorAgent",
+  "tags": ["simulation", "surrogate", "physics-informed"]
+}

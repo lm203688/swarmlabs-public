@@ -1,0 +1,182 @@
+{
+ "generated_at": "2026-09-29T13:05:30.568010+00:00",
+ "source": "offline:_paper_radar_fixture.json",
+ "n_papers": 5,
+ "threshold": 0.8,
+ "n_alerts": 2,
+ "n_errors": 0,
+ "in_tokens": 7241,
+ "est_cost_usd": 0.0003,
+ "interests": [
+  "agent_discovery",
+  "surrogate_bayesopt",
+  "active_learning_lab",
+  "frontier_discovery"
+ ],
+ "alerts": [
+  {
+   "id": "offline-0",
+   "title": "Coscientist: autonomous chemical research with large language models",
+   "scores": {
+    "agent_discovery": {
+     "p": 0.82,
+     "conf": null
+    },
+    "surrogate_bayesopt": {
+     "p": 0.09,
+     "conf": null
+    },
+    "active_learning_lab": {
+     "p": 0.81,
+     "conf": null
+    },
+    "frontier_discovery": {
+     "p": 0.15,
+     "conf": null
+    }
+   },
+   "max_p": 0.82
+  },
+  {
+   "id": "offline-1",
+   "title": "An autonomous laboratory for the accelerated synthesis of novel materials",
+   "scores": {
+    "agent_discovery": {
+     "p": 0.38,
+     "conf": null
+    },
+    "surrogate_bayesopt": {
+     "p": 0.68,
+     "conf": null
+    },
+    "active_learning_lab": {
+     "p": 0.81,
+     "conf": null
+    },
+    "frontier_discovery": {
+     "p": 0.25,
+     "conf": null
+    }
+   },
+   "max_p": 0.81
+  }
+ ],
+ "all": [
+  {
+   "id": "offline-0",
+   "title": "Coscientist: autonomous chemical research with large language models",
+   "scores": {
+    "agent_discovery": {
+     "p": 0.82,
+     "conf": null
+    },
+    "surrogate_bayesopt": {
+     "p": 0.09,
+     "conf": null
+    },
+    "active_learning_lab": {
+     "p": 0.81,
+     "conf": null
+    },
+    "frontier_discovery": {
+     "p": 0.15,
+     "conf": null
+    }
+   },
+   "max_p": 0.82
+  },
+  {
+   "id": "offline-1",
+   "title": "An autonomous laboratory for the accelerated synthesis of novel materials",
+   "scores": {
+    "agent_discovery": {
+     "p": 0.38,
+     "conf": null
+    },
+    "surrogate_bayesopt": {
+     "p": 0.68,
+     "conf": null
+    },
+    "active_learning_lab": {
+     "p": 0.81,
+     "conf": null
+    },
+    "frontier_discovery": {
+     "p": 0.25,
+     "conf": null
+    }
+   },
+   "max_p": 0.81
+  },
+  {
+   "id": "offline-2",
+   "title": "Tree-structured Parzen Estimator meets multi-fidelity: efficient Bayesian optimization at scale",
+   "scores": {
+    "agent_discovery": {
+     "p": 0.07,
+     "conf": null
+    },
+    "surrogate_bayesopt": {
+     "p": 0.72,
+     "conf": null
+    },
+    "active_learning_lab": {
+     "p": 0.4,
+     "conf": null
+    },
+    "frontier_discovery": {
+     "p": 0.07,
+     "conf": null
+    }
+   },
+   "max_p": 0.72
+  },
+  {
+   "id": "offline-4",
+   "title": "Pulsar timing constraints on the stochastic gravitational wave background from supermassive black hole binaries",
+   "scores": {
+    "agent_discovery": {
+     "p": 0.02,
+     "conf": null
+    },
+    "surrogate_bayesopt": {
+     "p": 0.03,
+     "conf": null
+    },
+    "active_learning_lab": {
+     "p": 0.02,
+     "conf": null
+    },
+    "frontier_discovery": {
+     "p": 0.17,
+     "conf": null
+    }
+   },
+   "max_p": 0.17
+  },
+  {
+   "id": "offline-3",
+   "title": "A contrastive linguistics analysis of tokenization artifacts in low-resource machine translation",
+   "scores": {
+    "agent_discovery": {
+     "p": 0.03,
+     "conf": null
+    },
+    "surrogate_bayesopt": {
+     "p": 0.02,
+     "conf": null
+    },
+    "active_learning_lab": {
+     "p": 0.03,
+     "conf": null
+    },
+    "frontier_discovery": {
+     "p": 0.01,
+     "conf": null
+    }
+   },
+   "max_p": 0.03
+  }
+ ],
+ "errors": []
+}

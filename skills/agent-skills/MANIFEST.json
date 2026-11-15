@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-09-16T00:20:01Z",
+  "skill_count": 8,
+  "tree": [
+    "fermentation-design",
+    "kinetic-model-selection",
+    "mirror-run",
+    "ood-guard",
+    "paper-claim-validation",
+    "strain-media-selection",
+    "uq-coverage-audit",
+    "virtual-experiment-design"
+  ],
+  "skills": {
+    "fermentation-design": {
+      "stable_id": "fermentation-design",
+      "name": "fermentation-design",
+      "version": "1.0",
+      "category": "bioprocess-optimization",
+      "description": "Design and iterate bioprocess experiments in silico by combining a 69-strain database, 20 defined media, and 52 literature-referenced fermentation scenarios with Gaussian-process active learning. Retu",
+      "license": "MIT",
+      "file": "skills/agent-skills/fermentation-design/SKILL.md",
+      "changelog": []
+    },
+    "kinetic-model-selection": {
+      "stable_id": "kinetic-model-selection",
+      "name": "kinetic-model-selection",
+      "version": "1.0",
+      "category": "model-fitting",
+      "description": "Fit multiple published kinetic models to the same experimental data and compare them by R-squared, returning the best-supported form with parameters rather than assuming one. Covers Monod, Andrews, Ha",
+      "license": "MIT",
+      "file": "skills/agent-skills/kinetic-model-selection/SKILL.md",
+      "changelog": []
+    },
+    "mirror-run": {
+      "stable_id": "mirror-run",
+      "name": "mirror-run",
+      "version": "1.0",
+      "category": "scientific-computing",
+      "description": ">-",
+      "license": "MIT",
+      "file": "skills/agent-skills/mirror-run/SKILL.md",
+      "changelog": []
+    },
+    "ood-guard": {
+      "stable_id": "ood-guard",
+      "name": "ood-guard",
+      "version": "1.0",
+      "category": "model-reliability",
+      "description": "Classify whether a query condition falls inside the region a model was actually trained on, returning pass / controlled / reject per point rather than a vague extrapolation warning. Use before trustin",
+      "license": "MIT",
+      "file": "skills/agent-skills/ood-guard/SKILL.md",
+      "changelog": []
+    },
+    "paper-claim-validation": {
+      "stable_id": "paper-claim-validation",
+      "name": "paper-claim-validation",
+      "version": "1.0",
+      "category": "verification",
+      "description": "Turn a quantitative claim from a paper into a falsifiable benchmark, then grade it PASS, MARGINAL, or UNVALIDATED against the model's own uncertainty rather than asserting it is reproduced. Use when a",
+      "license": "MIT",
+      "file": "skills/agent-skills/paper-claim-validation/SKILL.md",
+      "changelog": []
+    },
+    "strain-media-selection": {
+      "stable_id": "strain-media-selection",
+      "name": "strain-media-selection",
+      "version": "1.0",
+      "category": "strain-selection",
+      "description": "Select a microbial host and culture medium from a curated database of 69 strains and 20 defined or complex media, using taxonomy, genome metadata, and growth kinetics rather than guesswork. Returns ca",
+      "license": "MIT",
+      "file": "skills/agent-skills/strain-media-selection/SKILL.md",
+      "changelog": []
+    },
+    "uq-coverage-audit": {
+      "stable_id": "uq-coverage-audit",
+      "name": "uq-coverage-audit",
+      "version": "1.0",
+      "category": "uncertainty-quantification",
+      "description": "Measure whether a predictive model's uncertainty intervals actually contain the truth, using leave-one-out empirical coverage. Returns a PASS / MARGINAL / OVERCONFIDENT verdict with the numeric gap be",
+      "license": "MIT",
+      "file": "skills/agent-skills/uq-coverage-audit/SKILL.md",
+      "changelog": []
+    },
+    "virtual-experiment-design": {
+      "stable_id": "virtual-experiment-design",
+      "name": "virtual-experiment-design",
+      "version": "1.0",
+      "category": "experimental-design",
+      "description": "Design virtual experiments with Gaussian-process surrogate models and built-in uncertainty quantification. Returns optimal next-run conditions with 95% credible intervals and out-of-distribution risk ",
+      "license": "MIT",
+      "file": "skills/agent-skills/virtual-experiment-design/SKILL.md",
+      "changelog": []
+    }
+  }
+}

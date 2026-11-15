@@ -1,0 +1,176 @@
+{
+  "version": 1,
+  "generated_at": "2026-10-16T01:12:13Z",
+  "module": "engine/baybe_adapter.py",
+  "report_ref": "reports/assessment/SwarmLabs_硬科技提升执行方案_2026-10-15.md §M6/M8",
+  "criteria": {
+    "EXACT": "rel_err < 1e-3",
+    "CLOSE": "rel_err < 0.05",
+    "APPROX": "rel_err < 0.10",
+    "FAIL": "rel_err >= 0.10",
+    "SKIPPED": "backend unavailable"
+  },
+  "overall_verdict": "PARTIAL",
+  "summary": {
+    "n_targets": 4,
+    "baybe_ok": 3,
+    "baybe_skip": 0,
+    "baybe_fail": 1,
+    "random_search_ok": 1,
+    "total_elapsed_sec": 3.98
+  },
+  "results": [
+    {
+      "name": "branin_foo",
+      "dim": 2,
+      "known_min": 0.397887,
+      "analytic_at_x_min": 0.39788735772973816,
+      "n_evaluations": 60,
+      "random_search": {
+        "best_x": [
+          -3.554135567697511,
+          13.539035948157625
+        ],
+        "best_f": 1.2662695388594027,
+        "abs_err": 0.868383,
+        "rel_err": 0.868383,
+        "verdict": "FAIL"
+      },
+      "baybe_adapter": {
+        "backend": "engine.baybe_adapter.baybe_optimize (baybe=False)",
+        "best_x": [
+          9.439822775829082,
+          2.4418640497423025
+        ],
+        "best_f": 0.401076794751269,
+        "abs_err": 0.00319,
+        "rel_err": 0.00319,
+        "verdict": "CLOSE",
+        "error": null,
+        "raw_keys": [
+          "baybe_available",
+          "best_value",
+          "best_x",
+          "history",
+          "method",
+          "n_iterations",
+          "note"
+        ]
+      }
+    },
+    {
+      "name": "sphere3d",
+      "dim": 3,
+      "known_min": 0.0,
+      "analytic_at_x_min": 0.0,
+      "n_evaluations": 60,
+      "random_search": {
+        "best_x": [
+          1.6840296179047165,
+          -0.28903793856867477,
+          0.6523610648118883
+        ],
+        "best_f": 3.3450736427948353,
+        "abs_err": 3.345074,
+        "rel_err": 3.345074,
+        "verdict": "FAIL"
+      },
+      "baybe_adapter": {
+        "backend": "engine.baybe_adapter.baybe_optimize (baybe=False)",
+        "best_x": [
+          0.12020828833393082,
+          0.07887447693018501,
+          0.09522931946130164
+        ],
+        "best_f": 0.02973983898024638,
+        "abs_err": 0.02974,
+        "rel_err": 0.02974,
+        "verdict": "CLOSE",
+        "error": null,
+        "raw_keys": [
+          "baybe_available",
+          "best_value",
+          "best_x",
+          "history",
+          "method",
+          "n_iterations",
+          "note"
+        ]
+      }
+    },
+    {
+      "name": "ackley2d",
+      "dim": 2,
+      "known_min": 0.0,
+      "analytic_at_x_min": 4.440892098500626e-16,
+      "n_evaluations": 60,
+      "random_search": {
+        "best_x": [
+          -0.41084224461660046,
+          0.6874119595289372
+        ],
+        "best_f": 4.319262843305168,
+        "abs_err": 4.319263,
+        "rel_err": 4.319263,
+        "verdict": "FAIL"
+      },
+      "baybe_adapter": {
+        "backend": "engine.baybe_adapter.baybe_optimize (baybe=False)",
+        "best_x": [
+          0.0592001342486439,
+          -0.01676175877909447
+        ],
+        "best_f": 0.27191210483168904,
+        "abs_err": 0.271912,
+        "rel_err": 0.271912,
+        "verdict": "FAIL",
+        "error": null,
+        "raw_keys": [
+          "baybe_available",
+          "best_value",
+          "best_x",
+          "history",
+          "method",
+          "n_iterations",
+          "note"
+        ]
+      }
+    },
+    {
+      "name": "forrester1d",
+      "dim": 1,
+      "known_min": -1.0966,
+      "analytic_at_x_min": -1.0967642615752988,
+      "n_evaluations": 60,
+      "random_search": {
+        "best_x": [
+          1.7485909803566364
+        ],
+        "best_f": -1.0506521159114992,
+        "abs_err": 0.045948,
+        "rel_err": 0.0419,
+        "verdict": "CLOSE"
+      },
+      "baybe_adapter": {
+        "backend": "engine.baybe_adapter.baybe_optimize (baybe=False)",
+        "best_x": [
+          1.7000869124709692
+        ],
+        "best_f": -1.0966814050109206,
+        "abs_err": 8.1e-05,
+        "rel_err": 7.4e-05,
+        "verdict": "EXACT",
+        "error": null,
+        "raw_keys": [
+          "baybe_available",
+          "best_value",
+          "best_x",
+          "history",
+          "method",
+          "n_iterations",
+          "note"
+        ]
+      }
+    }
+  ]
+}

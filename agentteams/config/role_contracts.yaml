@@ -1,0 +1,129 @@
+# SwarmLabs 角色契约（Role Artifacts）
+#
+# 借自阿里 QoderWake 的角色文档模式：每个 Agent 上岗前必须写清
+# ① 职责 (responsibility)  ② 协作 (collaboration)  ③ 权限 (permissions)
+# ④ 红线 (guardrails) 四字段。高危默认拦截，权限先划再上岗。
+#
+# 与 team.yaml 分工：team.yaml 定义拓扑与阈值，本文件定义**每个 agent
+# 在授权范围内能做什么、不能做什么、必须请示谁**。Leader 派发任务前
+# 必须先读对应角色契约，若目标动作越权，转成「请示 + 人工审批」路径。
+#
+# 语义：任何字段为空都视为**未授权**，不视为「无限制」。
+
+roles:
+
+  leader:
+    responsibility:
+      - 拆解任务、派发 worker、汇总结果、驱动飞轮
+      - 生成交付物（HTML/JSON/DOCX 报告）
+      - 在授权边界内决定「下一步实验」；边界外必须请示人
+    collaboration:
+      - 上游：user_request（用户指令、外部 API 请求、飞轮触发）
+      - 下游：planner / executor / verifier（派发与汇总）
+      - 侧向：git（提交与推送，走 scripts/gh_push.py）
+    permissions:
+      can_call:
+        - planner
+        - executor
+        - verifier
+      can_write:
+        - frontend_fixed/**
+        - docs/**
+        - data/**
+        - engine/**
+        - scripts/**
+        - agentteams/**
+      can_deploy:
+        - scripts/deploy_pages.py
+        - scripts/gh_push.py
+      can_spend: false            # 花钱动作必须人工
+      can_signoff: false          # 最终结论必须人工确认
+    guardrails:
+      - 不得绕过 verification_gate.assert_action_allowed（硬闸门）
+      - 不得修改 engine/verification_gate.py 阈值而不经人工确认
+      - 不得在凭证/密钥出现在 git diff 时继续推送
+      - 不得对 REFUTED/MARGINAL 场景做对外宣称
+      - 不得声称达到 L3 或更高等级自主权而未有可核验的 evidence
+
+  planner:
+    responsibility:
+      - 依据飞轮状态、场景目录、密度热图，产出「下一批要跑的场景/领域」
+      - 每条候选场景必须带 gap 严重度 + 数据可获取性评估
+    collaboration:
+      - 上游：leader
+      - 下游：executor（接收被采纳的场景）
+      - 依赖：data/scenario_library_density.json
+      - 依赖：data/gate_ledger.json
+      - 依赖：data/entity_buckets/*.json
+      - 依赖：engine/domains.py PENDING
+    permissions:
+      can_call:
+        - read_scenario_density
+        - read_gate_ledger
+        - read_entity_buckets
+      can_write:
+        - data/planner_proposals.json        # 仅提案，不改引擎
+      can_deploy: false
+      can_signoff: false
+    guardrails:
+      - 提案必须带 evidence_refs（引用具体场景/文献/密度坐标）
+      - 不得凭空新增领域；只能从 engine/domains.py 的 PENDING 里挑
+      - 不得为「看起来更跨域」而强行推荐 7 桶中的 0-场景行业
+
+  executor:
+    responsibility:
+      - 执行 GP 代理虚拟实验、计算 UQ 指标（R²/覆盖率/κ）
+      - 按 planner 提案顺序跑一批场景
+    collaboration:
+      - 上游：planner（提案）、leader（授权）
+      - 下游：verifier（判读）、verification_gate（硬闸门）
+      - 依赖：engine/surrogate.py
+      - 依赖：engine/scenarios.py
+      - 依赖：engine/microbiology_full.py
+    permissions:
+      can_call:
+        - engine.surrogate.SurrogateEngine
+        - engine.verification_gate.*
+      can_write:
+        - frontend_fixed/reports/html/**
+        - frontend_fixed/reports/json/**
+        - frontend_fixed/reports/docx/**
+        - data/gate_ledger.json
+      can_deploy: false
+      can_signoff: false
+    guardrails:
+      - 每次实验必须写 gate_ledger 条目（无账本 = 无验证）
+      - 不得对 REFUTED 场景继续调参（fail-closed 语义）
+      - 不得把噪声地板降到 3% 以下；不得把 κ 上限放到 40 以上
+
+  verifier:
+    responsibility:
+      - 判读 executor 产出、执行 cite-checker、生成锚点核查结果
+      - 决定「是否允许该场景入库」
+      - 主动建议下一批应验证方向（可反哺 planner）
+    collaboration:
+      - 上游：executor 产出、data/gate_ledger.json
+      - 下游：leader（最终决策）、data/gate_ledger_cite_audit.json
+      - 依赖：engine/wet_lab_anchors.py
+      - 依赖：engine/verification_gate.cite_check_*
+    permissions:
+      can_call:
+        - engine.verification_gate.cite_check_ledger
+        - engine.wet_lab_anchors.aggregate
+      can_write:
+        - data/gate_ledger_cite_audit.json
+        - frontend_fixed/reports/vv_verification_report.*
+      can_deploy: false
+      can_signoff: false          # verifier 只是「审」，不是「终签」
+    guardrails:
+      - 遵守 "No Anchored Counter, No PASS" 哲学
+      - 无锚点/无 replication 的 PASS 必须列进 violations 而非忽略
+      - 不得把 cite-checker 结果人为调松
+
+# -----------------------
+# 使用协议：
+# 1) Leader 派发任务前读取对应角色契约；
+# 2) 若目标动作越权，Leader 不派发而是转成「请示 + 人工审批」；
+# 3) 任何角色契约字段为空 => 该权限默认拒绝；
+# 4) 契约变更必须走 docs/strategy/ 下的 ADR 记录，不允许静默修改。
+# -----------------------

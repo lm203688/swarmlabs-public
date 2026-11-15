@@ -1,0 +1,74 @@
+# CODEOWNERS — bus-factor mitigation, not a claim of team size
+#
+# Reality check (2026-09-15, kept honest on purpose):
+#   bus factor = 1. There is a single human who has the credentials, the
+#   Cloudflare account, and the institutional context to release. This
+#   file does NOT fix that; it makes the ownership surface explicit so
+#   a future maintainer can find where each artifact lives and what its
+#   invariants are.
+#
+# Every owner entry here is a *path ownership* declaration: "the person
+# named owns the invariant that lives at this path". If you are not the
+# maintainer, treat the file as a **table of contents** rather than a
+# roster.
+
+# Root governance and honesty — non-negotiable
+/README.md                  @lm203688
+/LICENSE                     @lm203688
+/AXIOM_AUDIT.md             @lm203688
+/CODE_OF_CONDUCT.md         @lm203688
+/SECURITY.md                @lm203688
+/CONTRIBUTING.md            @lm203688
+
+# Engine — the numerical core; every change is a provenance event
+/engine/                    @lm203688
+/engine/verification_gate.py @lm203688
+/engine/scenario_registry.py @lm203688
+/engine/surrogate.py        @lm203688
+/engine/guard.py            @lm203688
+/engine/wet_lab_anchors.py  @lm203688
+/engine/provenance_guard.py @lm203688
+
+# Public facts and ledgers — every number here is claimed on the site
+/data/public_facts.json     @lm203688
+/data/gate_ledger.json      @lm203688
+/data/trust_surface.json    @lm203688
+/data/real_anchors.json     @lm203688
+
+# Reports and static frontend — the external surface
+/frontend_fixed/            @lm203688
+/frontend_fixed/reports/    @lm203688
+
+# Fail-closed gates — the CI contract; changing these changes what counts
+# as a passing state, so every change is a review-worthy event.
+/scripts/check_*.py         @lm203688
+/scripts/build_*.py         @lm203688
+
+# MCP and HTTP gate servers
+/mcp/                       @lm203688
+/mcp/public_gate_server.py  @lm203688
+
+# CI/CD — the deploy pipeline; anything that changes deploy semantics
+# is ownership-worthy.
+/.github/workflows/         @lm203688
+
+# Documentation — everything in docs/ is claim-bearing; a wrong doc can
+# mislead investors and users.
+/docs/                      @lm203688
+
+# Tests — the executable specification.
+/tests/                     @lm203688
+
+# Data
+/data/                      @lm203688
+
+# Benchmarks and external suites
+/benchmarks/                @lm203688
+
+# Papers and reports
+/outputs/                   @lm203688
+
+# Anything else falls through to the maintainer — that is the honest
+# default. If a future maintainer wants to delegate, they can add a
+# section here with the specific files they are handing off.
+*                           @lm203688

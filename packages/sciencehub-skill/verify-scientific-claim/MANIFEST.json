@@ -1,0 +1,37 @@
+{
+  "schema": "swarmlabs-sciencehub-skill/1.0",
+  "skill": "verify-scientific-claim",
+  "generated_utc": "2026-09-19T07:36:52Z",
+  "platform": "ScienceHub (scienceone.ai) — Agent Skills format",
+  "upstream": {
+    "path": "engine-kit/skills/vv-gate",
+    "spec": "agentskills.io"
+  },
+  "synced": [
+    {
+      "target": "scripts/vv_gate.py",
+      "source": "engine-kit/skills/vv-gate/scripts/vv_gate.py",
+      "sha256": "9e9ad8103f3c1f7a2c94c064d8fefb438a5103c56879712a8057594f52fdc875",
+      "bytes": 22153
+    },
+    {
+      "target": "references/gate-semantics.md",
+      "source": "engine-kit/skills/vv-gate/references/gate-semantics.md",
+      "sha256": "c26a5e9a3c7680dc7b98ad44b9cdceb652fa426b5561c60beb43ab0d9e3f1b4c",
+      "bytes": 20755
+    }
+  ],
+  "package_local": [
+    {
+      "path": "SKILL.md",
+      "sha256": "0546a273cef271744af0bc97a2eeec0bb210dbfa23652034760e2c1bd9832bad",
+      "bytes": 6690
+    },
+    {
+      "path": "references/package-and-provenance.md",
+      "sha256": "33bed074271a3b3b051d9396c40554805e836d433671a93dd5a7cd67e2e5af92",
+      "bytes": 4330
+    }
+  ],
+  "drift_policy": "run `python scripts/sync_sciencehub_skill.py --check` in CI; synced files must stay byte-identical to upstream"
+}

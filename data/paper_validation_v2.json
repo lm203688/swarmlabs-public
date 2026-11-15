@@ -1,0 +1,635 @@
+{
+  "timestamp": "2026-08-26T10:03:45.125357",
+  "summary": {
+    "pass": 1,
+    "marginal": 1,
+    "fail": 12,
+    "total": 15,
+    "pass_rate": 6.666666666666667
+  },
+  "precision_baseline": {
+    "theoretical_formula": {
+      "r2_threshold": 0.95,
+      "rmse_vs_mean_pct": 5.0,
+      "note": "Monod/Andrews/Chemostat 解析解: 精确数学模型，实验误差<5%"
+    },
+    "empirical_correlation": {
+      "r2_threshold": 0.9,
+      "rmse_vs_mean_pct": 15.0,
+      "note": "Crabtree/Thiele modulus/D-value: 经验关联，CV 8-25%"
+    },
+    "complex_process": {
+      "r2_threshold": 0.85,
+      "rmse_vs_mean_pct": 25.0,
+      "note": "抗生素kill/热致死: CFU误差±0.1-0.3 log, CV 15-40%"
+    },
+    "inhibition_data": {
+      "r2_threshold": 0.7,
+      "rmse_vs_mean_pct": 35.0,
+      "note": "Andrews 抑制: 细胞适应性/代谢补偿，原始数据点散度~30%"
+    }
+  },
+  "results": [
+    {
+      "key": "paper_monod_1949",
+      "title": "Monod J. (1949) J Gen Microbiol 3:371 — E. coli glucose growth",
+      "paper": "Monod J. (1949). The growth of bacterial cultures. Ann. Rev. Microbiol. 3:371",
+      "domain": "微生物/生长动力学",
+      "category": "theoretical_formula",
+      "n_points": 8,
+      "r2": -1.0206339328990137,
+      "rmse": 0.4139889552704857,
+      "rmse_pct": 88.67233312353106,
+      "predicted": [
+        0.7147058823529412,
+        0.759375,
+        0.7838709677419355,
+        0.7955357142857143,
+        0.8019801980198021,
+        0.8059701492537314,
+        0.8078457446808511,
+        0.8089214380825567
+      ],
+      "actual": [
+        0.05,
+        0.11,
+        0.22,
+        0.405,
+        0.62,
+        0.75,
+        0.78,
+        0.8
+      ],
+      "label": "h⁻¹",
+      "status": "FAIL",
+      "precision_baseline": {
+        "r2_threshold": 0.95,
+        "rmse_vs_mean_pct": 5.0,
+        "note": "Monod/Andrews/Chemostat 解析解: 精确数学模型，实验误差<5%"
+      }
+    },
+    {
+      "key": "paper_andrews_1968",
+      "title": "Andrews J.F. (1968) Biotech Bioeng 10:707 — Phenol inhibition",
+      "paper": "Andrews J.F. (1968). Measurement of uninhibited and inhibited specific growth rates. Biotech Bioeng 10:707-722",
+      "domain": "微生物/底物抑制",
+      "category": "inhibition_data",
+      "n_points": 9,
+      "r2": 0.2726322979301552,
+      "rmse": 0.168942444149757,
+      "rmse_pct": 40.01268414073193,
+      "predicted": [
+        0.18216699801192843,
+        0.2877424982554082,
+        0.43832784096949085,
+        0.5241990846681922,
+        0.5661609226966909,
+        0.5473570328678383,
+        0.4785356172968456,
+        0.373718651717981,
+        0.30530819466589
+      ],
+      "actual": [
+        0.35,
+        0.5,
+        0.63,
+        0.65,
+        0.62,
+        0.5,
+        0.32,
+        0.15,
+        0.08
+      ],
+      "label": "h⁻¹",
+      "status": "FAIL",
+      "precision_baseline": {
+        "r2_threshold": 0.7,
+        "rmse_vs_mean_pct": 35.0,
+        "note": "Andrews 抑制: 细胞适应性/代谢补偿，原始数据点散度~30%"
+      }
+    },
+    {
+      "key": "paper_crabtree",
+      "title": "Crabtree H.G. (1929) Biochem J 23:522 — Yeast glucose overflow",
+      "paper": "Crabtree H.G. (1929). Glycolysis in tumour cells. Biochem J 23:522 (reviewed in Shuler&Kargi 2002 Ch.9)",
+      "domain": "微生物/发酵动力学(Crabtree)",
+      "category": "empirical_correlation",
+      "n_points": 6,
+      "r2": -1.8213289626822853,
+      "rmse": 1.3136191711453336,
+      "rmse_pct": 85.57779616581976,
+      "predicted": [
+        0.4740740740740741,
+        0.4776119402985074,
+        0.47880299251870323,
+        0.4794007490636704,
+        0.4797001873828857,
+        0.4798500468603561
+      ],
+      "actual": [
+        0.36,
+        0.84,
+        1.33,
+        1.81,
+        2.25,
+        2.62
+      ],
+      "label": "g/L ethanol",
+      "status": "FAIL",
+      "precision_baseline": {
+        "r2_threshold": 0.9,
+        "rmse_vs_mean_pct": 15.0,
+        "note": "Crabtree/Thiele modulus/D-value: 经验关联，CV 8-25%"
+      }
+    },
+    {
+      "key": "paper_jfoodeng_2012",
+      "title": "J Food Eng 2012, 109(3):354 — Bacterial thermal death kinetics",
+      "paper": "J Food Eng (2012). Food Engineering: Thermal death kinetics of lactic acid bacteria.",
+      "domain": "微生物/热致死",
+      "category": "complex_process",
+      "n_points": 2,
+      "r2": -5.0925474733921945,
+      "rmse": 49.366172520835335,
+      "rmse_pct": 75.94795772436206,
+      "predicted": [
+        31.62277660168379,
+        0.0009999999999999961
+      ],
+      "actual": [
+        85,
+        45
+      ],
+      "label": "% survival",
+      "status": "FAIL",
+      "precision_baseline": {
+        "r2_threshold": 0.85,
+        "rmse_vs_mean_pct": 25.0,
+        "note": "抗生素kill/热致死: CFU误差±0.1-0.3 log, CV 15-40%"
+      }
+    },
+    {
+      "key": "paper_chemostat_shuler",
+      "title": "Shuler&Kargi 2002 — E. coli Chemostat steady-state (Monod params: Ks=0.22)",
+      "paper": "Shuler M.L., Kargi F. (2002). Bioprocess Engineering Principles (2nd ed.)",
+      "domain": "微生物/Chemostat稳态",
+      "category": "theoretical_formula",
+      "n_points": 8,
+      "rmse_X": 0.35848703442533,
+      "rmse_S": 1.0213104783129048,
+      "r2_X": -5.3886782085760965,
+      "r2_S": -330.1628756351031,
+      "rmse_pct_X": 7.413458124344423,
+      "rmse_pct_S": 942.3856777973747,
+      "predicted_X": [
+        4.984507042253521,
+        4.963934426229509,
+        4.935294117647059,
+        4.892682926829268,
+        4.82258064516129,
+        4.685714285714286,
+        4.300000000000001,
+        3.625000000000001
+      ],
+      "actual_X": [
+        4.986,
+        4.972,
+        4.943,
+        4.905,
+        4.854,
+        4.784,
+        4.683,
+        4.558
+      ],
+      "predicted_S": [
+        0.030985915492957747,
+        0.0721311475409836,
+        0.12941176470588237,
+        0.2146341463414634,
+        0.3548387096774193,
+        0.6285714285714283,
+        1.3999999999999988,
+        2.749999999999998
+      ],
+      "actual_S": [
+        0.024,
+        0.048,
+        0.071,
+        0.095,
+        0.119,
+        0.144,
+        0.17,
+        0.196
+      ],
+      "status": "FAIL/FAIL",
+      "precision_baseline": {
+        "r2_threshold": 0.95,
+        "rmse_vs_mean_pct": 5.0,
+        "note": "Monod/Andrews/Chemostat 解析解: 精确数学模型，实验误差<5%"
+      }
+    },
+    {
+      "key": "paper_immobilized_shuler",
+      "title": "Shuler&Kargi 2002 — Immobilized cell effectiveness factor η(φ)",
+      "paper": "Shuler M.L., Kargi F. (2002). Bioprocess Engineering Principles Ch.8",
+      "domain": "微生物/固定化细胞",
+      "category": "empirical_correlation",
+      "n_points": 7,
+      "r2": 0.9603750120728615,
+      "rmse": 0.05024797453646045,
+      "rmse_pct": 11.067835800982479,
+      "predicted": [
+        0.8762494526316906,
+        0.671636489980356,
+        0.4166728109167716,
+        0.29629630644961624,
+        0.22916666668554234,
+        0.18666666666670412,
+        0.15740740740740747
+      ],
+      "actual": [
+        0.909,
+        0.742,
+        0.471,
+        0.344,
+        0.277,
+        0.233,
+        0.202
+      ],
+      "label": "η (effectiveness factor)",
+      "status": "PASS",
+      "precision_baseline": {
+        "r2_threshold": 0.9,
+        "rmse_vs_mean_pct": 15.0,
+        "note": "Crabtree/Thiele modulus/D-value: 经验关联，CV 8-25%"
+      }
+    },
+    {
+      "key": "paper_antibiotic_kill",
+      "title": "Andrews J.M. (2001) J Antimicrob Chemother — E. coli + ampicillin time-kill",
+      "paper": "Andrews J.M. (2001). Determination of minimum bactericidal concentrations. J Antimicrob Chemother",
+      "domain": "微生物/抗生素动力学",
+      "category": "complex_process",
+      "n_points": 8,
+      "r2": 0.6286315019654446,
+      "rmse": 1.781502175131987,
+      "rmse_pct": 32.464732120856254,
+      "predicted": [
+        9.0,
+        8.533333333333333,
+        8.066666666666666,
+        7.6,
+        7.133333333333334,
+        6.2,
+        4.800000000000001,
+        3.4000000000000004
+      ],
+      "actual": [
+        9.0,
+        8.5,
+        7.8,
+        6.8,
+        5.5,
+        3.8,
+        2.0,
+        0.5
+      ],
+      "label": "log10 CFU/mL",
+      "status": "FAIL",
+      "precision_baseline": {
+        "r2_threshold": 0.85,
+        "rmse_vs_mean_pct": 25.0,
+        "note": "抗生素kill/热致死: CFU误差±0.1-0.3 log, CV 15-40%"
+      }
+    },
+    {
+      "key": "paper_secondary_metabolite",
+      "title": "Demain & Sato 2012 Biotechnol Adv 30:1429 — Secondary metabolite production",
+      "paper": "Demain A.L., Sato K. (2012). Microbial drug discovery: 80 years of progress. Biotechnol Adv 30:1429-1439",
+      "domain": "微生物/次级代谢",
+      "category": "empirical_correlation",
+      "n_points": 12,
+      "r2": -0.07591319674801067,
+      "rmse": 1.4890275563055597,
+      "rmse_pct": 58.584690739890874,
+      "predicted": [
+        1.3692548146315453,
+        2.363537879784757,
+        3.08553557012444,
+        3.609813497734029,
+        3.9905174100267233,
+        4.266965189348249,
+        4.467707478103736,
+        4.613476297783501,
+        4.719326185829331,
+        4.79618898010817,
+        4.85200282416054,
+        4.892531993274551
+      ],
+      "actual": [
+        0.2,
+        0.5,
+        0.9,
+        1.4,
+        2.0,
+        2.6,
+        3.1,
+        3.5,
+        3.8,
+        4.0,
+        4.2,
+        4.3
+      ],
+      "label": "g/L product",
+      "status": "FAIL",
+      "precision_baseline": {
+        "r2_threshold": 0.9,
+        "rmse_vs_mean_pct": 15.0,
+        "note": "Crabtree/Thiele modulus/D-value: 经验关联，CV 8-25%"
+      }
+    },
+    {
+      "key": "paper_pirt_1965",
+      "title": "Pirt S.J. (1965) Biochem J 95:270 — Maintenance metabolism model",
+      "paper": "Pirt S.J. (1965). The relationship of the specific growth rate and the maintenance energy of bacteria. Biochem J 95:270-277",
+      "domain": "微生物/维护代谢",
+      "category": "empirical_correlation",
+      "n_points": 8,
+      "r2": -259.33625218914193,
+      "rmse": 0.4819426833141054,
+      "rmse_pct": 786.845197247519,
+      "predicted": [
+        0.15000000000000002,
+        0.25,
+        0.35,
+        0.45,
+        0.55,
+        0.65,
+        0.75,
+        0.8500000000000001
+      ],
+      "actual": [
+        0.02,
+        0.03,
+        0.04,
+        0.05,
+        0.065,
+        0.08,
+        0.095,
+        0.11
+      ],
+      "label": "g/g·h",
+      "status": "FAIL",
+      "precision_baseline": {
+        "r2_threshold": 0.9,
+        "rmse_vs_mean_pct": 15.0,
+        "note": "Crabtree/Thiele modulus/D-value: 经验关联，CV 8-25%"
+      }
+    },
+    {
+      "key": "paper_fedbatch_1991",
+      "title": "Neijssel & Heijnen 1991 Enzyme Microb Technol 13:752 — Fed-batch high-density",
+      "paper": "Neijssel O.M., Heijnen J.J. (1991). Continuous cultures of bacteria. Enzyme Microb Technol 13:752-758",
+      "domain": "微生物/Fed-batch",
+      "category": "empirical_correlation",
+      "n_points": 8,
+      "r2": -4012193363776621.0,
+      "rmse": 580321876.6098691,
+      "rmse_pct": 3684583343.5547247,
+      "predicted": [
+        1.8915846312255038,
+        35.78092417088526,
+        676.8264625269173,
+        12802.745345226407,
+        242174.76332524116,
+        4580940.603767007,
+        86652368.42642531,
+        1639102883.7471645
+      ],
+      "actual": [
+        2.0,
+        5.0,
+        9.0,
+        14.0,
+        19.0,
+        23.0,
+        26.0,
+        28.0
+      ],
+      "label": "g/L biomass",
+      "status": "FAIL",
+      "precision_baseline": {
+        "r2_threshold": 0.9,
+        "rmse_vs_mean_pct": 15.0,
+        "note": "Crabtree/Thiele modulus/D-value: 经验关联，CV 8-25%"
+      }
+    },
+    {
+      "key": "paper_kluyver_1924",
+      "title": "Kluyver A.J. (1924) Biochem Z 152:49 — Temperature-dependent ethanol",
+      "paper": "Kluyver A.J., Van Niel C.B. (1936). The comparison of the metabolism of microorganisms and of cells. (Kluyver-Van Niel theory)",
+      "domain": "微生物/发酵温度依赖",
+      "category": "empirical_correlation",
+      "n_points": 6,
+      "r2": -31.08780854474613,
+      "rmse": 0.18037037603861686,
+      "rmse_pct": 41.14913521793541,
+      "predicted": [
+        0.08276237946900135,
+        0.21976001365037484,
+        0.394837229951359,
+        0.48,
+        0.394837229951359,
+        0.21976001365037484
+      ],
+      "actual": [
+        0.42,
+        0.44,
+        0.46,
+        0.48,
+        0.45,
+        0.38
+      ],
+      "label": "g ethanol/g glucose",
+      "status": "FAIL",
+      "precision_baseline": {
+        "r2_threshold": 0.9,
+        "rmse_vs_mean_pct": 15.0,
+        "note": "Crabtree/Thiele modulus/D-value: 经验关联，CV 8-25%"
+      }
+    },
+    {
+      "key": "paper_haldane_2001",
+      "title": "Rittmann & McCarty 2001 Environmental Microbiology — Haldane inhibition",
+      "paper": "Rittmann B.E., McCarty P.L. (2001). Environmental Microbiology: Fundamentals and Applications",
+      "domain": "微生物/Haldane抑制",
+      "category": "inhibition_data",
+      "n_points": 9,
+      "r2": -0.0021341303493791486,
+      "rmse": 0.17999274449481664,
+      "rmse_pct": 54.91304069333389,
+      "predicted": [
+        0.05452067242162654,
+        0.19834710743801648,
+        0.2926829268292683,
+        0.3749999999999999,
+        0.41379310344827586,
+        0.37499999999999994,
+        0.29268292682926833,
+        0.23684210526315788,
+        0.17045454545454544
+      ],
+      "actual": [
+        0.3,
+        0.5,
+        0.54,
+        0.53,
+        0.45,
+        0.32,
+        0.17,
+        0.1,
+        0.04
+      ],
+      "label": "h⁻¹",
+      "status": "FAIL",
+      "precision_baseline": {
+        "r2_threshold": 0.7,
+        "rmse_vs_mean_pct": 35.0,
+        "note": "Andrews 抑制: 细胞适应性/代谢补偿，原始数据点散度~30%"
+      }
+    },
+    {
+      "key": "paper_contois_1959",
+      "title": "Contois D.E. (1959) J Gen Microbiol 21:40 — Contois kinetics",
+      "paper": "Contois D.E. (1959). Kinetics of bacterial growth: correlation of replication and cell division. J Gen Microbiol 21:40-50",
+      "domain": "微生物/Contois动力学",
+      "category": "theoretical_formula",
+      "n_points": 9,
+      "r2": -3.8542008938764694,
+      "rmse": 0.1971794918943312,
+      "rmse_pct": 105.56903194818446,
+      "predicted": [
+        0.14285714285714285,
+        0.08333333333333333,
+        0.045454545454545456,
+        0.023809523809523808,
+        0.016129032258064516,
+        0.012195121951219513,
+        0.00980392156862745,
+        0.00819672131147541,
+        0.006578947368421052
+      ],
+      "actual": [
+        0.038,
+        0.067,
+        0.111,
+        0.172,
+        0.214,
+        0.244,
+        0.263,
+        0.278,
+        0.294
+      ],
+      "label": "h⁻¹",
+      "status": "FAIL",
+      "precision_baseline": {
+        "r2_threshold": 0.95,
+        "rmse_vs_mean_pct": 5.0,
+        "note": "Monod/Andrews/Chemostat 解析解: 精确数学模型，实验误差<5%"
+      }
+    },
+    {
+      "key": "paper_chemostat_washout",
+      "title": "Monod 1949 — Chemostat washout transition (D→μmax)",
+      "paper": "Monod J. (1949). The growth of bacterial cultures. J Gen Microbiol 3:371",
+      "domain": "微生物/Chemostat washout",
+      "category": "theoretical_formula",
+      "n_points": 10,
+      "r2": 0.9891774891774892,
+      "rmse": 0.031622776601683784,
+      "rmse_pct": 6.874516652539954,
+      "predicted": [
+        0.9,
+        0.8,
+        0.7,
+        0.6,
+        0.5,
+        0.4,
+        0.30000000000000004,
+        0.19999999999999996,
+        0.09999999999999998,
+        0.0
+      ],
+      "actual": [
+        1.0,
+        0.8,
+        0.7,
+        0.6,
+        0.5,
+        0.4,
+        0.3,
+        0.2,
+        0.1,
+        0.0
+      ],
+      "label": "relative biomass",
+      "status": "MARGINAL",
+      "precision_baseline": {
+        "r2_threshold": 0.95,
+        "rmse_vs_mean_pct": 5.0,
+        "note": "Monod/Andrews/Chemostat 解析解: 精确数学模型，实验误差<5%"
+      }
+    },
+    {
+      "key": "paper_plasmid_1978",
+      "title": "Stewart G.S.A.B. (1978) Plasmid 1:163 — Plasmid stability",
+      "paper": "Stewart G.S.A.B. (1978). Plasmid incompatibility: a review. Microbiol Rev 42:1-14",
+      "domain": "微生物/质粒稳定性",
+      "category": "empirical_correlation",
+      "n_points": 10,
+      "r2": 0.6081433976278479,
+      "rmse": 0.22574445570577364,
+      "rmse_pct": 41.11920868957626,
+      "predicted": [
+        0.9509900498999999,
+        0.9043820750088044,
+        0.8600583546412884,
+        0.8179069375972308,
+        0.7397003733882802,
+        0.6689717585696803,
+        0.6050060671375364,
+        0.5471566423907612,
+        0.4475232137638106,
+        0.3660323412732292
+      ],
+      "actual": [
+        0.99,
+        0.96,
+        0.91,
+        0.85,
+        0.67,
+        0.5,
+        0.34,
+        0.21,
+        0.06,
+        0.0
+      ],
+      "label": "fraction p+",
+      "status": "FAIL",
+      "precision_baseline": {
+        "r2_threshold": 0.9,
+        "rmse_vs_mean_pct": 15.0,
+        "note": "Crabtree/Thiele modulus/D-value: 经验关联，CV 8-25%"
+      }
+    }
+  ],
+  "closure_audit": {
+    "total_scenarios": 52,
+    "gp_converged": 51,
+    "gp_coverage_rate": 98.1,
+    "capabilities_covered": 44,
+    "capabilities_still_missing": [],
+    "scenarios_detail": [
+      {
+        "key": "micro_ecoli_glucose",
+        "converged": 

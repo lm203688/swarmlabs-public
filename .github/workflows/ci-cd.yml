@@ -1,0 +1,856 @@
+name: SwarmLabs CI/CD
+
+# 2026-10-18：cancel-in-progress。CI/CD 有 ~20 个 job，而推送走 Contents API
+# 是**每文件一 commit**——批量推送会在几分钟内触发十几次全量 run 并排队堆叠
+# （实测 2026-10-17 17:35-17:37 三分钟内 ~40 个 commit）。排队期间分钟数照计，
+# 这是私有仓库免费分钟数（2000/月）被迅速烧穿的主因之一。superseded 的 run
+# 直接取消，只为每个分支最新的 HEAD 付一次全量验证的钱。
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'engine/**'
+      - 'frontend_fixed/**'
+      - 'scripts/**'
+      - 'data/**'
+      - '.github/workflows/**'
+  pull_request:
+    branches: [main, master]
+    paths:
+      - 'engine/**'
+      - 'frontend_fixed/**'
+      - 'scripts/**'
+      - 'data/**'
+      - '.github/workflows/**'
+  workflow_dispatch:
+  # 无人值守：每日定时触发全流程验证+部署，实现"自动修复→自动测试→自动上线"
+  schedule:
+    - cron: '20 22 * * *'   # 05:20 GMT+8，每日自动验证+部署
+    - cron: '20 12 * * *'   # 19:20 GMT+8，每日白班自动监控
+
+jobs:
+  # 阶段0: Engine 全量测试（Python 内核验证）
+  #
+  # 2026-09-18 变更（两项，都是「口径统一」而非放宽）：
+  #   1. 断言从内联 `python -c` 提成 scripts/check_engine_gate.py —— 内联脚本无法本地
+  #      原样复跑，正是「CI 红而本地绿」长期查不出的原因（见 docs/ci-red-diagnosis-20260918.md）。
+  #   2. `coverage_report(scenarios)` → `coverage_report()`。原写法把**场景列表**当 `seed`
+  #      参数传了进去（签名是 coverage_report(seed=...)）—— 参数错位，属静默失效。
+  #   3. 断言现在**同时管拟合质量**：`converged` 的语义已是「按对外报告同一门禁判 PASS」
+  #      （R²≥0.90 且 coverage≥0.90 单侧下界），不再只是 coverage>0.55。
+  #      阈值一字未改；口径与 frontend_fixed/reports/gate_ledger.json 完全一致。
+  engine-tests:
+    name: Engine 内核门禁 (95 场景 / 42 门禁 / 270 pytest)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - name: 安装依赖（对齐 requirements.txt；硬骨头 1：pytest 必装）
+        run: pip install -r requirements.txt pytest-cov
+      - name: Engine 门禁自检（V&V 口径 = 对外报告同一 harness）
+        run: python scripts/check_engine_gate.py
+      - name: 菌株库验证
+        run: |
+          python -c "from engine import get_strain_registry; r=get_strain_registry(); assert len(r)>=60; print('strains:', len(r))"
+      - name: API 端点验证
+        run: |
+          python -c "from engine.serve import OPENAPI_SPEC; paths=list(OPENAPI_SPEC['paths'].keys()); assert len(paths)>=8; print('endpoints:', len(paths))"
+
+  # 阶段0f: pytest 单元测试门禁（2026-10-16 新增，硬骨头 1）
+  #
+  # 动机：地基承重审计报告（2026-10-16）§一 —— 「7 个 workflow 里 pytest 出现 0 次」。
+  # 项目有 270 个测试文件覆盖的关键路径，但**没有任何自动化在跑**。
+  # 「测试不被执行是地基悬空」——这是承重审计报告给出的最尖锐的诊断。
+  #
+  # 三条硬约束（fail-closed）：
+  #   1. 依赖统一装 requirements.txt（不再手写 `pip install numpy scipy`），
+  #      避免 CI 与本地漂移。
+  #   2. pytest 全量跑，任何一个失败即红。基线为 270 passed，不设阈值
+  #      （避免为达标而刷；先记录，再逐步加阈值）。
+  #   3. 覆盖率只记录不设阈值，先建立可观测基线（硬骨头 1 第 4 条）。
+  #
+  # 验收（地基审计报告 §九 硬骨头 1）：故意改坏 verification_gate.py 一行，
+  # 本 job 必须变红。
+  #
+  # 2026-10-16 晚补丁（评估报告 §7 · P0-1）：本 job 的验收此前是"声明未
+  # 落实"—— 报告 §1 的实验 2 展示：把 verification_gate.py:468 的
+  # `if r["verdict"] == GRADE_PASS and not r["ok"]:` 改成
+  # `if False and ...:`，全部 270 用例仍绿。真正守住这条不变量的是
+  # tests/test_verification_gate_invariants.py（本 job 已经跑它），并由
+  # fault-injection-gate job（下面第 0g 段）用故障注入方式证明它守得住。
+  # 这是 2026-10-16 之前本 CI 长期未兑现的验收承诺。
+  pytest-unit:
+    name: pytest 单元测试门禁 (270 tests)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - name: 安装依赖 + pytest-cov
+        run: pip install -r requirements.txt pytest-cov
+      - name: pytest 全量执行（fail-closed）
+        run: |
+          python -m pytest tests/ -v --tb=short --maxfail=50 \
+            --cov=engine --cov=scripts --cov-report=term-missing \
+            --junitxml=reports/ci-pytest-report.xml
+      - name: 上传 pytest 报告
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-report
+          path: reports/ci-pytest-report.xml
+
+  # 阶段0g-pre: 故障注入门禁（2026-10-16 新增，硬骨头 1 的验收兑现）
+  #
+  # 动机：2026-10-16 晚评估报告 §1 的实验 2 证明「270 tests 绿」并不等于
+  # 「核心主张被保护」——把 verification_gate.py:468 的
+  # `if r["verdict"] == GRADE_PASS and not r["ok"]:` 改成
+  # `if False and r["verdict"] == GRADE_PASS and not r["ok"]:`，
+  # 原 270 用例全部通过。这是本项目最危险的腐化路径：**语法没错、CI 全绿、
+  # 但 "No Anchored Counter, No PASS" 这条 fail-closed 不变量被静默关掉**。
+  #
+  # 本 job 用**故障注入**方式守住这条承诺：monkey-patch `assert_pass_has_anchor`
+  # 成静默返回版本，然后断言 tests/test_verification_gate_invariants.py
+  # 会失败。测试若在注入故障后仍通过 = 校验器等于没有。
+  #
+  # 三条硬断言（fail-closed）：
+  #   1. BASELINE：注入前 test 必须全绿——先修测试，别在坏测试上做故障注入。
+  #   2. MONKEY-PATCH：注入后 test 必须抛 AssertionError / pytest.fail。
+  #   3. SUBPROCESS：在**干净 subprocess** 里注入故障、跑 pytest 也必须非零返回。
+  #
+  # 与 pytest-unit 的关系：pytest-unit 用当前代码跑 test；本 job 假设代码
+  # **被破坏**后跑 test。二者共同守住"test 覆盖核心路径"这条承诺——单靠
+  # 前者无法证明。
+  fault-injection-gate:
+    name: 故障注入门禁 (证明 invariant test 守得住 fail-closed)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - name: 安装依赖
+        run: pip install -r requirements.txt pytest-cov
+      - name: 故障注入自检（stdlib only，注入后 pytest 必须失败）
+        run: |
+          python scripts/fault_injection_check.py --json \
+            | tee reports/ci-fault-injection.json
+        shell: bash
+      - name: 上传故障注入报告
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fault-injection-report
+          path: reports/ci-fault-injection.json
+
+  # 阶段0h: 数据契约门禁（2026-10-16 晚新增，P0-3）
+  #
+  # 动机：2026-10-16 晚评估报告 §7 · P0-3 —— 三份对外数据产物
+  # （data/trust_surface.json / data/real_anchors.json /
+  #  data/gate_ledger.json）没有任何机器可执行的字段契约约束。任何
+  # 构建脚本改动让字段消失或类型漂移，对外 API 与 README 都会静默跟随。
+  #
+  # 三条硬约束（fail-closed）：
+  #   1. 必需字段 + 类型：任一份产物缺字段 / 类型错 → 红
+  #   2. 计数一致：total == len(scenarios)、counts 之和 == total、
+  #      total_anchors == len(anchors)
+  #   3. 架构反转回归检查：gate_ledger.json:build.source **必须**是
+  #      scripts/build_gate_ledger.py——数据层不得声明自己派生自展示层。
+  #
+  # 负面测试（本 job 上线时实测）：把 build.source 改回
+  # frontend_fixed/reports/index.json → exit 1 报 [ARCHITECTURE-INVERSION]；
+  # 恢复后 exit 0。
+  #
+  # 与其他 job 的分工：
+  #   - pytest-unit         测**行为**（核心不变量）
+  #   - fault-injection-gate 证明 test 守得住（故障注入自证）
+  #   - 本 job（data-contract-gate）守**字段契约**（数据面的形状）
+  # 三者共同构成"生成链契约"的三重防线。
+  data-contract-gate:
+    name: 数据契约门禁 (3 份数据面字段契约 + 架构反转回归)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 三份数据产物必须在树内（缺失即红）
+        run: |
+          for f in data/trust_surface.json \
+                   data/real_anchors.json \
+                   data/gate_ledger.json; do
+            test -f "$f" || { echo "::error::缺少契约源产物 $f"; exit 1; }
+          done
+          echo "[OK] 3/3 契约源产物在树内"
+      - name: 数据契约检查（stdlib only）
+        run: python scripts/check_data_contracts.py --json \
+          | tee reports/ci-data-contracts.json
+
+  # 阶段0f-2: JSON Schema 结构性契约（2026-10-17 追加，10-16 晚 P0-C 收口）
+  #
+  # 与 data-contract-gate 的分工：
+  #   - data-contract-gate: 项目内嵌的 Python 契约检查（domain-specific 不变量）
+  #   - 本 job (jsonschema-gate): 标准 JSON Schema Draft-07 的结构性验证
+  # 前者守「领域语义」（如 counts 之和==total、build.source 不得指向前端），
+  # 后者守「结构形状」（必填字段、类型、枚举、格式、正则）。
+  # 报告 P0-C 要求"写 jsonschema 入 CI"—— 本 job 就是它的执行载体。
+  #
+  # schemas/ 目录：三份 schema 文件，随代码走版本，改动需 review。
+  jsonschema-gate:
+    name: JSON Schema 结构性契约 (schemas/*.schema.json Draft-07)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 安装 jsonschema（stdlib 之外唯一依赖）
+        run: pip install "jsonschema>=4.0,<5"
+      - name: 三份 schema 必须在树内
+        run: |
+          for f in schemas/trust_surface.schema.json \
+                   schemas/real_anchors.schema.json \
+                   schemas/gate_ledger.schema.json; do
+            test -f "$f" || { echo "::error::缺少 schema $f"; exit 1; }
+          done
+          echo "[OK] 3/3 schema 在树内"
+      - name: 执行 JSON Schema 验证
+        run: python scripts/validate_jsonschemas.py --json \
+          | tee reports/ci-jsonschema.json
+      - name: 上传 JSON Schema 验证报告
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jsonschema-report
+          path: reports/ci-jsonschema.json
+
+  # 阶段0f-3: 前端数字构建注入契约（2026-10-17 追加，10-16 晚 P0-C 收口）
+  #
+  # 报告 §P0-C 实证伤害："frontend_fixed/index.html 里一个硬编码的 227
+  # 造成了 CI MISMATCH，只能手改"。三件事之一："前端数字改由构建注入"。
+  #
+  # 设计：index.html 中的业务指标数字（场景数 / 校准点数 / PASS/REFUTED 计数
+  # / 引擎模块数）用 HTML 注释包成占位符 `<!-- {{METRIC}} -->value<!-- /{{METRIC}} -->`；
+  # 数据源永远是 data/*.json 与 engine/*.py，展示层不含真值。
+  # CI 每次 push 跑 --check：任何漂移即红，指向具体指标 + 期望值。
+  # 本地更新跑 --fix（幂等），执行后 review + commit。
+  #
+  # 与 data-contract-gate / jsonschema-gate 的分工：
+  #   data-contract-gate  → 数据面（3 个核心 JSON 的字段契约）
+  #   jsonschema-gate     → 数据面（Draft-07 标准结构性验证）
+  #   frontend-metrics-gate → 展示面（业务数字与数据源一致）
+  frontend-metrics-gate:
+    name: 前端展示数字与数据源一致 (build-injection contract)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 校验展示数字与数据源一致（stdlib only）
+        run: python scripts/build_frontend_metrics.py --check
+
+  # 阶段0h: GC-01 Published-Result Refutation Engine（2026-10-17 新增，P1）
+  #
+  # 背景：Grand Challenge Report（data/challenge_report.md）把 GC-01
+  # "Published-Result Refutation Engine（实验科学版 Gauss）" 判为
+  # READY_TO_START，与 10-12 起评估报告的核心建议独立收敛。
+  # 但"READY_TO_START"若只是文档里的一句话就永远只是文档。
+  #
+  # 本 job 把 engine/paper_audit.py 接入 CI：每次 push 都自动生成
+  # data/paper_audit.json + data/paper_audit_report.md 两份审计证书，
+  # 作为本仓可引用的对外产物。审计不失败 CI，只记录结果——
+  # 因为 PARAM_DISCREPANCY / STRUCTURAL_MISFIT 是**审计发现**，
+  # 不是 CI 故障（详见 paper_audit.py docstring 的诚实标注）。
+  #
+  # 判据三档（对应报告 P1 描述）：
+  #   PARAM_DISCREPANCY  → 论文参数无法解释其自身数据（重拟合显著改善）
+  #   STRUCTURAL_MISFIT  → 无参数可救的残差结构（模型本身不成立）
+  #   DATA_PROVENANCE_SUSPECT → 本仓数据录入问题（须先修数据，不算发现）
+  gc01-refutation-gate:
+    name: GC-01 论文结论对抗审计 (refutation engine)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 安装依赖（对齐 requirements.txt）
+        run: pip install -r requirements.txt
+      - name: 执行 GC-01 对抗审计
+        run: |
+          mkdir -p reports
+          python engine/paper_validation.py --audit \
+            | tee reports/ci-gc01-audit.log
+      - name: 审计证书必须在树内（缺失即红）
+        run: |
+          test -f data/paper_audit.json || { echo "::error::paper_audit.json 缺失"; exit 1; }
+          test -f data/paper_audit_report.md || { echo "::error::paper_audit_report.md 缺失"; exit 1; }
+          echo "[OK] GC-01 审计产物齐备"
+      - name: 上传审计产物
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gc01-refutation-certs
+          path: |
+            data/paper_audit.json
+            data/paper_audit_report.md
+            reports/ci-gc01-audit.log
+
+  # 阶段0g: 错误分类学门禁（2026-10-16 新增，硬骨头 3）
+  #
+  # 动机：地基承重审计报告 §九 · 硬骨头 3 —— 207 处 `except Exception` 无分类。
+  # 项目核心主张「fail-closed + 静默降级必须可审计」与代码里大量未标注的
+  # `except Exception: pass` 直接冲突（hive_gate 曾明文写 fail-open）。
+  # 本轮无法一次标完 478 处，但门禁模块内**不允许**存在未标注的
+  # 静默吞异常，任何新增都必须选 FATAL / DEGRADABLE / IGNORABLE 一档。
+  #
+  # 2026-10-16 晚评估报告 §7 · P1 扩展（本次执行）：
+  #   - 门禁集合从 11 → 18 个模块，把"安全关键路径"上的模块纳入集合：
+  #     guard / formal_invariants / provenance_guard / wet_lab_anchors /
+  #     anchor_independence / spectral_guard。
+  #   - 判据：承担硬阻断决策 / 承担溯源指纹或锚点独立性 / 承担形式化
+  #     不变量检查——三选一即算安全关键。
+  #   - 首次把 `formal_invariants.check_all` 的 predicate 异常处理
+  #     标记为 FATAL（此前 FATAL=0），确认"predicate 抛异常即视为失败"
+  #     是必须 fail-closed 的核心语义。
+  #
+  # 验收（硬骨头 3）：把 verification_gate.py 任一 silent except 的 error_kind
+  # 注释删掉，本 job 必须 exit 1 并列出违规文件+行号。
+  error-taxonomy-gate:
+    name: 错误分类学门禁 (18 个安全关键模块 fail-closed)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 扫描并校验 error_kind 标记（stdlib only）
+        run: |
+          cd scripts && python check_error_taxonomy.py --baseline=0
+        working-directory: .
+      - name: 完整扫描报告（不 fail）
+        if: always()
+        run: |
+          cd scripts && python error_taxonomy.py scan --json > ../reports/ci-error-taxonomy.json
+      - name: 上传错误分类学报告
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: error-taxonomy-report
+          path: reports/ci-error-taxonomy.json
+
+  # 阶段0aa: 协议合规与守卫编制门禁（2026-10-17 L-06 新增）
+  #
+  # 动机（2026-10-17 查缺补漏报告 L-06）：scripts/ 下有 14 个 check_*.py，
+  # 但其中 4 个「CI 引用=0」—— check_svp_compliance（**已 FAILED**）、
+  # check_anchor_quality、check_llms_txt_ci、check_orphan_selftest。
+  # 「守卫存在但不值班」：svp 自检已经红，红灯无人看见。本 job 一次性把这
+  # 4 个未接线的守卫全部接进 CI，避免「有脚本没运行」的漏洞复发。
+  #
+  # 前置修复（L-02 / L-06）：
+  #   - check_svp_compliance 已升级到期望 6 条不变量（INV-6 内容指纹，
+  #     Lean 侧 inv6a/inv6b/inv6c 三条 theorem 同步存在）；
+  #   - check_orphan_selftest 已修 sys.path，不再 IMPORT FAILED。
+  compliance-gate:
+    name: 协议合规与守卫编制 (SVP/锚点/llms/orphan)
+    runs-on: ubuntu-latest
+    needs: engine-tests
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 安装依赖（对齐 requirements.txt）
+        run: pip install -r requirements.txt
+      - name: SVP 协议合规自检（INV-1..6 Lean 通道）
+        run: python scripts/check_svp_compliance.py
+      - name: 锚点质量检查（独立性比率 / 来源家族）
+        run: python scripts/check_anchor_quality.py
+      - name: llms.txt 漂移检查
+        run: python scripts/check_llms_txt_ci.py
+      - name: 孤儿模块 selftest 编制（5 个模块）
+        run: python scripts/check_orphan_selftest.py
+      - name: paper-1 投稿 zip 一致性（防"投旧版"，L-07）
+        run: python scripts/check_paper_zip_freshness.py --paper-1
+      - name: LaTeX 编译结构检查（L-08，环境变量匹配/标签/引用/bib）
+        run: python scripts/check_latex_compile.py
+
+  # 阶段0b: V&V 归档包门禁（2026-09-19 新增）
+  #
+  # 动机：对外声称「外部可在**无网络、无 numpy** 的环境里独立复验归档包，
+  # 且篡改会被捕获」。这是一条**可被证伪的公开承诺**。若无门禁，它会在后续
+  # 重构中悄悄腐烂，而 CI 仍然全绿——这正是 2026-09-18 那次「CI 绿但口径已漂」
+  # 的同型风险（见 docs/ci-red-diagnosis-20260918.md）。承诺必须由机器守住。
+  #
+  # 三条断言，全部是**否定性**的（不满足即红）：
+  #   1. 零依赖     —— 生成器只允许 stdlib，不得引入 numpy/scipy
+  #   2. 洁净包复验 —— verify 必须返回 PACKAGE_INTACT
+  #   3. 篡改必捕获 —— 改一字节后 verify **必须**以 exit 2 失败并报 TAMPERED
+  # 第 3 条是关键：一个「永远说 intact」的校验器等于没有校验器。
+  #
+  # 说明：此处只建 2 场景子集（完整 82 场景包 ~2.9MB / 253+ 文件，CI 里没必要）。
+  # 子集与全量走同一条代码路径，故对回归的检出力相同。
+  vv-package-gate:
+    name: V&V 归档包门禁 (零依赖 + 篡改捕获)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      # 刻意不装 numpy/scipy：若生成器偷偷依赖它们，这一步就会红
+      - name: 零依赖自检（不得引入第三方依赖）
+        run: python scripts/build_vv_package.py selfcheck
+      - name: 生成归档包（2 场景子集）
+        run: python scripts/build_vv_package.py build --out /tmp/vvpkg --scenarios microbio_monod,bio_logistic
+      - name: 洁净包必须 PACKAGE_INTACT
+        run: |
+          python scripts/build_vv_package.py verify /tmp/vvpkg | tee /tmp/vv-clean.txt
+          grep -q "PACKAGE_INTACT" /tmp/vv-clean.txt
+          echo "[OK] 洁净包复验通过"
+      - name: 篡改一字节必须被捕获（期望 exit 2 + TAMPERED）
+        run: |
+          sed -i 's/"PASS"/"FORGED_PASS"/' /tmp/vvpkg/scenarios/bio_logistic.json
+          set +e
+          out=$(python scripts/build_vv_package.py verify /tmp/vvpkg 2>&1); rc=$?
+          set -e
+          echo "$out" | tail -6
+          echo "verify exit=$rc（期望 2）"
+          test "$rc" -eq 2
+          echo "$out" | grep -q "TAMPERED"
+          echo "[OK] 篡改被捕获 —— 校验器不是「永远说 intact」"
+
+  # 阶段0c: 公开页数字口径门禁（2026-09-20 新增）
+  #
+  # 动机：2026-09-20 一次外部评审实测到——同一个指标（场景数）在站内有 4 套并存口径
+  # （62 / 72 / 52 / 54），而 TOS 与 pricing 页写的是 **143+ engines**，产物里根本不存在
+  # 这个数。这不是笔误，是「文案写一次、产物涨一次」的静默漂移。
+  #
+  # 规则与 V&V 归档包同源：**一个公开数字必须由某个产物算出来，算不出来就不准发布**。
+  # 事实单一真源 = data/public_facts.json（由 scripts/build_public_facts.py 从 6 份
+  # 产物现场生成，不接受手改）；门禁 = scripts/check_public_numbers.py，逐页抽取
+  # 可见文本里的数字并与真源比对，分 MISMATCH（引错数）与 UNSOURCED（无产物支撑）。
+  #
+  # 三条硬约束：
+  #   1. 先 `test -f` 口径源产物，缺一个就红——**不允许「文件不在就静默跳过」**，
+  #      那等于门禁自己给自己放假。
+  #   2. facts 在 CI 里**现场重建**，不接受仓库里手改的 JSON 蒙混。
+  #   3. 门禁只读 stdlib（无 numpy/scipy），所以此 job 不装任何第三方依赖。
+  #
+  # 已修复的历史违规：143 engines / 900k+ validation data points / 72 scenarios /
+  # 5 of 62 REFUTED / 1,236 papers / 155 engines —— 全部替换为可溯源口径。
+  #
+  # 2026-09-21 加装两道人眼最容易漏的检查（见 check_public_numbers.py）：
+  #
+  #   0a) STALE-FACT —— 事实表自身是否过期。
+  #       事故：场景从 62 扩到 82 后，public_facts.json 停在 62，而**所有页面也都写 62**，
+  #       于是「页面 vs 事实表」全对、门禁报 PASS —— 一个「所有页面都听话，
+  #       但全都在说上个版本」的集体假绿。根因是原门禁只校验下游不校验源头。
+  #       现在每条 fact 的 source 字段被当作**可执行指针**读回来核对，
+  #       source 不再只是给人看的注释。
+  #
+  #   0b) COUNT-DISAGREEMENT —— 同一个「场景总数」不许在多个产物里各说各话。
+  #       事故：report_generator 82 / trust_surface 62 / density 72 / 主账本 80
+  #       四套注册表四个数，每个脚本单独看都对，没人负责「它们必须相等」。
+  #       现在这个函数就是那个负责人；注册表已在 paper_validation_loop 收敛为单一真源。
+  #
+  # 否定性验证（2026-09-21 实测）：把事实表的 validated_scenarios 改回 62 →
+  # 门禁立即 exit 1 并报 [STALE-FACT] + [COUNT-DISAGREEMENT]；恢复 82 → exit 0。
+  # 一个从不报红的门禁等于没有门禁。
+  public-numbers-gate:
+    name: 公开页数字口径门禁 (fail-closed, 逐字溯源)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 口径源产物必须在树内（缺失即红，不允许静默跳过）
+        run: |
+          for f in frontend_fixed/reports/index.json \
+                   frontend_fixed/reports/gate_ledger.json \
+                   frontend_fixed/reports/heldout_index.json \
+                   frontend_fixed/reports/wet_lab_anchors.json \
+                   frontend_fixed/reports/scenario_library_density.json \
+                   data/trust_surface.json \
+                   data/entity_store.json; do
+            test -f "$f" || { echo "::error::缺少口径源产物 $f —— 门禁拒绝在无源情况下放行"; exit 1; }
+          done
+          echo "[OK] 7/7 口径源产物在树内"
+      - name: 现场重建事实单一真源
+        run: python scripts/build_public_facts.py
+      - name: 公开页数字口径门禁
+        run: python scripts/check_public_numbers.py
+
+  # 阶段0d: 前端产物一致性 + i18n 债门禁（2026-09-21 新增）
+  #
+  # 动机来自三个当天实测的缺陷，此前没有任何门禁能看见它们：
+  #   1) 生成器比产物旧 —— build_trust_dashboard.py 模板里写死「全部 62 个场景」，
+  #      而 trust_surface.json 已是 82。线上「可信面仪表盘」因此长期显示 62：
+  #      错误口径出现在最需要可信的那一页。**产物被修过、生成器没跟上**，
+  #      下次重建就把修好的页面覆盖回旧数 —— 与「CI 用残缺树覆盖生产」同型。
+  #   2) 门禁的两个盲区 —— <script> 内的声明式数字、以及 meta/OG/JSON-LD
+  #      的 content（爬虫读的正是这些）。已由 check_public_numbers.py 补上。
+  #   3) 机器翻译债 —— 英文化过程把中文标点机械替换成「,」并大写句首，
+  #      产生 "Outputs a point estimate,Provides confidence intervals" 这类
+  #      破句。历史债无法一次清空，故用**基线式**门禁：只拦「变多」。
+  #
+  # 本 job 的顺序是刻意的：先重建产物（暴露生成器陈旧），再跑口径门禁
+  # （陈旧生成器的产物必定带旧数字），最后跑 i18n 债基线比对。
+  frontend-consistency-gate:
+    name: 前端一致性门禁 (生成器重现 + i18n 债基线)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 产物与债券基线必须在树内
+        run: |
+          test -f data/trust_surface.json || { echo "::error::缺少 data/trust_surface.json"; exit 1; }
+          test -f data/frontend_i18n_baseline.json || { echo "::error::缺少 i18n 基线"; exit 1; }
+          test -f frontend_fixed/reports/index.json || { echo "::error::缺少 frontend_fixed/reports/index.json"; exit 1; }
+          test -f data/public_facts.json || { echo "::error::缺少 public_facts.json"; exit 1; }
+          echo "[OK] 口径源与基线在树内"
+      - name: 从生成器重建前端产物（暴露「生成器陈旧」）
+        run: |
+          python scripts/build_trust_dashboard.py
+          python scripts/build_verify_page.py
+      - name: 重建后数字仍须与产物一致（陈旧生成器会带出旧数）
+        run: python scripts/check_public_numbers.py
+      - name: i18n / 一致性检查器否定性自检（会拦、不误报）
+        run: python scripts/lint_frontend_i18n.py --selftest
+      - name: i18n 债基线比对（债只能降不能升）
+        run: python scripts/lint_frontend_i18n.py
+
+  # 阶段0e: 阶段锚点可复算门禁（2026-09-21 新增）
+  #
+  # 锚点（data/phase_anchor_*.json + docs/milestones/phase-anchor-*.md）是
+  # 「此刻产品是什么样」的可追溯快照，每条事实都带 source_pointer。
+  # 这里只验证一件事：**所有指针都还能解析**（gaps 为空）。
+  # 指针解析不了 = 产物被改名/删字段，锚点会静默失真 —— 而阶段对比正是
+  # 靠这些指针判「哪个数字动了、为什么动」。
+  phase-anchor-gate:
+    name: 阶段锚点门禁 (事实指针可解析)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 口径源产物必须在树内
+        run: |
+          for f in frontend_fixed/reports/index.json \
+                   frontend_fixed/reports/gate_ledger.json \
+                   frontend_fixed/reports/heldout_index.json \
+                   frontend_fixed/reports/wet_lab_anchors.json \
+                   frontend_fixed/reports/scenario_library_density.json \
+                   data/trust_surface.json \
+                   data/public_facts.json \
+                   data/entity_store.json \
+                   data/conformal_calibration.json; do
+            test -f "$f" || { echo "::error::锚点缺少来源产物 $f"; exit 1; }
+          done
+      - name: 锚点必须可复算且无缺口
+        run: |
+          python scripts/build_phase_anchor.py --json > anchor.json
+          python - <<'PY'
+          import json
+          a = json.load(open("anchor.json", encoding="utf-8"))
+          gaps = a.get("gaps") or []
+          if gaps:
+              print("锚点存在无法解析的事实指针：")
+              for g in gaps:
+                  print("  -", g)
+              raise SystemExit(1)
+          print(f"[OK] all_digest={a['fingerprint']['all_digest']} "
+                f"scenarios={a['facts']['validated_scenarios']['value']} gaps=0")
+          PY
+
+  # 阶段0c: 指纹新鲜度门禁（2026-09-20 新增）
+  #
+  # 动机：账本 gate_ledger.json 里记录了对哪一版引擎算的判定（all_digest）。
+  # 若开发者改了引擎却没重跑账本，账本会**静默**给出过期 PASS——这是 AI4S 里
+  # 最危险的一类"过期信任"：数字还在，含义已经变了。
+  #
+  # 2026-09-19 之前，ledger_is_stale() 只是"读事实"——没有任何东西阻断它的沿用。
+  # 现在 engine.verification_gate.assert_action_allowed 默认挂上
+  # assert_ledger_not_stale()，本 CI 门禁是它的守门人：
+  #   · build_gate_ledger 跑完 → all_digest 一致 → PASS
+  #   · 引擎改动未重跑账本 → all_digest 不一致 → 本 job 红
+  #   · CI 红 = 飞轮/MCP/HTTP 侧都不会把旧 PASS 当成有效结论
+  #
+  # 与 public-numbers-gate 的区别：那个守**数字口径**，这个守**结论时效**。
+  # 两个都是 fail-closed，但管的是不同的腐化路径。
+  ledger-fresh-gate:
+    name: 指纹新鲜度门禁 (指纹变更→强制重验)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - name: 安装依赖（引擎指纹只读 hashlib，但为保一致性仍装）
+        run: pip install numpy scipy
+      - name: 检查账本是否与当前引擎指纹一致
+        run: python scripts/check_ledger_fresh.py
+
+  # VLab 门禁（2026-09-21 新增）—— 综合虚拟实验室 / 验证即服务
+  #
+  # 动机：把「真实数据只能事后作证、不得作前置输入」从文档承诺升级成 schema 层
+  # 的**不可表达性**（engine/vlab_contract.py 在 corroboration.as_input=true 时
+  # 直接拒收工作单）。这类纪律只有在被证明**会拦**时才算数，所以本 job 跑的是
+  # **否定性**门禁：每一条都构造一个应当被拒的输入，再断言它确实被拒。
+  # 任何一条闸门"永远说 OK"都会让本 job 红。
+  #
+  # 零依赖：engine/vlab_*.py 只用标准库；本 job 刻意**不装** numpy，以检出偷依赖
+  # （与 vv-package-gate 的 selfcheck 同一纪律：干净解释器才有检出能力）。
+  vlab-gate:
+    name: VLab 验证即服务门禁 (否定性 / 零依赖)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 契约 / 阶段顺序 / 专业准入 / 锚定筛选 / 交付篡改 —— 否定性自检
+        run: python scripts/check_vlab_gates.py
+      - name: 专业注册表必须与账本一致（不得有编造 gold 的 VALIDATED）
+        run: |
+          mkdir -p .vlab-ci
+          python scripts/vlab.py disciplines --json > .vlab-ci/disciplines.json
+          python - <<'PY'
+          import json
+          s = json.load(open(".vlab-ci/disciplines.json", encoding="utf-8"))
+          t = s["totals"]
+          bad = [r["name"] for r in s["rows"]
+                 if r["status"] == "VALIDATED" and r["n_gold_resolved"] == 0]
+          if bad:
+              print("::error::被标 VALIDATED 却没有任何可解析 gold: %s" % bad)
+              raise SystemExit(1)
+          print("[OK] disciplines=%d VALIDATED=%d AWAITING_GOLD=%d"
+                % (s["n"], t.get("VALIDATED", 0), t.get("AWAITING_GOLD", 0)))
+          PY
+      - name: 样例工作单 —— 内核场景出裁决 / 未接入专业拒绝给裁决
+        run: |
+          mkdir -p .vlab-ci
+          python scripts/vlab.py run data/vlab/work-orders/w3-microbio-ecoli.json \
+            --out .vlab-ci/kernel
+          python scripts/vlab.py run data/vlab/work-orders/w3-chemistry-onboarding.json \
+            --out .vlab-ci/onboarding
+          python - <<'PY'
+          import json
+          j = json.load(open(".vlab-ci/kernel/job.json", encoding="utf-8"))
+          if j["outcome"] not in ("PROCEED", "PROCEED_WITH_HUMAN_CHECK",
+                                  "BLOCK_AUTONOMOUS_ACTION"):
+              print("::error::内核场景未给出裁决 outcome=%s" % j["outcome"])
+              raise SystemExit(1)
+          c = json.load(open(".vlab-ci/onboarding/job.json", encoding="utf-8"))
+          if c["outcome"] != "NEEDS_ONBOARDING":
+              print("::error::未接入专业不得给出裁决 outcome=%s" % c["outcome"])
+              raise SystemExit(1)
+          print("[OK] kernel=%s  onboarding=%s" % (j["outcome"], c["outcome"]))
+          PY
+      - name: 交付物可离线复验（完好即 exit 0）
+        run: python scripts/vlab.py verify .vlab-ci/kernel/delivery.json
+      # 服务层：真起一个 HTTP 服务、发真请求、断言响应。
+      # 几乎全是**否定性**断言 —— 未知路由必须 404（绝非 200 兜底）、
+      # 无 token 必须 401、倒置写法必须 422、未接入专业必须不给裁决、
+      # 篡改交付必须 409 TAMPERED、非回环无 token 必须拒绝启动。
+      - name: 服务层 —— 真起服务 + 真发请求 + 否定性断言
+        run: python scripts/check_vlab_server.py
+      - name: 服务层必须能在零依赖解释器里跑（检出偷依赖）
+        run: |
+          python -S scripts/check_vlab_server.py --quiet
+          python -S scripts/check_vlab_gates.py --quiet
+
+  # 阶段0e: 校准概率门禁（2026-09-20 新增，借 Laya/Jev RLCD）
+  #
+  # 动机：SwarmLabs 的 gate_decision 原本只输出离散 verdict，边缘场景直接翻档、
+  # 无中间态；coverage=0.95 是约束而非训练目标。本次引入两条链路：
+  #   (a) engine/verification_gate.calibrated_verdict — 4 档概率 + 分布派生
+  #       confidence + Act/Review/Human 三路径（借 Jev noul + 错误成本阈值）
+  #   (b) engine/calibration_rl — 线性 softmax + log-likelihood 严格评分规则
+  #       训练策略，报告 ECE（Expected Calibration Error）
+  #
+  # 门禁三条硬约束（fail-closed）：
+  #   1. 校准模块可导入 + calibrated_verdict 对全部场景返回 4 档概率（和=1）
+  #   2. 账本里的 calibration.ece 存在且 < 0.1（参考 Laya refit=0.081、Jev=0.246）
+  #   3. 校准不改变 hard verdict 分布（PASS 数量 = 原账本 counts.PASS）
+  calibration-gate:
+    name: 校准概率门禁 (ECE + calibrated_verdict)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - name: 安装依赖
+        run: pip install numpy
+      - name: 校准模块自检
+        run: |
+          python - <<'PY'
+          import sys, json, math
+          sys.path.insert(0, '.')
+          from engine.verification_gate import (
+              calibrated_verdict, calibrated_verdict_batch, load_ledger,
+          )
+          from engine.calibration_rl import CalibrationPolicy
+          led = load_ledger()
+          assert led, "gate ledger missing"
+          scenarios = led["scenarios"]
+          # 1) calibrated_verdict 每个场景都返回 4 档概率，和=1
+          for k in scenarios:
+              r = calibrated_verdict(k, led)
+              probs = r["probabilities"]
+              s = sum(probs.values())
+              # 概率 round 到 4 位小数，4 个累加误差 < 2e-4；用 1e-3 容差
+              assert abs(s - 1.0) < 1e-3, f"{k}: probs sum={s}"
+              assert r["hard_verdict"] in ("PASS","MARGINAL","REFUTED","UNVALIDATED","ERROR")
+              assert r["recommendation"] in ("ACT","REVIEW","HUMAN")
+          # 2) 错误成本参数化：高 cost 应收紧阈值
+          low = calibrated_verdict(list(scenarios)[0], led, cost_of_error=0.5)
+          high = calibrated_verdict(list(scenarios)[0], led, cost_of_error=4.0)
+          assert high["cost_thresholds"]["pass"] >= low["cost_thresholds"]["pass"], \
+              "high-cost threshold should be stricter"
+          # 3) 账本里的 calibration.ece 存在且 < 0.1
+          cal = led.get("calibration") or {}
+          assert "ece" in cal, f"ledger missing calibration.ece: {cal}"
+          assert cal["ece"] < 0.1, f"calibration.ece={cal['ece']} ≥ 0.1"
+          # 4) 校准不改变 hard verdict 分布
+          from collections import Counter
+          hard_dist = Counter(r["hard_verdict"] for r in
+                              (calibrated_verdict(k, led) for k in scenarios))
+          for g in ("PASS","MARGINAL","REFUTED","UNVALIDATED","ERROR"):
+              assert hard_dist.get(g, 0) == led.get("counts", {}).get(g, 0), \
+                  f"verdict drift for {g}: {hard_dist.get(g,0)} vs {led['counts'].get(g,0)}"
+          print(f"[OK] calibration.ece={cal['ece']} label_dist={cal.get('label_distribution')}")
+          print(f"[OK] calibrated_verdict: {len(scenarios)} scenarios, hard_dist={dict(hard_dist)}")
+          PY
+
+  # 阶段1: 模型验证（24/24 PASS, 偏差<5%）
+  validate-models:
+    name: 模型验证 (24/24 PASS)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: 运行模型验证
+        run: |
+          cd scripts
+          node validate_models.js
+      - name: 上传验证报告
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-validation-report
+          path: reports/model-validation-*.json
+
+  # 阶段2: 部署验证（9/9 GAP PASS）
+  deploy-verify:
+    name: 部署验证 (9/9 GAP PASS)
+    runs-on: ubuntu-latest
+    needs: validate-models
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 运行部署验证
+        env:
+          BASE_URL: ${{ secrets.DEPLOY_VERIFY_URL || 'https://a5196b91.swarmlabs-dnh.pages.dev/api' }}
+        run: |
+          cd scripts
+          python deploy_verify.py
+      - name: 上传验证报告
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: deploy-verify-report
+          path: reports/issues/backlog.json
+
+  # 阶段3: 性能基线测试
+  perf-baseline:
+    name: 性能基线测试
+    runs-on: ubuntu-latest
+    needs: validate-models
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 运行性能基线测试
+        env:
+          BASE_URL: ${{ secrets.DEPLOY_VERIFY_URL || 'https://a5196b91.swarmlabs-dnh.pages.dev/api' }}
+        run: |
+          cd scripts
+          python perf_baseline.py
+      - name: 上传性能报告
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: perf-baseline-report
+          path: reports/perf-baseline.json
+
+  # 阶段4: 原「部署到 Cloudflare Pages」—— 2026-09-17 停用，改为线上契约守卫
+  #
+  # 为什么停用（实测，不是推断）：
+  #   CI 能拿到的部署树 = actions/checkout 的 git 树，而 repo 的 .gitignore 含 `reports/`。
+  #   远端 main 里只有**一部分** reports/*.json（早期提交遗留下来的）：
+  #       reports/benchmark/index.json         在
+  #       reports/benchmark/gate_ledger.json   在
+  #       reports/benchmark/bio_logistic.json  不在
+  #       reports/partner/entities.json        不在
+  #   于是每次 push，这个 job 都用一份**结构性残缺**的树去覆盖完整部署。实测后果：
+  #     · 一次 CI 部署 = 62/348 资产正确，其余全部落到 SPA index.html 兜底页；
+  #     · /api/entities/search、/api/gaps、/api/papers/<id> 集体返回
+  #       500 {"message":"failed to parse entities.json"}（取件层拿回 HTML → JSON.parse 抛错）；
+  #     · 线上看着还能用，是因为 swarmlabs.tools 上有 s-maxage=604800 的 7 天缓存
+  #       留着一份旧的好副本 —— 缓存不是病因，是**掩盖物**。
+  #   而它每次都报 success。典型的「绿着的破坏」。
+  #   （也解释了先前那个被误读为"CF 服务端随机缺件"的现象：缺件与该次 Source commit
+  #     一一对应，因为那个 commit 对应的就是 git 树里的文件集合。）
+  #
+  # 部署唯一入口改为本机脚本（那里有全部生成物，且逐文件字节比对 + 缺件自动重部署）：
+  #     python scripts/deploy_pages.py
+  #
+  # 本 job 现在做它真正该做的事：用 spec §8 的**可执行**验收清单盯线上。
+  #   key 由脚本自行从 frontend_fixed/functions/api/[[path]].js 的默认值里取，
+  #   不需要额外配置 secret。
+  deploy:
+    name: 部署归属校验 + 线上契约守卫（CI 不再部署）
+    runs-on: ubuntu-latest
+    needs: [validate-models, deploy-verify, perf-baseline]
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 明确拒绝在 CI 里部署（树不完整）
+        run: |
+          echo "::notice::CI does NOT deploy swarmlabs.tools."
+          echo "::notice::reason: the checked-out tree lacks the git-ignored reports/ output,"
+          echo "::notice::so deploying it replaces a complete site with a partial one."
+          echo "::notice::deploy with: python scripts/deploy_pages.py"
+          if [ -f frontend_fixed/reports/partner/entities.json ] && \
+             [ -f frontend_fixed/reports/benchmark/bio_logistic.json ]; then
+            echo "::warning::the tree now appears to carry the full generated site - revisit this decision."
+          fi
+      - name: 线上契约守卫（RoboParts spec §8 验收清单）
+        run: python scripts/verify_partner_spec.py

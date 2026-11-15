@@ -1,0 +1,44 @@
+# 权限边界与审批策略
+#
+# 三条原则：
+# 1. 最小权限：每个角色只授权完成本职所需的 Skill，多一个都不给。
+# 2. 读写分离：跑实验的（executor）无权改知识库；改知识库的（verifier）需人工批准。
+# 3. 可回滚：任何写共享状态的动作，执行前自动快照，可用 --rollback 一键还原。
+
+approval:
+  # 写"共享状态"（跨运行累积的知识库）必须人工批准；
+  # 写"运行目录"（报告等可丢弃产物）不需要。
+  require_for_shared_write: true
+
+roles:
+  leader:
+    allow_write: true          # 仅限 run_local 范围（报告渲染）
+    allow_external: false
+    # 逐 Skill 的外呼白名单：只给"本地模型顾问"这一条通道开缝，
+    # 而不是把 Leader 的整体外呼权限打开（最小权限）。
+    allow_external_skills:
+      - local_model.advisory
+    allow_skills:
+      - report.render
+      - local_model.advisory
+
+  planner:
+    allow_write: false
+    allow_external: false
+    allow_skills:
+      - scenario.catalog
+
+  executor:
+    allow_write: false         # 关键：执行者不能改知识库
+    allow_external: false
+    allow_skills:
+      - virtual_experiment.validate
+      - active_learning.rank_candidates
+
+  verifier:
+    allow_write: true          # 唯一的数据入库权，且受审批闸门约束
+    allow_external: false
+    allow_skills:
+      - uq.calibration_report
+      - labguard.gate          # 只读门禁：判读"虚拟结果能否当真"，为成熟度裁定提供证据
+      - experiment.apply_correction

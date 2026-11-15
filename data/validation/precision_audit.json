@@ -1,0 +1,381 @@
+{
+  "timestamp": "2026-10-13T09:43:20.624088",
+  "summary": {
+    "total_scenarios": 0,
+    "closure_audit": {
+      "total_scenarios": 52,
+      "gp_converged": 52,
+      "gp_coverage_rate": 100.0,
+      "capabilities_covered": 44,
+      "capabilities_still_missing": [],
+      "scenarios_detail": [
+        {
+          "key": "micro_ecoli_glucose",
+          "converged": true,
+          "rmse": 0.0003,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_cerevisiae_ethanol",
+          "converged": true,
+          "rmse": 0.0001,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_putida_toluene",
+          "converged": true,
+          "rmse": 0.0002,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_lactococcus_lactose",
+          "converged": true,
+          "rmse": 0.0,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_acetobacter_acetate",
+          "converged": true,
+          "rmse": 0.0035,
+          "coverage": 0.983,
+          "ref": ""
+        },
+        {
+          "key": "micro_methanobacterium_methane",
+          "converged": true,
+          "rmse": 0.0002,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_chemostat_ecoli",
+          "converged": true,
+          "rmse": 0.0003,
+          "coverage": 0.975,
+          "ref": ""
+        },
+        {
+          "key": "micro_chemostat_cerevisiae",
+          "converged": true,
+          "rmse": 0.1688,
+          "coverage": 0.933,
+          "ref": ""
+        },
+        {
+          "key": "micro_lag_ecoli",
+          "converged": true,
+          "rmse": 0.0489,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_lifecycle_ecoli",
+          "converged": true,
+          "rmse": 0.0291,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_diauxic_ecoli",
+          "converged": true,
+          "rmse": 0.0003,
+          "coverage": 0.95,
+          "ref": ""
+        },
+        {
+          "key": "micro_fedbatch_ecoli",
+          "converged": true,
+          "rmse": 0.8863,
+          "coverage": 0.95,
+          "ref": ""
+        },
+        {
+          "key": "micro_competition_ecoli_yeast",
+          "converged": true,
+          "rmse": 0.0005,
+          "coverage": 0.95,
+          "ref": ""
+        },
+        {
+          "key": "micro_crabtree_cerevisiae",
+          "converged": true,
+          "rmse": 0.1542,
+          "coverage": 0.925,
+          "ref": ""
+        },
+        {
+          "key": "micro_haldane_putida",
+          "converged": true,
+          "rmse": 0.0005,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_contois_ecoli",
+          "converged": true,
+          "rmse": 0.0013,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_tessier_ecoli",
+          "converged": true,
+          "rmse": 0.0011,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_pirt_ecoli",
+          "converged": true,
+          "rmse": 0.0003,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_oxygen_ecoli",
+          "converged": true,
+          "rmse": 0.0063,
+          "coverage": 0.975,
+          "ref": ""
+        },
+        {
+          "key": "micro_antibiotic_timekill",
+          "converged": true,
+          "rmse": 0.0,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_osmotic_ecoli",
+          "converged": true,
+          "rmse": 0.0031,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_biofilm_ecoli",
+          "converged": true,
+          "rmse": 0.0035,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_scaleup_kla",
+          "converged": true,
+          "rmse": 0.0004,
+          "coverage": 0.975,
+          "ref": ""
+        },
+        {
+          "key": "micro_doe_ecoli_monod",
+          "converged": true,
+          "rmse": 0.0003,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_mle_ecoli_monod",
+          "converged": true,
+          "rmse": 0.0004,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_sobol_ecoli",
+          "converged": true,
+          "rmse": 0.0005,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_uq_ecoli_monod",
+          "converged": true,
+          "rmse": 0.0007,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_coculture_mutualism",
+          "converged": true,
+          "rmse": 0.0845,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_quorum_ecoli",
+          "converged": true,
+          "rmse": 0.0574,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_heavy_metal_ecoli",
+          "converged": true,
+          "rmse": 0.0001,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_diauxic_2d",
+          "converged": true,
+          "rmse": 0.0,
+          "coverage": 0.967,
+          "ref": ""
+        },
+        {
+          "key": "micro_fedbatch_2d",
+          "converged": true,
+          "rmse": 0.002,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_competition_2d",
+          "converged": true,
+          "rmse": 0.0003,
+          "coverage": 0.975,
+          "ref": ""
+        },
+        {
+          "key": "micro_crabtree_2d",
+          "converged": true,
+          "rmse": 0.0091,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_fedbatch_3d",
+          "converged": true,
+          "rmse": 0.0027,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_haldane_2d",
+          "converged": true,
+          "rmse": 0.0007,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_oxygen_2d",
+          "converged": true,
+          "rmse": 0.0015,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_antibiotic_2d",
+          "converged": true,
+          "rmse": 0.0,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_secondary_metabolite",
+          "converged": true,
+          "rmse": 0.0137,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_thermal_death",
+          "converged": true,
+          "rmse": 0.006,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_immobilized_cell",
+          "converged": true,
+          "rmse": 0.0368,
+          "coverage": 0.917,
+          "ref": ""
+        },
+        {
+          "key": "micro_plasmid_stability",
+          "converged": true,
+          "rmse": 0.01,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_phage_infection",
+          "converged": true,
+          "rmse": 0.007,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_gene_expression",
+          "converged": true,
+          "rmse": 0.0023,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_oxidative_stress",
+          "converged": true,
+          "rmse": 0.0345,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_chemostat_transient",
+          "converged": true,
+          "rmse": 0.0222,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_mixed_substrate",
+          "converged": true,
+          "rmse": 0.0228,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_ph_control",
+          "converged": true,
+          "rmse": 0.0334,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_fba_flux",
+          "converged": true,
+          "rmse": 0.5345,
+          "coverage": 0.983,
+          "ref": ""
+        },
+        {
+          "key": "micro_dead_volume",
+          "converged": true,
+          "rmse": 0.0128,
+          "coverage": 0.967,
+          "ref": ""
+        },
+        {
+          "key": "micro_foam_dynamics",
+          "converged": true,
+          "rmse": 0.0121,
+          "coverage": 1.0,
+          "ref": ""
+        },
+        {
+          "key": "micro_sensor_fusion",
+          "converged": true,
+          "rmse": 0.0089,
+          "coverage": 1.0,
+          "ref": ""
+        }
+      ],
+      "closure_verdict": "CLOSED"
+    }
+  },
+  "scenarios": []
+}

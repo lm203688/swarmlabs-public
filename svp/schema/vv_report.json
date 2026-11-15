@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://swarmlabs.tools/svp/schema/vv_report.json",
+  "title": "SVP V&V Report",
+  "description": "A complete verification-and-validation report in the SwarmLabs Verification Protocol.",
+  "svp": "1.0",
+  "type": "object",
+  "required": ["schema", "harness_version", "timestamp", "summary", "scenarios"],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "svp-v1",
+      "description": "Schema identifier"
+    },
+    "harness_version": {
+      "type": "string",
+      "description": "Version of the harness used to generate this report"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 report generation timestamp"
+    },
+    "summary": {
+      "type": "object",
+      "required": ["total_scenarios", "counts"],
+      "properties": {
+        "total_scenarios": {"type": "integer", "minimum": 1},
+        "counts": {
+          "type": "object",
+          "required": ["PASS", "MARGINAL", "REFUTED", "ERROR"],
+          "properties": {
+            "PASS": {"type": "integer", "minimum": 0},
+            "MARGINAL": {"type": "integer", "minimum": 0},
+            "REFUTED": {"type": "integer", "minimum": 0},
+            "ERROR": {"type": "integer", "minimum": 0}
+          }
+        },
+        "noise_floor": {
+          "type": "number",
+          "description": "Minimum UQ noise floor (SwarmLabs: 0.03)",
+          "default": 0.03
+        },
+        "coverage_target": {
+          "type": "number",
+          "description": "Target UQ coverage (SwarmLabs: 0.95)",
+          "default": 0.95
+        },
+        "evidence_3d": {
+          "type": "object",
+          "description": "Three-dimensional evidence coverage statistics",
+          "properties": {
+            "total_anchors": {"type": "integer"},
+            "three_dim_complete": {"type": "integer"},
+            "decision_relevant": {"type": "integer"},
+            "dr_three_dim_complete": {"type": "integer"}
+          }
+        }
+      }
+    },
+    "scenarios": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "verdict", "gate_results"],
+        "properties": {
+          "id": {"type": "string"},
+          "verdict": {"type": "string", "enum": ["PASS", "MARGINAL", "REFUTED", "ERROR"]},
+          "gate_results": {
+            "type": "object",
+            "additionalProperties": {"type": "boolean"}
+          },
+          "anchor_matches": {
+            "type": "array",
+            "items": {"type": "string"},
+            "description": "IDs of anchors that were consulted for this scenario"
+          },
+          "evidence_3d": {
+            "type": "string",
+            "enum": ["complete", "partial", "unanchored"],
+            "description": "Three-dimensional evidence completeness for this scenario"
+          },
+          "notes": {
+            "type": "string",
+            "description": "Free-form notes on this scenario's verification"
+          }
+        }
+      }
+    },
+    "refuted_scenarios": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "IDs of REFUTED scenarios (independent claim_basis for invariant checks)"
+    },
+    "fingerprint": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{16,64}$",
+      "description": "Content hash of the entire report (for tamper detection)"
+    }
+  },
+  "additionalProperties": false
+}

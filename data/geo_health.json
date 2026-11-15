@@ -1,0 +1,21 @@
+{
+  "history": [
+    {
+      "date": "2026-08-09",
+      "health_score": 100.0,
+      "n_gaps": 0,
+      "n_tickets": 1,
+      "auto_verify_tickets": 1,
+      "gaps": [],
+      "tickets": [
+        {
+          "id": "GEO-00",
+          "gap": "无",
+          "action": "维持并持续监测",
+          "acceptance": "健康分保持 ≥ 95",
+          "auto_verify": true
+        }
+      ]
+    }
+  ]
+}

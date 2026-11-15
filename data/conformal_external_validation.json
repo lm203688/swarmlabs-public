@@ -1,0 +1,363 @@
+{
+  "version": 1,
+  "generated_at": "2026-10-16T01:03:00Z",
+  "module": "engine/conformal_kernel.py",
+  "report_ref": "reports/assessment/SwarmLabs_硬科技提升执行方案_2026-10-15.md §M8",
+  "targets": [
+    {
+      "name": "normal_regression",
+      "generator": "_normal_regression",
+      "desc": "y = 2x + 1 + N(0,1), x ~ U(-3,3)；解析同分布，split 覆盖≈0.90"
+    },
+    {
+      "name": "student_t_regression",
+      "generator": "_student_t_regression",
+      "desc": "y = x^2 + t_5 噪声，heavy-tail；jackknife+/CQR 应更稳"
+    },
+    {
+      "name": "heteroscedastic",
+      "generator": "_heteroscedastic",
+      "desc": "y = x + N(0, exp(x^2))；CQR/LACP 应优于 split"
+    }
+  ],
+  "criteria": {
+    "PASS": "n_methods_pass >= 8 (of evaluated) AND n_methods_skipped == 0",
+    "APPROX": "n_methods_pass >= 6",
+    "FAIL": "n_methods_pass < 6 (likely silent fallback / bug)"
+  },
+  "coverage_target": 0.9,
+  "coverage_floor": 0.85,
+  "backend_summary": {
+    "mapie_available": false,
+    "mapie_version": null,
+    "puncc_available": false,
+    "puncc_version": null,
+    "note": "This module implements all listed methods natively in numpy. If MAPIE/puncc are installed, the same interface dispatches there in a future version — but current implementation is not pretending to be those libraries."
+  },
+  "summary": {
+    "pass": 2,
+    "approx": 1,
+    "fail": 0,
+    "total_elapsed_sec": 0.04
+  },
+  "results": [
+    {
+      "scenario": "normal_regression",
+      "generator": "_normal_regression",
+      "n_train": 200,
+      "n_test": 200,
+      "n_cal": 100,
+      "alpha": 0.1,
+      "target_coverage": 0.9,
+      "elapsed_sec": 0.03,
+      "n_methods_evaluated": 9,
+      "n_methods_pass": 7,
+      "n_methods_skipped": 0,
+      "verdict": "APPROX",
+      "results": [
+        {
+          "method": "split",
+          "coverage": 0.895,
+          "mean_width": 3.5435324381397044,
+          "coverage_gap": -0.0050000000000000044,
+          "n_cal": 100,
+          "quantile": 1.771766219069852,
+          "alpha": 0.1,
+          "target_coverage": 0.9
+        },
+        {
+          "method": "cv_plus",
+          "coverage": 0.88,
+          "mean_width": 3.3785089468689433,
+          "coverage_gap": -0.020000000000000018,
+          "n_cal": 200,
+          "quantile": 1.6892544734344717,
+          "alpha": 0.1,
+          "target_coverage": 0.9
+        },
+        {
+          "method": "jackknife_plus",
+          "coverage": 0.995,
+          "mean_width": 5.447716492796176,
+          "coverage_gap": 0.09499999999999997,
+          "n_cal": 10,
+          "quantile": 2.7238582463980885,
+          "alpha": 0.1,
+          "target_coverage": 0.9
+        },
+        {
+          "method": "cqr",
+          "coverage": 0.705,
+          "mean_width": 2.3070370972601624,
+          "coverage_gap": -0.19500000000000006,
+          "n_cal": 200,
+          "quantile": 2.3214975806634963,
+          "alpha": 0.1,
+          "target_coverage": 0.9
+        },
+        {
+          "method": "lacp",
+          "coverage": 0.895,
+          "mean_width": 3.7797416290015953,
+          "coverage_gap": -0.0050000000000000044,
+          "n_cal": 200,
+          "quantile": 1.8898708145007976,
+          "alpha": 0.1,
+          "target_coverage": 0.9
+        },
+        {
+          "method": "enbpi",
+          "coverage": 0.87,
+          "mean_width": 3.320758617965577,
+          "coverage_gap": -0.030000000000000027,
+          "n_cal": 1000,
+          "quantile": 1.6603793089827885,
+          "alpha": 0.1,
+          "target_coverage": 0.9
+        },
+        {
+          "method": "ltt_rcps",
+          "coverage": 0.825,
+          "mean_width": 2.987875708232801,
+          "coverage_gap": -0.07500000000000007,
+          "n_cal": 50,
+          "quantile": 1.4939378541164008,
+          "alpha": 0.1,
+          "target_coverage": 0.9
+        },
+        {
+          "method": "swarmlabs_vv",
+          "coverage": 0.895,
+          "mean_width": 3.5435324381397044,
+          "coverage_gap": -0.0050000000000000044,
+          "n_cal": 100,
+          "quantile": 1.771766219069852,
+          "alpha": 0.1,
+          "target_coverage": 0.9
+        },
+        {
+          "method": "moment_bound",
+          "coverage": 0.865,
+          "mean_width": 3.2913364782583714,
+          "coverage_gap": -0.03500000000000003,
+          "n_cal": 200,
+          "quantile": 1.6456682391291855,
+          "alpha": 0.1,
+          "target_coverage": 0.9
+        }
+      ]
+    },
+    {
+      "scenario": "student_t_regression",
+      "generator": "_student_t_regression",
+      "n_train": 200,
+      "n_test": 200,
+      "n_cal": 100,
+      "alpha": 0.1,
+      "target_coverage": 0.9,
+      "elapsed_sec": 0.01,
+      "n_methods_evaluated": 9,
+      "n_methods_pass": 8,
+      "n_methods_skipped": 0,
+      "verdict": "PASS",
+      "results": [
+        {
+          "method": "split",
+          "coverage": 0.945,
+          "mean_width": 5.656992515675816,
+          "coverage_gap": 0.04499999999999993,
+          "n_cal": 100,
+          "quantile": 2.828496257837908,
+          "alpha": 0.1,
+          "target_coverage": 0.9
+        },
+        {
+          "method": "cv_plus",
+          "coverage": 0.935,
+          "mean_width": 5.380974167417458,
+          "coverage_gap": 0.03500000000000003,
+          "n_cal": 200,
+          "quantile": 2.690487083708729,
+          "alpha": 0.1,
+          "target_coverage": 0.9
+        },
+        {
+          "method": "jackknife_plus",
+          "coverage": 0.94,
+          "mean_width": 5.595874493589731,
+          "coverage_gap": 0.039999999999999925,
+          "n_cal": 10,
+          "quantile": 2.797937246794865,
+          "alpha": 0.1,
+          "target_coverage": 0.9
+        },
+        {
+          "method": "cqr",
+          "coverage": 0.82,
+          "mean_width": 3.451392267971629,
+          "coverage_gap": -0.08000000000000007,
+          "n_cal": 200,
+          "quantile": 3.8658753564343185,
+          "alpha": 0.1,
+          "target_coverage": 0.9
+        },
+        {
+          "method": "lacp",
+          "coverage": 0.92,
+          "mean_width": 6.179641963898676,
+          "coverage_gap": 0.020000000000000018,
+          "n_cal": 200,
+          "quantile": 3.089820981949338,
+          "alpha": 0.1,
+          "target_coverage": 0.9
+        },
+        {
+          "method": "enbpi",
+          "coverage": 0.925,
+          "mean_width": 5.043951824385508,
+          "coverage_gap": 0.025000000000000022,
+          "n_cal": 1000,
+          "quantile": 2.521975912192754,
+          "alpha": 0.1,
+          "target_coverage": 0.9
+        },
+        {
+          "method": "ltt_rcps",
+          "coverage": 0.935,
+          "mean_width": 5.509724943830184,
+          "coverage_gap": 0.03500000000000003,
+          "n_cal": 50,
+          "quantile": 2.7548624719150925,
+          "alpha": 0.1,
+          "target_coverage": 0.9
+        },
+        {
+          "method": "swarmlabs_vv",
+          "coverage": 0.945,
+          "mean_width": 5.656992515675816,
+          "coverage_gap": 0.04499999999999993,
+          "n_cal": 100,
+          "quantile": 2.828496257837908,
+          "alpha": 0.1,
+          "target_coverage": 0.9
+        },
+        {
+          "method": "moment_bound",
+          "coverage": 0.92,
+          "mean_width": 4.773962536162593,
+          "coverage_gap": 0.020000000000000018,
+          "n_cal": 200,
+          "quantile": 2.3869812680812963,
+          "alpha": 0.1,
+          "target_coverage": 0.9
+        }
+      ]
+    },
+    {
+      "scenario": "heteroscedastic",
+      "generator": "_heteroscedastic",
+      "n_train": 200,
+      "n_test": 200,
+      "n_cal": 100,
+      "alpha": 0.1,
+      "target_coverage": 0.9,
+      "elapsed_sec": 0.01,
+      "n_methods_evaluated": 9,
+      "n_methods_pass": 9,
+      "n_methods_skipped": 0,
+      "verdict": "PASS",
+      "results": [
+        {
+          "method": "split",
+          "coverage": 0.935,
+          "mean_width": 45.10420565548715,
+          "coverage_gap": 0.03500000000000003,
+          "n_cal": 100,
+          "quantile": 22.552102827743578,
+          "alpha": 0.1,
+          "target_coverage": 0.9
+        },
+        {
+          "method": "cv_plus",
+          "coverage": 0.93,
+          "mean_width": 39.194538041197966,
+          "coverage_gap": 0.030000000000000027,
+          "n_cal": 200,
+          "quantile": 19.59726902059898,
+          "alpha": 0.1,
+          "target_coverage": 0.9
+        },
+        {
+          "method": "jackknife_plus",
+          "coverage": 0.92,
+          "mean_width": 35.920810147758985,
+          "coverage_gap": 0.020000000000000018,
+          "n_cal": 10,
+          "quantile": 17.960405073879496,
+          "alpha": 0.1,
+          "target_coverage": 0.9
+        },
+        {
+          "method": "cqr",
+          "coverage": 0.87,
+          "mean_width": 33.25125302123211,
+          "coverage_gap": -0.030000000000000027,
+          "n_cal": 200,
+          "quantile": 38.924721137296515,
+          "alpha": 0.1,
+          "target_coverage": 0.9
+        },
+        {
+          "method": "lacp",
+          "coverage": 0.905,
+          "mean_width": 32.747191942610904,
+          "coverage_gap": 0.0050000000000000044,
+          "n_cal": 200,
+          "quantile": 16.373595971305452,
+          "alpha": 0.1,
+          "target_coverage": 0.9
+        },
+        {
+          "method": "enbpi",
+          "coverage": 0.925,
+          "mean_width": 37.14443703528178,
+          "coverage_gap": 0.025000000000000022,
+          "n_cal": 1000,
+          "quantile": 18.57221851764089,
+          "alpha": 0.1,
+          "target_coverage": 0.9
+        },
+        {
+          "method": "ltt_rcps",
+          "coverage": 0.935,
+          "mean_width": 39.42886873578889,
+          "coverage_gap": 0.03500000000000003,
+          "n_cal": 50,
+          "quantile": 19.714434367894444,
+          "alpha": 0.1,
+          "target_coverage": 0.9
+        },
+        {
+          "method": "swarmlabs_vv",
+          "coverage": 0.935,
+          "mean_width": 45.10420565548715,
+          "coverage_gap": 0.03500000000000003,
+          "n_cal": 100,
+          "quantile": 22.552102827743578,
+          "alpha": 0.1,
+          "target_coverage": 0.9
+        },
+        {
+          "method": "moment_bound",
+          "coverage": 0.935,
+          "mean_width": 44.49409852474446,
+          "coverage_gap": 0.03500000000000003,
+          "n_cal": 200,
+          "quantile": 22.24704926237223,
+          "alpha": 0.1,
+          "target_coverage": 0.9
+        }
+      ]
+    }
+  ]
+}

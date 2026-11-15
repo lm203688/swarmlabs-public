@@ -1,0 +1,644 @@
+openapi: 3.0.3
+info:
+  title: SwarmLabs API
+  version: "3.5.0"
+  description: |
+    面向科学研发的 AI 多智能体计算引擎平台。
+    提供 115 个科学计算引擎（化学/材料/制药/能源/环境/分离/生物/CFD/传热/结构等），
+    每次预测均返回真实文献溯源(DOI)、单点不确定度(UQ)与 A/B/C 数据驱动分级。
+    95 个跨域验证场景，V&V 归档包（vv_package）可离线复验（发布口径 91 PASS / 3 MARGINAL / 1 REFUTED）。
+    认证：Bearer 用户会话 token（stk_ 前缀）或 x-api-key。v2/ 前缀端点免 API key。
+servers:
+  - url: https://swarmlabs.tools
+    description: 生产环境
+security:
+  - bearerAuth: []
+paths:
+  # ===== V2: 计算引擎 =====
+  /v2/health:
+    get:
+      summary: 健康检查与平台能力清单
+      security: []
+      responses:
+        '200':
+          description: 返回引擎数、类别、物理模型数、特性列表
+  /v2/literature:
+    get:
+      summary: 全量引擎文献支撑概览
+      security: []
+      responses:
+        '200':
+          description: engines_covered / total_entries / 来源说明
+  /v2/literature/{engine}:
+    get:
+      summary: 指定引擎的真实文献（CrossRef 校验 DOI）
+      security: []
+      parameters:
+        - name: engine
+          in: path
+          required: true
+          schema: { type: string }
+          example: suzuki
+      responses:
+        '200':
+          description: references: [{doi,url,title,journal,year,citations,has_extracted_data}]
+        '404':
+          description: 该引擎无索引文献
+  /v2/negative-samples:
+    get:
+      summary: 负样本/失败案例库（平台版"80% 负样本"）
+      security: []
+      responses:
+        '200':
+          description: total / by_signal / engines_covered / samples[]
+  /v2/negative-samples/{engine}:
+    get:
+      summary: 指定引擎的负样本
+      security: []
+      parameters:
+        - { name: engine, in: path, required: true, schema: { type: string } }
+      responses:
+        '200': { description: count / samples[] }
+  /v2/run/{engine}:
+    post:
+      summary: 运行一次物理模型预测
+      parameters:
+        - name: engine
+          in: path
+          required: true
+          schema: { type: string }
+          example: suzuki
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                temperature_C: { type: number, example: 80 }
+                catalyst_loading: { type: number, example: 0.02 }
+                time_h: { type: number, example: 4 }
+      responses:
+        '200':
+          description: |
+            result / primary_metric / metric_unit /
+            uncertainty / confidence_grade(A|B|C) / recommendation /
+            literature_support[] / validation_stats{confidence_grade,literature_coverage}
+        '402': { description: 积分余额不足（已登录用户） }
+  /v2/sweep/{engine}:
+    post:
+      summary: 参数扫描（生成趋势图数据）
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                engine: { type: string }
+                sweep_param: { type: string, default: temperature_C }
+                points: { type: integer, default: 10, maximum: 50 }
+                fixed: { type: object, description: 其余参数固定值 }
+      responses:
+        '200':
+          description: series[] = [{param,value,result,uncertainty,confidence_grade}]
+  /v2/enterprise:
+    get:
+      summary: 商业化方案（私有化/NDA/分级/算力换股权）
+      security: []
+      responses:
+        '200':
+          description: tiers{free,pro,enterprise} / enterprise_includes / compute_partnership
+  /v2/account:
+    get:
+      summary: 账户余额与分级（需 Bearer token）
+      responses:
+        '200': { description: authenticated / credits_balance / tier }
+        '401': { description: 未登录或 token 失效 }
+  /v2/feedback:
+    post:
+      summary: 提交真实实验反馈（数据飞轮 / 主动学习闭环入口）
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [engine]
+              properties:
+                engine: { type: string, example: distillation }
+                predicted: { type: number, example: 0.82 }
+                actual: { type: number, example: 0.79 }
+                signal: { type: string, enum: [higher_than_predicted, lower_than_predicted, match, failed, other], example: lower_than_predicted }
+                context: { type: string, example: "中试测得收率低于预测3个百分点" }
+      responses:
+        '200':
+          description: accepted / note / entry{engine,reported_by,predicted,actual,signal,context,ts}
+  /v2/feedback/summary:
+    get:
+      summary: 反馈飞轮可见化（仅统计真实用户回流，含每引擎观测 RMSE）
+      security: []
+      responses:
+        '200':
+          description: total_feedback / engines / top_engines / engine_details[{engine,n,observed_rmse,bias_mean}]
+  /v2/my-experiments:
+    get:
+      summary: 取回当前用户提交的全部实验结果（支撑再应用）
+      responses:
+        '200': { description: email / count / experiments[{id,engine,predicted,actual,signal,params,ts,validated,earned}] }
+        '401': { description: 未登录 }
+  /v2/my-experiments/{engine}:
+    get:
+      summary: 取回当前用户在指定引擎上的实验结果
+      parameters: { - { name: engine, in: path, required: true, schema: { type: string } } }
+      responses:
+        '200': { description: 同 /v2/my-experiments }
+        '401': { description: 未登录 }
+  /v2/reapply:
+    post:
+      summary: 实验结果再应用 — 把已验证实验注入目标引擎 GP 作为训练点，生成下一轮优化建议
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source_id: { type: string, description: 自己实验的 id（expv2: 前缀，服务端校验归属防越权） }
+                use_my_experiments: { type: boolean, description: 自动取该用户最新可用实验 }
+                source_engine: { type: string, description: 配合 use_my_experiments 指定源引擎 }
+                target_engine: { type: string, description: 目标引擎（默认同源；可跨引擎复用配方） }
+      responses:
+        '200': { description: anchored_on / injected_points / n_training / best_known_yield / suggestions[] }
+        '401': { description: 未登录 }
+        '403': { description: source_id 不是你自己的实验 }
+        '404': { description: 目标引擎未知或没有可复用实验 }
+  /v2/leaderboard:
+    get:
+      summary: 贡献积分榜（邮箱脱敏）
+      security: []
+      responses:
+        '200':
+          description: top_contributors[{email(masked),earned_credits,validated_experiments,total_experiments}]
+  /v2/account/apikey:
+    get:
+      summary: 读取自带 API 配置（掩码返回，不含明文）
+      responses:
+        '200': { description: configured / provider / masked / baseUrl / model / prefer / added_at }
+        '401': { description: 未登录 }
+    post:
+      summary: 保存或删除自带 API 密钥
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                provider: { type: string, enum: [openai, deepseek, qwen, moonshot, ollama, custom] }
+                apiKey: { type: string, description: 你的 LLM 密钥，平台零成本、数据不出你的账号 }
+                baseUrl: { type: string, description: 自定义 / Ollama 本地必填 }
+                model: { type: string }
+                action: { type: string, enum: [delete], description: 传 'delete' 即移除密钥 }
+      responses:
+        '200': { description: 保存返回 {status:'saved',masked}；删除返回 {status:'removed'} }
+        '400': { description: provider 不支持 / 缺少 apiKey }
+        '401': { description: 未登录 }
+  /v2/llm:
+    post:
+      summary: 自带 API LLM 代理 — 经你的密钥路由（平台零成本，数据不出你的账号）
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                messages: { type: array, description: OpenAI 兼容 chat 消息 }
+      responses:
+        '200': { description: 透传上游 LLM 响应 }
+        '401': { description: 未登录 }
+        '402': { description: 未配置自带 API }
+  /v2/experiment-plan/{engine}:
+    post:
+      summary: 干湿闭环种子 — 由预测推导的标准化实验方案模板
+      security: []
+      parameters: { - { name: engine, in: path, required: true, schema: { type: string } } }
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fixed: { type: object, description: 固定参数值 }
+      responses:
+        '200': { description: plan{disclaimer,suggested_doe,parameters_to_vary,metrics_to_record,closure} }
+  /v2/graph:
+    get:
+      summary: 知识图谱全局统计
+      security: []
+      responses:
+        '200': { description: graph{global 统计} }
+  /v2/graph/{engine}:
+    get:
+      summary: 某引擎邻域（文献/负样本/期刊/作者/主题/相关引擎）
+      security: []
+      parameters: { - { name: engine, in: path, required: true, schema: { type: string } } }
+      responses:
+        '200': { description: 该引擎邻域聚合 }
+        '404': { description: 未知引擎 }
+  /v2/pi/{engine}:
+    post:
+      summary: 物理信息参数化代理（诚实版 PINN）
+      security: []
+      parameters: { - { name: engine, in: path, required: true, schema: { type: string } } }
+      responses: { '200': { description: result{value,uncertainty,confidence_grade,model:'pi'} } }
+  /v2/suggest/{engine}:
+    get:
+      summary: 主动学习/贝叶斯优化 — EI 推荐的下一步实验参数
+      security: []
+      parameters: { - { name: engine, in: path, required: true, schema: { type: string } } }
+      responses: { '200': { description: suggestions[{params,predicted_yield,uncertainty,ei,rationale}] } }
+  /v2/model/{engine}:
+    get:
+      summary: 当前高斯过程代理状态
+      security: []
+      parameters: { - { name: engine, in: path, required: true, schema: { type: string } } }
+      responses: { '200': { description: model,n_training,has_feedback,params,bounds } }
+  /v2/multifidelity:
+    post:
+      summary: 多保真度（xtb）集成
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [engine]
+              properties:
+                engine: { type: string }
+                smiles: { type: string }
+                deltaG: { type: number }
+                solvent_energy: { type: number }
+                method: { type: string, example: xtb-gfn2 }
+      responses:
+        '200': { description: accepted/count }
+  /v2/multifidelity/{engine}:
+    get:
+      summary: 查询某引擎已存储的多保真度先验
+      security: []
+      parameters: { - { name: engine, in: path, required: true, schema: { type: string } } }
+      responses: { '200': { description: priors[] } }
+
+  # ===== V3: 验证闸门（Verification Gate） =====
+  /v3/gate/{key}:
+    get:
+      summary: 获取单个场景的信任闸门决策
+      description: 返回gate（PROCEED/PROCEED_WITH_HUMAN_CHECK/BLOCK_AUTONOMOUS_ACTION）、verdict（PASS/MARGINAL/REFUTED）、rationale、domain、published reference、uncertainty 预算（R²/coverage/noise_floor/calibration/rmse_rel）。
+      security: []
+      parameters:
+        - name: key
+          in: path
+          required: true
+          schema: { type: string, example: bio_logistic }
+      responses:
+        '200':
+          description: 闸门决策与不确定度预算
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GateDecision'
+        '404':
+          description: 该场景不存在
+  /v3/scenarios:
+    get:
+      summary: 列出全部验证场景
+      description: 返回场景列表（key/domain/verdict/published/dim/n_train/n_test）及整体统计 counts。
+      security: []
+      responses:
+        '200':
+          description: 场景列表与统计
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScenarioList'
+        '502':
+          description: 网关不可达（可能为 license 子域错误）
+  /v3/report/{key}:
+    get:
+      summary: 获取单个场景的 10 章 V&V 报告
+      description: 返回结构化 10 章报告（章节标题/内容摘要/评分数字/阈值对照/honest boundaries）。
+      security: []
+      parameters:
+        - name: key
+          in: path
+          required: true
+          schema: { type: string, example: bio_logistic }
+      responses:
+        '200':
+          description: 结构化 V&V 报告
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerReport'
+        '404':
+          description: 该场景无报告
+  /v3/report-index:
+    get:
+      summary: 验证报告索引（总览）
+      description: 返回总场景数、各 verdict 计数、各域标签计数、generated_at_utc。用于 dashboard 展示。
+      security: []
+      responses:
+        '200':
+          description: 报告索引与统计摘要
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportIndex'
+  /reports/html/{key}.html:
+    get:
+      summary: 渲染版 10 章 V&V 报告（HTML）
+      security: []
+      parameters:
+        - name: key
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: 完整 HTML 报告
+          content:
+            text/html:
+              schema: { type: string, format: html }
+        '404': { description: 报告不存在 }
+  /reports/json/{key}.json:
+    get:
+      summary: 结构化 V&V 报告（JSON）
+      security: []
+      parameters:
+        - name: key
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: 结构化报告 JSON }
+        '404': { description: 报告不存在 }
+  /reports/docx/{key}.docx:
+    get:
+      summary: 学术级 10 章 V&V 报告（DOCX 可下载）
+      security: []
+      parameters:
+        - name: key
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: DOCX 报告文件
+          content:
+            application/vnd.openxmlformats-officedocument.wordprocessingml.document:
+              schema: { type: string, format: binary }
+        '404': { description: 报告不存在 }
+
+  # ===== 实体库查询（ScienceHub） =====
+  /api/entities/search:
+    get:
+      summary: 实体库全文检索
+      description: 支持 q 关键词 + domain 筛选 + limit 分页，返回科研实体摘要列表。
+      security: []
+      parameters:
+        - name: q
+          in: query
+          required: true
+          schema: { type: string, example: CRISPR gene editing }
+        - name: domain
+          in: query
+          schema:
+            type: string
+            enum: [biology, chemistry, materials, energy, environment, interdisciplinary]
+        - name: limit
+          in: query
+          schema: { type: integer, default: 20, maximum: 100 }
+        - name: offset
+          in: query
+          schema: { type: integer, default: 0 }
+      responses:
+        '200':
+          description: 实体列表
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntitySearchResult'
+        '400': { description: 缺少 q 参数 }
+  /api/entities/stats:
+    get:
+      summary: 实体库统计
+      description: 返回总条目数、各域分布、各类型分布、最后更新时间。
+      security: []
+      responses:
+        '200':
+          description: 统计摘要
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityStats'
+
+# ===== 组件定义 =====
+components:
+  schemas:
+    GateDecision:
+      type: object
+      properties:
+        gate:
+          type: string
+          enum: [PROCEED, PROCEED_WITH_HUMAN_CHECK, BLOCK_AUTONOMOUS_ACTION]
+          description: 自主行动闸门状态
+        verdict:
+          type: string
+          enum: [PASS, MARGINAL, REFUTED]
+          description: 场景判定等级
+        rationale:
+          type: string
+          description: 决策理由（自然语言，含关键数字）
+        domain:
+          type: string
+          description: 领域标签（如 Biology/Population Dynamics）
+        published:
+          type: string
+          description: 已发表论文/已知关系式引用
+        dim:
+          type: integer
+          description: 模型维度
+        n_train:
+          type: integer
+          description: 训练集大小
+        n_test:
+          type: integer
+          description: 留出测试集大小
+        high_freq:
+          type: boolean
+          description: 是否高频振荡（提示数值稳定性风险）
+        replication_passed:
+          type: boolean
+          description: 是否在独立重现中通过
+        uncertainty:
+          $ref: '#/components/schemas/UncertaintyBudget'
+        report:
+          type: object
+          properties:
+            html: { type: string }
+            json: { type: string }
+            docx: { type: string }
+    UncertaintyBudget:
+      type: object
+      properties:
+        r2:
+          type: number
+          description: 决定系数（≥0.90 为 PASS）
+        r2_core:
+          type: number
+          description: 核心轴 R²（更严格）
+        coverage:
+          type: number
+          description: 覆盖率（≥0.90 为 PASS）
+        noise_floor:
+          type: number
+          description: 噪声地板（0.01~0.10 典型值）
+        nominal_coverage:
+          type: number
+          description: 名义覆盖率（通常 0.95）
+        calibration_scale_kappa:
+          type: number
+          description: 校准缩放因子 κ（=1 表示完美校准）
+        cal_err:
+          type: number
+          description: 校准误差（越低越好）
+        rmse_rel:
+          type: number
+          description: 相对 RMSE（越低越好）
+    ScenarioList:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: 场景总数
+        counts:
+          $ref: '#/components/schemas/VerdictCounts'
+        standard:
+          type: object
+          description: 标准声明（r2min/cov_min/noise_floor 等）
+        generated_at_utc:
+          type: string
+          format: date-time
+        scenarios:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScenarioSummary'
+    VerdictCounts:
+      type: object
+      properties:
+        PASS:
+          type: integer
+        MARGINAL:
+          type: integer
+        REFUTED:
+          type: integer
+        ERROR:
+          type: integer
+    ScenarioSummary:
+      type: object
+      properties:
+        key:
+          type: string
+        domain:
+          type: string
+        verdict:
+          type: string
+          enum: [PASS, MARGINAL, REFUTED]
+        published:
+          type: string
+    VerReport:
+      type: object
+      properties:
+        status:
+          type: string
+        chapters:
+          type: array
+          items:
+            type: object
+            properties:
+              title: { type: string }
+              content: { type: string }
+              metrics:
+                type: object
+                additionalProperties: { type: number }
+    ReportIndex:
+      type: object
+      properties:
+        total:
+          type: integer
+        counts:
+          $ref: '#/components/schemas/VerdictCounts'
+        domains:
+          type: object
+          additionalProperties:
+            type: integer
+        generated_at_utc:
+          type: string
+          format: date-time
+    EntitySearchResult:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Entity'
+    Entity:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum: [trend, gap, bridge, author, reference, institution, journal]
+        domain:
+          type: string
+        title:
+          type: string
+        summary:
+          type: string
+        year:
+          type: integer
+        doi:
+          type: string
+        relevance_score:
+          type: number
+    EntityStats:
+      type: object
+      properties:
+        total_entities:
+          type: integer
+        by_domain:
+          type: object
+          additionalProperties:
+            type: integer
+        by_type:
+          type: object
+          additionalProperties:
+            type: integer
+        last_updated:
+          type: string
+          format: date-time
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

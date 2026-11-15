@@ -1,0 +1,29 @@
+{
+  "name": "active_learning",
+  "version": "1.0.0",
+  "purpose": "主动学习采样，选择下一轮最有信息量的实验点（UCB / EI / PI）。",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "history": { "type": "array", "description": "历史实验记录" },
+      "acquisition": { "type": "string", "enum": ["ucb", "ei", "pi"], "description": "采集函数" }
+    },
+    "required": ["history", "acquisition"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "next_params": { "type": "object" },
+      "expected_info_gain": { "type": "number" },
+      "uncertainty": { "type": "number" }
+    },
+    "required": ["next_params", "expected_info_gain", "uncertainty"]
+  },
+  "invocation_condition": "已有历史实验记录时由 VerifierAgent 调用，反馈给 PlannerAgent。",
+  "depend_tools": ["历史结果数据库", "临时内存"],
+  "failure_handling": "历史为空 → 默认均匀采样；结果异常 → 扩大探索。",
+  "safety_boundary": "只读历史数据，不修改。",
+  "reuse_value": "可被 VerifierAgent 及任何迭代优化场景复用。",
+  "multi_agent_role": "VerifierAgent",
+  "tags": ["optimization", "bayesian", "sampling"]
+}

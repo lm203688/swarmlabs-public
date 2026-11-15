@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://swarmlabs.tools/svp/schema/gate.json",
+  "title": "SVP Gate",
+  "description": "An executable verification predicate in the SwarmLabs Verification Protocol.",
+  "svp": "1.0",
+  "type": "object",
+  "required": ["id", "category", "description", "negation", "predicate", "fail_closed"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^(N|P|A|I|F)[0-9]+$",
+      "description": "Gate identifier. Prefix: N=negation, P=positive control, A=anchor, I=invariant, F=preflight"
+    },
+    "category": {
+      "type": "string",
+      "enum": ["contract", "stage_order", "discipline", "evidence", "anchoring", "delivery", "engineering", "positive_control", "system"],
+      "description": "Semantic category of the gate"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 10,
+      "description": "Human-readable description of what this gate checks"
+    },
+    "negation": {
+      "type": "boolean",
+      "description": "True if the gate rejects scenarios (N/A/I/F), False if it accepts them (P)"
+    },
+    "predicate": {
+      "type": "object",
+      "description": "How to execute this gate",
+      "required": ["type"],
+      "properties": {
+        "type": {"type": "string", "enum": ["python_callable", "jsonpath_expr", "lambda_py", "compiled_binary"]},
+        "module": {"type": "string"},
+        "function": {"type": "string"},
+        "expression": {"type": "string"},
+        "path": {"type": "string"}
+      }
+    },
+    "fail_closed": {
+      "type": "boolean",
+      "description": "If true, any predicate exception is treated as gate failure (not pass)",
+      "default": true
+    },
+    "source": {
+      "type": "string",
+      "description": "Source file:line or module::function for traceability"
+    },
+    "version": {
+      "type": "string",
+      "description": "Semantic version of this gate definition",
+      "default": "0.1"
+    },
+    "tags": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Optional tags for grouping"
+    }
+  },
+  "additionalProperties": false
+}

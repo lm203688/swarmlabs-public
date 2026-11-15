@@ -1,0 +1,134 @@
+{
+  "schema": "swarmlabs.real-datasets-manifest.v2",
+  "created_at": "2026-10-15T13:42:40Z",
+  "downloads": [
+    {
+      "key": "ecoli_monod_growth",
+      "doi": "10.5281/zenodo.19416053",
+      "record_url": "https://zenodo.org/records/19416053",
+      "filename": "Porcentaje_glucosa_1hoja.xlsx",
+      "url": "https://zenodo.org/api/records/19416053/files/Porcentaje_glucosa_1hoja.xlsx/content",
+      "path": "data\\raw\\ecoli_monod_growth\\Porcentaje_glucosa_1hoja.xlsx",
+      "sha256": "4bd1551e54554d18a3b982d99754d8381099b611ed1f353763ef06f3c7f3fc74",
+      "size_bytes": 98467,
+      "content_type_hint": "",
+      "downloaded_at": "2026-10-15T13:53:33Z",
+      "notes": "Optical Density Data from the Growth of Escherichia coli at Different Temperatures and Glucose Concentrations. Files: Porcentaje_glucosa_1hoja.xlsx + Repo{0.1,0.5,1,2}pct.xlsx (5 xlsx files, 98-284 KB each). Downstream: scripts/acquire_real_anchors.py::extract_ecoli_monod_params.",
+      "ok": true,
+      "reused": false,
+      "error": ""
+    },
+    {
+      "key": "ecoli_monod_growth",
+      "doi": "10.5281/zenodo.19416053",
+      "record_url": "https://zenodo.org/records/19416053",
+      "filename": "Repo2pct.xlsx",
+      "url": "https://zenodo.org/api/records/19416053/files/Repo2pct.xlsx/content",
+      "path": "data\\raw\\ecoli_monod_growth\\Repo2pct.xlsx",
+      "sha256": "9e7ce369fe961b6b23814db2e007bd393a0aeaef5bf6ded9ac9d470cd2c7a1f8",
+      "size_bytes": 279094,
+      "content_type_hint": "",
+      "downloaded_at": "2026-10-15T13:53:33Z",
+      "notes": "Optical Density Data from the Growth of Escherichia coli at Different Temperatures and Glucose Concentrations. Files: Porcentaje_glucosa_1hoja.xlsx + Repo{0.1,0.5,1,2}pct.xlsx (5 xlsx files, 98-284 KB each). Downstream: scripts/acquire_real_anchors.py::extract_ecoli_monod_params.",
+      "ok": true,
+      "reused": false,
+      "error": ""
+    },
+    {
+      "key": "ecoli_monod_growth",
+      "doi": "10.5281/zenodo.19416053",
+      "record_url": "https://zenodo.org/records/19416053",
+      "filename": "Repo0·5pct.xlsx",
+      "url": "https://zenodo.org/api/records/19416053/files/Repo0%C2%B75pct.xlsx/content",
+      "path": "data\\raw\\ecoli_monod_growth\\Repo0·5pct.xlsx",
+      "sha256": "47213948d68a86e1498415e9cb6f0021334689b8e82dbe26fe032d7de63129a3",
+      "size_bytes": 282834,
+      "content_type_hint": "",
+      "downloaded_at": "2026-10-15T13:53:33Z",
+      "notes": "Optical Density Data from the Growth of Escherichia coli at Different Temperatures and Glucose Concentrations. Files: Porcentaje_glucosa_1hoja.xlsx + Repo{0.1,0.5,1,2}pct.xlsx (5 xlsx files, 98-284 KB each). Downstream: scripts/acquire_real_anchors.py::extract_ecoli_monod_params.",
+      "ok": true,
+      "reused": false,
+      "error": ""
+    },
+    {
+      "key": "ecoli_monod_growth",
+      "doi": "10.5281/zenodo.19416053",
+      "record_url": "https://zenodo.org/records/19416053",
+      "filename": "Repo1pct.xlsx",
+      "url": "https://zenodo.org/api/records/19416053/files/Repo1pct.xlsx/content",
+      "path": "data\\raw\\ecoli_monod_growth\\Repo1pct.xlsx",
+      "sha256": "5a8efe3eff08be1f296363b53b243b7b7265999d352a5e23cc7892a42a6366ad",
+      "size_bytes": 278947,
+      "content_type_hint": "",
+      "downloaded_at": "2026-10-15T13:53:33Z",
+      "notes": "Optical Density Data from the Growth of Escherichia coli at Different Temperatures and Glucose Concentrations. Files: Porcentaje_glucosa_1hoja.xlsx + Repo{0.1,0.5,1,2}pct.xlsx (5 xlsx files, 98-284 KB each). Downstream: scripts/acquire_real_anchors.py::extract_ecoli_monod_params.",
+      "ok": true,
+      "reused": false,
+      "error": ""
+    },
+    {
+      "key": "ecoli_monod_growth",
+      "doi": "10.5281/zenodo.19416053",
+      "record_url": "https://zenodo.org/records/19416053",
+      "filename": "Repo0·1pct.xlsx",
+      "url": "https://zenodo.org/api/records/19416053/files/Repo0%C2%B71pct.xlsx/content",
+      "path": "data\\raw\\ecoli_monod_growth\\Repo0·1pct.xlsx",
+      "sha256": "7a8d549ff314b5d65eede203d8dec18b863b6e8afa305e4c4dc5aa29249fcbb5",
+      "size_bytes": 284833,
+      "content_type_hint": "",
+      "downloaded_at": "2026-10-15T13:53:33Z",
+      "notes": "Optical Density Data from the Growth of Escherichia coli at Different Temperatures and Glucose Concentrations. Files: Porcentaje_glucosa_1hoja.xlsx + Repo{0.1,0.5,1,2}pct.xlsx (5 xlsx files, 98-284 KB each). Downstream: scripts/acquire_real_anchors.py::extract_ecoli_monod_params.",
+      "ok": true,
+      "reused": false,
+      "error": ""
+    },
+    {
+      "key": "mb_adsorption_langmuir",
+      "doi": "10.5281/zenodo.7311805",
+      "record_url": "https://zenodo.org/records/7311805",
+      "filename": "3.pdf",
+      "url": "https://zenodo.org/api/records/7311806/files/3.pdf/content",
+      "path": "data\\raw\\mb_adsorption_langmuir\\3.pdf",
+      "sha256": "a0f5b643e02ad9e35f5a6502c3a1c60a681dbe411f99053b9d28caf16db51543",
+      "size_bytes": 874467,
+      "content_type_hint": "",
+      "downloaded_at": "2026-10-15T13:53:33Z",
+      "notes": "Bio-Waste-Derived Adsorbent Materials for Methylene Blue Removal (water hyacinth activated carbon). Published: qmax=18.4162 mg/g, K_L=0.046 L/mg, R^2=0.9489.",
+      "ok": true,
+      "reused": false,
+      "error": ""
+    }
+  ],
+  "updated_at": "2026-10-15T21:55:00Z",
+  "source_status": {
+    "ecoli_monod_growth": {
+      "status": "raw_data_available",
+      "n_raw_files": 5,
+      "format": "xlsx",
+      "content": "real OD vs time measurements at multiple temps/glucose concentrations",
+      "notes": "5 xlsx files, 170 rows × 144 cols in main file; real experimental values (e.g. d(OD)/dt = 7.5e-05). Cross-validation against published Monod parameters pending."
+    },
+    "mb_adsorption_langmuir": {
+      "status": "paper_only_no_raw_data",
+      "n_raw_files": 1,
+      "format": "pdf",
+      "content": "3.pdf is the published paper, not raw experimental data",
+      "notes": "Zenodo 10.5281/zenodo.7311805 publishes only the paper PDF. Published parameters (qmax=18.4162, K_L=0.046, R^2=0.9489) are cited in the paper text but not available as raw datasets. Cannot claim this as a raw-data anchor."
+    },
+    "yeast_ethanol_fermentation": {
+      "status": "unavailable_403",
+      "n_raw_files": 0,
+      "format": null,
+      "content": null,
+      "notes": "Figshare API v2 returned HTTP 403 Forbidden for article 2048400. Rate limit or API access policy. Manual download via browser not attempted. Report honestly as 0."
+    }
+  },
+  "honest_counts": {
+    "sources_total": 3,
+    "sources_with_raw_data_available": 1,
+    "sources_paper_only": 1,
+    "sources_unavailable": 1,
+    "raw_data_files_downloaded": 5,
+    "note": "Only E. coli has raw downloadable experimental data. MB has paper-only (parameters in text, not as data files). Yeast blocked by Figshare 403. Total validated wet-lab anchors (post-cross-validation) still 0 until acquire_real_anchors.py runs and passes."
+  }
+}

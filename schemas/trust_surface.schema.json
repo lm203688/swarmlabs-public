@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Trust Surface Schema",
+  "description": "SwarmLabs per-scenario trust & honesty surface. Overall block must carry the honesty sub-object (see §P0-A).",
+  "type": "object",
+  "required": [
+    "generated_at",
+    "overall",
+    "rows"
+  ],
+  "properties": {
+    "generated_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "overall": {
+      "type": "object",
+      "required": [
+        "scenarios",
+        "honesty"
+      ],
+      "properties": {
+        "scenarios": { "type": "integer", "minimum": 0 },
+        "rubric_full_pass": { "type": "integer", "minimum": 0 },
+        "coverage_ok": { "type": "integer", "minimum": 0 },
+        "honesty": {
+          "type": "object",
+          "description": "Overall honesty block — MUST be present. This is the P0-A invariant: 'if honesty is missing, CI must hard-fail'.",
+          "required": [
+            "all_evidence_simulated",
+            "simulated_count",
+            "experimental_ground_truth_count"
+          ],
+          "properties": {
+            "schema_version": { "type": "integer" },
+            "all_evidence_simulated": { "type": "boolean" },
+            "simulated_count": { "type": "integer", "minimum": 0 },
+            "experimental_ground_truth_count": { "type": "integer", "minimum": 0 },
+            "honesty_intact": { "type": "boolean" },
+            "honesty_verified_at": { "type": "string" }
+          }
+        }
+      }
+    },
+    "rows": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "key",
+          "domain",
+          "evidence_type"
+        ],
+        "properties": {
+          "key": { "type": "string", "minLength": 1 },
+          "domain": { "type": "string", "minLength": 1 },
+          "evidence_type": {
+            "type": "string",
+            "description": "Provenance class of the evidence backing this scenario"
+          },
+          "physics_or_simulated": { "type": "string" },
+          "reference_quality": { "type": "string" },
+          "validation_type": { "type": "string" },
+          "rmse_rel": { "type": "number" },
+          "coverage_after": { "type": "number" },
+          "coverage_state": { "type": "string" },
+          "in_applicability": { "type": "boolean" },
+          "roughness": { "type": ["number", "null"] },
+          "flagship": { "type": "boolean" },
+          "degenerate": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

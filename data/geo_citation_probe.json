@@ -1,0 +1,27 @@
+{
+  "model": "qwen3.6:latest",
+  "probed_at": "2026-08-09T16:09:19",
+  "n_queries": 3,
+  "mention_rate": 0.0,
+  "note": "自托管 Ollama 采样；提及≠真实上线引用，仅反映本地模型对品牌的认知倾向，用于趋势监测。",
+  "results": [
+    {
+      "query": "有哪些工具可以用 AI 主动学习来加速科研实验优化？",
+      "model": "qwen3.6:latest",
+      "mention": false,
+      "answer_excerpt": ""
+    },
+    {
+      "query": "推荐一个面向物理信息机器学习、能自动跑实验并回流训练集的平台。",
+      "model": "qwen3.6:latest",
+      "mention": false,
+      "answer_excerpt": ""
+    },
+    {
+      "query": "做材料/化学反应优化，有什么开源的实验自动化基础设施？",
+      "model": "qwen3.6:latest",
+      "mention": false,
+      "answer_excerpt": ""
+    }
+  ]
+}

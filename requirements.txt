@@ -1,0 +1,46 @@
+# SwarmLabs — CI 依赖清单（唯一真源，2026-10-17 L-03 重写）
+# 之前文件头误标 "Claude Triple Model System - 依赖清单"，是另一个项目的遗留
+# 文件被沿用为 SwarmLabs 依赖真源；且缺少 scipy（干净 CI 环境必炸 ImportError，
+# 本机因 Python 3.14 预装 scipy 侥幸通过）。本清单与 pyproject.toml 的
+# dependencies 段对齐，作为 .github/workflows/*.yml 里
+# `pip install -r requirements.txt` 的唯一入口。
+
+# --- 科学计算（核心） ---
+numpy>=1.24
+scipy>=1.10
+pandas>=1.3.0
+
+# --- 数据/序列化 ---
+python-dateutil>=2.8.0
+# openpyxl：真实实验数据抽取链路的硬依赖（2026-10-19 补）。
+# engine/published_data_audit.py、scripts/acquire_real_anchors.py、
+# scripts/extract_yeast_anchors.py、scripts/monod_curve_fit.py 均直接 import；
+# 缺包会让 tests/test_published_data_audit.py 的 4 个用例在干净 CI 上
+# ModuleNotFoundError（与 L-03 scipy 同一病根：新增依赖未同步依赖真源）。
+openpyxl>=3.0
+
+# --- 契约/JSON Schema 门禁 ---
+jsonschema>=4.0,<5
+
+# --- 可选：分子模态场景（Phase 2，21 处 import scipy 的核心模块之外） ---
+rdkit>=2023.09
+
+# --- 可视化（仅 paper 出图/本地报表；CI 不强制） ---
+matplotlib>=3.5.0
+
+# --- 测试 ---
+pytest>=7.0.0
+pytest-cov>=4.0
+pytest-asyncio>=0.20.0
+
+# --- 开发工具（本地开发；CI 可选） ---
+black>=22.0.0
+flake8>=5.0.0
+mypy>=0.990
+
+# 说明：以下历史遗留依赖已移除（在 SwarmLabs 的 engine/ 与 scripts/ 中从未被
+# import）：
+#   aiohttp, json5, asyncio-throttle, aiosignal, loguru, pydantic, python-dotenv,
+#   sqlalchemy, aiosqlite, redis, aioredis, prometheus-client, starlette, uvicorn,
+#   plotly
+#   —— 若某个脚本需要，用 pyproject.toml 的 optional-dependencies 分组按需安装。

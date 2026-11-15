@@ -1,0 +1,1204 @@
+openapi: 3.0.3
+info:
+  title: SwarmLabs API
+  version: 3.5.0
+  description: 面向科学研发的 AI 多智能体计算引擎平台。提供 115 个科学计算引擎，每次预测均返回真实文献溯源(DOI)、单点不确定度(UQ)与
+    A/B/C 数据驱动分级。95 个跨域验证场景，V&V 归档包可离线复验（发布口径 91 PASS / 3 MARGINAL / 1 REFUTED）。认证：Bearer 用户会话 token(stk_ 前缀)或 x-api-key。v2/
+    前缀端点免 API key。
+servers:
+- url: https://swarmlabs.tools
+  description: 生产环境
+security:
+- bearerAuth: []
+tags:
+- name: engine
+  description: V2 计算引擎
+- name: verify
+  description: V3 验证闸门
+- name: gate
+  description: 信任闸门账本
+- name: anchors
+  description: 湿实验锚定
+- name: benchmark
+  description: 基准索引
+- name: entity
+  description: 实体库查询
+- name: report
+  description: V&V 报告
+- name: auth
+  description: 认证与账户
+paths:
+  /v2/health:
+    get:
+      tags:
+      - engine
+      summary: 健康检查与平台能力清单
+      security: []
+      responses:
+        '200':
+          description: 返回引擎数、类别、物理模型数、特性列表
+  /v2/literature:
+    get:
+      tags:
+      - engine
+      summary: 全量引擎文献支撑概览
+      security: []
+      responses:
+        '200':
+          description: engines_covered / total_entries / 来源说明
+  /v2/literature/{engine}:
+    get:
+      tags:
+      - engine
+      summary: 指定引擎的真实文献
+      security: []
+      parameters:
+      - name: engine
+        in: path
+        required: true
+        schema:
+          type: string
+        example: suzuki
+      responses:
+        '200':
+          description: references 列表
+        '404':
+          description: 该引擎无索引文献
+  /v2/negative-samples:
+    get:
+      tags:
+      - engine
+      summary: 负样本/失败案例库
+      security: []
+      responses:
+        '200':
+          description: total / by_signal / engines_covered / samples
+  /v2/negative-samples/{engine}:
+    get:
+      tags:
+      - engine
+      summary: 指定引擎的负样本
+      security: []
+      parameters:
+      - name: engine
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: count / samples
+  /v2/run/{engine}:
+    post:
+      tags:
+      - engine
+      summary: 运行一次物理模型预测
+      parameters:
+      - name: engine
+        in: path
+        required: true
+        schema:
+          type: string
+        example: suzuki
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                temperature_C:
+                  type: number
+                  example: 80
+                catalyst_loading:
+                  type: number
+                  example: 0.02
+                time_h:
+                  type: number
+                  example: 4
+      responses:
+        '200':
+          description: result / primary_metric / metric_unit / uncertainty / confidence_grade
+            / recommendation / literature_support / validation_stats
+        '402':
+          description: 积分余额不足
+  /v2/sweep/{engine}:
+    post:
+      tags:
+      - engine
+      summary: 参数扫描
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                engine:
+                  type: string
+                sweep_param:
+                  type: string
+                  default: temperature_C
+                points:
+                  type: integer
+                  default: 10
+                  maximum: 50
+                fixed:
+                  type: object
+      responses:
+        '200':
+          description: series 列表
+  /v2/enterprise:
+    get:
+      tags:
+      - engine
+      summary: 商业化方案
+      security: []
+      responses:
+        '200':
+          description: tiers / enterprise_includes / compute_partnership
+  /v2/account:
+    get:
+      tags:
+      - auth
+      summary: 账户余额与分级
+      responses:
+        '200':
+          description: authenticated / credits_balance / tier
+        '401':
+          description: 未登录或 token 失效
+  /v2/feedback:
+    post:
+      tags:
+      - engine
+      summary: 提交真实实验反馈
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - engine
+              properties:
+                engine:
+                  type: string
+                  example: distillation
+                predicted:
+                  type: number
+                actual:
+                  type: number
+                signal:
+                  type: string
+                  enum:
+                  - higher_than_predicted
+                  - lower_than_predicted
+                  - match
+                  - failed
+                  - other
+                context:
+                  type: string
+      responses:
+        '200':
+          description: accepted / note / entry
+  /v2/feedback/summary:
+    get:
+      tags:
+      - engine
+      summary: 反馈飞轮可见化
+      security: []
+      responses:
+        '200':
+          description: total_feedback / engines / top_engines / engine_details
+  /v2/my-experiments:
+    get:
+      tags:
+      - engine
+      summary: 取回当前用户的实验结果
+      responses:
+        '200':
+          description: email / count / experiments
+        '401':
+          description: 未登录
+  /v2/my-experiments/{engine}:
+    get:
+      tags:
+      - engine
+      summary: 取回指定引擎的实验结果
+      parameters:
+      - name: engine
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 同 /v2/my-experiments
+        '401':
+          description: 未登录
+  /v2/reapply:
+    post:
+      tags:
+      - engine
+      summary: 实验结果再应用
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source_id:
+                  type: string
+                use_my_experiments:
+                  type: boolean
+                source_engine:
+                  type: string
+                target_engine:
+                  type: string
+      responses:
+        '200':
+          description: anchored_on / injected_points / n_training / suggestions
+        '401':
+          description: 未登录
+        '403':
+          description: source_id 不是你自己的实验
+        '404':
+          description: 目标引擎未知
+  /v2/leaderboard:
+    get:
+      tags:
+      - engine
+      summary: 贡献积分榜
+      security: []
+      responses:
+        '200':
+          description: top_contributors
+  /v2/account/apikey:
+    get:
+      tags:
+      - auth
+      summary: 读取自带 API 配置
+      responses:
+        '200':
+          description: configured / provider / masked / baseUrl / model
+        '401':
+          description: 未登录
+    post:
+      tags:
+      - auth
+      summary: 保存或删除自带 API 密钥
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                provider:
+                  type: string
+                  enum:
+                  - openai
+                  - deepseek
+                  - qwen
+                  - moonshot
+                  - ollama
+                  - custom
+                apiKey:
+                  type: string
+                baseUrl:
+                  type: string
+                model:
+                  type: string
+                action:
+                  type: string
+                  enum:
+                  - delete
+      responses:
+        '200':
+          description: saved 或 removed
+        '400':
+          description: provider 不支持
+        '401':
+          description: 未登录
+  /v2/llm:
+    post:
+      tags:
+      - auth
+      summary: 自带 API LLM 代理
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                messages:
+                  type: array
+      responses:
+        '200':
+          description: 透传上游 LLM 响应
+        '401':
+          description: 未登录
+        '402':
+          description: 未配置自带 API
+  /v2/experiment-plan/{engine}:
+    post:
+      tags:
+      - engine
+      summary: 干湿闭环种子 — 标准化实验方案模板
+      security: []
+      parameters:
+      - name: engine
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fixed:
+                  type: object
+      responses:
+        '200':
+          description: plan
+  /v2/graph:
+    get:
+      tags:
+      - engine
+      summary: 知识图谱全局统计
+      security: []
+      responses:
+        '200':
+          description: graph 全局统计
+  /v2/graph/{engine}:
+    get:
+      tags:
+      - engine
+      summary: 某引擎邻域
+      security: []
+      parameters:
+      - name: engine
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 该引擎邻域聚合
+        '404':
+          description: 未知引擎
+  /v2/pi/{engine}:
+    post:
+      tags:
+      - engine
+      summary: 物理信息参数化代理
+      security: []
+      parameters:
+      - name: engine
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: result
+  /v2/suggest/{engine}:
+    get:
+      tags:
+      - engine
+      summary: 主动学习/贝叶斯优化
+      security: []
+      parameters:
+      - name: engine
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: suggestions
+  /v2/model/{engine}:
+    get:
+      tags:
+      - engine
+      summary: 当前高斯过程代理状态
+      security: []
+      parameters:
+      - name: engine
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: model/n_training/has_feedback
+  /v2/multifidelity:
+    post:
+      tags:
+      - engine
+      summary: 多保真度集成
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - engine
+              properties:
+                engine:
+                  type: string
+                smiles:
+                  type: string
+                deltaG:
+                  type: number
+                solvent_energy:
+                  type: number
+                method:
+                  type: string
+      responses:
+        '200':
+          description: accepted/count
+  /v2/multifidelity/{engine}:
+    get:
+      tags:
+      - engine
+      summary: 查询多保真度先验
+      security: []
+      parameters:
+      - name: engine
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: priors
+  /v2/compare:
+    get:
+      tags:
+      - engine
+      summary: 多引擎结果对比
+      security: []
+      responses:
+        '200':
+          description: comparison results
+  /v2/export/bibtex:
+    get:
+      tags:
+      - engine
+      summary: 导出 BibTeX
+      security: []
+      responses:
+        '200':
+          description: BibTeX
+  /v2/knowledge-graph:
+    get:
+      tags:
+      - engine
+      summary: 知识图谱
+      security: []
+      responses:
+        '200':
+          description: knowledge graph
+  /v2/share/create:
+    post:
+      tags:
+      - engine
+      summary: 创建分享链接
+      responses:
+        '200':
+          description: share link
+  /v2/share/decode:
+    get:
+      tags:
+      - engine
+      summary: 解码分享链接
+      responses:
+        '200':
+          description: decoded data
+  /v2/analytics/summary:
+    get:
+      tags:
+      - engine
+      summary: 使用数据分析
+      responses:
+        '200':
+          description: analytics summary
+  /v2/auth/register:
+    post:
+      tags:
+      - auth
+      summary: 用户注册
+      responses:
+        '200':
+          description: 注册成功
+  /v2/auth/login:
+    post:
+      tags:
+      - auth
+      summary: 用户登录
+      responses:
+        '200':
+          description: 登录成功
+  /v2/pay/create:
+    post:
+      tags:
+      - auth
+      summary: 创建支付订单
+      responses:
+        '200':
+          description: order info
+  /v2/pay/notify:
+    post:
+      tags:
+      - auth
+      summary: 支付回调
+      responses:
+        '200':
+          description: callback response
+  /v2/pay/status:
+    get:
+      tags:
+      - auth
+      summary: 支付状态查询
+      responses:
+        '200':
+          description: order status
+  /v3/gate:
+    get:
+      tags:
+      - gate
+      summary: 完整信任闸门账本（含溯源）
+      security: []
+      responses:
+        '200':
+          description: 账本
+          content:
+            application/json:
+              schema:
+                type: object
+  /v3/gate/{key}:
+    get:
+      tags:
+      - gate
+      summary: 获取单个场景的信任闸门决策
+      security: []
+      parameters:
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+        example: bio_logistic
+      responses:
+        '200':
+          description: 闸门决策与不确定度预算
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GateDecision'
+        '404':
+          description: 该场景不存在
+  /v3/anchors:
+    get:
+      tags:
+      - anchors
+      summary: 湿实验锚定：第二证据链
+      security: []
+      responses:
+        '200':
+          description: anchors 与 scenarios
+          content:
+            application/json:
+              schema:
+                type: object
+  /v3/anchors/{key}:
+    get:
+      tags:
+      - anchors
+      summary: 单条锚定或单场景双链
+      security: []
+      parameters:
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 锚定或双链
+        '404':
+          description: 该 key 不存在
+  /v3/benchmark:
+    get:
+      tags:
+      - benchmark
+      summary: 基准索引——已发布留出集 + 唯一闸门策略
+      security: []
+      responses:
+        '200':
+          description: 基准索引
+          content:
+            application/json:
+              schema:
+                type: object
+  /v3/benchmark/{key}:
+    get:
+      tags:
+      - benchmark
+      summary: 单场景留出集指针
+      security: []
+      parameters:
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 场景元信息
+        '404':
+          description: 该 key 不存在
+  /v3/verify:
+    post:
+      tags:
+      - verify
+      summary: 用你的预测在已发布留出集上独立验证
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyRequest'
+      responses:
+        '200':
+          description: 已裁决
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifyResponse'
+        '400':
+          description: bad_request
+        '404':
+          description: unknown_scenario
+        '405':
+          description: method_not_allowed
+        '503':
+          description: policy_unavailable
+  /v3/verify/{scenario_key}:
+    post:
+      tags:
+      - verify
+      summary: 同 POST /v3/verify
+      parameters:
+      - name: scenario_key
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 已裁决
+  /v3/predict:
+    post:
+      tags:
+      - verify
+      summary: GP+UQ 代理预测
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - train_x
+              - train_y
+              - query_x
+              properties:
+                train_x:
+                  type: array
+                  items:
+                    type: array
+                    items:
+                      type: number
+                train_y:
+                  type: array
+                  items:
+                    type: number
+                query_x:
+                  type: array
+                  items:
+                    type: array
+                    items:
+                      type: number
+                noise_rel:
+                  type: number
+                  default: 0.03
+      responses:
+        '200':
+          description: 预测结果
+        '422':
+          description: 训练数据退化
+  /v3/guard:
+    post:
+      tags:
+      - verify
+      summary: 三层护栏门禁
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - scenario
+              - train_x
+              - train_y
+              - query_x
+              properties:
+                scenario:
+                  type: string
+                train_x:
+                  type: array
+                train_y:
+                  type: array
+                query_x:
+                  type: array
+      responses:
+        '200':
+          description: 门禁判定
+  /v3/reports:
+    get:
+      tags:
+      - report
+      summary: 报告库索引
+      security: []
+      responses:
+        '200':
+          description: 报告索引
+  /v3/openapi:
+    get:
+      tags:
+      - meta
+      summary: 本文件（机器可读契约）
+      security: []
+      responses:
+        '200':
+          description: OpenAPI 文档
+  /v3/scenarios:
+    get:
+      tags:
+      - verify
+      summary: 全部科学场景
+      security: []
+      responses:
+        '200':
+          description: 场景列表
+  /v3/strains:
+    get:
+      tags:
+      - verify
+      summary: 菌株注册表
+      security: []
+      parameters:
+      - name: genus
+        in: query
+        schema:
+          type: string
+      - name: phylum
+        in: query
+        schema:
+          type: string
+      - name: substrate
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 菌株列表
+  /v3/strain/{id}:
+    get:
+      tags:
+      - verify
+      summary: 单条菌株
+      security: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 菌株
+        '404':
+          description: 未找到
+  /v3/media:
+    get:
+      tags:
+      - verify
+      summary: 培养基数据库
+      security: []
+      responses:
+        '200':
+          description: 培养基列表
+  /reports/html/{key}.html:
+    get:
+      tags:
+      - report
+      summary: 渲染版 V&V 报告
+      security: []
+      parameters:
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 完整 HTML 报告
+        '404':
+          description: 报告不存在
+  /reports/json/{key}.json:
+    get:
+      tags:
+      - report
+      summary: 结构化 V&V 报告
+      security: []
+      parameters:
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 结构化报告 JSON
+        '404':
+          description: 报告不存在
+  /reports/docx/{key}.docx:
+    get:
+      tags:
+      - report
+      summary: 学术级 V&V 报告
+      security: []
+      parameters:
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: DOCX 报告文件
+        '404':
+          description: 报告不存在
+  /api/entities/search:
+    get:
+      tags:
+      - entity
+      summary: 实体库全文检索
+      security: []
+      parameters:
+      - name: q
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: domain
+        in: query
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 20
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: 实体列表
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntitySearchResult'
+        '400':
+          description: 缺少 q 参数
+  /api/entities/stats:
+    get:
+      tags:
+      - entity
+      summary: 实体库统计
+      security: []
+      responses:
+        '200':
+          description: 统计摘要
+  /api/bridge:
+    get:
+      tags:
+      - entity
+      summary: 跨域桥接检索
+      security: []
+      parameters:
+      - name: from
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: to
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 桥接关系
+  /api/gaps:
+    get:
+      tags:
+      - entity
+      summary: 研究空白检索
+      security: []
+      parameters:
+      - name: domain
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 研究空白列表
+  /api/trends:
+    get:
+      tags:
+      - entity
+      summary: 科研趋势检索
+      security: []
+      parameters:
+      - name: domain
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 科研趋势列表
+  /api/papers/{id}:
+    get:
+      tags:
+      - entity
+      summary: 单篇论文检索
+      security: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 论文对象
+        '404':
+          description: 未找到
+  /api/health:
+    get:
+      tags:
+      - meta
+      summary: 服务存活检查
+      security: []
+      responses:
+        '200':
+          description: 服务在线
+  /api/partner/usage:
+    get:
+      tags:
+      - meta
+      summary: 配额自查
+      security: []
+      responses:
+        '200':
+          description: 配额状态
+components:
+  schemas:
+    GateDecision:
+      type: object
+      properties:
+        gate:
+          type: string
+          enum:
+          - PROCEED
+          - PROCEED_WITH_HUMAN_CHECK
+          - BLOCK_AUTONOMOUS_ACTION
+        verdict:
+          type: string
+          enum:
+          - PASS
+          - MARGINAL
+          - REFUTED
+        rationale:
+          type: string
+        domain:
+          type: string
+        published:
+          type: string
+        dim:
+          type: integer
+        n_train:
+          type: integer
+        n_test:
+          type: integer
+        high_freq:
+          type: boolean
+        replication_passed:
+          type: boolean
+        uncertainty:
+          $ref: '#/components/schemas/UncertaintyBudget'
+        report:
+          type: object
+          properties:
+            html:
+              type: string
+            json:
+              type: string
+            docx:
+              type: string
+    UncertaintyBudget:
+      type: object
+      properties:
+        r2:
+          type: number
+        r2_core:
+          type: number
+        coverage:
+          type: number
+        noise_floor:
+          type: number
+        nominal_coverage:
+          type: number
+        calibration_scale_kappa:
+          type: number
+        cal_err:
+          type: number
+        rmse_rel:
+          type: number
+    VerifyRequest:
+      type: object
+      required:
+      - scenario_key
+      - predictions
+      properties:
+        scenario_key:
+          type: string
+        predictions:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+            - y_pred
+            properties:
+              x:
+                type: array
+                items:
+                  type: number
+              y_pred:
+                type: number
+              y_std:
+                type: number
+    VerifyResponse:
+      type: object
+      properties:
+        scenario_key:
+          type: string
+        verdict:
+          type: string
+          enum:
+          - PASS
+          - MARGINAL
+          - REFUTED
+          - ERROR
+        gate:
+          type: string
+          enum:
+          - PROCEED
+          - PROCEED_WITH_HUMAN_CHECK
+          - BLOCK_AUTONOMOUS_ACTION
+        rationale:
+          type: string
+        r2:
+          type:
+          - number
+          - 'null'
+        coverage:
+          type:
+          - number
+          - 'null'
+        nominal_coverage:
+          type: number
+        calibration_kappa_suggestion:
+          type:
+          - number
+          - 'null'
+        agent_overconfident:
+          type:
+          - boolean
+          - 'null'
+        n_points:
+          type: integer
+        test_seed:
+          type: integer
+        x_verified:
+          type: boolean
+        y_std_supplied:
+          type: boolean
+        policy_source:
+          type: string
+        engine:
+          type: object
+          properties:
+            all_digest:
+              type: string
+            core_digest:
+              type: string
+            git_commit:
+              type: string
+        oracle_digest:
+          type: string
+        request_id:
+          type: string
+    EntitySearchResult:
+      type: object
+      properties:
+        total:
+          type: integer
+        offset:
+          type: integer
+        limit:
+          type: integer
+        entities:
+          type: array
+          items:
+            type: object
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        request_id:
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

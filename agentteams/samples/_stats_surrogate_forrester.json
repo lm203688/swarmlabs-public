@@ -1,0 +1,14 @@
+{
+  "goal": "验证 surrogate_forrester 场景",
+  "scenarios": [
+    "surrogate_forrester"
+  ],
+  "max_scenarios": 1,
+  "top_n": 5,
+  "allow_correction": true,
+  "thresholds": {
+    "rel_converged": 0.05,
+    "cov_min": 0.8,
+    "cal_max": 0.08
+  }
+}

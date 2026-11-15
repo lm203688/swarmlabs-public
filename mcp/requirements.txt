@@ -1,0 +1,6 @@
+# SwarmLabs V&V MCP server — dependencies
+# The MCP transport (FastMCP) is the only third-party dep; the engine itself
+# stays pure numpy/scipy (no framework lock-in).
+mcp>=1.2
+numpy>=1.24
+scipy>=1.10

@@ -1,0 +1,42 @@
+{
+  "updated": "2026-08-06",
+  "priority": "students-first (pivot from PI emails per user instruction)",
+  "product": "SwarmLabs - AI 主动学习实验工作台 (swarmlabs.tools)",
+  "value_prop_student": "提交真实实验/建模结果 -> AI 主动学习给出下一轮最优参数，少走弯路；BYO-LLM 零成本、数据不出账号；注册送 50 积分；适合课程作业 / iGEM等竞赛 / 毕设。",
+  "forums": [
+    {"domain": "合成生物", "name": "iGEM Community Slack", "url": "https://community.igem.org", "type": "Slack", "student_fit": "高(iGEM 主体是学生队)", "posting": "在 #general 或地区频道发工具介绍；先参与讨论再软广", "risk": "社区偏协作，硬广易被踢"},
+    {"domain": "合成生物", "name": "r/SyntheticBiology", "url": "https://reddit.com/r/SyntheticBiology", "type": "Reddit", "student_fit": "高", "posting": "发 [Project]/[Resource] 自帖，价值优先", "risk": "遵守版规，勿刷"},
+    {"domain": "合成生物", "name": "XJTLU iGEM 队", "url": "mailto:iGEM@xjtlu.edu.cn", "type": "学生队邮箱", "student_fit": "高", "posting": "邮件介绍(见 drafts.igem_email)", "risk": "定向一封即可"},
+    {"domain": "合成生物", "name": "iGEM 社区邮箱", "url": "mailto:community@igem.org", "type": "社区邮箱", "student_fit": "高", "posting": "邮件(见 drafts.igem_email)", "risk": "广播须含退订"},
+    {"domain": "量子计算", "name": "r/QuantumComputing", "url": "https://reddit.com/r/QuantumComputing", "type": "Reddit", "size": "~44k", "student_fit": "中高", "posting": "自帖 [Project]", "risk": "偏技术讨论"},
+    {"domain": "量子计算", "name": "Quantum Coalition (大学社团 newsletter)", "url": "https://qolour.io/es/communities", "type": "Newsletter/学生社团", "student_fit": "极高(专门服务学生/早学者)", "posting": "订阅后投学生社团渠道", "risk": "最佳学生触点"},
+    {"domain": "量子计算", "name": "QWorld 各章节", "url": "https://qworld.net", "type": "Workshop/社区", "student_fit": "高(学员多为学生)", "posting": "经章节联系人投递", "risk": "需走联系人"},
+    {"domain": "量子计算", "name": "Unitary Foundation Discord", "url": "https://unitaryfoundation.org", "type": "Discord", "size": "~5.9k", "student_fit": "中高", "posting": "#general 介绍", "risk": "偏开源黑客"},
+    {"domain": "脑科学", "name": "Neurostars (Neuromatch)", "url": "https://neurostars.org", "type": "Discourse", "student_fit": "极高(NMA 学员多为学生)", "posting": "发 tool-share 帖", "risk": "尊重 CoC"},
+    {"domain": "脑科学", "name": "r/neuro / r/computationalneuroscience", "url": "https://reddit.com/r/computationalneuroscience", "type": "Reddit", "student_fit": "中高", "posting": "自帖", "risk": "偏学术"},
+    {"domain": "脑科学", "name": "BrainHack School Discord", "url": "https://school-brainhack.github.io", "type": "Discord", "student_fit": "高", "posting": "项目分享频道", "risk": "季节性"},
+    {"domain": "新材料", "name": "r/materials", "url": "https://reddit.com/r/materials", "type": "Reddit", "size": "~29k", "student_fit": "中高", "posting": "自帖 [Resource]", "risk": "偏工程"},
+    {"domain": "新材料", "name": "Materials Science Community Discourse", "url": "https://discuss.matsci.org", "type": "Discourse", "size": "16.5k", "student_fit": "中高", "posting": "tool-share 帖", "risk": "偏代码支持"},
+    {"domain": "通用AI/ML", "name": "r/learnmachinelearning", "url": "https://reddit.com/r/learnmachinelearning", "type": "Reddit", "size": "~267k", "student_fit": "极高", "posting": "自帖 [Project]", "risk": "流量大但需价值优先"},
+    {"domain": "通用AI/ML", "name": "Learn AI Together Discord", "url": "https://discord.com", "type": "Discord", "size": "~24k", "student_fit": "极高", "posting": "#projects 介绍", "risk": "勿刷屏"},
+    {"domain": "通用AI/ML", "name": "Hugging Face Discuss", "url": "https://discuss.huggingface.co", "type": "Discourse", "student_fit": "高", "posting": "Projects 区", "risk": "偏模型"}
+  ],
+  "email_targets_student": [
+    {"name": "XJTLU iGEM 学生队", "email": "iGEM@xjtlu.edu.cn", "domain": "合成生物", "fit": "高"},
+    {"name": "iGEM 社区", "email": "community@igem.org", "domain": "合成生物", "fit": "高"},
+    {"name": "iGEM 拉美大使", "email": "latinamerica@igem.org", "domain": "合成生物", "fit": "中高"},
+    {"name": "QWorld 联系", "email": "qworld@qworld.net", "domain": "量子计算", "fit": "高"},
+    {"name": "Quantum Coalition", "email": "contact via qolour.io", "domain": "量子计算", "fit": "极高"}
+  ],
+  "drafts": {
+    "reddit_self_post": "标题：[Project] SwarmLabs — 免费 AI 主动学习实验工作台（学生/课程/iGEM 可用）\n\n正文：大家好，我在做 SwarmLabs：一个免费工作台，你提交真实实验/建模结果，AI 主动学习会给出下一轮最优参数建议，少做很多无效实验。特别适合课程作业、iGEM 这类竞赛、或毕设。\n- 自带 LLM（BYO-LLM）：零 API 成本，数据不出你的账号\n- 可复用过往工作流，贡献数据得积分\n- 免费注册，送 50 积分，无需信用卡\n试用：https://swarmlabs.tools\n欢迎提问或告诉我你会怎么用。不是付费广告，想要学生/开发者反馈。",
+    "discord_intro": "Hey 大家好 👋 我在做 SwarmLabs，一个免费的 AI 主动学习实验工作台——你把真实实验结果记下来，它建议你下一轮最优实验条件，少走弯路。对学生项目 / iGEM / 毕设特别有用。BYO-LLM 零成本、数据留在自己账号。免费、注册送 50 积分。来看看：swarmlabs.tools —— 有使用场景想聊的随时找我！",
+    "discourse_intro": "Hi all — sharing a tool I run, SwarmLabs: a free AI active-learning workbench. You log real experimental/modelling results and it proposes your next optimal conditions, so you waste fewer runs. Useful for student projects, iGEM, or theses. BYO-LLM = zero cost, data stays in your account. Free, 50 credits on signup, no card. https://swarmlabs.tools — happy to discuss use cases.",
+    "igem_email": "主题：免费 AI 主动学习工作台，帮 iGEM 学生队更聪明地设计实验 — SwarmLabs\n\n正文：老师/队长好，\n我是 SwarmLabs 的运营。SwarmLabs 是一个免费工作台，学生队提交湿实验或建模结果，AI 主动学习会建议下一轮最优条件，帮助少做无效实验、把精力放在关键验证上。\n- 自带 LLM：零成本，数据不出账号\n- 可复用工作流、贡献数据得积分\n- 免费注册送 50 积分，无需信用卡\n适合作为 iGEM 项目的实验设计辅助。试用：https://swarmlabs.tools\n若不想收到此类信息，回复“退订”即可。",
+    "student_newsletter": "主题：SwarmLabs — 给学生社团的免费 AI 主动学习实验工具\n\n正文：同学好，\nSwarmLabs 是一个免费工作台：提交实验/建模结果，AI 主动学习给出下一轮最优参数，少走弯路。对课程、竞赛、毕设都适用。\n- BYO-LLM 零成本、数据留在自己账号\n- 注册送 50 积分，无信用卡要求\n欢迎推荐给社员试用：https://swarmlabs.tools\n退订请回复“unsubscribe”。"
+  },
+  "notes": "论坛发帖需你本人账号手动发（同 14 站模式，自动化只产出‘片段+文案’）。邮件类学生社群邮箱可经 agent-mail 发送，但该工具强制需你最终确认令牌（CONFIRMATION_REQUIRED），不会在没你点头时真发出。所有文案含退订/opt-out，价值优先避免被当垃圾。",
+  "core_value_real": "经代码审计+双遍生产 E2E 验证：核心是真实的 GP-BO 主动学习内核(suggestNext/reapplySuggest/Expected Improvement + 物理先验代理)，非 LLM 套壳；BYO-LLM 代理(v2/llm)零成本且数据不出账号；反馈闭环(v2/feedback)真实落盘积分与训练点；工作台 UI(workbench.html)真实存在。156 个物理/化学/生物/工程引擎已验证覆盖。",
+  "targeting_correction": "重大诚实修正：当前引擎覆盖 Materials/Chemistry/Biology/Energy 等，但【量子计算】【脑科学】暂无专属引擎。原定 Quantum Coalition、Neuromatch 两处受众需改为'实验设计方法论'框架且注明 roadmap，或直接延后到对应引擎上线后再投。首波学生导流应聚焦真实覆盖领域：r/materials、discuss.matsci.org、iGEM/合成生物社群、r/learnmachinelearning。",
+  "known_weakness": "多实例 userStore 内存缓存导致余额偶发陈旧显示(读不一致、无数据丢失，KV 落盘正确)；与已修 notify bug 同族，列为 P1 加固项(余额端点改读 KV 权威源 / kvSaveUser 同步 userStore)。"
+}

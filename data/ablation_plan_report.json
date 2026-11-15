@@ -1,0 +1,3643 @@
+{
+  "total_assessed": 91,
+  "with_gaps": 86,
+  "by_priority": {
+    "HIGH": 0,
+    "MEDIUM": 1,
+    "LOW": 90
+  },
+  "grade_distribution": {
+    "FAIL": 0,
+    "PASS_WEAK": 3,
+    "PASS_PARTIAL": 83,
+    "PASS_FULL": 5
+  },
+  "plans": {
+    "bio_logistic": {
+      "scenario_key": "bio_logistic",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "chem_bet": {
+      "scenario_key": "chem_bet",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "chem_freundlich": {
+      "scenario_key": "chem_freundlich",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "chem_langmuir": {
+      "scenario_key": "chem_langmuir",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.998 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=0.950 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "anchor grade=UNANCHORED（wet_lab_anchors）— 无可锚定闭式模型"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "chem_reactor_conversion": {
+      "scenario_key": "chem_reactor_conversion",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_WEAK",
+      "overall_coverage": 0.7167,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 0.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=REFUTED → contradict"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor",
+        "replication"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点",
+        "无独立复算 → 用不同 surrogate 后端重跑并比对结果"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "cheminfo_hydration": {
+      "scenario_key": "cheminfo_hydration",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8333,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 0.7,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=MARGINAL → agree_direction"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：4 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "cheminfo_logD": {
+      "scenario_key": "cheminfo_logD",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：4 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "cheminfo_logS": {
+      "scenario_key": "cheminfo_logS",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：4 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "cheminfo_pIC50": {
+      "scenario_key": "cheminfo_pIC50",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：4 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "eco_nicholson_bailey": {
+      "scenario_key": "eco_nicholson_bailey",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8333,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.960 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 0.7,
+          "note": "coverage=0.933 ≥ 0.9 但 < 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "eco_ricker_population": {
+      "scenario_key": "eco_ricker_population",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "energy_ccpp_output": {
+      "scenario_key": "energy_ccpp_output",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：4 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "energy_isothermal_work": {
+      "scenario_key": "energy_isothermal_work",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "energy_rankine_efficiency": {
+      "scenario_key": "energy_rankine_efficiency",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "fin_merton_call_div": {
+      "scenario_key": "fin_merton_call_div",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "heat_radiation_flux": {
+      "scenario_key": "heat_radiation_flux",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.999 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=0.950 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "heat_series_resistance": {
+      "scenario_key": "heat_series_resistance",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "llm_chinchilla_loss": {
+      "scenario_key": "llm_chinchilla_loss",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8125,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.998 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=0.967 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 0.7,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=MARGINAL → agree_direction"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 0.875,
+          "note": "参数扰动审计（A-4）：8 配置中 1 个 verdict 翻转（flip_rate=0.12）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "llm_compute_optimal_ratio": {
+      "scenario_key": "llm_compute_optimal_ratio",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "llm_scaling": {
+      "scenario_key": "llm_scaling",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_acetobacter_acetate": {
+      "scenario_key": "micro_acetobacter_acetate",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=0.983 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_antibiotic_2d": {
+      "scenario_key": "micro_antibiotic_2d",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_antibiotic_timekill": {
+      "scenario_key": "micro_antibiotic_timekill",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8333,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 0.7,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=MARGINAL → agree_direction"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_biofilm_ecoli": {
+      "scenario_key": "micro_biofilm_ecoli",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_cerevisiae_ethanol": {
+      "scenario_key": "micro_cerevisiae_ethanol",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "anchor grade=UNANCHORED（wet_lab_anchors）— 无可锚定闭式模型"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_chemostat_cerevisiae": {
+      "scenario_key": "micro_chemostat_cerevisiae",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.7917,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.954 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 0.7,
+          "note": "coverage=0.933 ≥ 0.9 但 < 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 0.75,
+          "note": "参数扰动审计（A-4）：8 配置中 2 个 verdict 翻转（flip_rate=0.25）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_chemostat_ecoli": {
+      "scenario_key": "micro_chemostat_ecoli",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.996 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=0.975 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_chemostat_transient": {
+      "scenario_key": "micro_chemostat_transient",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_coculture_mutualism": {
+      "scenario_key": "micro_coculture_mutualism",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_competition_2d": {
+      "scenario_key": "micro_competition_2d",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.999 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=0.975 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_competition_ecoli_yeast": {
+      "scenario_key": "micro_competition_ecoli_yeast",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8333,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.996 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=0.950 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 0.7,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=MARGINAL → agree_direction"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_contois_ecoli": {
+      "scenario_key": "micro_contois_ecoli",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_crabtree_2d": {
+      "scenario_key": "micro_crabtree_2d",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_crabtree_cerevisiae": {
+      "scenario_key": "micro_crabtree_cerevisiae",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8333,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.998 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 0.7,
+          "note": "coverage=0.925 ≥ 0.9 但 < 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "anchor grade=UNANCHORED（wet_lab_anchors）— 无可锚定闭式模型"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_dead_volume": {
+      "scenario_key": "micro_dead_volume",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=0.967 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_diauxic_2d": {
+      "scenario_key": "micro_diauxic_2d",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.997 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=0.967 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_diauxic_ecoli": {
+      "scenario_key": "micro_diauxic_ecoli",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8208,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.997 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=0.950 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 0.625,
+          "note": "参数扰动审计（A-4）：8 配置中 3 个 verdict 翻转（flip_rate=0.38）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_doe_ecoli_monod": {
+      "scenario_key": "micro_doe_ecoli_monod",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_FULL",
+      "overall_coverage": 1.0,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.998 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 1.0,
+          "note": "anchor grade=AGREE（wet_lab_anchors）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）；⚠ 第二后端矛盾（GP=PASS vs RF=REFUTED，结论对模型家族敏感）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "存在灵敏度变体 (micro_doe_ecoli_monod)"
+        }
+      },
+      "gaps": [],
+      "recommendations": [],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_ecoli_glucose": {
+      "scenario_key": "micro_ecoli_glucose",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_FULL",
+      "overall_coverage": 1.0,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.992 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 1.0,
+          "note": "anchor grade=AGREE（wet_lab_anchors）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）；⚠ 第二后端矛盾（GP=PASS vs RF=REFUTED，结论对模型家族敏感）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [],
+      "recommendations": [],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_fba_flux": {
+      "scenario_key": "micro_fba_flux",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.956 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=0.983 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_fedbatch_2d": {
+      "scenario_key": "micro_fedbatch_2d",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_fedbatch_3d": {
+      "scenario_key": "micro_fedbatch_3d",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_fedbatch_ecoli": {
+      "scenario_key": "micro_fedbatch_ecoli",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.999 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=0.950 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_foam_dynamics": {
+      "scenario_key": "micro_foam_dynamics",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_gene_expression": {
+      "scenario_key": "micro_gene_expression",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_haldane_2d": {
+      "scenario_key": "micro_haldane_2d",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8333,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 0.7,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=MARGINAL → agree_direction"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_haldane_putida": {
+      "scenario_key": "micro_haldane_putida",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_heavy_metal_ecoli": {
+      "scenario_key": "micro_heavy_metal_ecoli",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_immobilized_cell": {
+      "scenario_key": "micro_immobilized_cell",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8333,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.998 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 0.7,
+          "note": "coverage=0.917 ≥ 0.9 但 < 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_lactococcus_lactose": {
+      "scenario_key": "micro_lactococcus_lactose",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_lag_ecoli": {
+      "scenario_key": "micro_lag_ecoli",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_lifecycle_ecoli": {
+      "scenario_key": "micro_lifecycle_ecoli",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_methanobacterium_methane": {
+      "scenario_key": "micro_methanobacterium_methane",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_mixed_substrate": {
+      "scenario_key": "micro_mixed_substrate",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.997 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）；⚠ 第二后端矛盾（GP=PASS vs RF=REFUTED，结论对模型家族敏感）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_mle_ecoli_monod": {
+      "scenario_key": "micro_mle_ecoli_monod",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_FULL",
+      "overall_coverage": 1.0,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.999 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 1.0,
+          "note": "anchor grade=AGREE（wet_lab_anchors）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）；⚠ 第二后端矛盾（GP=PASS vs RF=REFUTED，结论对模型家族敏感）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "存在灵敏度变体 (micro_mle_ecoli_monod)"
+        }
+      },
+      "gaps": [],
+      "recommendations": [],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_osmotic_ecoli": {
+      "scenario_key": "micro_osmotic_ecoli",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_oxidative_stress": {
+      "scenario_key": "micro_oxidative_stress",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_oxygen_2d": {
+      "scenario_key": "micro_oxygen_2d",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_WEAK",
+      "overall_coverage": 0.7167,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 0.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=REFUTED → contradict"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor",
+        "replication"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点",
+        "无独立复算 → 用不同 surrogate 后端重跑并比对结果"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_oxygen_ecoli": {
+      "scenario_key": "micro_oxygen_ecoli",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8333,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.995 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=0.975 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 0.7,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=MARGINAL → agree_direction"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_ph_control": {
+      "scenario_key": "micro_ph_control",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_phage_infection": {
+      "scenario_key": "micro_phage_infection",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_pirt_ecoli": {
+      "scenario_key": "micro_pirt_ecoli",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_FULL",
+      "overall_coverage": 0.95,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.7,
+          "note": "anchor grade=NEAR（wet_lab_anchors）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）；⚠ 第二后端矛盾（GP=PASS vs RF=REFUTED，结论对模型家族敏感）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [],
+      "recommendations": [],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_plasmid_stability": {
+      "scenario_key": "micro_plasmid_stability",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_putida_toluene": {
+      "scenario_key": "micro_putida_toluene",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）；⚠ 第二后端矛盾（GP=PASS vs RF=REFUTED，结论对模型家族敏感）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_quorum_ecoli": {
+      "scenario_key": "micro_quorum_ecoli",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_scaleup_kla": {
+      "scenario_key": "micro_scaleup_kla",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.999 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=0.975 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_secondary_metabolite": {
+      "scenario_key": "micro_secondary_metabolite",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_sensor_fusion": {
+      "scenario_key": "micro_sensor_fusion",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_sobol_ecoli": {
+      "scenario_key": "micro_sobol_ecoli",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_FULL",
+      "overall_coverage": 0.95,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.994 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.7,
+          "note": "anchor grade=NEAR（wet_lab_anchors）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）；⚠ 第二后端矛盾（GP=PASS vs RF=REFUTED，结论对模型家族敏感）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "存在灵敏度变体 (micro_sobol_ecoli)"
+        }
+      },
+      "gaps": [],
+      "recommendations": [],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_tessier_ecoli": {
+      "scenario_key": "micro_tessier_ecoli",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_thermal_death": {
+      "scenario_key": "micro_thermal_death",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8333,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.0,
+          "note": "anchor grade=CONTRADICTED（wet_lab_anchors）— 需人工介入"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "micro_uq_ecoli_monod": {
+      "scenario_key": "micro_uq_ecoli_monod",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.7833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.997 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.7,
+          "note": "anchor grade=NEAR（wet_lab_anchors）"
+        },
+        "replication": {
+          "score": 0.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=REFUTED → contradict"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "存在灵敏度变体 (micro_uq_ecoli_monod)"
+        }
+      },
+      "gaps": [
+        "replication"
+      ],
+      "recommendations": [
+        "无独立复算 → 用不同 surrogate 后端重跑并比对结果"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "microbio_inhibition": {
+      "scenario_key": "microbio_inhibition",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=0.975 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "microbio_monod": {
+      "scenario_key": "microbio_monod",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8333,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.0,
+          "note": "anchor grade=CONTRADICTED（wet_lab_anchors）— 需人工介入"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "mol_esterification_yield": {
+      "scenario_key": "mol_esterification_yield",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8625,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.965 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=0.983 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 0.875,
+          "note": "参数扰动审计（A-4）：8 配置中 1 个 verdict 翻转（flip_rate=0.12）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "neuro_izhikevich_rate": {
+      "scenario_key": "neuro_izhikevich_rate",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8333,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.978 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 0.7,
+          "note": "coverage=0.933 ≥ 0.9 但 < 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "ode_lotka_volterra": {
+      "scenario_key": "ode_lotka_volterra",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "opt_ackley2d": {
+      "scenario_key": "opt_ackley2d",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.978 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=0.967 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "opt_gramacylee1d": {
+      "scenario_key": "opt_gramacylee1d",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_WEAK",
+      "overall_coverage": 0.675,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.997 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=0.950 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 0.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=REFUTED → contradict"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 0.75,
+          "note": "参数扰动审计（A-4）：8 配置中 2 个 verdict 翻转（flip_rate=0.25）"
+        }
+      },
+      "gaps": [
+        "anchor",
+        "replication"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点",
+        "无独立复算 → 用不同 surrogate 后端重跑并比对结果"
+      ],
+      "priority": "MEDIUM",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "opt_hartmann3d": {
+      "scenario_key": "opt_hartmann3d",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "opt_levy2d": {
+      "scenario_key": "opt_levy2d",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.999 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=0.967 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "opt_michalewicz2d": {
+      "scenario_key": "opt_michalewicz2d",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.7625,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.991 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 0.7,
+          "note": "coverage=0.933 ≥ 0.9 但 < 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 0.7,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=MARGINAL → agree_direction"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 0.875,
+          "note": "参数扰动审计（A-4）：8 配置中 1 个 verdict 翻转（flip_rate=0.12）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "opt_rastrigin2d": {
+      "scenario_key": "opt_rastrigin2d",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8125,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.956 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 0.7,
+          "note": "coverage=0.917 ≥ 0.9 但 < 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）；⚠ 第二后端矛盾（GP=PASS vs RF=REFUTED，结论对模型家族敏感）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 0.875,
+          "note": "参数扰动审计（A-4）：8 配置中 1 个 verdict 翻转（flip_rate=0.12）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "opt_rosenbrock2d": {
+      "scenario_key": "opt_rosenbrock2d",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=0.967 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "opt_schwefel2d": {
+      "scenario_key": "opt_schwefel2d",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=0.999 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）；⚠ 第二后端矛盾（GP=PASS vs RF=REFUTED，结论对模型家族敏感）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "pde_heat1d": {
+      "scenario_key": "pde_heat1d",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "quant_bs_call": {
+      "scenario_key": "quant_bs_call",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：4 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "resp_welch2d": {
+      "scenario_key": "resp_welch2d",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8333,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 0.7,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=MARGINAL → agree_direction"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "surrogate_branin": {
+      "scenario_key": "surrogate_branin",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=PASS → agree_exact"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "surrogate_forrester": {
+      "scenario_key": "surrogate_forrester",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8333,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 0.7,
+          "note": "第二后端复算（B-1）：GP=PASS vs RF=MARGINAL → agree_direction"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    },
+    "surrogate_hartmann6": {
+      "scenario_key": "surrogate_hartmann6",
+      "verdict": "PASS",
+      "verdict_grade": "PASS_PARTIAL",
+      "overall_coverage": 0.8833,
+      "dimensions": {
+        "fidelity": {
+          "score": 1.0,
+          "note": "R²=1.000 ≥ 0.9"
+        },
+        "coverage": {
+          "score": 1.0,
+          "note": "coverage=1.000 ≥ 0.95"
+        },
+        "anchor": {
+          "score": 0.3,
+          "note": "未评估：wet_lab_anchors 未评估该场景（零信息）"
+        },
+        "replication": {
+          "score": 1.0,
+          "note": "replication_passed=True（同后端异种子复算）"
+        },
+        "benchmark": {
+          "score": 1.0,
+          "note": "报告含解析解/基准引用"
+        },
+        "sensitivity": {
+          "score": 1.0,
+          "note": "参数扰动审计（A-4）：8 配置中 0 个 verdict 翻转（flip_rate=0.00）"
+        }
+      },
+      "gaps": [
+        "anchor"
+      ],
+      "recommendations": [
+        "无湿实验锚定 → 在 engine/wet_lab_anchors.py 中添加该场景的参数锚点"
+      ],
+      "priority": "LOW",
+      "method_note": "验证覆盖六维评估（借 ScientistTwo Ablation Planner 概念）：fidelity/coverage/anchor/replication/benchmark/sensitivity。总分 < 0.5 → 建议补强。verdict_grade 为分级判定（A-3）：核心维度 fidelity/coverage 缺一即 FAIL；支撑维度 anchor/replication/sensitivity 零分个数决定 PASS_FULL / PASS_PARTIAL / PASS_WEAK；benchmark 计分但不参与分级。"
+    }
+  }
+}

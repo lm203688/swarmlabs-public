@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0",
+  "name": "SwarmLabs 行业标准与药典方法库",
+  "description": "行业标准、药典方法、法规要求及合规基准",
+  "last_updated": "2026-07-25T01:50:00+08:00",
+  "total_entries": 9,
+  "version": "v2026.07.25.1",
+  "entries": [
+    {
+      "id": "STD-001",
+      "name": "USP <711> 溶出度测试",
+      "category": "药典方法",
+      "organization": "USP（美国药典）",
+      "description": "固体制剂溶出度标准测试方法，支持篮式(USP I)/桨式(USP II)/流池式(USP IV)",
+      "requirements": ["Apparatus I/II/IV选择", "50-900mL介质", "37±0.5°C", "5-120min采样"],
+      "implemented_in": "dissolution_usp引擎",
+      "updated_at": "2026-07-25"
+    },
+    {
+      "id": "STD-002",
+      "name": "ICH Q1A(R2) 稳定性试验",
+      "category": "指导原则",
+      "organization": "ICH",
+      "description": "新药及其制剂稳定性试验指导原则",
+      "requirements": ["长期试验(25°C/60%RH)", "加速试验(40°C/75%RH)", "中间条件(30°C/65%RH)"],
+      "implemented_in": "stability_study引擎",
+      "updated_at": "2026-07-25"
+    },
+    {
+      "id": "STD-003",
+      "name": "f2 相似因子判定标准",
+      "category": "判定标准",
+      "organization": "FDA/EMA",
+      "description": "溶出曲线相似性判定标准，f2≥50认为相似",
+      "criteria": "f2 ≥ 50 (相似) | f2 < 50 (不相似) | 12时间点标准采样",
+      "implemented_in": "dissolution_usp → f2 API",
+      "updated_at": "2026-07-25"
+    },
+    {
+      "id": "STD-004",
+      "name": "IVIVC 相关性等级",
+      "category": "判定标准",
+      "organization": "FDA",
+      "description": "体外-体内相关性等级定义",
+      "levels": {"Level A": "点对点相关性(最高)", "Level B": "统计矩法", "Level C": "单时间点相关", "多重C": "多个C级相关"},
+      "implemented_in": "drug_release → IVIVC API",
+      "updated_at": "2026-07-25"
+    },
+    {
+      "id": "STD-005",
+      "name": "CTD Module 3 质量部分",
+      "category": "申报格式",
+      "organization": "ICH M4Q",
+      "description": "药品注册申报CTD格式第3模块（质量部分）报告模板",
+      "sections": ["3.2.S 原料药", "3.2.P 制剂", "3.2.A 附件", "3.2.R 区域信息"],
+      "implemented_in": "CTD报告API",
+      "updated_at": "2026-07-25"
+    },
+    {
+      "id": "STD-006",
+      "name": "GxP 合规要求",
+      "category": "法规合规",
+      "organization": "FDA/EMA/NMPA",
+      "description": "药品研发生产质量管理规范要求",
+      "requirements": ["电子签名(21 CFR Part 11)", "审计追踪", "数据完整性(ALCOA+)", "变更控制"],
+      "implemented_in": "GxP审计追踪API",
+      "compliance_score": 60,
+      "gaps": ["审计追踪数据未持久化", "电子签名仅为前端模拟"],
+      "updated_at": "2026-07-25"
+    },
+    {
+      "id": "STD-007",
+      "name": "ASME V&V 10-2019 验证与确认",
+      "category": "工程标准",
+      "organization": "ASME",
+      "description": "计算固体力学验证与确认标准，适用于仿真可信度评估",
+      "levels": {"低可信度": "仅代码验证", "中可信度": "+模型验证", "高可信度": "+不确定性量化"},
+      "implemented_in": false,
+      "note": "建议引入作为SwarmLabs可信度验证框架参考",
+      "updated_at": "2026-07-25"
+    },
+    {
+      "id": "STD-008",
+      "name": "Vercel 免费托管限制",
+      "category": "平台限制",
+      "organization": "Vercel",
+      "description": "当前SwarmLabs部署平台的限制条件",
+      "constraints": ["无持久化存储", "Serverless函数10s超时", "100GB带宽/月", "免费SSL"],
+      "impact": "所有数据存于客户端内存，重启即丢失",
+      "updated_at": "2026-07-25"
+    },
+    {
+      "id": "STD-009",
+      "name": "单位标准化规范",
+      "category": "内部规范",
+      "organization": "SwarmLabs内部",
+      "description": "各引擎结果显示的单位规范，v3.2建立",
+      "standards": {
+        "Separation": "L/m²·h（通量）",
+        "Catalysis": "%（产率/转化率/选择性）",
+        "Analysis": "a.u.（任意单位）",
+        "Optimization": "%（目标函数值）",
+        "Material": "MPa（模量）、nm（粒径）",
+        "Energy": "eV/atom（结合能）、J/g（比热容）",
+        "Pharm-Release": "%（累积释放率，Q vs t）",
+        "Pharm-Dissolution": "f2值（相似因子）",
+        "Pharm-Stability": "月（货架期）"
+      },
+      "updated_at": "2026-07-25"
+    }
+  ]
+}

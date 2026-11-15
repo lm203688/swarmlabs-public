@@ -1,0 +1,122 @@
+{
+  "vertical": "NeuroRobotics",
+  "created": "2026-09-16",
+  "status": "seed",
+  "owner_project": "swarmlabs",
+  "partner_project": "roboparts",
+  "description": "神经机器人学垂直实体桶：脑机接口/神经解码、软体机器人 sim-to-real、安全腿足控制、肌电假肢共享控制。为飞轮新增的跨域知识桶，用于驱动 G1-G7 gap 发现与对外（机器人项目）API 协作。",
+  "seed_keywords": [
+    "neural decoding", "motor cortex", "brain-computer interface",
+    "proprioceptive feedback", "whole-body control", "myoelectric",
+    "neural prosthetics", "sensorimotor integration", "soft robotics sim-to-real",
+    "Gaussian process terrain", "conformal prediction safe control",
+    "shared autonomy prosthesis"
+  ],
+  "gap_framework": "G1-G7，定义见 docs/strategy/neuro_g1_g7_framework.md",
+  "harvested_seed_entities": [
+    {
+      "id": "nr-cas-bci-2025-12",
+      "title": "侵入式脑机接口实现生活场景应用新突破（第二例前瞻性临床试验）",
+      "venue": "中科院脑科学与智能技术卓越创新中心",
+      "year": 2025,
+      "doi": null,
+      "tags": ["BCI", "neural_decoding", "G4_real", "G6_online"],
+      "url": "https://cebsit.cas.cn/tt/202512/t20251218_8029518.html"
+    },
+    {
+      "id": "nr-shah-2025-natcomm",
+      "title": "Pseudo-linear summation explains neural geometry of multi-finger movements in human premotor cortex",
+      "venue": "Nature Communications 16, 5008",
+      "year": 2025,
+      "doi": "10.1038/s41467-025-59039-z",
+      "tags": ["BCI", "neural_decoding", "motor_cortex", "G3_uq_weak"],
+      "url": "https://m.thepaper.cn/newsDetail_forward_30972773"
+    },
+    {
+      "id": "nr-dpz-bci-2025-10",
+      "title": "Controlling prostheses with the power of thought (motor learning under BCI recalibration)",
+      "venue": "PLOS Biology / Deutsches Primatenzentrum",
+      "year": 2025,
+      "doi": null,
+      "tags": ["BCI", "motor_learning", "G6_online"],
+      "url": "https://www.research-in-germany.org/idw-news/en_US/2025/10/2025-10-20_Controlling_prostheses_with_the_power_of_thought.html"
+    },
+    {
+      "id": "nr-cas-iah-2025-04",
+      "title": "解码手部运动“神经地图”（前运动皮层位置细胞式神经编码）",
+      "venue": "Nature Communications / 中科院自动化所",
+      "year": 2025,
+      "doi": null,
+      "tags": ["neural_decoding", "motor_cortex", "G4_real"],
+      "url": "http://news.xinhuanet.com/science/20250424/701a9b0411874c7a999595ec41793ebb/c.html"
+    },
+    {
+      "id": "nr-sensestep-2026",
+      "title": "SENSE-STEP: Learning Sim-to-Real Locomotion for a Sensory-Enabled Soft Quadruped Robot",
+      "venue": "arXiv:2602.13078 [cs.RO]",
+      "year": 2026,
+      "doi": "10.48550/arXiv.2602.13078",
+      "tags": ["soft_robotics", "sim2real", "proprioception", "G4_real", "G2_physics_weak"],
+      "url": "https://arxiv.org/abs/2602.13078v1"
+    },
+    {
+      "id": "nr-wholearm-2026",
+      "title": "Learning to infer and manipulate through distributed whole-arm interaction in a soft robot",
+      "venue": "arXiv:2608.30773 [cs.RO]",
+      "year": 2026,
+      "doi": "10.48550/arXiv.2608.30773",
+      "tags": ["soft_robotics", "sim2real", "proprioception", "G7_multiagent_weak"],
+      "url": "https://scirate.com/arxiv/2608.30773"
+    },
+    {
+      "id": "nr-bipedal-cp-2025",
+      "title": "Probabilistically-Safe Bipedal Navigation over Uncertain Terrain via Conformal Prediction and Contraction Analysis",
+      "venue": "arXiv:2510.07725 [cs.RO]",
+      "year": 2025,
+      "doi": "10.48550/arXiv.2510.07725",
+      "tags": ["GP", "conformal_prediction", "UQ", "safe_control", "G3_uq_strong", "G2_physics_strong"],
+      "url": "https://arxiv-vanity.com/papers/2510.07725"
+    },
+    {
+      "id": "nr-bipedal-gp-2024",
+      "title": "Bipedal Safe Navigation over Uncertain Rough Terrain: Unifying Terrain Mapping and Locomotion Stability",
+      "venue": "arXiv:2403.16356 [cs.RO]",
+      "year": 2024,
+      "doi": "10.48550/arXiv.2403.16356",
+      "tags": ["GP", "terrain_mapping", "G2_physics_strong", "G5_multifidelity_weak"],
+      "url": "https://arxiv.org/html/2403.16356v2"
+    },
+    {
+      "id": "nr-gpmpc-2025",
+      "title": "Quadruped Robot Locomotion Control Via Model Predictive Control and Gaussian Process Disturbance Compensation",
+      "venue": "IEEE ICCAS 2025",
+      "year": 2025,
+      "doi": "10.23919/ICCAS66577.2025.11301306",
+      "tags": ["GP", "MPC", "disturbance", "G3_uq_strong", "G6_online"],
+      "url": "https://xplorestaging.ieee.org/document/11301306"
+    },
+    {
+      "id": "nr-bionichand-2025",
+      "title": "Shared human-machine control of an intelligent bionic hand improves grasping and decreases cognitive burden for transradial amputees",
+      "venue": "Nature Communications 16, 10418",
+      "year": 2025,
+      "doi": "10.1038/s41467-025-65965-9",
+      "tags": ["myoelectric", "shared_control", "prosthesis", "G4_real", "G3_uq_weak"],
+      "url": "https://go.nature.com/48uInC5"
+    },
+    {
+      "id": "nr-zbinden-2025",
+      "title": "Towards intuitive simultaneous control of a bionic limb (doctoral thesis)",
+      "venue": "Chalmers University of Technology",
+      "year": 2025,
+      "doi": "10.63959/chalmers.dt/5804",
+      "tags": ["myoelectric", "deep_learning", "prosthesis", "G3_uq_weak", "G7_multiagent_weak"],
+      "url": "https://dx.doi.org/10.63959/chalmers.dt/5804"
+    }
+  ],
+  "summary": {
+    "seed_count": 11,
+    "gap_hotspots": ["G7_multiagent", "G5_multifidelity", "G2_physics_neural", "G3_uq_neuro"],
+    "swarmlabs_leverage_points": ["G2_physics_baseline", "G3_uq", "G4_real_anchor", "G5_multifidelity"]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "domain_action",
+  "version": "1.0.0",
+  "purpose": "一句话说明这个 Skill 解决什么科研问题、由哪个 Agent 在什么场景调用。",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "param_a": { "type": "string", "description": "参数 a 的含义" },
+      "param_b": { "type": "number", "description": "参数 b 的含义" }
+    },
+    "required": ["param_a"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "result": { "type": "number", "description": "主结果" },
+      "evidence": { "type": "array", "items": { "type": "string" }, "description": "支撑结论的证据链（文献/数据/推导）" },
+      "confidence": { "type": "number", "description": "结论置信度 0~1" },
+      "applicability": { "type": "string", "description": "适用域边界；越界须显式声明不可靠" }
+    },
+    "required": ["result", "evidence", "confidence"]
+  },
+  "invocation_condition": "由哪个 Agent 在什么条件下调用本 Skill。",
+  "depend_tools": ["SwarmLabs v2 API", "MCP Server（契约见 mcp/ 下公开版定义）"],
+  "failure_handling": "输入非法 → 返回参数 schema；上游不可用 → 返回降级结果与原因；不确定 → 显式声明置信度下限。",
+  "safety_boundary": "只读/受控计算，不修改外部状态；不记录用户敏感参数；不确定结论不伪造高精度。",
+  "reuse_value": "可被 Planner/Executor/Verifier 按 multi_agent_role 发现并组合。",
+  "multi_agent_role": "ExecutorAgent",
+  "tags": ["domain", "action"]
+}

@@ -1,0 +1,45 @@
+name: SwarmLabs Tech Radar
+# 解决闭环缺口(R6): SwarmLabs 自有技术雷达 signal→candidate→promote→effect 自动化
+# 供应流程: arXiv 信号(三级 fallback) -> 能力 gap 分析 -> 晋升门控 -> 效果追踪
+# 信息流闭合成: 扫描 -> 候选 -> 晋升 -> 跨运行牵引监测 -> 回写 data/tech_radar.json
+#
+# 启用前提: 需一个带 Workflows:write + contents:write 的 GitHub PAT 提交本文件并触发。
+# 详见 docs/tech-radar-pat-guide.md
+
+on:
+  schedule:
+    - cron: '0 2 * * *'        # 每日 10:00 GMT+8 跑 Tech Radar
+  workflow_dispatch:
+
+permissions:
+  contents: write             # 回写 data/tech_radar.json
+  issues: write
+
+concurrency:
+  group: tech-radar
+  cancel-in-progress: false
+
+jobs:
+  tech-radar:
+    name: 技术雷达信号扫描与晋升
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 运行 Tech Radar 闭环
+        run: |
+          cd scripts && python tech_radar.py 2>&1 | tail -30
+
+      - name: 回写 data/tech_radar.json
+        run: |
+          git config user.name "swarmlabs-bot"
+          git config user.email "bot@swarmlabs.tools"
+          git add data/tech_radar.json
+          git commit -m "chore(tech-radar): 每日信号扫描与晋升 $(date +%F)" || echo "no changes"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

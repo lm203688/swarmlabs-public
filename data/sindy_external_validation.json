@@ -1,0 +1,393 @@
+{
+  "version": 2,
+  "generated_at": "2026-10-16T04:21:26Z",
+  "module": "engine/discovery.py (SINDy + SINDySelect)",
+  "method": "SINDySelect (Branas-Garza 2021, arXiv:2108.02698) with CV-selected STLSQ threshold",
+  "reference_targets": [
+    "Van der Pol (μ=1)",
+    "Lotka-Volterra (α=β=δ=γ=1)",
+    "Duffing (softening, δ=0.28, α=-1, β=1)"
+  ],
+  "criteria": {
+    "CONSISTENT": "结构匹配 + 系数相对误差<10% + R²>0.97（软化 Duffing transient 场景 R² 阈值 0.97 是 Branas-Garza 2021 常用下限的 2x 严）",
+    "PARTIAL": "至少一个状态变量 CONSISTENT，其余不足",
+    "OVERFIT": "R²>0.97 但结构或系数不匹配（假阳性陷阱）",
+    "DIVERGENT": "R²<0.97 或无共同项"
+  },
+  "summary": {
+    "consistent": 2,
+    "partial": 1,
+    "overfit": 0,
+    "divergent": 0,
+    "error": 0,
+    "total_elapsed_sec": 0.21
+  },
+  "results": [
+    {
+      "target": "Van der Pol (μ=1)",
+      "n_states": 2,
+      "per_state": [
+        {
+          "state_var": "x[0]",
+          "analytic_terms": {
+            "x1": 1.0
+          },
+          "discovered_terms_raw": {
+            "x1": 0.9992
+          },
+          "discovered_equation_raw": "y = 0.9992*x1",
+          "discovered_equation_stlsq": "y = 1.432*x1",
+          "missing_terms": [],
+          "extra_terms": [],
+          "coef_errors": {
+            "x1": {
+              "true": 1.0,
+              "pred": 0.9992,
+              "rel_err": 0.0008
+            }
+          },
+          "max_rel_err": 0.0008,
+          "r2": 0.999992,
+          "n_terms": 1,
+          "selected_threshold": 0.002154,
+          "cv_rmse_curve": [
+            0.040909,
+            0.040895,
+            0.040896,
+            0.041044,
+            0.041028,
+            0.041028,
+            0.041028,
+            0.041028,
+            0.041028,
+            0.041028
+          ],
+          "cv_terms_curve": [
+            6,
+            6,
+            5,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "verdict": "CONSISTENT"
+        },
+        {
+          "state_var": "x[1]",
+          "analytic_terms": {
+            "x0": -1.0,
+            "x1": 1.0,
+            "x0^2*x1": -1.0
+          },
+          "discovered_terms_raw": {
+            "x0": -1.003,
+            "x1": 1.034,
+            "x0^2*x1": -1.008,
+            "x0*x1^2": 0.0121,
+            "x1^3": -0.0084
+          },
+          "discovered_equation_raw": "y = - 1.003*x0 + 1.034*x1 - 1.008*x0*x0*x1 + 0.0121*x0*x1*x1 - 0.008384*x1*x1*x1",
+          "discovered_equation_stlsq": "y = - 1.441*x0 + 1.481*x1 - 2.041*x0*x0*x1 + 0.03246*x0*x1*x1 - 0.06042*x1*x1*x1",
+          "missing_terms": [],
+          "extra_terms": [
+            "x0*x1^2",
+            "x1^3"
+          ],
+          "coef_errors": {
+            "x0": {
+              "true": -1.0,
+              "pred": -1.003,
+              "rel_err": 0.003
+            },
+            "x1": {
+              "true": 1.0,
+              "pred": 1.034,
+              "rel_err": 0.034
+            },
+            "x0^2*x1": {
+              "true": -1.0,
+              "pred": -1.008,
+              "rel_err": 0.008
+            }
+          },
+          "max_rel_err": 0.034,
+          "r2": 0.999961,
+          "n_terms": 5,
+          "selected_threshold": 0.016681,
+          "cv_rmse_curve": [
+            0.053115,
+            0.053116,
+            0.053028,
+            0.053028,
+            0.053028,
+            0.053028,
+            0.053577,
+            0.053577,
+            0.053577,
+            0.053577
+          ],
+          "cv_terms_curve": [
+            9,
+            6,
+            6,
+            6,
+            6,
+            5,
+            3,
+            3,
+            3,
+            3
+          ],
+          "verdict": "OVERFIT"
+        }
+      ],
+      "overall_verdict": "PARTIAL",
+      "elapsed_sec": 0.098
+    },
+    {
+      "target": "Lotka-Volterra (α=β=δ=γ=1)",
+      "n_states": 2,
+      "per_state": [
+        {
+          "state_var": "x[0]",
+          "analytic_terms": {
+            "x0": 1.0,
+            "x0*x1": -1.0
+          },
+          "discovered_terms_raw": {
+            "x0": 0.999,
+            "x0*x1": -0.999
+          },
+          "discovered_equation_raw": "y = 0.999*x0 - 0.999*x0*x1",
+          "discovered_equation_stlsq": "y = 0.5533*x0 - 0.8068*x0*x1",
+          "missing_terms": [],
+          "extra_terms": [],
+          "coef_errors": {
+            "x0*x1": {
+              "true": -1.0,
+              "pred": -0.999,
+              "rel_err": 0.001
+            },
+            "x0": {
+              "true": 1.0,
+              "pred": 0.999,
+              "rel_err": 0.001
+            }
+          },
+          "max_rel_err": 0.001,
+          "r2": 0.999946,
+          "n_terms": 2,
+          "selected_threshold": 0.046416,
+          "cv_rmse_curve": [
+            0.014165,
+            0.014165,
+            0.014165,
+            0.014165,
+            0.014165,
+            0.014166,
+            0.01415,
+            0.034958,
+            0.315809,
+            0.581783
+          ],
+          "cv_terms_curve": [
+            9,
+            9,
+            9,
+            9,
+            9,
+            2,
+            2,
+            2,
+            0,
+            0
+          ],
+          "verdict": "CONSISTENT"
+        },
+        {
+          "state_var": "x[1]",
+          "analytic_terms": {
+            "x0*x1": 1.0,
+            "x1": -1.0
+          },
+          "discovered_terms_raw": {
+            "x1": -0.9993,
+            "x0*x1": 0.9992
+          },
+          "discovered_equation_raw": "y = - 0.9993*x1 + 0.9992*x0*x1",
+          "discovered_equation_stlsq": "y = - 0.5437*x1 + 0.807*x0*x1",
+          "missing_terms": [],
+          "extra_terms": [],
+          "coef_errors": {
+            "x0*x1": {
+              "true": 1.0,
+              "pred": 0.9992,
+              "rel_err": 0.0008
+            },
+            "x1": {
+              "true": -1.0,
+              "pred": -0.9993,
+              "rel_err": 0.0007
+            }
+          },
+          "max_rel_err": 0.0008,
+          "r2": 0.999578,
+          "n_terms": 2,
+          "selected_threshold": 0.129155,
+          "cv_rmse_curve": [
+            0.023991,
+            0.023991,
+            0.023991,
+            0.023991,
+            0.024001,
+            0.024003,
+            0.024003,
+            0.023987,
+            0.150002,
+            0.592763
+          ],
+          "cv_terms_curve": [
+            9,
+            9,
+            9,
+            8,
+            2,
+            2,
+            2,
+            2,
+            2,
+            0
+          ],
+          "verdict": "CONSISTENT"
+        }
+      ],
+      "overall_verdict": "CONSISTENT",
+      "elapsed_sec": 0.054
+    },
+    {
+      "target": "Duffing (softening, δ=0.28, α=-1, β=1)",
+      "n_states": 2,
+      "per_state": [
+        {
+          "state_var": "x[0]",
+          "analytic_terms": {
+            "x1": 1.0
+          },
+          "discovered_terms_raw": {
+            "x1": 0.9999
+          },
+          "discovered_equation_raw": "y = 0.9999*x1",
+          "discovered_equation_stlsq": "y = 0.1128*x1",
+          "missing_terms": [],
+          "extra_terms": [],
+          "coef_errors": {
+            "x1": {
+              "true": 1.0,
+              "pred": 0.9999,
+              "rel_err": 0.0001
+            }
+          },
+          "max_rel_err": 0.0001,
+          "r2": 0.977806,
+          "n_terms": 1,
+          "selected_threshold": 0.0001,
+          "cv_rmse_curve": [
+            0.016801,
+            0.016801,
+            0.016801,
+            0.016801,
+            0.016801,
+            0.016801,
+            0.016801,
+            0.113519,
+            0.113519,
+            0.113519
+          ],
+          "cv_terms_curve": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0
+          ],
+          "verdict": "CONSISTENT"
+        },
+        {
+          "state_var": "x[1]",
+          "analytic_terms": {
+            "x1": -0.28,
+            "x0": -1.0,
+            "x0^3": 1.0
+          },
+          "discovered_terms_raw": {
+            "x0": -0.9999,
+            "x1": -0.2799,
+            "x0^3": 1.0
+          },
+          "discovered_equation_raw": "y = - 0.9999*x0 - 0.2799*x1 + 1*x0*x0*x0",
+          "discovered_equation_stlsq": "y = - 0.1269*x0 - 0.03157*x1 + 0.01823*x0*x0*x0",
+          "missing_terms": [],
+          "extra_terms": [],
+          "coef_errors": {
+            "x0": {
+              "true": -1.0,
+              "pred": -0.9999,
+              "rel_err": 0.0001
+            },
+            "x1": {
+              "true": -0.28,
+              "pred": -0.2799,
+              "rel_err": 0.0004
+            },
+            "x0^3": {
+              "true": 1.0,
+              "pred": 1.0,
+              "rel_err": 0.0
+            }
+          },
+          "max_rel_err": 0.0004,
+          "r2": 1.0,
+          "n_terms": 3,
+          "selected_threshold": 0.002154,
+          "cv_rmse_curve": [
+            0.002624,
+            0.002624,
+            0.002624,
+            0.002624,
+            0.002624,
+            0.002624,
+            0.032058,
+            0.107952,
+            0.107952,
+            0.107952
+          ],
+          "cv_terms_curve": [
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            1,
+            0,
+            0,
+            0
+          ],
+          "verdict": "CONSISTENT"
+        }
+      ],
+      "overall_verdict": "CONSISTENT",
+      "elapsed_sec": 0.062
+    }
+  ],
+  "honesty_note": "v2 修复 2026-10-13 版本的两个缺陷：(1) 旧版 discover_equation 误用——把已多项式化的 X 矩阵 再喂给 SINDy.fit()，而 SINDy 内部又对 X 每列造 library，导致 282 项 active 假阳性；(2) 旧版 equation() 打印 STLSQ 归一化空间系数，与解析值直接比较会误判 40% 偏差。v2 直接用状态向量调 SINDySelect，用 raw_equation() 还原到原始尺度做对比。"
+}

@@ -1,0 +1,296 @@
+{
+  "generated_at_utc": "2026-09-22T06:54:06Z",
+  "total_anchors": 19,
+  "total_claimed_sources": 36,
+  "total_unique_source_families": 19,
+  "independence_ratio": 0.5278,
+  "independence_ratio_note": "unique_families / claimed_sources — 值越低说明同源重复越多。1.0 = 每个来源仅被一个锚点引用（完全独立）；0.5 = 一半来源被多个锚点共用。",
+  "anchor_details": [
+    {
+      "anchor_key": "ecoli_glucose_Ks",
+      "claimed_sources": 4,
+      "unique_families": 4,
+      "independence_ratio": 1.0,
+      "shared_with": [],
+      "exclusive": [
+        "pmc:5733555",
+        "raw:BioProcessTools Monod 参数汇编 — E. coli K-12 37°C μma",
+        "ref:bader:2013:ks",
+        "ref:kovárová-kovar:1998:mmbr"
+      ]
+    },
+    {
+      "anchor_key": "ecoli_glucose_mu_max",
+      "claimed_sources": 4,
+      "unique_families": 4,
+      "independence_ratio": 1.0,
+      "shared_with": [
+        "ref:nanchen:2006:aem"
+      ],
+      "exclusive": [
+        "raw:Bader et al. 表 — E. coli 37°C 葡萄糖 μmax 0.8–1.4 h⁻¹",
+        "raw:BioProcessTools — E. coli K-12 0.7–1.0 h⁻¹（最小培养基），",
+        "ref:senn:1994:bba"
+      ]
+    },
+    {
+      "anchor_key": "ecoli_glucose_maintenance",
+      "claimed_sources": 3,
+      "unique_families": 3,
+      "independence_ratio": 1.0,
+      "shared_with": [
+        "ref:nanchen:2006:aem"
+      ],
+      "exclusive": [
+        "auth:nanchen:2006",
+        "auth:pirt:1965"
+      ]
+    },
+    {
+      "anchor_key": "cerevisiae_glucose_mu_max",
+      "claimed_sources": 4,
+      "unique_families": 4,
+      "independence_ratio": 1.0,
+      "shared_with": [
+        "pmc:3840306",
+        "raw:Bader et al. 表 — S. cerevisiae 30°C 葡萄糖 μmax 0.5–0",
+        "raw:BioProcessTools — μmax 0.35–0.45 h⁻¹, Ks 25–180 mg",
+        "ref:kompala:2003:iecr"
+      ],
+      "exclusive": []
+    },
+    {
+      "anchor_key": "cerevisiae_glucose_Ks",
+      "claimed_sources": 4,
+      "unique_families": 4,
+      "independence_ratio": 1.0,
+      "shared_with": [
+        "pmc:3840306",
+        "raw:Bader et al. 表 — S. cerevisiae 30°C 葡萄糖 μmax 0.5–0",
+        "raw:BioProcessTools — μmax 0.35–0.45 h⁻¹, Ks 25–180 mg",
+        "ref:kompala:2003:iecr"
+      ],
+      "exclusive": []
+    },
+    {
+      "anchor_key": "ecoli_thermal_D60",
+      "claimed_sources": 4,
+      "unique_families": 4,
+      "independence_ratio": 1.0,
+      "shared_with": [],
+      "exclusive": [
+        "auth:fellows:1988",
+        "raw:GermEcological Meta 分析（actavetscand.biomedcentral.",
+        "ref:morgan:1988:jfp",
+        "ref:nechifor:2013:jds"
+      ]
+    },
+    {
+      "anchor_key": "ammonia_haber_bosch_yield",
+      "claimed_sources": 1,
+      "unique_families": 1,
+      "independence_ratio": 1.0,
+      "shared_with": [
+        "comp:swarmlabs_real_paper_data.json"
+      ],
+      "exclusive": []
+    },
+    {
+      "anchor_key": "adsorption_acid_carbon_capacity",
+      "claimed_sources": 1,
+      "unique_families": 1,
+      "independence_ratio": 1.0,
+      "shared_with": [
+        "comp:swarmlabs_real_paper_data.json"
+      ],
+      "exclusive": []
+    },
+    {
+      "anchor_key": "bioreactor_ecoli_biomass",
+      "claimed_sources": 1,
+      "unique_families": 1,
+      "independence_ratio": 1.0,
+      "shared_with": [
+        "comp:swarmlabs_real_paper_data.json"
+      ],
+      "exclusive": []
+    },
+    {
+      "anchor_key": "enzyme_lipase_activity",
+      "claimed_sources": 1,
+      "unique_families": 1,
+      "independence_ratio": 1.0,
+      "shared_with": [
+        "comp:swarmlabs_real_paper_data.json"
+      ],
+      "exclusive": []
+    },
+    {
+      "anchor_key": "corrosion_carbon_steel_rate",
+      "claimed_sources": 1,
+      "unique_families": 1,
+      "independence_ratio": 1.0,
+      "shared_with": [
+        "comp:swarmlabs_real_paper_data.json"
+      ],
+      "exclusive": []
+    },
+    {
+      "anchor_key": "photoFenton_removal_efficiency",
+      "claimed_sources": 1,
+      "unique_families": 1,
+      "independence_ratio": 1.0,
+      "shared_with": [
+        "comp:swarmlabs_real_paper_data.json"
+      ],
+      "exclusive": []
+    },
+    {
+      "anchor_key": "membrane_nf_rejection",
+      "claimed_sources": 1,
+      "unique_families": 1,
+      "independence_ratio": 1.0,
+      "shared_with": [
+        "comp:swarmlabs_real_paper_data.json"
+      ],
+      "exclusive": []
+    },
+    {
+      "anchor_key": "pcr_amplification_efficiency",
+      "claimed_sources": 1,
+      "unique_families": 1,
+      "independence_ratio": 1.0,
+      "shared_with": [
+        "comp:swarmlabs_real_paper_data.json"
+      ],
+      "exclusive": []
+    },
+    {
+      "anchor_key": "perovskite_solar_pce",
+      "claimed_sources": 1,
+      "unique_families": 1,
+      "independence_ratio": 1.0,
+      "shared_with": [
+        "comp:swarmlabs_real_paper_data.json"
+      ],
+      "exclusive": []
+    },
+    {
+      "anchor_key": "battery_energy_density",
+      "claimed_sources": 1,
+      "unique_families": 1,
+      "independence_ratio": 1.0,
+      "shared_with": [
+        "comp:swarmlabs_real_paper_data.json"
+      ],
+      "exclusive": []
+    },
+    {
+      "anchor_key": "distillation_separation_factor",
+      "claimed_sources": 1,
+      "unique_families": 1,
+      "independence_ratio": 1.0,
+      "shared_with": [
+        "comp:swarmlabs_real_paper_data.json"
+      ],
+      "exclusive": []
+    },
+    {
+      "anchor_key": "flocculation_removal_rate",
+      "claimed_sources": 1,
+      "unique_families": 1,
+      "independence_ratio": 1.0,
+      "shared_with": [
+        "comp:swarmlabs_real_paper_data.json"
+      ],
+      "exclusive": []
+    },
+    {
+      "anchor_key": "combustion_efficiency_gcc",
+      "claimed_sources": 1,
+      "unique_families": 1,
+      "independence_ratio": 1.0,
+      "shared_with": [
+        "comp:swarmlabs_real_paper_data.json"
+      ],
+      "exclusive": []
+    }
+  ],
+  "shared_source_clusters": [
+    {
+      "family_key": "comp:swarmlabs_real_paper_data.json",
+      "anchor_keys": [
+        "adsorption_acid_carbon_capacity",
+        "ammonia_haber_bosch_yield",
+        "battery_energy_density",
+        "bioreactor_ecoli_biomass",
+        "combustion_efficiency_gcc",
+        "corrosion_carbon_steel_rate",
+        "distillation_separation_factor",
+        "enzyme_lipase_activity",
+        "flocculation_removal_rate",
+        "membrane_nf_rejection",
+        "pcr_amplification_efficiency",
+        "perovskite_solar_pce",
+        "photoFenton_removal_efficiency"
+      ],
+      "n_anchors": 13,
+      "identified_by": "compilation",
+      "exemplar": "swarmlabs_real_paper_data.json: combustion (30 rows)"
+    },
+    {
+      "family_key": "pmc:3840306",
+      "anchor_keys": [
+        "cerevisiae_glucose_Ks",
+        "cerevisiae_glucose_mu_max"
+      ],
+      "n_anchors": 2,
+      "identified_by": "pmc",
+      "exemplar": "Sorg et al. 2013 PLOS Genet（PMC3840306）— 自然分离株高通量显微成像 μmax 0.43–0.52 h⁻¹, Ks 0.1–0.2 mM = 10.8–21.6 mg/L"
+    },
+    {
+      "family_key": "raw:Bader et al. 表 — S. cerevisiae 30°C 葡萄糖 μmax 0.5–0",
+      "anchor_keys": [
+        "cerevisiae_glucose_Ks",
+        "cerevisiae_glucose_mu_max"
+      ],
+      "n_anchors": 2,
+      "identified_by": "raw_text",
+      "exemplar": "Bader et al. 表 — S. cerevisiae 30°C 葡萄糖 μmax 0.5–0.6 h⁻¹, Ks 25 mg/L"
+    },
+    {
+      "family_key": "raw:BioProcessTools — μmax 0.35–0.45 h⁻¹, Ks 25–180 mg",
+      "anchor_keys": [
+        "cerevisiae_glucose_Ks",
+        "cerevisiae_glucose_mu_max"
+      ],
+      "n_anchors": 2,
+      "identified_by": "journal_ref",
+      "exemplar": "BioProcessTools — μmax 0.35–0.45 h⁻¹, Ks 25–180 mg/L（7.2× 跨度，由 Hxt6/7 与 Hxt1/3 转运体在不同浓度下的切换导致）"
+    },
+    {
+      "family_key": "ref:kompala:2003:iecr",
+      "anchor_keys": [
+        "cerevisiae_glucose_Ks",
+        "cerevisiae_glucose_mu_max"
+      ],
+      "n_anchors": 2,
+      "identified_by": "journal_ref",
+      "exemplar": "Kompala et al. 2003 IECR 42:4175（经 Fogler 教材引）— 发酵途径 μmax=0.45 h⁻¹, Ks=0.05 g/L; 葡萄糖氧化途径 μmax=0.33 h⁻¹, Ks=0.001 g/L"
+    },
+    {
+      "family_key": "ref:nanchen:2006:aem",
+      "anchor_keys": [
+        "ecoli_glucose_maintenance",
+        "ecoli_glucose_mu_max"
+      ],
+      "n_anchors": 2,
+      "identified_by": "journal_ref",
+      "exemplar": "Nanchen et al. 2006 AEM 72:1164 Table 1 — MG1655 m_glc = 0.37 ± 0.09 mmol(gDW·h)⁻¹（= 0.067 g(gDW·h)⁻¹）；9 株 E. coli 跨度 0."
+    }
+  ],
+  "shared_source_clusters_note": "以下来源被 2+ 锚点同时引用——它们不算独立证据。如果 3 个锚点引用同一篇论文，那是 1 个锚点不是 3 个。",
+  "retraction_checked": false,
+  "retraction_results": [],
+  "method_note": "聚类依据：DOI > PMC ID > 数据汇编标识 > 期刊引用（作者+年份+期刊）> 作者+年份 > 原文前 50 字符。聚类后按 family_key 去重，计算有效来源数。"
+}

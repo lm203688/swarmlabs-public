@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SwarmLabs v3 API reference</title>
+<link rel="canonical" href="https://swarmlabs.tools/api-reference">
+<meta name="description" content="Accurate reference for the SwarmLabs v3 API: scenarios, strains, media, GP surrogate prediction, growth-curve fitting, the VirtualLab Guard UQ gate, and UGC strain submission. Every schema documented from the live contract.">
+<style>
+:root{--bg:#0a0e1a;--bg2:#111827;--ink:#e8ecf4;--muted:#8b95a8;--rule:#1e293b;--accent:#22d3ee;
+--green:#34d399;--amber:#fbbf24;--red:#f87171;--violet:#a78bfa;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6;}
+.wrap{max-width:1080px;margin:0 auto;padding:2.6rem 1.5rem 4rem;}
+h1{font-size:1.95rem;margin-bottom:.5rem;line-height:1.2;}
+h2{font-size:1.22rem;margin:2.6rem 0 1rem;border-left:3px solid var(--accent);padding-left:.7rem;}
+h3{font-size:1rem;margin:1.6rem 0 .6rem;color:var(--accent);}
+.sub{color:var(--muted);margin-bottom:1.8rem;font-size:.95rem;max-width:780px;}
+.sub a{color:var(--accent);}
+p.lead{color:var(--muted);margin-bottom:1.1rem;font-size:.92rem;}
+.badge{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:.18rem .55rem;border-radius:6px;margin-left:.5rem;vertical-align:middle;}
+.b-get{background:rgba(52,211,153,.15);color:var(--green);border:1px solid rgba(52,211,153,.35);}
+.b-post{background:rgba(34,211,238,.13);color:var(--accent);border:1px solid rgba(34,211,238,.35);}
+.b-open{background:rgba(167,139,250,.13);color:var(--violet);border:1px solid rgba(167,139,250,.35);}
+.endpoint{background:var(--bg2);border:1px solid var(--rule);border-radius:12px;padding:1.1rem 1.2rem;margin:1rem 0;}
+.ep-head{display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap;margin-bottom:.5rem;}
+.method{font-weight:700;font-size:.82rem;padding:.2rem .5rem;border-radius:6px;}
+.m-get{background:rgba(52,211,153,.16);color:var(--green);}
+.m-post{background:rgba(34,211,238,.14);color:var(--accent);}
+.path{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92rem;color:var(--ink);}
+.desc{color:var(--muted);font-size:.88rem;margin:.3rem 0 .8rem;}
+table.fields{width:100%;border-collapse:collapse;font-size:.82rem;margin:.5rem 0 1rem;}
+table.fields th,table.fields td{text-align:left;padding:.5rem .6rem;border-bottom:1px solid var(--rule);vertical-align:top;}
+table.fields thead th{color:var(--muted);font-weight:600;font-size:.74rem;text-transform:uppercase;letter-spacing:.03em;}
+td.fname{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--accent);white-space:nowrap;}
+td.ftype{color:var(--violet);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.76rem;white-space:nowrap;}
+td.freq{color:var(--amber);font-size:.76rem;white-space:nowrap;}
+.k{color:var(--green);}
+pre{background:#070b14;border:1px solid var(--rule);border-radius:10px;padding:1rem 1.1rem;overflow:auto;font-size:.78rem;line-height:1.5;margin:.6rem 0 1rem;}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;}
+pre .c{color:var(--muted);}
+pre .s{color:var(--amber);}
+pre .j{color:var(--accent);}
+.note{background:#0b1220;border:1px solid #143a4a;border-radius:10px;padding:1rem 1.2rem;margin:1.2rem 0;font-size:.85rem;color:#c7d0e0;}
+.note b{color:var(--ink);}
+.warn{background:#1a1408;border:1px solid #4a3a14;border-radius:10px;padding:1rem 1.2rem;margin:1.2rem 0;font-size:.85rem;color:#e7d6b0;}
+.warn b{color:var(--amber);}
+.cta{text-align:center;margin-top:2.5rem;padding:1.8rem;border:1px solid rgba(52,211,153,.3);border-radius:14px;background:linear-gradient(135deg,rgba(52,211,153,.06),rgba(34,211,238,.04));}
+.cta a{display:inline-block;margin:.4rem .5rem;padding:10px 22px;border-radius:9px;font-weight:700;text-decoration:none;font-size:.9rem;}
+.cta .p1{background:var(--accent);color:#04141a;}
+.cta .p2{border:1px solid var(--rule);color:var(--ink);}
+.toc{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.2rem 0 0;}
+.toc a{font-size:.8rem;color:var(--muted);text-decoration:none;border:1px solid var(--rule);border-radius:8px;padding:.35rem .7rem;}
+.toc a:hover{color:var(--accent);border-color:var(--accent);}
+.foot{text-align:center;color:var(--muted);font-size:.78rem;margin-top:3rem;}
+.foot a{color:var(--muted);}
+/* try-it panel */
+.try{background:#070b14;border:1px solid #143a4a;border-radius:12px;padding:1.1rem 1.2rem;margin:1rem 0;}
+.try textarea{width:100%;min-height:140px;background:#0a0e1a;color:var(--ink);border:1px solid var(--rule);border-radius:8px;padding:.7rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.78rem;resize:vertical;}
+.try button{margin-top:.7rem;background:var(--accent);color:#04141a;border:none;border-radius:8px;padding:9px 20px;font-weight:700;font-size:.85rem;cursor:pointer;}
+.try button:hover{filter:brightness(1.08);}
+#tryOut{margin-top:.8rem;font-size:.78rem;white-space:pre-wrap;color:var(--green);max-height:320px;overflow:auto;}
+#tryErr{color:var(--red);}
+/* 站点导航（2026-09-21 加）：本页此前无任何站内链接。API 是商业化资产，
+   读者（含评估方与集成方）从搜索进来后必须能回到产品主线与证据页。 */
+.sl-nav{display:flex;flex-wrap:wrap;gap:1.1rem;align-items:center;max-width:1080px;margin:0 auto;
+  padding:1rem 1.5rem;border-bottom:1px solid var(--rule);font-size:.85rem;}
+.sl-nav .sl-logo{font-weight:700;color:var(--ink);text-decoration:none;}
+.sl-nav a{color:var(--muted);text-decoration:none;}
+.sl-nav a:hover{color:var(--accent);}
+.sl-nav a.active{color:var(--accent);font-weight:600;}
+</style>
+</head>
+<body>
+<nav class="sl-nav">
+  <a class="sl-logo" href="/">🐝 SwarmLabs</a>
+  <a href="/workbench">Workbench</a>
+  <a href="/report-gallery">V&amp;V Reports</a>
+  <a href="/verify">Verify</a>
+  <a href="/trust-dashboard">Trust Surface</a>
+  <a href="/failure-cases">Failure Cases</a>
+  <a href="/grants-radar">Grants Radar</a><a href="/why-swarmlabs">Why SwarmLabs</a>
+  <a href="/api-reference" class="active">API reference</a>
+  <a href="/pricing">Pricing</a>
+</nav>
+<div class="wrap">
+  <h1>SwarmLabs v3 API reference</h1>
+  <p class="sub">Every schema below is documented from the live contract, not from guesses. The v3 surface
+  is a small, public, computation-first API: scenario &amp; strain catalogs plus four math-backed operations
+  (GP surrogate prediction, growth-curve auto-fit, the VirtualLab Guard uncertainty gate, and UGC strain
+  submission). See the <a href="/verify">verification ledger</a> for the evidence behind every number, and
+  <a href="/why-swarmlabs">why this API exists</a>.</p>
+
+  <div class="toc">
+    <a href="#base">Base &amp; auth</a>
+    <a href="#health">GET /health</a>
+    <a href="#scenarios">GET /scenarios</a>
+    <a href="#strains">GET /strains</a>
+    <a href="#strain">GET /strain/{id}</a>
+    <a href="#media">GET /media</a>
+    <a href="#gate">GET /gate</a>
+    <a href="#gate-key">GET /gate/{key}</a>
+    <a href="#predict">POST /predict</a>
+    <a href="#fit">POST /fit</a>
+    <a href="#guard">POST /guard</a>
+    <a href="#sample">POST /sample</a>
+    <a href="#submit">POST /submit-strain</a>
+    <a href="#try">Live try-it</a>
+  </div>
+
+  <h2 id="base">Base URL, auth, and CORS <span class="badge b-open">open</span></h2>
+  <p class="lead">All routes are mounted under a single base path. The entire <code>/v3/*</code> surface
+  is intentionally public &mdash; no API key is required &mdash; so that agents and static front-ends can
+  call it directly.</p>
+  <table class="fields">
+    <thead><tr><th>Item</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td class="fname">base_url</td><td class="ftype">string</td><td><code>https://swarmlabs.tools/api/v3</code></td></tr>
+      <tr><td class="fname">auth</td><td class="ftype">none</td><td>Every <code>/v3/*</code> route bypasses the key check. Send requests without an <code>Authorization</code> header.</td></tr>
+      <tr><td class="fname">cors</td><td class="ftype">enabled</td><td>Responses carry CORS headers; browser <code>fetch()</code> from any origin works.</td></tr>
+      <tr><td class="fname">content-type</td><td class="ftype">application/json</td><td>POST bodies must be JSON. GET endpoints ignore the body.</td></tr>
+    </tbody>
+  </table>
+  <div class="note"><b>Versioning.</b> This is the <code>3.0.0</code> surface (<code>/health</code> reports <code>api_version</code>). Older <code>/v1/*</code> and <code>/v2/*</code> routes exist for legacy experiments but are not part of this reference and require an API key.</div>
+
+  <h2 id="health">GET /health <span class="badge b-get">get</span></h2>
+  <p class="desc">Liveness and catalog sizes. No auth. Useful as a one-line uptime probe.</p>
+  <pre><code>curl https://swarmlabs.tools/api/v3/health</code></pre>
+  <table class="fields">
+    <thead><tr><th>Response field</th><th>Type</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td class="fname">ok</td><td class="ftype">boolean</td><td>Always <code>true</code> when the handler runs.</td></tr>
+      <tr><td class="fname">api_version</td><td class="ftype">string</td><td>Semantic version, e.g. <code>"3.0.0"</code>.</td></tr>
+      <tr><td class="fname">scenarios</td><td class="ftype">number</td><td>Count of registered scenarios (currently <code>63</code>).</td></tr>
+      <tr><td class="fname">strains</td><td class="ftype">number</td><td>Count of registered strains (currently <code>69</code>).</td></tr>
+      <tr><td class="fname">media</td><td class="ftype">number</td><td>Count of media recipes (currently <code>20</code>).</td></tr>
+      <tr><td class="fname">always_on</td><td class="ftype">boolean</td><td><code>true</code> &mdash; the function is always warm.</td></tr>
+      <tr><td class="fname">gpu</td><td class="ftype">boolean</td><td><code>false</code> &mdash; inference is pure JS, CPU only.</td></tr>
+    </tbody>
+  </table>
+  <pre><code><span class="c">// example response</span>
+{<span class="k">"ok"</span>:<span class="j">true</span>,<span class="k">"api_version"</span>:<span class="s">"3.0.0"</span>,<span class="k">"scenarios"</span>:<span class="j">63</span>,<span class="k">"strains"</span>:<span class="j">69</span>,<span class="k">"media"</span>:<span class="j">20</span>,<span class="k">"always_on"</span>:<span class="j">true</span>,<span class="k">"gpu"</span>:<span class="j">false</span>}</code></pre>
+
+  <h2 id="scenarios">GET /scenarios <span class="badge b-get">get</span></h2>
+  <p class="desc">Full catalog of virtual-experiment scenarios. Each entry carries its published analytic
+  formula, parameter bounds, and literature references &mdash; so a caller can both run the surrogate and
+  check it against ground truth.</p>
+  <div class="warn"><b>Field-value language (known gap).</b> The <code>domain</code> value and scenario
+  <code>published</code> formula text currently return <b>Chinese</b> labels (for example a Chinese phrase
+  meaning "Biology / population dynamics"), and <code>/strains</code> <code>name</code> returns Chinese
+  common names (for example the Chinese name for <i>E. coli</i>), even though this page and the rest of the
+  site are English. The field <i>keys</i> are stable and English. An English-label pass over the
+  scenario/strain catalogs is pending; the frontend pages are already fully English.</div>
+  <pre><code>curl https://swarmlabs.tools/api/v3/scenarios</code></pre>
+  <table class="fields">
+    <thead><tr><th>Response field</th><th>Type</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td class="fname">count</td><td class="ftype">number</td><td>Number of scenarios in <code>scenarios</code>.</td></tr>
+      <tr><td class="fname">scenarios[]</td><td class="ftype">object[]</td><td>Array of scenario records.</td></tr>
+      <tr><td class="fname">.key</td><td class="ftype">string</td><td>Stable identifier, e.g. <code>"bio_logistic"</code>, <code>"microbio_monod"</code>.</td></tr>
+      <tr><td class="fname">.domain</td><td class="ftype">string</td><td>Human-readable domain label.</td></tr>
+      <tr><td class="fname">.dim</td><td class="ftype">number</td><td>Input dimensionality (1, 2, or 3).</td></tr>
+      <tr><td class="fname">.bounds</td><td class="ftype">number[][]</td><td>Per-dimension <code>[lo, hi]</code> ranges for sampling.</td></tr>
+      <tr><td class="fname">.published</td><td class="ftype">string</td><td>The analytic formula used as ground truth.</td></tr>
+      <tr><td class="fname">.refs</td><td class="ftype">string[]</td><td>Literature references behind the model.</td></tr>
+    </tbody>
+  </table>
+  <pre><code><span class="c">// example scenario record</span>
+{<span class="k">"key"</span>:<span class="s">"bio_logistic"</span>,<span class="k">"domain"</span>:<span class="s">"population dynamics"</span>,<span class="k">"dim"</span>:<span class="j">1</span>,
+ <span class="k">"bounds"</span>:[[<span class="j">0</span>,<span class="j">10</span>]],<span class="k">"published"</span>:<span class="s">"Logistic growth L/(1+exp(-k(t-t0)))"</span>,<span class="k">"refs"</span>:[<span class="s">"Verhulst 1838"</span>]}</code></pre>
+
+  <h2 id="strains">GET /strains <span class="badge b-get">get</span></h2>
+  <p class="desc">Strain registry, with optional filtering by taxonomy or substrate. Query parameters are
+  case-insensitive substring matches.</p>
+  <pre><code><span class="c"># all strains</span>
+curl https://swarmlabs.tools/api/v3/strains
+<span class="c"># only Escherichia, by genus query</span>
+curl "https://swarmlabs.tools/api/v3/strains?genus=Escherichia"</code></pre>
+  <table class="fields">
+    <thead><tr><th>Query param</th><th>Type</th><th>Effect</th></tr></thead>
+    <tbody>
+      <tr><td class="fname">genus</td><td class="ftype">string?</td><td>Substring match on <code>taxonomy.genus</code>.</td></tr>
+      <tr><td class="fname">phylum</td><td class="ftype">string?</td><td>Substring match on <code>taxonomy.phylum</code>.</td></tr>
+      <tr><td class="fname">substrate</td><td class="ftype">string?</td><td>Substring match on <code>growth_params.substrate</code>.</td></tr>
+    </tbody>
+  </table>
+  <table class="fields">
+    <thead><tr><th>Response field</th><th>Type</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td class="fname">count</td><td class="ftype">number</td><td>Number of strains after filtering.</td></tr>
+      <tr><td class="fname">strains[]</td><td class="ftype">object[]</td><td>Lightweight strain records.</td></tr>
+      <tr><td class="fname">.id</td><td class="ftype">string</td><td>Stable strain id, e.g. <code>"ecoli_K12_MG1655"</code>.</td></tr>
+      <tr><td class="fname">.name</td><td class="ftype">string</td><td>Common name.</td></tr>
+      <tr><td class="fname">.genus / .species</td><td class="ftype">string</td><td>Taxonomy.</td></tr>
+      <tr><td class="fname">.mu_max</td><td class="ftype">number?</td><td>Max specific growth rate.</td></tr>
+      <tr><td class="fname">.Ks</td><td class="ftype">number?</td><td>Monod half-saturation constant.</td></tr>
+      <tr><td class="fname">.substrate</td><td class="ftype">string</td><td>Preferred carbon source.</td></tr>
+    </tbody>
+  </table>
+  <pre><code><span class="c">// example record</span>
+{<span class="k">"id"</span>:<span class="s">"ecoli_K12_MG1655"</span>,<span class="k">"name"</span>:<span class="s">"E. coli K-12 MG1655"</span>,<span class="k">"genus"</span>:<span class="s">"Escherichia"</span>,
+ <span class="k">"species"</span>:<span class="s">"coli"</span>,<span class="k">"mu_max"</span>:<span class="j">0.81</span>,<span class="k">"Ks"</span>:<span class="j">0.004</span>,<span class="k">"substrate"</span>:<span class="s">"glucose"</span>}</code></pre>
+
+  <h2 id="strain">GET /strain/{id} <span class="badge b-get">get</span></h2>
+  <p class="desc">Full record for one strain: taxonomy, genome, growth parameters, preferred media,
+  growth conditions, and references. The <code>{id}</code> segment must be URL-encoded if it contains spaces.</p>
+  <pre><code>curl https://swarmlabs.tools/api/v3/strain/ecoli_K12_MG1655</code></pre>
+  <table class="fields">
+    <thead><tr><th>Response field</th><th>Type</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td class="fname">strain_id</td><td class="ftype">string</td><td>Same as the path id.</td></tr>
+      <tr><td class="fname">taxonomy</td><td class="ftype">object</td><td><code>domain</code>, <code>phylum</code>, <code>class</code>, <code>genus</code>, <code>species</code>, <code>strain_name</code>, <code>common_name</code>.</td></tr>
+      <tr><td class="fname">genome</td><td class="ftype">object</td><td>Genome metadata (size, gc_content, etc. when available).</td></tr>
+      <tr><td class="fname">growth_params</td><td class="ftype">object</td><td><code>mu_max</code>, <code>Ks</code>, <code>substrate</code>, temperature optimum, pH optimum.</td></tr>
+      <tr><td class="fname">media_preference</td><td class="ftype">object[]</td><td>Recommended media ids with notes.</td></tr>
+      <tr><td class="fname">conditions</td><td class="ftype">object</td><td>Optimal growth conditions.</td></tr>
+      <tr><td class="fname">refs</td><td class="ftype">string[]</td><td>Source literature.</td></tr>
+      <tr><td class="fname">created_at</td><td class="ftype">string</td><td>ISO timestamp of registration.</td></tr>
+    </tbody>
+  </table>
+  <div class="warn"><b>Encoding note.</b> <code>taxonomy.genus</code> is an exact match in some skills; when calling
+  <code>/strains?genus=...</code> the genus value must be URL-encoded (e.g. <code>E.%20coli</code> for "E. coli").</div>
+
+  <h2 id="media">GET /media <span class="badge b-get">get</span></h2>
+  <p class="desc">Media recipe catalog used by fermentation scenarios and strain selection.</p>
+  <pre><code>curl https://swarmlabs.tools/api/v3/media</code></pre>
+  <table class="fields">
+    <thead><tr><th>Response field</th><th>Type</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td class="fname">count</td><td class="ftype">number</td><td>Number of media.</td></tr>
+      <tr><td class="fname">media[]</td><td class="ftype">object[]</td><td>Media records.</td></tr>
+      <tr><td class="fname">.id</td><td class="ftype">string</td><td>Stable id, e.g. <code>"LB"</code>.</td></tr>
+      <tr><td class="fname">.name</td><td class="ftype">string</td><td>Recipe name.</td></tr>
+      <tr><td class="fname">.type</td><td class="ftype">string</td><td><code>"complex"</code> or <code>"minimal"</code>.</td></tr>
+      <tr><td class="fname">.ph</td><td class="ftype">number?</td><td>Typical pH.</td></tr>
+    </tbody>
+  </table>
+  <pre><code>{<span class="k">"id"</span>:<span class="s">"LB"</span>,<span class="k">"name"</span>:<span class="s">"Luria-Bertani Broth"</span>,<span class="k">"type"</span>:<span class="s">"complex"</span>,<span class="k">"ph"</span>:<span class="j">7</span>}</code></pre>
+
+  <h2 id="gate">GET /gate <span class="badge b-get">get</span></h2>
+  <p class="desc">The <b>verification gate ledger</b>. One machine-readable trust decision per published
+  scenario &mdash; <code>PROCEED</code>, <code>PROCEED_WITH_HUMAN_CHECK</code>, or
+  <code>BLOCK_AUTONOMOUS_ACTION</code> &mdash; plus the uncertainty budget behind it. Generated offline by
+  <code>scripts/build_gate_ledger.py</code> and served as a static asset, so an agent can ask "can this
+  scenario be trusted right now?" <b>without running Python</b>. A <code>BLOCK</code> means: do not act
+  autonomously on this scenario until a human or more data intervenes.</p>
+  <pre><code>curl https://swarmlabs.tools/api/v3/gate</code></pre>
+  <table class="fields">
+    <thead><tr><th>Response field</th><th>Type</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td class="fname">total</td><td class="ftype">number</td><td>Published scenarios (currently <code>62</code>).</td></tr>
+      <tr><td class="fname">counts</td><td class="ftype">object</td><td><code>{PASS, MARGINAL, REFUTED, ERROR}</code> verdict counts.</td></tr>
+      <tr><td class="fname">n_blocked</td><td class="ftype">number</td><td>Scenarios whose gate is <code>BLOCK_AUTONOMOUS_ACTION</code>.</td></tr>
+      <tr><td class="fname">blocked</td><td class="ftype">string[]</td><td>Scenario keys that are currently blocked.</td></tr>
+      <tr><td class="fname">policy</td><td class="ftype">object</td><td>The thresholds and the verdict&rarr;gate map (single source of truth).</td></tr>
+      <tr><td class="fname">scenarios</td><td class="ftype">object</td><td>Map <code>key &rarr; {gate, verdict, rationale, uncertainty, report}</code>.</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="gate-key">GET /gate/{key} <span class="badge b-get">get</span></h2>
+  <p class="desc">The same decision for a single scenario, with its <b>first-class uncertainty budget</b>:
+  noise floor, calibration scale &kappa;, single-sided coverage, calibration error and R&sup2;. This is the
+  quantitative honesty contract an agent should read before acting on a prediction.</p>
+  <pre><code>curl https://swarmlabs.tools/api/v3/gate/surrogate_branin</code></pre>
+  <pre><code><span class="c">// example response (abridged)</span>
+{<span class="k">"scenario_key"</span>:<span class="s">"surrogate_branin"</span>,<span class="k">"gate"</span>:<span class="s">"PROCEED"</span>,<span class="k">"verdict"</span>:<span class="s">"PASS"</span>,
+ <span class="k">"uncertainty"</span>:{<span class="k">"noise_floor"</span>:<span class="j">0.03</span>,<span class="k">"nominal_coverage"</span>:<span class="j">0.95</span>,<span class="k">"coverage"</span>:<span class="j">0.95</span>,
+   <span class="k">"calibration_scale_kappa"</span>:<span class="j">1.0</span>,<span class="k">"r2"</span>:<span class="j">0.99</span>},<span class="k">"report"</span>:{...}}</code></pre>
+  <div class="note"><b>Boundary, stated honestly.</b> This endpoint answers the <i>static</i> question
+  "is this scenario trustworthy?". Verifying a model's <i>own arbitrary predictions</i> against the
+  noise-free ground truth requires the engine and is served by the MCP server
+  (<code>mcp/swarmlabs_vv_server.py</code>, tool <code>verify_prediction</code>) &mdash; it is not faked here.</div>
+
+  <h2 id="predict">POST /predict <span class="badge b-post">post</span></h2>
+  <p class="desc">Gaussian-process surrogate prediction. Supply a small training set and one or more query
+  points; receive a posterior mean, standard deviation (uncertainty), and the normalized distance of each
+  query from the training cloud. This is the math behind the <a href="/verify">verification ledger</a>.</p>
+  <pre><code>curl -X POST https://swarmlabs.tools/api/v3/predict \
+  -H 'content-type: application/json' \
+  -d '{"train_x":[[0],[2],[4],[6]],"train_y":[0.1,0.35,0.6,0.78],
+       "query_x":[[1],[3],[5],[7],[9]],"noise_rel":0.03}'</code></pre>
+  <table class="fields">
+    <thead><tr><th>Request field</th><th>Type</th><th>Req?</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td class="fname">train_x</td><td class="ftype">number[][]</td><td class="freq">required</td><td>Rows of training inputs, one row per point, length = dim.</td></tr>
+      <tr><td class="fname">train_y</td><td class="ftype">number[]</td><td class="freq">required</td><td>Training outputs, one per row of <code>train_x</code>.</td></tr>
+      <tr><td class="fname">query_x</td><td class="ftype">number[][]</td><td class="freq">required</td><td>Rows of points to predict.</td></tr>
+      <tr><td class="fname">noise_rel</td><td class="ftype">number?</td><td class="freq">optional</td><td>Relative noise floor (default <code>0.03</code>). Lower = more confident.</td></tr>
+    </tbody>
+  </table>
+  <table class="fields">
+    <thead><tr><th>Response field</th><th>Type</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td class="fname">mean</td><td class="ftype">number[]</td><td>Posterior mean, aligned with <code>query_x</code>.</td></tr>
+      <tr><td class="fname">std</td><td class="ftype">number[]</td><td>Posterior standard deviation (the uncertainty band).</td></tr>
+      <tr><td class="fname">dist</td><td class="ftype">number[]</td><td>Max normalized distance from each query to the training cloud. &gt; 2.0 flags out-of-distribution.</td></tr>
+    </tbody>
+  </table>
+  <div class="note"><b>No scenario needed.</b> Unlike <code>/sample</code>, <code>/predict</code> is scenario-agnostic &mdash; it fits a GP purely from the rows you send. That is what makes it safe to call on real experimental data.</div>
+
+  <h2 id="fit">POST /fit <span class="badge b-post">post</span></h2>
+  <p class="desc">Auto-fit kinetic growth models to time-series OD600 data by grid search, returning R² per
+  model and the best fit. Minimum four <code>[time, OD600]</code> points.</p>
+  <pre><code>curl -X POST https://swarmlabs.tools/api/v3/fit \
+  -H 'content-type: application/json' \
+  -d '{"data":[[1,0.2],[2,0.35],[4,0.5],[8,0.62],[12,0.68]],
+       "models":["logistic","monod"]}'</code></pre>
+  <table class="fields">
+    <thead><tr><th>Request field</th><th>Type</th><th>Req?</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td class="fname">data</td><td class="ftype">number[][]</td><td class="freq">required</td><td>Rows of <code>[time, OD600]</code>; need &ge; 4 points (HTTP 400 otherwise).</td></tr>
+      <tr><td class="fname">models</td><td class="ftype">string[]?</td><td class="freq">optional</td><td>Subset of <code>["logistic","monod"]</code>; default both.</td></tr>
+    </tbody>
+  </table>
+  <table class="fields">
+    <thead><tr><th>Response field</th><th>Type</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td class="fname">n_data</td><td class="ftype">number</td><td>Points received.</td></tr>
+      <tr><td class="fname">x_range / y_range</td><td class="ftype">number[]</td><td><code>[min,max]</code> of time and OD.</td></tr>
+      <tr><td class="fname">results[]</td><td class="ftype">object[]</td><td>Per-model <code>{model, r2, params}</code>, sorted by R² descending.</td></tr>
+      <tr><td class="fname">best_model</td><td class="ftype">string</td><td>Highest-R² model name.</td></tr>
+      <tr><td class="fname">note</td><td class="ftype">string</td><td>Interpretation guide (R²&gt;0.95 excellent; &gt;0.85 usable; &lt;0.85 add data).</td></tr>
+    </tbody>
+  </table>
+  <pre><code>{<span class="k">"n_data"</span>:<span class="j">5</span>,<span class="k">"x_range"</span>:[<span class="j">1</span>,<span class="j">12</span>],<span class="k">"y_range"</span>:[<span class="j">0.2</span>,<span class="j">0.68</span>],
+ <span class="k">"results"</span>:[{<span class="k">"model"</span>:<span class="s">"logistic"</span>,<span class="k">"r2"</span>:<span class="j">0.983</span>,<span class="k">"params"</span>:{<span class="k">"k"</span>:<span class="j">0.65</span>,<span class="k">"L"</span>:<span class="j">0.646</span>,<span class="k">"x0"</span>:<span class="j">2</span>}}],
+ <span class="k">"best_model"</span>:<span class="s">"logistic"</span>,<span class="k">"note"</span>:<span class="s">"R2>0.95 excellent; R2>0.85 usable; R2<0.85 add more data"</span>}</code></pre>
+
+  <h2 id="guard">POST /guard <span class="badge b-post">post</span></h2>
+  <p class="desc">The VirtualLab Guard &mdash; an uncertainty gate that turns a GP fit into a per-point verdict.
+  Each query is labeled <code>pass</code> (inside the trusted region), <code>controlled</code> (high variance
+  but not far away), or <code>reject</code> (out-of-distribution, distance &gt; 2.0). Returns the trusted ratio
+  across all queries.</p>
+  <pre><code>curl -X POST https://swarmlabs.tools/api/v3/guard \
+  -H 'content-type: application/json' \
+  -d '{"scenario":"micro_ecoli_glucose",
+       "train_x":[[1],[2],[4],[8]],"train_y":[0.2,0.35,0.5,0.62],
+       "query_x":[[3],[6],[30]],"noise_rel":0.03}'</code></pre>
+  <table class="fields">
+    <thead><tr><th>Request field</th><th>Type</th><th>Req?</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td class="fname">train_x / train_y</td><td class="ftype">number[][] / number[]</td><td class="freq">required</td><td>Same as <code>/predict</code>.</td></tr>
+      <tr><td class="fname">query_x</td><td class="ftype">number[][]</td><td class="freq">required</td><td>Points to gate.</td></tr>
+      <tr><td class="fname">scenario</td><td class="ftype">string?</td><td class="freq">optional</td><td>Echoed back in the response; no behavioral effect.</td></tr>
+      <tr><td class="fname">noise_rel</td><td class="ftype">number?</td><td class="freq">optional</td><td>Default <code>0.03</code>.</td></tr>
+    </tbody>
+  </table>
+  <table class="fields">
+    <thead><tr><th>Response field</th><th>Type</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td class="fname">scenario</td><td class="ftype">string</td><td>Echo of the request <code>scenario</code> (or <code>"unknown"</code>).</td></tr>
+      <tr><td class="fname">n</td><td class="ftype">number</td><td>Number of queries.</td></tr>
+      <tr><td class="fname">counts</td><td class="ftype">object</td><td><code>{pass, controlled, reject}</code> tally.</td></tr>
+      <tr><td class="fname">trusted_ratio</td><td class="ftype">number</td><td><code>pass / n</code> &mdash; the fraction of queries inside the trusted region.</td></tr>
+      <tr><td class="fname">mean / std</td><td class="ftype">number[]</td><td>GP posterior mean and standard deviation.</td></tr>
+      <tr><td class="fname">status</td><td class="ftype">string[]</td><td>Per-query verdict, aligned with <code>query_x</code>.</td></tr>
+    </tbody>
+  </table>
+  <div class="note"><b>Verdict rule.</b> <code>reject</code> if normalized distance &gt; 2.0; else <code>controlled</code>
+  if <code>std &gt; 3 * stdev(train_y)</code>; else <code>pass</code>. The ledger's live guard panel calls exactly this route.</div>
+
+  <h2 id="sample">POST /sample <span class="badge b-post">post</span></h2>
+  <p class="desc">Generate synthetic data points from a scenario's published ground-truth formula, with
+  optional relative noise. Handy for bootstrapping a surrogate when you have no real measurements yet.</p>
+  <pre><code>curl -X POST https://swarmlabs.tools/api/v3/sample \
+  -H 'content-type: application/json' \
+  -d '{"scenario":"micro_ecoli_glucose","n":3,"seed":1,"noise_rel":0.05}'</code></pre>
+  <table class="fields">
+    <thead><tr><th>Request field</th><th>Type</th><th>Req?</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td class="fname">scenario</td><td class="ftype">string</td><td class="freq">required</td><td>A valid scenario <code>key</code> from <code>/scenarios</code>.</td></tr>
+      <tr><td class="fname">n</td><td class="ftype">number?</td><td class="freq">optional</td><td>Point count, clamped to 1&ndash;200 (default 12).</td></tr>
+      <tr><td class="fname">seed</td><td class="ftype">number?</td><td class="freq">optional</td><td>Deterministic RNG seed (default 1).</td></tr>
+      <tr><td class="fname">noise_rel</td><td class="ftype">number?</td><td class="freq">optional</td><td>Relative noise (default scenario <code>noise</code> or 0.05).</td></tr>
+    </tbody>
+  </table>
+  <table class="fields">
+    <thead><tr><th>Response field</th><th>Type</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td class="fname">scenario</td><td class="ftype">string</td><td>Echo of the request scenario.</td></tr>
+      <tr><td class="fname">n</td><td class="ftype">number</td><td>Points generated.</td></tr>
+      <tr><td class="fname">has_evaluator</td><td class="ftype">boolean</td><td>Whether a ground-truth formula exists for the scenario.</td></tr>
+      <tr><td class="fname">points[]</td><td class="ftype">object[]</td><td><code>{x:number[], y:number}</code> samples.</td></tr>
+    </tbody>
+  </table>
+  <pre><code><span class="c">// example response (scenario has a ground-truth evaluator)</span>
+{<span class="k">"scenario"</span>:<span class="s">"micro_ecoli_glucose"</span>,<span class="k">"n"</span>:<span class="j">3</span>,<span class="k">"has_evaluator"</span>:<span class="j">true</span>,
+ <span class="k">"points"</span>:[{<span class="k">"x"</span>:[<span class="j">2.365</span>],<span class="k">"y"</span>:<span class="j">0.798</span>},{<span class="k">"x"</span>:[<span class="j">5.043</span>],<span class="k">"y"</span>:<span class="j">0.826</span>},{<span class="k">"x"</span>:[<span class="j">0.506</span>],<span class="k">"y"</span>:<span class="j">0.793</span>}]}</code></pre>
+  <div class="warn"><b>Error shape.</b> If the scenario has no evaluator, the route returns
+  <code>{"error":"no ground-truth evaluator for scenario: X (supply train_x/train_y to /predict)"}</code> with HTTP 501. Use <code>/predict</code> instead when you bring your own data.</div>
+
+  <h2 id="submit">POST /submit-strain <span class="badge b-post">post</span></h2>
+  <p class="desc">User-generated strain submission. Records are stored for review (<code>status:
+  "pending_review"</code>) and are not immediately merged into the public registry.</p>
+  <pre><code>curl -X POST https://swarmlabs.tools/api/v3/submit-strain \
+  -H 'content-type: application/json' \
+  -d '{"strain_id":"my_new_strain","common_name":"My strain",
+       "genus":"Myco","species":"bacter","mu_max":0.9,"Ks":0.01,
+       "substrate":"glucose","user_id":"anonymous"}'</code></pre>
+  <table class="fields">
+    <thead><tr><th>Request field</th><th>Type</th><th>Req?</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td class="fname">strain_id</td><td class="ftype">string</td><td class="freq">required</td><td>Unique id; duplicates return HTTP 409.</td></tr>
+      <tr><td class="fname">common_name</td><td class="ftype">string</td><td class="freq">required</td><td>Display name.</td></tr>
+      <tr><td class="fname">genus / species</td><td class="ftype">string</td><td class="freq">required</td><td>Taxonomy.</td></tr>
+      <tr><td class="fname">phylum / domain</td><td class="ftype">string?</td><td class="freq">optional</td><td>Taxonomy; <code>domain</code> defaults to <code>"Bacteria"</code>.</td></tr>
+      <tr><td class="fname">mu_max / Ks</td><td class="ftype">number?</td><td class="freq">optional</td><td>Kinetic params.</td></tr>
+      <tr><td class="fname">substrate</td><td class="ftype">string?</td><td class="freq">optional</td><td>Preferred carbon source.</td></tr>
+      <tr><td class="fname">genome_size / description</td><td class="ftype">? </td><td class="freq">optional</td><td>Extra metadata.</td></tr>
+      <tr><td class="fname">user_id</td><td class="ftype">string?</td><td class="freq">optional</td><td>Submitter tag (defaults <code>"anonymous"</code>).</td></tr>
+    </tbody>
+  </table>
+  <table class="fields">
+    <thead><tr><th>Outcome</th><th>HTTP</th><th>Body</th></tr></thead>
+    <tbody>
+      <tr><td>Accepted</td><td>200</td><td>Stored with <code>status:"pending_review"</code>, <code>submitted_at</code> timestamp.</td></tr>
+      <tr><td>Missing fields</td><td>400</td><td><code>{"error":"Missing: strain_id, common_name, genus, species"}</code></td></tr>
+      <tr><td>Duplicate</td><td>409</td><td><code>{"status":"duplicate","message":"Strain X already submitted"}</code></td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="try">Live try-it <span class="badge b-open">browser</span></h2>
+  <p class="lead">Calls the real API from your browser. Edit the JSON, hit run, and read the raw response. This
+  is the same route the verification ledger uses &mdash; try a query far outside the training range (e.g.
+  <code>30</code>) to see a <code>reject</code>.</p>
+  <div class="try">
+    <textarea id="tryIn">{
+  "scenario": "micro_ecoli_glucose",
+  "train_x": [[1],[2],[4],[8]],
+  "train_y": [0.2,0.35,0.5,0.62],
+  "query_x": [[3],[6],[30]],
+  "noise_rel": 0.03
+}</textarea>
+    <button onclick="runTry()">Run POST /guard</button>
+    <pre id="tryOut">// response appears here</pre>
+  </div>
+
+  <div class="cta">
+    <a class="p1" href="/verify">See the verification ledger</a>
+    <a class="p2" href="/why-swarmlabs">Why this API exists</a>
+  </div>
+
+  <p class="foot">SwarmLabs v3 API &middot; public, computation-first &middot; <a href="/">home</a></p>
+</div>
+
+<script>
+async function runTry(){
+  const out = document.getElementById('tryOut');
+  out.className = '';
+  out.textContent = 'calling /api/v3/guard ...';
+  let body;
+  try { body = JSON.parse(document.getElementById('tryIn').value); }
+  catch(e){ out.className = 'tryErr'; out.id='tryOut'; out.textContent = 'JSON parse error: '+e.message; return; }
+  try {
+    const r = await fetch('https://swarmlabs.tools/api/v3/guard', {
+      method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify(body)
+    });
+    const j = await r.json();
+    out.textContent = JSON.stringify(j, null, 2);
+  } catch(e){
+    out.className = 'tryErr'; out.id='tryOut';
+    out.textContent = 'request failed: '+e.message+'\n(If this is a CORS/network error, the live endpoint may be unreachable from your network.)';
+  }
+}
+</script>
+</body>
+</html>

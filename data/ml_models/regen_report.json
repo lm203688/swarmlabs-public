@@ -1,0 +1,61 @@
+{
+ "seed": 4242,
+ "source_files": {
+  "qm9_full": "data\\reference_benchmarks\\quantum_chemistry\\qm9_full_130831.json",
+  "tox21": "data\\reference_benchmarks\\toxicology\\tox21_labeled.json"
+ },
+ "qm9": {
+  "n_molecules": 130831,
+  "n_features": 6,
+  "targets": {
+   "dipole": {
+    "unit": "D",
+    "rf_mae": 0.941125,
+    "rf_rmse": 1.281925,
+    "rf_rel_err_vs_std": 0.62662,
+    "rf_rel_err_vs_mean": 0.349937,
+    "gbr_mae": 0.94437
+   },
+   "homo": {
+    "unit": "eV",
+    "rf_mae": 0.389444,
+    "rf_rmse": 0.537182,
+    "rf_rel_err_vs_std": 0.650835,
+    "rf_rel_err_vs_mean": 0.059635,
+    "gbr_mae": 0.391732
+   },
+   "lumo": {
+    "unit": "eV",
+    "rf_mae": 0.73678,
+    "rf_rmse": 0.911931,
+    "rf_rel_err_vs_std": 0.580558,
+    "rf_rel_err_vs_mean": 2.294713,
+    "gbr_mae": 0.744845
+   },
+   "gap": {
+    "unit": "eV",
+    "rf_mae": 0.788326,
+    "rf_rmse": 0.966596,
+    "rf_rel_err_vs_std": 0.616,
+    "rf_rel_err_vs_mean": 0.115058,
+    "gbr_mae": 0.797682
+   },
+   "alpha": {
+    "unit": "Bohr^3",
+    "rf_mae": 2.002336,
+    "rf_rmse": 2.875209,
+    "rf_rel_err_vs_std": 0.243505,
+    "rf_rel_err_vs_mean": 0.026612,
+    "gbr_mae": 2.11698
+   },
+   "zpve": {
+    "unit": "Hartree",
+    "rf_mae": 0.036671,
+    "rf_rmse": 0.046645,
+    "rf_rel_err_vs_std": 0.040671,
+    "rf_rel_err_vs_mean": 0.009052,
+    "gbr_mae": 0.037042
+   }
+  }
+ }
+}

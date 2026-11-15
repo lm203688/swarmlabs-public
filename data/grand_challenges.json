@@ -1,0 +1,128 @@
+{
+  "meta": {
+    "name": "SwarmLabs Grand Challenge Ledger",
+    "version": "1.0",
+    "created": "2026-09-05",
+    "purpose": "Track world-hard-problem breakthroughs by AI in math/physics/experimental science; score what SwarmLabs can realistically attack; feed weekly_iteration_report.",
+    "update_cadence": "weekly (via scripts/challenge_tracker.py in weekly ops)",
+    "evidence_rule": "Every milestone entry MUST carry a primary-source URL. No milestone without a link."
+  },
+  "verified_milestones": [
+    {
+      "date": "2026-09-04",
+      "actor": "Anthropic (Tianyi Peng / Prove2Me)",
+      "event": "First end-to-end Lean formalization of Fermat's Last Theorem: 11 days, ~13M lines Lean, 30,300 theorems proved / 29,500 used, only 3 standard axioms, ~6B output tokens, internal model ~Claude Fable 5.1. Kevin Buzzard independently compiled and verified.",
+      "nature": "FORMALIZATION of a known 1995 proof (Wiles) — NOT new math",
+      "signal": "Autoformalization of modern math literature is now engineering-feasible; verification of AI-generated math becomes industrial.",
+      "sources": [
+        "https://www.anthropic.com/research/formalizing-fermats-last-theorem",
+        "https://github.com/anthropics/fermats-last-theorem",
+        "https://xenaproject.wordpress.com/"
+      ]
+    },
+    {
+      "date": "2026-05-21",
+      "actor": "Google DeepMind — AlphaProof Nexus",
+      "event": "Solved 9 OPEN Erdős problems (2 open for 56 years) + 44 OEIS conjectures + 1 15-year algebraic geometry problem, all Lean-verified. Cost $200-600 per problem.",
+      "nature": "NEW MATH — genuinely open problems solved, machine-checked",
+      "signal": "Open research-level problem solving is now affordable; success concentrated where Mathlib is mature (combinatorics/number theory).",
+      "sources": [
+        "https://baike.baidu.com/item/AlphaProof/67913028",
+        "https://www.c114pro.com/ai/168254.html"
+      ]
+    },
+    {
+      "date": "2026-03",
+      "actor": "Math Inc — Gauss",
+      "event": "Formalized Viazovska's Fields-Medal sphere-packing proofs (E8 d=8, Leech d=24) in ~2 weeks; d=24 alone ~180k lines. CAUGHT AND FIXED 2 SUBTLE ERRORS in the original human arguments.",
+      "nature": "FORMALIZATION + error discovery in published human proof",
+      "signal": "Direct precedent for SwarmLabs' strongest opening: machines finding real errors in PUBLISHED results. In math the verifier is Lean; in experimental science the verifier is ground-truth replication — our engine's home turf.",
+      "sources": [
+        "https://www.c114pro.com/ai/168254.html"
+      ]
+    },
+    {
+      "date": "2026-09-03",
+      "actor": "OpenAI — GPT-6 Astra",
+      "event": "FrontierMath Tier 4 at 97.6% (benchmark saturated; Epoch AI notes OpenAI funded the benchmark and holds exclusive access to some items). Internal model produced 10 formal results for ~$2000 tokens in Aug.",
+      "nature": "BENCHMARK SCORE — not independently re-verified deliverables",
+      "signal": "Benchmark scores and verifiable deliverables are different currencies; verifiable artifacts (Lean files, replicated experiments) carry more trust weight.",
+      "sources": [
+        "https://www.toutiao.com/article/7681914740818231851/"
+      ]
+    }
+  ],
+  "candidate_challenges": [
+    {
+      "id": "GC-01",
+      "name": "Published-Result Refutation Engine (实验科学版 Gauss)",
+      "thesis": "Gauss caught 2 real errors in a Fields-Medal proof by formal re-verification. The experimental-science analog: re-run published kinetics/growth/physics results through our virtual experiment engine and machine-check them against the paper's own data. Errors found = headline-grade evidence, zero lab cost.",
+      "assets_we_already_have": [
+        "engine/paper_validation.py: 14 papers / 18 benchmarks / 130 data points, mean r=0.957 (3 PASS / 10 MARGINAL / 0 FAIL)",
+        "52 microbiology scenarios w/ published formulas + references (data/microbiology_scenarios.json)",
+        "UQ machinery (GP surrogate, coverage calibration, noise-floor 3%)"
+      ],
+      "upgrade_needed": "Flip the harness from 'replicate' to 'adversarial audit': for each paper, formally flag which fitted parameters are UNIDENTIFIABLE, which predictions have CI overlapping the paper's error bars, and which conclusions are NOT SUPPORTED at stated noise floors. Output a machine-checkable 'audit certificate' per paper.",
+      "verifiability": "HIGH — conclusions are computationally re-checkable from published data",
+      "cost": "near-zero (pure numpy, local)",
+      "novelty": "HIGH — nobody is doing 'refutation-as-a-service' for experimental papers; the FLT moment makes verification bottlenecks a mainstream story",
+      "fit_with_swarmlabs": "DIRECT — this is our UQ moat pointed at a real target",
+      "first_action": "Add an AUDIT mode to paper_validation.py that emits explicit refutation flags (identifiability failures / coverage violations) instead of only r-scores; start with the 10 MARGINAL benchmarks already in hand.",
+      "status": "READY_TO_START"
+    },
+    {
+      "id": "GC-02",
+      "name": "Lean-for-Lab-Claims: machine-checkable certificates for AI-proposed experiments",
+      "thesis": "FLT proves verification of AI-generated math is the bottleneck story of 2026. The same gap exists in experimental science: agents now PROPOSE experiments, but nothing machine-checks whether a proposed design can actually support its claimed conclusion (identifiability, power, coverage). Our guard + UQ is exactly that checker.",
+      "assets_we_already_have": [
+        "engine/guard.py (three-state gate, OOD checks)",
+        "sdk.py / validation_mesh / mirror_run parity",
+        "Agent Skills distribution channel (K-Dense-AI model, 163-skill marketplace reference)"
+      ],
+      "upgrade_needed": "Package 'experiment-claim verification' as a skill/MCP tool: agent proposes experiment -> tool returns VERIFIED/REFUTED/UNDERDETERMINED with coverage math. Machine-checkable, like a Lean kernel verdict, but for designs.",
+      "verifiability": "HIGH — verdict is computed, not asserted",
+      "cost": "low",
+      "novelty": "HIGH — 'verification layer for agentic science' rides the exact 2026 narrative (trust in agentic workflows) that Catalyst Grant theme names",
+      "fit_with_swarmlabs": "DIRECT — reuses our existing agent-infra work + aishield MCP distribution muscle",
+      "first_action": "Wrap engine/guard.py + surrogate coverage check into one MCP tool 'verify_experiment_claim' with a three-verdict output schema; ship as aishield-adjacent skill.",
+      "status": "READY_TO_START"
+    },
+    {
+      "id": "GC-03",
+      "name": "Identifiability of microbial kinetics parameters (Monod/Haldane/Contois)",
+      "thesis": "Well-posed open-ish computational question: for which experimental designs are Monod-family parameters structurally/practically unidentifiable? Publishable as a benchmark paper; directly extends our 52-scenario coverage.",
+      "assets_we_already_have": [
+        "engine/microbiology_full.py (52 scenarios, GP convergence 52/52)",
+        "strain registry (21 strains) + media database (20)"
+      ],
+      "upgrade_needed": "Profile-based identifiability analysis (Fisher information / profile likelihood) per scenario; emit an identifiability atlas as open data.",
+      "verifiability": "MEDIUM-HIGH",
+      "cost": "low",
+      "novelty": "MEDIUM — solid but incremental; good paper, not a 'world problem'",
+      "fit_with_swarmlabs": "DIRECT",
+      "first_action": "Add profile-likelihood identifiability scoring to microbiology_full.py; run over 52 scenarios; publish atlas JSON.",
+      "status": "QUEUED"
+    },
+    {
+      "id": "GC-04",
+      "name": "Formal math (Lean) proof race",
+      "thesis": "Chase FLT-style formalization or open Erdős problems ourselves.",
+      "verdict": "DO_NOT_PURSUE",
+      "reason": "Needs frontier-scale models (6B output tokens for FLT), Lean/mathlib infra and multi-agent proof harnesses. Our stack is pure numpy on a 32GB no-GPU box. Zero probability of contributing at the frontier; would burn focus.",
+      "status": "REJECTED"
+    },
+    {
+      "id": "GC-05",
+      "name": "Physics grand challenges (fusion, materials discovery, protein design)",
+      "thesis": "A-Lab-style autonomous materials discovery or protein design.",
+      "verdict": "DO_NOT_PURSUE",
+      "reason": "Needs real labs, DFT/MD simulation stacks and domain teams we do not have. Our engine covers heat1d-class PDE toy problems only. Watch, do not enter.",
+      "status": "REJECTED"
+    }
+  ],
+  "tracking_gaps_identified": [
+    "Tech Radar domains had NO AI4Math / formal-verification lane — milestone above (Sept 4 FLT) was caught by user, not by our radar. FIX: add challenge_tracker to weekly ops.",
+    "No problem-ledger discipline: competitor monitoring tracks products, not breakthroughs. This ledger adds the missing lane.",
+    "GEO opportunity: GC-01/GC-02 outputs (audit certificates, error findings) are exactly the kind of verifiable artifacts LLM engines cite. Each refutation finding = citable content."
+  ]
+}

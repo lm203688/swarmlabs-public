@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0",
+  "description": "参数-结果关联发现库 — 基于匿名化实验数据积累",
+  "last_updated": "2026-07-25T00:15:00+08:00",
+  "data_source": "SwarmLabs演示阶段测试数据 + 药厂研发总监验收报告",
+  "total_records_analyzed": 5,
+  "note": "当前数据量极小（仅演示数据），以下关联为初步模式识别，需在获得真实用户数据后验证和扩充。此文件为累积更新文件，后续分析追加新发现。",
+  "correlations": [
+    {
+      "id": "CORR-001",
+      "engine": "suzuki",
+      "engine_category": "organic_synthesis",
+      "parameters": {
+        "temperature_C": {"range_tested": [80], "type": "continuous"},
+        "catalyst_loading": {"range_tested": [1], "type": "continuous", "unit": "mol%"},
+        "time_h": {"range_tested": [4], "type": "continuous", "unit": "hours"}
+      },
+      "result_metric": "yield",
+      "result_unit": "%",
+      "observations": [
+        "同一参数组合5次运行，结果为0.00%、7.04%、7.04%、7.04%、7.04%",
+        "首次运行返回0.00%（可能为API冷启动或引擎初始化问题）",
+        "后续4次稳定在7.04%，不确定度±4.65~6.00，置信度86%-94%",
+        "7.04%产率远低于Suzuki偶联文献典型范围（60-95%）"
+      ],
+      "hypothesis": "当前引擎模型可能存在系统性偏差或使用了不合理的物理模型参数，导致产率预测值偏低",
+      "action_required": "P0: 校准Suzuki引擎模型参数，确保产率预测在文献合理范围内",
+      "discovered_at": "2026-07-25"
+    },
+    {
+      "id": "CORR-002",
+      "engine": "drug_release",
+      "engine_category": "pharmaceutics",
+      "parameters": {
+        "formulation": {"type": "categorical", "options": ["tablet_sr"]},
+        "polymer_type": {"type": "categorical", "options": ["HPMC"]},
+        "polymer_ratio": {"type": "continuous", "unit": "%"}
+      },
+      "result_metric": "cumulative_release",
+      "result_unit": "%",
+      "observations": [
+        "验收测试中，系统仅返回单一数值（82.02%或88.7%），缺少完整时间序列溶出曲线",
+        "制药用户需要0.5h-24h多时间点数据用于Korsmeyer-Peppas模型拟合",
+        "API端点v2/run/drug_release理论上支持完整曲线，但前端ChartRenderer.renderDissolution方法缺失导致图表渲染失败"
+      ],
+      "hypothesis": "后端模型已具备生成完整溶出曲线的能力，问题出在前端数据展示层",
+      "action_required": "P0: 修复ChartRenderer.renderDissolution方法，确保完整溶出曲线数据正确渲染为ECharts折线图",
+      "discovered_at": "2026-07-25"
+    },
+    {
+      "id": "CORR-003",
+      "engine": "dissolution_usp",
+      "engine_category": "pharmaceutics",
+      "parameters": {
+        "apparatus": {"type": "categorical", "options": ["USP_I", "USP_II", "USP_IV"]},
+        "rpm": {"type": "continuous", "unit": "rpm"},
+        "medium_volume": {"type": "continuous", "unit": "mL"},
+        "tablets": {"type": "integer"}
+      },
+      "result_metric": "dissolution_profile",
+      "result_unit": "% vs time",
+      "observations": [
+        "验收测试中6片平行实验R²=0.9917（First-Order模型），f2=78.31（处方间对比）",
+        "f2>50表示处方具有生物等效性，78.31属于良好水平",
+        "IVIVC Level A分析R²=0.9964，表明体内外相关性优秀",
+        "这些数据证明药学引擎后端计算逻辑基本正确"
+      ],
+      "hypothesis": "药学引擎模型精度满足实际需求（R²>0.99），瓶颈在前端展示和用户引导",
+      "action_required": "P1: 将药学引擎的高精度结果有效传递给用户，通过可视化+解释增强信任",
+      "discovered_at": "2026-07-25"
+    }
+  ],
+  "cross_engine_patterns": [
+    {
+      "pattern": "引擎模型精度与展示能力不匹配",
+      "description": "后端计算（如f2=78.31, R²=0.9964）质量较高，但前端展示层存在严重缺陷（图表渲染失败、单位错误、数据不完整）",
+      "recommendation": "优先修复前端数据展示层，而非后端模型"
+    },
+    {
+      "pattern": "文献搜索与引擎领域脱节",
+      "description": "文献搜索API（Crossref/PubMed）缺少引擎类型语义映射，导致搜索结果与实验领域不匹配",
+      "recommendation": "建立引擎→领域关键词映射表，搜索时自动限定领域范围"
+    }
+  ]
+}

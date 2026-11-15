@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://swarmlabs.tools/svp/schema/formal_invariant.json",
+  "title": "SVP Formal Invariant",
+  "description": "A mathematically formal invariant declared by the SwarmLabs Verification Protocol. Unlike Gate (executable per-scenario predicate), Invariant is a build-level promise that must be provable in at least one of: Python semantic channel, Lean 4 definition channel, or SMT-LIB solver channel.",
+  "svp": "0.5",
+  "type": "object",
+  "required": ["id", "name", "statement", "predicate_python", "rationale"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^INV-[0-9]+$",
+      "description": "Global unique identifier, e.g. INV-1. INV-1..INV-5 are reserved for SVP v0.5 core promises."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120,
+      "description": "Human-readable name, e.g. 'Honesty Conservation'"
+    },
+    "statement": {
+      "type": "string",
+      "minLength": 20,
+      "description": "Natural-language mathematical statement (for papers and audits)"
+    },
+    "predicate_python": {
+      "type": "object",
+      "description": "Python semantic channel",
+      "required": ["module", "function"],
+      "properties": {
+        "module": {"type": "string", "description": "e.g. 'engine.formal_invariants'"},
+        "function": {"type": "string", "description": "Callable returning (holds: bool, note: str)"}
+      }
+    },
+    "predicate_lean": {
+      "type": "object",
+      "description": "Lean 4 definition channel (optional in v0.5, required in v1.0)",
+      "properties": {
+        "file": {"type": "string", "description": "e.g. 'svp/lean/Invariants.lean'"},
+        "definition": {"type": "string", "description": "Lean 4 def name"},
+        "theorem": {"type": "string", "description": "Lean 4 theorem name (proof sketch or complete proof)"}
+      }
+    },
+    "predicate_smt": {
+      "type": "object",
+      "description": "SMT-LIB v2 solver channel (optional in v0.5)",
+      "properties": {
+        "file": {"type": "string", "description": "e.g. 'svp/smt/invariants.smt2'"},
+        "assertions": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "SMT-LIB assertion IDs (declare-const / assert pairs)"
+        }
+      }
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 30,
+      "description": "Business justification for why this invariant is P0 for SVP"
+    },
+    "violations_detected_at": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Optional: historical dates where violations were detected (audit trail)"
+    }
+  },
+  "examples": [
+    {
+      "id": "INV-1",
+      "name": "Honesty Conservation",
+      "statement": "For every V&V build: sum(PASS+MARGINAL+REFUTED+ERROR) == total scenarios. No scenario may be silently dropped.",
+      "predicate_python": {
+        "module": "engine.formal_invariants",
+        "function": "_inv1_honesty"
+      },
+      "predicate_lean": {
+        "file": "svp/lean/Invariants.lean",
+        "definition": "invariant_honesty_conversation",
+        "theorem": "inv1_example_valid"
+      },
+      "rationale": "Root cause of the 2026-09-23 build truncation incident where missing rdkit silently dropped 2 scenarios including the only REFUTED one."
+    }
+  ]
+}

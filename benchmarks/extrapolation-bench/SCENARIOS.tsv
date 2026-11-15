@@ -1,0 +1,3 @@
+scenario_key	domain	dim	g1_verdict	g2_verdict	g3_verdict	notes
+# (no per-scenario data extracted from generalization_bench.json)
+# See reports/upgrade/extrapolation_stress_73_of_95_narrative.md for full 82-row narrative.

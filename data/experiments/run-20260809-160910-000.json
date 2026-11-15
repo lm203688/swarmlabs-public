@@ -1,0 +1,20 @@
+{
+  "run_id": "run-20260809-160910-000",
+  "created_at": "2026-08-09T16:09:10",
+  "meta": {
+    "name": "surrogate-active-demo",
+    "objective": "max f(x)=sin(x)+0.1x",
+    "surrogate": "ridge(linear+quad)",
+    "regime": "1D-toy"
+  },
+  "metrics": {
+    "n_observed": 3,
+    "surrogate_pred_at_best": 1.0819,
+    "true_at_best": 1.1621,
+    "regret": 0.0802
+  },
+  "artifacts": [
+    "candidates_linspace",
+    "initial_obs_3"
+  ]
+}

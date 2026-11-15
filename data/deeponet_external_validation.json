@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "generated_at": "2026-10-13T01:33:17Z",
+  "module": "engine/neural_operator.py (DeepONetSurrogate)",
+  "criteria": {
+    "Heat equation": "mean_rel_L2_error < 0.10",
+    "Wave equation": "mean_rel_L2_error < 0.10",
+    "Linear integral": "mean_rel_L2_error < 0.15"
+  },
+  "summary": {
+    "pass": 3,
+    "fail": 0,
+    "error": 0,
+    "total_elapsed_sec": 0.73
+  },
+  "results": [
+    {
+      "problem": "Heat equation: u(x,1) = a*exp(-π²)*sin(πx), input: a*sin(πx)",
+      "n_train": 20,
+      "n_test": 5,
+      "grid_size": 30,
+      "mean_rel_l2_error": 0.017492,
+      "max_rel_l2_error": 0.02471,
+      "pass": true,
+      "per_sample_errors": [
+        0.01246,
+        0.020246,
+        0.02471,
+        0.017506,
+        0.012537
+      ],
+      "elapsed_sec": 0.25
+    },
+    {
+      "problem": "Wave equation: u(x,0.25) = cos(π/4)*sin(πx+φ), input: sin(πx+φ)",
+      "n_train": 20,
+      "n_test": 5,
+      "grid_size": 30,
+      "mean_rel_l2_error": 0.081662,
+      "max_rel_l2_error": 0.125362,
+      "pass": true,
+      "per_sample_errors": [
+        0.125362,
+        0.086904,
+        0.013568,
+        0.061977,
+        0.120498
+      ],
+      "elapsed_sec": 0.24
+    },
+    {
+      "problem": "Linear integral operator: g[f](x) = ∫₀¹ f(ξ)*exp(-|x-ξ|)dξ",
+      "n_train": 20,
+      "n_test": 5,
+      "grid_size_input": 50,
+      "grid_size_output": 20,
+      "mean_rel_l2_error": 0.060802,
+      "max_rel_l2_error": 0.128071,
+      "pass": true,
+      "per_sample_errors": [
+        0.073566,
+        0.030356,
+        0.011887,
+        0.128071,
+        0.060128
+      ],
+      "elapsed_sec": 0.24
+    }
+  ]
+}

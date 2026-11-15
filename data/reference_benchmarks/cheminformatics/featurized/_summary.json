@@ -1,0 +1,22 @@
+{
+  "chembl_lipophilicity_slim.json": {
+    "featurized": 4200,
+    "skipped": 0,
+    "kb": 2415.8
+  },
+  "bace_slim.json": {
+    "featurized": 1513,
+    "skipped": 0,
+    "kb": 986.5
+  },
+  "freesolv_slim.json": {
+    "featurized": 642,
+    "skipped": 0,
+    "kb": 258.7
+  },
+  "esol_delaney_slim.json": {
+    "featurized": 1128,
+    "skipped": 0,
+    "kb": 476.7
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "_note": "数据飞轮监测源清单（公开、合规边界内）。仅包含公开免费、可不经登录/付费访问的科研趋势/研究空白来源。任何接入都须遵守目标站点的 robots/ToS，不破付费墙、不抓私有数据。本清单为配置模板，实际 fetch 由各源适配器实现。",
+  "sources": [
+    {
+      "id": "maoyan_public_fund_trends",
+      "name": "猫眼课题宝·公开基金趋势页",
+      "type": "public_trend_page",
+      "access": "public_free_only",
+      "tos_note": "仅公开免费页；不登录、不付费、不抓私有结题/在研数据。",
+      "extract_to": ["research_gaps", "trends"],
+      "enabled": true
+    },
+    {
+      "id": "maoyan_public_topic_hot",
+      "name": "猫眼课题宝·公开热点选题页",
+      "type": "public_trend_page",
+      "access": "public_free_only",
+      "tos_note": "仅公开免费页；遵守其 robots。",
+      "extract_to": ["trends", "cross_domain_bridges"],
+      "enabled": true
+    },
+    {
+      "id": "openalex_concepts",
+      "name": "OpenAlex 概念/研究领域趋势（已在使用）",
+      "type": "open_api",
+      "access": "open_api",
+      "tos_note": "OpenAlex 开放 API，已用于 47k 实体库。",
+      "extract_to": ["trends", "research_gaps"],
+      "enabled": true
+    }
+  ],
+  "policy": {
+    "dedup_by": "id",
+    "min_signal": 1,
+    "merge_target": "data/entity_store.json -> insights",
+    "cadence": "随每日飞轮（低频，避免对公开源造成压力）"
+  }
+}

@@ -1,0 +1,86 @@
+name: lean-invariants
+
+# Lean 4 编译门禁：svp/lean/Invariants.lean 必须在 Mathlib 上真正编译通过。
+#
+# 三条独立验证通道中的第三条：
+#   1. Python 语义：engine/formal_invariants.py --check（本地 + honesty-gate）
+#   2. SMT-LIB / Z3：svp/smt/invariants.smt2 + scripts/verify_smt.py（本地 + honesty-gate）
+#   3. Lean 4 tactic proof：svp/lean/Invariants.lean（本 workflow）
+#
+# 为什么单独一个 workflow：
+# - Lean + Mathlib 下载量 800MB+，Mathlib 首次 build 30-60 分钟。
+#   放进 honesty-gate 会把那个 10 分钟门禁拖成 1 小时。
+# - Lean 是「协议规范的独立编译器验证」，不是本地开发门禁。
+#   本地开发用 Python + Z3 两个通道就够了。
+# - 使用 Lean 官方 leanprover/setup-lean action，有 sccache + toolchain cache，
+#   第二次跑只需 1-2 分钟。
+#
+# 手动重跑：Settings → Actions → Lean invariants → Run workflow。
+# 触发条件：svp/lean/ 或 engine/formal_invariants.py 或 svp/smt/ 变更时。
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "svp/lean/**"
+      - "svp/smt/**"
+      - "engine/formal_invariants.py"
+      - ".github/workflows/lean-invariants.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "svp/lean/**"
+      - "svp/smt/**"
+      - "engine/formal_invariants.py"
+      - ".github/workflows/lean-invariants.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  lean-verify:
+    name: Lean 4 tactic proof
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup Lean toolchain
+        uses: leanprover/setup-lean@v4
+        with:
+          toolchain: lean-4.34.1
+          mathlib: v4.34.1
+          cache-compiler: true
+
+      - name: Build svp/lean 库
+        working-directory: svp/lean
+        run: lake build
+
+      - name: Verify Invariants.lean compiled (no errors)
+        working-directory: svp/lean
+        run: |
+          # `lake build` already fails the job on any error/warning-as-error.
+          # This step just prints what actually got compiled, for the log.
+          ls -la .lake/packages/ | head -20
+          echo "---"
+          lake exe lean Invariants
+          echo "---"
+          # Cross-check that the module actually exists as a compiled artifact.
+          find .lake -name "svp_invariants*" -o -name "Invariants*.olean" 2>/dev/null | head -20
+
+      - name: Print compile summary
+        if: always()
+        working-directory: svp/lean
+        run: |
+          echo "=== Lean 4 编译报告 ==="
+          echo "Toolchain: lean-4.34.1"
+          echo "Mathlib: v4.34.1"
+          echo "Roots: Invariants"
+          echo ""
+          echo "如 build 成功，本 workflow 绿。"
+          echo "如失败，Invariants.lean 有 tactic error——修好再提交。"

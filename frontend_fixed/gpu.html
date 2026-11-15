@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="SwarmLabs WebGPU inference: real GP (Matérn kernel) demo and 10 trained MLP surrogate checkpoints loaded from data/small_models. Browser-side WebGPU compute with CPU fallback.">
+<link rel="canonical" href="https://swarmlabs.tools/gpu">
+<title>SwarmLabs · WebGPU Inference (GP + Real Checkpoints)</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0b1220;--panel:#111827;--muted:#94a3b8;--txt:#e5e7eb;--green:#10b981;--blue:#3b82f6;--orange:#f59e0b;--red:#f87171;--border:#1f2937}
+body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:24px;min-height:100vh;line-height:1.5}
+.container{max-width:960px;margin:0 auto}
+h1{font-size:22px;margin-bottom:8px;background:linear-gradient(90deg,var(--green),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+.subtitle{color:var(--muted);font-size:14px;margin-bottom:16px}
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:20px;margin-bottom:16px}
+.panel h2{font-size:15px;margin-bottom:12px;color:var(--green)}
+.status-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.status-item{background:rgba(0,0,0,0.2);padding:10px 14px;border-radius:6px;border-left:3px solid var(--muted)}
+.status-item.ok{border-left-color:var(--green)}
+.status-item.warn{border-left-color:var(--orange)}
+.status-item.err{border-left-color:var(--red)}
+.status-item .label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px}
+.status-item .value{font-size:16px;font-weight:600;margin-top:2px;font-family:monospace}
+canvas{width:100%;height:280px;background:#050a14;border-radius:6px;margin-bottom:12px;display:block}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.metric{background:rgba(0,0,0,0.2);padding:10px;border-radius:6px;text-align:center}
+.metric .v{font-size:18px;font-weight:700;color:var(--green);font-family:monospace}
+.metric .l{font-size:10px;color:var(--muted);text-transform:uppercase}
+button{background:var(--green);color:#0b1220;border:none;padding:10px 20px;border-radius:6px;font-weight:600;cursor:pointer;font-size:14px;transition:all 0.2s}
+button:hover{background:var(--green);filter:brightness(1.15);transform:translateY(-1px)}
+button:disabled{background:#374151;color:#6b7280;cursor:not-allowed;transform:none;filter:none}
+button.secondary{background:transparent;color:var(--green);border:1px solid var(--green)}
+.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.input, select{background:rgba(0,0,0,0.2);border:1px solid var(--border);color:var(--txt);padding:8px 12px;border-radius:6px;font-size:13px}
+.info{background:rgba(59,130,246,0.08);border-left:3px solid var(--blue);padding:12px 16px;border-radius:4px;font-size:13px;color:#93c5fd;margin-bottom:16px}
+.warn-box{background:rgba(245,158,11,0.08);border-left:3px solid var(--orange);padding:12px 16px;border-radius:4px;font-size:13px;color:#fcd34d;margin-bottom:16px}
+.model-info{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.model-param{background:rgba(0,0,0,0.2);padding:8px 12px;border-radius:6px;border:1px solid var(--border)}
+.model-param .k{font-size:10px;color:var(--muted);text-transform:uppercase}
+.model-param .val{font-size:14px;font-weight:600;color:var(--green);font-family:monospace;margin-top:2px}
+.mode-toggle{display:flex;gap:0;background:rgba(0,0,0,0.3);border:1px solid var(--border);border-radius:8px;padding:4px;margin-bottom:16px}
+.mode-toggle button{flex:1;background:transparent;color:var(--muted);border:none;padding:10px 12px;border-radius:6px;font-weight:600;cursor:pointer;font-size:13px;transition:all 0.2s}
+.mode-toggle button.active{background:var(--green);color:#0b1220}
+.mode-toggle button:hover:not(.active){color:var(--txt)}
+footer{margin-top:32px;padding-top:16px;border-top:1px solid var(--border);color:var(--muted);font-size:11px;text-align:center}
+code{background:rgba(0,0,0,0.3);padding:2px 6px;border-radius:3px;font-family:monospace;font-size:12px;color:#fbbf24}
+.log{background:#050a14;border-radius:6px;padding:10px;font-family:monospace;font-size:11px;color:#9ca3af;max-height:180px;overflow:auto;margin-top:10px}
+.log .ok{color:var(--green)}
+.log .err{color:var(--red)}
+.log .info{color:var(--blue)}
+.domain-badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600;margin-left:8px;text-transform:uppercase;letter-spacing:0.5px}
+.domain-badge.biology{background:rgba(16,185,129,0.15);color:#6ee7b7}
+.domain-badge.chemistry{background:rgba(239,68,68,0.15);color:#fca5a5}
+.domain-badge.benchmark{background:rgba(59,130,246,0.15);color:#93c5fd}
+.domain-badge.optimization{background:rgba(168,85,247,0.15);color:#c4b5fd}
+.domain-badge.machine_learning{background:rgba(245,158,11,0.15);color:#fcd34d}
+.domain-badge.physics{background:rgba(14,165,233,0.15);color:#7dd3fc}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>⚡ WebGPU Inference</h1>
+  <p class="subtitle">Browser-side AI4S surrogate inference. Two modes: GP kernel demo (Matérn/RBF) or <strong>10 real trained MLP checkpoints</strong> loaded from <code>data/small_models</code>. Automatic CPU fallback.</p>
+
+  <div class="info">
+    <strong>Real model data:</strong> <code>data/small_models/*.npz</code> holds 10 MLP surrogates trained on SwarmLabs scenarios (Forrester/Branin/Hartmann6 + bio/chem/ML/physics). Each checkpoint is <strong>~2KB JSON</strong> with float32 weights — loaded live, no server roundtrip. Forward pass runs entirely on WebGPU compute shader.
+  </div>
+
+  <div class="mode-toggle">
+    <button id="modeGP" class="active" onclick="switchMode('gp')">🎓 GP Demo (Matérn kernel)</button>
+    <button id="modeMLP" onclick="switchMode('mlp')">🔬 Real Trained Model (MLP Checkpoint)</button>
+  </div>
+
+  <div class="panel">
+    <h2>🖥️ Environment Detection</h2>
+    <div class="status-grid" id="envGrid">
+      <div class="status-item"><div class="label">WebGPU Support</div><div class="value" id="gpuSupport">Detecting…</div></div>
+      <div class="status-item"><div class="label">Backend</div><div class="value" id="gpuBackend">—</div></div>
+      <div class="status-item"><div class="label">Device</div><div class="value" id="gpuDevice">—</div></div>
+      <div class="status-item"><div class="label">Fallback</div><div class="value" id="gpuFallback">—</div></div>
+    </div>
+  </div>
+
+  <!-- GP MODE PANEL -->
+  <div id="gpPanel" class="panel">
+    <h2>🔬 GP Model Configuration</h2>
+    <div class="row" style="margin-bottom:12px">
+      <label style="font-size:12px;color:var(--muted)">Scenario</label>
+      <select id="scenarioSelect" onchange="loadGPScenario()">
+        <option value="default">Default (Matérn-ν=1.5, ℓ=0.3)</option>
+        <option value="surrogate_forrester">surrogate_forrester (RBF, ℓ=0.2)</option>
+        <option value="phys_lorenz">phys_lorenz (Matérn-ν=2.5, ℓ=0.15)</option>
+        <option value="bio_logistic">bio_logistic (Matérn-ν=1.5, ℓ=0.4)</option>
+        <option value="opt_branin">opt_branin (Matérn-ν=1.5, ℓ=0.25)</option>
+      </select>
+    </div>
+    <div class="model-info" id="gpModelInfo">
+      <div class="model-param"><div class="k">Kernel</div><div class="val" id="pKernel">Matérn-ν=1.5</div></div>
+      <div class="model-param"><div class="k">Length Scale ℓ</div><div class="val" id="pLength">0.300</div></div>
+      <div class="model-param"><div class="k">Signal Variance σ²</div><div class="val" id="pSigma">1.000</div></div>
+      <div class="model-param"><div class="k">Smoothness ν</div><div class="val" id="pNu">1.5</div></div>
+      <div class="model-param"><div class="k">Noise ε</div><div class="val" id="pNoise">0.03</div></div>
+      <div class="model-param"><div class="k">Training Points</div><div class="val" id="pNTrain">16</div></div>
+    </div>
+  </div>
+
+  <!-- MLP MODE PANEL -->
+  <div id="mlpPanel" class="panel hidden">
+    <h2>🔬 Real Checkpoint Selection</h2>
+    <div class="row" style="margin-bottom:12px">
+      <label style="font-size:12px;color:var(--muted)">Trained Model</label>
+      <select id="checkpointSelect" onchange="loadCheckpoint()">
+        <option value="">— select a model —</option>
+      </select>
+    </div>
+    <div id="checkpointDesc" style="font-size:13px;color:var(--muted);margin-bottom:12px"></div>
+    <div class="model-info" id="mlpModelInfo">
+      <div class="model-param"><div class="k">Domain</div><div class="val" id="mDomain">—</div></div>
+      <div class="model-param"><div class="k">Input Dim</div><div class="val" id="mInputDim">—</div></div>
+      <div class="model-param"><div class="k">Hidden Units</div><div class="val" id="mHidden">—</div></div>
+      <div class="model-param"><div class="k">Total Params</div><div class="val" id="mParams">—</div></div>
+      <div class="model-param"><div class="k">W1 Range</div><div class="val" id="mW1Range">—</div></div>
+      <div class="model-param"><div class="k">Checkpoint Bytes</div><div class="val" id="mBytes">—</div></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>📊 Inference Performance</h2>
+    <div class="metrics">
+      <div class="metric"><div class="v" id="mGrid">0</div><div class="l">Grid Points</div></div>
+      <div class="metric"><div class="v" id="mTime">—</div><div class="l">Wall Time (ms)</div></div>
+      <div class="metric"><div class="v" id="mThroughput">—</div><div class="l">Mpts/s</div></div>
+      <div class="metric"><div class="v" id="mMode">—</div><div class="l">Compute Path</div></div>
+    </div>
+    <div class="row">
+      <button id="runBtn" onclick="runInference()" disabled>▶ Run Inference</button>
+      <label style="font-size:12px;color:var(--muted)">Resolution</label>
+      <select id="resSelect" class="input">
+        <option value="100">100 (fast)</option>
+        <option value="300" selected>300 (medium)</option>
+        <option value="1000">1000 (heavy)</option>
+      </select>
+    </div>
+    <div class="log" id="log"></div>
+  </div>
+
+  <div class="panel">
+    <h2>🎨 Predictive Surface</h2>
+    <canvas id="canvas" width="960" height="280"></canvas>
+    <p style="font-size:11px;color:var(--muted);margin-top:8px" id="canvasCaption">
+      GP mode: heatmap shows μ(x,y) = K(x*,X)·α (blue dots = training points).
+      MLP mode: 1D models render as a line plot; 2D+ render as a heatmap (high-D shows a 2D slice).
+    </p>
+  </div>
+
+  <footer>
+    SwarmLabs · WebGPU Inference · <a href="/lab.html" style="color:var(--green)">← Back to Lab</a>
+  </footer>
+</div>
+
+<script>
+// ===== Shared log + state =====
+const log = (msg, cls='') => {
+  const el = document.getElementById('log');
+  const line = document.createElement('div');
+  line.className = cls;
+  line.textContent = '[' + new Date().toISOString().substr(11,8) + '] ' + msg;
+  el.appendChild(line);
+  el.scrollTop = el.scrollHeight;
+};
+
+const state = {
+  gpu: null, device: null, adapter: null, ctx: null,
+  computeMode: 'cpu',        // 'gpu' or 'cpu' — WebGPU availability
+  activeMode: 'gp',          // 'gp' or 'mlp' — which model family
+  gpModel: null,             // GPModel instance
+  checkpoint: null,          // loaded checkpoint dict
+  checkpointList: [],        // manifest entries
+};
+
+// ===== GP scenarios (from model_registry.json) =====
+const GP_SCENARIOS = {
+  default:           { kernel: 'matern15', nu: 1.5, length: 0.30, sigma: 1.0, noise: 0.03 },
+  surrogate_forrester: { kernel: 'rbf',    nu: 1.5, length: 0.20, sigma: 1.0, noise: 0.03 },
+  phys_lorenz:       { kernel: 'matern25', nu: 2.5, length: 0.15, sigma: 1.0, noise: 0.03 },
+  bio_logistic:      { kernel: 'matern15', nu: 1.5, length: 0.40, sigma: 1.0, noise: 0.03 },
+  opt_branin:        { kernel: 'matern15', nu: 1.5, length: 0.25, sigma: 1.0, noise: 0.03 },
+};
+
+// ===== GP Model class: Matérn/RBF kernel + Cholesky solve =====
+class GPModel {
+  constructor(cfg, nTrain=16) {
+    this.cfg = cfg;
+    this.n = nTrain;
+    this.X = [];
+    const jitter = 0.05;
+    for (let i = 0; i < nTrain; i++) {
+      const gx = (i % 4) / 3.0;
+      const gy = Math.floor(i / 4) / 3.0;
+      this.X.push([gx + (Math.random() - 0.5) * jitter, gy + (Math.random() - 0.5) * jitter]);
+    }
+    this.y = this.X.map(([x, y]) =>
+      Math.sin(2 * Math.PI * x) * Math.cos(2 * Math.PI * y) + (Math.random() - 0.5) * 0.1
+    );
+    this.K = this._kernelMatrix();
+    this.L = this._cholesky(this.K);
+    this.v = this._choleskySolve(this.L, this.y);
+    this.alpha = this._choleskySolveT(this.L, this.v);
+  }
+
+  _dist(a, b) {
+    const dx = a[0] - b[0], dy = a[1] - b[1];
+    return Math.sqrt(dx*dx + dy*dy);
+  }
+
+  _kernel(r) {
+    const { nu, length, sigma } = this.cfg;
+    const s = r / length;
+    if (this.cfg.kernel === 'rbf') return sigma*sigma*Math.exp(-0.5*s*s);
+    if (nu === 1.5) return sigma*sigma*(1+s)*Math.exp(-s);
+    if (nu === 2.5) { const c = Math.sqrt(3*s); return sigma*sigma*(1+c+c*c/3)*Math.exp(-c); }
+    return sigma*sigma*(1+s)*Math.exp(-s);
+  }
+
+  _kernelMatrix() {
+    const K = Array(this.n).fill(0).map(() => Array(this.n).fill(0));
+    const eps = this.cfg.noise * this.cfg.sigma;
+    for (let i = 0; i < this.n; i++)
+      for (let j = 0; j < this.n; j++)
+        K[i][j] = i === j ? this._kernel(0) + eps : this._kernel(this._dist(this.X[i], this.X[j]));
+    return K;
+  }
+
+  _cholesky(A) {
+    const n = A.length;
+    const L = Array(n).fill(0).map(() => Array(n).fill(0));
+    for (let i = 0; i < n; i++)
+      for (let j = 0; j <= i; j++) {
+        let s = A[i][j];
+        for (let k = 0; k < j; k++) s -= L[i][k]*L[j][k];
+        L[i][j] = i === j ? Math.sqrt(Math.max(s, 1e-12)) : s / L[j][j];
+      }
+    return L;
+  }
+
+  _choleskySolve(L, b) {
+    const n = L.length;
+    const x = new Array(n);
+    for (let i = 0; i < n; i++) {
+      let s = b[i];
+      for (let j = 0; j < i; j++) s -= L[i][j]*x[j];
+      x[i] = s / L[i][i];
+    }
+    return x;
+  }
+
+  _choleskySolveT(L, b) {
+    const n = L.length;
+    const x = new Array(n);
+    for (let i = n - 1; i >= 0; i--) {
+      let s = b[i];
+      for (let j = i + 1; j < n; j++) s -= L[j][i]*x[j];
+      x[i] = s / L[i][i];
+    }
+    return x;
+  }
+
+  predictMean(x) {
+    let mu = 0;
+    for (let i = 0; i < this.n; i++) mu += this._kernel(this._dist(x, this.X[i])) * this.alpha[i];
+    return mu;
+  }
+}
+
+// ===== Mode switching =====
+function switchMode(mode) {
+  state.activeMode = mode;
+  document.getElementById('modeGP').classList.toggle('active', mode === 'gp');
+  document.getElementById('modeMLP').classList.toggle('active', mode === 'mlp');
+  document.getElementById('gpPanel').classList.toggle('hidden', mode !== 'gp');
+  document.getElementById('mlpPanel').classList.toggle('hidden', mode !== 'mlp');
+  document.getElementById('runBtn').disabled = (mode === 'mlp') && !state.checkpoint;
+  document.getElementById('canvasCaption').textContent = mode === 'gp'
+    ? 'GP mode: heatmap shows μ(x,y) = K(x*,X)·α (blue dots = training points).'
+    : 'MLP mode: 1D models render as a line plot; 2D+ render as a heatmap (high-D shows a 2D slice at x2..x9=0.5).';
+  log(`Mode switched to ${mode.toUpperCase()}`, 'info');
+}
+
+// ===== GP scenario loader =====
+function loadGPScenario() {
+  const key = document.getElementById('scenarioSelect').value;
+  const cfg = GP_SCENARIOS[key];
+  state.gpModel = new GPModel(cfg, 16);
+  document.getElementById('pKernel').textContent = cfg.kernel === 'rbf' ? 'RBF' : `Matérn-ν=${cfg.nu}`;
+  document.getElementById('pLength').textContent = cfg.length.toFixed(3);
+  document.getElementById('pSigma').textContent = cfg.sigma.toFixed(3);
+  document.getElementById('pNu').textContent = cfg.nu;
+  document.getElementById('pNoise').textContent = cfg.noise.toFixed(2);
+  document.getElementById('pNTrain').textContent = 16;
+  log(`Loaded GP scenario: ${key}`, 'info');
+}
+
+// ===== WebGPU detection =====
+async function detectWebGPU() {
+  const set = (id, val, cls) => {
+    const el = document.getElementById(id);
+    el.textContent = val;
+    if (cls) el.classList.add(cls);
+  };
+  if (!navigator.gpu) {
+    log('WebGPU not available, using CPU fallback', 'err');
+    set('gpuSupport', '❌ Not supported', 'err');
+    set('gpuBackend', 'N/A', 'err');
+    set('gpuDevice', 'N/A', 'err');
+    set('gpuFallback', '✅ CPU', 'ok');
+    state.computeMode = 'cpu';
+    return;
+  }
+  try {
+    const adapter = await navigator.gpu.requestAdapter();
+    if (!adapter) throw new Error('No GPU adapter');
+    state.adapter = adapter;
+    const device = await adapter.requestDevice({ requiredFeatures: [] });
+    state.device = device;
+    const info = await adapter.requestAdapterInfo();
+    const backend = info.backend || adapter.info?.backend || 'Vulkan/D3D/Metal';
+    const name = info.vendor || info.device || 'Discrete GPU';
+    log('WebGPU available, backend=' + backend + ', vendor=' + name, 'ok');
+    set('gpuSupport', '✅ Available', 'ok');
+    set('gpuBackend', backend || 'unknown', 'ok');
+    set('gpuDevice', name || 'unknown', 'ok');
+    set('gpuFallback', '⚡ GPU primary', 'ok');
+    state.computeMode = 'gpu';
+  } catch (e) {
+    log('GPU request failed: ' + e.message + ', falling back to CPU', 'err');
+    set('gpuSupport', '⚠️ Degraded', 'warn');
+    set('gpuBackend', 'N/A', 'warn');
+    set('gpuDevice', 'N/A', 'warn');
+    set('gpuFallback', '✅ CPU', 'ok');
+    state.computeMode = 'cpu';
+  }
+}
+
+// ===== Checkpoint loading =====
+async function loadCheckpointManifest() {
+  try {
+    const resp = await fetch('/models/manifest.json');
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    const manifest = await resp.json();
+    state.checkpointList = manifest.models || [];
+    const sel = document.getElementById('checkpointSelect');
+    sel.innerHTML = '<option value="">— select a model —</option>';
+    const domainGroups = {};
+    state.checkpointList.forEach(m => {
+      if (!domainGroups[m.domain]) domainGroups[m.domain] = [];
+      domainGroups[m.domain].push(m);
+    });
+    Object.keys(domainGroups).sort().forEach(domain => {
+      const optgroup = document.createElement('optgroup');
+      optgroup.label = domain.toUpperCase() + ' (' + domainGroups[domain].length + ')';
+      domainGroups[domain].forEach(m => {
+        const opt = document.createElement('option');
+        opt.value = m.name;
+        opt.textContent = m.name + ' · ' + m.input_dim + 'D · ' + m.params + ' params';
+        optgroup.appendChild(opt);
+      });
+      sel.appendChild(optgroup);
+    });
+    log(`Loaded manifest: ${state.checkpointList.length} checkpoints`, 'ok');
+  } catch (e) {
+    log('Failed to load checkpoint manifest: ' + e.message, 'err');
+  }
+}
+
+async function loadCheckpoint() {
+  const name = document.getElementById('checkpointSelect').value;
+  if (!name) return;
+  try {
+    const resp = await fetch('/models/' + name + '.json');
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    const cp = await resp.json();
+    state.checkpoint = cp;
+    document.getElementById('mDomain').textContent = cp.domain;
+    document.getElementById('mInputDim').textContent = cp.architecture.input_dim + 'D';
+    document.getElementById('mHidden').textContent = cp.architecture.hidden_dim;
+    document.getElementById('mParams').textContent = cp.architecture.total_params;
+    const [wmin, wmax] = cp.stats.W1_range;
+    document.getElementById('mW1Range').textContent = wmin.toFixed(2) + '..' + wmax.toFixed(2);
+    document.getElementById('mBytes').textContent = resp.headers.get('content-length') || '?';
+    document.getElementById('checkpointDesc').textContent = cp.description;
+    document.getElementById('runBtn').disabled = false;
+    log(`Loaded checkpoint: ${name} (in=${cp.architecture.input_dim}D, ${cp.architecture.total_params} params)`, 'ok');
+  } catch (e) {
+    log('Failed to load checkpoint ' + name + ': ' + e.message, 'err');
+  }
+}
+
+// ===== GPU GP inference (Matérn kernel in WGSL) =====
+async function runGPUGrid(N) {
+  const device = state.device;
+  const model = state.gpModel;
+  const nTrain = model.n;
+
+  const uniformSize = 5 * 4 + nTrain * 3 * 4;
+  const uniformData = new Float32Array(uniformSize / 4);
+  uniformData[0] = nTrain;
+  uniformData[1] = model.cfg.length;
+  uniformData[2] = model.cfg.sigma;
+  uniformData[3] = model.cfg.nu;
+  uniformData[4] = model.cfg.noise;
+  for (let i = 0; i < nTrain; i++) {
+    uniformData[5 + i*3] = model.X[i][0];
+    uniformData[5 + i*3 + 1] = model.X[i][1];
+    uniformData[5 + i*3 + 2] = model.alpha[i];
+  }
+  const uniformBuf = device.createBuffer({ size: uniformSize, usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST });
+  device.queue.writeBuffer(uniformBuf, 0, uniformData);
+
+  const outBuf = device.createBuffer({ size: N * N * 4, usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_SRC | GPUBufferUsage.MAP_READ });
+
+  const kernelType = model.cfg.kernel === 'rbf' ? 0 : (model.cfg.nu === 1.5 ? 1 : 2);
+  const shaderCode = `
+    struct GPParams { n_train: u32, length_scale: f32, signal_var: f32, nu: f32, noise: f32 };
+    struct TrainPoint { x: f32, y: f32, alpha: f32 };
+    @group(0) @binding(0) var<storage, read_write> out_buf: array<vec4f>;
+    @group(0) @binding(1) var<uniform> params: GPParams;
+    @group(0) @binding(2) var<uniform> grid: vec2u;
+    @group(0) @binding(3) var<uniform> training_points: array<TrainPoint, 16>;
+
+    fn matern_kernel(r: f32, nu: f32, ls: f32, sv: f32) -> f32 {
+      let s = r / ls;
+      if (nu == 1.5) { return sv*sv*(1.0+s)*exp(-s); }
+      if (nu == 2.5) { let c = sqrt(3.0*s); return sv*sv*(1.0+c+c*c/3.0)*exp(-c); }
+      return sv*sv*(1.0+s)*exp(-s);
+    }
+    fn rbf_kernel(r: f32, ls: f32, sv: f32) -> f32 {
+      let s = r / ls;
+      return sv*sv*exp(-0.5*s*s);
+    }
+
+    @compute @workgroup_size(16)
+    fn main(@builtin(global_invocation_id) gid: vec3u) {
+      let idx = gid.x;
+      if (idx >= grid.x * grid.y) { return; }
+      let ix = idx % grid.x;
+      let iy = idx / grid.x;
+      let x = f32(ix) / f32(grid.x - 1u);
+      let y = f32(iy) / f32(grid.y - 1u);
+      var mu: f32 = 0.0;
+      let n = min(params.n_train, 16u);
+      for (var i = 0u; i < n; i++) {
+        let dx = x - training_points[i].x;
+        let dy = y - training_points[i].y;
+        let r = sqrt(dx*dx + dy*dy);
+        let k = params.nu == 1.5 || params.nu == 2.5
+          ? matern_kernel(r, params.nu, params.length_scale, params.signal_var)
+          : rbf_kernel(r, params.length_scale, params.signal_var);
+        mu += k * training_points[i].alpha;
+      }
+      let c = max(-1.0, min(1.0, mu));
+      out_buf[idx] = vec4f(mix(0.10, 1.00, c), mix(0.15, 0.85, c), mix(0.40, 0.15, c), 1.0);
+    }
+  `;
+  const shader = device.createShaderModule({ code: shaderCode });
+  const gridBuf = device.createBuffer({ size: 8, usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST });
+  device.queue.writeBuffer(gridBuf, 0, new Uint32Array([N, N]));
+
+  const bindGroup = device.createBindGroup({
+    layout: device.createBindGroupLayout({ entries: [
+      { binding: 0, visibility: GPUShaderStage.COMPUTE, buffer: { type: 'storage' } },
+      { binding: 1, visibility: GPUShaderStage.COMPUTE, buffer: { type: 'uniform' } },
+      { binding: 2, visibility: GPUShaderStage.COMPUTE, buffer: { type: 'uniform' } },
+      { binding: 3, visibility: GPUShaderStage.COMPUTE, buffer: { type: 'uniform' } },
+    ]}),
+    entries: [
+      { binding: 0, resource: { buffer: outBuf } },
+      { binding: 1, resource: { buffer: uniformBuf } },
+      { binding: 2, resource: { buffer: gridBuf } },
+      { binding: 3, resource: { buffer: uniformBuf, offset: 20 } },
+    ]
+  });
+  const pipeline = await device.createComputePipelineAsync({ layout: 'auto', compute: { module: shader, entryPoint: 'main' } });
+  const cmd = device.createCommandEncoder();
+  const pass = cmd.beginComputePass();
+  pass.setPipeline(pipeline);
+  pass.setBindGroup(0, bindGroup);
+  pass.dispatchWorkgroups(Math.ceil(N * N / 16));
+  pass.end();
+  device.queue.submit([cmd.finish()]);
+  await outBuf.mapAsync(GPUMapMode.READ);
+  const data = new Uint8Array(outBuf.getMappedRange());
+  outBuf.unmap();
+  return data;
+}
+
+// ===== CPU GP fallback =====
+function runCPUGrid(N) {
+  const data = new Uint8ClampedArray(N * N * 4);
+  const model = state.gpModel;
+  for (let i = 0; i < N * N; i++) {
+    const ix = i % N, iy = Math.floor(i / N);
+    const mu = model.predictMean([ix / (N-1), iy / (N-1)]);
+    const c = Math.max(-1, Math.min(1, mu));
+    data[i*4+0] = Math.round((0.10 + 0.90*c) * 255);
+    data[i*4+1] = Math.round((0.15 + 0.70*c) * 255);
+    data[i*4+2] = Math.round((0.40 - 0.25*c) * 255);
+    data[i*4+3] = 255;
+  }
+  return data;
+}
+
+// ===== CPU MLP fallback (same math as WGSL) =====
+function runMLPCPUGrid(N) {
+  const cp = state.checkpoint;
+  const D = cp.architecture.input_dim;
+  const H = cp.architecture.hidden_dim;
+  const W1 = cp.weights.W1;   // length H*D, row-major [hidden * input_dim]
+  const b1 = cp.weights.b1;   // length H
+  const W2 = cp.weights.W2;   // length H
+  const b2 = cp.weights.b2[0];
+
+  // Precompute model output range across a coarse sample grid for color normalization
+  let minOut = Infinity, maxOut = -Infinity;
+  const SAMPLE = 20;
+  for (let sx = 0; sx < SAMPLE; sx++)
+    for (let sy = 0; sy < SAMPLE; sy++) {
+      const x = new Array(D).fill(0.5);
+      if (D >= 1) x[0] = sx / (SAMPLE-1);
+      if (D >= 2) x[1] = sy / (SAMPLE-1);
+      const y = mlpForward(x, D, H, W1, b1, W2, b2);
+      if (y < minOut) minOut = y;
+      if (y > maxOut) maxOut = y;
+    }
+  const range = (maxOut - minOut) || 1.0;
+
+  // Rendering: 1D → line plot; 2D+ → heatmap
+  const data = new Uint8ClampedArray(N * N * 4);
+  if (D === 1) {
+    // Line plot: x ∈ [0,1] along canvas width, y ∈ [minOut, maxOut] along height
+    // For 1D, render as a single-row-height plot filled with color
+    for (let i = 0; i < N; i++) {
+      const x = i / (N-1);
+      const y = mlpForward([x], D, H, W1, b1, W2, b2);
+      const c = (y - minOut) / range;  // 0..1
+      for (let j = 0; j < N; j++) {
+        const idx = j * N + i;
+        data[idx*4+0] = Math.round(255 * c);
+        data[idx*4+1] = Math.round(255 * c);
+        data[idx*4+2] = Math.round(255 * (1-c));
+        data[idx*4+3] = 255;
+      }
+    }
+  } else {
+    // 2D+: heatmap of f(x0, x1) with other dims fixed at 0.5
+    for (let i = 0; i < N * N; i++) {
+      const ix = i % N, iy = Math.floor(i / N);
+      const x = new Array(D).fill(0.5);
+      if (D >= 1) x[0] = ix / (N-1);
+      if (D >= 2) x[1] = iy / (N-1);
+      const y = mlpForward(x, D, H, W1, b1, W2, b2);
+      const c = Math.max(0, Math.min(1, (y - minOut) / range));
+      data[i*4+0] = Math.round((0.10 + 0.90*c) * 255);
+      data[i*4+1] = Math.round((0.15 + 0.70*c) * 255);
+      data[i*4+2] = Math.round((0.40 - 0.25*c) * 255);
+      data[i*4+3] = 255;
+    }
+  }
+  state.lastMlpRange = [minOut, maxOut];
+  return data;
+}
+
+function mlpForward(x, D, H, W1, b1, W2, b2) {
+  // h = tanh(W1 @ x + b1)  — W1 stored row-major [H*D], so W1[h*D + d]
+  const h = new Array(H);
+  for (let i = 0; i < H; i++) {
+    let s = b1[i];
+    for (let d = 0; d < D; d++) s += W1[i*D + d] * x[d];
+    h[i] = Math.tanh(s);
+  }
+  let out = b2;
+  for (let i = 0; i < H; i++) out += W2[i] * h[i];
+  return out;
+}
+
+// ===== GPU MLP inference (WGSL forward pass) =====
+async function runMLPGPUGrid(N) {
+  const device = state.device;
+  const cp = state.checkpoint;
+  const D = cp.architecture.input_dim;
+  const H = cp.architecture.hidden_dim;
+
+  // Uniform buffer:
+  //   [0..3]   : (input_dim, hidden_dim, grid_x, grid_y)  — 4 u32
+  //   [4..]    : b1[H] as f32
+  //   [4+H..]  : b2[1] as f32
+  //   [5+H..]  : W1[H*D] as f32  (row-major [H*D])
+  //   [5+H+H*D..] : W2[H] as f32
+  const b1Len = H, b2Len = 1, W1Len = H*D, W2Len = H;
+  const totalFloats = 4 + b1Len + b2Len + W1Len + W2Len;
+  const bufSize = totalFloats * 4;
+  const uniformData = new Float32Array(totalFloats);
+  uniformData[0] = D; uniformData[1] = H; uniformData[2] = N; uniformData[3] = N;
+  let off = 4;
+  for (let i = 0; i < b1Len; i++) uniformData[off++] = cp.weights.b1[i];
+  uniformData[off++] = cp.weights.b2[0];
+  for (let i = 0; i < W1Len; i++) uniformData[off++] = cp.weights.W1[i];
+  for (let i = 0; i < W2Len; i++) uniformData[off++] = cp.weights.W2[i];
+
+  const uniformBuf = device.createBuffer({ size: bufSize, usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST });
+  device.queue.writeBuffer(uniformBuf, 0, uniformData);
+  const outBuf = device.createBuffer({ size: N*N*4, usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_SRC | GPUBufferUsage.MAP_READ });
+
+  // WGSL: MLP forward with fixed hidden=24, max input_dim=10 (padded).
+  // We compute raw y on GPU, then normalize colors on CPU during renderCanvas.
+  const shaderCode = `
+    struct MLPParams { input_dim: u32, hidden_dim: u32, grid_x: u32, grid_y: u32 };
+    @group(0) @binding(0) var<storage, read_write> out_buf: array<f32>;
+    @group(0) @binding(1) var<uniform> params: MLPParams;
+    @group(0) @binding(2) var<uniform> weights: array<f32>;
+
+    fn tanh(x: f32) -> f32 {
+      let e = exp(2.0 * x);
+      return (e - 1.0) / (e + 1.0);
+    }
+
+    fn mlp_forward(x0: f32, x1: f32, x2: f32, x3: f32, x4: f32, x5: f32, x6: f32, x7: f32, x8: f32, x9: f32) -> f32 {
+      let D = params.input_dim;
+      let H = params.hidden_dim;
+      let b1_off = 4u;
+      let b2_off = 4u + H;
+      let W1_off = 5u + H;
+      let W2_off = 5u + H + H*D;
+      var output = weights[b2_off];
+      for (var i = 0u; i < H; i++) {
+        var s = weights[b1_off + i];
+        if (D >= 1u) { s = s + weights[W1_off + i*D + 0u] * x0; }
+        if (D >= 2u) { s = s + weights[W1_off + i*D + 1u] * x1; }
+        if (D >= 3u) { s = s + weights[W1_off + i*D + 2u] * x2; }
+        if (D >= 4u) { s = s + weights[W1_off + i*D + 3u] * x3; }
+        if (D >= 5u) { s = s + weights[W1_off + i*D + 4u] * x4; }
+        if (D >= 6u) { s = s + weights[W1_off + i*D + 5u] * x5; }
+        if (D >= 7u) { s = s + weights[W1_off + i*D + 6u] * x6; }
+        if (D >= 8u) { s = s + weights[W1_off + i*D + 7u] * x7; }
+        if (D >= 9u) { s = s + weights[W1_off + i*D + 8u] * x8; }
+        if (D >= 10u) { s = s + weights[W1_off + i*D + 9u] * x9; }
+        output = output + weights[W2_off + i] * tanh(s);
+      }
+      return output;
+    }
+
+    @compute @workgroup_size(16)
+    fn main(@builtin(global_invocation_id) gid: vec3u) {
+      let idx = gid.x;
+      let gx = params.grid_x;
+      let gy = params.grid_y;
+      let total = gx * gy;
+      if (idx >= total) { return; }
+      let ix = idx % gx;
+      let iy = idx / gx;
+      let x0 = if (params.input_dim >= 1u) { f32(ix) / f32(gx - 1u) } else { 0.5 };
+      let x1 = if (params.input_dim >= 2u) { f32(iy) / f32(gy - 1u) } else { 0.5 };
+      let y = mlp_forward(x0, x1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5);
+      out_buf[idx] = y;
+    }
+  `;
+
+  const shader = device.createShaderModule({ code: shaderCode });
+  const gridBuf = device.createBuffer({ size: 16, usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST });
+  device.queue.writeBuffer(gridBuf, 0, new Float32Array([D, H, N, N]));
+
+  const bindGroup = device.createBindGroup({
+    layout: device.createBindGroupLayout({ entries: [
+      { binding: 0, visibility: GPUShaderStage.COMPUTE, buffer: { type: 'storage' } },
+      { binding: 1, visibility: GPUShaderStage.COMPUTE, buffer: { type: 'uniform' } },
+      { binding: 2, visibility: GPUShaderStage.COMPUTE, buffer: { type: 'uniform' } },
+    ]}),
+    entries: [
+      { binding: 0, resource: { buffer: outBuf } },
+      { binding: 1, resource: { buffer: gridBuf } },
+      { binding: 2, resource: { buffer: uniformBuf } },
+    ]
+  });
+  const pipeline = await device.createComputePipelineAsync({ layout: 'auto', compute: { module: shader, entryPoint: 'main' } });
+  const cmd = device.createCommandEncoder();
+  const pass = cmd.beginComputePass();
+  pass.setPipeline(pipeline);
+  pass.setBindGroup(0, bindGroup);
+  pass.dispatchWorkgroups(Math.ceil(N * N / 16));
+  pass.end();
+  device.queue.submit([cmd.finish()]);
+  await outBuf.mapAsync(GPUMapMode.READ);
+  const yArray = new Float32Array(outBuf.getMappedRange());
+  outBuf.unmap();
+
+  // Normalize colors on CPU
+  let minOut = Infinity, maxOut = -Infinity;
+  for (let i = 0; i < yArray.length; i++) {
+    if (yArray[i] < minOut) minOut = yArray[i];
+    if (yArray[i] > maxOut) maxOut = yArray[i];
+  }
+  const range = (maxOut - minOut) || 1.0;
+  state.lastMlpRange = [minOut, maxOut];
+  const inDim = state.checkpoint.architecture.input_dim;
+  const data = new Uint8ClampedArray(N * N * 4);
+  if (inDim === 1) {
+    // For 1D, yArray is sampled along iy=0 for each ix (grid_y=gy; but we set gy=N so this fills full grid)
+    // Actually with gy=N, x1 varies per iy. For 1D, x1 is 0.5 regardless of iy (since D<2).
+    // So all rows are identical — treat as line plot.
+    for (let i = 0; i < N * N; i++) {
+      const c = Math.max(0, Math.min(1, (yArray[i] - minOut) / range));
+      data[i*4+0] = Math.round(255 * c);
+      data[i*4+1] = Math.round(255 * c);
+      data[i*4+2] = Math.round(255 * (1-c));
+      data[i*4+3] = 255;
+    }
+  } else {
+    for (let i = 0; i < N * N; i++) {
+      const c = Math.max(0, Math.min(1, (yArray[i] - minOut) / range));
+      data[i*4+0] = Math.round((0.10 + 0.90*c) * 255);
+      data[i*4+1] = Math.round((0.15 + 0.70*c) * 255);
+      data[i*4+2] = Math.round((0.40 - 0.25*c) * 255);
+      data[i*4+3] = 255;
+    }
+  }
+  return data;
+}
+
+// ===== Render canvas =====
+function renderCanvas(data, N) {
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = N;
+  canvas.height = N;
+  const imgData = ctx.createImageData(N, N);
+  imgData.data.set(data);
+  ctx.putImageData(imgData, 0, 0);
+
+  if (state.activeMode === 'gp' && state.gpModel) {
+    // Draw GP training points
+    const scaleX = canvas.width, scaleY = canvas.height;
+    ctx.fillStyle = '#ffffff';
+    ctx.strokeStyle = '#000000';
+    ctx.lineWidth = 2;
+    state.gpModel.X.forEach(([x, y]) => {
+      const px = x * (scaleX - 1), py = y * (scaleY - 1);
+      ctx.beginPath();
+      ctx.arc(px, py, 4, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+    });
+  }
+
+  ctx.imageSmoothingEnabled = true;
+  ctx.drawImage(canvas, 0, 0, canvas.width, canvas.height);
+}
+
+// ===== Inference dispatcher =====
+async function runInference() {
+  const btn = document.getElementById('runBtn');
+  if (state.activeMode === 'mlp' && !state.checkpoint) {
+    log('Please select a checkpoint first', 'err');
+    return;
+  }
+  if (state.activeMode === 'gp' && !state.gpModel) {
+    log('GP model not loaded', 'err');
+    return;
+  }
+  btn.disabled = true;
+  btn.textContent = '⏳ Running…';
+  const N = parseInt(document.getElementById('resSelect').value);
+  const totalPts = N * N;
+  document.getElementById('mGrid').textContent = totalPts.toLocaleString();
+  log(`Starting ${state.activeMode.toUpperCase()} inference: ${N}x${N} = ${totalPts.toLocaleString()} points`, 'info');
+
+  let data;
+  const t0 = performance.now();
+  try {
+    if (state.activeMode === 'gp') {
+      if (state.computeMode === 'gpu' && state.device) {
+        log('Using WebGPU compute path (Matérn kernel in WGSL)', 'info');
+        data = await runGPUGrid(N);
+        document.getElementById('mMode').textContent = 'GPU';
+      } else {
+        log('Using CPU fallback (JS Matérn kernel)', 'info');
+        data = runCPUGrid(N);
+        document.getElementById('mMode').textContent = 'CPU';
+      }
+    } else {
+      // MLP
+      if (state.computeMode === 'gpu' && state.device) {
+        log(`Using WebGPU compute path (MLP forward, in=${state.checkpoint.architecture.input_dim}D)`, 'info');
+        data = await runMLPGPUGrid(N);
+        document.getElementById('mMode').textContent = 'GPU';
+      } else {
+        log('Using CPU fallback (JS MLP forward)', 'info');
+        data = runMLPCPUGrid(N);
+        document.getElementById('mMode').textContent = 'CPU';
+      }
+    }
+  } catch (e) {
+    log('GPU path failed: ' + e.message + ', falling back to CPU', 'err');
+    if (state.activeMode === 'gp') data = runCPUGrid(N);
+    else data = runMLPCPUGrid(N);
+    document.getElementById('mMode').textContent = 'CPU';
+  }
+  const t1 = performance.now();
+  const ms = t1 - t0;
+  document.getElementById('mTime').textContent = ms.toFixed(1);
+  document.getElementById('mThroughput').textContent = (totalPts / 1e6 / (ms / 1000)).toFixed(2);
+  renderCanvas(data, N);
+  log(`Done in ${ms.toFixed(1)}ms · ${(totalPts/1e6/(ms/1000)).toFixed(2)} Mpts/s`, 'ok');
+  btn.disabled = false;
+  btn.textContent = '▶ Run Again';
+}
+
+// ===== Init =====
+window.addEventListener('load', async () => {
+  loadGPScenario();
+  await loadCheckpointManifest();
+  await detectWebGPU();
+  log('Ready. Pick a mode and click Run Inference.', 'ok');
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+# SwarmLabs Agent Skills
+
+**Math-backed verification for scientific agents.**
+
+Eight skills that let an agent design experiments, fit kinetics, and check
+literature claims — while knowing *how confident it is and where the answer
+breaks down*.
+
+Most agent-skill collections for science stop at literature search, writing and
+review. They produce text that reads well and carry no numeric account of their
+own reliability. These skills produce **numbers with error bars and failure
+boundaries**.
+
+---
+
+## Why this exists
+
+Three questions an agent should be able to answer, and usually cannot:
+
+1. **How confident is this prediction?** — not "fairly confident", but a
+   posterior standard deviation.
+2. **Is this condition inside the region we actually measured?** — a verdict,
+   not a vague warning about extrapolation.
+3. **Does this published number hold under *my* conditions?** — graded against
+   a computed metric, not asserted.
+
+Everything here is built to answer those three with arithmetic rather than
+adjectives.
+
+## The skills
+
+| Skill | What it returns | Runs |
+|---|---|---|
+| [`virtual-experiment-design`](virtual-experiment-design/) | Ranked next-run conditions with 95% intervals | Online or offline |
+| [`uq-coverage-audit`](uq-coverage-audit/) | PASS / MARGINAL / OVERCONFIDENT with the coverage gap | Offline |
+| [`ood-guard`](ood-guard/) | pass / controlled / reject per query point | Online or offline |
+| [`kinetic-model-selection`](kinetic-model-selection/) | Best-supported kinetic form with fitted parameters | Online or offline |
+| [`fermentation-design`](fermentation-design/) | Full bioprocess design loop over 69 strains and 20 media | Online or offline |
+| [`strain-media-selection`](strain-media-selection/) | Ranked hosts with µ_max, Ks, and matched media | Online or offline |
+| [`paper-claim-validation`](paper-claim-validation/) | PASS / MARGINAL / REFUTED / UNVALIDATED with the supporting metric | Offline |
+| [`mirror-run`](mirror-run/) | Sim-to-real gap and an MHS-ready command manifest | Online |
+
+Six of eight run without a network connection. Replacing an experiment is not
+supposed to depend on reaching a server.
+
+## Progressive disclosure
+
+Eight skills are cheap to keep in context, but a skill collection is only as
+useful as its serving layer. `loader.py` loads this collection in three tiers so
+that an agent pays for what it reads and no more:
+
+| Tier | Content | When it enters context |
+|---|---|---|
+| 0 | `name` + `description` | always resident |
+| 1 | the full `SKILL.md` | only when tier 0 matches |
+| 2 | `references/` | only when tier 1 asks for it |
+
+```python
+import loader
+
+index = loader.build_index()
+loader.budget_check(index)   # {"resident_tokens": 1298, "measured_ratio": 0.00649, "pass": True}
+loader.decide(index, "is this prediction interval trustworthy")
+# -> {"loaded": "uq-coverage-audit",
+#     "reason": "score 0.3016 >= 0.18 on terms ['confidence','confidence_interval',...]"}
+```
+
+The whole set is **1 298 tokens, 0.65 % of a 200 k-token window** against a 7 %
+budget. Matching is IDF-weighted cosine over description tokens; every hit
+returns the terms that earned it, so a skill is never loaded for reasons that
+cannot be shown to a human.
+
+It is fail-closed. Below `MATCH_FLOOR` (0.18) nothing is returned — a wrong skill
+in context is worse than an empty context, because a misapplied procedure is a
+confident error. Unknown ids are refused rather than resolved to a nearby
+skill. `tests/test_loader.py` checks that against 8 unrelated queries from
+other domains, plus determinism, monotonicity, and that the budget check
+actually fails when the window is shrunk.
+
+## Install
+
+```bash
+# Agent Skills CLI
+npx skills add lm203688/swarmlabs-skills
+
+# GitHub CLI
+gh skill install lm203688/swarmlabs-skills
+
+# Or clone into your agent's skills directory
+git clone https://github.com/lm203688/swarmlabs-skills.git ~/.agents/skills/swarmlabs
+```
+
+Each directory is self-contained and follows the
+[Agent Skills specification](https://agentskills.io/specification), so it drops
+into Claude Code, Cursor, Codex, Gemini CLI, or any compatible agent.
+
+## Quick start
+
+Check whether a model's uncertainty intervals are actually honest:
+
+```bash
+cd uq-coverage-audit
+python scripts/uq_audit.py your_data.csv
+```
+
+```
+Uncertainty Coverage Audit
+----------------------------------------------
+  observations          : 24
+  nominal coverage      : 0.95
+  empirical coverage    : 0.88
+  gap                   : -0.07
+  mean interval width   : 1.0740
+----------------------------------------------
+  VERDICT: MARGINAL
+```
+
+Check whether a proposed condition is inside the measured region:
+
+```bash
+cd ood-guard
+python scripts/guard_local.py training.csv --query "37,7.0,6.0"
+```
+
+Both scripts need only `numpy`. No API key, no network, no account.
+
+## What we deliberately do not claim
+
+Honesty about scope is part of the product.
+
+- **We are not the only ones doing "verification."** Other projects use the word
+  for rubric scoring or audit trails. What is specific here is *quantified*
+  verification: coverage, calibration, and out-of-distribution boundaries
+  backed by computation.
+- **The 3% noise floor is intentional.** Narrowing it produces prettier
+  intervals and worse coverage. It is not a bug to be tuned away.
+- **A `reject` verdict is a refusal, not a low-confidence answer.** Reporting a
+  rejected prediction anyway is how bad numbers reach papers.
+- **No grade without a number.** If a claim cannot be checked against computed
+  evidence, the grade is `UNVALIDATED` — not `PASS` by analogy.
+
+These skills publish their own weak results. Of the 18 benchmarks in the public
+ledger, 10 are MARGINAL and **7 sit in the OOD red zone** with coverage below
+0.5. That is reported at [swarmlabs.tools/verify](https://swarmlabs.tools/verify)
+rather than filtered out, because a validation record with no failures in it
+carries no information.
+
+## Validation
+
+Three different things get checked, and they are not interchangeable.
+
+**Serving behaviour** — does the loader fail closed and stay within budget?
+
+```bash
+python tests/test_loader.py
+```
+
+Ten rules, all fail-closed: the resident index fits its 7 % context budget,
+every skill is reachable by a query a practitioner would type, eight unrelated
+queries return nothing, ranking is deterministic, unknown ids are refused, no
+same-collection duplicate `SKILL.md`, the budget check fails when the window
+shrinks, and raising the match floor only ever removes candidates. Exits
+non-zero on any violation.
+
+**Conformance** — is the skill well-formed?
+
+```bash
+python tests/validate_skills.py
+```
+
+Checks the closed set of six top-level frontmatter keys, `name` matching the
+directory, description length, `metadata` as a block mapping with a quoted
+version, `allowed-tools` as a string, the 500-line limit, and permitted
+directory entries. Exits non-zero on any violation, so it can gate CI.
+
+**Task-level evaluation** — does the skill get the right answer?
+
+```bash
+python tests/task_level/run_task_checks.py
+```
+
+This is the part that most skill collections do not have. The paper behind the
+largest scientific skill library states that it reports *"no task-level
+evaluation and no host selection rate"* — it measures how much context the
+documentation consumes, not whether the workflows work.
+
+These checks instead plant an answer and require the skill to find it:
+
+| Check | Planted truth | Required behaviour |
+|---|---|---|
+| `kinetics.recovers_planted_parameters` | Monod, µ_max 0.8, Ks 0.5 | selects Monod, µ_max within 20%, Ks within 50% |
+| `design.refuses_extrapolation` | query far outside every dimension | rejected, and **not** shortlisted with a score |
+| `design.emits_intervals` | any clean campaign data | every shortlisted row carries std > 0 and a 95% interval |
+| `strain.prefers_thermophile_at_60C` | operating at 60 °C | top-ranked host has T_opt ≥ 45 °C |
+| `uq.coverage_honest_on_clean_data` | clean sinusoidal signal | coverage ≥ 0.80, not flagged OVERCONFIDENT |
+
+```
+[PASS] kinetics.recovers_planted_parameters   Monod mu_max=0.7975 Ks=0.4897
+[PASS] design.refuses_extrapolation           rejected 1/1, no shortlist emitted
+[PASS] design.emits_intervals                 3 rows, e.g. 10.338..10.581
+[PASS] strain.prefers_thermophile_at_60C      Thermus thermophilus T_opt=65.0C
+[PASS] uq.coverage_honest_on_clean_data       verdict=PASS coverage=0.925
+```
+
+A skill that only reads well cannot pass these.
+
+One check needs the network (`virtual_design.ranks_candidates`). It reports
+`SKIP` rather than `FAIL` when the runner is offline, and skipped checks are
+excluded from the exit code — an air-gapped run is not a red build.
+
+## Continuous integration
+
+`.github/workflows/skills.yml` runs all three suites on every change under
+`skills/agent-skills/`, and on `workflow_dispatch`. Current state: **green** —
+8/8 conformance, 10/10 loader rules, 9/9 task-level, 1 skipped.
+
+```bash
+# Reproduce the CI run locally
+python skills/agent-skills/tests/test_loader.py
+python skills/agent-skills/tests/validate_skills.py
+python skills/agent-skills/tests/task_level/run_task_checks.py
+```
+
+Grades issued by `paper-claim-validation` are `PASS`, `MARGINAL`, `REFUTED`
+and `UNVALIDATED`. `REFUTED` exists because folding a refuted claim into
+`UNVALIDATED` would be a category error: `UNVALIDATED` means *we could not
+check*, whereas a refutation is the strongest result the skill produces.
+
+## API
+
+The online skills call the public SwarmLabs v3 API — read-only, no credentials:
+
+```bash
+curl -s https://swarmlabs.tools/api/v3/health
+# {"ok":true,"api_version":"3.0.0","scenarios":63,"strains":69,"media":20,...}
+```
+
+Endpoints: `/scenarios`, `/strains`, `/strain/{id}`, `/media`, `/predict`,
+`/fit`, `/guard`, `/submit-strain`.
+
+> Note: the `/strains` and `/scenarios` list endpoints return `name` and
+> `domain` fields in Chinese. Use `/strain/{id}` for full English taxonomy.
+
+## License
+
+MIT — see [LICENSE](LICENSE).

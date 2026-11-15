@@ -1,0 +1,346 @@
+{
+ "schema": "svp.adversarial-probes.v2",
+ "generated_at": 1791625137,
+ "scenario_used": "bio_logistic",
+ "overall": {
+  "passed": 18,
+  "total": 34,
+  "pass_rate": 0.5294,
+  "elapsed_sec": 0.09
+ },
+ "families": {
+  "A": {
+   "passed": 5,
+   "total": 6
+  },
+  "B": {
+   "passed": 7,
+   "total": 8
+  },
+  "C": {
+   "passed": 1,
+   "total": 8
+  },
+  "D": {
+   "passed": 3,
+   "total": 6
+  },
+  "E": {
+   "passed": 2,
+   "total": 6
+  }
+ },
+ "probes": [
+  {
+   "probe_id": "A1",
+   "family": "A",
+   "name": "R²阈值探测",
+   "passed": true,
+   "detail": "R²=0.899999000 < PASS_R2=0.9 → 拒绝 ✓",
+   "evidence": "边界被拒绝",
+   "limitation": "单点边界，不做连续扫描"
+  },
+  {
+   "probe_id": "A2",
+   "family": "A",
+   "name": "Coverage阈值探测",
+   "passed": true,
+   "detail": "coverage=0.899999000 < 0.9 → 拒绝 ✓",
+   "evidence": "边界被拒绝",
+   "limitation": "单点边界"
+  },
+  {
+   "probe_id": "A3",
+   "family": "A",
+   "name": "组合擦边",
+   "passed": true,
+   "detail": "R²=0.9000≥PASS 但 cov=0.899999<0.9 → 拒绝 ✓",
+   "evidence": "AND 逻辑正确",
+   "limitation": "只测 1 种组合"
+  },
+  {
+   "probe_id": "A4",
+   "family": "A",
+   "name": "浮点精度",
+   "passed": true,
+   "detail": "精度测试: delta=1e-10: ✓ | delta=1e-12: ✓ | delta=1e-14: ✓ | delta=1e-15: ✓",
+   "evidence": "所有精度边界均拒绝",
+   "limitation": "不测 subnormal 浮点"
+  },
+  {
+   "probe_id": "A5",
+   "family": "A",
+   "name": "缺字段fail-closed",
+   "passed": false,
+   "detail": "invariants不可用",
+   "evidence": "无法导入",
+   "limitation": "不可用时无法验证"
+  },
+  {
+   "probe_id": "A6",
+   "family": "A",
+   "name": "多指标擦边",
+   "passed": true,
+   "detail": "4种组合: r2_ok_cov_fail: ✓ | r2_fail_cov_ok: ✓ | both_edge_pass: ✓ | both_edge_fail: ✓",
+   "evidence": "所有组合逻辑正确",
+   "limitation": "不测 3+ 指标组合"
+  },
+  {
+   "probe_id": "B1",
+   "family": "B",
+   "name": "全局偏移投毒",
+   "passed": true,
+   "detail": "poison=20% offset=3.0σ: rmse 0.0079→1.3426 (170.34×)",
+   "evidence": "恶化170.34×≥2×",
+   "limitation": "只测全局系统偏移，不测局部空间相关污染"
+  },
+  {
+   "probe_id": "B2",
+   "family": "B",
+   "name": "局部空间投毒",
+   "passed": true,
+   "detail": "局部30%点偏移5.0σ: rmse 0.0079→2.6884 (341.09×)",
+   "evidence": "恶化341.09×≥1.5×",
+   "limitation": "只测第一维排序的局部污染，不测多维联合"
+  },
+  {
+   "probe_id": "B3",
+   "family": "B",
+   "name": "标签翻转",
+   "passed": true,
+   "detail": "翻转20%标签: rmse 0.0079→0.9319 (118.23×)",
+   "evidence": "恶化118.23×≥2×",
+   "limitation": "只测简单翻转，不测复杂标签变换"
+  },
+  {
+   "probe_id": "B4",
+   "family": "B",
+   "name": "小比例投毒",
+   "passed": true,
+   "detail": "小比例5%投毒: rmse 0.0079→1.0538 (133.70×)",
+   "evidence": "恶化133.70×≥1.2×",
+   "limitation": "只测 5% 单一点位，不测分布式小投毒"
+  },
+  {
+   "probe_id": "B5",
+   "family": "B",
+   "name": "覆盖率下降",
+   "passed": false,
+   "detail": "conformal不可用: ImportError",
+   "evidence": "无法计算",
+   "limitation": "conformal不可用时无法执行"
+  },
+  {
+   "probe_id": "B6",
+   "family": "B",
+   "name": "训练投毒",
+   "passed": true,
+   "detail": "训练投毒20%: err 0.0079→0.9952 (126.26×)",
+   "evidence": "恶化126.26×≥1.5×",
+   "limitation": "只测训练投毒对预测的影响，不测端到端门禁"
+  },
+  {
+   "probe_id": "B7",
+   "family": "B",
+   "name": "测试投毒",
+   "passed": true,
+   "detail": "测试投毒50%: rmse 0.0079→2.0985 (266.25×)",
+   "evidence": "恶化266.25×≥2×",
+   "limitation": "测试投毒检测不改变模型，只检测评估指标"
+  },
+  {
+   "probe_id": "B8",
+   "family": "B",
+   "name": "混合投毒",
+   "passed": true,
+   "detail": "双向混合: rmse 0.0079→2.0013 (253.91×)",
+   "evidence": "恶化253.91×≥2×",
+   "limitation": "只测简单双向，不测复杂模式"
+  },
+  {
+   "probe_id": "C1",
+   "family": "C",
+   "name": "远界外推",
+   "passed": false,
+   "detail": "无bounds",
+   "evidence": "无bounds",
+   "limitation": "无bounds时无法定义域"
+  },
+  {
+   "probe_id": "C2",
+   "family": "C",
+   "name": "边界外推",
+   "passed": false,
+   "detail": "无bounds",
+   "evidence": "无bounds",
+   "limitation": "无bounds时无法定义域"
+  },
+  {
+   "probe_id": "C3",
+   "family": "C",
+   "name": "密度型OOD",
+   "passed": false,
+   "detail": "proximity: 密集区0/稀疏区0/OOD0.0006931",
+   "evidence": "仅0.0×",
+   "limitation": "proximity无法识别域内低密度凹处"
+  },
+  {
+   "probe_id": "C4",
+   "family": "C",
+   "name": "方向性外推",
+   "passed": true,
+   "detail": "PC1方向: 域内0/远界1.005 (1005249618373.3×)",
+   "evidence": "远界/域内=1005249618373.3×≥5×",
+   "limitation": "只测PC1方向，不测所有方向"
+  },
+  {
+   "probe_id": "C5",
+   "family": "C",
+   "name": "多维OOD",
+   "passed": false,
+   "detail": "无bounds",
+   "evidence": "无bounds",
+   "limitation": "无bounds时无法定义域"
+  },
+  {
+   "probe_id": "C6",
+   "family": "C",
+   "name": "OOD置信度",
+   "passed": false,
+   "detail": "无bounds",
+   "evidence": "无bounds",
+   "limitation": "无bounds时无法定义域"
+  },
+  {
+   "probe_id": "C7",
+   "family": "C",
+   "name": "proximity欺骗",
+   "passed": false,
+   "detail": "近点proximity=0.0005567, 方差比=1.0×",
+   "evidence": "方差比不足",
+   "limitation": "proximity无法识别'近但异常'的场景"
+  },
+  {
+   "probe_id": "C8",
+   "family": "C",
+   "name": "时序外推",
+   "passed": false,
+   "detail": "维度不足(需≥2)",
+   "evidence": "dim=1",
+   "limitation": "维度不足时无法模拟时序"
+  },
+  {
+   "probe_id": "D1",
+   "family": "D",
+   "name": "来源指针篡改",
+   "passed": false,
+   "detail": "source字段: 26个, 有效格式: 25个",
+   "evidence": "存在无效source格式",
+   "limitation": "只检查格式，不验证实际可达性"
+  },
+  {
+   "probe_id": "D2",
+   "family": "D",
+   "name": "校验和不匹配",
+   "passed": false,
+   "detail": "检查8个来源, 不匹配5个: reports_index: 36a621784b6c→e8bd34d343c6; gate_ledger: c5f1edc00b51→6b697a1daf31; trust_surface: 01686575ad03→6fcf4ba219c5",
+   "evidence": "存在不匹配",
+   "limitation": "只检查记录的sha256，不验证内容正确性"
+  },
+  {
+   "probe_id": "D3",
+   "family": "D",
+   "name": "陈旧数据",
+   "passed": true,
+   "detail": "生成时间: 2026-10-09T05:10:06Z, 距今1天",
+   "evidence": "1天≤30天✓",
+   "limitation": "只检查generated_at，不检查各来源的独立时间"
+  },
+  {
+   "probe_id": "D4",
+   "family": "D",
+   "name": "缺失溯源",
+   "passed": true,
+   "detail": "有值事实: 26个, 缺source: 0个",
+   "evidence": "所有事实有source",
+   "limitation": "只检查source字段存在，不验证内容"
+  },
+  {
+   "probe_id": "D5",
+   "family": "D",
+   "name": "循环依赖",
+   "passed": false,
+   "detail": "循环引用: 1个: ['pending_engines_gap→engines']",
+   "evidence": "存在循环引用",
+   "limitation": "只检测简单二阶循环，不检测长链"
+  },
+  {
+   "probe_id": "D6",
+   "family": "D",
+   "name": "跨场景污染",
+   "passed": true,
+   "detail": "检查10对场景, 有重叠0对",
+   "evidence": "无重叠",
+   "limitation": "只检查X坐标重叠，不检查Y值"
+  },
+  {
+   "probe_id": "E1",
+   "family": "E",
+   "name": "阈值配置篡改",
+   "passed": false,
+   "detail": "导入失败: ImportError",
+   "evidence": "无法执行",
+   "limitation": "模块不可用时无法执行"
+  },
+  {
+   "probe_id": "E2",
+   "family": "E",
+   "name": "依赖完整性",
+   "passed": false,
+   "detail": "检查6个依赖, 缺失2个: ['engine.conformal.calibrate_q', 'engine.scenario_registry']",
+   "evidence": "存在缺失依赖",
+   "limitation": "只检查importable，不检查版本兼容性"
+  },
+  {
+   "probe_id": "E3",
+   "family": "E",
+   "name": "版本一致性",
+   "passed": false,
+   "detail": "检查失败: ImportError",
+   "evidence": "无法执行",
+   "limitation": "检查异常时无法执行"
+  },
+  {
+   "probe_id": "E4",
+   "family": "E",
+   "name": "环境漂移",
+   "passed": true,
+   "detail": "numpy=2.5.2, 缺失配置: 0个",
+   "evidence": "配置完整",
+   "limitation": "只检查文件存在，不检查内容完整性"
+  },
+  {
+   "probe_id": "E5",
+   "family": "E",
+   "name": "配置注入",
+   "passed": false,
+   "detail": "检查失败: ImportError",
+   "evidence": "无法执行",
+   "limitation": "检查异常时无法执行"
+  },
+  {
+   "probe_id": "E6",
+   "family": "E",
+   "name": "种子固定",
+   "passed": true,
+   "detail": "DEFAULT_SEED=4242, 使用固定种子函数: 2/4",
+   "evidence": "2个函数使用固定种子",
+   "limitation": "只检查主要探针函数，不检查辅助函数"
+  }
+ ],
+ "scope": {
+  "what_this_measures": "33个确定性攻击面：阈值边界(A6)、数据投毒(B8)、分布外外推(C8)、溯源信任(D6)、配置部署(E6)。测的是「门禁/代理是否会被已知失效模式骗过」。",
+  "what_this_does_not_measure": "不是对抗训练，不产生任何鲁棒性保证；不是SciTrust 2.0的TextAttack等价实现。33片全过**不等于**「系统抗对抗」——只等于这些已知失效模式被守住了。",
+  "relation_to_a11": "A11声明「未做对抗性鲁棒性」。本模块把A11从「完全没做」升级为「做了33个确定性切片，覆盖5个攻击面家族」。"
+ }
+}

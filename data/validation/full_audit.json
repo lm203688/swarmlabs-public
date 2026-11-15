@@ -1,0 +1,447 @@
+{
+  "paper_validation": [
+    {
+      "paper_key": "timestamp",
+      "scenario": "timestamp",
+      "timestamp": "2026-10-13T09:43:14.130257",
+      "metrics": {
+        "result": "2026-10-13T01:43:14.107754Z"
+      }
+    },
+    {
+      "paper_key": "summary",
+      "scenario": "summary",
+      "timestamp": "2026-10-13T09:43:14.130702",
+      "metrics": {
+        "total": 17,
+        "pass_plus": 5,
+        "pass": 2,
+        "marginal": 10,
+        "fail": 0,
+        "avg_rmse": 4.579030856193357,
+        "avg_corr": 0.9214804291906481,
+        "avg_mape": 106.44560222574043,
+        "accuracy_target": "理论公式 r≥0.98; 复杂动力学 r≥0.95; MAPE<15%"
+      }
+    },
+    {
+      "paper_key": "closed_loop",
+      "scenario": "closed_loop",
+      "timestamp": "2026-10-13T09:43:14.131008",
+      "metrics": {
+        "n_train": 30,
+        "n_test": 60,
+        "n_active": 5,
+        "rmse_before": 5.025484921274636,
+        "rmse_after": 1.1147387903654136,
+        "rmse_improvement_pct": 77.81828404963798,
+        "uq_coverage_before": 0.016666666666666666,
+        "uq_coverage_after": 0.2,
+        "converged": true,
+        "active_points": [
+          24.0,
+          23.593220338983052,
+          23.186440677966104,
+          22.779661016949156,
+          22.372881355932204
+        ]
+      }
+    },
+    {
+      "paper_key": "results",
+      "scenario": "results",
+      "timestamp": "2026-10-13T09:43:14.131544",
+      "metrics": {
+        "result": "[{'key': 'paper_monod_1949', 'title': 'Monod 1949: E. coli 葡萄糖生长动力学', 'paper': 'Monod J. (1949). The growth of bacterial cultures. J Gen Microbiol 3:371-394.', 'domain': '生长动力学（Monod）', 'model': 'Monod', 'n_points': 8, 'rmse': 0.07135398361198093, 'mae': 0.06346566059673485, 'mape_pct': 28.531230534143116, 'correlation': 0.9916494678101659, 'rel_rmse': 0.09513864481597457, 'coverage': 0.75, 'data_range': 0.75, 'predicted': [0.09720000000000001, 0.17357142857142857, 0.28588235294117653, 0.4050000000000001, 0.5225806451612904, 0.6352941176470589, 0.7063953488372093, 0.7546583850931677], 'actual': [0.05, 0.11, 0.22, 0.405, 0.62, 0.75, 0.78, 0.8], 'status': 'PASS+'}, {'key': 'paper_monod_1949_batch', 'title': 'Monod 1949: E. coli 批次培养时序（24h）', 'paper': 'Monod J. (1949). J Gen Microbiol 3:371-394, Fig.2', 'domain': '生长动力学（批次培养）', 'model': 'Batch', 'n_points': 10, 'rmse': 1.3405086862019489, 'mae': 1.0553084494832745, 'mape_pct': 36.93483064872927, 'correlation': 0.8719869857915805, 'rel_rmse': 0.19713363032381598, 'coverage': 0.4, 'data_range': 6.800000000000001, 'predicted': [0.1, 0.103962779229166, 0.49153605744495393, 2.3041109911684563, 5.037763829830795, 5.037763829830795, 5.037763829830795, 5.037763829830795, 5.037763829830795, 5.037763829830795], 'actual': [0.1, 0.25, 0.62, 1.3, 2.5, 4.0, 5.5, 6.6, 6.85, 6.9], 'status': 'MARGINAL'}, {'key': 'paper_andrews_1968', 'title': 'Andrews 1968: Pseudomonas 苯酚抑制动力学', 'paper': 'Andrews J.F. (1968). Measurement of saturated substrate inhibition. Biotech Bioeng 10:707-723.', 'domain': '底物抑制（Andrews）', 'model': 'Andrews', 'n_points': 9, 'rmse': 0.168942444149757, 'mae': 0.1562580168829827, 'mape_pct': 70.96227178903227, 'correlation': 0.5339539884556334, 'rel_rmse': 0.29639025289431054, 'coverage': 0.2222222222222222, 'data_range': 0.5700000000000001, 'predicted': [0.18216699801192843, 0.2877424982554082, 0.43832784096949085, 0.5241990846681922, 0.5661609226966909, 0.5473570328678383, 0.4785356172968456, 0.373718651717981, 0.30530819466589], 'actual': [0.35, 0.5, 0.63, 0.65, 0.62, 0.5, 0.32, 0.15, 0.08], 'status': 'MARGINAL'}, {'key': 'paper_contois_1959', 'title': 'Contois 1959: 细胞密度依赖生长', 'paper': 'Contois D.E. (1959). Kinetics of bacterial growth. J Bacteriol 77:158-168.', 'domain': '生长动力学（Contois）', 'model': 'Contois', 'n_points': 6, 'rmse': 0.30529668294795, 'mae': 0.2979520697167755, 'mape_pct': 274.3148721476894, 'correlation': 0.9249527446251339, 'rel_rmse': 0.8722762369941428, 'coverage': 0.0, 'data_range': 0.35, 'predicted': [0.19999999999999996, 0.3499999999999999, 0.46666666666666656, 0.5599999999999999, 0.6222222222222221, 0.6588235294117646], 'actual': [0.03, 0.07, 0.12, 0.19, 0.28, 0.38], 'status': 'MARGINAL'}, {'key': 'paper_haldane_1955', 'title': 'Haldane 1955: 高浓度底物抑制', 'paper': 'Haldane J.B.S. (1955). Enzymes (3rd ed.). Longmans.', 'domain': '底物抑制（Haldane）', 'model': 'Haldane', 'n_points': 8, 'rmse': 0.06288860155053523, 'mae': 0.05448582236824204, 'mape_pct': 27.717261724128395, 'correlation': 0.8263231165489503, 'rel_rmse': 0.19652687984542258, 'coverage': 0.5, 'data_range': 0.32, 'predicted': [0.08314855875831485, 0.1648351648351648, 0.24193548387096775, 0.3260869565217391, 0.3191489361702128, 0.2830188679245283, 0.24193548387096772, 0.2097902097902098], 'actual': [0.08, 0.2, 0.33, 0.4, 0.35, 0.25, 0.17, 0.11], 'status': 'MARGINAL'}, {'key': 'paper_pirt_1965', 'title': 'Pirt 1965: 维护系数（E. coli 葡萄糖）', 'paper': 'Pirt S.J. (1965). Principles of microbe and cell cultivation. Biochem J 96:443.', 'domain': '底物消耗（Pirt 维护）', 'model': 'Pirt', 'n_points': 8, 'rmse': 0.026983791431153623, 'mae': 0.021875, 'mape_pct': 12.020089285714283, 'correlation': 1.0, 'rel_rmse': 0.1037838131967447, 'coverage': 0.75, 'data_range': 0.26, 'predicted': [0.045, 0.07, 0.12000000000000001, 0.16999999999999998, 0.22, 0.27, 0.32, 0.37], 'actual': [0.06, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32], 'status': 'PASS+'}, {'key': 'paper_luedeking_piret_1959', 'title': 'Luedeking-Piret 1959: 次级代谢产物时序（青霉素）', 'paper': 'Luedeking E., Piret J. (1959). AIChE J 5:255.', 'domain': '产物形成动力学（Luedeking-Piret）', 'model': 'Luedeking-Piret', 'n_points': 9, 'rmse': 4.373957523031665, 'mae': 4.2598882594423735, 'mape_pct': 286.0775454232727, 'correlation': 0.9081836263060182, 'rel_rmse': 0.6339068873958934, 'coverage': 0.0, 'data_range': 6.9, 'predicted': [3.2967995396436067, 5.506710358827784, 6.988057880877978, 7.981034820053447, 8.646647167633873, 9.092820467105875, 9.59237796021634, 9.816843611112658, 9.9177025295098], 'actual': [0.3, 0.8, 1.5, 2.5, 3.6, 4.5, 5.6, 6.5, 7.2], 'status': 'MARGINAL'}, {'key': 'paper_tessier_1957', 'title': 'Tessier 1957: 对数-线性生长动力学', 'paper': 'Tessier J. (1957). Bact Rev 21:160.', 'domain': '生长动力学（Tessier）', 'model': 'Tessier', 'n_points': 8, 'rmse': 0.023188145026971172, 'mae': 0.019900146333414644, 'mape_pct': 12.75656132654831, 'correlation': 0.9974653940142918, 'rel_rmse': 0.041407401833877096, 'coverage': 1.0, 'data_range': 0.5599999999999999, 'predicted': [0.018392058019029302, 0.08467632101842743, 0.15672232497824484, 0.3, 0.44327767502175514, 0.5507402908669405, 0.5816079419809707, 0.5933659668133523], 'actual': [0.03, 0.11, 0.2, 0.33, 0.43, 0.53, 0.57, 0.59], 'status': 'PASS+'}, {'key': 'paper_baranyi_1994', 'title': 'Baranyi & Roberts 1994: 细菌滞后相模型', 'paper': 'Baranyi J., Roberts T.A. (1994). Int J Food Microbiol 23:277-284.', 'domain': '滞后相动力学（Baranyi-Roberts）', 'model': 'Baranyi', 'n_points': 10, 'rmse': 0.6913195795898384, 'mae': 0.31141088920296817, 'mape_pct': 28.834890573715676, 'correlation': 0.9628913324291496, 'rel_rmse': 0.32919979980468494, 'coverage': 0.7, 'data_range': 2.1, 'predicted': [0.1, 0.1, 0.1, 0.1201514687322891, 0.17632628778451687, 0.26304791096034447, 0.39242137023358376, 0.8733498206699365, 1.9436757707925, 4.3257299796178525], 'actual': [0.1, 0.11, 0.13, 0.17, 0.25, 0.38, 0.58, 0.95, 1.5, 2.2], 'status': 'MARGINAL'}, {'key': 'paper_fedbatch_fick', 'title': 'Fick & Bader 2013: 葡萄糖限流 Fed-batch', 'paper': 'Fick G., Bader R. (2013). Fed-batch fermentation principles.', 'domain': '发酵动力学（Fed-batch）', 'model': 'Fed-batch', 'n_points': 7, 'rmse': 62.3070337770927, 'mae': 49.56290138416906, 'mape_pct': 525.7018867168514, 'correlation': 0.9551442787572878, 'rel_rmse': 4.357135229167321, 'coverage': 0.14285714285714285, 'data_range': 14.3, 'predicted': [0.5, 3.6149540743751305, 26.076818125348613, 67.34853748945972, 100.0, 99.99999999999999, 100.0], 'actual': [0.5, 1.8, 4.2, 7.0, 9.8, 12.5, 14.8], 'status': 'MARGINAL'}, {'key': 'paper_chemostat_shuler', 'title': 'Shuler & Kargi 2002: E. coli Chemostat 稳态', 'paper': 'Shuler M.L., Kargi F. (2002). Bioprocess Engineering Principles (2nd ed.).', 'domain': 'Chemostat 稳态', 'model': 'Chemostat', 'n_points': 8, 'rmse': 0.0002940746033982149, 'mae': 0.0002343489323984871, 'mape_pct': 0.0048052327893760155, 'correlation': 0.9999998580407278, 'rel_rmse': 0.00021623132602809913, 'coverage': 1.0, 'data_range': 1.3600000000000003, 'predicted': [4.984507042253521, 4.963934426229509, 4.935294117647059, 4.892682926829268, 4.82258064516129, 4.685714285714286, 4.300000000000001, 3.625000000000001], 'actual': [4.985, 4.964, 4.935, 4.893, 4.823, 4.686, 4.3, 3.625], 'status': 'PASS', 'predicted_S': [0.030985915492957747, 0.0721311475409836, 0.12941176470588237, 0.2146341463414634, 0.3548387096774193, 0.6285714285714283, 1.3999999999999988, 2.749999999999998], 'actual_S': [0.031, 0.072, 0.129, 0.215, 0.355, 0.629, 1.4, 2.75], 'rmse_S': 0.00025750853404930965, 'correlation_S': 0.9999999592120887, 'mae_S': 0.00018908902045005824}, {'key': 'paper_immobilized_shuler', 'title': 'Shuler & Kargi 2002: 固定化细胞 Thiele 模数', 'paper': 'Shuler M.L., Kargi F. (2002). Bioprocess Engineering Principles (2nd ed.)', 'domain': '固定化细胞反应器', 'model': 'Thiele', 'n_points': 7, 'rmse': 0.12399702217980876, 'mae': 0.11085999143164685, 'mape_pct': 26.8780090941721, 'correlation': 0.9853868771974286, 'rel_rmse': 0.15308274343186268, 'coverage': 0.5714285714285714, 'data_range': 0.8099999999999999, 'predicted': [0.8762494526316906, 0.671636489980356, 0.4166728109167716, 0.29629630644961624, 0.18666666666670412, 0.11979166666666667, 0.09666666666666668], 'actual': [0.95, 0.86, 0.6, 0.44, 0.27, 0.18, 0.14], 'status': 'PASS'}, {'key': 'paper_antibiotic_kill', 'title': 'Andrews 2001: 抗生素时间杀伤曲线（E. coli + 氨苄西林）', 'paper': 'Andrews J.M. (2001). J Antimicrob Chemother', 'domain': '抗生素杀伤动力学', 'model': 'Antibiotic', 'n_points': 8, 'rmse': 0.441078224354819, 'mae': 0.33250000000000013, 'mape_pct': 11.835501959340986, 'correlation': 0.9912446045327864, 'rel_rmse': 0.051891555806449295, 'coverage': 1.0, 'data_range': 8.5, 'predicted': [9.0, 8.28, 7.5600000000000005, 6.84, 6.12, 4.68, 2.5200000000000005, 0.35999999999999943], 'actual': [9.0, 8.5, 7.8, 6.8, 5.5, 3.8, 2.0, 0.5], 'status': 'PASS+'}, {'key': 'paper_jfoodeng_2012', 'title': 'J Food Eng 2012: 乳制品发酵细菌热致死', 'paper': 'J Food Eng 2012, 109(3):354-359 (DOI: 10.1016/j.jfoodeng.2011.12.031)', 'domain': '热致死动力学（Arrhenius）', 'model': 'Thermal', 'n_points': 4, 'rmse': 6.523309478251339, 'mae': 4.811906910351125, 'mape_pct': 15.51048412756772, 'correlation': 0.9946563135409174, 'rel_rmse': 0.10872182463752232, 'coverage': 0.75, 'data_range': 60.0, 'predicted': [84.87420218802067, 67.73695762216244, 40.580857249462035, 13.034270543275225], 'actual': [85.0, 65.0, 45.0, 25.0], 'status': 'PASS+'}, {'key': 'paper_crabtree_effect', 'title': 'Shuler & Kargi 2002: S. cerevisiae Crabtree 效应', 'paper': 'Shuler M.L., Kargi F. (2002). Bioprocess Engineering Principles (2nd ed.)', 'domain': '发酵动力学（Crabtree）', 'model': 'Crabtree', 'n_points': 6, 'rmse': 0.1482412565344192, 'mae': 0.11313777807780208, 'mape_pct': 48.00682902622841, 'correlation': 0.9820381549128573, 'rel_rmse': 0.33691194666913454, 'coverage': 0.5, 'data_range': 0.43999999999999995, 'predicted': [0.41333333333333333, 0.5166666666666667, 0.5636363636363636, 0.5904761904761905, 0.6048780487804878, 0.6098360655737706], 'actual': [0.15, 0.3, 0.45, 0.55, 0.58, 0.59], 'status': 'MARGINAL'}, {'key': 'paper_contois_highdensity', 'title': 'Contois 1959: 高密度细胞（μ vs X）', 'paper': 'Contois D.E. (1959). J Bacteriol 77:158-168.', 'domain': '生长动力学（Contois 高密度）', 'model': 'Contois', 'n_points': 7, 'rmse': 0.21130619641168896, 'mae': 0.19817460317460314, 'mape_pct': 146.3492063492063, 'correlation': 0.9851591499594626, 'rel_rmse': 0.7043539880389632, 'coverage': 0.0, 'data_range': 0.3, 'predicted': [0.6222222222222221, 0.5599999999999999, 0.46666666666666656, 0.3499999999999999, 0.23333333333333328, 0.17499999999999996, 0.13999999999999999], 'actual': [0.35, 0.28, 0.2, 0.14, 0.08, 0.06, 0.05], 'status': 'MARGINAL'}, {'key': 'paper_competition_tilman', 'title': 'Tilman 1982: 多物种竞争（两种菌共享底物）', 'paper': 'Tilman D. (1982). Resource Competition and Community Structure.', 'domain': '多物种竞争', 'model': 'Competition', 'n_points': 7, 'rmse': 1.0238250883170823, 'mae': 0.9348026483320601, 'mape_pct': 257.1389618784577, 'correlation': 0.7541314033186259, 'rel_rmse': 0.3029068308630421, 'coverage': 0.14285714285714285, 'data_range': 3.38, 'predicted': [1.0, 1.4000000000000001, 1.5999999999999999, 1.76, 1.866666666666667, 1.9294117647058822, 1.9636363636363638], 'actual': [0.12, 0.22, 0.4, 0.75, 1.3, 2.1, 3.5], 'status': 'MARGINAL'}]"
+      }
+    }
+  ],
+  "precision_audit": {
+    "timestamp": "2026-10-13T09:43:20.624088",
+    "summary": {
+      "total_scenarios": 0,
+      "closure_audit": {
+        "total_scenarios": 52,
+        "gp_converged": 52,
+        "gp_coverage_rate": 100.0,
+        "capabilities_covered": 44,
+        "capabilities_still_missing": [],
+        "scenarios_detail": [
+          {
+            "key": "micro_ecoli_glucose",
+            "converged": true,
+            "rmse": 0.0003,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_cerevisiae_ethanol",
+            "converged": true,
+            "rmse": 0.0001,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_putida_toluene",
+            "converged": true,
+            "rmse": 0.0002,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_lactococcus_lactose",
+            "converged": true,
+            "rmse": 0.0,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_acetobacter_acetate",
+            "converged": true,
+            "rmse": 0.0035,
+            "coverage": 0.983,
+            "ref": ""
+          },
+          {
+            "key": "micro_methanobacterium_methane",
+            "converged": true,
+            "rmse": 0.0002,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_chemostat_ecoli",
+            "converged": true,
+            "rmse": 0.0003,
+            "coverage": 0.975,
+            "ref": ""
+          },
+          {
+            "key": "micro_chemostat_cerevisiae",
+            "converged": true,
+            "rmse": 0.1688,
+            "coverage": 0.933,
+            "ref": ""
+          },
+          {
+            "key": "micro_lag_ecoli",
+            "converged": true,
+            "rmse": 0.0489,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_lifecycle_ecoli",
+            "converged": true,
+            "rmse": 0.0291,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_diauxic_ecoli",
+            "converged": true,
+            "rmse": 0.0003,
+            "coverage": 0.95,
+            "ref": ""
+          },
+          {
+            "key": "micro_fedbatch_ecoli",
+            "converged": true,
+            "rmse": 0.8863,
+            "coverage": 0.95,
+            "ref": ""
+          },
+          {
+            "key": "micro_competition_ecoli_yeast",
+            "converged": true,
+            "rmse": 0.0005,
+            "coverage": 0.95,
+            "ref": ""
+          },
+          {
+            "key": "micro_crabtree_cerevisiae",
+            "converged": true,
+            "rmse": 0.1542,
+            "coverage": 0.925,
+            "ref": ""
+          },
+          {
+            "key": "micro_haldane_putida",
+            "converged": true,
+            "rmse": 0.0005,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_contois_ecoli",
+            "converged": true,
+            "rmse": 0.0013,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_tessier_ecoli",
+            "converged": true,
+            "rmse": 0.0011,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_pirt_ecoli",
+            "converged": true,
+            "rmse": 0.0003,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_oxygen_ecoli",
+            "converged": true,
+            "rmse": 0.0063,
+            "coverage": 0.975,
+            "ref": ""
+          },
+          {
+            "key": "micro_antibiotic_timekill",
+            "converged": true,
+            "rmse": 0.0,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_osmotic_ecoli",
+            "converged": true,
+            "rmse": 0.0031,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_biofilm_ecoli",
+            "converged": true,
+            "rmse": 0.0035,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_scaleup_kla",
+            "converged": true,
+            "rmse": 0.0004,
+            "coverage": 0.975,
+            "ref": ""
+          },
+          {
+            "key": "micro_doe_ecoli_monod",
+            "converged": true,
+            "rmse": 0.0003,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_mle_ecoli_monod",
+            "converged": true,
+            "rmse": 0.0004,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_sobol_ecoli",
+            "converged": true,
+            "rmse": 0.0005,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_uq_ecoli_monod",
+            "converged": true,
+            "rmse": 0.0007,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_coculture_mutualism",
+            "converged": true,
+            "rmse": 0.0845,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_quorum_ecoli",
+            "converged": true,
+            "rmse": 0.0574,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_heavy_metal_ecoli",
+            "converged": true,
+            "rmse": 0.0001,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_diauxic_2d",
+            "converged": true,
+            "rmse": 0.0,
+            "coverage": 0.967,
+            "ref": ""
+          },
+          {
+            "key": "micro_fedbatch_2d",
+            "converged": true,
+            "rmse": 0.002,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_competition_2d",
+            "converged": true,
+            "rmse": 0.0003,
+            "coverage": 0.975,
+            "ref": ""
+          },
+          {
+            "key": "micro_crabtree_2d",
+            "converged": true,
+            "rmse": 0.0091,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_fedbatch_3d",
+            "converged": true,
+            "rmse": 0.0027,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_haldane_2d",
+            "converged": true,
+            "rmse": 0.0007,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_oxygen_2d",
+            "converged": true,
+            "rmse": 0.0015,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_antibiotic_2d",
+            "converged": true,
+            "rmse": 0.0,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_secondary_metabolite",
+            "converged": true,
+            "rmse": 0.0137,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_thermal_death",
+            "converged": true,
+            "rmse": 0.006,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_immobilized_cell",
+            "converged": true,
+            "rmse": 0.0368,
+            "coverage": 0.917,
+            "ref": ""
+          },
+          {
+            "key": "micro_plasmid_stability",
+            "converged": true,
+            "rmse": 0.01,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_phage_infection",
+            "converged": true,
+            "rmse": 0.007,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_gene_expression",
+            "converged": true,
+            "rmse": 0.0023,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_oxidative_stress",
+            "converged": true,
+            "rmse": 0.0345,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_chemostat_transient",
+            "converged": true,
+            "rmse": 0.0222,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_mixed_substrate",
+            "converged": true,
+            "rmse": 0.0228,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_ph_control",
+            "converged": true,
+            "rmse": 0.0334,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_fba_flux",
+            "converged": true,
+            "rmse": 0.5345,
+            "coverage": 0.983,
+            "ref": ""
+          },
+          {
+            "key": "micro_dead_volume",
+            "converged": true,
+            "rmse": 0.0128,
+            "coverage": 0.967,
+            "ref": ""
+          },
+          {
+            "key": "micro_foam_dynamics",
+            "converged": true,
+            "rmse": 0.0121,
+            "coverage": 1.0,
+            "ref": ""
+          },
+          {
+            "key": "micro_sensor_fusion",
+            "converged": true,
+            "rmse": 0.0089,
+            "coverage": 1.0,
+            "ref": ""
+          }
+        ],
+        "closure_verdict": "CLOSED"
+      }
+    },
+    "scenarios": []
+  },
+  "daily_loop": {},
+  "daily_loop_error": "cannot import name 'run_daily' from 'scripts.paper_validation_loop' (C:\\Users\\xing\\Desktop\\swarmlabs\\scripts\\paper_validation_loop.py)",
+  "summary": {
+    "paper_count": 4,
+    "audit_status": "OK",
+    "daily_status": "ERROR"
+  }
+}

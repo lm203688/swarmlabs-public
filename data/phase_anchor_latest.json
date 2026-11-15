@@ -1,0 +1,352 @@
+{
+  "name": "SwarmLabs phase anchor",
+  "schema": "phase-anchor/1",
+  "generated_at_cn": "2026-09-21 12:16:21+0800",
+  "date": "2026-09-21",
+  "git": {
+    "head": "498c9e0e3fb272c8a3425df5d282625e15ab1a01",
+    "short": "498c9e0",
+    "branch": "main",
+    "dirty": 599
+  },
+  "fingerprint": {
+    "files": {
+      "frontend_fixed/reports/index.json": "90559a7c0d22",
+      "frontend_fixed/reports/gate_ledger.json": "d544c8f58e33",
+      "frontend_fixed/reports/heldout_index.json": "539e93d4bef4",
+      "frontend_fixed/reports/wet_lab_anchors.json": "07b634e9d06f",
+      "frontend_fixed/reports/scenario_library_density.json": "bd8237be1060",
+      "data/trust_surface.json": "5a32345ce977",
+      "data/public_facts.json": "37d7443cd2af",
+      "data/entity_store.json": "e51f8431298f",
+      "data/conformal_calibration.json": "f6985d9d617e"
+    },
+    "in_git": {
+      "frontend_fixed/reports/index.json": true,
+      "frontend_fixed/reports/gate_ledger.json": true,
+      "frontend_fixed/reports/heldout_index.json": true,
+      "frontend_fixed/reports/wet_lab_anchors.json": true,
+      "frontend_fixed/reports/scenario_library_density.json": true,
+      "data/trust_surface.json": true,
+      "data/public_facts.json": true,
+      "data/entity_store.json": true,
+      "data/conformal_calibration.json": true
+    },
+    "not_in_git": [],
+    "all_digest": "280fc9735019fb92"
+  },
+  "facts": {
+    "validated_scenarios": {
+      "value": 82,
+      "unit": "scenarios",
+      "source_pointer": "frontend_fixed/reports/index.json#total"
+    },
+    "verdict_pass": {
+      "value": 79,
+      "unit": "scenarios",
+      "source_pointer": "frontend_fixed/reports/index.json#counts.PASS"
+    },
+    "verdict_marginal": {
+      "value": 2,
+      "unit": "scenarios",
+      "source_pointer": "frontend_fixed/reports/index.json#counts.MARGINAL"
+    },
+    "verdict_refuted": {
+      "value": 1,
+      "unit": "scenarios",
+      "source_pointer": "frontend_fixed/reports/index.json#counts.REFUTED"
+    },
+    "verdict_error": {
+      "value": 0,
+      "unit": "scenarios",
+      "source_pointer": "frontend_fixed/reports/index.json#counts.ERROR"
+    },
+    "gate_blocked": {
+      "value": 1,
+      "unit": "scenarios",
+      "source_pointer": "data/gate_ledger.json#n_blocked"
+    },
+    "gate_human_check_required": {
+      "value": 2,
+      "unit": "scenarios",
+      "source_pointer": "data/gate_ledger.json#n_human_check_required"
+    },
+    "rubric_full_pass": {
+      "value": 35,
+      "unit": "scenarios",
+      "source_pointer": "data/trust_surface.json#overall.rubric_full_pass"
+    },
+    "cross_domain_scenarios": {
+      "value": 10,
+      "unit": "scenarios",
+      "source_pointer": "data/trust_surface.json#overall.coverage_scope.cross_domain"
+    },
+    "microbio_scenarios": {
+      "value": 52,
+      "unit": "scenarios",
+      "source_pointer": "data/trust_surface.json#overall.coverage_scope.microbio_registered"
+    },
+    "registered_total": {
+      "value": 82,
+      "unit": "scenarios",
+      "source_pointer": "data/trust_surface.json#overall.coverage_scope.registered_total"
+    },
+    "registered_total_density": {
+      "value": 82,
+      "unit": "scenarios",
+      "source_pointer": "frontend_fixed/reports/scenario_library_density.json#total_scenarios_loaded"
+    },
+    "ucci_ece": {
+      "value": 0.0083,
+      "unit": "ECE",
+      "source_pointer": "data/gate_ledger.json#calibration.ece"
+    },
+    "ucci_ece_mean_p_pass": {
+      "value": 0.957,
+      "unit": "prob",
+      "source_pointer": "data/gate_ledger.json#calibration.mean_p_pass"
+    },
+    "conformal_n_scenarios": {
+      "value": 10,
+      "unit": "scenarios",
+      "source_pointer": "data/conformal_calibration.json#summary.n_scenarios"
+    },
+    "conformal_mean_coverage": {
+      "value": 0.985,
+      "unit": "coverage",
+      "source_pointer": "data/conformal_calibration.json#summary.mean_coverage_conformal"
+    },
+    "noise_floor": {
+      "value": 0.03,
+      "unit": "fraction",
+      "source_pointer": "data/gate_ledger.json#policy.noise_floor"
+    },
+    "nominal_coverage": {
+      "value": 0.95,
+      "unit": "coverage",
+      "source_pointer": "data/gate_ledger.json#policy.nominal_coverage"
+    },
+    "wet_lab_anchors_total": {
+      "value": 19,
+      "unit": "anchors",
+      "source_pointer": "frontend_fixed/reports/wet_lab_anchors.json#anchors (len)"
+    },
+    "wet_lab_anchor_scenarios": {
+      "value": 11,
+      "unit": "scenarios",
+      "source_pointer": "frontend_fixed/reports/wet_lab_anchors.json#summary.total"
+    },
+    "wet_lab_grade_counts": {
+      "value": {
+        "AGREE": 3,
+        "NEAR": 3,
+        "CONTRADICTED": 2,
+        "UNANCHORED": 3
+      },
+      "unit": "scenarios",
+      "source_pointer": "frontend_fixed/reports/wet_lab_anchors.json#summary.grade_counts"
+    },
+    "wet_lab_blocked": {
+      "value": [
+        "micro_thermal_death",
+        "microbio_monod"
+      ],
+      "unit": "scenarios",
+      "source_pointer": "frontend_fixed/reports/wet_lab_anchors.json#summary.blocked"
+    },
+    "robustness_heldout": {
+      "value": {
+        "PASS": 67,
+        "MARGINAL": 5,
+        "REFUTED": 10,
+        "ERROR": 0
+      },
+      "unit": "scenarios",
+      "source_pointer": "frontend_fixed/reports/heldout_index.json#robustness_heldout.counts"
+    },
+    "extrapolation_stress": {
+      "value": {
+        "PASS": 3,
+        "MARGINAL": 6,
+        "REFUTED": 73,
+        "ERROR": 0
+      },
+      "unit": "scenarios",
+      "source_pointer": "frontend_fixed/reports/heldout_index.json#extrapolation_stress.counts"
+    },
+    "heldout_version": {
+      "value": "2026.09.15",
+      "unit": "tag",
+      "source_pointer": "frontend_fixed/reports/heldout_index.json#version"
+    },
+    "store_points_total": {
+      "value": 161,
+      "unit": "points",
+      "source_pointer": "data/trust_surface.json#overall.total_store_points"
+    },
+    "entity_entities": {
+      "value": 157836,
+      "unit": "entities",
+      "source_pointer": "data/entity_store.json#counts.TOTAL_ENTITIES"
+    },
+    "entity_works": {
+      "value": 21133,
+      "unit": "works",
+      "source_pointer": "data/entity_store.json#counts.works"
+    },
+    "entity_references": {
+      "value": 64917,
+      "unit": "references",
+      "source_pointer": "data/entity_store.json#counts.references"
+    },
+    "engine_modules": {
+      "value": 64,
+      "unit": "modules",
+      "source_pointer": "data/gate_ledger.json#provenance.engine.n_modules"
+    },
+    "_cross_check": {
+      "index_total": 82,
+      "public_facts_validated": 82,
+      "public_facts_cross_domain": 10,
+      "public_facts_microbio_registry": 52,
+      "public_facts_microbio_by_domain_label": 54,
+      "public_facts_domain_map_total": 82,
+      "registry_partition_sum": 82,
+      "agree": true,
+      "domain_map_sums_to_total": true,
+      "microbio_counts_agree": false,
+      "disambiguation": "「微生物」有两个可辩护口径：注册表微生态子集 52（仅 micro_* 前缀）与域标签口径 54（另含 microbio_monod/microbio_inhibition 两个旧命名场景）。对外表述必须写明是哪一个，否则同一页出现 52 与 54 会被读成矛盾。"
+    }
+  },
+  "domain_distribution": {
+    "normalized": {
+      "Microorganisms": 54,
+      "optimization": 9,
+      "cheminformatics": 4,
+      "Surrogate Modeling": 3,
+      "chemistry": 2,
+      "Heat Conduction (Physics-Informed": 1,
+      "Biology": 1,
+      "LLM": 1,
+      "Chemical": 1,
+      "Chemistry": 1,
+      "biology": 1,
+      "finance": 1,
+      "neuroscience": 1,
+      "ecology": 1,
+      "energy": 1
+    },
+    "source": "data/public_facts.json#facts.validated_scenarios_by_domain.value"
+  },
+  "datasets": {
+    "qm9_full": {
+      "path": "data/reference_benchmarks/quantum_chemistry/qm9_full_130831.json",
+      "sha256_12": "53ad5679ea3d",
+      "records": 130831,
+      "bytes": 15954589,
+      "meta": {
+        "columns": 17,
+        "source": "QM9 DFT B3LYP/6-31G(2df,p) 全集"
+      }
+    },
+    "qm9_slim": {
+      "path": "data/reference_benchmarks/quantum_chemistry/qm9_slim.json",
+      "sha256_12": "88227b0ee430",
+      "records": 20000,
+      "bytes": 5561105,
+      "meta": {}
+    },
+    "tox21_labeled": {
+      "path": "data/reference_benchmarks/toxicology/tox21_labeled.json",
+      "sha256_12": "16e97fb8807f",
+      "records": 7823,
+      "bytes": 2880418,
+      "meta": {
+        "labels": 12,
+        "descriptors": 7,
+        "source": "Tox21 (12 nuclear-receptor / stress-response assays)"
+      }
+    },
+    "toxcast_labeled": {
+      "path": "data/reference_benchmarks/toxicology/toxcast_labeled.json",
+      "sha256_12": "028ff538cc33",
+      "records": 8578,
+      "bytes": 4293735,
+      "meta": {
+        "assay_index": 617,
+        "assays": 617,
+        "source": "ToxCast (413 assay endpoints, active-only stored)"
+      }
+    },
+    "toxcast_top30_assays": {
+      "path": "data/reference_benchmarks/toxicology/toxcast_top30_assays.json",
+      "sha256_12": "97e81caaed76",
+      "records": 4000,
+      "bytes": 3759105,
+      "meta": {
+        "assays": 30
+      }
+    },
+    "clintox_slim": {
+      "path": "data/reference_benchmarks/toxicology/clintox_slim.json",
+      "sha256_12": "4b0fde338027",
+      "records": 1480,
+      "bytes": 307389,
+      "meta": {}
+    },
+    "sider_slim": {
+      "path": "data/reference_benchmarks/toxicology/sider_slim.json",
+      "sha256_12": "36e44138bc4d",
+      "records": 1427,
+      "bytes": 148666,
+      "meta": {}
+    },
+    "tox21_slim": {
+      "path": "data/reference_benchmarks/toxicology/tox21_slim.json",
+      "sha256_12": "77894a402f0e",
+      "records": 7823,
+      "bytes": 521059,
+      "meta": {}
+    },
+    "toxcast_slim": {
+      "path": "data/reference_benchmarks/toxicology/toxcast_slim.json",
+      "sha256_12": "262baa83f7fd",
+      "records": 8578,
+      "bytes": 624494,
+      "meta": {}
+    }
+  },
+  "resources": {
+    "engine_modules": 64,
+    "scripts": 106,
+    "frontend_pages": 16,
+    "vv_reports_html": 82,
+    "reports_json": 82,
+    "datasets_reference_benchmarks": {
+      "files": 19,
+      "bytes": 39988150,
+      "mb": 38.1
+    },
+    "mll_models_local": {
+      "files": 73,
+      "bytes": 180742810,
+      "mb": 172.4
+    },
+    "entity_shards": {
+      "files": 56,
+      "bytes": 13621361,
+      "mb": 13.0
+    }
+  },
+  "model_artifacts": {
+    "present": true,
+    "pkl": 53,
+    "pt": 3,
+    "other": 17,
+    "total_files": 73,
+    "mb": 172.4,
+    "tracked_in_git": false,
+    "rebuild_cmd": "python scripts/train_chem_surrogates.py --all"
+  },
+  "gaps": []
+}

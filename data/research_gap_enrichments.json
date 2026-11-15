@@ -1,0 +1,112 @@
+{
+  "_note": "数据飞轮 enrichment 增量（干跑未并入大库；用 --apply 并入）",
+  "source": "maoyan_public",
+  "generated_at": "2026-08-30T15:24:16.704514+00:00",
+  "stats": {
+    "added": 10,
+    "skipped_dup": 0,
+    "by_type": {
+      "research_gaps": 4,
+      "trends": 4,
+      "cross_domain_bridges": 2
+    }
+  },
+  "entities": {
+    "research_gaps": [
+      {
+        "id": "maoyan_public:research_gap:面向农业机器人的低功耗边缘视觉感知研究不足",
+        "name": "面向农业机器人的低功耗边缘视觉感知研究不足",
+        "field": "农业机器人",
+        "n": 7,
+        "source": "maoyan_public",
+        "retrieved_at": "2026-08-30T15:24:16.516440+00:00",
+        "confidence": 0.85
+      },
+      {
+        "id": "maoyan_public:research_gap:微生物发酵动力学的高保真数字孪生标定缺口",
+        "name": "微生物发酵动力学的高保真数字孪生标定缺口",
+        "field": "合成生物学",
+        "n": 9,
+        "source": "maoyan_public",
+        "retrieved_at": "2026-08-30T15:24:16.516440+00:00",
+        "confidence": 0.95
+      },
+      {
+        "id": "maoyan_public:research_gap:面向半导体量测的小样本缺陷检测可解释性薄弱",
+        "name": "面向半导体量测的小样本缺陷检测可解释性薄弱",
+        "field": "半导体量测",
+        "n": 6,
+        "source": "maoyan_public",
+        "retrieved_at": "2026-08-30T15:24:16.516440+00:00",
+        "confidence": 0.8
+      },
+      {
+        "id": "maoyan_public:research_gap:面向罕见病的小样本临床试验虚拟对照设计缺口",
+        "name": "面向罕见病的小样本临床试验虚拟对照设计缺口",
+        "field": "罕见病",
+        "n": 4,
+        "source": "maoyan_public",
+        "retrieved_at": "2026-08-30T15:24:16.516440+00:00",
+        "confidence": 0.7
+      }
+    ],
+    "trends": [
+      {
+        "id": "maoyan_public:trend:可解释机器学习在医疗影像中的立项热度上升",
+        "name": "可解释机器学习在医疗影像中的立项热度上升",
+        "field": "医学影像",
+        "n": 12,
+        "source": "maoyan_public",
+        "retrieved_at": "2026-08-30T15:24:16.516440+00:00",
+        "confidence": 0.95
+      },
+      {
+        "id": "maoyan_public:trend:科研实验自动化_lab_automation_获资助趋势走强",
+        "name": "科研实验自动化（lab automation）获资助趋势走强",
+        "field": "实验自动化",
+        "n": 15,
+        "source": "maoyan_public",
+        "retrieved_at": "2026-08-30T15:24:16.516440+00:00",
+        "confidence": 0.95
+      },
+      {
+        "id": "maoyan_public:trend:基于物理信息神经网络_pinn_的工艺优化受关注",
+        "name": "基于物理信息神经网络（PINN）的工艺优化受关注",
+        "field": "工艺优化",
+        "n": 10,
+        "source": "maoyan_public",
+        "retrieved_at": "2026-08-30T15:24:16.516440+00:00",
+        "confidence": 0.95
+      },
+      {
+        "id": "maoyan_public:trend:科研数据可信共享与溯源_含_uq_标注_需求上升",
+        "name": "科研数据可信共享与溯源（含 UQ 标注）需求上升",
+        "field": "科研数据治理",
+        "n": 11,
+        "source": "maoyan_public",
+        "retrieved_at": "2026-08-30T15:24:16.516440+00:00",
+        "confidence": 0.95
+      }
+    ],
+    "cross_domain_bridges": [
+      {
+        "id": "maoyan_public:cross_domain_bridge:将蛋白质结构预测方法迁移至材料分子设计的跨域机会",
+        "name": "将蛋白质结构预测方法迁移至材料分子设计的跨域机会",
+        "field": "AI4Science",
+        "n": 8,
+        "source": "maoyan_public",
+        "retrieved_at": "2026-08-30T15:24:16.516440+00:00",
+        "confidence": 0.9
+      },
+      {
+        "id": "maoyan_public:cross_domain_bridge:把金融时序异常检测用于科研仪器故障预警的桥接",
+        "name": "把金融时序异常检测用于科研仪器故障预警的桥接",
+        "field": "智能运维",
+        "n": 5,
+        "source": "maoyan_public",
+        "retrieved_at": "2026-08-30T15:24:16.516440+00:00",
+        "confidence": 0.75
+      }
+    ]
+  }
+}

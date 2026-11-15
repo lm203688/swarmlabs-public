@@ -1,0 +1,18 @@
+[
+  {
+    "strain_id": "ugc_test_001",
+    "common_name": "UGC Test",
+    "genus": "Testus",
+    "species": "testis",
+    "phylum": "",
+    "domain": "Bacteria",
+    "mu_max": 0.5,
+    "Ks": null,
+    "substrate": "",
+    "genome_size": null,
+    "description": "",
+    "status": "pending_review",
+    "submitted_at": "2026-08-27T12:50:00.756074",
+    "submitted_by": "anonymous"
+  }
+]

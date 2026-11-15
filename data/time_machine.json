@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "snapshots": {
+    "p0-test-001": {
+      "run_id": "p0-test-001",
+      "captured_at": "2026-08-26T23:34:35",
+      "payload": {
+        "engine": "logistic",
+        "rmse": 0.02
+      }
+    }
+  },
+  "updated_at": "2026-08-26T23:34:35"
+}

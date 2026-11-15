@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "generated_at": "2026-10-16T05:10:12Z",
+  "paper_ref": "arXiv:2608.20439",
+  "report_ref": "reports/assessment/SwarmLabs_硬科技提升执行方案_2026-10-15.md §M4",
+  "module": "engine/provenance_binding.py",
+  "scenario": {
+    "sample_id": "ecoli-monod-2026-10-15-001",
+    "lambda_name": "mu_max",
+    "lambda_value": 0.002667,
+    "context": "T=29°C;n_conditions=36;source=zenodo:19416053",
+    "tensor_shape": [
+      36,
+      4
+    ],
+    "tensor_dtype": "float32"
+  },
+  "attacks": [
+    {
+      "attack_id": "A1_swap_tensor",
+      "description": "same λ, swap tensor (attacker forges record to claim tensor_a but signs tensor_b)",
+      "expected_verdict": "TAMPERED",
+      "actual_verdict": "TAMPERED",
+      "detected": true,
+      "legit_signature": "8c32e4fd81b3a57f...",
+      "forged_signature": "45a5bea9a5d7b80e...",
+      "legit_tensor_sha256": "bc553d1e455f0bdd...",
+      "other_tensor_sha256": "62bf070f9e11c12e..."
+    },
+    {
+      "attack_id": "A2_swap_lambda",
+      "description": "same tensor, swap λ (attacker rewrites scalar, keeps signature)",
+      "expected_verdict": "TAMPERED",
+      "actual_verdict": "TAMPERED",
+      "detected": true,
+      "legit_lambda": "0.002667",
+      "forged_lambda": "999.99"
+    },
+    {
+      "attack_id": "A3_rotate_key",
+      "description": "same triple, attacker uses different key (unauthorized key rotation)",
+      "expected_verdict": "TAMPERED",
+      "actual_verdict": "TAMPERED",
+      "detected": true,
+      "victim_secret_key_id": "victim-prod-key",
+      "attacker_secret_key_id": "attacker-compromised-key"
+    }
+  ],
+  "positive_control": {
+    "control_id": "A4_positive",
+    "description": "same triple, same key, repeated binding → deterministic signature",
+    "sig1": "8c32e4fd81b3a57f5bc55679a95037805f1de2f6c17bea687d2848ca22c63da3",
+    "sig2": "8c32e4fd81b3a57f5bc55679a95037805f1de2f6c17bea687d2848ca22c63da3",
+    "reproducible": true,
+    "verify_roundtrip": true
+  },
+  "negative_control": {
+    "control_id": "A2_negctl_legacy_sha256",
+    "purpose": "记录旧 SHA256-only 方案漏检 A2_swap_lambda 的直接证据，让新 HMAC 方案的价值可审计。评估报告 §硬科技提升明确要求此对照。",
+    "attack": "A2_swap_lambda (same tensor bytes, different λ)",
+    "legacy_scheme": {
+      "scheme": "SHA256-of-tensor-bytes-only (provenance_guard.py 等价)",
+      "legit_fingerprint": "772a4d4e2fb3c806744cf75415355938a71cc8319e2f4758f05e0d4335a46a03",
+      "forged_fingerprint": "772a4d4e2fb3c806744cf75415355938a71cc8319e2f4758f05e0d4335a46a03",
+      "fingerprint_changed": false,
+      "verdict": "CLEAN",
+      "attacked_catches": false
+    },
+    "new_scheme": {
+      "scheme": "HMAC-SHA256(secret, sample_id ‖ λ ‖ tensor_sha256 ‖ context)",
+      "legit_signature": "8c32e4fd81b3a57f5bc55679a95037805f1de2f6c17bea687d2848ca22c63da3",
+      "forged_signature_retained": "8c32e4fd81b3a57f5bc55679a95037805f1de2f6c17bea687d2848ca22c63da3",
+      "verdict": "TAMPERED",
+      "attack_catches": true
+    },
+    "finding": "旧 SHA256-only 方案：A2_swap_lambda 攻击下两侧指纹字节相同 → 判 CLEAN（漏检，attack_succeeded）。新 HMAC 方案把 λ 纳入签名 → 判 TAMPERED（抓到，attack_blocked）。这就是我们部署 HMAC 而非纯 SHA256 的动机。",
+    "attack_succeeded_under_legacy": true,
+    "attack_blocked_under_new": true
+  },
+  "summary": {
+    "attacks_detected": 3,
+    "attacks_total": 3,
+    "positive_control_reproducible": true,
+    "positive_control_roundtrip": true,
+    "negative_control_legacy_missed": true,
+    "negative_control_new_caught": true,
+    "all_ok": true,
+    "elapsed_sec": 0.0
+  }
+}

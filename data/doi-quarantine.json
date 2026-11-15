@@ -1,0 +1,66 @@
+{
+  "quarantined_at": "2026-08-05T01:48:51.079Z",
+  "reason": "DOI 经 CrossRef+DataCite+doi.org 三重校验不存在，数值来源无法追溯",
+  "removed_benchmarks": [
+    {
+      "domain": "Energy",
+      "topic": "NMC811 涂层 1000 循环容量保持",
+      "system": "Al2O3-CB-LLZO coated NMC811",
+      "value": 80,
+      "unit": "% retention",
+      "reference": {
+        "title": "Reducing intrinsic drawbacks of Ni-rich layered oxide with a multifunctional materials dry-coating strategy",
+        "journal": "J. Power Sources",
+        "year": 2022,
+        "doi": "10.1016/j.jpowsour.2022.13015"
+      }
+    },
+    {
+      "domain": "Materials",
+      "topic": "LiFePO4 正极指标",
+      "system": "LiFePO4",
+      "value": 170,
+      "unit": "mAh/g",
+      "reference": {
+        "title": "J Power Sources 2025 LiFePO4",
+        "journal": "J. Power Sources",
+        "year": 2025,
+        "doi": "10.1016/j.jpowsour.2025.235"
+      }
+    },
+    {
+      "domain": "Environment",
+      "topic": "Pt-TiO2 光解水",
+      "system": "Pt-TiO2",
+      "value": 5.2,
+      "unit": "mmol/h H2",
+      "reference": {
+        "title": "Fuel 2023 Pt-TiO2",
+        "journal": "Fuel",
+        "year": 2023,
+        "doi": "10.1016/j.fuel.2023.127028"
+      }
+    },
+    {
+      "domain": "Energy",
+      "topic": "D4PA 修饰 PSC 效率",
+      "system": "D4PA·MAPbI3",
+      "value": 26.83,
+      "unit": "% PCE",
+      "reference": {
+        "title": "PMC12804561 (2025) D4PA-PSC",
+        "journal": "Sci. Rep.",
+        "year": 2025,
+        "doi": "10.1038/s41598-025-01990-0"
+      }
+    }
+  ],
+  "cleared_case_dois": [
+    "10.1126/science.abd4017",
+    "10.1021/acs.oprd.1c00123",
+    "10.1016/j.jpowsour.2022.13015",
+    "10.1016/j.jpowsour.2025.235",
+    "10.1016/j.fuel.2023.127028",
+    "10.1038/s41598-025-01990-0"
+  ]
+}

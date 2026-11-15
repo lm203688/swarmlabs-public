@@ -1,0 +1,120 @@
+{
+ "generated_at": "2026-09-29T13:03:58.574276+00:00",
+ "source": "offline:_paper_radar_fixture.json",
+ "n_papers": 5,
+ "threshold": 0.8,
+ "n_alerts": 0,
+ "n_errors": 20,
+ "in_tokens": 0,
+ "est_cost_usd": 0.0,
+ "interests": [
+  "agent_discovery",
+  "surrogate_bayesopt",
+  "active_learning_lab",
+  "frontier_discovery"
+ ],
+ "alerts": [],
+ "all": [],
+ "errors": [
+  {
+   "paper": "offline-0",
+   "interest": "agent_discovery",
+   "err": "HTTP Error 400: Bad Request"
+  },
+  {
+   "paper": "offline-0",
+   "interest": "surrogate_bayesopt",
+   "err": "HTTP Error 400: Bad Request"
+  },
+  {
+   "paper": "offline-0",
+   "interest": "active_learning_lab",
+   "err": "HTTP Error 400: Bad Request"
+  },
+  {
+   "paper": "offline-0",
+   "interest": "frontier_discovery",
+   "err": "HTTP Error 400: Bad Request"
+  },
+  {
+   "paper": "offline-1",
+   "interest": "agent_discovery",
+   "err": "HTTP Error 400: Bad Request"
+  },
+  {
+   "paper": "offline-1",
+   "interest": "surrogate_bayesopt",
+   "err": "HTTP Error 400: Bad Request"
+  },
+  {
+   "paper": "offline-1",
+   "interest": "active_learning_lab",
+   "err": "HTTP Error 400: Bad Request"
+  },
+  {
+   "paper": "offline-1",
+   "interest": "frontier_discovery",
+   "err": "HTTP Error 400: Bad Request"
+  },
+  {
+   "paper": "offline-2",
+   "interest": "agent_discovery",
+   "err": "HTTP Error 400: Bad Request"
+  },
+  {
+   "paper": "offline-2",
+   "interest": "surrogate_bayesopt",
+   "err": "HTTP Error 400: Bad Request"
+  },
+  {
+   "paper": "offline-2",
+   "interest": "active_learning_lab",
+   "err": "HTTP Error 400: Bad Request"
+  },
+  {
+   "paper": "offline-2",
+   "interest": "frontier_discovery",
+   "err": "HTTP Error 400: Bad Request"
+  },
+  {
+   "paper": "offline-3",
+   "interest": "agent_discovery",
+   "err": "HTTP Error 400: Bad Request"
+  },
+  {
+   "paper": "offline-3",
+   "interest": "surrogate_bayesopt",
+   "err": "HTTP Error 400: Bad Request"
+  },
+  {
+   "paper": "offline-3",
+   "interest": "active_learning_lab",
+   "err": "HTTP Error 400: Bad Request"
+  },
+  {
+   "paper": "offline-3",
+   "interest": "frontier_discovery",
+   "err": "HTTP Error 400: Bad Request"
+  },
+  {
+   "paper": "offline-4",
+   "interest": "agent_discovery",
+   "err": "HTTP Error 400: Bad Request"
+  },
+  {
+   "paper": "offline-4",
+   "interest": "surrogate_bayesopt",
+   "err": "HTTP Error 400: Bad Request"
+  },
+  {
+   "paper": "offline-4",
+   "interest": "active_learning_lab",
+   "err": "HTTP Error 400: Bad Request"
+  },
+  {
+   "paper": "offline-4",
+   "interest": "frontier_discovery",
+   "err": "HTTP Error 400: Bad Request"
+  }
+ ]
+}

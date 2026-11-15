@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0",
+  "name": "SwarmLabs 物理模型与拟合结果库",
+  "description": "各引擎使用的数学模型、拟合算法及验证指标",
+  "last_updated": "2026-07-25T01:50:00+08:00",
+  "total_models": 10,
+  "version": "v2026.07.25.1",
+  "models": [
+    {
+      "id": "MODEL-001",
+      "name": "First-Order 释放动力学",
+      "engine": "drug_release",
+      "formula": "Mt/M∞ = 1 - exp(-k₁·t)",
+      "parameters": [{"name": "k₁", "description": "一级速率常数", "unit": "h⁻¹"}],
+      "validation": {"dataset": "二甲双胍缓释片", "R2": 0.9917, "method": "最小二乘法"},
+      "source": "药厂研发总监验收 2026-07-25"
+    },
+    {
+      "id": "MODEL-002",
+      "name": "Korsmeyer-Peppas 模型",
+      "engine": "drug_release",
+      "formula": "Mt/M∞ = k·tⁿ",
+      "parameters": [{"name": "k", "description": "释放常数"}, {"name": "n", "description": "释放指数（机制判断）"}],
+      "validation": {"dataset": "二甲双胍缓释片", "R2": 0.9953, "mechanism": "Fickian扩散(n=0.45)"},
+      "source": "药厂研发总监验收 2026-07-25"
+    },
+    {
+      "id": "MODEL-003",
+      "name": "Higuchi 模型",
+      "engine": "drug_release",
+      "formula": "Mt/M∞ = k_H·t^(1/2)",
+      "parameters": [{"name": "k_H", "description": "Higuchi常数", "unit": "h^(-1/2)"}],
+      "validation": {"dataset": "盐酸二甲双胍500mg", "R2": 0.9862},
+      "source": "药学API实现"
+    },
+    {
+      "id": "MODEL-004",
+      "name": "IVIVC Level A 模型",
+      "engine": "drug_release",
+      "formula": "Cp(t) = f(F_abs(t))",
+      "parameters": [{"name": "F_abs", "description": "累积吸收分数"}, {"name": "Cp", "description": "血浆浓度"}],
+      "validation": {"dataset": "二甲双胍IVIVC", "R2": 0.9964, "level": "Level A (点对点)"},
+      "source": "药厂研发总监验收 2026-07-25"
+    },
+    {
+      "id": "MODEL-005",
+      "name": "f2 相似因子",
+      "engine": "dissolution_usp",
+      "formula": "f2 = 50·log{[1+(1/n)·Σ(Rt-Tt)²]^(-0.5)·100}",
+      "parameters": [{"name": "Rt", "description": "参考批溶出率"}, {"name": "Tt", "description": "测试批溶出率"}, {"name": "n", "description": "时间点数"}],
+      "validation": {"dataset": "USP 6片平行", "f2_range": "78.31 (三批: 78.7/76.3/80.1)", "criterion": "f2>50 相似"},
+      "source": "药厂研发总监验收 2026-07-25"
+    },
+    {
+      "id": "MODEL-006",
+      "name": "DOE Box-Behnken 设计",
+      "engine": "doe_tool",
+      "formula": "三因素三水平旋转设计，15组实验",
+      "parameters": [{"name": "factors", "description": "聚合物比例/致孔剂/压力"}, {"name": "levels", "description": "-1/0/+1"}],
+      "validation": {"runs": 15, "replicates": 3, "total_simulations": 45},
+      "source": "药学DOE API实现"
+    },
+    {
+      "id": "MODEL-007",
+      "name": "DOE Central Composite 设计",
+      "engine": "doe_tool",
+      "formula": "n=2^k + 2k + cp，k=因素数",
+      "parameters": [{"name": "factors", "description": "可配置"}, {"name": "center_points", "description": "默认6"}],
+      "validation": {"example": "k=3, n=20 runs"},
+      "source": "药学DOE API实现"
+    },
+    {
+      "id": "MODEL-008",
+      "name": "Bootstrap 统计检验",
+      "engine": "peerReview",
+      "formula": "B = {x̂₁*, x̂₂*, ..., x̂B*}, p = P(|θ̂*| ≥ |θ̂|)",
+      "parameters": [{"name": "B", "description": "重采样次数(1000)"}, {"name": "p", "description": "p值"}],
+      "validation": {"status": "待实现-PC-003", "note": "当前使用硬编码p值，需改为Bootstrap真实计算"},
+      "source": "Agent优化日报 2026-07-25"
+    },
+    {
+      "id": "MODEL-009",
+      "name": "PINN 物理约束损失",
+      "engine": "pinn",
+      "formula": "L = L_data + λ·L_physics, L_physics = ||F(u, ∂u/∂x, ...)||²",
+      "parameters": [{"name": "λ", "description": "物理损失权重"}, {"name": "F", "description": "PDE残差"}],
+      "validation": {"typical_loss": "3.2e-5 MSE"},
+      "source": "v3.1功能实现"
+    },
+    {
+      "id": "MODEL-010",
+      "name": "Arrhenius 稳定性预测",
+      "engine": "stability_study",
+      "formula": "k = A·exp(-Ea/RT), t₀.₉ = 0.105/k",
+      "parameters": [{"name": "Ea", "description": "活化能", "unit": "kJ/mol"}, {"name": "A", "description": "频率因子"}],
+      "validation": {"standard": "ICH Q1A(R2)"},
+      "source": "药学稳定性API实现"
+    }
+  ]
+}

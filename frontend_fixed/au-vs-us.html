@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AU vs SwarmLabs: one number vs a confidence interval</title>
+<meta name="description" content="Accelerated Understanding (AU) uses a 1T-parameter Fourier neural operator to simulate the physical world, but ships with zero papers and zero benchmarks. SwarmLabs shares the FNO lineage and adds reproducible, uncertainty-quantified evidence that shows you where not to trust the model.">
+<meta property="og:title" content="AU gives you one number. We give you a confidence interval.">
+<meta property="og:description" content="AU simulates the physical world at 1T parameters. SwarmLabs delivers reproducible, uncertainty-quantified evidence that flags unreliable predictions before you run the real experiment.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://swarmlabs.tools/au-vs-us">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AU gives you one number. We give you a confidence interval.">
+<meta name="twitter:description" content="Same FNO lineage, different contract: AU returns a point estimate, SwarmLabs returns a confidence interval you can audit.">
+<link rel="canonical" href="https://swarmlabs.tools/au-vs-us">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AU gives you one number. We give you a confidence interval.", "description": "Accelerated Understanding (AU) uses a 1T-parameter Fourier neural operator to simulate the physical world, yet with zero papers and zero benchmarks. SwarmLabs uses reproducible, uncertainty-quantified evidence to show you where not to trust the model.", "datePublished": "2026-08-31", "author": {"@type": "Organization", "name": "SwarmLabs"}, "publisher": {"@type": "Organization", "name": "SwarmLabs"}, "mainEntityOfPage": "https://swarmlabs.tools/au-vs-us"}</script>
+<link rel="stylesheet" href="/assets/shared.css">
+<style>
+  .page-wrap { max-width: 980px; margin: 0 auto; padding: 40px 24px 64px; }
+  .eyebrow { font-family: 'Courier New', monospace; font-size: 12px; letter-spacing: .15em; text-transform: uppercase; color: var(--accent3); margin-bottom: 14px; }
+  .hero-compare h1 { font-size: 38px; font-weight: 800; line-height: 1.25; letter-spacing: -.02em; margin-bottom: 18px; }
+  .hero-compare h1 .grad { background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-compare p.lead { font-size: 17px; color: var(--muted); line-height: 1.7; max-width: 720px; margin-bottom: 24px; }
+  .vacuum-banner { background: linear-gradient(135deg, rgba(239,68,68,0.10), rgba(245,158,11,0.06)); border: 1px solid rgba(239,68,68,0.3); border-radius: var(--radius); padding: 18px 20px; margin: 28px 0; font-size: 14px; color: var(--text); }
+  .vacuum-banner b { color: var(--red); }
+  section { margin-top: 48px; }
+  section > h2 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+  section > .sub { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
+  .compare-table td.au { color: var(--muted); }
+  .compare-table td.us { color: var(--text); }
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+  .stat-card .num { font-size: 30px; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-card .num small { font-size: 14px; font-weight: 600; }
+  .stat-card .lbl { color: var(--muted); font-size: 13px; margin-top: 6px; line-height: 1.5; }
+  .pill { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; background: rgba(16,185,129,0.15); color: var(--green); border: 1px solid rgba(16,185,129,0.3); }
+  .pill.warn { background: rgba(245,158,11,0.15); color: var(--orange); border-color: rgba(245,158,11,0.3); }
+  .pill.bad { background: rgba(239,68,68,0.15); color: var(--red); border-color: rgba(239,68,68,0.3); }
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+  .note { font-size: 12px; color: var(--muted); margin-top: 28px; border-top: 1px solid var(--border); padding-top: 16px; }
+  a.inline { color: var(--accent); }
+</style>
+</head>
+<body>
+<nav class="nav-bar">
+  <a href="/" class="nav-logo">🐝 <span>SwarmLabs</span></a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">☰</button>
+  <ul class="nav-links">
+    <li><a href="/workbench">Workbench</a></li>
+    <li><a href="/pricing">Pricing</a><a href="/grants-radar" style="color:var(--muted);font-size:13px;text-decoration:none">Grants Radar</a>
+      </li>
+    <li><a href="/blog">Insights</a></li>
+    <li><a href="/report-gallery">V&amp;V Reports</a></li>
+    <li><a href="/failure-cases">Failure Cases</a></li>
+    <li><a href="/why-swarmlabs">Why SwarmLabs</a></li>
+    <li><a href="/au-vs-us" class="active">AU Compare</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap">
+  <div class="hero-compare">
+    <div class="eyebrow">SwarmLabs vs Accelerated Understanding</div>
+    <h1>AU gives you one number.<br><span class="grad">We give you a confidence interval.</span></h1>
+    <p class="lead">On 2026-08-25, Anima Anandkumar's team released <strong>Accelerated Understanding (AU)</strong> — a 1T-parameter Fourier neural operator that aims to simulate the entire physical world. AU and SwarmLabs share the <strong>same architectural lineage (FNO)</strong>. The difference is the contract: AU returns a point estimate, and we return <em>how much to trust that value</em>.</p>
+  </div>
+
+  <div class="vacuum-banner">
+    <b>The credibility gap:</b> one week after release, independent tech press (TechTimes, RuntimeWire and others) explicitly noted that AU had <b>"no benchmark proof yet"</b> — zero publications, zero weights, no reproducible baselines, and no customers or pricing disclosure. The scale claims are grand; the verification evidence is absent. That gap is our entry point.
+  </div>
+
+  <section>
+    <h2>AU vs SwarmLabs: side by side</h2>
+    <div class="sub">No parameter-count chest-thumping. This compares only one dimension: what is <em>ready for real-experiment validation</em>. Cells marked as advantages are the ones a third party can independently verify.</div>
+    <table class="data-table compare-table">
+      <thead>
+        <tr><th>Dimension</th><th>Accelerated Understanding</th><th>SwarmLabs</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Technical lineage</td><td class="au">Fourier Neural Operator (FNO), non-Transformer</td><td class="us best-cell">Same FNO lineage, plus a Gaussian-process surrogate — same architecture family, with uncertainty quantification added</td></tr>
+        <tr><td>Uncertainty quantification (UQ)</td><td class="au"><span class="pill bad">None</span> not mentioned</td><td class="us best-cell">95% CI, coverage 0.95 — UQ is a first-class citizen, not a footnote</td></tr>
+        <tr><td>Open benchmark</td><td class="au"><span class="pill bad">Zero</span> press: "no benchmark proof yet"</td><td class="us best-cell">FNO 6.5× / multi-fidelity savings &gt;488× / meta-learning 7.8× — all reproducible</td></tr>
+        <tr><td>Scale and cost</td><td class="au">1T parameters, 5T context, claims single-prompt 5T data points</td><td class="us best-cell">CPU only, zero GPU, pure numpy — affordable for a single lab</td></tr>
+        <tr><td>Field-evolution capability</td><td class="au"><span class="pill">4D native</span> 3 spatial + time</td><td class="us"><span class="pill warn">Disclosed limit</span> 1–2D parameter surrogates, not PDE field evolution</td></tr>
+        <tr><td>Multi-physics coverage</td><td class="au">One model for everything (fluids / heat transfer / electromagnetics / structural)</td><td class="us best-cell">Microbial fermentation (52 of 95 validated scenarios), 100% GP convergence, 13 species with literature-validated kinetic models</td></tr>
+        <tr><td>Auditability / compliance</td><td class="au"><span class="pill warn">Undisclosed</span></td><td class="us best-cell">Pure numpy, auditable end to end; data isolation; generates compliance documents</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Our reproducible benchmarks</h2>
+    <div class="sub">Not marketing copy — measured numbers anyone can re-run from the repository. See the upcoming preprint for the full protocol.</div>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="num">6.5<small>×</small></div>
+        <div class="lbl">FNO operator-approximation accuracy gain, at <b>95% CI coverage 0.95</b>, and resolution-agnostic (accuracy survives mesh changes)</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">&gt;488<small>×</small></div>
+        <div class="lbl">High-fidelity evaluations saved by multi-fidelity fusion: only 12 HF + 200 LF, reaching RMSE 0.0149 — versus 4.2× for pure LF and 18× for pure HF</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">7.8<small>×</small></div>
+        <div class="lbl">Cross-scenario meta-learning: with k=2 few-shot in related scenarios, enabling zero-to-one transfer. On OOD data the only genuine negative control is 2.5× — which is what suppresses "universal transfer" hallucination</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">52<small>/82</small></div>
+        <div class="lbl">Microbial fermentation scenarios (of 95 validated) — 100% GP convergence, covering Monod / Andrews / Haldane / Contois and <b>13 strains</b> with literature-validated kinetics</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Our focus: a verification foundation, not a prediction foundation</h2>
+    <div class="sub">The value of a virtual experiment lies not in the number it returns, but in knowing when to trust it — and where to doubt it.</div>
+    <div class="card">
+      <p style="color:var(--muted);line-height:1.8;margin:0">
+        AU simulates the physical world; <b style="color:var(--text)">SwarmLabs verifies it</b>. Before you commit to a real experiment — the costly, slow step — we first identify the high-confidence regions and the places you should remain skeptical. We enforce a 3% noise floor that never drops (a dropping floor means the model is drifting into overconfidence), we keep honest OOD negative controls, and we ship a pure-numpy auditable implementation. All of that makes "trustworthiness" a first-class output. We concede on scale and bet on confidence.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Next</h2>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="/workbench">→ Open the workbench, run it free</a>
+      <a class="btn btn-ghost" href="/blog/au-credibility-vacuum">Read the full analysis (long-form report)</a>
+    </div>
+    <p class="note">
+      Sources: AU facts are drawn from public reporting and third-party evaluation published within one week of the 2026-08-25 release (Reuters, TechTimes, RuntimeWire and others). SwarmLabs figures come from <code>engine/fourier_operator.py</code>, <code>engine/microbiology_full.py</code> and the internal benchmarks under <code>data/*_benchmark.json</code>, with a preprint in preparation. AU and SwarmLabs have different business focuses (field evolution vs parameter surrogates), so this page addresses only the verifiability dimension. It is a factual comparison, not a claim that AU's technical approach is wrong.
+    </p>
+  </section>
+</div>
+
+<footer style="text-align:center;padding:32px 0;border-top:1px solid var(--border);color:var(--muted);font-size:13px;margin-top:40px">
+  SwarmLabs · Turn every experiment into a smarter starting point. · <a href="/" style="color:var(--muted)">swarmlabs.tools</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "goal": "多步推理：从 PDE 解热方程出发，通过 Surrogate 建模过渡到化学反应器设计，验证跨尺度方法的一致性",
+  "scenarios": [
+    "pde_heat1d",
+    "surrogate_hartmann6",
+    "chem_reactor_conversion"
+  ],
+  "max_scenarios": 3,
+  "top_n": 5,
+  "allow_correction": true,
+  "thresholds": {
+    "rel_converged": 0.05,
+    "cov_min": 0.8,
+    "cal_max": 0.08
+  }
+}

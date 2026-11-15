@@ -1,0 +1,632 @@
+[
+ {
+  "params": {
+   "temperature_C": 136.9,
+   "catalyst_loading": 0.26,
+   "time_h": 13.6,
+   "solvent_polarity": 2.2
+  },
+  "actual": 0.462,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 181.1,
+   "catalyst_loading": 0.88,
+   "time_h": 20.5,
+   "solvent_polarity": 0.3
+  },
+  "actual": 0.306,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 63.3,
+   "catalyst_loading": 5.06,
+   "time_h": 1.8,
+   "solvent_polarity": 2.0
+  },
+  "actual": 0.356,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 63.6,
+   "catalyst_loading": 5.9,
+   "time_h": 38.9,
+   "solvent_polarity": 0.1
+  },
+  "actual": 0.315,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 166.0,
+   "catalyst_loading": 6.98,
+   "time_h": 16.7,
+   "solvent_polarity": 1.6
+  },
+  "actual": 0.381,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 41.2,
+   "catalyst_loading": 0.98,
+   "time_h": 40.8,
+   "solvent_polarity": 6.0
+  },
+  "actual": 0.343,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 166.2,
+   "catalyst_loading": 7.3,
+   "time_h": 26.0,
+   "solvent_polarity": 9.7
+  },
+  "actual": 0.318,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 170.1,
+   "catalyst_loading": 6.19,
+   "time_h": 41.4,
+   "solvent_polarity": 5.8
+  },
+  "actual": 0.381,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 148.3,
+   "catalyst_loading": 0.47,
+   "time_h": 11.3,
+   "solvent_polarity": 2.9
+  },
+  "actual": 0.502,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 42.7,
+   "catalyst_loading": 2.79,
+   "time_h": 30.7,
+   "solvent_polarity": 3.6
+  },
+  "actual": 0.378,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 89.8,
+   "catalyst_loading": 2.1,
+   "time_h": 13.2,
+   "solvent_polarity": 9.4
+  },
+  "actual": 0.681,
+  "predicted": null,
+  "signal": "success",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 54.9,
+   "catalyst_loading": 7.29,
+   "time_h": 8.3,
+   "solvent_polarity": 3.8
+  },
+  "actual": 0.314,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 198.2,
+   "catalyst_loading": 6.4,
+   "time_h": 27.0,
+   "solvent_polarity": 6.8
+  },
+  "actual": 0.384,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 65.1,
+   "catalyst_loading": 0.33,
+   "time_h": 15.5,
+   "solvent_polarity": 2.7
+  },
+  "actual": 0.497,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 61.9,
+   "catalyst_loading": 9.43,
+   "time_h": 42.1,
+   "solvent_polarity": 3.1
+  },
+  "actual": 0.33,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 185.0,
+   "catalyst_loading": 4.59,
+   "time_h": 13.1,
+   "solvent_polarity": 2.5
+  },
+  "actual": 0.33,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 123.2,
+   "catalyst_loading": 2.63,
+   "time_h": 28.3,
+   "solvent_polarity": 9.0
+  },
+  "actual": 0.364,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 199.6,
+   "catalyst_loading": 5.1,
+   "time_h": 4.8,
+   "solvent_polarity": 0.5
+  },
+  "actual": 0.366,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 44.2,
+   "catalyst_loading": 6.28,
+   "time_h": 38.1,
+   "solvent_polarity": 4.2
+  },
+  "actual": 0.382,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 199.3,
+   "catalyst_loading": 5.3,
+   "time_h": 46.6,
+   "solvent_polarity": 8.6
+  },
+  "actual": 0.363,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 27.0,
+   "catalyst_loading": 7.21,
+   "time_h": 32.9,
+   "solvent_polarity": 5.4
+  },
+  "actual": 0.345,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 44.5,
+   "catalyst_loading": 4.35,
+   "time_h": 22.1,
+   "solvent_polarity": 9.5
+  },
+  "actual": 0.432,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 178.3,
+   "catalyst_loading": 2.64,
+   "time_h": 24.3,
+   "solvent_polarity": 1.8
+  },
+  "actual": 0.419,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 77.2,
+   "catalyst_loading": 6.39,
+   "time_h": 29.4,
+   "solvent_polarity": 1.5
+  },
+  "actual": 0.314,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 158.4,
+   "catalyst_loading": 5.4,
+   "time_h": 37.5,
+   "solvent_polarity": 5.3
+  },
+  "actual": 0.381,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 28.4,
+   "catalyst_loading": 9.29,
+   "time_h": 42.2,
+   "solvent_polarity": 8.3
+  },
+  "actual": 0.35,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 78.8,
+   "catalyst_loading": 0.59,
+   "time_h": 42.2,
+   "solvent_polarity": 9.5
+  },
+  "actual": 0.386,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 37.1,
+   "catalyst_loading": 7.61,
+   "time_h": 36.9,
+   "solvent_polarity": 1.3
+  },
+  "actual": 0.371,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 108.2,
+   "catalyst_loading": 5.5,
+   "time_h": 13.1,
+   "solvent_polarity": 8.7
+  },
+  "actual": 0.365,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 119.4,
+   "catalyst_loading": 7.3,
+   "time_h": 10.1,
+   "solvent_polarity": 3.1
+  },
+  "actual": 0.363,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 199.2,
+   "catalyst_loading": 6.5,
+   "time_h": 21.3,
+   "solvent_polarity": 5.2
+  },
+  "actual": 0.368,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 84.2,
+   "catalyst_loading": 5.89,
+   "time_h": 11.4,
+   "solvent_polarity": 2.2
+  },
+  "actual": 0.384,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 37.4,
+   "catalyst_loading": 6.31,
+   "time_h": 11.4,
+   "solvent_polarity": 9.1
+  },
+  "actual": 0.367,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 66.7,
+   "catalyst_loading": 6.69,
+   "time_h": 10.7,
+   "solvent_polarity": 1.3
+  },
+  "actual": 0.343,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 188.7,
+   "catalyst_loading": 5.71,
+   "time_h": 23.0,
+   "solvent_polarity": 7.8
+  },
+  "actual": 0.359,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 42.0,
+   "catalyst_loading": 4.32,
+   "time_h": 20.6,
+   "solvent_polarity": 4.7
+  },
+  "actual": 0.377,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 152.6,
+   "catalyst_loading": 6.74,
+   "time_h": 47.2,
+   "solvent_polarity": 1.0
+  },
+  "actual": 0.324,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 175.8,
+   "catalyst_loading": 2.49,
+   "time_h": 9.5,
+   "solvent_polarity": 4.5
+  },
+  "actual": 0.448,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 98.8,
+   "catalyst_loading": 2.79,
+   "time_h": 12.4,
+   "solvent_polarity": 9.2
+  },
+  "actual": 0.596,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 121.3,
+   "catalyst_loading": 0.52,
+   "time_h": 48.0,
+   "solvent_polarity": 8.4
+  },
+  "actual": 0.374,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 194.6,
+   "catalyst_loading": 9.26,
+   "time_h": 40.8,
+   "solvent_polarity": 1.7
+  },
+  "actual": 0.326,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 95.2,
+   "catalyst_loading": 0.6,
+   "time_h": 18.5,
+   "solvent_polarity": 9.9
+  },
+  "actual": 0.543,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 71.4,
+   "catalyst_loading": 7.84,
+   "time_h": 22.1,
+   "solvent_polarity": 4.2
+  },
+  "actual": 0.461,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 122.3,
+   "catalyst_loading": 7.19,
+   "time_h": 7.9,
+   "solvent_polarity": 3.0
+  },
+  "actual": 0.322,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ },
+ {
+  "params": {
+   "temperature_C": 194.5,
+   "catalyst_loading": 5.8,
+   "time_h": 26.3,
+   "solvent_polarity": 7.5
+  },
+  "actual": 0.394,
+  "predicted": null,
+  "signal": "low_yield",
+  "source": "synthetic_seed",
+  "synthetic": true,
+  "note": "种子数据集(合成,基于文献典型响应面);用于冷启动主动学习闭环,上线后由真实实验覆盖"
+ }
+]

@@ -1,0 +1,31 @@
+{
+  "name": "report_generation",
+  "version": "1.0.0",
+  "purpose": "生成可审计的实验报告（Markdown / PDF / 结构化 trace），包含引用链与置信度。",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "trace": { "type": "array", "description": "执行轨迹" },
+      "results": { "type": "array", "description": "实验结果" },
+      "engine": { "type": "string" },
+      "params": { "type": "object" }
+    },
+    "required": ["trace", "results", "engine", "params"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "markdown_report": { "type": "string" },
+      "pdf_url": { "type": "string" },
+      "json_trace": { "type": "object" }
+    },
+    "required": ["markdown_report", "json_trace"]
+  },
+  "invocation_condition": "实验完成并返回结果时由 VerifierAgent 调用，输出给用户与知识库。",
+  "depend_tools": ["模板引擎", "PDF 生成库"],
+  "failure_handling": "缺失字段 → 用占位符并告警；PDF 生成失败 → 降级为 Markdown。",
+  "safety_boundary": "不输出敏感密钥或内部实现细节。",
+  "reuse_value": "可被 VerifierAgent 及任何需要报告沉淀的场景复用。",
+  "multi_agent_role": "VerifierAgent",
+  "tags": ["reporting", "audit", "trace"]
+}

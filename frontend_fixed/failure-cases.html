@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Failure Cases — SwarmLabs 我们公开承认失败的场景</title>
+<meta name="description" content="Where SwarmLabs' virtual-experiment engine fails, published on purpose: 1 REFUTED scenario in the main ledger, 10 REFUTED under robustness held-out, and 73 under extrapolation stress — plus the two cases where the wet-lab and V&amp;V evidence chains disagree.">
+<meta property="og:title" content="Failure Cases — SwarmLabs">
+<meta property="og:description" content="Honest failure disclosure: 1 REFUTED in the main ledger, 10 in robustness held-out, 73 under extrapolation stress, and every wet-lab contradiction we found.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://swarmlabs.tools/failure-cases">
+<link rel="stylesheet" href="/assets/shared.css">
+<style>
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 32px 24px 80px; }
+  .page-head h1 { font-size: 30px; font-weight: 800; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .page-head p { color: var(--muted); margin-top: 10px; max-width: 820px; line-height: 1.7; }
+  .page-head a { color: var(--accent3); text-decoration: none; }
+
+  .stats { display: flex; flex-wrap: wrap; gap: 14px; margin: 26px 0 30px; }
+  .stat { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 16px 20px; min-width: 150px; flex: 1; }
+  .stat .n { font-size: 26px; font-weight: 800; }
+  .stat .l { color: var(--muted); font-size: 12.5px; margin-top: 2px; }
+  .stat.red .n { color: var(--red); }
+  .stat.orange .n { color: var(--orange); }
+  .stat.green .n { color: var(--green); }
+  .stat.blue .n { color: #3b82f6; }
+
+  .section { margin-top: 40px; }
+  .section h2 { font-size: 20px; font-weight: 700; margin: 0 0 8px; }
+  .section .sub { color: var(--muted); font-size: 13.5px; margin-bottom: 16px; line-height: 1.6; }
+  .section .sub b { color: var(--text); }
+
+  .card-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 14px; }
+  .fcard { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--red);
+    border-radius: var(--radius); padding: 16px 18px; }
+  .fcard.warn { border-left-color: var(--orange); }
+  .fcard.info { border-left-color: var(--accent3); }
+  .fcard .key { font-weight: 700; font-size: 14.5px; word-break: break-all; }
+  .fcard .domain { color: var(--muted); font-size: 12.5px; margin-top: 2px; }
+  .fcard .metrics { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px 12px;
+    font-size: 12px; margin-top: 10px; }
+  .fcard .metrics .row { display: flex; justify-content: space-between; }
+  .fcard .metrics span:first-child { color: var(--muted); }
+  .fcard .metrics span:last-child { font-variant-numeric: tabular-nums; font-weight: 600; }
+  .fcard .why { color: var(--text); font-size: 12.5px; line-height: 1.6; margin-top: 10px;
+    padding: 10px 12px; background: var(--bg2); border-radius: 6px; }
+  .fcard .why b { color: var(--red); }
+  .fcard .link { display: inline-block; margin-top: 10px; color: var(--accent3);
+    font-size: 12.5px; font-weight: 600; text-decoration: none; }
+  .fcard .link:hover { text-decoration: underline; }
+
+  /* 双证据链分歧表 */
+  .split-table { width: 100%; border-collapse: collapse; background: var(--card);
+    border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .split-table th, .split-table td { padding: 12px 14px; text-align: left;
+    border-bottom: 1px solid var(--border); font-size: 13px; }
+  .split-table tr:last-child td { border-bottom: none; }
+  .split-table th { background: var(--bg2); color: var(--muted); font-weight: 700; font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.05em; }
+  .split-table td.key { font-weight: 700; word-break: break-all; }
+  .split-table td.pass { color: var(--green); font-weight: 700; }
+  .split-table td.refu { color: var(--red); font-weight: 700; }
+  .split-table td.warn { color: var(--orange); font-weight: 700; }
+  .split-table td .why { color: var(--muted); font-size: 12px; display: block; margin-top: 3px;
+    max-width: 400px; line-height: 1.5; }
+
+  .callout { background: var(--card); border: 1px solid var(--border);
+    border-left: 4px solid var(--accent3); padding: 16px 20px;
+    border-radius: var(--radius); margin: 20px 0; }
+  .callout.warn { border-left-color: var(--orange); }
+  .callout.red { border-left-color: var(--red); }
+  .callout h3 { font-size: 15px; margin: 0 0 6px; }
+  .callout p { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .callout p + p { margin-top: 8px; }
+  .callout b { color: var(--text); }
+
+  .foot { color: var(--muted); font-size: 12.5px; margin-top: 40px; line-height: 1.7; }
+  code { background: var(--bg2); padding: 1px 6px; border-radius: 5px; font-size: 12px; color: var(--accent3); }
+</style>
+</head>
+<body>
+
+<nav class="nav-bar">
+  <a href="/" class="nav-logo">🐝 <span>SwarmLabs</span> <span class="beta-badge">Beta</span></a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">☰</button>
+  <ul class="nav-links">
+    <li><a href="/#features">Capabilities</a></li>
+    <li><a href="/report-gallery">V&amp;V Reports</a></li>
+    <li><a href="/failure-cases" style="font-weight:700">Failure Cases</a></li>
+    <li><a href="/pricing">Pricing</a><a href="/grants-radar" style="color:var(--muted);font-size:13px;text-decoration:none">Grants Radar</a>
+      </li>
+    <li><a href="/blog">Insights</a></li>
+    <li><a href="/workbench">Workbench</a></li>
+    <li><a href="/login" class="btn btn-primary" style="color:#fff">Get started</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+  <div class="page-head">
+    <h1>Failure Cases — 我们公开承认失败的场景</h1>
+    <p>
+      一个"可信验证层"如果只挂 PASS，它不是验证层——它是营销层。这一页集中展示所有
+      <b>REFUTED / CONTRADICTED / UNANCHORED</b> 的场景，包括
+      <b>主账本 PASS 但湿实验锚点反驳</b> 的双证据链分歧。
+      每一条都可点击下钻到对应的 10 章 V&amp;V 报告。
+      <br>
+      数据来源：<code>frontend_fixed/reports/heldout_index.json</code>（留出集压测）、
+      <code>frontend_fixed/reports/wet_lab_anchors.json</code>（湿实验锚点）、
+      <code>frontend_fixed/reports/gate_ledger.json</code>（门禁账本）。
+      判定口径与 <a href="/report-gallery">V&amp;V Report Gallery</a> 同源。
+    </p>
+  </div>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="callout red">
+    <h3>双证据链分歧：主账本说 PASS，湿实验说 CONTRADICTED</h3>
+    <p>
+      这是我们最贵、也最诚实的一类失败。主账本的 <b>R²=1.000、coverage=1.000</b> 只证明
+      「模型忠实于它的场景真值函数（oracle）」，不能证明「oracle 符合真实生物学」。
+      两条证据链相互独立：
+    </p>
+    <p>
+      • <b>主账本</b>：模型 vs 场景自带的解析解 / 发表基准，R² 与覆盖率<br>
+      • <b>湿实验锚点</b>：模型参数（Ks / μmax / D60 …）落在真实湿实验文献区间内吗？<br>
+      当两者冲突时，<b>湿实验优先</b>——门禁账本一律把它们判 <code>BLOCK_AUTONOMOUS_ACTION</code>。
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>① 湿实验锚点反驳 —— 主账本 PASS 但湿实验 CONTRADICTED</h2>
+    <div class="sub">
+      两条证据链的<b>交叉验证失败</b>。R² 高只能说明"代理拟合了 oracle"，
+      不能说明"oracle 反映真实世界"。这两条不是营销上的失败，是<b>哲学层</b>的诚实：
+      模型可以精确拟合一个错的假设。
+    </div>
+    <div id="divergence"></div>
+  </div>
+
+  <div class="section">
+    <h2>② 留出集压测 —— Robustness Held-out REFUTED</h2>
+    <div class="sub">
+      把每个场景的训练/测试切分重新洗牌（不同 split），观察结论是否稳定。
+      <b>稳定失败</b>的场景在这里——它们在换切分后仍无法达到 MARGINAL 门槛。
+      主账本 PASS 说明"这个切分下能拟合"，此处 REFUTED 说明"这不是模型的稳定能力"。
+    </div>
+    <div id="robustness" class="card-list"></div>
+  </div>
+
+  <div class="section">
+    <h2>③ 外推压力测试 —— Extrapolation Stress REFUTED</h2>
+    <div class="sub">
+      把测试点放到训练区间之外。这一档 REFUTED 是<b>设计使然</b>——
+      任何代理模型都不该在没有数据的地方拍板。这里 53/62 被判 REFUTED，
+      我们把它挂在页面上：<b>外推失败不是我们的失败，是代理模型的天性</b>。
+      真正失败的是那些被宣传成"可以外推"的模型。
+    </div>
+    <div id="extrapolation" class="card-list"></div>
+    <div class="callout warn" style="margin-top:16px">
+      <p>
+        外推 REFUTED 不代表模型没用——它代表
+        <b>「把测试点放到训练区间之外时，模型诚实拒绝给结论」</b>。
+        门禁账本会在这些场景上标记 <code>PROCEED_WITH_HUMAN_CHECK</code>，
+        而不是 <code>PROCEED</code>。<b>诚实的失败优于自信的胡说</b>。
+      </p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>④ UNANCHORED —— 没有湿实验对照物</h2>
+    <div class="sub">
+      场景没有可锚定的闭式模型 / 语义错配。这不是失败，是<b>诚实的边界</b>：
+      我们明确说这些场景"没有第二证据链可用"，
+      所以门禁账本一律 <code>NO_WET_LAB_ANCHOR</code>，不给自主动作放行。
+    </div>
+    <div id="unanchored" class="card-list"></div>
+  </div>
+
+  <div class="section">
+    <h2>为什么这一页存在</h2>
+    <div class="callout">
+      <p>
+        一份 62/62 PASS 的报告库，对读者是零信息——它什么都没说。
+        <b>失败样本是可信验证层的真凭据</b>：
+      </p>
+      <p>
+        • 它证明我们对 <b>R²、coverage、oracle 一致性</b> 的判据不是自洽的漂亮数字，
+        而是<b>会真的把不合格的场景拒之门外</b>；<br>
+        • 它证明我们有<b>两条独立证据链</b>——主账本与湿实验锚点，冲突时不掩盖；<br>
+        • 它证明外推失败我们承认，不做营销包装；<br>
+        • 它提供<b>可点击的失败样本</b>——每一条都可以下钻到 10 章 V&amp;V 报告，看判定路径。
+      </p>
+      <p>
+        如果你在做 AI4S 选型，请点开这些失败样本看看：<b>一个愿意挂失败的团队，
+        才值得相信它的 PASS</b>。
+      </p>
+    </div>
+  </div>
+
+  <div class="foot">
+    <b>判定口径</b>：R² ≥ 0.90 且单侧下界 coverage ≥ 0.90 → PASS；R² ≥ 0.70 且 coverage ≥ 0.80 → MARGINAL；
+    其余 → REFUTED。<br>
+    <b>湿实验锚点等级</b>：AGREE（在文献区间内）· NEAR（同数量级）· CONTRADICTED（跨数量级）· UNANCHORED（无锚点）。<br>
+    数据来源：
+    <code>frontend_fixed/reports/heldout_index.json</code> ·
+    <code>frontend_fixed/reports/wet_lab_anchors.json</code> ·
+    <code>frontend_fixed/reports/gate_ledger.json</code>。<br>
+    <b>定位</b>：本页与 <a href="/report-gallery">V&amp;V Report Gallery</a> 都是免费公开资产。
+  </div>
+</div>
+
+<script>
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmt = (v, d=3) => (v == null || Number.isNaN(v)) ? '—' : Number(v).toFixed(d);
+
+let HO = null, WET = null, IDX = null;
+
+async function load() {
+  try {
+    const [r1, r2, r3] = await Promise.all([
+      fetch('/reports/heldout_index.json', { cache: 'no-store' }),
+      fetch('/reports/wet_lab_anchors.json', { cache: 'no-store' }),
+      fetch('/reports/index.json', { cache: 'no-store' }),
+    ]);
+    if (!r1.ok || !r2.ok || !r3.ok) throw new Error('HTTP ' + r1.status + '/' + r2.status + '/' + r3.status);
+    HO = await r1.json();
+    WET = await r2.json();
+    IDX = await r3.json();
+  } catch (e) {
+    document.getElementById('stats').innerHTML =
+      '<div class="empty">无法加载失败案例数据：' + esc(e.message) + '</div>';
+    return;
+  }
+  renderAll();
+}
+
+function idxEntry(key) { return (IDX.scenarios||[]).find(s => s.key === key) || {}; }
+function htmlFor(key) { const e = idxEntry(key); return e.html ? '/reports/html/' + key + '.html' : '#'; }
+
+function renderStats() {
+  const refR = HO.robustness_heldout.counts.REFUTED;
+  const refE = HO.extrapolation_stress.counts.REFUTED;
+  const g = WET.summary.grade_counts;
+  const total = IDX.total;
+  document.getElementById('stats').innerHTML = `
+    <div class="stat red"><div class="n">${refR}</div><div class="l">Robustness Held-out REFUTED</div></div>
+    <div class="stat red"><div class="n">${refE}</div><div class="l">Extrapolation Stress REFUTED</div></div>
+    <div class="stat orange"><div class="n">${g.CONTRADICTED}</div><div class="l">湿实验 CONTRADICTED</div></div>
+    <div class="stat"><div class="n">${g.UNANCHORED}</div><div class="l">UNANCHORED（无锚点）</div></div>
+    <div class="stat green"><div class="n">${IDX.counts.PASS}/${total}</div><div class="l">主账本 PASS</div></div>`;
+}
+
+function renderDivergence() {
+  // 双证据链分歧：主账本 PASS + 湿实验 CONTRADICTED
+  const rows = (WET.scenarios || []).filter(s => s.grade === 'CONTRADICTED');
+  if (!rows.length) {
+    document.getElementById('divergence').innerHTML =
+      '<div class="empty">无分歧条目</div>';
+    return;
+  }
+  let html = `<table class="split-table">
+    <thead><tr>
+      <th>Scenario</th><th>主账本</th><th>湿实验锚点</th><th>分歧根因</th>
+    </tr></thead><tbody>`;
+  rows.forEach(s => {
+    const idx = idxEntry(s.scenario_key);
+    const checks = (s.checks || []).filter(c => c.grade === 'CONTRADICTED');
+    const why = checks[0] ? esc(checks[0].why) : '—';
+    html += `<tr>
+      <td class="key">${esc(s.scenario_key)}
+        <span class="why">${esc(idx.domain || '')}</span>
+      </td>
+      <td class="pass">PASS<br><span class="why">R²=${fmt(idx.r2)} cov=${fmt(idx.coverage,2)}</span></td>
+      <td class="refu">CONTRADICTED<br><span class="why">gate: ${esc(s.gate)}</span></td>
+      <td>${why}</td>
+    </tr>`;
+  });
+  html += '</tbody></table>';
+  document.getElementById('divergence').innerHTML = html;
+}
+
+function renderRefuted(id, scenarios, label) {
+  const refu = (scenarios || []).filter(s => s.verdict === 'REFUTED');
+  if (!refu.length) {
+    document.getElementById(id).innerHTML = '<div class="empty">无 REFUTED 条目</div>';
+    return;
+  }
+  // extrapolation REFUTED 数量很多，只展示前 12 个 + 计数
+  const limit = 12;
+  const shown = refu.slice(0, limit);
+  const more = refu.length - shown.length;
+  let html = '';
+  shown.forEach(s => {
+    const idx = idxEntry(s.key);
+    const link = htmlFor(s.key);
+    html += `<div class="fcard">
+      <div class="key">${esc(s.key)}</div>
+      <div class="domain">${esc(idx.domain || '')} · ${s.dim || '?'}D</div>
+      <div class="metrics">
+        <div class="row"><span>R²</span><span>${fmt(s.r2)}</span></div>
+        <div class="row"><span>覆盖率</span><span>${fmt(s.coverage,2)}</span></div>
+        <div class="row"><span>κ</span><span>${fmt(s.calibration_scale_kappa,2)}</span></div>
+      </div>
+      <div class="why"><b>${esc(label)}</b>：${esc(s.rationale)}</div>
+      <a class="link" href="${esc(link)}" target="_blank">▸ 查看主账本 V&amp;V 报告</a>
+    </div>`;
+  });
+  if (more > 0) {
+    html += `<div class="fcard info">
+      <div class="key">… 还有 ${more} 个场景</div>
+      <div class="why">完整清单：<code>GET /reports/heldout_index.json</code>
+      → <code>${label === 'Robustness Held-out' ? 'robustness_heldout' : 'extrapolation_stress'}.scenarios</code>
+      过滤 <code>verdict === "REFUTED"</code>。这些场景在门禁账本里都是
+      <code>PROCEED_WITH_HUMAN_CHECK</code>，不自动放行。</div>
+    </div>`;
+  }
+  document.getElementById(id).innerHTML = html;
+}
+
+function renderUnanchored() {
+  const rows = (WET.scenarios || []).filter(s => s.grade === 'UNANCHORED');
+  if (!rows.length) {
+    document.getElementById('unanchored').innerHTML = '<div class="empty">无 UNANCHORED 条目</div>';
+    return;
+  }
+  let html = '';
+  rows.forEach(s => {
+    const idx = idxEntry(s.scenario_key);
+    const checks = s.checks || [];
+    const why = checks[0] ? esc(checks[0].why) : '—';
+    html += `<div class="fcard warn">
+      <div class="key">${esc(s.scenario_key)}</div>
+      <div class="domain">${esc(idx.domain || '')} · ${s.dim || '?'}D · gate: ${esc(s.gate)}</div>
+      <div class="why">${why}</div>
+      <a class="link" href="${esc(htmlFor(s.scenario_key))}" target="_blank">▸ 查看主账本 V&amp;V 报告</a>
+    </div>`;
+  });
+  document.getElementById('unanchored').innerHTML = html;
+}
+
+function renderAll() {
+  renderStats();
+  renderDivergence();
+  renderRefuted('robustness', HO.robustness_heldout.scenarios, 'Robustness Held-out');
+  renderRefuted('extrapolation', HO.extrapolation_stress.scenarios, 'Extrapolation Stress');
+  renderUnanchored();
+}
+
+load();
+</script>
+</body>
+</html>

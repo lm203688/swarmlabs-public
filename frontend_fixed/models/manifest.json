@@ -1,0 +1,862 @@
+{
+  "format": "swarmlabs-checkpoint-manifest-v1",
+  "count": 95,
+  "models": [
+    {
+      "name": "bio_logistic",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/bio_logistic.json",
+      "bytes": 2081
+    },
+    {
+      "name": "chem_bet",
+      "domain": "chemistry",
+      "input_dim": 4,
+      "hidden_dim": 24,
+      "params": 145,
+      "file": "models/chem_bet.json",
+      "bytes": 3260
+    },
+    {
+      "name": "chem_freundlich",
+      "domain": "chemistry",
+      "input_dim": 3,
+      "hidden_dim": 24,
+      "params": 121,
+      "file": "models/chem_freundlich.json",
+      "bytes": 3009
+    },
+    {
+      "name": "chem_langmuir",
+      "domain": "chemistry",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/chem_langmuir.json",
+      "bytes": 2190
+    },
+    {
+      "name": "chem_reactor_conversion",
+      "domain": "chemistry",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/chem_reactor_conversion.json",
+      "bytes": 2267
+    },
+    {
+      "name": "cheminfo_hydration",
+      "domain": "chemistry",
+      "input_dim": 7,
+      "hidden_dim": 24,
+      "params": 217,
+      "file": "models/cheminfo_hydration.json",
+      "bytes": 4986
+    },
+    {
+      "name": "cheminfo_logD",
+      "domain": "chemistry",
+      "input_dim": 8,
+      "hidden_dim": 24,
+      "params": 241,
+      "file": "models/cheminfo_logD.json",
+      "bytes": 5500
+    },
+    {
+      "name": "cheminfo_logS",
+      "domain": "chemistry",
+      "input_dim": 9,
+      "hidden_dim": 24,
+      "params": 265,
+      "file": "models/cheminfo_logS.json",
+      "bytes": 5967
+    },
+    {
+      "name": "cheminfo_pIC50",
+      "domain": "chemistry",
+      "input_dim": 7,
+      "hidden_dim": 24,
+      "params": 217,
+      "file": "models/cheminfo_pIC50.json",
+      "bytes": 5000
+    },
+    {
+      "name": "eco_lv_peak_ratio",
+      "domain": "ecology",
+      "input_dim": 4,
+      "hidden_dim": 24,
+      "params": 145,
+      "file": "models/eco_lv_peak_ratio.json",
+      "bytes": 3600
+    },
+    {
+      "name": "eco_nicholson_bailey",
+      "domain": "ecology",
+      "input_dim": 5,
+      "hidden_dim": 24,
+      "params": 169,
+      "file": "models/eco_nicholson_bailey.json",
+      "bytes": 3703
+    },
+    {
+      "name": "eco_ricker_population",
+      "domain": "ecology",
+      "input_dim": 3,
+      "hidden_dim": 24,
+      "params": 121,
+      "file": "models/eco_ricker_population.json",
+      "bytes": 2763
+    },
+    {
+      "name": "energy_ccpp_output",
+      "domain": "energy",
+      "input_dim": 4,
+      "hidden_dim": 24,
+      "params": 145,
+      "file": "models/energy_ccpp_output.json",
+      "bytes": 3558
+    },
+    {
+      "name": "energy_isothermal_work",
+      "domain": "energy",
+      "input_dim": 5,
+      "hidden_dim": 24,
+      "params": 169,
+      "file": "models/energy_isothermal_work.json",
+      "bytes": 3691
+    },
+    {
+      "name": "energy_rankine_efficiency",
+      "domain": "energy",
+      "input_dim": 4,
+      "hidden_dim": 24,
+      "params": 145,
+      "file": "models/energy_rankine_efficiency.json",
+      "bytes": 3268
+    },
+    {
+      "name": "fin_merton_call_div",
+      "domain": "finance",
+      "input_dim": 6,
+      "hidden_dim": 24,
+      "params": 193,
+      "file": "models/fin_merton_call_div.json",
+      "bytes": 4342
+    },
+    {
+      "name": "heat_radiation_flux",
+      "domain": "physics",
+      "input_dim": 4,
+      "hidden_dim": 24,
+      "params": 145,
+      "file": "models/heat_radiation_flux.json",
+      "bytes": 3131
+    },
+    {
+      "name": "heat_series_resistance",
+      "domain": "physics",
+      "input_dim": 8,
+      "hidden_dim": 24,
+      "params": 241,
+      "file": "models/heat_series_resistance.json",
+      "bytes": 5220
+    },
+    {
+      "name": "llm_chinchilla_loss",
+      "domain": "machine_learning",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/llm_chinchilla_loss.json",
+      "bytes": 2207
+    },
+    {
+      "name": "llm_compute_optimal_ratio",
+      "domain": "machine_learning",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/llm_compute_optimal_ratio.json",
+      "bytes": 2207
+    },
+    {
+      "name": "llm_scaling",
+      "domain": "machine_learning",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/llm_scaling.json",
+      "bytes": 2194
+    },
+    {
+      "name": "micro_acetobacter_acetate",
+      "domain": "biology",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/micro_acetobacter_acetate.json",
+      "bytes": 2687
+    },
+    {
+      "name": "micro_antibiotic_2d",
+      "domain": "biology",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/micro_antibiotic_2d.json",
+      "bytes": 2657
+    },
+    {
+      "name": "micro_antibiotic_timekill",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_antibiotic_timekill.json",
+      "bytes": 2196
+    },
+    {
+      "name": "micro_biofilm_ecoli",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_biofilm_ecoli.json",
+      "bytes": 2169
+    },
+    {
+      "name": "micro_cerevisiae_ethanol",
+      "domain": "biology",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/micro_cerevisiae_ethanol.json",
+      "bytes": 2657
+    },
+    {
+      "name": "micro_chemostat_cerevisiae",
+      "domain": "biology",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/micro_chemostat_cerevisiae.json",
+      "bytes": 2674
+    },
+    {
+      "name": "micro_chemostat_ecoli",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_chemostat_ecoli.json",
+      "bytes": 2119
+    },
+    {
+      "name": "micro_chemostat_transient",
+      "domain": "biology",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/micro_chemostat_transient.json",
+      "bytes": 2594
+    },
+    {
+      "name": "micro_coculture_mutualism",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_coculture_mutualism.json",
+      "bytes": 2118
+    },
+    {
+      "name": "micro_competition_2d",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_competition_2d.json",
+      "bytes": 2126
+    },
+    {
+      "name": "micro_competition_ecoli_yeast",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_competition_ecoli_yeast.json",
+      "bytes": 2145
+    },
+    {
+      "name": "micro_contois_ecoli",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_contois_ecoli.json",
+      "bytes": 2178
+    },
+    {
+      "name": "micro_crabtree_2d",
+      "domain": "biology",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/micro_crabtree_2d.json",
+      "bytes": 2646
+    },
+    {
+      "name": "micro_crabtree_cerevisiae",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_crabtree_cerevisiae.json",
+      "bytes": 2113
+    },
+    {
+      "name": "micro_dead_volume",
+      "domain": "biology",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/micro_dead_volume.json",
+      "bytes": 2618
+    },
+    {
+      "name": "micro_diauxic_2d",
+      "domain": "biology",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/micro_diauxic_2d.json",
+      "bytes": 2662
+    },
+    {
+      "name": "micro_diauxic_ecoli",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_diauxic_ecoli.json",
+      "bytes": 2161
+    },
+    {
+      "name": "micro_doe_ecoli_monod",
+      "domain": "biology",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/micro_doe_ecoli_monod.json",
+      "bytes": 2676
+    },
+    {
+      "name": "micro_ecoli_glucose",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_ecoli_glucose.json",
+      "bytes": 2132
+    },
+    {
+      "name": "micro_fba_flux",
+      "domain": "biology",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/micro_fba_flux.json",
+      "bytes": 2588
+    },
+    {
+      "name": "micro_fedbatch_2d",
+      "domain": "biology",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/micro_fedbatch_2d.json",
+      "bytes": 2636
+    },
+    {
+      "name": "micro_fedbatch_3d",
+      "domain": "biology",
+      "input_dim": 3,
+      "hidden_dim": 24,
+      "params": 121,
+      "file": "models/micro_fedbatch_3d.json",
+      "bytes": 3138
+    },
+    {
+      "name": "micro_fedbatch_ecoli",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_fedbatch_ecoli.json",
+      "bytes": 2028
+    },
+    {
+      "name": "micro_foam_dynamics",
+      "domain": "biology",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/micro_foam_dynamics.json",
+      "bytes": 2605
+    },
+    {
+      "name": "micro_gene_expression",
+      "domain": "biology",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/micro_gene_expression.json",
+      "bytes": 2640
+    },
+    {
+      "name": "micro_haldane_2d",
+      "domain": "biology",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/micro_haldane_2d.json",
+      "bytes": 2673
+    },
+    {
+      "name": "micro_haldane_putida",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_haldane_putida.json",
+      "bytes": 2176
+    },
+    {
+      "name": "micro_heavy_metal_ecoli",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_heavy_metal_ecoli.json",
+      "bytes": 2174
+    },
+    {
+      "name": "micro_immobilized_cell",
+      "domain": "biology",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/micro_immobilized_cell.json",
+      "bytes": 2625
+    },
+    {
+      "name": "micro_lactococcus_lactose",
+      "domain": "biology",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/micro_lactococcus_lactose.json",
+      "bytes": 2686
+    },
+    {
+      "name": "micro_lag_ecoli",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_lag_ecoli.json",
+      "bytes": 2085
+    },
+    {
+      "name": "micro_lifecycle_ecoli",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_lifecycle_ecoli.json",
+      "bytes": 2090
+    },
+    {
+      "name": "micro_methanobacterium_methane",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_methanobacterium_methane.json",
+      "bytes": 2233
+    },
+    {
+      "name": "micro_mixed_substrate",
+      "domain": "biology",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/micro_mixed_substrate.json",
+      "bytes": 2613
+    },
+    {
+      "name": "micro_mle_ecoli_monod",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_mle_ecoli_monod.json",
+      "bytes": 2145
+    },
+    {
+      "name": "micro_osmotic_ecoli",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_osmotic_ecoli.json",
+      "bytes": 2156
+    },
+    {
+      "name": "micro_oxidative_stress",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_oxidative_stress.json",
+      "bytes": 2103
+    },
+    {
+      "name": "micro_oxygen_2d",
+      "domain": "biology",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/micro_oxygen_2d.json",
+      "bytes": 2640
+    },
+    {
+      "name": "micro_oxygen_ecoli",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_oxygen_ecoli.json",
+      "bytes": 2169
+    },
+    {
+      "name": "micro_ph_control",
+      "domain": "biology",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/micro_ph_control.json",
+      "bytes": 2569
+    },
+    {
+      "name": "micro_phage_infection",
+      "domain": "biology",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/micro_phage_infection.json",
+      "bytes": 2607
+    },
+    {
+      "name": "micro_pirt_ecoli",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_pirt_ecoli.json",
+      "bytes": 2149
+    },
+    {
+      "name": "micro_plasmid_stability",
+      "domain": "biology",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/micro_plasmid_stability.json",
+      "bytes": 2640
+    },
+    {
+      "name": "micro_putida_toluene",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_putida_toluene.json",
+      "bytes": 2181
+    },
+    {
+      "name": "micro_quorum_ecoli",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_quorum_ecoli.json",
+      "bytes": 2109
+    },
+    {
+      "name": "micro_scaleup_kla",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_scaleup_kla.json",
+      "bytes": 2193
+    },
+    {
+      "name": "micro_secondary_metabolite",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_secondary_metabolite.json",
+      "bytes": 2167
+    },
+    {
+      "name": "micro_sensor_fusion",
+      "domain": "biology",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/micro_sensor_fusion.json",
+      "bytes": 2645
+    },
+    {
+      "name": "micro_sobol_ecoli",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_sobol_ecoli.json",
+      "bytes": 2159
+    },
+    {
+      "name": "micro_tessier_ecoli",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_tessier_ecoli.json",
+      "bytes": 2174
+    },
+    {
+      "name": "micro_thermal_death",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_thermal_death.json",
+      "bytes": 2005
+    },
+    {
+      "name": "micro_uq_ecoli_monod",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/micro_uq_ecoli_monod.json",
+      "bytes": 2176
+    },
+    {
+      "name": "microbio_inhibition",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/microbio_inhibition.json",
+      "bytes": 2176
+    },
+    {
+      "name": "microbio_monod",
+      "domain": "biology",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/microbio_monod.json",
+      "bytes": 2168
+    },
+    {
+      "name": "mol_esterification_yield",
+      "domain": "chemistry",
+      "input_dim": 10,
+      "hidden_dim": 24,
+      "params": 289,
+      "file": "models/mol_esterification_yield.json",
+      "bytes": 6521
+    },
+    {
+      "name": "mol_suzuki_yield",
+      "domain": "chemistry",
+      "input_dim": 10,
+      "hidden_dim": 24,
+      "params": 289,
+      "file": "models/mol_suzuki_yield.json",
+      "bytes": 6457
+    },
+    {
+      "name": "neuro_hh_spike_amplitude",
+      "domain": "neuroscience",
+      "input_dim": 7,
+      "hidden_dim": 24,
+      "params": 217,
+      "file": "models/neuro_hh_spike_amplitude.json",
+      "bytes": 4788
+    },
+    {
+      "name": "neuro_izhikevich_rate",
+      "domain": "neuroscience",
+      "input_dim": 5,
+      "hidden_dim": 24,
+      "params": 169,
+      "file": "models/neuro_izhikevich_rate.json",
+      "bytes": 3862
+    },
+    {
+      "name": "neuro_lif_fi",
+      "domain": "neuroscience",
+      "input_dim": 7,
+      "hidden_dim": 24,
+      "params": 217,
+      "file": "models/neuro_lif_fi.json",
+      "bytes": 4834
+    },
+    {
+      "name": "ode_lotka_volterra",
+      "domain": "dynamics",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/ode_lotka_volterra.json",
+      "bytes": 2665
+    },
+    {
+      "name": "opt_ackley2d",
+      "domain": "optimization",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/opt_ackley2d.json",
+      "bytes": 2552
+    },
+    {
+      "name": "opt_gramacylee1d",
+      "domain": "optimization",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/opt_gramacylee1d.json",
+      "bytes": 2151
+    },
+    {
+      "name": "opt_hartmann3d",
+      "domain": "optimization",
+      "input_dim": 3,
+      "hidden_dim": 24,
+      "params": 121,
+      "file": "models/opt_hartmann3d.json",
+      "bytes": 3132
+    },
+    {
+      "name": "opt_levy2d",
+      "domain": "optimization",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/opt_levy2d.json",
+      "bytes": 2557
+    },
+    {
+      "name": "opt_michalewicz2d",
+      "domain": "optimization",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/opt_michalewicz2d.json",
+      "bytes": 2636
+    },
+    {
+      "name": "opt_rastrigin2d",
+      "domain": "optimization",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/opt_rastrigin2d.json",
+      "bytes": 2533
+    },
+    {
+      "name": "opt_rosenbrock2d",
+      "domain": "optimization",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/opt_rosenbrock2d.json",
+      "bytes": 2485
+    },
+    {
+      "name": "opt_schwefel2d",
+      "domain": "optimization",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/opt_schwefel2d.json",
+      "bytes": 2569
+    },
+    {
+      "name": "pde_heat1d",
+      "domain": "physics",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/pde_heat1d.json",
+      "bytes": 2210
+    },
+    {
+      "name": "quant_bs_call",
+      "domain": "finance",
+      "input_dim": 5,
+      "hidden_dim": 24,
+      "params": 169,
+      "file": "models/quant_bs_call.json",
+      "bytes": 3830
+    },
+    {
+      "name": "resp_welch2d",
+      "domain": "statistics",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/resp_welch2d.json",
+      "bytes": 2614
+    },
+    {
+      "name": "surrogate_branin",
+      "domain": "optimization",
+      "input_dim": 2,
+      "hidden_dim": 24,
+      "params": 97,
+      "file": "models/surrogate_branin.json",
+      "bytes": 2545
+    },
+    {
+      "name": "surrogate_forrester",
+      "domain": "benchmark",
+      "input_dim": 1,
+      "hidden_dim": 24,
+      "params": 73,
+      "file": "models/surrogate_forrester.json",
+      "bytes": 2223
+    },
+    {
+      "name": "surrogate_hartmann6",
+      "domain": "optimization",
+      "input_dim": 6,
+      "hidden_dim": 24,
+      "params": 193,
+      "file": "models/surrogate_hartmann6.json",
+      "bytes": 4622
+    }
+  ],
+  "exported_at": "2026-10-25T01:10:32+00:00"
+}

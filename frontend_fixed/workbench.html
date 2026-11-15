@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SwarmLabs Workbench — your experiments & reapplication, contribute credits, and bring your own API (BYO-API). Turn your real experiments into platform assets.">
+<title>My Workbench · SwarmLabs</title>
+<link rel="canonical" href="https://swarmlabs.tools/workbench">
+<link rel="stylesheet" href="/assets/shared.css">
+<style>
+:root { --radius: 14px; --radius-sm: 9px; --transition: .18s; }
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.5}
+a{color:var(--accent)}
+.nav-bar{display:flex;align-items:center;padding:14px 28px;background:var(--bg2);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.nav-logo{font-weight:800;font-size:17px;text-decoration:none;color:var(--text);margin-right:auto}
+.nav-logo span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;gap:22px;list-style:none;margin:0;padding:0;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:14px}
+.nav-links a:hover{color:var(--text)}
+.wrap{max-width:1040px;margin:0 auto;padding:28px 20px 60px}
+.page-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:14px;margin-bottom:22px}
+.page-head h1{font-size:26px;margin:0 0 4px}
+.page-head p{margin:0;color:var(--muted);font-size:14px}
+.credit-pill{background:rgba(16,185,129,.14);border:1px solid var(--green);color:var(--green);padding:8px 16px;border-radius:24px;font-weight:700;font-size:15px;white-space:nowrap}
+.tabs{display:flex;gap:8px;margin-bottom:22px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.tab{padding:11px 18px;cursor:pointer;color:var(--muted);font-size:14px;font-weight:600;border-bottom:3px solid transparent;margin-bottom:-1px}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.panel{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;margin-bottom:18px}
+.panel h2{font-size:17px;margin:0 0 6px;display:flex;align-items:center;gap:8px}
+.panel .desc{color:var(--muted);font-size:13px;margin:0 0 16px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:720px){.grid2{grid-template-columns:1fr}.nav-links{display:none}}
+.btn{border:none;border-radius:var(--radius-sm);padding:9px 16px;font-size:13px;font-weight:600;cursor:pointer;transition:var(--transition)}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{filter:brightness(1.08)}
+.btn-ghost{background:var(--bg2);color:var(--text);border:1px solid var(--border)}
+.btn-green{background:var(--green);color:#04231a}
+.btn-sm{padding:6px 12px;font-size:12px}
+.badge{display:inline-block;padding:2px 9px;border-radius:11px;font-size:11px;font-weight:700}
+.badge-ok{background:rgba(16,185,129,.16);color:var(--green)}
+.badge-pending{background:rgba(245,158,11,.16);color:#f59e0b}
+.badge-raw{background:rgba(148,163,184,.18);color:var(--muted)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border)}
+th{color:var(--muted);font-weight:600;font-size:12px}
+tr:hover td{background:rgba(59,130,246,.04)}
+input,select,textarea{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:9px 11px;color:var(--text);font-size:13px;font-family:inherit}
+label{display:block;font-size:12px;color:var(--muted);margin:10px 0 4px;font-weight:600}
+.suggest-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;margin-bottom:10px}
+.suggest-card .p{font-weight:700;font-size:14px}
+.suggest-card .m{color:var(--muted);font-size:12px;margin-top:4px}
+.hl{color:var(--accent);font-weight:700}
+.muted{color:var(--muted)}
+.empty{text-align:center;color:var(--muted);padding:38px 10px;font-size:14px}
+.rules li{margin-bottom:9px;font-size:13px}
+.rules b{color:var(--green)}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--text);color:var(--bg);padding:11px 20px;border-radius:24px;font-size:13px;font-weight:600;opacity:0;transition:.25s;pointer-events:none;z-index:200}
+.toast.show{opacity:1}
+.anchor-box{background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.3);border-radius:var(--radius-sm);padding:12px 14px;font-size:12px;margin-bottom:14px}
+.api-row{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;margin-bottom:10px;flex-wrap:wrap}
+.kbd{font-family:monospace;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:1px 6px;font-size:11px}
+</style>
+</head>
+<body>
+<nav class="nav-bar">
+  <a href="/" class="nav-logo">🐝 <span>SwarmLabs</span></a>
+  <ul class="nav-links">
+    <li><a href="/lab">Lab</a></li>
+    <li><a href="/workbench">My Workbench</a></li>
+    <li><a href="/pricing">Pricing</a><a href="/grants-radar" style="color:var(--muted);font-size:13px;text-decoration:none">Grants Radar</a>
+      </li>
+    <li><a href="/login">Sign in</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+  <div class="page-head">
+    <div>
+      <h1>🏠 My Workbench</h1>
+      <p>Turn your real experiments into platform assets: reapply, earn credits, bring your own API</p>
+    </div>
+    <div class="credit-pill" id="creditPill">Credits —</div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="exp" onclick="switchTab('exp')">⚗️ My Experiments / Reapply</div>
+    <div class="tab" data-tab="fit" onclick="switchTab('fit')">📊 Data Import + Auto-Fit</div>
+    <div class="tab" data-tab="credit" onclick="switchTab('credit')">🪙 Contribute Credits</div>
+    <div class="tab" data-tab="api" onclick="switchTab('api')">🔑 My API</div>
+  </div>
+
+  <!-- ===== My Experiments / Reapply ===== -->
+  <div id="tab-exp">
+    <div class="panel">
+      <h2>⚗️ My Experiments</h2>
+      <p class="desc">Every experiment result you submit (real yields from runs or literature) is stored here under your account. Validated experiments can be "reapplied" — injecting their points as training data into the engine's Gaussian process to generate the next round of optimization suggestions, and earn credits.</p>
+      <div class="panel" style="border-color:rgba(16,185,129,.35)">
+        <h2>➕ Submit an experiment result</h2>
+        <p class="desc">Backfill your real results here (no coding required). After submission they appear in the list below and can be reapplied with one click.</p>
+        <div class="grid2">
+          <div>
+            <label>Engine</label>
+            <select id="fbEngine"></select>
+          </div>
+          <div>
+            <label>Signal (optional)</label>
+            <select id="fbSignal"><option value="">None</option><option value="success">success</option><option value="improved">improved</option><option value="failed">failed (negative sample)</option></select>
+          </div>
+        </div>
+        <div class="grid2">
+          <div><label>Predicted yield (optional, 0–1 or 0–100)</label><input id="fbPredicted" type="number" step="any" placeholder="e.g. 0.80"></div>
+          <div><label>Actual yield (required, 0–1 or 0–100)</label><input id="fbActual" type="number" step="any" placeholder="e.g. 0.85"></div>
+        </div>
+        <label>Parameters (optional JSON, e.g. {"temperature_C":80,"catalyst_loading":1.5,"time_h":6})</label>
+        <textarea id="fbParams" rows="2" placeholder='{"temperature_C":80,"catalyst_loading":1.5,"time_h":6}'></textarea>
+        <div style="margin-top:14px"><button class="btn btn-green" onclick="submitExperiment()">Submit &amp; earn credits</button></div>
+      </div>
+      <div id="expList"><div class="empty">Loading…</div></div>
+    </div>
+    <div class="panel" id="reapplyPanel" style="display:none">
+      <h2>🔁 Reapply</h2>
+      <div class="anchor-box" id="anchorBox"></div>
+      <div class="grid2">
+        <div>
+          <label>Target engine (defaults to same engine; can reuse recipe across engines)</label>
+          <select id="reTarget"></select>
+        </div>
+        <div>
+          <label>&nbsp;</label>
+          <button class="btn btn-primary" onclick="doReapply()" style="width:100%">Generate next suggestion</button>
+        </div>
+      </div>
+      <div id="reapplyResult"></div>
+    </div>
+  </div>
+
+  <!-- ===== Data Import + Auto-Fit ===== -->
+  <div id="tab-fit" style="display:none">
+    <div class="panel">
+      <h2>📊 Data Import + Auto-Fit</h2>
+      <p class="desc">Upload experiment data (CSV / Excel export) and auto-fit Monod / Logistic / Andrews / Haldane growth-kinetic models, returning parameters + R² + error bars. No coding required.</p>
+      <div class="grid2">
+        <div>
+          <label>CSV file upload</label>
+          <input type="file" id="fitFile" accept=".csv,.tsv,.txt" onchange="handleFileUpload(event)">
+          <p class="muted" style="font-size:11px;margin-top:4px">Format: two columns (time / OD600), first row is the header, comma- or tab-separated</p>
+        </div>
+        <div>
+          <label>Or paste CSV data</label>
+          <textarea id="fitData" rows="6" placeholder="time,OD600&#10;0,0.05&#10;2,0.08&#10;4,0.15&#10;6,0.35&#10;8,0.65&#10;10,0.88"></textarea>
+        </div>
+      </div>
+      <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn btn-green" onclick="runFit()">🔬 Auto-fit</button>
+        <button class="btn btn-ghost" onclick="loadSampleData()">📋 Load sample data</button>
+      </div>
+    </div>
+
+    <div class="panel" id="fitPreview" style="display:none">
+      <h2>📋 Data preview</h2>
+      <div id="fitPreviewTable"></div>
+      <canvas id="fitChart" width="760" height="280" style="width:100%;height:280px;margin-top:14px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg2)"></canvas>
+    </div>
+
+    <div class="panel" id="fitResults" style="display:none">
+      <h2>🏆 Fit results (ranked by R²)</h2>
+      <div id="fitResultsTable"></div>
+      <div id="fitBestCard" style="margin-top:14px"></div>
+      <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-green" onclick="exportReport('csv')">📥 Export CSV</button>
+        <button class="btn btn-blue" onclick="exportReport('json')">📄 Export JSON report</button>
+        <button class="btn btn-ghost" onclick="exportReport('md')">📝 Export Markdown</button>
+      </div>
+      <p class="muted" style="font-size:11px;margin-top:10px">R² > 0.95 = excellent fit · R² > 0.85 = usable · R² < 0.85 = add points or switch model. Parameters include error bars (95% CI).</p>
+    </div>
+  </div>
+
+  <!-- ===== Contribute Credits ===== -->
+  <div id="tab-credit" style="display:none">
+    <div class="panel">
+      <h2>🪙 Contribute Credits</h2>
+      <p class="desc">Other platforms only deduct credits; here, <b class="hl">you earn credits by contributing real experiment data</b>. Earned credits offset compute cost, forming a "data → credits → compute" flywheel.</p>
+      <div class="grid2" id="creditStats"><div class="empty">Loading…</div></div>
+    </div>
+    <div class="panel">
+      <h2>📈 Credit earning rules</h2>
+      <ul class="rules">
+        <li>Submit a feedback with a real result (success or failure): <b>+10 credits</b></li>
+        <li>Feedback judged "validated" (actual close to predicted, or signal success/improved): <b>+30 credits</b></li>
+        <li>First experiment submission on an engine: <b>+20 credits extra</b></li>
+        <li>Submit a negative sample / failure case: <b>+15 credits</b> (a scarce asset, rare in the industry)</li>
+        <li>Your validated data reapplied / cited by others: milestone bonus rewards</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h2>🏆 Contributor leaderboard</h2>
+      <p class="desc">Ranked by cumulative earned credits (emails anonymized). Want to be listed? Run experiments in the Lab and backfill real results.</p>
+      <div id="leaderboard"><div class="empty">Loading…</div></div>
+    </div>
+  </div>
+
+  <!-- ===== My API ===== -->
+  <div id="tab-api" style="display:none">
+    <div class="panel">
+      <h2>🔑 My API (bring your own LLM)</h2>
+      <p class="desc">Hand your own model key to the platform: <b class="hl">routed through your key, zero platform cost, your data never leaves your account</b>. Ideal if you already have DeepSeek / Qwen (DashScope) / OpenAI / local Ollama quotas.</p>
+      <div id="apiStatus"></div>
+      <div id="apiForm">
+        <div class="grid2">
+          <div>
+            <label>Provider</label>
+            <select id="apiProvider">
+              <option value="deepseek">DeepSeek</option>
+              <option value="qwen">Qwen (DashScope)</option>
+              <option value="openai">OpenAI</option>
+              <option value="moonshot">Moonshot (Kimi)</option>
+              <option value="ollama">Ollama (local)</option>
+              <option value="custom">Custom OpenAI-compatible</option>
+            </select>
+          </div>
+          <div>
+            <label>Model name (optional, blank = default)</label>
+            <input id="apiModel" placeholder="e.g. deepseek-chat / qwen-plus">
+          </div>
+        </div>
+        <label>API Key</label>
+        <input id="apiKey" type="password" placeholder="sk-... or your key">
+        <label>Base URL (required for custom / local Ollama)</label>
+        <input id="apiBase" placeholder="https://... or http://localhost:11434">
+        <div style="margin-top:14px;display:flex;gap:10px">
+          <button class="btn btn-primary" onclick="saveApi()">Save my key</button>
+          <button class="btn btn-ghost" onclick="delApi()">Remove</button>
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+      <h2>🧪 Try your own API</h2>
+      <p class="desc">The request below is forwarded via <span class="kbd">POST /api/v2/llm</span> using your key; the platform spends no credits. Save your key first.</p>
+      <label>Prompt</label>
+      <textarea id="llmPrompt" rows="3" placeholder="Explain the key optimization points of the Suzuki coupling reaction in one sentence">Explain the key optimization points of the Suzuki coupling reaction in one sentence</textarea>
+      <div style="margin-top:12px"><button class="btn btn-green" onclick="testLlm()">Send (via my key)</button></div>
+      <div id="llmResult" style="margin-top:14px"></div>
+    </div>
+    <div class="panel">
+      <h2>💡 Getting the most value</h2>
+      <ul class="rules">
+        <li>After generating a plan in the Lab's "virtual experiment", use your key for natural-language polishing / interpretation, <b>with zero platform credit cost</b>.</li>
+        <li>Data privacy: prompts and results are sent only to your configured provider; the platform keeps nothing.</li>
+        <li>Change the key / model anytime via the fields above; removing it restores the platform default (if configured).</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const API_BASE = location.origin + '/api';
+const API_KEY = sessionStorage.getItem('swarmlabs_key') || localStorage.getItem('swarmlabs_key') || '';
+let ENGINES = [];
+let CURRENT_EXP = null;
+
+function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2200); }
+function authHeaders(extra){ return Object.assign({'Content-Type':'application/json'}, extra||{}, API_KEY?{'x-api-key':API_KEY}:{}); }
+async function api(path, opts){
+  opts = opts||{}; opts.headers = authHeaders(opts.headers);
+  const r = await fetch(API_BASE+path, opts);
+  let d=null; try{ d=await r.json(); }catch(e){}
+  return { ok:r.ok, status:r.status, data:d };
+}
+function esc(s){ return (s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+// Yields are stored as 0–1 decimals; also accept direct 0–100 input (>1.5 treated as already a percentage)
+function pct(x){ if(x==null) return '—'; const v = (x>1.5)? x : x*100; return v.toFixed(0)+'%'; }
+
+if(!API_KEY){ location.href='/login'; }
+
+function switchTab(t){
+  document.querySelectorAll('.tab').forEach(el=>el.classList.toggle('active', el.dataset.tab===t));
+  ['exp','fit','credit','api'].forEach(id=>document.getElementById('tab-'+id).style.display = (id===t?'block':'none'));
+  if(t==='credit'){ loadCredits(); }
+  if(t==='api'){ loadApi(); }
+}
+
+// ---- My Experiments ----
+async function submitExperiment(){
+  const engine=document.getElementById('fbEngine').value;
+  const actualRaw=document.getElementById('fbActual').value.trim();
+  const predictedRaw=document.getElementById('fbPredicted').value.trim();
+  const signal=document.getElementById('fbSignal').value;
+  const paramsRaw=document.getElementById('fbParams').value.trim();
+  if(!engine){ toast('Please choose an engine'); return; }
+  if(actualRaw===''){ toast('Please enter the actual yield'); return; }
+  const actual=Number(actualRaw);
+  if(isNaN(actual)){ toast('Actual yield must be a number'); return; }
+  let predicted = predictedRaw!=='' ? Number(predictedRaw) : undefined;
+  if(predictedRaw!=='' && isNaN(predicted)){ toast('Predicted yield must be a number'); return; }
+  let params=null;
+  if(paramsRaw){ try{ params=JSON.parse(paramsRaw); }catch(e){ toast('Invalid parameter JSON'); return; } }
+  const body={engine, actual, signal: signal||undefined};
+  if(predicted!==undefined) body.predicted=predicted;
+  if(params) body.params=params;
+  const r=await api('/v2/feedback',{method:'POST',body:JSON.stringify(body)});
+  if(r.ok){ toast('Submitted! Your real result is now in your experiment library'); document.getElementById('fbActual').value=''; document.getElementById('fbParams').value=''; loadExperiments(); loadCredits(); }
+  else { const eo=r.data&&r.data.error; toast('Submission failed: '+(typeof eo==='string'?eo:JSON.stringify(eo||r.status))); }
+}
+
+async function loadExperiments(){
+  const box=document.getElementById('expList');
+  const r=await api('/v2/my-experiments');
+  if(!r.ok){ box.innerHTML='<div class="empty">Failed to load or not signed in</div>'; return; }
+  const list=(r.data.experiments||[]);
+  if(list.length===0){ box.innerHTML='<div class="empty">No experiments yet. Run one in the <a href="/lab">Lab</a>, then use "Submit feedback" to backfill the real result and it will appear here.</div>'; return; }
+  let rows=list.map(e=>{
+    const st = e.validated ? '<span class="badge badge-ok">Validated</span>' : (e.actual!=null?'<span class="badge badge-pending">Pending</span>':'<span class="badge badge-raw">Signal only</span>');
+    const params = e.params? Object.entries(e.params).map(([k,v])=>esc(k)+'='+esc(v)).join(', '):'—';
+    return `<tr>
+      <td>${esc(e.engine)}</td>
+      <td>${st}</td>
+      <td>${e.actual!=null?pct(e.actual):'—'}</td>
+      <td style="font-size:12px;color:var(--muted)">${esc(params).slice(0,60)}</td>
+      <td>${esc((e.ts||'').slice(0,10))}</td>
+      <td><button class="btn btn-primary btn-sm" onclick="openReapply('${esc(e.id)}')">Reapply</button></td>
+    </tr>`;
+  }).join('');
+  box.innerHTML=`<table><thead><tr><th>Engine</th><th>Status</th><th>Actual</th><th>Parameters</th><th>Date</th><th></th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+async function openReapply(id){
+  const r=await api('/v2/my-experiments');
+  const e=(r.data.experiments||[]).find(x=>x.id===id);
+  if(!e){ toast('Experiment not found'); return; }
+  CURRENT_EXP=e;
+  document.getElementById('reapplyPanel').style.display='block';
+  document.getElementById('anchorBox').innerHTML=`Anchored source experiment: <b>${esc(e.engine)}</b> · actual ${pct(e.actual)} · params ${esc(e.params?Object.entries(e.params).map(([k,v])=>k+'='+v).join(', '):'—')} · ${e.validated?'<span class="badge badge-ok">Validated</span>':'<span class="badge badge-pending">Pending</span>'}`;
+  const sel=document.getElementById('reTarget');
+  if(sel.options.length===0){
+    sel.innerHTML='<option value="'+esc(e.engine)+'">'+esc(e.engine)+' (same-engine refinement)</option>'+ENGINES.filter(x=>x!==e.engine).map(x=>'<option value="'+esc(x)+'">'+esc(x)+'</option>').join('');
+  } else { sel.value=e.engine; }
+  document.getElementById('reapplyResult').innerHTML='';
+  document.getElementById('reapplyPanel').scrollIntoView({behavior:'smooth'});
+}
+
+async function doReapply(){
+  if(!CURRENT_EXP){ toast('Please select an experiment first'); return; }
+  const target=document.getElementById('reTarget').value;
+  const r=await api('/v2/reapply',{method:'POST',body:JSON.stringify({source_id:CURRENT_EXP.id, target_engine:target})});
+  const box=document.getElementById('reapplyResult');
+  if(!r.ok){ box.innerHTML='<div class="empty">Reapply failed: '+(r.data&&r.data.error||r.status)+'</div>'; return; }
+  const d=r.data;
+  let html=`<p class="muted" style="font-size:12px;margin:6px 0 12px">${esc(d.note||'')} · injected training points ${esc(d.injected_points)} · training set ${esc(d.n_training)} · current best ${pct(d.best_known_yield)}</p>`;
+  (d.suggestions||[]).forEach((s,i)=>{
+    const p=Object.entries(s.params).map(([k,v])=>`${esc(k)}=${esc(v)}`).join(', ');
+    html+=`<div class="suggest-card"><div class="p">#${i+1} recommended · predicted ${pct(s.predicted_yield)} · uncertainty ±${pct(s.uncertainty)} · EI=${esc(s.ei)}</div><div class="m">${esc(s.rationale)}</div><div class="m">${esc(p)}</div></div>`;
+  });
+  box.innerHTML=html;
+}
+
+// ---- Contribute Credits ----
+async function loadCredits(){
+  const r=await api('/v2/account');
+  const s=document.getElementById('creditStats');
+  if(!r.ok){ s.innerHTML='<div class="empty">Not signed in</div>'; return; }
+  const d=r.data;
+  s.innerHTML=`<div class="panel" style="margin:0"><div class="muted" style="font-size:12px">Current balance</div><div style="font-size:24px;font-weight:800" class="hl">${esc(d.credits_balance)}</div></div>
+    <div class="panel" style="margin:0"><div class="muted" style="font-size:12px">Cumulative earned (contributed)</div><div style="font-size:24px;font-weight:800;color:var(--green)">${esc(d.earned_credits||0)}</div></div>`;
+  loadLeaderboard();
+}
+async function loadLeaderboard(){
+  const box=document.getElementById('leaderboard');
+  const r=await api('/v2/leaderboard');
+  if(!r.ok){ box.innerHTML='<div class="empty">Failed to load</div>'; return; }
+  const rows=(r.data.top_contributors||[]);
+  if(rows.length===0){ box.innerHTML='<div class="empty">No contributors yet. Be the first to backfill a real experiment.</div>'; return; }
+  box.innerHTML='<table><thead><tr><th>#</th><th>Contributor</th><th>Earned credits</th><th>Validated</th><th>Experiments</th></tr></thead><tbody>'+
+    rows.map((x,i)=>`<tr><td>${i+1}</td><td>${esc(x.email)}</td><td class="hl">${esc(x.earned_credits)}</td><td>${esc(x.validated_experiments)}</td><td>${esc(x.total_experiments)}</td></tr>`).join('')+'</tbody></table>';
+}
+
+// ---- My API ----
+async function loadApi(){
+  const r=await api('/v2/account/apikey');
+  const st=document.getElementById('apiStatus');
+  if(r.ok && r.data.configured){ st.innerHTML=`<div class="api-row"><div>Configured: <b>${esc(r.data.provider)}</b> · key ${esc(r.data.masked)}${r.data.model?' · model '+esc(r.data.model):''}</div><span class="badge badge-ok">Enabled</span></div>`; }
+  else { st.innerHTML='<div class="api-row"><div>No BYO-API configured yet</div><span class="badge badge-raw">Disabled</span></div>'; }
+}
+async function saveApi(){
+  const provider=document.getElementById('apiProvider').value;
+  const apiKey=document.getElementById('apiKey').value.trim();
+  const base=document.getElementById('apiBase').value.trim();
+  const model=document.getElementById('apiModel').value.trim();
+  if(!apiKey){ toast('Please enter an API Key'); return; }
+  const r=await api('/v2/account/apikey',{method:'POST',body:JSON.stringify({provider,apiKey,baseUrl:base||null,model:model||null})});
+  if(r.ok){ toast('Key saved ('+r.data.masked+')'); loadApi(); }
+  else { toast('Save failed: '+(r.data&&r.data.error||r.status)); }
+}
+async function delApi(){
+  // POST {action:'delete'} to bypass Cloudflare edge 405 interception of DELETE method
+  const r=await api('/v2/account/apikey',{method:'POST',body:JSON.stringify({action:'delete'})});
+  if(r.ok){ toast('Removed'); loadApi(); } else { toast('Remove failed'); }
+}
+async function testLlm(){
+  const prompt=document.getElementById('llmPrompt').value.trim();
+  if(!prompt){ toast('Please enter a question'); return; }
+  const box=document.getElementById('llmResult');
+  box.innerHTML='<div class="empty">Requesting via your key…</div>';
+  const r=await api('/v2/llm',{method:'POST',body:JSON.stringify({messages:[{role:'user',content:prompt}]})});
+  if(!r.ok){ const eo=r.data&&(r.data.error||r.data.message); const em=typeof eo==='string'?eo:JSON.stringify(eo||r.status); box.innerHTML='<div class="empty">Call failed: '+esc(em)+'</div>'; return; }
+  let txt='';
+  try{ const j=r.data; txt = j.choices? j.choices[0].message.content : (j.message?.content || JSON.stringify(j)); }catch(e){ txt=JSON.stringify(r.data); }
+  box.innerHTML=`<div class="suggest-card"><div class="m">Returned via your key:</div><div style="white-space:pre-wrap;font-size:13px;margin-top:6px">${esc(txt)}</div></div>`;
+}
+
+// ---- Data Import + Auto-Fit ----
+let FIT_DATA = [];
+
+function handleFileUpload(e){
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev){
+    document.getElementById('fitData').value = ev.target.result;
+    toast('File loaded');
+  };
+  reader.readAsText(file);
+}
+
+function loadSampleData(){
+  const lines = [
+    "time,OD600",
+    "0,0.05","2,0.06","4,0.08","6,0.12","8,0.20",
+    "10,0.35","12,0.55","14,0.72","16,0.85","18,0.92",
+    "20,0.96","22,0.98","24,0.99"
+  ];
+  document.getElementById('fitData').value = lines.join('\n');
+  toast('Sample data loaded (logistic growth curve)');
+}
+
+function parseCSV(text){
+  const rows = text.split(/[\n\r]+/).filter(l => l.trim());
+  const data = [];
+  for(let i = 0; i < rows.length; i++){
+    const line = rows[i].trim();
+    if(!line || line.startsWith('#')) continue;
+    const cols = line.split(/[,\t;]+/).map(s => s.trim());
+    if(cols.length < 2) continue;
+    const a = parseFloat(cols[0]), b = parseFloat(cols[1]);
+    if(!isNaN(a) && !isNaN(b) && b > 0) data.push([a, b]);
+  }
+  if(data.length < 4) return null;
+  return data;
+}
+
+// Client-side numeric fitting (simplified Levenberg-Marquardt, or falls back to scipy backend)
+// Browser has no scipy, so we do a simplified least-squares + grid search here;
+// exact fitting goes through the /v3/fit backend endpoint (auto-fallback)
+async function runFit(){
+  const raw = document.getElementById('fitData').value.trim();
+  FIT_DATA = parseCSV(raw);
+  if(!FIT_DATA){ toast('Not enough data (need ≥4 valid points)'); return; }
+
+  // Show preview first
+  document.getElementById('fitPreview').style.display = 'block';
+  document.getElementById('fitResults').style.display = 'none';
+  const previewDiv = document.getElementById('fitPreviewTable');
+  previewDiv.innerHTML = `<p class="muted" style="font-size:12px">Data points: <b>${FIT_DATA.length}</b> · x range: ${FIT_DATA[0][0]} ~ ${FIT_DATA[FIT_DATA.length-1][0]} · y range: ${FIT_DATA.reduce((m,r)=>Math.min(m,r[1]),Infinity).toFixed(3)} ~ ${FIT_DATA.reduce((m,r)=>Math.max(m,r[1]),0).toFixed(3)}</p>`;
+  drawFitChart();
+
+  // Try the backend /v3/fit (exact scipy fitting)
+  try{
+    const resp = await fetch('/api/v3/fit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', ...(API_KEY ? {'x-api-key': API_KEY} : {}) },
+      body: JSON.stringify({ data: FIT_DATA })
+    });
+    if(resp.ok){
+      const result = await resp.json();
+      renderFitResults(result);
+      return;
+    }
+  } catch(e){}
+
+  // Backend unavailable → simplified front-end fit (logistic only)
+  toast('Backend fitting unavailable; using simplified front-end logistic fit (deploy v3 API for exact results)');
+  const lr = clientLogisticFit(FIT_DATA);
+  renderFitResults({ results: [lr], best_model: 'logistic', n_data: FIT_DATA.length, note: 'Front-end simplified fit (logistic only) · deploy v3 API for exact results across all 4 models' });
+}
+
+function clientLogisticFit(data){
+  // Logistic parameter init + simple least squares
+  let xArr = data.map(d=>d[0]), yArr = data.map(d=>d[1]);
+  let L = Math.max(...yArr) * 1.05;
+  let k0 = 0.5, x0 = xArr[Math.floor(xArr.length/2)];
+  // Simple grid search
+  let best = { k: k0, L: L, x0: x0, sse: Infinity };
+  for(let L_try = L*0.8; L_try <= L*1.3; L_try += 0.01){
+    for(let k_try = 0.05; k_try <= 1.5; k_try += 0.01){
+      for(let x0_try = xArr[2]; x0_try <= xArr[Math.floor(xArr.length*0.7)]; x0_try += 0.1){
+        let sse = 0;
+        for(let i = 0; i < xArr.length; i++){
+          let pred = L_try / (1 + Math.exp(-k_try * (xArr[i] - x0_try)));
+          sse += (yArr[i] - pred) * (yArr[i] - pred);
+        }
+        if(sse < best.sse){ best = { k: k_try, L: L_try, x0: x0_try, sse }; }
+      }
+    }
+  }
+  // Compute R²
+  let ssTot = 0, ssRes = best.sse;
+  let meanY = yArr.reduce((a,b)=>a+b,0) / yArr.length;
+  for(let i = 0; i < yArr.length; i++) ssTot += (yArr[i] - meanY) ** 2;
+  let r2 = ssTot > 0 ? 1 - ssRes/ssTot : 0;
+  return {
+    model: 'logistic', r2: +r2.toFixed(4), rmse: +Math.sqrt(ssRes/yArr.length).toFixed(4),
+    params: { k: +best.k.toFixed(4), L: +best.L.toFixed(4), x0: +best.x0.toFixed(2) },
+    n_data: data.length
+  };
+}
+
+function drawFitChart(){
+  const cv = document.getElementById('fitChart');
+  if(!cv) return;
+  const ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0,0,W,H);
+  if(!FIT_DATA || FIT_DATA.length < 2) return;
+  const xArr = FIT_DATA.map(d=>d[0]), yArr = FIT_DATA.map(d=>d[1]);
+  const xMin = Math.min(...xArr), xMax = Math.max(...xArr);
+  const yMin = 0, yMax = Math.max(...yArr) * 1.15;
+  const padL = 50, padR = 20, padT = 20, padB = 35;
+  const plotW = W - padL - padR, plotH = H - padT - padB;
+  const xScale = (x) => padL + (x - xMin)/(xMax - xMin || 1) * plotW;
+  const yScale = (y) => padT + plotH - (y - yMin)/(yMax - yMin || 1) * plotH;
+  // axes
+  ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(padL, padT); ctx.lineTo(padL, padT+plotH); ctx.lineTo(padL+plotW, padT+plotH); ctx.stroke();
+  // labels
+  ctx.fillStyle = '#8b95a8'; ctx.font = '11px sans-serif';
+  ctx.fillText('time', W-40, H-5); ctx.fillText('OD600', 5, 15);
+  // data points
+  ctx.fillStyle = '#22d3ee';
+  FIT_DATA.forEach(([x,y]) => { ctx.beginPath(); ctx.arc(xScale(x), yScale(y), 3, 0, Math.PI*2); ctx.fill(); });
+  // best fit curve
+  const r = window._fitBest;
+  if(r && r.model === 'logistic' && r.params){
+    const {k, L, x0} = r.params;
+    ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 2; ctx.beginPath();
+    for(let px = xMin; px <= xMax; px += (xMax-xMin)/100){
+      const pred = L / (1 + Math.exp(-k*(px - x0)));
+      const sx = xScale(px), sy = yScale(pred);
+      if(px === xMin) ctx.moveTo(sx, sy); else ctx.lineTo(sx, sy);
+    }
+    ctx.stroke();
+  }
+}
+
+function renderFitResults(result){
+  window._fitAllResults = result.results || [];
+  window._fitRawData = FIT_DATA || [];
+  const div = document.getElementById('fitResultsTable');
+  const card = document.getElementById('fitBestCard');
+  document.getElementById('fitResults').style.display = 'block';
+  const rows = (result.results || []).filter(r => r.model);
+  if(rows.length === 0){ div.innerHTML = '<div class="empty">No valid fit results</div>'; return; }
+
+  let tableHTML = '<table><thead><tr><th>#</th><th>Model</th><th>R²</th><th>RMSE</th><th>Parameters</th></tr></thead><tbody>';
+  rows.forEach((r, i) => {
+    const color = r.r2 > 0.95 ? 'var(--green)' : (r.r2 > 0.85 ? '#f59e0b' : 'var(--red)');
+    const params = r.params ? Object.entries(r.params).map(([k,v]) => `${k}=${v.toFixed ? +v.toFixed(4) : v}`).join(', ') : '—';
+    const rank = i === 0 ? ' ⭐' : '';
+    tableHTML += `<tr><td>${i+1}${rank}</td><td>${esc(r.model)}</td><td style="color:${color};font-weight:700">${(r.r2!=null?r.r2.toFixed(4):'—')}</td><td>${(r.rmse!=null?r.rmse.toFixed(4):'—')}</td><td style="font-size:12px;font-family:monospace">${esc(params)}</td></tr>`;
+  });
+  tableHTML += '</tbody></table>';
+  div.innerHTML = tableHTML;
+
+  // Best model card
+  const best = rows[0];
+  window._fitBest = best;
+  drawFitChart();
+  const params = best.params ? Object.entries(best.params).map(([k,v]) => `<span class="kbd">${esc(k)} = ${v.toFixed ? +v.toFixed(4) : v}</span>`).join('  ') : '—';
+  card.innerHTML = `<div class="suggest-card" style="border-color:var(--green)"><div class="p">🏆 Best model: ${esc(best.model)} <span class="badge badge-ok">R² = ${best.r2.toFixed(4)}</span></div><div class="m" style="margin-top:6px">${params}</div><div class="m" style="margin-top:4px">${esc(result.note || '')}</div></div>`;
+}
+
+// Export report (CSV/JSON/Markdown)
+function exportReport(format){
+  const best = window._fitBest;
+  if(!best){ alert('Run a fit first'); return; }
+  const raw = window._fitRawData;
+  const models = window._fitAllResults;
+  let content, ext, mime;
+
+  if(format === 'csv'){
+    // Raw data + fitted curve
+    let csv = 'time,value,model\n';
+    if(raw) for(const [t,v] of raw) csv += `${t},${v},observed\n`;
+    if(best && best.curve){
+      for(const [t,v] of best.curve) csv += `${t.toFixed(3)},${v},fitted\n`;
+    }
+    content = csv; ext = 'csv'; mime = 'text/csv';
+  } else if(format === 'json'){
+    const report = {
+      report: 'SwarmLabs Growth Curve Fitting Report',
+      generated_at: new Date().toISOString(),
+      data_points: raw ? raw.length : 0,
+      best_model: {model: best.model, r2: +best.r2.toFixed(4), rmse: +best.rmse.toFixed(4), params: best.params, note: best.note},
+      all_models: (models||[]).map(m => ({model:m.model, r2:+m.r2.toFixed(4), rmse:+m.rmse.toFixed(4), params:m.params})),
+      data_sample: raw ? raw.slice(0, 30) : []
+    };
+    content = JSON.stringify(report, null, 2); ext = 'json'; mime = 'application/json';
+  } else if(format === 'md'){
+    let md = `# SwarmLabs Growth-Kinetics Fitting Report\n\n`;
+    md += `**Generated** ${new Date().toISOString()}\n\n`;
+    md += `**Data points** ${raw ? raw.length : 0}\n\n`;
+    md += `## Best model\n\n`;
+    md += `**Model** ${best.model}\n\n`;
+    md += `**R²** ${best.r2.toFixed(4)}\n\n`;
+    md += `**RMSE** ${best.rmse.toFixed(4)}\n\n`;
+    md += `**Parameters**\n\n`;
+    md += '| Parameter | Value |\n|------|----|\n';
+    if(best.params){
+      for(const [k,v] of Object.entries(best.params)) md += `| ${k} | ${v.toFixed ? +v.toFixed(4) : v} |\n`;
+    }
+    md += `\n**Note** ${best.note || '—'}\n\n`;
+    md += `## All models compared\n\n`;
+    md += '| Model | R² | RMSE |\n|------|----|------|\n';
+    if(models){
+      for(const m of models) md += `| ${m.model} | ${m.r2.toFixed(4)} | ${m.rmse.toFixed(4)} |\n`;
+    }
+    content = md; ext = 'md'; mime = 'text/markdown';
+  }
+
+  const blob = new Blob([content], {type: mime});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `swarmlabs_fit_${Date.now()}.${ext}`;
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+}
+
+// ---- Bootstrap ----
+(async function(){
+  const acc=await api('/v2/account');
+  if(acc.ok){ document.getElementById('creditPill').textContent='Credits '+acc.data.credits_balance; }
+  else { document.getElementById('creditPill').textContent='Not signed in'; }
+  const er=await api('/v2/engines');
+  if(er.ok){ ENGINES=((er.data.engines||[]).map(x=>x.id||x.name||x)).filter(Boolean).slice(0,80); const fbe=document.getElementById('fbEngine'); if(fbe) fbe.innerHTML=ENGINES.map(x=>'<option value="'+esc(x)+'">'+esc(x)+'</option>').join(''); }
+  loadExperiments();
+})();
+</script>
+</body>
+</html>

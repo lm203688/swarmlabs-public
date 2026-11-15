@@ -1,0 +1,236 @@
+{
+  "battery": [
+    {
+      "name": "LiCoO2",
+      "formula": "LiCoO₂",
+      "voltage_V": 3.7,
+      "capacity_mAhg": 140,
+      "cycle_life": 1000,
+      "energy_density_Whkg": 518,
+      "crystal": "层状",
+      "reference": "标准正极材料",
+      "doi": "handbook"
+    },
+    {
+      "name": "LiFePO4",
+      "formula": "LiFePO₄",
+      "voltage_V": 3.3,
+      "capacity_mAhg": 170,
+      "cycle_life": 3000,
+      "energy_density_Whkg": 578,
+      "crystal": "橄榄石",
+      "reference": "J Power Sources 2025",
+      "doi": "10.1016/j.jpowsour.2025.235"
+    },
+    {
+      "name": "MnO2-SEMD380",
+      "formula": "MnO₂",
+      "voltage_V": 3,
+      "capacity_mAhg": 245.7,
+      "cycle_life": 300,
+      "energy_density_Whkg": 737,
+      "crystal": "隧道结构",
+      "reference": "J Power Sources 2025",
+      "doi": "10.1016/j.jpowsour.2025.204"
+    },
+    {
+      "name": "NMC811",
+      "formula": "LiNi₀.₈Mn₀.₁Co₀.₁O₂",
+      "voltage_V": 3.8,
+      "capacity_mAhg": 200,
+      "cycle_life": 800,
+      "energy_density_Whkg": 760,
+      "crystal": "层状",
+      "reference": "数据驱动模型2026",
+      "doi": "10.1016/j.ensm.2026.103"
+    },
+    {
+      "name": "LiMn2O4",
+      "formula": "LiMn₂O₄",
+      "voltage_V": 4,
+      "capacity_mAhg": 120,
+      "cycle_life": 500,
+      "energy_density_Whkg": 480,
+      "crystal": "尖晶石",
+      "reference": "Front Energy Res 2022",
+      "doi": "10.3389/fenrg.2022.851377"
+    }
+  ],
+  "mof_adsorption": [
+    {
+      "name": "MOF-177",
+      "formula": "Zn₄O(BTB)₂",
+      "surface_area_m2g": 4508,
+      "co2_capacity_mmol_g": 33.5,
+      "co2_n2_selectivity": 50,
+      "pore_size_nm": 1.5,
+      "reference": "Nature Sci Rep 11 6850 (2021)",
+      "doi": "10.1038/s41598-021-04168-w"
+    },
+    {
+      "name": "MOF-5",
+      "formula": "Zn₄O(BDC)₃",
+      "surface_area_m2g": 2900,
+      "co2_capacity_mmol_g": 2.1,
+      "co2_n2_selectivity": 8,
+      "pore_size_nm": 1.2,
+      "reference": "Ind Eng Chem Res 48 (2009)",
+      "doi": "10.1021/ie900665f"
+    },
+    {
+      "name": "MOF-808-amine",
+      "formula": "MOF-808·NH₂",
+      "surface_area_m2g": 850,
+      "co2_capacity_mmol_g": 4.23,
+      "co2_n2_selectivity": 82,
+      "pore_size_nm": 0.9,
+      "reference": "PMC11325030 (2024)",
+      "doi": "10.1038/s41598-024-61831-9"
+    },
+    {
+      "name": "UTSA(Zn)-AC",
+      "formula": "UTSA·Zn·AC",
+      "surface_area_m2g": 1200,
+      "co2_capacity_mmol_g": 5.8,
+      "co2_n2_selectivity": 120,
+      "pore_size_nm": 2,
+      "reference": "SSRN 2024",
+      "doi": "10.2139/ssrn.4348240"
+    },
+    {
+      "name": "Mg-MOF-74",
+      "formula": "Mg₂(dobdc)",
+      "surface_area_m2g": 1175,
+      "co2_capacity_mmol_g": 8,
+      "co2_n2_selectivity": 44,
+      "pore_size_nm": 1.1,
+      "reference": "Nature 495 80 (2013)",
+      "doi": "10.1038/nature11893"
+    }
+  ],
+  "perovskite_solar": [
+    {
+      "name": "MAPbI3",
+      "formula": "CH₃NH₃PbI₃",
+      "bandgap_eV": 1.55,
+      "efficiency_pct": 25.5,
+      "voc_V": 1.18,
+      "jsc_mAcm2": 25.8,
+      "ff": 0.84,
+      "reference": "NREL效率表 2024",
+      "doi": "NREL"
+    },
+    {
+      "name": "FAPbI3",
+      "formula": "HC(NH₂)₂PbI₃",
+      "bandgap_eV": 1.48,
+      "efficiency_pct": 25.8,
+      "voc_V": 1.2,
+      "jsc_mAcm2": 26.5,
+      "ff": 0.81,
+      "reference": "Nature Light 13 22 (2024)",
+      "doi": "10.1038/s41377-024-01461-x"
+    },
+    {
+      "name": "Perovskite-Si tandem (LONGi)",
+      "formula": "Perovskite/Si",
+      "bandgap_eV": 1.68,
+      "efficiency_pct": 34.6,
+      "voc_V": 1.97,
+      "jsc_mAcm2": 21.5,
+      "ff": 0.82,
+      "reference": "LONGi 2024 world record",
+      "doi": "Fluxim 2026"
+    },
+    {
+      "name": "D4PA-based PSC",
+      "formula": "D4PA·MAPbI₃",
+      "bandgap_eV": 1.55,
+      "efficiency_pct": 26.83,
+      "voc_V": 1.19,
+      "jsc_mAcm2": 27.1,
+      "ff": 0.83,
+      "reference": "PMC12804561 (2025)",
+      "doi": "10.1038/s41598-025-01990-0"
+    },
+    {
+      "name": "PA-modified PSC",
+      "formula": "PA·FAPbI₃",
+      "bandgap_eV": 1.48,
+      "efficiency_pct": 25.66,
+      "voc_V": 1.17,
+      "jsc_mAcm2": 26.3,
+      "ff": 0.83,
+      "reference": "RSC Energy Environ Sci 2025",
+      "doi": "10.1039/d5ee00189g"
+    },
+    {
+      "name": "Perovskite-Si tandem (34.85%)",
+      "formula": "Perovskite/Si",
+      "bandgap_eV": 1.7,
+      "efficiency_pct": 34.85,
+      "voc_V": 1.99,
+      "jsc_mAcm2": 21.8,
+      "ff": 0.8,
+      "reference": "LONGi April 2025",
+      "doi": "Fluxim 2026"
+    }
+  ],
+  "photocatalysis": [
+    {
+      "name": "TiO2-P25",
+      "formula": "TiO₂",
+      "bandgap_eV": 3.2,
+      "quantum_efficiency": 0.4,
+      "surface_area_m2g": 50,
+      "h2_evolution_mmol_h": 0.35,
+      "crystal": "锐钛矿+金红石",
+      "reference": "MDPI Molecules 26(6) 1687 (2021)",
+      "doi": "10.3390/molecules26061687"
+    },
+    {
+      "name": "N-TiO2/Au/MgO",
+      "formula": "N-TiO₂·Au·MgO",
+      "bandgap_eV": 2.8,
+      "quantum_efficiency": 0.62,
+      "surface_area_m2g": 85,
+      "h2_evolution_mmol_h": 9.5,
+      "crystal": "锐钛矿",
+      "reference": "Nature Comm 10 4627 (2019)",
+      "doi": "10.1038/s41467-019-12385-1"
+    },
+    {
+      "name": "CdS/TiO2",
+      "formula": "CdS·TiO₂",
+      "bandgap_eV": 2.4,
+      "quantum_efficiency": 0.55,
+      "surface_area_m2g": 45,
+      "h2_evolution_mmol_h": 8.7,
+      "crystal": "纤锌矿/锐钛矿",
+      "reference": "Ceramics International 2021",
+      "doi": "10.1016/j.ceramint.2021.12.033"
+    },
+    {
+      "name": "Pt-TiO2",
+      "formula": "Pt·TiO₂",
+      "bandgap_eV": 3.2,
+      "quantum_efficiency": 0.45,
+      "surface_area_m2g": 60,
+      "h2_evolution_mmol_h": 5.2,
+      "crystal": "锐钛矿",
+      "reference": "Fuel 335 (2023) 127028",
+      "doi": "10.1016/j.fuel.2023.127028"
+    },
+    {
+      "name": "g-C3N4/TiO2",
+      "formula": "C₃N₄·TiO₂",
+      "bandgap_eV": 2.7,
+      "quantum_efficiency": 0.38,
+      "surface_area_m2g": 70,
+      "h2_evolution_mmol_h": 3.1,
+      "crystal": "石墨相/锐钛矿",
+      "reference": "MDPI Molecules 30(5) 1127 (2025)",
+      "doi": "10.3390/molecules30051127"
+    }
+  ]
+}

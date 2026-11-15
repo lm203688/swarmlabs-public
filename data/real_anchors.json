@@ -1,0 +1,683 @@
+{
+  "acquired_at": "2026-10-15T23:00:07.740388",
+  "total_anchors": 6,
+  "sources": [
+    {
+      "id": "zenodo_19416053",
+      "type": "E. coli growth",
+      "url": "https://zenodo.org/records/19416053"
+    },
+    {
+      "id": "zenodo_7311805",
+      "type": "MB adsorption",
+      "url": "https://zenodo.org/records/7311805"
+    },
+    {
+      "id": "figshare_2048400",
+      "type": "Yeast fermentation",
+      "url": "https://figshare.com/articles/dataset/2048400"
+    },
+    {
+      "id": "zenodo_17423657",
+      "type": "Yeast fermentation (ethanol inhibition)",
+      "url": "https://zenodo.org/records/17423657",
+      "doi": "10.5281/zenodo.17423657"
+    }
+  ],
+  "anchors": [
+    {
+      "id": "ecoli_monod_ks_real",
+      "scenario": "ecoli_monod_growth",
+      "parameter": "K_s",
+      "value": null,
+      "unit": "g/L",
+      "source_type": "experimental",
+      "source_url": "https://zenodo.org/records/19416053",
+      "doi": "10.5281/zenodo.19416053",
+      "temperature_C": 29,
+      "mu_max_est": 0.001875,
+      "notes": "Original K_s = 0.1 g/L equals the smallest glucose tested. Monod fit returns K_s=1e-08 g/L which sits at the data boundary — CANNOT distinguish K_s < 0.1 from K_s = 0.1. Report as upper bound '< 0.1 g/L', NOT a point estimate. This is left-censoring, not identifiability failure of the fit itself.",
+      "reportable_as": "< 0.1 g/L (left-censored upper bound)",
+      "method": "scipy.optimize.curve_fit, but K_s hit data lower bound",
+      "units": "g/L (upper bound, left-censored)",
+      "provenance": {
+        "source_type": "doi_record",
+        "source_url": "https://zenodo.org/records/19416053",
+        "doi": "10.5281/zenodo.19416053",
+        "doi_resolvable": true,
+        "publisher": "Zenodo",
+        "dataset_name": "Porcentaje_glucosa_1hoja.xlsx (Zenodo 19416053)",
+        "file_sha256": "recorded_at_extraction",
+        "file_size_bytes": 0,
+        "data_file_path": "data/raw/zenodo_19416053/Porcentaje_glucosa_1hoja.xlsx",
+        "extraction_method": "scipy.optimize.curve_fit on 36 (T, S) conditions with Arrhenius-tempered mu_max(T) = mu_ref * exp(-E_a/R * (1/T - 1/T_ref))",
+        "extraction_date": "2026-10-16T07:56:27Z",
+        "extraction_script": "scripts/monod_curve_fit.py",
+        "license": "CC-BY (Zenodo record 19416053)",
+        "raw_points": [
+          {
+            "T_C": 29.0,
+            "S_gL": 0.0,
+            "mu": 0.0015000000000000013
+          },
+          {
+            "T_C": 31.0,
+            "S_gL": 0.0,
+            "mu": 0.004050000000000009
+          }
+        ],
+        "fit": {
+          "method": "scipy.optimize.curve_fit (Arrhenius-tempered joint Monod)",
+          "r_squared": null,
+          "rmse": 0.0004854632324924434,
+          "n_points": 36,
+          "params": {
+            "mu_ref_at_37C": 0.0026546774195484106,
+            "K_s_gL": 1.0000004573704461e-08,
+            "K_s_ci_95": null,
+            "E_a_J_per_mol": 16248.022807281353,
+            "E_a_ci_95": null
+          },
+          "identifiability_warnings": [
+            "K_s is left-censored at S_min=0.1 g/L. Report as 'K_s < 0.1 g/L' (upper bound), not as point estimate. Fitted K_s=1e-08 sits at the data boundary.",
+            "Only 4 glucose levels tested (0.1, 0.5, 1.0, 2.0 g/L) — extremely sparse for a 2-parameter Monod fit. K_s and mu_max are strongly correlated; use per-condition curve_fit only as descriptive, not as confirmatory."
+          ],
+          "left_censored": true
+        },
+        "parameter_specific_note": "K_s is left-censored at data boundary (0.1 gL); report as '< 0.1 gL' upper bound."
+      }
+    },
+    {
+      "id": "ecoli_monod_mu_max_real",
+      "scenario": "ecoli_monod_growth",
+      "parameter": "mu_max",
+      "value": 0.002247,
+      "unit": "1/min",
+      "source_type": "experimental",
+      "source_url": "https://zenodo.org/records/19416053",
+      "doi": "10.5281/zenodo.19416053",
+      "n_conditions": 36,
+      "notes": "Mu_max at 29°C from joint Arrhenius-Monod fit on 36 real (T, S) conditions from Zenodo 19416053. NOT a mean of 36 — curve_fit estimates mu_ref @ 37°C then Arrhenius-corrects to 29°C. Original value 0.002667 was labelled 'mean of 36' which misrepresents Monod semantics. Full fit metadata below in monod_fit block.",
+      "method": "scipy.optimize.curve_fit on 36 real conditions, Monod+Arrhenius",
+      "units": "1/h (mu_max @ 29C)",
+      "provenance": {
+        "source_type": "doi_record",
+        "source_url": "https://zenodo.org/records/19416053",
+        "doi": "10.5281/zenodo.19416053",
+        "doi_resolvable": true,
+        "publisher": "Zenodo",
+        "dataset_name": "Porcentaje_glucosa_1hoja.xlsx (Zenodo 19416053)",
+        "file_sha256": "recorded_at_extraction",
+        "file_size_bytes": 0,
+        "data_file_path": "data/raw/zenodo_19416053/Porcentaje_glucosa_1hoja.xlsx",
+        "extraction_method": "scipy.optimize.curve_fit on 36 (T, S) conditions with Arrhenius-tempered mu_max(T) = mu_ref * exp(-E_a/R * (1/T - 1/T_ref))",
+        "extraction_date": "2026-10-16T07:56:27Z",
+        "extraction_script": "scripts/monod_curve_fit.py",
+        "license": "CC-BY (Zenodo record 19416053)",
+        "raw_points": [
+          {
+            "T_C": 29.0,
+            "S_gL": 0.0,
+            "mu": 0.0015000000000000013
+          },
+          {
+            "T_C": 31.0,
+            "S_gL": 0.0,
+            "mu": 0.004050000000000009
+          }
+        ],
+        "fit": {
+          "method": "scipy.optimize.curve_fit (Arrhenius-tempered joint Monod)",
+          "r_squared": null,
+          "rmse": 0.0004854632324924434,
+          "n_points": 36,
+          "params": {
+            "mu_ref_at_37C": 0.0026546774195484106,
+            "K_s_gL": 1.0000004573704461e-08,
+            "K_s_ci_95": null,
+            "E_a_J_per_mol": 16248.022807281353,
+            "E_a_ci_95": null
+          },
+          "identifiability_warnings": [
+            "K_s is left-censored at S_min=0.1 g/L. Report as 'K_s < 0.1 g/L' (upper bound), not as point estimate. Fitted K_s=1e-08 sits at the data boundary.",
+            "Only 4 glucose levels tested (0.1, 0.5, 1.0, 2.0 g/L) — extremely sparse for a 2-parameter Monod fit. K_s and mu_max are strongly correlated; use per-condition curve_fit only as descriptive, not as confirmatory."
+          ],
+          "left_censored": true
+        },
+        "parameter_specific_note": "mu_max at 29C derived from Arrhenius-Tref=37C scaling; not a mean of 36."
+      }
+    },
+    {
+      "id": "yeast_ethanol_yield_real",
+      "scenario": "yeast_ethanol_fermentation",
+      "parameter": "od_max_at_zero_ethanol",
+      "value": 6.4117,
+      "units": "OD600",
+      "notes": "Yeast OD600 at 0% ethanol (Figure S4 row 1). Fit model: OD = OD_max / (1 + (e/K_i)^n); OD_max is directly observed at zero ethanol.",
+      "provenance": {
+        "source_type": "doi_record",
+        "source_url": "https://zenodo.org/records/17423657",
+        "doi": "10.5281/zenodo.17423657",
+        "doi_resolvable": true,
+        "publisher": "Zenodo (CERN)",
+        "paper_doi": "10.1128/JB.00639-13",
+        "paper_title": "Biotin-Independent Saccharomyces cerevisiae with Enhanced Growth: Engineering an Acetyl-CoA Carboxylase",
+        "dataset_name": "Slanska_Biotin-Independent_S.cerevisiae.xlsx",
+        "file_sha256": "9fca2c807a95bbb4bb915875135584ce6282ce923383222057cf7ca6cd3bb2da",
+        "file_size_bytes": 747472,
+        "data_file_path": ".tmp_z\\Slanska_Biotin.xlsx",
+        "extraction_method": "openpyxl.load_workbook + numpy/scipy least_squares",
+        "extraction_date": "2026-10-16T07:49:48Z",
+        "extraction_script": "scripts/extract_yeast_anchors.py",
+        "license": "CC-BY 4.0 (Zenodo record 17423657)",
+        "raw_points": [
+          {
+            "ethanol_pct": 0.0,
+            "od600_mean": 6.411666666666666,
+            "od600_stdev": 0.15888465417822228
+          },
+          {
+            "ethanol_pct": 1.0,
+            "od600_mean": 6.240333333333333,
+            "od600_stdev": 0.3081384969998613
+          },
+          {
+            "ethanol_pct": 5.0,
+            "od600_mean": 0.3497666666666667,
+            "od600_stdev": 0.23388741593624335
+          },
+          {
+            "ethanol_pct": 10.0,
+            "od600_mean": 0.0088,
+            "od600_stdev": 0.0006999999999999997
+          }
+        ],
+        "fit": {
+          "method": "scipy.optimize.least_squares",
+          "od_max": 6.411666666666666,
+          "k_i": 2.453154399424695,
+          "n_hill": 4.011829097315445,
+          "ethanol_99pct_inhibition": 7.71192188653264,
+          "r_squared": 0.9999947866869203,
+          "rmse": 0.007024058915149276,
+          "converged": true,
+          "n_points": 4
+        }
+      }
+    },
+    {
+      "id": "yeast_ethanol_ki_real",
+      "scenario": "yeast_ethanol_fermentation",
+      "parameter": "half_max_inhibition_conc",
+      "value": 2.4532,
+      "units": "% (v/v)",
+      "notes": "Half-max ethanol inhibition concentration (K_i) fitted from 4-point Figure S4 inhibition curve. Fit R²=1.0000, RMSE=0.0070. Model: OD(e) = OD_max/(1+(e/K_i)^n). n_Hill=4.01 indicates sharpness of inhibition.",
+      "provenance": {
+        "source_type": "doi_record",
+        "source_url": "https://zenodo.org/records/17423657",
+        "doi": "10.5281/zenodo.17423657",
+        "doi_resolvable": true,
+        "publisher": "Zenodo (CERN)",
+        "paper_doi": "10.1128/JB.00639-13",
+        "paper_title": "Biotin-Independent Saccharomyces cerevisiae with Enhanced Growth: Engineering an Acetyl-CoA Carboxylase",
+        "dataset_name": "Slanska_Biotin-Independent_S.cerevisiae.xlsx",
+        "file_sha256": "9fca2c807a95bbb4bb915875135584ce6282ce923383222057cf7ca6cd3bb2da",
+        "file_size_bytes": 747472,
+        "data_file_path": ".tmp_z\\Slanska_Biotin.xlsx",
+        "extraction_method": "openpyxl.load_workbook + numpy/scipy least_squares",
+        "extraction_date": "2026-10-16T07:49:48Z",
+        "extraction_script": "scripts/extract_yeast_anchors.py",
+        "license": "CC-BY 4.0 (Zenodo record 17423657)",
+        "raw_points": [
+          {
+            "ethanol_pct": 0.0,
+            "od600_mean": 6.411666666666666,
+            "od600_stdev": 0.15888465417822228
+          },
+          {
+            "ethanol_pct": 1.0,
+            "od600_mean": 6.240333333333333,
+            "od600_stdev": 0.3081384969998613
+          },
+          {
+            "ethanol_pct": 5.0,
+            "od600_mean": 0.3497666666666667,
+            "od600_stdev": 0.23388741593624335
+          },
+          {
+            "ethanol_pct": 10.0,
+            "od600_mean": 0.0088,
+            "od600_stdev": 0.0006999999999999997
+          }
+        ],
+        "fit": {
+          "method": "scipy.optimize.least_squares",
+          "od_max": 6.411666666666666,
+          "k_i": 2.453154399424695,
+          "n_hill": 4.011829097315445,
+          "ethanol_99pct_inhibition": 7.71192188653264,
+          "r_squared": 0.9999947866869203,
+          "rmse": 0.007024058915149276,
+          "converged": true,
+          "n_points": 4
+        }
+      }
+    },
+    {
+      "id": "yeast_ethanol_hill_n_real",
+      "scenario": "yeast_ethanol_fermentation",
+      "parameter": "hill_coefficient",
+      "value": 4.0118,
+      "units": "dimensionless",
+      "notes": "Hill coefficient for ethanol inhibition of yeast growth. n>1 = cooperative inhibition (steeper than Haldane n=1); n<1 = graded inhibition. Value 4.01 from 4-point least-squares fit (R²=1.0000).",
+      "provenance": {
+        "source_type": "doi_record",
+        "source_url": "https://zenodo.org/records/17423657",
+        "doi": "10.5281/zenodo.17423657",
+        "doi_resolvable": true,
+        "publisher": "Zenodo (CERN)",
+        "paper_doi": "10.1128/JB.00639-13",
+        "paper_title": "Biotin-Independent Saccharomyces cerevisiae with Enhanced Growth: Engineering an Acetyl-CoA Carboxylase",
+        "dataset_name": "Slanska_Biotin-Independent_S.cerevisiae.xlsx",
+        "file_sha256": "9fca2c807a95bbb4bb915875135584ce6282ce923383222057cf7ca6cd3bb2da",
+        "file_size_bytes": 747472,
+        "data_file_path": ".tmp_z\\Slanska_Biotin.xlsx",
+        "extraction_method": "openpyxl.load_workbook + numpy/scipy least_squares",
+        "extraction_date": "2026-10-16T07:49:48Z",
+        "extraction_script": "scripts/extract_yeast_anchors.py",
+        "license": "CC-BY 4.0 (Zenodo record 17423657)",
+        "raw_points": [
+          {
+            "ethanol_pct": 0.0,
+            "od600_mean": 6.411666666666666,
+            "od600_stdev": 0.15888465417822228
+          },
+          {
+            "ethanol_pct": 1.0,
+            "od600_mean": 6.240333333333333,
+            "od600_stdev": 0.3081384969998613
+          },
+          {
+            "ethanol_pct": 5.0,
+            "od600_mean": 0.3497666666666667,
+            "od600_stdev": 0.23388741593624335
+          },
+          {
+            "ethanol_pct": 10.0,
+            "od600_mean": 0.0088,
+            "od600_stdev": 0.0006999999999999997
+          }
+        ],
+        "fit": {
+          "method": "scipy.optimize.least_squares",
+          "od_max": 6.411666666666666,
+          "k_i": 2.453154399424695,
+          "n_hill": 4.011829097315445,
+          "ethanol_99pct_inhibition": 7.71192188653264,
+          "r_squared": 0.9999947866869203,
+          "rmse": 0.007024058915149276,
+          "converged": true,
+          "n_points": 4
+        }
+      }
+    },
+    {
+      "id": "yeast_ethanol_full_inhibition_real",
+      "scenario": "yeast_ethanol_fermentation",
+      "parameter": "ethanol_at_99pct_inhibition",
+      "value": 7.7119,
+      "units": "% (v/v)",
+      "notes": "Ethanol concentration at which yeast growth is 99% inhibited (OD = 0.01 * OD_max), analytically derived from e = K_i * 99^(1/n). Useful as a hard bound for fermentation simulations; beyond this concentration yeast is considered non-viable.",
+      "provenance": {
+        "source_type": "doi_record",
+        "source_url": "https://zenodo.org/records/17423657",
+        "doi": "10.5281/zenodo.17423657",
+        "doi_resolvable": true,
+        "publisher": "Zenodo (CERN)",
+        "paper_doi": "10.1128/JB.00639-13",
+        "paper_title": "Biotin-Independent Saccharomyces cerevisiae with Enhanced Growth: Engineering an Acetyl-CoA Carboxylase",
+        "dataset_name": "Slanska_Biotin-Independent_S.cerevisiae.xlsx",
+        "file_sha256": "9fca2c807a95bbb4bb915875135584ce6282ce923383222057cf7ca6cd3bb2da",
+        "file_size_bytes": 747472,
+        "data_file_path": ".tmp_z\\Slanska_Biotin.xlsx",
+        "extraction_method": "openpyxl.load_workbook + numpy/scipy least_squares",
+        "extraction_date": "2026-10-16T07:49:48Z",
+        "extraction_script": "scripts/extract_yeast_anchors.py",
+        "license": "CC-BY 4.0 (Zenodo record 17423657)",
+        "raw_points": [
+          {
+            "ethanol_pct": 0.0,
+            "od600_mean": 6.411666666666666,
+            "od600_stdev": 0.15888465417822228
+          },
+          {
+            "ethanol_pct": 1.0,
+            "od600_mean": 6.240333333333333,
+            "od600_stdev": 0.3081384969998613
+          },
+          {
+            "ethanol_pct": 5.0,
+            "od600_mean": 0.3497666666666667,
+            "od600_stdev": 0.23388741593624335
+          },
+          {
+            "ethanol_pct": 10.0,
+            "od600_mean": 0.0088,
+            "od600_stdev": 0.0006999999999999997
+          }
+        ],
+        "fit": {
+          "method": "scipy.optimize.least_squares",
+          "od_max": 6.411666666666666,
+          "k_i": 2.453154399424695,
+          "n_hill": 4.011829097315445,
+          "ethanol_99pct_inhibition": 7.71192188653264,
+          "r_squared": 0.9999947866869203,
+          "rmse": 0.007024058915149276,
+          "converged": true,
+          "n_points": 4
+        }
+      }
+    }
+  ],
+  "monod_fit": {
+    "n_conditions_total": 36,
+    "n_conditions_with_mu": 36,
+    "n_temperatures": 9,
+    "n_glucose_levels": 4,
+    "temperatures_C": [
+      29.0,
+      31.0,
+      33.0,
+      35.0,
+      37.0,
+      39.0,
+      41.0,
+      43.0,
+      45.0
+    ],
+    "glucose_gL": [
+      0.1,
+      0.5,
+      1.0,
+      2.0
+    ],
+    "S_min_tested_gL": 0.1,
+    "mu_obs_range": [
+      0.0015000000000000013,
+      0.004050000000000009
+    ],
+    "mean_mu_obs": 0.002663194444444446,
+    "joint_arrhenius_monod": {
+      "ok": true,
+      "mu_ref_at_37C": 0.0026546774195484106,
+      "mu_ref_ci95": [
+        0.0024344315462767564,
+        0.002874923292820065
+      ],
+      "K_s": 1.0000004573704461e-08,
+      "K_s_ci95": [
+        -0.016004094112338246,
+        0.016004114112347395
+      ],
+      "E_a_J_per_mol": 16248.022807281353,
+      "E_a_ci95": [
+        6511.1552079689845,
+        25984.890406593724
+      ],
+      "E_a_kJ_per_mol": 16.24802280728135,
+      "S_min_tested": 0.1,
+      "left_censored": true,
+      "K_s_reported": "< 0.1",
+      "r2": 0.2661833358737189,
+      "rmse": 0.0004854632324924434,
+      "n_points": 36
+    },
+    "per_temperature_fits": {
+      "29.0": {
+        "ok": true,
+        "mu_max": 0.0016500000102669193,
+        "mu_max_ci95": [
+          0.0013959070722667198,
+          0.0019040929482671187
+        ],
+        "K_s": 1.0006667717283198e-08,
+        "K_s_ci95": [
+          -0.030021167494371476,
+          0.03002118750770691
+        ],
+        "S_min_tested": 0.1,
+        "left_censored": true,
+        "K_s_reported": "< 0.1",
+        "r2": -8.986317991954706e-07,
+        "rmse": 0.00013806707475053225,
+        "n_points": 4,
+        "residuals": [
+          0.00022500015484308708,
+          -2.4999977244917525e-05,
+          -4.9999993755916105e-05,
+          -0.00015000000201141682
+        ]
+      },
+      "31.0": {
+        "ok": true,
+        "mu_max": 0.0024107012618722994,
+        "mu_max_ci95": [
+          0.0021174969773646935,
+          0.0027039055463799052
+        ],
+        "K_s": 0.006312899778277788,
+        "K_s_ci95": [
+          -0.01980383423736383,
+          0.03242963379391941
+        ],
+        "S_min_tested": 0.1,
+        "left_censored": true,
+        "K_s_reported": "< 0.1",
+        "r2": -0.05304006553534868,
+        "rmse": 0.00015657614449763623,
+        "n_points": 4,
+        "residuals": [
+          5.744708130436772e-05,
+          -3.064373130526104e-05,
+          0.00020442178332062558,
+          -0.00022811594680840304
+        ]
+      },
+      "33.0": {
+        "ok": true,
+        "mu_max": 0.002418749795224974,
+        "mu_max_ci95": [
+          0.00207234307655455,
+          0.002765156513895398
+        ],
+        "K_s": 1.012394434785912e-08,
+        "K_s_ci95": [
+          -0.027919927022765387,
+          0.027919947270654086
+        ],
+        "S_min_tested": 0.1,
+        "left_censored": true,
+        "K_s_reported": "< 0.1",
+        "r2": -8.023864159767413e-07,
+        "rmse": 0.00018822782984538025,
+        "n_points": 4,
+        "residuals": [
+          0.0002312504496478924,
+          0.0001062502537496012,
+          -6.874977073768928e-05,
+          -0.0002687497829813334
+        ]
+      },
+      "35.0": {
+        "ok": true,
+        "mu_max": 0.003164525268259218,
+        "mu_max_ci95": [
+          0.002004754747943412,
+          0.0043242957885750236
+        ],
+        "K_s": 0.010372990762027653,
+        "K_s_ci95": [
+          -0.07310842545305793,
+          0.09385440697711322
+        ],
+        "S_min_tested": 0.1,
+        "left_censored": true,
+        "K_s_reported": "< 0.1",
+        "r2": 0.01994534861867714,
+        "rmse": 0.0006123920620751392,
+        "n_points": 4,
+        "residuals": [
+          0.00018288074699166672,
+          -0.0007252084020299889,
+          -0.0003570366807039466,
+          0.0009018028417605217
+        ]
+      },
+      "37.0": {
+        "ok": true,
+        "mu_max": 0.00268281460883533,
+        "mu_max_ci95": [
+          0.002442157801005613,
+          0.0029234714166650475
+        ],
+        "K_s": 0.0015837316510155031,
+        "K_s_ci95": [
+          -0.016343273825978888,
+          0.019510737128009895
+        ],
+        "S_min_tested": 0.1,
+        "left_censored": true,
+        "K_s_reported": "< 0.1",
+        "r2": -0.016331808609874265,
+        "rmse": 0.00013020021875527886,
+        "n_points": 4,
+        "residuals": [
+          5.901156097319962e-05,
+          -0.00022434372323496422,
+          7.142753116310199e-05,
+          9.43081394377712e-05
+        ]
+      },
+      "39.0": {
+        "ok": true,
+        "mu_max": 0.003312499895781075,
+        "mu_max_ci95": [
+          0.0030813075223520667,
+          0.0035436922692100837
+        ],
+        "K_s": 1.0167843647672363e-08,
+        "K_s_ci95": [
+          -0.013606185296420862,
+          0.013606205632108155
+        ],
+        "S_min_tested": 0.1,
+        "left_censored": true,
+        "K_s_reported": "< 0.1",
+        "r2": -1.5273196805054567e-06,
+        "rmse": 0.00012562354119755216,
+        "n_points": 4,
+        "residuals": [
+          0.00016250044102870693,
+          -1.2499828419111104e-05,
+          -0.00018749986210008342,
+          3.750012105941227e-05
+        ]
+      },
+      "41.0": {
+        "ok": true,
+        "mu_max": 0.0027750000721826562,
+        "mu_max_ci95": [
+          0.0018681445866060224,
+          0.00368185555775929
+        ],
+        "K_s": 1.0000011794166349e-08,
+        "K_s_ci95": [
+          -0.06370801760136925,
+          0.06370803760139283
+        ],
+        "S_min_tested": 0.1,
+        "left_censored": true,
+        "K_s_reported": "< 0.1",
+        "r2": -4.2500051633531655e-07,
+        "rmse": 0.0004927601883223098,
+        "n_points": 4,
+        "residuals": [
+          0.0008000002053176513,
+          -1.668259627662927e-11,
+          -0.00032500004443262705,
+          -0.0004750000583076371
+        ]
+      },
+      "43.0": {
+        "ok": true,
+        "mu_max": 0.0031312500278156672,
+        "mu_max_ci95": [
+          0.002541710852948525,
+          0.0037207892026828093
+        ],
+        "K_s": 1.0004634966240975e-08,
+        "K_s_ci95": [
+          -0.03670404069983374,
+          0.036704060709103675
+        ],
+        "S_min_tested": 0.1,
+        "left_censored": true,
+        "K_s_reported": "< 0.1",
+        "r2": -6.625539392679514e-07,
+        "rmse": 0.00032033928183946187,
+        "n_points": 4,
+        "residuals": [
+          0.0005187502854544345,
+          -0.0003562499651616471,
+          -0.00010624999648865428,
+          -5.625001215215503e-05
+        ]
+      },
+      "45.0": {
+        "ok": true,
+        "mu_max": 0.002587499976308213,
+        "mu_max_ci95": [
+          0.002147999794227801,
+          0.0030270001583886253
+        ],
+        "K_s": 1.0017923253590616e-08,
+        "K_s_ci95": [
+          -0.03311293281046685,
+          0.03311295284631336
+        ],
+        "S_min_tested": 0.1,
+        "left_censored": true,
+        "K_s_reported": "< 0.1",
+        "r2": -6.547813908852618e-07,
+        "rmse": 0.00023881224286665336,
+        "n_points": 4,
+        "residuals": [
+          0.0002875002829055228,
+          0.00011250007553454061,
+          -3.749995038683507e-05,
+          -0.00036249996334752595
+        ]
+      }
+    },
+    "mu_max_at_29C_from_joint": 0.0022467586024923665,
+    "mu_max_peak_across_temps": 0.0031104502919684445,
+    "identifiability_warnings": [
+      "K_s is left-censored at S_min=0.1 g/L. Report as 'K_s < 0.1 g/L' (upper bound), not as point estimate. Fitted K_s=1e-08 sits at the data boundary.",
+      "Only 4 glucose levels tested (0.1, 0.5, 1.0, 2.0 g/L) — extremely sparse for a 2-parameter Monod fit. K_s and mu_max are strongly correlated; use per-condition curve_fit only as descriptive, not as confirmatory."
+    ],
+    "old_values_for_comparison": {
+      "mu_max_old_mean_of_36": 0.002667,
+      "K_s_old_hardcoded": 0.1
+    },
+    "old_vs_new": {
+      "mu_max_old_mean": 0.002667,
+      "mu_max_new_at_29C_from_joint": 0.0022467586024923665,
+      "mu_max_new_peak_across_temps": 0.0031104502919684445,
+      "K_s_old_reported_as_point": 0.1,
+      "K_s_new_reported": "< 0.1",
+      "K_s_left_censored": true
+    }
+  },
+  "last_updated": "2026-10-16T07:56:27Z"
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://www.anthropic.com/schema/plugin.json",
+  "name": "swarmlabs-science-compute",
+  "version": "0.1.0",
+  "description": "SwarmLabs offline science-compute skills — uncertainty quantification, out-of-distribution guard, paper claim grading, and kinetic model selection. Pure Python, no API key required.",
+  "author": {
+    "name": "SwarmLabs",
+    "url": "https://swarmlabs.tools"
+  },
+  "homepage": "https://swarmlabs.tools",
+  "repository": "https://github.com/lm203688/swarmlabs",
+  "license": "MIT",
+  "keywords": [
+    "science",
+    "uncertainty-quantification",
+    "out-of-distribution",
+    "kinetic-modeling",
+    "paper-validation",
+    "numpy",
+    "offline"
+  ],
+  "categories": [
+    "data-ai",
+    "specialized-domains"
+  ],
+  "skills": [
+    "skills/uq-coverage-audit/SKILL.md",
+    "skills/ood-guard/SKILL.md",
+    "skills/paper-claim-validation/SKILL.md",
+    "skills/kinetic-model-selection/SKILL.md"
+  ],
+  "readme": "README.md"
+}

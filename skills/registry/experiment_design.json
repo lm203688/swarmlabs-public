@@ -1,0 +1,34 @@
+{
+  "name": "experiment_design",
+  "version": "1.0.0",
+  "purpose": "根据用户研究目标生成实验设计：候选方案、参数区间、评估指标、预算与风险。",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "goal": { "type": "string", "description": "研究目标描述" },
+      "domain": { "type": "string", "description": "可选：领域（material / chemistry / biology / physics / llm）" },
+      "budget": { "type": "number", "description": "可选：预算约束" },
+      "metrics": { "type": "array", "items": { "type": "string" }, "description": "评估指标" }
+    },
+    "required": ["goal"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "plan": { "type": "string" },
+      "candidates": { "type": "array" },
+      "parameter_ranges": { "type": "object" },
+      "evaluation_metrics": { "type": "array", "items": { "type": "string" } },
+      "estimated_cost": {},
+      "risk_level": { "type": "string", "enum": ["low", "medium", "high"] }
+    },
+    "required": ["plan", "candidates", "evaluation_metrics", "risk_level"]
+  },
+  "invocation_condition": "用户研究目标可解析时由 PlannerAgent 调用，生成实验计划。",
+  "depend_tools": ["ENGINE_CATEGORIES", "CATEGORY_PARAMS"],
+  "failure_handling": "目标模糊 → 请求澄清；领域未知 → 推荐通用候选引擎。",
+  "safety_boundary": "只读查询元数据，不执行真实实验。",
+  "reuse_value": "可被 PlannerAgent 及任何需要实验设计的场景复用。",
+  "multi_agent_role": "PlannerAgent",
+  "tags": ["planning", "experimentation"]
+}

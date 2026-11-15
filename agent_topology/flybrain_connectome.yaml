@@ -1,0 +1,23 @@
+# SwarmLabs × flybrain-connectome 连接配置
+# 原则：SwarmLabs 只引用 motif 模板（拓扑描述），绝不内嵌 16.7 万神经元原始数据。
+# 真实数据始终在 flybrain-connectome-mcp（本地 MCP/HTTP 服务）中。
+flybrain:
+  transport: http            # http | mcp
+  base_url: http://127.0.0.1:8799
+  # 密钥不写进 git：运行时从环境变量 FLYBRAIN_API_KEY 读取（flybrain 项目 config.json 里的 api_keys）。
+  # 留空/null 时，client 自动回退到环境变量；未设置则使用占位符（仅离线 motif 构建不需要 key）。
+  api_key: null
+  api_key_env: FLYBRAIN_API_KEY
+
+  # ---- A: motif 来源策略（C1 --motif-source 读取同一套语义） ----
+  #   api   = 必须连上服务，拉不到就报错（用于"确认服务健康"的流水线）
+  #   auto  = 先问服务 → 再读 api 热缓存 → 最后回落快照（默认，生产用）
+  #   local = 完全离线，只读快照
+  motif_source: auto
+  motif_tool: export_swarm_motifs
+  # 离线快照：断网/服务未起时的兜底真值（可由 C1 --refresh-snapshot 刷新）
+  motif_path: swarm_agent_topology_motifs.json
+  # 服务返回的最近一次真实 motif（auto 的第二顺位兜底），不进 git
+  motif_api_cache: .motif_api_cache.json
+  # 让服务先重跑 extract_motifs.py 再返回（拿"最新派生结果"，耗时较长）
+  refresh: false

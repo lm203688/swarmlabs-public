@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "svp": "0.5",
+  "title": "SwarmLabs public_facts.json schema (L-11, 2026-10-17)",
+  "description": "契约化 data/public_facts.json —— 所有对外页面数字的唯一真源。此 schema 由 L-11（2026-10-17 查缺补漏）补齐：此前 schemas/ 目录仅覆盖 3/124 个 JSON，public_facts.json 作为对外披露的口径源头没有 schema 保护，正是 L-01（101 vs 100 真源冲突）发生的前提。",
+  "type": "object",
+  "required": ["name", "generated_at_utc", "sources", "facts", "undefined_claims"],
+  "additionalProperties": true,
+  "properties": {
+    "name": { "type": "string", "minLength": 1 },
+    "generated_at_utc": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+    },
+    "sources": { "type": "object" },
+    "facts": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": ["value"],
+        "additionalProperties": true,
+        "properties": {
+          "value": {},
+          "unit": { "type": ["string", "null"] },
+          "source": { "type": ["string", "null"] },
+          "note": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "undefined_claims": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["reason"],
+        "properties": {
+          "reason": { "type": "string", "minLength": 5 },
+          "page_hits_2026_09_20": { "type": "array", "items": { "type": "string" } }
+        },
+        "additionalProperties": true
+      }
+    },
+    "build": {
+      "type": "object",
+      "description": "L-10 可复现性：build 块必须记录 seed，供外部验证脚本对比。",
+      "required": ["script", "seed"],
+      "properties": {
+        "script": { "type": "string" },
+        "seed": { "type": "integer" }
+      },
+      "additionalProperties": true
+    }
+  }
+}

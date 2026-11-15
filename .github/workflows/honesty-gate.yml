@@ -1,0 +1,111 @@
+name: honesty-gate
+
+# 诚实 V&V 口径门禁：任何提交都不能让公开账本静默缩水。
+#
+# 背景（2026-09-23 实测事故）：用缺 rdkit 的解释器重跑 scripts/build_reports.py，
+# 两个 mol_* 场景被静默 return []，公开账本从 82 / 79 PASS - 2 MARGINAL - 1 REFUTED
+# 变成 80 / 78 - 2 - 0 —— 唯一的 REFUTED（mol_suzuki_yield）从线上消失，平台对外
+# 变成「从未失败过」。这是本站相对竞品的核心差异点被环境依赖悄悄删掉。
+# 当时只能靠人工发现；这条 workflow 把「人工发现」换成「合并前阻断」。
+#
+# 选这四个检查的理由：全部只用标准库，不需要装 numpy/scipy/rdkit，
+# 因此不会因为 Actions 环境的可选依赖缺失而变成又一个假绿。
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  honesty-gate:
+    name: 诚实口径 + 前端 + V&V 包门禁
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # 1. 业务不变量：场景总数 82、判定分布、REFUTED 名单必须完整
+      #    这条不依赖生成链，是唯一能拦住「产物自己自洽但整体被截断」的检查
+      - name: 诚实口径不变量
+        run: python scripts/check_honesty_invariants.py
+
+      # 2. 公开数字与产物口径一致性（含 dropped_scenarios 硬失败判据）
+      - name: 公开数字核验
+        run: python scripts/check_public_numbers.py
+
+      # 3. 前端中英文混排 / i18n 基线（不得上调基线）
+      - name: 前端 i18n lint
+        run: python scripts/lint_frontend_i18n.py
+
+      # 4. V&V 归档包：洁净包必须 INTACT、篡改必须可捕获
+      - name: V&V 归档包自检
+        run: python scripts/build_vv_package.py selfcheck
+
+      # 5. VLab 编排层门禁（含 22 条否定性测试）
+      - name: VLab 编排层门禁
+        run: python scripts/check_vlab_gates.py
+
+      # 6. 埋点 KV 配额回归：防止未来埋点改动把免费层 1K 写/天配额重新烧光
+      #    （2026-09-24 事故：旧埋点每次访问一个 UUID key，1000 访问 = 1000 写 =
+      #     注册/订单/审计全被 10048 拒。修复后 1000 访问 = 10 写。）
+      - name: KV 配额回归
+        run: node scripts/verify_kv_quota.js
+
+      # 7. 形式化不变量第三通道（Z3 / SMT-LIB 独立求解）
+      #    Python 语义 + Lean 4 骨架 + Z3 三条独立通道互相印证。
+      #    负向测试包含 rdkit-missing 陷阱与 5% ERROR 违规，任一被抓漏即失败。
+      - name: Z3 SMT 独立求解
+        run: |
+          python -m pip install --quiet z3-solver
+          python scripts/verify_smt.py
+
+      # 8. engine 统一入口契约（编译期静态分析，DataFlow compile() 对应物）
+      #    已实锤一例：__all__ 声明了 run_all_benchmarks_and_export
+      #    （定义在 engine/validation_db.py:27）但从未 import，声明在仓库里
+      #    悬空了多个版本，访问即 AttributeError。
+      #    纯 AST 只读源码、不 import 任何 engine 模块 —— 因此不会因 Actions
+      #    缺 numpy/scipy/rdkit 而退化成假绿，符合本 workflow 的零依赖原则。
+      - name: engine 入口契约
+        run: python scripts/check_engine_contract.py
+
+      # 9. 文档索引一致性（P1-8）：docs/INDEX.md 是 docs/ 的入口与时效索引，
+      #    必须与源同步。曾经的问题是「docs/ 下 170+ 篇文档没人知道从哪读，
+      #    也没人知道哪些引用了已废弃口径」。此步确保 INDEX 与 docs/ 内容
+      #    一致——否则新增/修改文档后忘了重生索引，读者拿到的是过期的地图。
+      - name: 文档索引一致性
+        run: python scripts/gen_docs_index.py --check
+
+      # 10. 场景注册表契约（P1-5）：engine/scenario_registry.py 是场景装配
+      #     的单一真源（95 场景）。此前 paper_validation_loop / report_generator
+      #     / scenario_library_density 各有独立装配路径，同一仓库对外给不同
+      #     「场景总数」；工作记忆里 2026-10-05 「13 个新场景凭空消失」事故
+      #     就是这个模式。此步硬断言三件事：
+      #       (a) registry 契约完整（无重复 key、f/bounds 齐备，或仅由 RDKit
+      #           缺失解释为 DEGRADED）；
+      #       (b) paper_validation_loop._build_science_scenarios 必须委派给
+      #           registry.science_adapters_raw，不允许自己再写 4 个 try-import
+      #           块（AST 静态扫描，与 Actions 环境无关）；
+      #       (c) HEADLINE_SCENARIO_COUNT 与 data/public_facts.json 里的
+      #           validated_scenarios 一致（改数字必须同时改两处）。
+      #     任何一条破裂 exit 1，fail-closed。
+      - name: 场景注册表契约
+        run: python scripts/check_scenario_registry.py

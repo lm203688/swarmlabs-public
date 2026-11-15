@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "aoci": {
+      "type": "stdio",
+      "command": "C:\\Users\\xing\\tools\\aoci-code\\aoci.exe",
+      "args": [
+        "--repo",
+        "C:\\Users\\xing\\Desktop\\swarmlabs",
+        "mcp"
+      ]
+    }
+  }
+}

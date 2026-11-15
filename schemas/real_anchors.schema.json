@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Real Anchors Schema",
+  "description": "Real-world anchor dataset — published data with DOI/citation provenance. Two provenance tiers: zenodo (data archive) and paper_chart (paper-derived).",
+  "type": "object",
+  "required": [
+    "total_anchors",
+    "acquired_at",
+    "sources",
+    "anchors",
+    "last_updated"
+  ],
+  "properties": {
+    "total_anchors": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total number of real anchors registered"
+    },
+    "acquired_at": {
+      "type": "string"
+    },
+    "sources": {
+      "type": "array",
+      "description": "List of DOI/dataset repositories backing the anchors",
+      "items": {
+        "type": "object",
+        "additionalProperties": true
+      }
+    },
+    "anchors": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "scenario",
+          "parameter"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Unique anchor identifier (e.g. ecoli_monod_ks_real)"
+          },
+          "scenario": {
+            "type": "string",
+            "description": "Linked simulation scenario key"
+          },
+          "parameter": {
+            "type": "string",
+            "description": "The physical/chemical parameter this anchor pins"
+          },
+          "value": {
+            "type": [
+              "number",
+              "string",
+              "null"
+            ],
+            "description": "Numeric or string anchor value; null if not reportable (e.g. left-censored)"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "units": {
+            "type": "string"
+          },
+          "source_type": {
+            "type": "string",
+            "enum": [
+              "experimental",
+              "published",
+              "synthetic"
+            ]
+          },
+          "source_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "doi": {
+            "type": "string",
+            "pattern": "^10\\.[0-9]{4,9}/.+",
+            "description": "Crossref DOI (e.g. 10.5281/zenodo.19416053). Some paper_chart-tier anchors lack this field."
+          },
+          "reportable_as": {
+            "type": "string",
+            "description": "How this anchor value should be reported (e.g. '< 0.1 g/L upper bound')"
+          },
+          "method": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "temperature_C": {
+            "type": "number"
+          },
+          "mu_max_est": {
+            "type": "number"
+          },
+          "provenance": {
+            "type": "object",
+            "description": "Nested provenance metadata (duplicates top-level fields for archival)",
+            "additionalProperties": true
+          }
+        }
+      }
+    },
+    "monod_fit": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "last_updated": {
+      "type": "string"
+    }
+  }
+}

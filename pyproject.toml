@@ -1,0 +1,96 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "swarmlabs"
+version = "0.2.0.dev0"
+description = "SwarmLabs: AI4S verification layer with 95 scenarios across 14 disciplines, 42 V&V gates, 19 wet-lab anchors, and self-evolving harness."
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "SwarmLabs", email = "contact@swarmlabs.tools" }]
+requires-python = ">=3.10"
+keywords = [
+    "AI4S", "verification", "conformal-prediction",
+    "virtual-lab", "harness", "protocol",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering",
+]
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7",
+    "rich>=13",
+    "hypothesis>=6.80",
+    "PyNaCl>=1.5",
+    "jsonschema>=4.17",
+    "ruff>=0.4",
+]
+full = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "rdkit>=2023.09",
+    "hypothesis>=6.80",
+    "PyNaCl>=1.5",
+    "jsonschema>=4.17",
+]
+test = [
+    "pytest>=7",
+    "hypothesis>=6.80",
+    "rdkit>=2023.09",
+]
+
+[project.scripts]
+swarmlabs = "swarmlabs.cli:main"
+
+[project.urls]
+Homepage = "https://swarmlabs.tools"
+Repository = "https://github.com/lm203688/swarmlabs"
+"Verification Protocol (SVP)" = "https://github.com/lm203688/swarmlabs/tree/main/docs/svp-protocol-draft.md"
+
+[tool.setuptools]
+# 混合 layout：swarmlabs 在 src/，engine 和 scripts 在项目根。
+# 关键：cli.py / demo.py 等是 MODULE 不是 PACKAGE，不要出现在 packages 列表里。
+packages = ["swarmlabs", "engine", "scripts"]
+
+[tool.setuptools.package-dir]
+swarmlabs = "src/swarmlabs"
+
+[tool.setuptools.package-data]
+engine = ["*.pyi", "*.json"]
+scripts = ["*.json"]
+
+[tool.pytest.ini_options]
+# Windows 中文环境 GBK 编码修复：强制 UTF-8
+# 并排除 archives/、dist/、build/、.venv/ 等非测试目录，避免 pytest 收集到
+# 归档快照里的 sys.exit() 顶层代码导致 INTERNALERROR（P0-A 报告根因之一）。
+addopts = "-ra --strict-markers --strict-config"
+testpaths = ["tests", "engine"]
+python_files = "test_*.py *_test.py"
+norecursedirs = [
+    "archives", "dist", "build", "node_modules",
+    ".venv", "venv", ".workbuddy", "__pycache__",
+    "frontend_fixed", "data", "outputs",
+    "scripts/_retired", "scripts/archive",
+    "*_retired", "test_archive", "legacy",
+]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: end-to-end integration tests",
+    "network: tests that touch network",
+]
+filterwarnings = [
+    "ignore::DeprecationWarning:rdkit.*",
+    "ignore:.*numpy.*:DeprecationWarning",
+]

@@ -1,0 +1,13 @@
+{
+  "goal": "验证微生物生长动力学（Monod）与底物抑制（Andrews）场景的虚拟实验精度，量化误差棒，并给出下一步真实实验的优先候选点",
+  "scenarios": ["microbio_monod", "microbio_inhibition"],
+  "max_scenarios": 2,
+  "top_n": 5,
+  "allow_correction": true,
+  "thresholds": {
+    "rel_converged": 0.05,
+    "cov_min": 0.8,
+    "cal_max": 0.08
+  },
+  "approvals": {}
+}

@@ -1,0 +1,55 @@
+{
+  "items": [
+    {
+      "name": "Python",
+      "category": "languages",
+      "maturity": "mature",
+      "risk_score": 0.1,
+      "adoption_rate": 0.9,
+      "trend": "stable",
+      "last_updated": 1787363833.2329538,
+      "metadata": {}
+    },
+    {
+      "name": "Python",
+      "category": "languages",
+      "maturity": "mature",
+      "risk_score": 0.1,
+      "adoption_rate": 0.9,
+      "trend": "stable",
+      "last_updated": 1787363878.283046,
+      "metadata": {}
+    },
+    {
+      "name": "Python",
+      "category": "languages",
+      "maturity": "mature",
+      "risk_score": 0.1,
+      "adoption_rate": 0.9,
+      "trend": "stable",
+      "last_updated": 1787363896.7244716,
+      "metadata": {}
+    },
+    {
+      "name": "Python",
+      "category": "languages",
+      "maturity": "mature",
+      "risk_score": 0.1,
+      "adoption_rate": 0.9,
+      "trend": "stable",
+      "last_updated": 1787367313.2283044,
+      "metadata": {}
+    },
+    {
+      "name": "Python",
+      "category": "languages",
+      "maturity": "mature",
+      "risk_score": 0.1,
+      "adoption_rate": 0.9,
+      "trend": "stable",
+      "last_updated": 1787564281.1285248,
+      "metadata": {}
+    }
+  ],
+  "last_updated": 1787564281.128864
+}

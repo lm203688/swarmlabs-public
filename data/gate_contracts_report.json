@@ -1,0 +1,109 @@
+{
+  "version": 1,
+  "generated_at": "2026-10-11T22:56:29",
+  "method": "deal v4.24.6 前置/后置条件契约测试",
+  "n_contracts_tested": 17,
+  "elapsed_seconds": 0.02,
+  "summary": {
+    "total": 17,
+    "passed": 17,
+    "failed": 0,
+    "contract_violations": 0,
+    "all_contracts_hold": true
+  },
+  "contracts_tested": [
+    "gate_for_verdict: 返回有效 gate 字符串",
+    "gate_label: 返回非空字符串",
+    "policy: 返回包含必需键的 dict",
+    "thresholds: pass_r2 > marginal_r2, noise_floor > 0",
+    "calibrated_verdict: probabilities 和=1, confidence∈[0,1], recommendation 有效"
+  ],
+  "results": [
+    {
+      "test": "gate_for_verdict: PASS → PROCEED",
+      "result": "PASS",
+      "value": "PROCEED"
+    },
+    {
+      "test": "gate_for_verdict: MARGINAL → HUMAN",
+      "result": "PASS",
+      "value": "PROCEED_WITH_HUMAN_CHECK"
+    },
+    {
+      "test": "gate_for_verdict: REFUTED → BLOCK",
+      "result": "PASS",
+      "value": "BLOCK_AUTONOMOUS_ACTION"
+    },
+    {
+      "test": "gate_for_verdict: ERROR → BLOCK",
+      "result": "PASS",
+      "value": "BLOCK_AUTONOMOUS_ACTION"
+    },
+    {
+      "test": "gate_for_verdict: unknown → BLOCK",
+      "result": "PASS",
+      "value": "BLOCK_AUTONOMOUS_ACTION"
+    },
+    {
+      "test": "gate_for_verdict: empty → BLOCK",
+      "result": "PASS",
+      "value": "BLOCK_AUTONOMOUS_ACTION"
+    },
+    {
+      "test": "gate_label: PROCEED",
+      "result": "PASS",
+      "value": "autonomous action permitted"
+    },
+    {
+      "test": "gate_label: HUMAN",
+      "result": "PASS",
+      "value": "human sign-off required before acting"
+    },
+    {
+      "test": "gate_label: BLOCK",
+      "result": "PASS",
+      "value": "autonomous action blocked (confidence below threshold)"
+    },
+    {
+      "test": "gate_label: unknown",
+      "result": "PASS",
+      "value": "unknown gate"
+    },
+    {
+      "test": "policy: returns valid dict",
+      "result": "PASS",
+      "value": "{'noise_floor': 0.03, 'nominal_coverage': 0.95, 'pass': 'R2>=0.9 and one-sided coverage>=0.9', 'marg"
+    },
+    {
+      "test": "thresholds: valid thresholds",
+      "result": "PASS",
+      "value": "{'pass_r2': 0.9, 'marginal_r2': 0.7, 'coverage_pass': 0.9, 'coverage_marginal': 0.8, 'noise_floor': "
+    },
+    {
+      "test": "calibrated_verdict: bio_logistic",
+      "result": "PASS",
+      "value": "{'hard_verdict': 'PASS', 'probabilities': {'PASS': 0.9022, 'MARGINAL': 0.0976, 'REFUTED': 0.0001, 'U"
+    },
+    {
+      "test": "calibrated_verdict: chem_bet",
+      "result": "PASS",
+      "value": "{'hard_verdict': 'PASS', 'probabilities': {'PASS': 0.9022, 'MARGINAL': 0.0976, 'REFUTED': 0.0001, 'U"
+    },
+    {
+      "test": "calibrated_verdict: chem_freundlich",
+      "result": "PASS",
+      "value": "{'hard_verdict': 'PASS', 'probabilities': {'PASS': 0.9022, 'MARGINAL': 0.0976, 'REFUTED': 0.0001, 'U"
+    },
+    {
+      "test": "calibrated_verdict: chem_langmuir",
+      "result": "PASS",
+      "value": "{'hard_verdict': 'PASS', 'probabilities': {'PASS': 0.8557, 'MARGINAL': 0.1441, 'REFUTED': 0.0002, 'U"
+    },
+    {
+      "test": "calibrated_verdict: chem_reactor_convers",
+      "result": "PASS",
+      "value": "{'hard_verdict': 'PASS', 'probabilities': {'PASS': 0.9022, 'MARGINAL': 0.0976, 'REFUTED': 0.0001, 'U"
+    }
+  ],
+  "interpretation": "每个门禁函数都有可执行的契约约束（deal 前置/后置条件）。契约违规时自动抛 ContractError，不再依赖文档声明。这是「机器可验证的不变量」——从「文档说有不变量」升级为「测试证明有不变量」。"
+}

@@ -1,0 +1,293 @@
+{
+  "schema": "svp.template-library.v1",
+  "generated_at": 1794625345,
+  "total": 13,
+  "templates": [
+    {
+      "id": "1ebe5bfbd88b32d0",
+      "scenario_key": "surrogate_hartmann6",
+      "harness_fingerprint": "e4f7dd27ecaeebbf",
+      "gate_ids": [
+        "cal_err_ok",
+        "coverage_two_sided_ok",
+        "function_nonconstant",
+        "gold_source_traced",
+        "ls_source_traced",
+        "rmse_rel_ok",
+        "sharpness_ok"
+      ],
+      "verdict": "PASS",
+      "score": 1.0,
+      "domain": "Surrogate Modeling",
+      "created_at": 1791066981,
+      "reuse_count": 0,
+      "last_used_at": 0,
+      "notes": "",
+      "schema": "svp.template-library.v1"
+    },
+    {
+      "id": "34be67ae0a6700d9",
+      "scenario_key": "pde_heat1d",
+      "harness_fingerprint": "71cf09018f76b38e",
+      "gate_ids": [
+        "cal_err_ok",
+        "coverage_two_sided_ok",
+        "function_nonconstant",
+        "gold_source_traced",
+        "ls_source_traced",
+        "rmse_rel_ok",
+        "sharpness_ok"
+      ],
+      "verdict": "PASS",
+      "score": 1.0,
+      "domain": "Heat Conduction (Physics-Informed",
+      "created_at": 1791066981,
+      "reuse_count": 0,
+      "last_used_at": 0,
+      "notes": "",
+      "schema": "svp.template-library.v1"
+    },
+    {
+      "id": "0bbb1c1f5fc28113",
+      "scenario_key": "bio_logistic",
+      "harness_fingerprint": "88d3bc45b25107f9",
+      "gate_ids": [
+        "cal_err_ok",
+        "coverage_two_sided_ok",
+        "function_nonconstant",
+        "gold_source_traced",
+        "ls_source_traced",
+        "rmse_rel_ok",
+        "sharpness_ok"
+      ],
+      "verdict": "PASS",
+      "score": 1.0,
+      "domain": "Biology",
+      "created_at": 1791066981,
+      "reuse_count": 0,
+      "last_used_at": 0,
+      "notes": "",
+      "schema": "svp.template-library.v1"
+    },
+    {
+      "id": "e6a99cca8f70392b",
+      "scenario_key": "microbio_inhibition",
+      "harness_fingerprint": "139a1bf603b0627c",
+      "gate_ids": [
+        "cal_err_ok",
+        "coverage_two_sided_ok",
+        "function_nonconstant",
+        "gold_source_traced",
+        "ls_source_traced",
+        "rmse_rel_ok",
+        "sharpness_ok"
+      ],
+      "verdict": "PASS",
+      "score": 1.0,
+      "domain": "Microorganisms",
+      "created_at": 1791066981,
+      "reuse_count": 0,
+      "last_used_at": 0,
+      "notes": "",
+      "schema": "svp.template-library.v1"
+    },
+    {
+      "id": "dea1e90d760d5562",
+      "scenario_key": "llm_scaling",
+      "harness_fingerprint": "6cf6d07a54c10a14",
+      "gate_ids": [
+        "cal_err_ok",
+        "coverage_two_sided_ok",
+        "function_nonconstant",
+        "gold_source_traced",
+        "ls_source_traced",
+        "rmse_rel_ok",
+        "sharpness_ok"
+      ],
+      "verdict": "PASS",
+      "score": 1.0,
+      "domain": "LLM",
+      "created_at": 1791066981,
+      "reuse_count": 0,
+      "last_used_at": 0,
+      "notes": "",
+      "schema": "svp.template-library.v1"
+    },
+    {
+      "id": "29c9eb261db1f1dc",
+      "scenario_key": "chem_langmuir",
+      "harness_fingerprint": "0006921485c013b2",
+      "gate_ids": [
+        "cal_err_ok",
+        "coverage_two_sided_ok",
+        "function_nonconstant",
+        "gold_source_traced",
+        "ls_source_traced",
+        "rmse_rel_ok",
+        "sharpness_ok"
+      ],
+      "verdict": "PASS",
+      "score": 1.0,
+      "domain": "Chemical",
+      "created_at": 1791066981,
+      "reuse_count": 0,
+      "last_used_at": 0,
+      "notes": "",
+      "schema": "svp.template-library.v1"
+    },
+    {
+      "id": "c8299d7990e7df02",
+      "scenario_key": "chem_reactor_conversion",
+      "harness_fingerprint": "daf9b486a4134221",
+      "gate_ids": [
+        "cal_err_ok",
+        "coverage_two_sided_ok",
+        "function_nonconstant",
+        "gold_source_traced",
+        "ls_source_traced",
+        "rmse_rel_ok",
+        "sharpness_ok"
+      ],
+      "verdict": "PASS",
+      "score": 1.0,
+      "domain": "Chemistry",
+      "created_at": 1791066981,
+      "reuse_count": 0,
+      "last_used_at": 0,
+      "notes": "",
+      "schema": "svp.template-library.v1"
+    },
+    {
+      "id": "16147411e9596385",
+      "scenario_key": "micro_sensor_fusion",
+      "harness_fingerprint": "a81895b1fe5d8475",
+      "gate_ids": [
+        "cal_err_ok",
+        "coverage_two_sided_ok",
+        "function_nonconstant",
+        "gold_source_traced",
+        "ls_source_traced",
+        "rmse_rel_ok",
+        "sharpness_ok"
+      ],
+      "verdict": "PASS",
+      "score": 1.0,
+      "domain": "微生物",
+      "created_at": 1791066981,
+      "reuse_count": 0,
+      "last_used_at": 0,
+      "notes": "",
+      "schema": "svp.template-library.v1"
+    },
+    {
+      "id": "147ebf6b247f86f9",
+      "scenario_key": "resp_welch2d",
+      "harness_fingerprint": "6a905d7bce1c3bfb",
+      "gate_ids": [
+        "cal_err_ok",
+        "coverage_two_sided_ok",
+        "function_nonconstant",
+        "gold_source_traced",
+        "ls_source_traced",
+        "rmse_rel_ok",
+        "sharpness_ok"
+      ],
+      "verdict": "PASS",
+      "score": 1.0,
+      "domain": "optimization",
+      "created_at": 1791066981,
+      "reuse_count": 0,
+      "last_used_at": 0,
+      "notes": "",
+      "schema": "svp.template-library.v1"
+    },
+    {
+      "id": "09c79a2df092e2c5",
+      "scenario_key": "ode_lotka_volterra",
+      "harness_fingerprint": "af522a5da55eea3b",
+      "gate_ids": [
+        "cal_err_ok",
+        "coverage_two_sided_ok",
+        "function_nonconstant",
+        "gold_source_traced",
+        "ls_source_traced",
+        "rmse_rel_ok",
+        "sharpness_ok"
+      ],
+      "verdict": "PASS",
+      "score": 1.0,
+      "domain": "biology",
+      "created_at": 1791066981,
+      "reuse_count": 0,
+      "last_used_at": 0,
+      "notes": "",
+      "schema": "svp.template-library.v1"
+    },
+    {
+      "id": "eb447057c50c4723",
+      "scenario_key": "quant_bs_call",
+      "harness_fingerprint": "db3fa49ba15f2cfd",
+      "gate_ids": [
+        "cal_err_ok",
+        "coverage_two_sided_ok",
+        "function_nonconstant",
+        "gold_source_traced",
+        "ls_source_traced",
+        "rmse_rel_ok",
+        "sharpness_ok"
+      ],
+      "verdict": "PASS",
+      "score": 1.0,
+      "domain": "finance",
+      "created_at": 1791066981,
+      "reuse_count": 0,
+      "last_used_at": 0,
+      "notes": "",
+      "schema": "svp.template-library.v1"
+    },
+    {
+      "id": "84819e6f365a7c43",
+      "scenario_key": "cheminfo_hydration",
+      "harness_fingerprint": "7b51d4c739cd843d",
+      "gate_ids": [
+        "cal_err_ok",
+        "coverage_two_sided_ok",
+        "function_nonconstant",
+        "gold_source_traced",
+        "ls_source_traced",
+        "rmse_rel_ok",
+        "sharpness_ok"
+      ],
+      "verdict": "PASS",
+      "score": 1.0,
+      "domain": "cheminformatics",
+      "created_at": 1791066981,
+      "reuse_count": 0,
+      "last_used_at": 0,
+      "notes": "",
+      "schema": "svp.template-library.v1"
+    },
+    {
+      "id": "1fcc0e1c2c331d25",
+      "scenario_key": "energy_ccpp_output",
+      "harness_fingerprint": "b269ec5da93e34ae",
+      "gate_ids": [
+        "cal_err_ok",
+        "coverage_two_sided_ok",
+        "function_nonconstant",
+        "gold_source_traced",
+        "ls_source_traced",
+        "rmse_rel_ok",
+        "sharpness_ok"
+      ],
+      "verdict": "PASS",
+      "score": 1.0,
+      "domain": "energy",
+      "created_at": 1791066981,
+      "reuse_count": 0,
+      "last_used_at": 0,
+      "notes": "",
+      "schema": "svp.template-library.v1"
+    }
+  ]
+}

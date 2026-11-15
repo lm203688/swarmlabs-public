@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SwarmLabs · Live Capabilities Demo</title>
+<link rel="canonical" href="https://swarmlabs.tools/demo">
+<meta name="description" content="Recorded demo of the SwarmLabs virtual-experiment workbench: literature retrieval, engine selection, uncertainty-quantified prediction, and a ten-chapter V&amp;V report generated end to end.">
+<meta name="robots" content="noindex">
+<style>
+  :root{--brand:#1E40AF;--brand-dk:#152C7A;--accent:#10B981;--accent2:#0EA5E9;--dark:#1F2937;--gray:#5B6675;--light:#F4F7FB;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",system-ui,sans-serif;background:var(--light);color:var(--dark);line-height:1.6}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  header{background:linear-gradient(135deg,var(--brand),var(--brand-dk));color:#fff;padding:54px 20px;text-align:center}
+  header h1{font-size:34px;margin-bottom:10px}
+  header p{color:#BFDBF0;font-size:16px;max-width:760px;margin:0 auto}
+  .badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:4px 14px;font-size:13px;margin-top:14px}
+  section{padding:40px 0;border-bottom:1px solid #e5e9f0}
+  h2{font-size:24px;color:var(--brand);margin-bottom:18px}
+  h2 small{font-size:14px;color:var(--gray);font-weight:normal}
+  .flow{display:flex;flex-wrap:wrap;gap:14px;align-items:stretch}
+  .step{flex:1 1 180px;background:#fff;border-radius:12px;padding:18px;border-top:4px solid var(--accent)}
+  .step:nth-child(2){border-top-color:var(--accent2)}
+  .step:nth-child(3){border-top-color:var(--brand)}
+  .step:nth-child(4){border-top-color:var(--accent)}
+  .step .role{font-weight:bold;color:var(--brand);font-size:16px}
+  .step .desc{font-size:13px;color:var(--gray);margin-top:6px}
+  .arrow{display:flex;align-items:center;color:var(--gray);font-size:22px;font-weight:bold}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .card{background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+  .card h3{color:var(--brand-dk);font-size:17px;margin-bottom:10px}
+  .card ul{list-style:none}
+  .card li{padding:5px 0;font-size:14px;color:var(--dark);border-bottom:1px dashed #eef1f6}
+  .card li:before{content:"✓ ";color:var(--accent);font-weight:bold}
+  .iframe-box{border-radius:12px;overflow:hidden;border:1px solid #d8dee9;background:#fff}
+  iframe{width:100%;height:900px;border:0}
+  .note{background:#fff;border-left:4px solid var(--accent);padding:14px 18px;border-radius:8px;font-size:14px;color:var(--dark);margin-top:16px}
+  .links a{color:var(--accent2);text-decoration:none;font-weight:bold}
+  .links a:hover{text-decoration:underline}
+  footer{background:var(--brand-dk);color:#cdd7ec;text-align:center;padding:30px 20px;font-size:13px}
+  .pub{display:inline-block;background:var(--accent);color:#fff;border-radius:6px;padding:3px 10px;font-size:12px;margin-left:8px;vertical-align:middle}
+</style>
+</head>
+<body>
+<header>
+  <h1>SwarmLabs · Live Demo</h1>
+  <p>A multidisciplinary scientific-computing experiment-automation agent infrastructure — built on a Leader-Worker AgentTeams design with an AgentLoop flywheel, calling 163 real physics/math models under the hood, with error bars quantified and fully auditable.</p>
+  <span class="badge">SwarmLabs · AI-powered virtual accelerator lab</span>
+</header>
+
+<div class="wrap">
+
+  <section>
+    <h2>1. End-to-end autonomous loop <small>goal in → experiment design → model execution → result verification → knowledge deposit</small></h2>
+    <div class="flow">
+      <div class="step"><div class="role">PlannerAgent</div><div class="desc">Understands the goal, decomposes it into an executable experiment plan JSON (candidate engines, parameter space, metrics, budget). Read-only, does not execute.</div></div>
+      <div class="step"><div class="role">ExecutorAgent</div><div class="desc">Runs computations against real physics/math models, collecting execution evidence (trace + latency). Read-only computation.</div></div>
+      <div class="step"><div class="role">VerifierAgent</div><div class="desc">Checks result soundness, uses active learning (expected information gain) to decide the next sampling, and deposits an auditable report.</div></div>
+      <div class="step"><div class="role">Knowledge deposit</div><div class="desc">Report + trace written to a reusable knowledge base, fed back to the Planner to form an iterative loop.</div></div>
+    </div>
+    <div class="note">The three agents have mutually exclusive responsibilities (plan does not execute / execute does not judge / verify does not compute). All high-risk write operations go through approval and rollback — matching the "permission boundaries + safe &amp; auditable" requirement for trustworthy agents.</div>
+  </section>
+
+  <section>
+    <h2>2. Real verification evidence <small>8 cross-discipline scenarios run daily; error bars are the hard metric of "mirroring reality"</small></h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Verification loop (real AgentLoop implementation)</h3>
+        <ul>
+          <li>Collect: real paper/benchmark data as ground-truth</li>
+          <li>Analyze: GP surrogate + UQ quantification (rmse / 95% CI coverage / calibration error)</li>
+          <li>Evaluate: maturity ranking (converged / converging / needs data)</li>
+          <li>Optimize: active-learning point addition → more accurate next round</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Reusable skills (two layers, self-describing)</h3>
+        <ul>
+          <li><strong>6 orchestration-layer skills</strong> (the <code>agentteams/</code> package): scenario.catalog · virtual_experiment.validate · active_learning.rank_candidates · uq.calibration_report · experiment.apply_correction · report.render</li>
+          <li><strong>4 MCP-layer skills</strong> (open-source engine-kit): PhysicsPredict · ExperimentDesign · ActiveLearning · ReportGeneration</li>
+          <li>Each skill carries 8 self-describing fields: purpose / inputs / outputs / preconditions / dependencies / side-effects &amp; scope / risks / failure handling</li>
+          <li>The list is exported from code via <code>--skills</code>, so docs never drift</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note">Below is the <strong>live, public</strong> validation dashboard. It is itself a public entry point for "end-to-end loop evidence + runtime verification."</div>
+    <div class="iframe-box" style="margin-top:16px">
+      <iframe src="/blog/validation-dashboard" title="SwarmLabs Validation Dashboard" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <section>
+    <h2>3. Runnable code-package evidence <small>not a diagram — real terminal output</small></h2>
+    <p style="font-size:14px;color:var(--gray);margin-bottom:14px">
+      The open agent runtime package (<code>agentteams/</code>) runs today. Zero dependencies (numpy + PyYAML), runs offline, no API key required. The four snippets below are real run excerpts.
+    </p>
+    <div class="grid2">
+      <div class="card">
+        <h3>① High-risk writes auto-blocked</h3>
+        <pre style="background:#0f172a;color:#c7d2fe;padding:14px;border-radius:8px;font-size:12px;overflow-x:auto;line-height:1.7">team status : partial
+  microbio_monod       rel=0.0529  cov=0.90  converging
+  microbio_inhibition  rel=0.1087  cov=0.85  converging
+observable : span 13 · <b style="color:#fbbf24">blocked 2</b> · audit 9
+awaiting human: experiment.apply_correction
+           (human-in-the-loop)</pre>
+        <div style="font-size:13px;color:var(--gray);margin-top:10px">The Verifier flags the point to add, but the write is gated — the task <strong>degrades to partial instead of crashing</strong>: autonomous but never out of control.</div>
+      </div>
+      <div class="card">
+        <h3>② Four-stage audit chain after approval</h3>
+        <pre style="background:#0f172a;color:#c7d2fe;padding:14px;border-radius:8px;font-size:12px;overflow-x:auto;line-height:1.7">approval | verifier | <b style="color:#4ade80">allow</b>
+write    | verifier | <b style="color:#4ade80">snapshot</b> | files:1
+write    | verifier | <b style="color:#4ade80">executed</b> |
+   scenario: microbio_monod
+   added: 1  rmse_after: 0.008</pre>
+        <div style="font-size:13px;color:var(--gray);margin-top:10px">Approve first, snapshot next, then execute. The order is guaranteed by code; skipping the snapshot makes the write impossible.</div>
+      </div>
+      <div class="card">
+        <h3>③ Rollback is physically verifiable</h3>
+        <pre style="background:#0f172a;color:#c7d2fe;padding:14px;border-radius:8px;font-size:12px;overflow-x:auto;line-height:1.7">$ --rollback run-20260810-135234
+rollback complete: restored 2 files
+
+knowledge-base points
+  microbio_monod       11 → <b style="color:#4ade80">10</b>
+  microbio_inhibition  18 → <b style="color:#4ade80">17</b></pre>
+        <div style="font-size:13px;color:var(--gray);margin-top:10px">The added data point is fully undone; the knowledge base returns to its pre-write state.</div>
+      </div>
+      <div class="card">
+        <h3>④ Flywheel self-drives: decides what to do</h3>
+        <pre style="background:#0f172a;color:#c7d2fe;padding:14px;border-radius:8px;font-size:12px;overflow-x:auto;line-height:1.7">request specified no scenario →
+  <b style="color:#fbbf24">microbio_inhibition</b> rel=10.9%  ← priority
+  microbio_monod       rel= 5.3%</pre>
+        <div style="font-size:13px;color:var(--gray);margin-top:10px">The Planner reads the previous flywheel state, <strong>auto-prioritizing the scenario with the larger error</strong>. The AgentLoop's Optimize→Collect closes across processes and days.</div>
+      </div>
+    </div>
+    <div class="note"><strong>Honest migration estimate</strong>: <code>core/runtime.py</code> abstracts the runtime as an interface, with <code>LocalRuntime</code> and <code>AgentTeamsRuntime</code> side by side. Moving to a real agent runtime needs only two methods (<code>_submit/_poll</code>, ~50–80 lines of SDK glue); agent logic, skills, policies, and traces stay unchanged. <strong>The AgentTeamsRuntime is currently explicitly not wired in — we do not claim to run on a proprietary platform.</strong></div>
+  </section>
+
+  <section>
+    <h2>4. Open resources <small>no vendor lock-in; swappable for any compatible runtime</small></h2>
+    <div class="links" style="font-size:15px;line-height:2.2">
+      • Validation dashboard (public): <a href="/blog/validation-dashboard">swarmlabs.tools/blog/validation-dashboard</a><br>
+      • Open-source repo: <a href="https://github.com/lm203688/swarmlabs-engine-kit">github.com/lm203688/swarmlabs-engine-kit</a> (skill interfaces + MCP server)<br>
+      • Skill manifest / engine contracts: <a href="https://github.com/lm203688/swarmlabs">github.com/lm203688/swarmlabs</a> (skills/registry + MCP server)<br>
+      • Privacy &amp; audit: <a href="/privacy">swarmlabs.tools/privacy.html</a>
+    </div>
+    <div class="note"><strong>Swap-ability note</strong>: the 95 validated scenarios are wrapped via a standard MCP contract; AgentTeams (HiClaw) or any compatible runtime only needs to adapt the orchestration entry point — core skills and contracts stay unchanged. We do not depend on a proprietary cloud or Gemini. The migration cost is quantified in the MCP contract.</div>
+  </section>
+
+</div>
+
+<footer>
+  SwarmLabs · Real · Trustworthy · Open &nbsp;|&nbsp; Data comes from real, parsed physics/math models — no placeholder values
+</footer>
+</body>
+</html>

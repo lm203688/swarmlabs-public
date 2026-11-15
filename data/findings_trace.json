@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "updated_at": "2026-08-20T21:11:27",
+  "next_id": 5,
+  "findings": [
+    {
+      "id": "F-0001",
+      "statement": "GP achieves 95% coverage on Ackley 2D",
+      "domain": "optimization",
+      "confidence": 0.95,
+      "finding_type": "validated",
+      "provenances": [
+        {
+          "source_type": "code",
+          "reference": "engine/autonomous_loop.py",
+          "detail": "L155-L180 (Elo tournament)"
+        },
+        {
+          "source_type": "paper",
+          "reference": "10.1007/s10898-016-0463-y",
+          "detail": ""
+        }
+      ],
+      "created_at": "2026-08-20T21:08:39",
+      "updated_at": "2026-08-20T21:08:39"
+    },
+    {
+      "id": "F-0002",
+      "statement": "GP surrogate reliable for opt_ackley2d",
+      "domain": "optimization",
+      "confidence": 0.9,
+      "finding_type": "validated",
+      "provenances": [
+        {
+          "source_type": "code",
+          "reference": "engine/autonomous_loop.py",
+          "detail": "L155-L180"
+        }
+      ],
+      "created_at": "2026-08-20T21:11:27",
+      "updated_at": "2026-08-20T21:11:27"
+    },
+    {
+      "id": "F-0003",
+      "statement": "GP surrogate reliable for opt_rastrigin2d",
+      "domain": "optimization",
+      "confidence": 0.9,
+      "finding_type": "validated",
+      "provenances": [
+        {
+          "source_type": "code",
+          "reference": "engine/autonomous_loop.py",
+          "detail": "L155-L180"
+        }
+      ],
+      "created_at": "2026-08-20T21:11:27",
+      "updated_at": "2026-08-20T21:11:27"
+    },
+    {
+      "id": "F-0004",
+      "statement": "GP surrogate reliable for opt_rosenbrock2d",
+      "domain": "optimization",
+      "confidence": 0.9,
+      "finding_type": "validated",
+      "provenances": [
+        {
+          "source_type": "code",
+          "reference": "engine/autonomous_loop.py",
+          "detail": "L155-L180"
+        }
+      ],
+      "created_at": "2026-08-20T21:11:27",
+      "updated_at": "2026-08-20T21:11:27"
+    }
+  ]
+}

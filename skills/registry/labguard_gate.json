@@ -1,0 +1,49 @@
+{
+  "name": "labguard_gate",
+  "version": "1.0.0",
+  "purpose": "VirtualLab Guard 三态门禁：对代理模型预测点做 OOD 信任、UQ 不确定度、物理一致性三层判定，输出 PASS/CONTROLLED/REJECT。",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "scenario": { "type": "string", "description": "场景名，如 logistic / monod / inhibition / heat1d" },
+      "query_points": { "type": "array", "description": "待判定查询点数组 [[x1, y1, ...], ...]" },
+      "train_data": { "type": "array", "description": "训练数据 {X: [[...]], y: [...]}" },
+      "bounds": { "type": "array", "description": "参数空间边界 [(lo,hi), ...]" },
+      "physics_params": { "type": "object", "description": "控制方程参数，如 {k:0.8, L:1.0}" }
+    },
+    "required": ["scenario", "query_points"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "results": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "status": { "type": "string", "enum": ["pass", "controlled", "reject"] },
+            "mean": { "type": "number" },
+            "std": { "type": "number" },
+            "layers": { "type": "object", "description": "逐层判定明细 trust/uq/physics" }
+          }
+        }
+      },
+      "counts": {
+        "type": "object",
+        "properties": {
+          "pass": { "type": "integer" },
+          "controlled": { "type": "integer" },
+          "reject": { "type": "integer" }
+        }
+      }
+    },
+    "required": ["results", "counts"]
+  },
+  "invocation_condition": "任何场景在输出预测值前，由 ExecutorAgent 调用本 Skill 判定预测点是否可信；REJECT 的点必须被挡在门外，不作为最终输出。",
+  "depend_tools": ["engine.guard.VirtualLabGuard", "engine.surrogate.GPSurrogate", "PHYSICS_RESIDUALS"],
+  "failure_handling": "代理未绑定 → 报错；物理残差数值失败 → 降为 CONTROLLED 而非崩溃；无控制方程场景 → L3 跳过。",
+  "safety_boundary": "只读预测数据与代理模型，不修改训练集，不记录敏感参数。",
+  "reuse_value": "覆盖全部已登记控制方程场景（logistic/monod/inhibition/heat1d），可扩展至任意新场景，是 VirtualLab Guard 子产品的 AgentTeams 接入点。",
+  "multi_agent_role": "ExecutorAgent",
+  "tags": ["guard", "safety", "UQ", "physics-consistency", "OOD"]
+}

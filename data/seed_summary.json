@@ -1,0 +1,29 @@
+{
+ "summary": {
+  "suzuki": {
+   "n": 45,
+   "mean_yield": 0.388,
+   "max_yield": 0.681,
+   "min_yield": 0.306
+  },
+  "heck": {
+   "n": 45,
+   "mean_yield": 0.393,
+   "max_yield": 0.602,
+   "min_yield": 0.299
+  },
+  "sonogashira": {
+   "n": 45,
+   "mean_yield": 0.381,
+   "max_yield": 0.812,
+   "min_yield": 0.281
+  },
+  "wittig": {
+   "n": 45,
+   "mean_yield": 0.382,
+   "max_yield": 0.609,
+   "min_yield": 0.274
+  }
+ },
+ "synthetic": true
+}

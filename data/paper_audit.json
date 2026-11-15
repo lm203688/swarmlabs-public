@@ -1,0 +1,749 @@
+{
+  "generated_at": "2026-10-18T11:22:55.285006Z",
+  "mode": "audit",
+  "scope": "all",
+  "evidence_grade": "repo_entered_data__internal_consistency_only",
+  "evidence_grade_distribution": {
+    "repo_entered_data__internal_consistency_only": 17
+  },
+  "evidence_grade_note": "本报告仅覆盖 repo_entered 级（手工录入数据，内部一致性审计）。已发表原始数据自动提取级（auto_extracted_from_published_raw_data__sha256_verified）审计见 data/published_data_audit.json（engine/published_data_audit.py）。两类等级不得混用。",
+  "counts": {
+    "CONSISTENT": 3,
+    "UNDERDETERMINED": 1,
+    "PARAM_DISCREPANCY": 6,
+    "DATA_PROVENANCE_SUSPECT": 6,
+    "NOISE_EXCESS": 1
+  },
+  "certificates": [
+    {
+      "key": "paper_monod_1949",
+      "title": "Monod 1949: E. coli 葡萄糖生长动力学",
+      "paper": "Monod J. (1949). The growth of bacterial cultures. J Gen Microbiol 3:371-394.",
+      "domain": "生长动力学（Monod）",
+      "model": "Monod",
+      "evidence_grade": "repo_entered_data__internal_consistency_only",
+      "data_source": "repo_transcription",
+      "provenance_note": "BENCHMARKS 中的实测数据为本仓库手工录入，非从原始论文 supplementary 直接解析。审计结论为内部一致性判定，人工核对原文前不得对外宣称发现论文错误。",
+      "n_points": 8,
+      "n_params": 2,
+      "published_rmse": 0.071354,
+      "published_rel_rmse": 0.0951,
+      "published_params": {
+        "mu_max": 0.81,
+        "Ks": 0.22
+      },
+      "refit_params": {
+        "mu_max": 0.934912,
+        "Ks": 0.283482
+      },
+      "param_fold_change": {
+        "mu_max": 1.154,
+        "Ks": 1.289
+      },
+      "max_param_fold_change": 1.289,
+      "refit_rmse": 0.049537,
+      "refit_rel_rmse": 0.066,
+      "rmse_improvement_pct": 30.6,
+      "residual_runs_z": -1.08,
+      "residual_runs_p": 0.2801,
+      "residual_runs": 3,
+      "residual_lag1_autocorr": 0.504,
+      "residual_cv_vs_scale": 0.1061,
+      "plausible_noise_cv": 0.1,
+      "params_at_bound": [
+        false,
+        false
+      ],
+      "verdict": "CONSISTENT",
+      "verdict_basis": "重拟合参数与发表参数一致（最大偏离 1.289×），残差无系统性结构，量级在该领域合理噪声范围内。"
+    },
+    {
+      "key": "paper_monod_1949_batch",
+      "title": "Monod 1949: E. coli 批次培养时序（24h）",
+      "paper": "Monod J. (1949). J Gen Microbiol 3:371-394, Fig.2",
+      "domain": "生长动力学（批次培养）",
+      "model": "Batch",
+      "evidence_grade": "repo_entered_data__internal_consistency_only",
+      "data_source": "repo_transcription",
+      "provenance_note": "BENCHMARKS 中的实测数据为本仓库手工录入，非从原始论文 supplementary 直接解析。审计结论为内部一致性判定，人工核对原文前不得对外宣称发现论文错误。",
+      "n_points": 10,
+      "n_params": 3,
+      "published_rmse": 1.340509,
+      "published_rel_rmse": 0.1971,
+      "published_params": {
+        "mu_max": 0.81,
+        "Ks": 0.22,
+        "Yxs": 0.5
+      },
+      "refit_params": {
+        "mu_max": 1.704928,
+        "Ks": 22.0,
+        "Yxs": 0.715684
+      },
+      "param_fold_change": {
+        "mu_max": 2.105,
+        "Ks": 100.0,
+        "Yxs": 1.431
+      },
+      "max_param_fold_change": 100.0,
+      "refit_rmse": 0.300091,
+      "refit_rel_rmse": 0.0441,
+      "rmse_improvement_pct": 77.6,
+      "residual_runs_z": -1.633,
+      "residual_runs_p": 0.1025,
+      "residual_runs": 3,
+      "residual_lag1_autocorr": 0.493,
+      "residual_cv_vs_scale": 0.0867,
+      "plausible_noise_cv": 0.15,
+      "params_at_bound": [
+        false,
+        true,
+        false
+      ],
+      "verdict": "UNDERDETERMINED",
+      "verdict_basis": "重拟合参数撞到搜索边界，说明该参数在本数据下不可识别（撞边界参数: ['Ks']）"
+    },
+    {
+      "key": "paper_andrews_1968",
+      "title": "Andrews 1968: Pseudomonas 苯酚抑制动力学",
+      "paper": "Andrews J.F. (1968). Measurement of saturated substrate inhibition. Biotech Bioeng 10:707-723.",
+      "domain": "底物抑制（Andrews）",
+      "model": "Andrews",
+      "evidence_grade": "repo_entered_data__internal_consistency_only",
+      "data_source": "repo_transcription",
+      "provenance_note": "BENCHMARKS 中的实测数据为本仓库手工录入，非从原始论文 supplementary 直接解析。审计结论为内部一致性判定，人工核对原文前不得对外宣称发现论文错误。",
+      "n_points": 9,
+      "n_params": 3,
+      "published_rmse": 0.168942,
+      "published_rel_rmse": 0.2964,
+      "published_params": {
+        "mu_max": 0.693,
+        "Ks": 0.028,
+        "Ki": 2.38
+      },
+      "refit_params": {
+        "mu_max": 0.904064,
+        "Ks": 0.015917,
+        "Ki": 0.518537
+      },
+      "param_fold_change": {
+        "mu_max": 1.305,
+        "Ks": 1.759,
+        "Ki": 4.59
+      },
+      "max_param_fold_change": 4.59,
+      "refit_rmse": 0.027881,
+      "refit_rel_rmse": 0.0489,
+      "rmse_improvement_pct": 83.5,
+      "residual_runs_z": -1.044,
+      "residual_runs_p": 0.2964,
+      "residual_runs": 4,
+      "residual_lag1_autocorr": 0.335,
+      "residual_cv_vs_scale": 0.066,
+      "plausible_noise_cv": 0.15,
+      "params_at_bound": [
+        false,
+        false,
+        false
+      ],
+      "verdict": "PARAM_DISCREPANCY",
+      "verdict_basis": "重拟合参数与发表参数偏离 4.59×（最大偏离参数 Ki: 发表 2.38 → 重拟合 0.5185），且重拟合使 RMSE 下降 83.5%。候选信号：论文发表参数可能无法解释其自身数据——需人工核对原文后方可断言。"
+    },
+    {
+      "key": "paper_contois_1959",
+      "title": "Contois 1959: 细胞密度依赖生长",
+      "paper": "Contois D.E. (1959). Kinetics of bacterial growth. J Bacteriol 77:158-168.",
+      "domain": "生长动力学（Contois）",
+      "model": "Contois",
+      "evidence_grade": "repo_entered_data__internal_consistency_only",
+      "data_source": "repo_transcription",
+      "provenance_note": "BENCHMARKS 中的实测数据为本仓库手工录入，非从原始论文 supplementary 直接解析。审计结论为内部一致性判定，人工核对原文前不得对外宣称发现论文错误。",
+      "n_points": 6,
+      "n_params": 2,
+      "published_rmse": 0.305297,
+      "published_rel_rmse": 0.8723,
+      "published_params": {
+        "mu_max": 0.7,
+        "Kx": 0.5
+      },
+      "refit_params": {
+        "mu_max": 0.553475,
+        "Kx": 3.753923
+      },
+      "param_fold_change": {
+        "mu_max": 1.265,
+        "Kx": 7.508
+      },
+      "max_param_fold_change": 7.508,
+      "refit_rmse": 0.003835,
+      "refit_rel_rmse": 0.011,
+      "rmse_improvement_pct": 98.7,
+      "residual_runs_z": -0.707,
+      "residual_runs_p": 0.4795,
+      "residual_runs": 3,
+      "residual_lag1_autocorr": 0.151,
+      "residual_cv_vs_scale": 0.0215,
+      "plausible_noise_cv": 0.15,
+      "params_at_bound": [
+        false,
+        false
+      ],
+      "data_synthetic_suspect": true,
+      "verdict": "DATA_PROVENANCE_SUSPECT",
+      "verdict_basis": "最佳拟合残差仅占数据范围 1.1%（真实实验数据应 ≥5%）——该基准的「实测数据」极可能由模型生成或被理想化平滑，无法用于审计论文。最大偏离参数 Kx: 注释 0.5 → 数据反推 3.7539（7.508×）。属本仓库数据录入问题，须修正数据后再审计。"
+    },
+    {
+      "key": "paper_haldane_1955",
+      "title": "Haldane 1955: 高浓度底物抑制",
+      "paper": "Haldane J.B.S. (1955). Enzymes (3rd ed.). Longmans.",
+      "domain": "底物抑制（Haldane）",
+      "model": "Haldane",
+      "evidence_grade": "repo_entered_data__internal_consistency_only",
+      "data_source": "repo_transcription",
+      "provenance_note": "BENCHMARKS 中的实测数据为本仓库手工录入，非从原始论文 supplementary 直接解析。审计结论为内部一致性判定，人工核对原文前不得对外宣称发现论文错误。",
+      "n_points": 8,
+      "n_params": 3,
+      "published_rmse": 0.062889,
+      "published_rel_rmse": 0.1965,
+      "published_params": {
+        "mu_max": 0.5,
+        "Ks": 0.1,
+        "Ki": 1.5
+      },
+      "refit_params": {
+        "mu_max": 1.390652,
+        "Ks": 0.288242,
+        "Ki": 0.219781
+      },
+      "param_fold_change": {
+        "mu_max": 2.781,
+        "Ks": 2.882,
+        "Ki": 6.825
+      },
+      "max_param_fold_change": 6.825,
+      "refit_rmse": 0.014643,
+      "refit_rel_rmse": 0.0458,
+      "rmse_improvement_pct": 76.7,
+      "residual_runs_z": 0.0,
+      "residual_runs_p": 1.0,
+      "residual_runs": 5,
+      "residual_lag1_autocorr": -0.126,
+      "residual_cv_vs_scale": 0.062,
+      "plausible_noise_cv": 0.15,
+      "params_at_bound": [
+        false,
+        false,
+        false
+      ],
+      "verdict": "PARAM_DISCREPANCY",
+      "verdict_basis": "重拟合参数与发表参数偏离 6.825×（最大偏离参数 Ki: 发表 1.5 → 重拟合 0.2198），且重拟合使 RMSE 下降 76.7%。候选信号：论文发表参数可能无法解释其自身数据——需人工核对原文后方可断言。"
+    },
+    {
+      "key": "paper_pirt_1965",
+      "title": "Pirt 1965: 维护系数（E. coli 葡萄糖）",
+      "paper": "Pirt S.J. (1965). Principles of microbe and cell cultivation. Biochem J 96:443.",
+      "domain": "底物消耗（Pirt 维护）",
+      "model": "Pirt",
+      "evidence_grade": "repo_entered_data__internal_consistency_only",
+      "data_source": "repo_transcription",
+      "provenance_note": "BENCHMARKS 中的实测数据为本仓库手工录入，非从原始论文 supplementary 直接解析。审计结论为内部一致性判定，人工核对原文前不得对外宣称发现论文错误。",
+      "n_points": 8,
+      "n_params": 2,
+      "published_rmse": 0.026984,
+      "published_rel_rmse": 0.1038,
+      "published_params": {
+        "Y_g": 0.5,
+        "m_s": 0.02
+      },
+      "refit_params": {
+        "Y_g": 0.4,
+        "m_s": 0.04
+      },
+      "param_fold_change": {
+        "Y_g": 1.25,
+        "m_s": 2.0
+      },
+      "max_param_fold_change": 2.0,
+      "refit_rmse": 0.0,
+      "refit_rel_rmse": 0.0,
+      "rmse_improvement_pct": 100.0,
+      "residual_runs_z": -2.291,
+      "residual_runs_p": 0.0219,
+      "residual_runs": 2,
+      "residual_lag1_autocorr": 0.0,
+      "residual_cv_vs_scale": 0.0,
+      "plausible_noise_cv": 0.15,
+      "params_at_bound": [
+        false,
+        false
+      ],
+      "data_synthetic_suspect": true,
+      "verdict": "DATA_PROVENANCE_SUSPECT",
+      "verdict_basis": "最佳拟合残差仅占数据范围 0.0%（真实实验数据应 ≥5%）——该基准的「实测数据」极可能由模型生成或被理想化平滑，无法用于审计论文。最大偏离参数 m_s: 注释 0.02 → 数据反推 0.04（2.0×）。属本仓库数据录入问题，须修正数据后再审计。"
+    },
+    {
+      "key": "paper_luedeking_piret_1959",
+      "title": "Luedeking-Piret 1959: 次级代谢产物时序（青霉素）",
+      "paper": "Luedeking E., Piret J. (1959). AIChE J 5:255.",
+      "domain": "产物形成动力学（Luedeking-Piret）",
+      "model": "Luedeking-Piret",
+      "evidence_grade": "repo_entered_data__internal_consistency_only",
+      "data_source": "repo_transcription",
+      "provenance_note": "BENCHMARKS 中的实测数据为本仓库手工录入，非从原始论文 supplementary 直接解析。审计结论为内部一致性判定，人工核对原文前不得对外宣称发现论文错误。",
+      "n_points": 9,
+      "n_params": 5,
+      "published_rmse": 4.373958,
+      "published_rel_rmse": 0.6339,
+      "published_params": {
+        "X_max": 10.0,
+        "Ypxg": 0.5,
+        "Ypxn": 0.03,
+        "mu": 0.5,
+        "t_lag": 4.0
+      },
+      "refit_params": {
+        "X_max": 4.964096,
+        "Ypxg": 0.5,
+        "Ypxn": 0.03,
+        "mu": 0.5,
+        "t_lag": 4.0
+      },
+      "param_fold_change": {
+        "X_max": 2.014,
+        "Ypxg": 1.0,
+        "Ypxn": 1.0,
+        "mu": 1.0,
+        "t_lag": 1.0
+      },
+      "max_param_fold_change": 2.014,
+      "refit_rmse": 1.511114,
+      "refit_rel_rmse": 0.219,
+      "rmse_improvement_pct": 65.5,
+      "residual_runs_z": -2.449,
+      "residual_runs_p": 0.0143,
+      "residual_runs": 2,
+      "residual_lag1_autocorr": 0.718,
+      "residual_cv_vs_scale": 0.4185,
+      "plausible_noise_cv": 0.15,
+      "params_at_bound": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "verdict": "PARAM_DISCREPANCY",
+      "verdict_basis": "重拟合参数与发表参数偏离 2.014×（最大偏离参数 X_max: 发表 10.0 → 重拟合 4.9641），且重拟合使 RMSE 下降 65.5%。候选信号：论文发表参数可能无法解释其自身数据——需人工核对原文后方可断言。"
+    },
+    {
+      "key": "paper_tessier_1957",
+      "title": "Tessier 1957: 对数-线性生长动力学",
+      "paper": "Tessier J. (1957). Bact Rev 21:160.",
+      "domain": "生长动力学（Tessier）",
+      "model": "Tessier",
+      "evidence_grade": "repo_entered_data__internal_consistency_only",
+      "data_source": "repo_transcription",
+      "provenance_note": "BENCHMARKS 中的实测数据为本仓库手工录入，非从原始论文 supplementary 直接解析。审计结论为内部一致性判定，人工核对原文前不得对外宣称发现论文错误。",
+      "n_points": 8,
+      "n_params": 3,
+      "published_rmse": 0.023188,
+      "published_rel_rmse": 0.0414,
+      "published_params": {
+        "mu_max": 0.6,
+        "Ks": 0.1,
+        "n": 1.5
+      },
+      "refit_params": {
+        "mu_max": 0.595739,
+        "Ks": 0.088992,
+        "n": 1.267619
+      },
+      "param_fold_change": {
+        "mu_max": 1.007,
+        "Ks": 1.124,
+        "n": 1.183
+      },
+      "max_param_fold_change": 1.183,
+      "refit_rmse": 0.00712,
+      "refit_rel_rmse": 0.0127,
+      "rmse_improvement_pct": 69.3,
+      "residual_runs_z": -0.764,
+      "residual_runs_p": 0.445,
+      "residual_runs": 4,
+      "residual_lag1_autocorr": 0.018,
+      "residual_cv_vs_scale": 0.0204,
+      "plausible_noise_cv": 0.15,
+      "params_at_bound": [
+        false,
+        false,
+        false
+      ],
+      "data_synthetic_suspect": true,
+      "verdict": "DATA_PROVENANCE_SUSPECT",
+      "verdict_basis": "最佳拟合残差仅占数据范围 1.27%（真实实验数据应 ≥5%）——该基准的「实测数据」极可能由模型生成或被理想化平滑，无法用于审计论文。最大偏离参数 n: 注释 1.5 → 数据反推 1.2676（1.183×）。属本仓库数据录入问题，须修正数据后再审计。"
+    },
+    {
+      "key": "paper_baranyi_1994",
+      "title": "Baranyi & Roberts 1994: 细菌滞后相模型",
+      "paper": "Baranyi J., Roberts T.A. (1994). Int J Food Microbiol 23:277-284.",
+      "domain": "滞后相动力学（Baranyi-Roberts）",
+      "model": "Baranyi",
+      "evidence_grade": "repo_entered_data__internal_consistency_only",
+      "data_source": "repo_transcription",
+      "provenance_note": "BENCHMARKS 中的实测数据为本仓库手工录入，非从原始论文 supplementary 直接解析。审计结论为内部一致性判定，人工核对原文前不得对外宣称发现论文错误。",
+      "n_points": 10,
+      "n_params": 2,
+      "published_rmse": 0.69132,
+      "published_rel_rmse": 0.3292,
+      "published_params": {
+        "mu_max": 0.4,
+        "X0": 0.1
+      },
+      "refit_params": {
+        "mu_max": 0.251349,
+        "X0": 0.214138
+      },
+      "param_fold_change": {
+        "mu_max": 1.591,
+        "X0": 2.141
+      },
+      "max_param_fold_change": 2.141,
+      "refit_rmse": 0.088797,
+      "refit_rel_rmse": 0.0423,
+      "rmse_improvement_pct": 87.2,
+      "residual_runs_z": -1.8,
+      "residual_runs_p": 0.0718,
+      "residual_runs": 3,
+      "residual_lag1_autocorr": 0.558,
+      "residual_cv_vs_scale": 0.1394,
+      "plausible_noise_cv": 0.15,
+      "params_at_bound": [
+        false,
+        false
+      ],
+      "verdict": "PARAM_DISCREPANCY",
+      "verdict_basis": "重拟合参数与发表参数偏离 2.141×（最大偏离参数 X0: 发表 0.1 → 重拟合 0.2141），且重拟合使 RMSE 下降 87.2%。候选信号：论文发表参数可能无法解释其自身数据——需人工核对原文后方可断言。"
+    },
+    {
+      "key": "paper_fedbatch_fick",
+      "title": "Fick & Bader 2013: 葡萄糖限流 Fed-batch",
+      "paper": "Fick G., Bader R. (2013). Fed-batch fermentation principles.",
+      "domain": "发酵动力学（Fed-batch）",
+      "model": "Fed-batch",
+      "evidence_grade": "repo_entered_data__internal_consistency_only",
+      "data_source": "repo_transcription",
+      "provenance_note": "BENCHMARKS 中的实测数据为本仓库手工录入，非从原始论文 supplementary 直接解析。审计结论为内部一致性判定，人工核对原文前不得对外宣称发现论文错误。",
+      "n_points": 7,
+      "n_params": 4,
+      "published_rmse": 62.307034,
+      "published_rel_rmse": 4.3571,
+      "published_params": {
+        "mu_max": 0.5,
+        "Yxs": 0.5,
+        "Sf": 100.0,
+        "F": 0.1
+      },
+      "refit_params": {
+        "mu_max": 0.208646,
+        "Yxs": 0.242946,
+        "Sf": 44.85164,
+        "F": 0.045133
+      },
+      "param_fold_change": {
+        "mu_max": 2.396,
+        "Yxs": 2.058,
+        "Sf": 2.23,
+        "F": 2.216
+      },
+      "max_param_fold_change": 2.396,
+      "refit_rmse": 1.229901,
+      "refit_rel_rmse": 0.086,
+      "rmse_improvement_pct": 98.0,
+      "residual_runs_z": -1.414,
+      "residual_runs_p": 0.1573,
+      "residual_runs": 2,
+      "residual_lag1_autocorr": 0.122,
+      "residual_cv_vs_scale": 0.1701,
+      "plausible_noise_cv": 0.15,
+      "params_at_bound": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "verdict": "PARAM_DISCREPANCY",
+      "verdict_basis": "重拟合参数与发表参数偏离 2.396×（最大偏离参数 mu_max: 发表 0.5 → 重拟合 0.2086），且重拟合使 RMSE 下降 98.0%。候选信号：论文发表参数可能无法解释其自身数据——需人工核对原文后方可断言。"
+    },
+    {
+      "key": "paper_chemostat_shuler",
+      "title": "Shuler & Kargi 2002: E. coli Chemostat 稳态",
+      "paper": "Shuler M.L., Kargi F. (2002). Bioprocess Engineering Principles (2nd ed.).",
+      "domain": "Chemostat 稳态",
+      "model": "Chemostat",
+      "evidence_grade": "repo_entered_data__internal_consistency_only",
+      "data_source": "repo_transcription",
+      "provenance_note": "BENCHMARKS 中的实测数据为本仓库手工录入，非从原始论文 supplementary 直接解析。审计结论为内部一致性判定，人工核对原文前不得对外宣称发现论文错误。",
+      "n_points": 8,
+      "n_params": 4,
+      "published_rmse": 0.000294,
+      "published_rel_rmse": 0.0002,
+      "published_params": {
+        "mu_max": 0.81,
+        "Ks": 0.22,
+        "Yxs": 0.5,
+        "Sf": 10.0
+      },
+      "refit_params": {
+        "mu_max": 0.809994,
+        "Ks": 0.22,
+        "Yxs": 0.500036,
+        "Sf": 9.999692
+      },
+      "param_fold_change": {
+        "mu_max": 1.0,
+        "Ks": 1.0,
+        "Yxs": 1.0,
+        "Sf": 1.0
+      },
+      "max_param_fold_change": 1.0,
+      "refit_rmse": 0.000235,
+      "refit_rel_rmse": 0.0002,
+      "rmse_improvement_pct": 20.2,
+      "residual_runs_z": 0.206,
+      "residual_runs_p": 0.8368,
+      "residual_runs": 5,
+      "residual_lag1_autocorr": 0.016,
+      "residual_cv_vs_scale": 0.0001,
+      "plausible_noise_cv": 0.15,
+      "params_at_bound": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "data_synthetic_suspect": true,
+      "verdict": "DATA_PROVENANCE_SUSPECT",
+      "verdict_basis": "最佳拟合残差仅占数据范围 0.02%（真实实验数据应 ≥5%）——该基准的「实测数据」极可能由模型生成或被理想化平滑，无法用于审计论文。最大偏离参数 mu_max: 注释 0.81 → 数据反推 0.81（1.0×）。属本仓库数据录入问题，须修正数据后再审计。"
+    },
+    {
+      "key": "paper_immobilized_shuler",
+      "title": "Shuler & Kargi 2002: 固定化细胞 Thiele 模数",
+      "paper": "Shuler M.L., Kargi F. (2002). Bioprocess Engineering Principles (2nd ed.)",
+      "domain": "固定化细胞反应器",
+      "model": "Thiele",
+      "evidence_grade": "repo_entered_data__internal_consistency_only",
+      "data_source": "repo_transcription",
+      "provenance_note": "BENCHMARKS 中的实测数据为本仓库手工录入，非从原始论文 supplementary 直接解析。审计结论为内部一致性判定，人工核对原文前不得对外宣称发现论文错误。",
+      "n_points": 7,
+      "n_params": 0,
+      "published_rmse": 0.123997,
+      "published_rel_rmse": 0.1531,
+      "refit": null,
+      "residual_runs_z": 0.0,
+      "residual_runs_p": 1.0,
+      "residual_runs": 0,
+      "residual_lag1_autocorr": 0.418,
+      "verdict": "NOISE_EXCESS",
+      "verdict_basis": "无可调参数，仅做残差结构审计"
+    },
+    {
+      "key": "paper_antibiotic_kill",
+      "title": "Andrews 2001: 抗生素时间杀伤曲线（E. coli + 氨苄西林）",
+      "paper": "Andrews J.M. (2001). J Antimicrob Chemother",
+      "domain": "抗生素杀伤动力学",
+      "model": "Antibiotic",
+      "evidence_grade": "repo_entered_data__internal_consistency_only",
+      "data_source": "repo_transcription",
+      "provenance_note": "BENCHMARKS 中的实测数据为本仓库手工录入，非从原始论文 supplementary 直接解析。审计结论为内部一致性判定，人工核对原文前不得对外宣称发现论文错误。",
+      "n_points": 8,
+      "n_params": 2,
+      "published_rmse": 0.441078,
+      "published_rel_rmse": 0.0519,
+      "published_params": {
+        "C_anti": 2.0,
+        "X0": 9.0
+      },
+      "refit_params": {
+        "C_anti": 5.621212,
+        "X0": 9.151733
+      },
+      "param_fold_change": {
+        "C_anti": 2.811,
+        "X0": 1.017
+      },
+      "max_param_fold_change": 2.811,
+      "refit_rmse": 0.309568,
+      "refit_rel_rmse": 0.0364,
+      "rmse_improvement_pct": 29.8,
+      "residual_runs_z": -0.618,
+      "residual_runs_p": 0.5366,
+      "residual_runs": 4,
+      "residual_lag1_autocorr": 0.236,
+      "residual_cv_vs_scale": 0.0564,
+      "plausible_noise_cv": 0.15,
+      "params_at_bound": [
+        false,
+        false
+      ],
+      "verdict": "CONSISTENT",
+      "verdict_basis": "重拟合参数与发表参数一致（最大偏离 2.811×），残差无系统性结构，量级在该领域合理噪声范围内。"
+    },
+    {
+      "key": "paper_jfoodeng_2012",
+      "title": "J Food Eng 2012: 乳制品发酵细菌热致死",
+      "paper": "J Food Eng 2012, 109(3):354-359 (DOI: 10.1016/j.jfoodeng.2011.12.031)",
+      "domain": "热致死动力学（Arrhenius）",
+      "model": "Thermal",
+      "evidence_grade": "repo_entered_data__internal_consistency_only",
+      "data_source": "repo_transcription",
+      "provenance_note": "BENCHMARKS 中的实测数据为本仓库手工录入，非从原始论文 supplementary 直接解析。审计结论为内部一致性判定，人工核对原文前不得对外宣称发现论文错误。",
+      "n_points": 4,
+      "n_params": 0,
+      "published_rmse": 6.523309,
+      "published_rel_rmse": 0.1087,
+      "refit": null,
+      "residual_runs_z": 1.0,
+      "residual_runs_p": 0.3173,
+      "residual_runs": 3,
+      "residual_lag1_autocorr": 0.186,
+      "verdict": "CONSISTENT",
+      "verdict_basis": "无可调参数，仅做残差结构审计"
+    },
+    {
+      "key": "paper_crabtree_effect",
+      "title": "Shuler & Kargi 2002: S. cerevisiae Crabtree 效应",
+      "paper": "Shuler M.L., Kargi F. (2002). Bioprocess Engineering Principles (2nd ed.)",
+      "domain": "发酵动力学（Crabtree）",
+      "model": "Crabtree",
+      "evidence_grade": "repo_entered_data__internal_consistency_only",
+      "data_source": "repo_transcription",
+      "provenance_note": "BENCHMARKS 中的实测数据为本仓库手工录入，非从原始论文 supplementary 直接解析。审计结论为内部一致性判定，人工核对原文前不得对外宣称发现论文错误。",
+      "n_points": 6,
+      "n_params": 2,
+      "published_rmse": 0.148241,
+      "published_rel_rmse": 0.3369,
+      "published_params": {
+        "Ypx": 0.62,
+        "Ks": 1.0
+      },
+      "refit_params": {
+        "Ypx": 0.669162,
+        "Ks": 5.678849
+      },
+      "param_fold_change": {
+        "Ypx": 1.079,
+        "Ks": 5.679
+      },
+      "max_param_fold_change": 5.679,
+      "refit_rmse": 0.02092,
+      "refit_rel_rmse": 0.0475,
+      "rmse_improvement_pct": 85.9,
+      "residual_runs_z": -0.707,
+      "residual_runs_p": 0.4795,
+      "residual_runs": 3,
+      "residual_lag1_autocorr": 0.271,
+      "residual_cv_vs_scale": 0.0479,
+      "plausible_noise_cv": 0.15,
+      "params_at_bound": [
+        false,
+        false
+      ],
+      "verdict": "PARAM_DISCREPANCY",
+      "verdict_basis": "重拟合参数与发表参数偏离 5.679×（最大偏离参数 Ks: 发表 1.0 → 重拟合 5.6788），且重拟合使 RMSE 下降 85.9%。候选信号：论文发表参数可能无法解释其自身数据——需人工核对原文后方可断言。"
+    },
+    {
+      "key": "paper_contois_highdensity",
+      "title": "Contois 1959: 高密度细胞（μ vs X）",
+      "paper": "Contois D.E. (1959). J Bacteriol 77:158-168.",
+      "domain": "生长动力学（Contois 高密度）",
+      "model": "Contois",
+      "evidence_grade": "repo_entered_data__internal_consistency_only",
+      "data_source": "repo_transcription",
+      "provenance_note": "BENCHMARKS 中的实测数据为本仓库手工录入，非从原始论文 supplementary 直接解析。审计结论为内部一致性判定，人工核对原文前不得对外宣称发现论文错误。",
+      "n_points": 7,
+      "n_params": 2,
+      "published_rmse": 0.211306,
+      "published_rel_rmse": 0.7044,
+      "published_params": {
+        "mu_max": 0.7,
+        "Kx": 0.5
+      },
+      "refit_params": {
+        "mu_max": 0.445081,
+        "Kx": 1.144084
+      },
+      "param_fold_change": {
+        "mu_max": 1.573,
+        "Kx": 2.288
+      },
+      "max_param_fold_change": 2.288,
+      "refit_rmse": 0.004686,
+      "refit_rel_rmse": 0.0156,
+      "rmse_improvement_pct": 97.8,
+      "residual_runs_z": -0.911,
+      "residual_runs_p": 0.3621,
+      "residual_runs": 3,
+      "residual_lag1_autocorr": 0.002,
+      "residual_cv_vs_scale": 0.0283,
+      "plausible_noise_cv": 0.15,
+      "params_at_bound": [
+        false,
+        false
+      ],
+      "data_synthetic_suspect": true,
+      "verdict": "DATA_PROVENANCE_SUSPECT",
+      "verdict_basis": "最佳拟合残差仅占数据范围 1.56%（真实实验数据应 ≥5%）——该基准的「实测数据」极可能由模型生成或被理想化平滑，无法用于审计论文。最大偏离参数 Kx: 注释 0.5 → 数据反推 1.1441（2.288×）。属本仓库数据录入问题，须修正数据后再审计。"
+    },
+    {
+      "key": "paper_competition_tilman",
+      "title": "Tilman 1982: 多物种竞争（两种菌共享底物）",
+      "paper": "Tilman D. (1982). Resource Competition and Community Structure.",
+      "domain": "多物种竞争",
+      "model": "Competition",
+      "evidence_grade": "repo_entered_data__internal_consistency_only",
+      "data_source": "repo_transcription",
+      "provenance_note": "BENCHMARKS 中的实测数据为本仓库手工录入，非从原始论文 supplementary 直接解析。审计结论为内部一致性判定，人工核对原文前不得对外宣称发现论文错误。",
+      "n_points": 7,
+      "n_params": 4,
+      "published_rmse": 1.023825,
+      "published_rel_rmse": 0.3029,
+      "published_params": {
+        "mu_max_A": 0.8,
+        "Ks_A": 0.05,
+        "mu_max_B": 0.4,
+        "Ks_B": 0.02
+      },
+      "refit_params": {
+        "mu_max_A": 0.80834,
+        "Ks_A": 2.829748,
+        "mu_max_B": 0.085182,
+        "Ks_B": 0.02643
+      },
+      "param_fold_change": {
+        "mu_max_A": 1.01,
+        "Ks_A": 56.595,
+        "mu_max_B": 4.696,
+        "Ks_B": 1.322
+      },
+      "max_param_fold_change": 56.595,
+      "refit_rmse": 0.03568,
+      "refit_rel_rmse": 0.0106,
+      "rmse_improvement_pct": 96.5,
+      "residual_runs_z": -0.364,
+      "residual_runs_p": 0.716,
+      "residual_runs": 4,
+      "residual_lag1_autocorr": -0.216,
+      "residual_cv_vs_scale": 0.0298,
+      "plausible_noise_cv": 0.15,
+      "params_at_bound": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "data_synthetic_suspect": true,
+      "verdict": "DATA_PROVENANCE_SUSPECT",
+      "verdict_basis": "最佳拟合残差仅占数据范围 1.06%（真实实验数据应 ≥5%）——该基准的「实测数据」极可能由模型生成或被理想化平滑，无法用于审计论文。最大偏离参数 Ks_A: 注释 0.05 → 数据反推 2.8297（56.595×）。属本仓库数据录入问题，须修正数据后再审计。"
+    }
+  ]
+}

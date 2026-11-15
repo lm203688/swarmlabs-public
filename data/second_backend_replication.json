@@ -1,0 +1,1743 @@
+{
+  "generated_at_utc": "2026-10-18T01:43:56+00:00",
+  "method": "B-1 第二 surrogate 后端独立复算：RandomForest+Conformal 与 GP 在同一批 LHS 训练/测试数据上重跑，按 verdict 分档比对。判据：agree_exact=1.0 / agree_direction=0.7（RF 严一档）/ contradict=0.0（RF 严两档，或把负判升级为 PASS）。",
+  "second_backend": "RandomForest + conformal calibration",
+  "n_scenarios": 95,
+  "n_unavailable": 0,
+  "aggregate": {
+    "decision_distribution": {
+      "agree_exact": 67,
+      "contradict": 13,
+      "agree_direction": 15
+    },
+    "mean_score": 0.8158,
+    "contradict_scenarios": [
+      "chem_reactor_conversion",
+      "micro_doe_ecoli_monod",
+      "micro_ecoli_glucose",
+      "micro_mixed_substrate",
+      "micro_mle_ecoli_monod",
+      "micro_oxygen_2d",
+      "micro_pirt_ecoli",
+      "micro_putida_toluene",
+      "micro_sobol_ecoli",
+      "micro_uq_ecoli_monod",
+      "opt_gramacylee1d",
+      "opt_rastrigin2d",
+      "opt_schwefel2d"
+    ],
+    "note": "contradict = GP 的 PASS 换 surrogate 家族即塌（或负判被第二端升级）——这些场景的结论对模型家族敏感，是负面结果，不是 bug。"
+  },
+  "scenarios": {
+    "bio_logistic": {
+      "key": "bio_logistic",
+      "domain": "Biology/Population Dynamics",
+      "gp": {
+        "grade": "PASS",
+        "r2": 1.0,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9941,
+        "coverage": 0.975
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "chem_bet": {
+      "key": "chem_bet",
+      "domain": "chemical / BET 多层吸附等温线",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9999,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9963,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "chem_freundlich": {
+      "key": "chem_freundlich",
+      "domain": "chemical / Freundlich 经验吸附等温线",
+      "gp": {
+        "grade": "PASS",
+        "r2": 1.0,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9894,
+        "coverage": 0.9333
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "chem_langmuir": {
+      "key": "chem_langmuir",
+      "domain": "Chemical/Adsorption Isotherm (Langmuir 1916)",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9979,
+        "coverage": 0.95
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9027,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "chem_reactor_conversion": {
+      "key": "chem_reactor_conversion",
+      "domain": "Chemistry / First-Order Reactor Conversion (Arrhenius Kinetics, 2D)",
+      "gp": {
+        "grade": "PASS",
+        "r2": 1.0,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "REFUTED",
+        "r2": 0.9887,
+        "coverage": 0.75
+      },
+      "decision": "contradict",
+      "score": 0.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "cheminfo_hydration": {
+      "key": "cheminfo_hydration",
+      "domain": "cheminformatics",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9997,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "MARGINAL",
+        "r2": 0.9953,
+        "coverage": 0.825
+      },
+      "decision": "agree_direction",
+      "score": 0.7,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "cheminfo_logD": {
+      "key": "cheminfo_logD",
+      "domain": "cheminformatics",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9998,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9977,
+        "coverage": 0.975
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "cheminfo_logS": {
+      "key": "cheminfo_logS",
+      "domain": "cheminformatics",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9999,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9976,
+        "coverage": 0.95
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "cheminfo_pIC50": {
+      "key": "cheminfo_pIC50",
+      "domain": "cheminformatics",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9996,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9974,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "eco_lv_peak_ratio": {
+      "key": "eco_lv_peak_ratio",
+      "domain": "ecology",
+      "gp": {
+        "grade": "MARGINAL",
+        "r2": 0.7338,
+        "coverage": 0.967
+      },
+      "rf": {
+        "grade": "REFUTED",
+        "r2": 0.4475,
+        "coverage": 0.9333
+      },
+      "decision": "agree_direction",
+      "score": 0.7,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "eco_nicholson_bailey": {
+      "key": "eco_nicholson_bailey",
+      "domain": "ecology / Nicholson-Bailey 宿主-寄生物平衡",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9596,
+        "coverage": 0.933
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9673,
+        "coverage": 0.9833
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "eco_ricker_population": {
+      "key": "eco_ricker_population",
+      "domain": "ecology / Ricker 种群调控（10 代）",
+      "gp": {
+        "grade": "PASS",
+        "r2": 1.0,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9977,
+        "coverage": 0.95
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "energy_ccpp_output": {
+      "key": "energy_ccpp_output",
+      "domain": "energy",
+      "gp": {
+        "grade": "PASS",
+        "r2": 1.0,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9986,
+        "coverage": 0.975
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "energy_isothermal_work": {
+      "key": "energy_isothermal_work",
+      "domain": "energy / 等温可逆膨胀功",
+      "gp": {
+        "grade": "PASS",
+        "r2": 1.0,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9974,
+        "coverage": 0.9667
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "energy_rankine_efficiency": {
+      "key": "energy_rankine_efficiency",
+      "domain": "energy / Rankine 循环实际效率与 Carnot 之比",
+      "gp": {
+        "grade": "PASS",
+        "r2": 1.0,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.997,
+        "coverage": 0.9667
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "fin_merton_call_div": {
+      "key": "fin_merton_call_div",
+      "domain": "finance / Merton 连续红利欧式看涨",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9999,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9988,
+        "coverage": 0.95
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "heat_radiation_flux": {
+      "key": "heat_radiation_flux",
+      "domain": "heat conduction (physics-informed) / Stefan-Boltzmann 净辐射换热",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9991,
+        "coverage": 0.95
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9815,
+        "coverage": 0.9
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "heat_series_resistance": {
+      "key": "heat_series_resistance",
+      "domain": "heat conduction (physics-informed) / 串联热阻稳态导热",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9999,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9963,
+        "coverage": 0.9667
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "llm_chinchilla_loss": {
+      "key": "llm_chinchilla_loss",
+      "domain": "llm / Chinchilla 计算最优训练损失",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9983,
+        "coverage": 0.967
+      },
+      "rf": {
+        "grade": "MARGINAL",
+        "r2": 0.8859,
+        "coverage": 0.9833
+      },
+      "decision": "agree_direction",
+      "score": 0.7,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "llm_compute_optimal_ratio": {
+      "key": "llm_compute_optimal_ratio",
+      "domain": "llm / Chinchilla 最优 D/N 比",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9999,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9885,
+        "coverage": 0.9833
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "llm_scaling": {
+      "key": "llm_scaling",
+      "domain": "LLM/Scaling Law (Kaplan 2020)",
+      "gp": {
+        "grade": "PASS",
+        "r2": 1.0,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9878,
+        "coverage": 0.975
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_acetobacter_acetate": {
+      "key": "micro_acetobacter_acetate",
+      "domain": "微生物 / 醋酸杆菌醋酸利用（温度效应 + Monod）",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9995,
+        "coverage": 0.983
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9862,
+        "coverage": 0.9
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_antibiotic_2d": {
+      "key": "micro_antibiotic_2d",
+      "domain": "微生物 / micro_antibiotic_2d",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9999,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9503,
+        "coverage": 0.9833
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_antibiotic_timekill": {
+      "key": "micro_antibiotic_timekill",
+      "domain": "微生物 / micro_antibiotic_timekill",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9997,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "MARGINAL",
+        "r2": 0.8946,
+        "coverage": 1.0
+      },
+      "decision": "agree_direction",
+      "score": 0.7,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_biofilm_ecoli": {
+      "key": "micro_biofilm_ecoli",
+      "domain": "微生物 / micro_biofilm_ecoli",
+      "gp": {
+        "grade": "PASS",
+        "r2": 1.0,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9901,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_cerevisiae_ethanol": {
+      "key": "micro_cerevisiae_ethanol",
+      "domain": "微生物 / 酿酒酵母乙醇发酵（Monod + 乙醇产物抑制）",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9999,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9785,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_chemostat_cerevisiae": {
+      "key": "micro_chemostat_cerevisiae",
+      "domain": "微生物 / 酿酒酵母 Chemostat 稳态（稀释率+进料浓度→生物量）",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.954,
+        "coverage": 0.933
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9175,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_chemostat_ecoli": {
+      "key": "micro_chemostat_ecoli",
+      "domain": "微生物 / E. coli Chemostat 稳态（稀释率→生物量）",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9959,
+        "coverage": 0.975
+      },
+      "rf": {
+        "grade": "MARGINAL",
+        "r2": 0.8125,
+        "coverage": 1.0
+      },
+      "decision": "agree_direction",
+      "score": 0.7,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_chemostat_transient": {
+      "key": "micro_chemostat_transient",
+      "domain": "微生物 / micro_chemostat_transient",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9999,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9902,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_coculture_mutualism": {
+      "key": "micro_coculture_mutualism",
+      "domain": "微生物 / micro_coculture_mutualism",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9995,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9791,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_competition_2d": {
+      "key": "micro_competition_2d",
+      "domain": "微生物 / micro_competition_2d",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9991,
+        "coverage": 0.975
+      },
+      "rf": {
+        "grade": "MARGINAL",
+        "r2": 0.8743,
+        "coverage": 0.95
+      },
+      "decision": "agree_direction",
+      "score": 0.7,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_competition_ecoli_yeast": {
+      "key": "micro_competition_ecoli_yeast",
+      "domain": "微生物 / micro_competition_ecoli_yeast",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9958,
+        "coverage": 0.95
+      },
+      "rf": {
+        "grade": "MARGINAL",
+        "r2": 0.7976,
+        "coverage": 1.0
+      },
+      "decision": "agree_direction",
+      "score": 0.7,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_contois_ecoli": {
+      "key": "micro_contois_ecoli",
+      "domain": "微生物 / micro_contois_ecoli",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9998,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9412,
+        "coverage": 0.975
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_crabtree_2d": {
+      "key": "micro_crabtree_2d",
+      "domain": "微生物 / micro_crabtree_2d",
+      "gp": {
+        "grade": "PASS",
+        "r2": 1.0,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.995,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_crabtree_cerevisiae": {
+      "key": "micro_crabtree_cerevisiae",
+      "domain": "微生物 / micro_crabtree_cerevisiae",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9978,
+        "coverage": 0.925
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9925,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_dead_volume": {
+      "key": "micro_dead_volume",
+      "domain": "微生物 / micro_dead_volume",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9995,
+        "coverage": 0.967
+      },
+      "rf": {
+        "grade": "MARGINAL",
+        "r2": 0.8923,
+        "coverage": 0.95
+      },
+      "decision": "agree_direction",
+      "score": 0.7,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_diauxic_2d": {
+      "key": "micro_diauxic_2d",
+      "domain": "微生物 / micro_diauxic_2d",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9969,
+        "coverage": 0.967
+      },
+      "rf": {
+        "grade": "MARGINAL",
+        "r2": 0.8851,
+        "coverage": 0.9667
+      },
+      "decision": "agree_direction",
+      "score": 0.7,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_diauxic_ecoli": {
+      "key": "micro_diauxic_ecoli",
+      "domain": "微生物 / micro_diauxic_ecoli",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9974,
+        "coverage": 0.95
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9453,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_doe_ecoli_monod": {
+      "key": "micro_doe_ecoli_monod",
+      "domain": "微生物 / micro_doe_ecoli_monod",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9983,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "REFUTED",
+        "r2": 0.0021,
+        "coverage": 0.4833
+      },
+      "decision": "contradict",
+      "score": 0.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_ecoli_glucose": {
+      "key": "micro_ecoli_glucose",
+      "domain": "微生物 / E. coli 批次培养（Monod, 文献参数）",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9922,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "REFUTED",
+        "r2": -0.0321,
+        "coverage": 0.55
+      },
+      "decision": "contradict",
+      "score": 0.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_fba_flux": {
+      "key": "micro_fba_flux",
+      "domain": "微生物 / micro_fba_flux",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9557,
+        "coverage": 0.983
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9597,
+        "coverage": 0.9667
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_fedbatch_2d": {
+      "key": "micro_fedbatch_2d",
+      "domain": "微生物 / micro_fedbatch_2d",
+      "gp": {
+        "grade": "PASS",
+        "r2": 1.0,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9969,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_fedbatch_3d": {
+      "key": "micro_fedbatch_3d",
+      "domain": "微生物 / micro_fedbatch_3d",
+      "gp": {
+        "grade": "PASS",
+        "r2": 1.0,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.989,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_fedbatch_ecoli": {
+      "key": "micro_fedbatch_ecoli",
+      "domain": "微生物 / micro_fedbatch_ecoli",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9994,
+        "coverage": 0.95
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9915,
+        "coverage": 0.9
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_foam_dynamics": {
+      "key": "micro_foam_dynamics",
+      "domain": "微生物 / micro_foam_dynamics",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9998,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9908,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_gene_expression": {
+      "key": "micro_gene_expression",
+      "domain": "微生物 / micro_gene_expression",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9998,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9933,
+        "coverage": 0.9833
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_haldane_2d": {
+      "key": "micro_haldane_2d",
+      "domain": "微生物 / micro_haldane_2d",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9999,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "MARGINAL",
+        "r2": 0.9767,
+        "coverage": 0.8833
+      },
+      "decision": "agree_direction",
+      "score": 0.7,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_haldane_putida": {
+      "key": "micro_haldane_putida",
+      "domain": "微生物 / micro_haldane_putida",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9999,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.905,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_heavy_metal_ecoli": {
+      "key": "micro_heavy_metal_ecoli",
+      "domain": "微生物 / micro_heavy_metal_ecoli",
+      "gp": {
+        "grade": "PASS",
+        "r2": 1.0,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9843,
+        "coverage": 0.975
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_immobilized_cell": {
+      "key": "micro_immobilized_cell",
+      "domain": "微生物 / micro_immobilized_cell",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9982,
+        "coverage": 0.917
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9183,
+        "coverage": 0.9833
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_lactococcus_lactose": {
+      "key": "micro_lactococcus_lactose",
+      "domain": "微生物 / 乳酸乳球菌乳酸发酵（pH 效应 + 底物抑制）",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9998,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9876,
+        "coverage": 0.9667
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_lag_ecoli": {
+      "key": "micro_lag_ecoli",
+      "domain": "微生物 / micro_lag_ecoli",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9999,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.991,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_lifecycle_ecoli": {
+      "key": "micro_lifecycle_ecoli",
+      "domain": "微生物 / micro_lifecycle_ecoli",
+      "gp": {
+        "grade": "PASS",
+        "r2": 1.0,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.989,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_methanobacterium_methane": {
+      "key": "micro_methanobacterium_methane",
+      "domain": "微生物 / 产甲烷古菌甲烷利用（低 μmax 极端场景）",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9998,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9571,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_mixed_substrate": {
+      "key": "micro_mixed_substrate",
+      "domain": "微生物 / micro_mixed_substrate",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9974,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "REFUTED",
+        "r2": 0.0148,
+        "coverage": 0.6167
+      },
+      "decision": "contradict",
+      "score": 0.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_mle_ecoli_monod": {
+      "key": "micro_mle_ecoli_monod",
+      "domain": "微生物 / micro_mle_ecoli_monod",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9989,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "REFUTED",
+        "r2": -0.0132,
+        "coverage": 0.875
+      },
+      "decision": "contradict",
+      "score": 0.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_osmotic_ecoli": {
+      "key": "micro_osmotic_ecoli",
+      "domain": "微生物 / micro_osmotic_ecoli",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9996,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9743,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_oxidative_stress": {
+      "key": "micro_oxidative_stress",
+      "domain": "微生物 / micro_oxidative_stress",
+      "gp": {
+        "grade": "PASS",
+        "r2": 1.0,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9872,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_oxygen_2d": {
+      "key": "micro_oxygen_2d",
+      "domain": "微生物 / micro_oxygen_2d",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9997,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "REFUTED",
+        "r2": -0.072,
+        "coverage": 0.2667
+      },
+      "decision": "contradict",
+      "score": 0.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_oxygen_ecoli": {
+      "key": "micro_oxygen_ecoli",
+      "domain": "微生物 / micro_oxygen_ecoli",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9949,
+        "coverage": 0.975
+      },
+      "rf": {
+        "grade": "MARGINAL",
+        "r2": 0.8812,
+        "coverage": 1.0
+      },
+      "decision": "agree_direction",
+      "score": 0.7,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_ph_control": {
+      "key": "micro_ph_control",
+      "domain": "微生物 / micro_ph_control",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9999,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "MARGINAL",
+        "r2": 0.985,
+        "coverage": 0.8833
+      },
+      "decision": "agree_direction",
+      "score": 0.7,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_phage_infection": {
+      "key": "micro_phage_infection",
+      "domain": "微生物 / micro_phage_infection",
+      "gp": {
+        "grade": "PASS",
+        "r2": 1.0,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9957,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_pirt_ecoli": {
+      "key": "micro_pirt_ecoli",
+      "domain": "微生物 / micro_pirt_ecoli",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9999,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "REFUTED",
+        "r2": 0.0027,
+        "coverage": 0.825
+      },
+      "decision": "contradict",
+      "score": 0.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_plasmid_stability": {
+      "key": "micro_plasmid_stability",
+      "domain": "微生物 / micro_plasmid_stability",
+      "gp": {
+        "grade": "PASS",
+        "r2": 1.0,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.997,
+        "coverage": 0.9833
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_putida_toluene": {
+      "key": "micro_putida_toluene",
+      "domain": "微生物 / 假单胞菌甲苯降解（Andrews 底物抑制）",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9999,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "REFUTED",
+        "r2": 0.0365,
+        "coverage": 0.8
+      },
+      "decision": "contradict",
+      "score": 0.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_quorum_ecoli": {
+      "key": "micro_quorum_ecoli",
+      "domain": "微生物 / micro_quorum_ecoli",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9998,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.984,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_scaleup_kla": {
+      "key": "micro_scaleup_kla",
+      "domain": "微生物 / micro_scaleup_kla",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9989,
+        "coverage": 0.975
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9175,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_secondary_metabolite": {
+      "key": "micro_secondary_metabolite",
+      "domain": "微生物 / micro_secondary_metabolite",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9998,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9783,
+        "coverage": 0.975
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_sensor_fusion": {
+      "key": "micro_sensor_fusion",
+      "domain": "微生物 / micro_sensor_fusion",
+      "gp": {
+        "grade": "PASS",
+        "r2": 1.0,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9963,
+        "coverage": 0.9667
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_sobol_ecoli": {
+      "key": "micro_sobol_ecoli",
+      "domain": "微生物 / micro_sobol_ecoli",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9944,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "REFUTED",
+        "r2": -0.0106,
+        "coverage": 0.825
+      },
+      "decision": "contradict",
+      "score": 0.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_tessier_ecoli": {
+      "key": "micro_tessier_ecoli",
+      "domain": "微生物 / micro_tessier_ecoli",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9999,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.989,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_thermal_death": {
+      "key": "micro_thermal_death",
+      "domain": "微生物 / micro_thermal_death",
+      "gp": {
+        "grade": "PASS",
+        "r2": 1.0,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9898,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "micro_uq_ecoli_monod": {
+      "key": "micro_uq_ecoli_monod",
+      "domain": "微生物 / micro_uq_ecoli_monod",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9966,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "REFUTED",
+        "r2": 0.0095,
+        "coverage": 0.6
+      },
+      "decision": "contradict",
+      "score": 0.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "microbio_inhibition": {
+      "key": "microbio_inhibition",
+      "domain": "Microorganisms/Substrate Inhibition (Andrews)",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9997,
+        "coverage": 0.975
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9675,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "microbio_monod": {
+      "key": "microbio_monod",
+      "domain": "Microorganisms/Growth Kinetics (Monod)",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9997,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9774,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "mol_esterification_yield": {
+      "key": "mol_esterification_yield",
+      "domain": "chemistry",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9647,
+        "coverage": 0.983
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9515,
+        "coverage": 0.9667
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "mol_suzuki_yield": {
+      "key": "mol_suzuki_yield",
+      "domain": "chemistry",
+      "gp": {
+        "grade": "REFUTED",
+        "r2": 0.3299,
+        "coverage": 0.95
+      },
+      "rf": {
+        "grade": "REFUTED",
+        "r2": 0.1902,
+        "coverage": 0.9167
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "neuro_hh_spike_amplitude": {
+      "key": "neuro_hh_spike_amplitude",
+      "domain": "neuroscience",
+      "gp": {
+        "grade": "MARGINAL",
+        "r2": 0.9754,
+        "coverage": 0.833
+      },
+      "rf": {
+        "grade": "MARGINAL",
+        "r2": 0.8301,
+        "coverage": 0.8667
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "neuro_izhikevich_rate": {
+      "key": "neuro_izhikevich_rate",
+      "domain": "neuroscience / Izhikevich 神经元放电频率",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.978,
+        "coverage": 0.933
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9774,
+        "coverage": 0.9667
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "neuro_lif_fi": {
+      "key": "neuro_lif_fi",
+      "domain": "neuroscience / LIF 神经元 f-I 曲线",
+      "gp": {
+        "grade": "MARGINAL",
+        "r2": 0.7935,
+        "coverage": 0.95
+      },
+      "rf": {
+        "grade": "MARGINAL",
+        "r2": 0.8464,
+        "coverage": 0.9667
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "ode_lotka_volterra": {
+      "key": "ode_lotka_volterra",
+      "domain": "biology",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9995,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.99,
+        "coverage": 0.9333
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "opt_ackley2d": {
+      "key": "opt_ackley2d",
+      "domain": "optimization",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9781,
+        "coverage": 0.967
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.907,
+        "coverage": 0.9833
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "opt_gramacylee1d": {
+      "key": "opt_gramacylee1d",
+      "domain": "optimization",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9973,
+        "coverage": 0.95
+      },
+      "rf": {
+        "grade": "REFUTED",
+        "r2": 0.5882,
+        "coverage": 1.0
+      },
+      "decision": "contradict",
+      "score": 0.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "opt_hartmann3d": {
+      "key": "opt_hartmann3d",
+      "domain": "optimization",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9998,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9761,
+        "coverage": 0.9
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "opt_levy2d": {
+      "key": "opt_levy2d",
+      "domain": "optimization",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9985,
+        "coverage": 0.967
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9711,
+        "coverage": 0.9
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "opt_michalewicz2d": {
+      "key": "opt_michalewicz2d",
+      "domain": "optimization",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9907,
+        "coverage": 0.933
+      },
+      "rf": {
+        "grade": "MARGINAL",
+        "r2": 0.8194,
+        "coverage": 1.0
+      },
+      "decision": "agree_direction",
+      "score": 0.7,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "opt_rastrigin2d": {
+      "key": "opt_rastrigin2d",
+      "domain": "optimization",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9563,
+        "coverage": 0.917
+      },
+      "rf": {
+        "grade": "REFUTED",
+        "r2": 0.6037,
+        "coverage": 0.95
+      },
+      "decision": "contradict",
+      "score": 0.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "opt_rosenbrock2d": {
+      "key": "opt_rosenbrock2d",
+      "domain": "optimization",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9997,
+        "coverage": 0.967
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9367,
+        "coverage": 0.95
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "opt_schwefel2d": {
+      "key": "opt_schwefel2d",
+      "domain": "optimization",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9993,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "REFUTED",
+        "r2": 0.6243,
+        "coverage": 0.9
+      },
+      "decision": "contradict",
+      "score": 0.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "pde_heat1d": {
+      "key": "pde_heat1d",
+      "domain": "heat conduction (physics-informed) / 1D 热传导方程解析解",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9999,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9194,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "quant_bs_call": {
+      "key": "quant_bs_call",
+      "domain": "finance",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9997,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9969,
+        "coverage": 0.925
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "resp_welch2d": {
+      "key": "resp_welch2d",
+      "domain": "optimization",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9999,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "MARGINAL",
+        "r2": 0.9802,
+        "coverage": 0.8833
+      },
+      "decision": "agree_direction",
+      "score": 0.7,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "surrogate_branin": {
+      "key": "surrogate_branin",
+      "domain": "Surrogate Modeling/Optimization (2D Benchmark)",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9999,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9444,
+        "coverage": 1.0
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "surrogate_forrester": {
+      "key": "surrogate_forrester",
+      "domain": "Surrogate Modeling/Optimization (Bayesian Optimization Benchmark)",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9999,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "MARGINAL",
+        "r2": 0.7498,
+        "coverage": 1.0
+      },
+      "decision": "agree_direction",
+      "score": 0.7,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    },
+    "surrogate_hartmann6": {
+      "key": "surrogate_hartmann6",
+      "domain": "Surrogate Modeling/Optimization (6D High-Dimensional Benchmark)",
+      "gp": {
+        "grade": "PASS",
+        "r2": 0.9998,
+        "coverage": 1.0
+      },
+      "rf": {
+        "grade": "PASS",
+        "r2": 0.9803,
+        "coverage": 0.9625
+      },
+      "decision": "agree_exact",
+      "score": 1.0,
+      "second_backend": "RandomForest + conformal calibration (engine/random_forest_baseline.py)",
+      "same_data": true
+    }
+  }
+}

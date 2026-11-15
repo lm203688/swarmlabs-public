@@ -1,0 +1,13 @@
+.wrangler
+.build-check
+node_modules
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+
+# 编辑过程留下的备份文件（2026-09-17）：blog/ 下有 24 个 .bak/.bak2。
+# 既是无用垃圾，又会被 functions/_middleware.js 的 PROBE_RE（\.bak$）主动 404，
+# 徒增部署体积与完整性门禁的噪声。不部署。
+*.bak
+*.bak2
+*.bak-*

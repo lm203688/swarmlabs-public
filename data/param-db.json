@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "name": "SwarmLabs 实验参数库",
+  "description": "各引擎实验参数范围、典型值及来源记录",
+  "last_updated": "2026-07-25T01:50:00+08:00",
+  "total_entries": 8,
+  "version": "v2026.07.25.1",
+  "entries": [
+    {
+      "id": "PARAM-001",
+      "engine": "suzuki",
+      "category": "化学合成-偶联反应",
+      "parameters": [
+        {"name": "catalyst_loading", "range": "0.5-5 mol%", "typical": "2 mol%", "unit": "mol%", "source": "文献典型值"}
+      ],
+      "result_range": {"yield": "60-95%", "typical": "85%", "unit": "%"},
+      "known_issues": "当前模拟产率7.04%远低于文献范围，疑似模型系统性偏差（CORR-001）",
+      "source": "v3.2验收测试",
+      "updated_at": "2026-07-25"
+    },
+    {
+      "id": "PARAM-002",
+      "engine": "drug_release",
+      "category": "药学-药物释放",
+      "parameters": [
+        {"name": "polymer_ratio", "range": "10-40%", "typical": "25%", "unit": "%", "source": "缓释制剂文献"}
+      ],
+      "result_range": {"release_rate": "Q=0.5-24h曲线", "typical": "82%", "unit": "%"},
+      "known_issues": "缺少完整时间点溶出曲线展示（CORR-002）",
+      "source": "药厂研发总监验收",
+      "updated_at": "2026-07-25"
+    },
+    {
+      "id": "PARAM-003",
+      "engine": "dissolution_usp",
+      "category": "药学-USP溶出",
+      "parameters": [
+        {"name": "apparatus", "options": ["USP I(篮式)", "USP II(桨式)", "USP IV(流池式)"], "typical": "USP II", "source": "USP药典"}
+      ],
+      "result_range": {"f2": ">50（相似）", "typical": "78.31", "unit": "f2值"},
+      "known_issues": "计算精度高(R²=0.9917)但前端展示断裂",
+      "source": "药厂研发总监验收",
+      "updated_at": "2026-07-25"
+    },
+    {
+      "id": "PARAM-004",
+      "engine": "stability_study",
+      "category": "药学-稳定性研究",
+      "parameters": [
+        {"name": "storage_condition", "options": ["25°C/60%RH", "30°C/65%RH", "40°C/75%RH"], "typical": "40°C/75%RH", "source": "ICH Q1A(R2)"}
+      ],
+      "result_range": {"shelf_life": "6-36月", "typical": "24月", "unit": "月"},
+      "known_issues": null,
+      "source": "ICH指导原则",
+      "updated_at": "2026-07-25"
+    },
+    {
+      "id": "PARAM-005",
+      "engine": "preformulation",
+      "category": "药学-处方前研究",
+      "parameters": [
+        {"name": "pH_range", "range": "1.0-8.0", "typical": "pH 6.8", "unit": "pH", "source": "药典缓冲液"}
+      ],
+      "result_range": {"solubility": "0.1-100 mg/mL", "typical": "5 mg/mL", "unit": "mg/mL"},
+      "known_issues": null,
+      "source": "药学API实现",
+      "updated_at": "2026-07-25"
+    },
+    {
+      "id": "PARAM-006",
+      "engine": "pinn",
+      "category": "AI-PINN物理信息神经网络",
+      "parameters": [
+        {"name": "hidden_layers", "range": "2-8层", "typical": "4层", "source": "PINN最佳实践"}
+      ],
+      "result_range": {"loss": "1e-4-1e-6", "typical": "3.2e-5", "unit": "MSE"},
+      "known_issues": null,
+      "source": "v3.1功能实现",
+      "updated_at": "2026-07-25"
+    },
+    {
+      "id": "PARAM-007",
+      "engine": "knowledge_graph",
+      "category": "AI-知识图谱",
+      "parameters": [
+        {"name": "entity_count", "range": "10-1000", "typical": "50-200", "source": "实验结果抽取"}
+      ],
+      "result_range": {"relation_count": "1:2-1:5", "typical": "1:3", "unit": "比例"},
+      "known_issues": null,
+      "source": "v3.1功能实现",
+      "updated_at": "2026-07-25"
+    },
+    {
+      "id": "PARAM-008",
+      "engine": "separation",
+      "category": "化学分离",
+      "parameters": [
+        {"name": "flux", "range": "10-500 L/m²·h", "typical": "150 L/m²·h", "unit": "L/m²·h", "source": "膜分离文献"}
+      ],
+      "result_range": {"rejection": "85-99.5%", "typical": "95%", "unit": "%"},
+      "known_issues": null,
+      "source": "v3.2单位标准化",
+      "updated_at": "2026-07-25"
+    }
+  ]
+}

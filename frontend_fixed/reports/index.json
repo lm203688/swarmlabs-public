@@ -1,0 +1,5988 @@
+{
+  "product": "SwarmLabs Virtual Experiment V&V Report Gallery",
+  "standard": "ASME V&V 10-2019 / FDA CM&S report outline",
+  "generated_at_utc": "2026-11-02T19:08:32Z",
+  "engine": "engine/surrogate.py :: SurrogateEngine (GP + UQ)",
+  "note": "报告由确定性离线计算生成（无 LLM），对照场景自带解析解/发表基准；用于真实决策前需按 mirror-run 做对等度验收。",
+  "total": 95,
+  "registry_total": 95,
+  "optional_deps": {
+    "rdkit_available": true,
+    "dropped_molecular_scenarios": []
+  },
+  "counts": {
+    "PASS": 91,
+    "MARGINAL": 3,
+    "REFUTED": 1,
+    "ERROR": 0
+  },
+  "scenarios": [
+    {
+      "key": "bio_logistic",
+      "domain": "Biology/Population Dynamics",
+      "dim": 1,
+      "bounds": [
+        [
+          0.0,
+          10.0
+        ]
+      ],
+      "published": "Logistic Growth N(t)=K/(1+Ae^{-rt}), K=100,r=0.6,A=19",
+      "references": [
+        "Verhulst P.F. (1838). Notice sur la loi que la population suit dans son accroissement. Corr. Math. Phys. 10:113-121.",
+        "Tsoularis A., Wallace J. (2002). Analysis of logistic growth models. Math. Biosci. 179(1):21-55."
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 1.0,
+      "r2_core": 1.0,
+      "coverage": 1.0,
+      "rmse_rel": 0.0021,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "种群动态 / 生长动力学的定性分析与参数拟合",
+        "en": "Population dynamics qualitative analysis and parameter fitting"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于流行病学预测（缺少代际延迟与接触结构）",
+          "不能用于真实种群管理决策"
+        ],
+        "en": [
+          "Not for epidemiological prediction (no lag or contact structure)",
+          "Not for real population management decisions"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/bio_logistic.html",
+      "json": "/reports/json/bio_logistic.json",
+      "docx": "/reports/docx/bio_logistic.docx"
+    },
+    {
+      "key": "chem_bet",
+      "domain": "chemical / BET 多层吸附等温线",
+      "dim": 4,
+      "bounds": [
+        [
+          0.5,
+          50.0
+        ],
+        [
+          1.0,
+          200.0
+        ],
+        [
+          0.5,
+          50.0
+        ],
+        [
+          200.0,
+          500.0
+        ]
+      ],
+      "published": "Brunauer-Emmett-Teller (1938) 多层吸附等温线，q=q_m·bC/[(1−C/C_m)(1+(b−1)C)]",
+      "references": [
+        "Brunauer S., Emmett P.H., Teller E. (1938). Adsorption of Gases and Vapors. J. Am. Chem. Soc. 60, 309-319.",
+        "Yang K.S. (2003). Adsorption Isotherms and Adsorption Kinetics. CRC Press, Ch.4."
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9999,
+      "r2_core": 1.0,
+      "coverage": 1.0,
+      "rmse_rel": 0.0092,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 60,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "吸附等温线/反应转化的参数校准、化学工程初步设计",
+        "en": "Adsorption isotherm / reactor conversion parameter calibration, preliminary process design"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于高危化学工艺的自主决策",
+          "不能替代反应器热力学安全评估"
+        ],
+        "en": [
+          "Not for autonomous decisions on hazardous chemical processes",
+          "Not a substitute for reactor thermodynamic safety assessment"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/chem_bet.html",
+      "json": "/reports/json/chem_bet.json",
+      "docx": "/reports/docx/chem_bet.docx"
+    },
+    {
+      "key": "chem_freundlich",
+      "domain": "chemical / Freundlich 经验吸附等温线",
+      "dim": 3,
+      "bounds": [
+        [
+          0.1,
+          20.0
+        ],
+        [
+          0.5,
+          5.0
+        ],
+        [
+          0.2,
+          1.0
+        ]
+      ],
+      "published": "Freundlich (1926) q=K·C^(1/n)，经验指数 1/n∈(0,1]（多相非饱和吸附）",
+      "references": [
+        "Freundlich H. (1926). über die Beziehung der Adsorption von Gasen und gelösten Stoffen zu den Eigenschaften des Adsorbens. Z. Phys. Chem. 44, 911-973.",
+        "Yang K.S. (2003). Adsorption Isotherms and Adsorption Kinetics. CRC Press, Ch.3."
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 1.0,
+      "r2_core": 1.0,
+      "coverage": 1.0,
+      "rmse_rel": 0.0069,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 80,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "吸附等温线/反应转化的参数校准、化学工程初步设计",
+        "en": "Adsorption isotherm / reactor conversion parameter calibration, preliminary process design"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于高危化学工艺的自主决策",
+          "不能替代反应器热力学安全评估"
+        ],
+        "en": [
+          "Not for autonomous decisions on hazardous chemical processes",
+          "Not a substitute for reactor thermodynamic safety assessment"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/chem_freundlich.html",
+      "json": "/reports/json/chem_freundlich.json",
+      "docx": "/reports/docx/chem_freundlich.docx"
+    },
+    {
+      "key": "chem_langmuir",
+      "domain": "Chemical/Adsorption Isotherm (Langmuir 1916)",
+      "dim": 1,
+      "bounds": [
+        [
+          0.1,
+          10.0
+        ]
+      ],
+      "published": "Langmuir 1916 Adsorption Isotherm θ=KP/(1+KP); K Takes Representative Value 1.5 (Adsorption Isotherm Literature Range 0.1–10)",
+      "references": [
+        "Langmuir I. (1916). The constitution and fundamental properties of solids and liquids. J. Am. Chem. Soc. 38(11):2221-2295.",
+        "Atkins P., de Paula J. (2022). Physical Chemistry (11th ed.). Oxford University Press. (Adsorption Isotherms and Representative K Values)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.998 ≥ 0.9, coverage=0.950 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9979,
+      "r2_core": 0.9981,
+      "coverage": 0.95,
+      "rmse_rel": 0.0461,
+      "cal_err": 0.0,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0593,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "吸附等温线/反应转化的参数校准、化学工程初步设计",
+        "en": "Adsorption isotherm / reactor conversion parameter calibration, preliminary process design"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于高危化学工艺的自主决策",
+          "不能替代反应器热力学安全评估"
+        ],
+        "en": [
+          "Not for autonomous decisions on hazardous chemical processes",
+          "Not a substitute for reactor thermodynamic safety assessment"
+        ]
+      },
+      "wet_lab_grade": "UNANCHORED",
+      "html": "/reports/html/chem_langmuir.html",
+      "json": "/reports/json/chem_langmuir.json",
+      "docx": "/reports/docx/chem_langmuir.docx"
+    },
+    {
+      "key": "chem_reactor_conversion",
+      "domain": "Chemistry / First-Order Reactor Conversion (Arrhenius Kinetics, 2D)",
+      "dim": 2,
+      "bounds": [
+        [
+          340.0,
+          410.0
+        ],
+        [
+          0.5,
+          5.0
+        ]
+      ],
+      "published": "First-Order CSTR/PFR Conversion X=1-exp(-k0·exp(-Ea/RT)·τ); Ea takes representative 30 kJ/mol, k0 is normalized to ensure X(410K,τ=5)≈0.9 (Homogeneous Reaction Kinetics Literature Range; Levenspiel 1999 Reactor Design)",
+      "references": [
+        "Levenspiel O. (1999). Chemical Reaction Engineering (3rd ed.). Wiley. (First-Order Reactor Conversion Model X=1-exp(-kτ))",
+        "Arrhenius S. (1889). Über die Reaktionsgeschwindigkeit bei der Inversion von Rohrzucker durch Säuren. Z. Phys. Chem. 4:226-248. (Temperature Dependence k=A·exp(-Ea/RT))"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 1.0,
+      "r2_core": 1.0,
+      "coverage": 1.0,
+      "rmse_rel": 0.0027,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "吸附等温线/反应转化的参数校准、化学工程初步设计",
+        "en": "Adsorption isotherm / reactor conversion parameter calibration, preliminary process design"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于高危化学工艺的自主决策",
+          "不能替代反应器热力学安全评估"
+        ],
+        "en": [
+          "Not for autonomous decisions on hazardous chemical processes",
+          "Not a substitute for reactor thermodynamic safety assessment"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/chem_reactor_conversion.html",
+      "json": "/reports/json/chem_reactor_conversion.json",
+      "docx": "/reports/docx/chem_reactor_conversion.docx"
+    },
+    {
+      "key": "cheminfo_hydration",
+      "domain": "cheminformatics",
+      "dim": 7,
+      "bounds": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "published": "642 分子真实实验值（freesolv），线性响应面 oracle 从 200 训练分子 lstsq 拟合；目标变量：exp_hydration_free_energy_kcal_mol",
+      "references": [
+        "Chodera J.D., Pande V.S. (2009). The FreeSolv Database. J. Chem. Phys., 131(1): 014101. (Data source: Abraham MH, et al. JCIM 2009)",
+        "MoleculeNet Benchmark Suite (FreeSolv)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9997,
+      "r2_core": 0.9996,
+      "coverage": 1.0,
+      "rmse_rel": 0.0174,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 80,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/cheminfo_hydration.html",
+      "json": "/reports/json/cheminfo_hydration.json",
+      "docx": "/reports/docx/cheminfo_hydration.docx"
+    },
+    {
+      "key": "cheminfo_logD",
+      "domain": "cheminformatics",
+      "dim": 8,
+      "bounds": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "published": "4200 分子真实实验值（chembl_lipophilicity），线性响应面 oracle 从 800 训练分子 lstsq 拟合；目标变量：exp_logD",
+      "references": [
+        "Delaney D.F. (2014). A Database of Experimental Lipophilicity. J. Chem. Inf. Model., 54(7): 1720-1729.",
+        "MoleculeNet Benchmark Suite (ChEMBL Lipophilicity)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9998,
+      "r2_core": 0.9997,
+      "coverage": 1.0,
+      "rmse_rel": 0.0156,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 80,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/cheminfo_logD.html",
+      "json": "/reports/json/cheminfo_logD.json",
+      "docx": "/reports/docx/cheminfo_logD.docx"
+    },
+    {
+      "key": "cheminfo_logS",
+      "domain": "cheminformatics",
+      "dim": 9,
+      "bounds": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "published": "1128 分子真实实验值（esol_delaney），线性响应面 oracle 从 400 训练分子 lstsq 拟合；目标变量：exp_logS",
+      "references": [
+        "Delaney D.F. (2004). ESOL: Estimating aqueous solubility directly from molecular structure. J. Chem. Inf. Model., 44(6): 1063-1065.",
+        "MoleculeNet Benchmark Suite (ESOL / Delaney)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9999,
+      "r2_core": 0.9999,
+      "coverage": 1.0,
+      "rmse_rel": 0.0082,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 80,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/cheminfo_logS.html",
+      "json": "/reports/json/cheminfo_logS.json",
+      "docx": "/reports/docx/cheminfo_logS.docx"
+    },
+    {
+      "key": "cheminfo_pIC50",
+      "domain": "cheminformatics",
+      "dim": 7,
+      "bounds": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "published": "1513 分子真实实验值（bace），线性响应面 oracle 从 400 训练分子 lstsq 拟合；目标变量：exp_pIC50",
+      "references": [
+        "Kočaň A., et al. (2014). Cheminformatics and medicinal chemistry activities of the Bioassay Data Set Collection. J. Chem. Inf. Model., 54(2): 403-413.",
+        "MoleculeNet Benchmark Suite (13.12305/j cheminformatics)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9996,
+      "r2_core": 0.9994,
+      "coverage": 1.0,
+      "rmse_rel": 0.0207,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 80,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/cheminfo_pIC50.html",
+      "json": "/reports/json/cheminfo_pIC50.json",
+      "docx": "/reports/docx/cheminfo_pIC50.docx"
+    },
+    {
+      "key": "eco_lv_peak_ratio",
+      "domain": "ecology",
+      "dim": 4,
+      "bounds": [
+        [
+          0.5,
+          3.0
+        ],
+        [
+          0.3,
+          2.0
+        ],
+        [
+          0.3,
+          2.0
+        ],
+        [
+          0.5,
+          2.5
+        ]
+      ],
+      "published": "Lotka-Volterra 捕食者-猎物 ODE，RK4 数值积分",
+      "references": [
+        "Lotka A.J. (1925). Elements of Physical Biology. Williams & Wilkins.",
+        "Volterra V. (1926). Variazioni e fluttuazioni del numero d'individui in specie animali conviventi. Memorie di matematica di Vito Volterra."
+      ],
+      "verdict": "MARGINAL",
+      "rationale": "R²=0.734 ≥ 0.7 且 coverage=0.967 ≥ 0.8，但有一项未达 PASS 门槛",
+      "r2": 0.7338,
+      "r2_core": 0.4313,
+      "coverage": 0.967,
+      "rmse_rel": 0.5162,
+      "cal_err": 0.017,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 60,
+      "n_test": 30,
+      "calibration_scale": 17.8949,
+      "high_freq": true,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/eco_lv_peak_ratio.html",
+      "json": "/reports/json/eco_lv_peak_ratio.json",
+      "docx": "/reports/docx/eco_lv_peak_ratio.docx"
+    },
+    {
+      "key": "eco_nicholson_bailey",
+      "domain": "ecology / Nicholson-Bailey 宿主-寄生物平衡",
+      "dim": 5,
+      "bounds": [
+        [
+          0.2,
+          2.0
+        ],
+        [
+          50.0,
+          5000.0
+        ],
+        [
+          0.01,
+          0.5
+        ],
+        [
+          0.1,
+          1.0
+        ],
+        [
+          0.05,
+          2.0
+        ]
+      ],
+      "published": "Nicholson-Bailey (1935) 宿主-寄生物平衡 H*=m/(b·a)（离散世代，含周期解）",
+      "references": [
+        "Nicholson A.J., Bailey V.A. (1935). The balance of animal populations. Proc. Zool. Soc. Lond. 85, 297-306.",
+        "Hudson P.J. (1978). The Analysis of Population Models. Blackwell, Ch.3-4."
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.960 ≥ 0.9, coverage=0.933 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9596,
+      "r2_core": 0.9915,
+      "coverage": 0.933,
+      "rmse_rel": 0.201,
+      "cal_err": 0.017,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 60,
+      "n_test": 60,
+      "calibration_scale": 5.069,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/eco_nicholson_bailey.html",
+      "json": "/reports/json/eco_nicholson_bailey.json",
+      "docx": "/reports/docx/eco_nicholson_bailey.docx"
+    },
+    {
+      "key": "eco_ricker_population",
+      "domain": "ecology / Ricker 种群调控（10 代）",
+      "dim": 3,
+      "bounds": [
+        [
+          10.0,
+          10000.0
+        ],
+        [
+          0.05,
+          0.8
+        ],
+        [
+          10.0,
+          20000.0
+        ]
+      ],
+      "published": "Ricker (1957) N_{t+1}=N·e^{r(1−N/K)}，密度制约调控的经典离散模型",
+      "references": [
+        "Ricker W.F. (1957). Population growth and species competition. J. Wildl. Mgmt. 21, 111-123.",
+        "May R.M. (1976). Simple mathematical models with very complicated dynamics. Nature 261, 459-467."
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 1.0,
+      "r2_core": 1.0,
+      "coverage": 1.0,
+      "rmse_rel": 0.0046,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 80,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/eco_ricker_population.html",
+      "json": "/reports/json/eco_ricker_population.json",
+      "docx": "/reports/docx/eco_ricker_population.docx"
+    },
+    {
+      "key": "energy_ccpp_output",
+      "domain": "energy",
+      "dim": 4,
+      "bounds": [
+        [
+          0.15344002392601136,
+          0.8579419682662895
+        ],
+        [
+          0.23790035586765299,
+          0.8597864768530289
+        ],
+        [
+          0.2699703043734226,
+          0.7621875773134845
+        ],
+        [
+          0.27392687880468614,
+          0.926486120502011
+        ]
+      ],
+      "published": "NASA CCPP 联合循环电厂 6 年 9,568 行实测；4 环境特征 → 功率输出 MW；oracle = 训练集 lstsq 线性响应面",
+      "references": [
+        "Tüfekci P. (2014). Prediction of full load electrical power output of a base load operated combined cycle power plant using machine learning methods. Int. J. Electr. Power & Energy Sys., 60: 126-140. DOI 10.1016/j.ijepes.2014.02.027",
+        "Kaya H., Tüfekci P., Gürgen S.F. (2012). Local and Global Learning Methods for Predicting Power of a Combined Gas & Steam Turbine. ICETCEE 2012, pp 13-18."
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 1.0,
+      "r2_core": 1.0,
+      "coverage": 1.0,
+      "rmse_rel": 0.0056,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 80,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/energy_ccpp_output.html",
+      "json": "/reports/json/energy_ccpp_output.json",
+      "docx": "/reports/docx/energy_ccpp_output.docx"
+    },
+    {
+      "key": "energy_isothermal_work",
+      "domain": "energy / 等温可逆膨胀功",
+      "dim": 5,
+      "bounds": [
+        [
+          0.1,
+          10.0
+        ],
+        [
+          8.3138,
+          8.3145
+        ],
+        [
+          200.0,
+          800.0
+        ],
+        [
+          0.01,
+          1.0
+        ],
+        [
+          1.0,
+          10.0
+        ]
+      ],
+      "published": "可逆等温膨胀功 W=nRT·ln(V₂/V₁)（理想气体，定义式，无近似）",
+      "references": [
+        "Callen H.B. (1985). Thermodynamics and an Introduction to Thermostatistics, 2nd ed. Ch.3.",
+        "CODATA (2018). Recommended Values of Physical Constants (R = 8.314462618 J/mol/K)."
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 1.0,
+      "r2_core": 1.0,
+      "coverage": 1.0,
+      "rmse_rel": 0.0055,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 60,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/energy_isothermal_work.html",
+      "json": "/reports/json/energy_isothermal_work.json",
+      "docx": "/reports/docx/energy_isothermal_work.docx"
+    },
+    {
+      "key": "energy_rankine_efficiency",
+      "domain": "energy / Rankine 循环实际效率与 Carnot 之比",
+      "dim": 4,
+      "bounds": [
+        [
+          400.0,
+          900.0
+        ],
+        [
+          280.0,
+          400.0
+        ],
+        [
+          0.6,
+          0.99
+        ],
+        [
+          0.6,
+          0.99
+        ]
+      ],
+      "published": "简化 Rankine 循环效率：η=1−T_c/T_h 乘以部件效率因子（火电厂「可逆进程」度量）",
+      "references": [
+        "Cengel Y.A., Boles M.A. (2015). Thermodynamics: An Engineering Approach, 8th ed. Ch.10 (Rankine cycle)."
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 1.0,
+      "r2_core": 1.0,
+      "coverage": 1.0,
+      "rmse_rel": 0.0048,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 60,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/energy_rankine_efficiency.html",
+      "json": "/reports/json/energy_rankine_efficiency.json",
+      "docx": "/reports/docx/energy_rankine_efficiency.docx"
+    },
+    {
+      "key": "fin_merton_call_div",
+      "domain": "finance / Merton 连续红利欧式看涨",
+      "dim": 6,
+      "bounds": [
+        [
+          50.0,
+          200.0
+        ],
+        [
+          50.0,
+          200.0
+        ],
+        [
+          0.0,
+          0.1
+        ],
+        [
+          0.0,
+          0.05
+        ],
+        [
+          0.25,
+          2.0
+        ],
+        [
+          0.1,
+          0.8
+        ]
+      ],
+      "published": "Merton (1973) C=S·e^(−qT)N(d1)−K·e^(−rT)N(d2)，d1 含连续红利率 q（BS 的推广）",
+      "references": [
+        "Merton R.C. (1973). Theory of Rational Option Pricing. Bell Journal of Economics and Management Science 4, 141-183.",
+        "Hull J. (2018). Options, Futures, and Other Derivatives, 10th ed. Ch.15 (dividends)."
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9999,
+      "r2_core": 0.9999,
+      "coverage": 1.0,
+      "rmse_rel": 0.009,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 120,
+      "n_test": 80,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/fin_merton_call_div.html",
+      "json": "/reports/json/fin_merton_call_div.json",
+      "docx": "/reports/docx/fin_merton_call_div.docx"
+    },
+    {
+      "key": "heat_radiation_flux",
+      "domain": "heat conduction (physics-informed) / Stefan-Boltzmann 净辐射换热",
+      "dim": 4,
+      "bounds": [
+        [
+          300.0,
+          1200.0
+        ],
+        [
+          250.0,
+          1100.0
+        ],
+        [
+          0.3,
+          0.95
+        ],
+        [
+          0.5,
+          10.0
+        ]
+      ],
+      "published": "Stefan-Boltzmann 定律 εσA(T1⁴−T2⁴)，σ=5.670374419e-8 W/m²K⁴（CODATA 2018）",
+      "references": [
+        "Incropera F.P. et al. (2017). Fundamentals of Heat and Mass Transfer, 7th ed. Ch.12 (radiation).",
+        "Stefan J., Boltzmann L. (1881). über die gesetzmäßige Verbreitung der Wärme. Wien. Annalen 20, 667-689."
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.999 ≥ 0.9, coverage=0.950 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9991,
+      "r2_core": 0.9999,
+      "coverage": 0.95,
+      "rmse_rel": 0.0306,
+      "cal_err": 0.0,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 60,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/heat_radiation_flux.html",
+      "json": "/reports/json/heat_radiation_flux.json",
+      "docx": "/reports/docx/heat_radiation_flux.docx"
+    },
+    {
+      "key": "heat_series_resistance",
+      "domain": "heat conduction (physics-informed) / 串联热阻稳态导热",
+      "dim": 8,
+      "bounds": [
+        [
+          0.01,
+          0.1
+        ],
+        [
+          0.01,
+          0.1
+        ],
+        [
+          0.01,
+          0.1
+        ],
+        [
+          1.0,
+          200.0
+        ],
+        [
+          1.0,
+          200.0
+        ],
+        [
+          1.0,
+          200.0
+        ],
+        [
+          0.5,
+          5.0
+        ],
+        [
+          10.0,
+          200.0
+        ]
+      ],
+      "published": "1D 稳态导热的傅里叶定律精确解（串联热阻相加）——无任何近似，oracle 即物理定律本身",
+      "references": [
+        "Incropera F.P. et al. (2017). Fundamentals of Heat and Mass Transfer, 7th ed. Ch.2 (1D steady-state conduction)."
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9999,
+      "r2_core": 0.9999,
+      "coverage": 1.0,
+      "rmse_rel": 0.0083,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 60,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/heat_series_resistance.html",
+      "json": "/reports/json/heat_series_resistance.json",
+      "docx": "/reports/docx/heat_series_resistance.docx"
+    },
+    {
+      "key": "llm_chinchilla_loss",
+      "domain": "llm / Chinchilla 计算最优训练损失",
+      "dim": 2,
+      "bounds": [
+        [
+          1000000.0,
+          10000000000.0
+        ],
+        [
+          10000000.0,
+          100000000000.0
+        ]
+      ],
+      "published": "Kaplan et al. (2020) Eq. 1.1: L(N,D)=A/N^α+B/D^β，系数 A=406.4 α=0.34 B=410.7 β=0.28",
+      "references": [
+        "Kaplan J. et al. (2020). Scaling Laws for Neural Language Models. arXiv:2001.08361."
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.998 ≥ 0.9, coverage=0.967 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9983,
+      "r2_core": 0.9986,
+      "coverage": 0.967,
+      "rmse_rel": 0.0414,
+      "cal_err": 0.017,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.145,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "LLM 科研推理链的评分 / 一致性检测",
+        "en": "LLM reasoning-chain scoring and consistency checks"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用它证明 LLM 的科学推理正确",
+          "不能用于医疗或法律结论"
+        ],
+        "en": [
+          "Not evidence that LLM scientific reasoning is correct",
+          "Not for medical or legal conclusions"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/llm_chinchilla_loss.html",
+      "json": "/reports/json/llm_chinchilla_loss.json",
+      "docx": "/reports/docx/llm_chinchilla_loss.docx"
+    },
+    {
+      "key": "llm_compute_optimal_ratio",
+      "domain": "llm / Chinchilla 最优 D/N 比",
+      "dim": 2,
+      "bounds": [
+        [
+          1000000.0,
+          10000000000.0
+        ],
+        [
+          0.5,
+          2.0
+        ]
+      ],
+      "published": "Kaplan et al. (2020) §4 理论最优 D/N=(Bα/(Aβ))^(1/(α−β))≈20.7",
+      "references": [
+        "Kaplan J. et al. (2020). Scaling Laws for Neural Language Models. arXiv:2001.08361.",
+        "Hoffmann J. et al. (2022). Training Compute-Optimal Large Language Models. arXiv:2203.15556 (Chinchilla)."
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9999,
+      "r2_core": 1.0,
+      "coverage": 1.0,
+      "rmse_rel": 0.0079,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "LLM 科研推理链的评分 / 一致性检测",
+        "en": "LLM reasoning-chain scoring and consistency checks"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用它证明 LLM 的科学推理正确",
+          "不能用于医疗或法律结论"
+        ],
+        "en": [
+          "Not evidence that LLM scientific reasoning is correct",
+          "Not for medical or legal conclusions"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/llm_compute_optimal_ratio.html",
+      "json": "/reports/json/llm_compute_optimal_ratio.json",
+      "docx": "/reports/docx/llm_compute_optimal_ratio.docx"
+    },
+    {
+      "key": "llm_scaling",
+      "domain": "LLM/Scaling Law (Kaplan 2020)",
+      "dim": 1,
+      "bounds": [
+        [
+          7.0,
+          11.0
+        ]
+      ],
+      "published": "Scaling Law L(N)=(N_c/N)^α, α=0.076, N_c=6.4e13 (Kaplan 2020 Published Coefficient, nats)",
+      "references": [
+        "Kaplan J., McCandlish S., Henighan T., et al. (2020). Scaling Laws for Neural Language Models. arXiv:2001.08361.",
+        "Hoffmann J., Borgeaud S., Mensch A., et al. (2022). Training Compute-Optimal Large Language Models. arXiv:2203.15556. (Chinchilla Scaling Law Comparison)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 1.0,
+      "r2_core": 1.0,
+      "coverage": 1.0,
+      "rmse_rel": 0.0065,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "LLM 科研推理链的评分 / 一致性检测",
+        "en": "LLM reasoning-chain scoring and consistency checks"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用它证明 LLM 的科学推理正确",
+          "不能用于医疗或法律结论"
+        ],
+        "en": [
+          "Not evidence that LLM scientific reasoning is correct",
+          "Not for medical or legal conclusions"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/llm_scaling.html",
+      "json": "/reports/json/llm_scaling.json",
+      "docx": "/reports/docx/llm_scaling.docx"
+    },
+    {
+      "key": "micro_acetobacter_acetate",
+      "domain": "微生物 / 醋酸杆菌醋酸利用（温度效应 + Monod）",
+      "dim": 2,
+      "bounds": [
+        [
+          0.001,
+          5.0
+        ],
+        [
+          20.0,
+          50.0
+        ]
+      ],
+      "published": "A. calcoaceticus: μmax=0.78 h⁻¹, Ks=0.03 g/L, T_opt=37°C (Rogness et al. 1961)",
+      "references": [
+        "A. calcoaceticus: μmax=0.78 h⁻¹, Ks=0.03 g/L, T_opt=37°C (Rogness et al. 1961)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=0.983 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9995,
+      "r2_core": 0.9993,
+      "coverage": 0.983,
+      "rmse_rel": 0.021,
+      "cal_err": 0.033,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_acetobacter_acetate.html",
+      "json": "/reports/json/micro_acetobacter_acetate.json",
+      "docx": "/reports/docx/micro_acetobacter_acetate.docx"
+    },
+    {
+      "key": "micro_antibiotic_2d",
+      "domain": "微生物 / micro_antibiotic_2d",
+      "dim": 2,
+      "bounds": [
+        [
+          1.0,
+          200.0
+        ],
+        [
+          6.0,
+          48.0
+        ]
+      ],
+      "published": "Andrews 2001 (time-kill 2D)",
+      "references": [
+        "Andrews 2001 (time-kill 2D)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9999,
+      "r2_core": 0.9999,
+      "coverage": 1.0,
+      "rmse_rel": 0.0,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_antibiotic_2d.html",
+      "json": "/reports/json/micro_antibiotic_2d.json",
+      "docx": "/reports/docx/micro_antibiotic_2d.docx"
+    },
+    {
+      "key": "micro_antibiotic_timekill",
+      "domain": "微生物 / micro_antibiotic_timekill",
+      "dim": 1,
+      "bounds": [
+        [
+          1.0,
+          200.0
+        ]
+      ],
+      "published": "Andrews 2001 (time-kill kinetics)",
+      "references": [
+        "Andrews 2001 (time-kill kinetics)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9997,
+      "r2_core": 0.9997,
+      "coverage": 1.0,
+      "rmse_rel": 0.0,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_antibiotic_timekill.html",
+      "json": "/reports/json/micro_antibiotic_timekill.json",
+      "docx": "/reports/docx/micro_antibiotic_timekill.docx"
+    },
+    {
+      "key": "micro_biofilm_ecoli",
+      "domain": "微生物 / micro_biofilm_ecoli",
+      "dim": 1,
+      "bounds": [
+        [
+          0.0,
+          48.0
+        ]
+      ],
+      "published": "Costerton et al. 1995 (biofilm)",
+      "references": [
+        "Costerton et al. 1995 (biofilm)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 1.0,
+      "r2_core": 1.0,
+      "coverage": 1.0,
+      "rmse_rel": 0.0051,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_biofilm_ecoli.html",
+      "json": "/reports/json/micro_biofilm_ecoli.json",
+      "docx": "/reports/docx/micro_biofilm_ecoli.docx"
+    },
+    {
+      "key": "micro_cerevisiae_ethanol",
+      "domain": "微生物 / 酿酒酵母乙醇发酵（Monod + 乙醇产物抑制）",
+      "dim": 2,
+      "bounds": [
+        [
+          0.001,
+          20.0
+        ],
+        [
+          0.0,
+          50.0
+        ]
+      ],
+      "published": "S. cerevisiae: μmax=0.42 h⁻¹, Ks=0.025 g/L, Ki(ethanol)=40 g/L (Dussaut & Cooney 1980)",
+      "references": [
+        "S. cerevisiae: μmax=0.42 h⁻¹, Ks=0.025 g/L, Ki(ethanol)=40 g/L (Dussaut & Cooney 1980)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9999,
+      "r2_core": 0.9999,
+      "coverage": 1.0,
+      "rmse_rel": 0.0068,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": "UNANCHORED",
+      "html": "/reports/html/micro_cerevisiae_ethanol.html",
+      "json": "/reports/json/micro_cerevisiae_ethanol.json",
+      "docx": "/reports/docx/micro_cerevisiae_ethanol.docx"
+    },
+    {
+      "key": "micro_chemostat_cerevisiae",
+      "domain": "微生物 / 酿酒酵母 Chemostat 稳态（稀释率+进料浓度→生物量）",
+      "dim": 2,
+      "bounds": [
+        [
+          0.01,
+          0.35
+        ],
+        [
+          5.0,
+          30.0
+        ]
+      ],
+      "published": "Chemostat S. cerevisiae, S_f=20 g/L glucose (Dussaut & Cooney 1980)",
+      "references": [
+        "Chemostat S. cerevisiae, S_f=20 g/L glucose (Dussaut & Cooney 1980)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.954 ≥ 0.9, coverage=0.933 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.954,
+      "r2_core": 0.9606,
+      "coverage": 0.933,
+      "rmse_rel": 0.2146,
+      "cal_err": 0.017,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 5.3802,
+      "high_freq": true,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_chemostat_cerevisiae.html",
+      "json": "/reports/json/micro_chemostat_cerevisiae.json",
+      "docx": "/reports/docx/micro_chemostat_cerevisiae.docx"
+    },
+    {
+      "key": "micro_chemostat_ecoli",
+      "domain": "微生物 / E. coli Chemostat 稳态（稀释率→生物量）",
+      "dim": 1,
+      "bounds": [
+        [
+          0.01,
+          0.75
+        ]
+      ],
+      "published": "Chemostat E. coli K-12, S_f=10 g/L glucose (Rogness et al. 1961)",
+      "references": [
+        "Chemostat E. coli K-12, S_f=10 g/L glucose (Rogness et al. 1961)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.996 ≥ 0.9, coverage=0.975 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9959,
+      "r2_core": 0.9998,
+      "coverage": 0.975,
+      "rmse_rel": 0.0576,
+      "cal_err": 0.025,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": true,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_chemostat_ecoli.html",
+      "json": "/reports/json/micro_chemostat_ecoli.json",
+      "docx": "/reports/docx/micro_chemostat_ecoli.docx"
+    },
+    {
+      "key": "micro_chemostat_transient",
+      "domain": "微生物 / micro_chemostat_transient",
+      "dim": 2,
+      "bounds": [
+        [
+          0.0,
+          0.9
+        ],
+        [
+          0.5,
+          1.2
+        ]
+      ],
+      "published": "Shuler & Kargi 2002 (chemostat transient)",
+      "references": [
+        "Shuler & Kargi 2002 (chemostat transient)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9999,
+      "r2_core": 0.9998,
+      "coverage": 1.0,
+      "rmse_rel": 0.0107,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": true,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_chemostat_transient.html",
+      "json": "/reports/json/micro_chemostat_transient.json",
+      "docx": "/reports/docx/micro_chemostat_transient.docx"
+    },
+    {
+      "key": "micro_coculture_mutualism",
+      "domain": "微生物 / micro_coculture_mutualism",
+      "dim": 1,
+      "bounds": [
+        [
+          0.0,
+          48.0
+        ]
+      ],
+      "published": "Grosu et al. 2014 (co-culture mutualism)",
+      "references": [
+        "Grosu et al. 2014 (co-culture mutualism)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9995,
+      "r2_core": 0.9993,
+      "coverage": 1.0,
+      "rmse_rel": 0.0213,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_coculture_mutualism.html",
+      "json": "/reports/json/micro_coculture_mutualism.json",
+      "docx": "/reports/docx/micro_coculture_mutualism.docx"
+    },
+    {
+      "key": "micro_competition_2d",
+      "domain": "微生物 / micro_competition_2d",
+      "dim": 1,
+      "bounds": [
+        [
+          1.0,
+          20.0
+        ]
+      ],
+      "published": "Tilman 1982 (smooth competition)",
+      "references": [
+        "Tilman 1982 (smooth competition)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.999 ≥ 0.9, coverage=0.975 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9991,
+      "r2_core": 0.9998,
+      "coverage": 0.975,
+      "rmse_rel": 0.0281,
+      "cal_err": 0.025,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_competition_2d.html",
+      "json": "/reports/json/micro_competition_2d.json",
+      "docx": "/reports/docx/micro_competition_2d.docx"
+    },
+    {
+      "key": "micro_competition_ecoli_yeast",
+      "domain": "微生物 / micro_competition_ecoli_yeast",
+      "dim": 1,
+      "bounds": [
+        [
+          0.5,
+          20.0
+        ]
+      ],
+      "published": "Tilman 1982 Resource Competition (multi-species)",
+      "references": [
+        "Tilman 1982 Resource Competition (multi-species)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.996 ≥ 0.9, coverage=0.950 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9958,
+      "r2_core": 0.9991,
+      "coverage": 0.95,
+      "rmse_rel": 0.0646,
+      "cal_err": 0.0,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.3763,
+      "high_freq": true,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_competition_ecoli_yeast.html",
+      "json": "/reports/json/micro_competition_ecoli_yeast.json",
+      "docx": "/reports/docx/micro_competition_ecoli_yeast.docx"
+    },
+    {
+      "key": "micro_contois_ecoli",
+      "domain": "微生物 / micro_contois_ecoli",
+      "dim": 1,
+      "bounds": [
+        [
+          0.01,
+          20.0
+        ]
+      ],
+      "published": "Contois 1959 Biotech Bioeng 2:264 (Contois model)",
+      "references": [
+        "Contois 1959 Biotech Bioeng 2:264 (Contois model)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9998,
+      "r2_core": 0.9999,
+      "coverage": 1.0,
+      "rmse_rel": 0.0136,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_contois_ecoli.html",
+      "json": "/reports/json/micro_contois_ecoli.json",
+      "docx": "/reports/docx/micro_contois_ecoli.docx"
+    },
+    {
+      "key": "micro_crabtree_2d",
+      "domain": "微生物 / micro_crabtree_2d",
+      "dim": 2,
+      "bounds": [
+        [
+          5.0,
+          25.0
+        ],
+        [
+          20.0,
+          40.0
+        ]
+      ],
+      "published": "Crabtree 1929 (Crabtree 2D)",
+      "references": [
+        "Crabtree 1929 (Crabtree 2D)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 1.0,
+      "r2_core": 1.0,
+      "coverage": 1.0,
+      "rmse_rel": 0.0039,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_crabtree_2d.html",
+      "json": "/reports/json/micro_crabtree_2d.json",
+      "docx": "/reports/docx/micro_crabtree_2d.docx"
+    },
+    {
+      "key": "micro_crabtree_cerevisiae",
+      "domain": "微生物 / micro_crabtree_cerevisiae",
+      "dim": 1,
+      "bounds": [
+        [
+          0.0,
+          36.0
+        ]
+      ],
+      "published": "Crabtree 1929 JPB 53:394 (Crabtree effect)",
+      "references": [
+        "Crabtree 1929 JPB 53:394 (Crabtree effect)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.998 ≥ 0.9, coverage=0.925 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9978,
+      "r2_core": 0.9971,
+      "coverage": 0.925,
+      "rmse_rel": 0.047,
+      "cal_err": 0.025,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": "UNANCHORED",
+      "html": "/reports/html/micro_crabtree_cerevisiae.html",
+      "json": "/reports/json/micro_crabtree_cerevisiae.json",
+      "docx": "/reports/docx/micro_crabtree_cerevisiae.docx"
+    },
+    {
+      "key": "micro_dead_volume",
+      "domain": "微生物 / micro_dead_volume",
+      "dim": 2,
+      "bounds": [
+        [
+          1.0,
+          20.0
+        ],
+        [
+          1.0,
+          8.0
+        ]
+      ],
+      "published": "Froment & Bischoff 2012 (CSTR-in-series, dead volume)",
+      "references": [
+        "Froment & Bischoff 2012 (CSTR-in-series, dead volume)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=0.967 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9995,
+      "r2_core": 0.9999,
+      "coverage": 0.967,
+      "rmse_rel": 0.022,
+      "cal_err": 0.017,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_dead_volume.html",
+      "json": "/reports/json/micro_dead_volume.json",
+      "docx": "/reports/docx/micro_dead_volume.docx"
+    },
+    {
+      "key": "micro_diauxic_2d",
+      "domain": "微生物 / micro_diauxic_2d",
+      "dim": 2,
+      "bounds": [
+        [
+          0.5,
+          10.0
+        ],
+        [
+          0.5,
+          10.0
+        ]
+      ],
+      "published": "Monod 1947 (diauxie 2D)",
+      "references": [
+        "Monod 1947 (diauxie 2D)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.997 ≥ 0.9, coverage=0.967 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9969,
+      "r2_core": 0.9998,
+      "coverage": 0.967,
+      "rmse_rel": 0.0,
+      "cal_err": 0.017,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_diauxic_2d.html",
+      "json": "/reports/json/micro_diauxic_2d.json",
+      "docx": "/reports/docx/micro_diauxic_2d.docx"
+    },
+    {
+      "key": "micro_diauxic_ecoli",
+      "domain": "微生物 / micro_diauxic_ecoli",
+      "dim": 1,
+      "bounds": [
+        [
+          0.0,
+          24.0
+        ]
+      ],
+      "published": "Monod 1947 (diauxie)",
+      "references": [
+        "Monod 1947 (diauxie)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.997 ≥ 0.9, coverage=0.950 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9974,
+      "r2_core": 0.9905,
+      "coverage": 0.95,
+      "rmse_rel": 0.06,
+      "cal_err": 0.0,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.2472,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_diauxic_ecoli.html",
+      "json": "/reports/json/micro_diauxic_ecoli.json",
+      "docx": "/reports/docx/micro_diauxic_ecoli.docx"
+    },
+    {
+      "key": "micro_doe_ecoli_monod",
+      "domain": "微生物 / micro_doe_ecoli_monod",
+      "dim": 2,
+      "bounds": [
+        [
+          0.001,
+          10.0
+        ],
+        [
+          25.0,
+          45.0
+        ]
+      ],
+      "published": "Montgomery 2012 DOE",
+      "references": [
+        "Montgomery 2012 DOE"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.998 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9983,
+      "r2_core": 0.8856,
+      "coverage": 1.0,
+      "rmse_rel": 0.0463,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "wet_lab_anchored",
+      "validation_type_label": {
+        "zh": "湿实验锚定",
+        "en": "wet-lab anchored",
+        "desc_zh": "参数落在真实湿实验文献区间内（第二证据链在位）",
+        "desc_en": "Parameters fall inside a real wet-lab literature range"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": "AGREE",
+      "html": "/reports/html/micro_doe_ecoli_monod.html",
+      "json": "/reports/json/micro_doe_ecoli_monod.json",
+      "docx": "/reports/docx/micro_doe_ecoli_monod.docx"
+    },
+    {
+      "key": "micro_ecoli_glucose",
+      "domain": "微生物 / E. coli 批次培养（Monod, 文献参数）",
+      "dim": 1,
+      "bounds": [
+        [
+          0.001,
+          10.0
+        ]
+      ],
+      "published": "E. coli K-12: μmax=0.81 h⁻¹, Ks=0.004 g/L (Monod 1949; Shuler & Kargi 2002)",
+      "references": [
+        "E. coli K-12: μmax=0.81 h⁻¹, Ks=0.004 g/L (Monod 1949; Shuler & Kargi 2002)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.992 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9922,
+      "r2_core": 0.7009,
+      "coverage": 1.0,
+      "rmse_rel": 0.0764,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "wet_lab_anchored",
+      "validation_type_label": {
+        "zh": "湿实验锚定",
+        "en": "wet-lab anchored",
+        "desc_zh": "参数落在真实湿实验文献区间内（第二证据链在位）",
+        "desc_en": "Parameters fall inside a real wet-lab literature range"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": "AGREE",
+      "html": "/reports/html/micro_ecoli_glucose.html",
+      "json": "/reports/json/micro_ecoli_glucose.json",
+      "docx": "/reports/docx/micro_ecoli_glucose.docx"
+    },
+    {
+      "key": "micro_fba_flux",
+      "domain": "微生物 / micro_fba_flux",
+      "dim": 2,
+      "bounds": [
+        [
+          0.1,
+          1.0
+        ],
+        [
+          0.1,
+          1.0
+        ]
+      ],
+      "published": "Edwards & Palsson 2000 (FBA framework, E. coli)",
+      "references": [
+        "Edwards & Palsson 2000 (FBA framework, E. coli)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.956 ≥ 0.9, coverage=0.983 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9557,
+      "r2_core": 0.9116,
+      "coverage": 0.983,
+      "rmse_rel": 0.2106,
+      "cal_err": 0.033,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_fba_flux.html",
+      "json": "/reports/json/micro_fba_flux.json",
+      "docx": "/reports/docx/micro_fba_flux.docx"
+    },
+    {
+      "key": "micro_fedbatch_2d",
+      "domain": "微生物 / micro_fedbatch_2d",
+      "dim": 2,
+      "bounds": [
+        [
+          0.01,
+          0.2
+        ],
+        [
+          5.0,
+          100.0
+        ]
+      ],
+      "published": "Shuler & Kargi 2002 (fed-batch 2D)",
+      "references": [
+        "Shuler & Kargi 2002 (fed-batch 2D)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 1.0,
+      "r2_core": 1.0,
+      "coverage": 1.0,
+      "rmse_rel": 0.0035,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_fedbatch_2d.html",
+      "json": "/reports/json/micro_fedbatch_2d.json",
+      "docx": "/reports/docx/micro_fedbatch_2d.docx"
+    },
+    {
+      "key": "micro_fedbatch_3d",
+      "domain": "微生物 / micro_fedbatch_3d",
+      "dim": 3,
+      "bounds": [
+        [
+          12.0,
+          72.0
+        ],
+        [
+          0.01,
+          0.2
+        ],
+        [
+          5.0,
+          100.0
+        ]
+      ],
+      "published": "Shuler & Kargi 2002 (fed-batch 3D)",
+      "references": [
+        "Shuler & Kargi 2002 (fed-batch 3D)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 1.0,
+      "r2_core": 1.0,
+      "coverage": 1.0,
+      "rmse_rel": 0.0047,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_fedbatch_3d.html",
+      "json": "/reports/json/micro_fedbatch_3d.json",
+      "docx": "/reports/docx/micro_fedbatch_3d.docx"
+    },
+    {
+      "key": "micro_fedbatch_ecoli",
+      "domain": "微生物 / micro_fedbatch_ecoli",
+      "dim": 1,
+      "bounds": [
+        [
+          0.1,
+          5.0
+        ]
+      ],
+      "published": "Shuler & Kargi 2002 (fed-batch)",
+      "references": [
+        "Shuler & Kargi 2002 (fed-batch)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.999 ≥ 0.9, coverage=0.950 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9994,
+      "r2_core": 0.9993,
+      "coverage": 0.95,
+      "rmse_rel": 0.025,
+      "cal_err": 0.0,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_fedbatch_ecoli.html",
+      "json": "/reports/json/micro_fedbatch_ecoli.json",
+      "docx": "/reports/docx/micro_fedbatch_ecoli.docx"
+    },
+    {
+      "key": "micro_foam_dynamics",
+      "domain": "微生物 / micro_foam_dynamics",
+      "dim": 2,
+      "bounds": [
+        [
+          0.1,
+          2.0
+        ],
+        [
+          0.0,
+          0.5
+        ]
+      ],
+      "published": "Krebes & Scharaschkin 1996 (foam in bioreactors)",
+      "references": [
+        "Krebes & Scharaschkin 1996 (foam in bioreactors)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9998,
+      "r2_core": 0.9999,
+      "coverage": 1.0,
+      "rmse_rel": 0.0134,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": true,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_foam_dynamics.html",
+      "json": "/reports/json/micro_foam_dynamics.json",
+      "docx": "/reports/docx/micro_foam_dynamics.docx"
+    },
+    {
+      "key": "micro_gene_expression",
+      "domain": "微生物 / micro_gene_expression",
+      "dim": 2,
+      "bounds": [
+        [
+          0.5,
+          5.0
+        ],
+        [
+          0.5,
+          3.0
+        ]
+      ],
+      "published": "Bashor & Meyer 2017 (gene expression dynamics)",
+      "references": [
+        "Bashor & Meyer 2017 (gene expression dynamics)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9998,
+      "r2_core": 0.9998,
+      "coverage": 1.0,
+      "rmse_rel": 0.0138,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_gene_expression.html",
+      "json": "/reports/json/micro_gene_expression.json",
+      "docx": "/reports/docx/micro_gene_expression.docx"
+    },
+    {
+      "key": "micro_haldane_2d",
+      "domain": "微生物 / micro_haldane_2d",
+      "dim": 2,
+      "bounds": [
+        [
+          0.001,
+          5.0
+        ],
+        [
+          25.0,
+          40.0
+        ]
+      ],
+      "published": "Haldane 1956 (2D)",
+      "references": [
+        "Haldane 1956 (2D)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9999,
+      "r2_core": 0.9999,
+      "coverage": 1.0,
+      "rmse_rel": 0.0081,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_haldane_2d.html",
+      "json": "/reports/json/micro_haldane_2d.json",
+      "docx": "/reports/docx/micro_haldane_2d.docx"
+    },
+    {
+      "key": "micro_haldane_putida",
+      "domain": "微生物 / micro_haldane_putida",
+      "dim": 1,
+      "bounds": [
+        [
+          0.001,
+          5.0
+        ]
+      ],
+      "published": "Haldane 1956 Biochemistry of Industrial Fermentation (Haldane model)",
+      "references": [
+        "Haldane 1956 Biochemistry of Industrial Fermentation (Haldane model)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9999,
+      "r2_core": 0.9999,
+      "coverage": 1.0,
+      "rmse_rel": 0.009,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": true,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_haldane_putida.html",
+      "json": "/reports/json/micro_haldane_putida.json",
+      "docx": "/reports/docx/micro_haldane_putida.docx"
+    },
+    {
+      "key": "micro_heavy_metal_ecoli",
+      "domain": "微生物 / micro_heavy_metal_ecoli",
+      "dim": 1,
+      "bounds": [
+        [
+          0.0,
+          10.0
+        ]
+      ],
+      "published": "Kumar et al. 2012 (heavy metal stress)",
+      "references": [
+        "Kumar et al. 2012 (heavy metal stress)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 1.0,
+      "r2_core": 1.0,
+      "coverage": 1.0,
+      "rmse_rel": 0.0078,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_heavy_metal_ecoli.html",
+      "json": "/reports/json/micro_heavy_metal_ecoli.json",
+      "docx": "/reports/docx/micro_heavy_metal_ecoli.docx"
+    },
+    {
+      "key": "micro_immobilized_cell",
+      "domain": "微生物 / micro_immobilized_cell",
+      "dim": 2,
+      "bounds": [
+        [
+          0.01,
+          0.5
+        ],
+        [
+          0.001,
+          0.01
+        ]
+      ],
+      "published": "Shuler & Kargi 2002 (immobilized cells)",
+      "references": [
+        "Shuler & Kargi 2002 (immobilized cells)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.998 ≥ 0.9, coverage=0.917 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9982,
+      "r2_core": 0.9985,
+      "coverage": 0.917,
+      "rmse_rel": 0.0418,
+      "cal_err": 0.033,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0461,
+      "high_freq": true,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_immobilized_cell.html",
+      "json": "/reports/json/micro_immobilized_cell.json",
+      "docx": "/reports/docx/micro_immobilized_cell.docx"
+    },
+    {
+      "key": "micro_lactococcus_lactose",
+      "domain": "微生物 / 乳酸乳球菌乳酸发酵（pH 效应 + 底物抑制）",
+      "dim": 2,
+      "bounds": [
+        [
+          0.01,
+          10.0
+        ],
+        [
+          4.5,
+          8.5
+        ]
+      ],
+      "published": "L. lactis NZ9000: μmax=0.55 h⁻¹, Ks=0.3 g/L, Ki(lactose)=80 g/L (Luedtke & Schlegel 1973)",
+      "references": [
+        "L. lactis NZ9000: μmax=0.55 h⁻¹, Ks=0.3 g/L, Ki(lactose)=80 g/L (Luedtke & Schlegel 1973)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9998,
+      "r2_core": 0.9999,
+      "coverage": 1.0,
+      "rmse_rel": 0.0,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_lactococcus_lactose.html",
+      "json": "/reports/json/micro_lactococcus_lactose.json",
+      "docx": "/reports/docx/micro_lactococcus_lactose.docx"
+    },
+    {
+      "key": "micro_lag_ecoli",
+      "domain": "微生物 / micro_lag_ecoli",
+      "dim": 1,
+      "bounds": [
+        [
+          0.0,
+          20.0
+        ]
+      ],
+      "published": "Baranyi & Roberts 1994 IJF 10:300 (lag phase)",
+      "references": [
+        "Baranyi & Roberts 1994 IJF 10:300 (lag phase)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9999,
+      "r2_core": 0.9999,
+      "coverage": 1.0,
+      "rmse_rel": 0.0085,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_lag_ecoli.html",
+      "json": "/reports/json/micro_lag_ecoli.json",
+      "docx": "/reports/docx/micro_lag_ecoli.docx"
+    },
+    {
+      "key": "micro_lifecycle_ecoli",
+      "domain": "微生物 / micro_lifecycle_ecoli",
+      "dim": 1,
+      "bounds": [
+        [
+          0.0,
+          48.0
+        ]
+      ],
+      "published": "Baranyi 1993 (full lifecycle)",
+      "references": [
+        "Baranyi 1993 (full lifecycle)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 1.0,
+      "r2_core": 1.0,
+      "coverage": 1.0,
+      "rmse_rel": 0.005,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_lifecycle_ecoli.html",
+      "json": "/reports/json/micro_lifecycle_ecoli.json",
+      "docx": "/reports/docx/micro_lifecycle_ecoli.docx"
+    },
+    {
+      "key": "micro_methanobacterium_methane",
+      "domain": "微生物 / 产甲烷古菌甲烷利用（低 μmax 极端场景）",
+      "dim": 1,
+      "bounds": [
+        [
+          0.001,
+          0.1
+        ]
+      ],
+      "published": "M. trichosporium OB3b: μmax=0.08 h⁻¹, Ks=0.02 g/L (Whitmanet al. 1995)",
+      "references": [
+        "M. trichosporium OB3b: μmax=0.08 h⁻¹, Ks=0.02 g/L (Whitmanet al. 1995)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9998,
+      "r2_core": 0.9999,
+      "coverage": 1.0,
+      "rmse_rel": 0.0136,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": true,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_methanobacterium_methane.html",
+      "json": "/reports/json/micro_methanobacterium_methane.json",
+      "docx": "/reports/docx/micro_methanobacterium_methane.docx"
+    },
+    {
+      "key": "micro_mixed_substrate",
+      "domain": "微生物 / micro_mixed_substrate",
+      "dim": 2,
+      "bounds": [
+        [
+          0.001,
+          5.0
+        ],
+        [
+          0.001,
+          10.0
+        ]
+      ],
+      "published": "Roels 1983 (mixed substrate utilization)",
+      "references": [
+        "Roels 1983 (mixed substrate utilization)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.997 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9974,
+      "r2_core": 0.9932,
+      "coverage": 1.0,
+      "rmse_rel": 0.0512,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_mixed_substrate.html",
+      "json": "/reports/json/micro_mixed_substrate.json",
+      "docx": "/reports/docx/micro_mixed_substrate.docx"
+    },
+    {
+      "key": "micro_mle_ecoli_monod",
+      "domain": "微生物 / micro_mle_ecoli_monod",
+      "dim": 1,
+      "bounds": [
+        [
+          0.001,
+          5.0
+        ]
+      ],
+      "published": "Vogel 2004 (Bayesian estimation)",
+      "references": [
+        "Vogel 2004 (Bayesian estimation)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.999 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9989,
+      "r2_core": 0.9209,
+      "coverage": 1.0,
+      "rmse_rel": 0.0303,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "wet_lab_anchored",
+      "validation_type_label": {
+        "zh": "湿实验锚定",
+        "en": "wet-lab anchored",
+        "desc_zh": "参数落在真实湿实验文献区间内（第二证据链在位）",
+        "desc_en": "Parameters fall inside a real wet-lab literature range"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": "AGREE",
+      "html": "/reports/html/micro_mle_ecoli_monod.html",
+      "json": "/reports/json/micro_mle_ecoli_monod.json",
+      "docx": "/reports/docx/micro_mle_ecoli_monod.docx"
+    },
+    {
+      "key": "micro_osmotic_ecoli",
+      "domain": "微生物 / micro_osmotic_ecoli",
+      "dim": 1,
+      "bounds": [
+        [
+          0.9,
+          1.0
+        ]
+      ],
+      "published": "Rose 2008 Bacterial Osmotic Stress",
+      "references": [
+        "Rose 2008 Bacterial Osmotic Stress"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9996,
+      "r2_core": 0.9995,
+      "coverage": 1.0,
+      "rmse_rel": 0.0192,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": true,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_osmotic_ecoli.html",
+      "json": "/reports/json/micro_osmotic_ecoli.json",
+      "docx": "/reports/docx/micro_osmotic_ecoli.docx"
+    },
+    {
+      "key": "micro_oxidative_stress",
+      "domain": "微生物 / micro_oxidative_stress",
+      "dim": 1,
+      "bounds": [
+        [
+          0.0,
+          3.0
+        ]
+      ],
+      "published": "Imlay 2008 (oxidative stress)",
+      "references": [
+        "Imlay 2008 (oxidative stress)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 1.0,
+      "r2_core": 1.0,
+      "coverage": 1.0,
+      "rmse_rel": 0.0064,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_oxidative_stress.html",
+      "json": "/reports/json/micro_oxidative_stress.json",
+      "docx": "/reports/docx/micro_oxidative_stress.docx"
+    },
+    {
+      "key": "micro_oxygen_2d",
+      "domain": "微生物 / micro_oxygen_2d",
+      "dim": 2,
+      "bounds": [
+        [
+          0.001,
+          10.0
+        ],
+        [
+          0.01,
+          8.0
+        ]
+      ],
+      "published": "Shuler & Kargi 2002 (O2 2D)",
+      "references": [
+        "Shuler & Kargi 2002 (O2 2D)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9997,
+      "r2_core": 0.9989,
+      "coverage": 1.0,
+      "rmse_rel": 0.0178,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_oxygen_2d.html",
+      "json": "/reports/json/micro_oxygen_2d.json",
+      "docx": "/reports/docx/micro_oxygen_2d.docx"
+    },
+    {
+      "key": "micro_oxygen_ecoli",
+      "domain": "微生物 / micro_oxygen_ecoli",
+      "dim": 1,
+      "bounds": [
+        [
+          0.01,
+          8.0
+        ]
+      ],
+      "published": "Shuler & Kargi 2002 (oxygen limitation)",
+      "references": [
+        "Shuler & Kargi 2002 (oxygen limitation)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.995 ≥ 0.9, coverage=0.975 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9949,
+      "r2_core": 0.9998,
+      "coverage": 0.975,
+      "rmse_rel": 0.0713,
+      "cal_err": 0.025,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": true,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_oxygen_ecoli.html",
+      "json": "/reports/json/micro_oxygen_ecoli.json",
+      "docx": "/reports/docx/micro_oxygen_ecoli.docx"
+    },
+    {
+      "key": "micro_ph_control",
+      "domain": "微生物 / micro_ph_control",
+      "dim": 2,
+      "bounds": [
+        [
+          25.0,
+          45.0
+        ],
+        [
+          4.5,
+          8.5
+        ]
+      ],
+      "published": "Shuler & Kargi 2002 (pH control)",
+      "references": [
+        "Shuler & Kargi 2002 (pH control)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9999,
+      "r2_core": 0.9999,
+      "coverage": 1.0,
+      "rmse_rel": 0.0105,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_ph_control.html",
+      "json": "/reports/json/micro_ph_control.json",
+      "docx": "/reports/docx/micro_ph_control.docx"
+    },
+    {
+      "key": "micro_phage_infection",
+      "domain": "微生物 / micro_phage_infection",
+      "dim": 2,
+      "bounds": [
+        [
+          0.0,
+          100.0
+        ],
+        [
+          0.5,
+          6.0
+        ]
+      ],
+      "published": "Luria & Delbrück 1943 (phage infection)",
+      "references": [
+        "Luria & Delbrück 1943 (phage infection)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 1.0,
+      "r2_core": 1.0,
+      "coverage": 1.0,
+      "rmse_rel": 0.0036,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_phage_infection.html",
+      "json": "/reports/json/micro_phage_infection.json",
+      "docx": "/reports/docx/micro_phage_infection.docx"
+    },
+    {
+      "key": "micro_pirt_ecoli",
+      "domain": "微生物 / micro_pirt_ecoli",
+      "dim": 1,
+      "bounds": [
+        [
+          0.001,
+          10.0
+        ]
+      ],
+      "published": "Pirt 1965 Newer Studies in Microbiology (Pirt maintenance)",
+      "references": [
+        "Pirt 1965 Newer Studies in Microbiology (Pirt maintenance)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9999,
+      "r2_core": 0.9255,
+      "coverage": 1.0,
+      "rmse_rel": 0.0118,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "wet_lab_anchored",
+      "validation_type_label": {
+        "zh": "湿实验锚定",
+        "en": "wet-lab anchored",
+        "desc_zh": "参数落在真实湿实验文献区间内（第二证据链在位）",
+        "desc_en": "Parameters fall inside a real wet-lab literature range"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": "NEAR",
+      "html": "/reports/html/micro_pirt_ecoli.html",
+      "json": "/reports/json/micro_pirt_ecoli.json",
+      "docx": "/reports/docx/micro_pirt_ecoli.docx"
+    },
+    {
+      "key": "micro_plasmid_stability",
+      "domain": "微生物 / micro_plasmid_stability",
+      "dim": 2,
+      "bounds": [
+        [
+          5.0,
+          40.0
+        ],
+        [
+          0.0,
+          0.05
+        ]
+      ],
+      "published": "Stewart 1978 (plasmid stability)",
+      "references": [
+        "Stewart 1978 (plasmid stability)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 1.0,
+      "r2_core": 1.0,
+      "coverage": 1.0,
+      "rmse_rel": 0.0035,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_plasmid_stability.html",
+      "json": "/reports/json/micro_plasmid_stability.json",
+      "docx": "/reports/docx/micro_plasmid_stability.docx"
+    },
+    {
+      "key": "micro_putida_toluene",
+      "domain": "微生物 / 假单胞菌甲苯降解（Andrews 底物抑制）",
+      "dim": 1,
+      "bounds": [
+        [
+          0.001,
+          5.0
+        ]
+      ],
+      "published": "P. putida MT-2: μmax=0.35 h⁻¹, Ks=0.02 g/L, Ki(toluene)=2.5 g/L (Rothman et al. 1993)",
+      "references": [
+        "P. putida MT-2: μmax=0.35 h⁻¹, Ks=0.02 g/L, Ki(toluene)=2.5 g/L (Rothman et al. 1993)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9999,
+      "r2_core": 0.9999,
+      "coverage": 1.0,
+      "rmse_rel": 0.0098,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_putida_toluene.html",
+      "json": "/reports/json/micro_putida_toluene.json",
+      "docx": "/reports/docx/micro_putida_toluene.docx"
+    },
+    {
+      "key": "micro_quorum_ecoli",
+      "domain": "微生物 / micro_quorum_ecoli",
+      "dim": 1,
+      "bounds": [
+        [
+          0.0,
+          48.0
+        ]
+      ],
+      "published": "Basler & Bassler 2011 (quorum sensing)",
+      "references": [
+        "Basler & Bassler 2011 (quorum sensing)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9998,
+      "r2_core": 0.9997,
+      "coverage": 1.0,
+      "rmse_rel": 0.0141,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_quorum_ecoli.html",
+      "json": "/reports/json/micro_quorum_ecoli.json",
+      "docx": "/reports/docx/micro_quorum_ecoli.docx"
+    },
+    {
+      "key": "micro_scaleup_kla",
+      "domain": "微生物 / micro_scaleup_kla",
+      "dim": 1,
+      "bounds": [
+        [
+          0.1,
+          1000.0
+        ]
+      ],
+      "published": "Shuler & Kargi 2002 (scale-up)",
+      "references": [
+        "Shuler & Kargi 2002 (scale-up)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.999 ≥ 0.9, coverage=0.975 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9989,
+      "r2_core": 0.9992,
+      "coverage": 0.975,
+      "rmse_rel": 0.0297,
+      "cal_err": 0.025,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.2812,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_scaleup_kla.html",
+      "json": "/reports/json/micro_scaleup_kla.json",
+      "docx": "/reports/docx/micro_scaleup_kla.docx"
+    },
+    {
+      "key": "micro_secondary_metabolite",
+      "domain": "微生物 / micro_secondary_metabolite",
+      "dim": 1,
+      "bounds": [
+        [
+          10.0,
+          36.0
+        ]
+      ],
+      "published": "Luedeking & Piret 1959 (secondary metabolite, Gaden III)",
+      "references": [
+        "Luedeking & Piret 1959 (secondary metabolite, Gaden III)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9998,
+      "r2_core": 0.9999,
+      "coverage": 1.0,
+      "rmse_rel": 0.0145,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_secondary_metabolite.html",
+      "json": "/reports/json/micro_secondary_metabolite.json",
+      "docx": "/reports/docx/micro_secondary_metabolite.docx"
+    },
+    {
+      "key": "micro_sensor_fusion",
+      "domain": "微生物 / micro_sensor_fusion",
+      "dim": 2,
+      "bounds": [
+        [
+          1.0,
+          10.0
+        ],
+        [
+          0.1,
+          5.0
+        ]
+      ],
+      "published": "Gelb 1974 (Kalman filter / Bayesian fusion)",
+      "references": [
+        "Gelb 1974 (Kalman filter / Bayesian fusion)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 1.0,
+      "r2_core": 1.0,
+      "coverage": 1.0,
+      "rmse_rel": 0.0068,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_sensor_fusion.html",
+      "json": "/reports/json/micro_sensor_fusion.json",
+      "docx": "/reports/docx/micro_sensor_fusion.docx"
+    },
+    {
+      "key": "micro_sobol_ecoli",
+      "domain": "微生物 / micro_sobol_ecoli",
+      "dim": 1,
+      "bounds": [
+        [
+          0.001,
+          5.0
+        ]
+      ],
+      "published": "Sobol 2001 (global sensitivity)",
+      "references": [
+        "Sobol 2001 (global sensitivity)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.994 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9944,
+      "r2_core": 0.9578,
+      "coverage": 1.0,
+      "rmse_rel": 0.0716,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "wet_lab_anchored",
+      "validation_type_label": {
+        "zh": "湿实验锚定",
+        "en": "wet-lab anchored",
+        "desc_zh": "参数落在真实湿实验文献区间内（第二证据链在位）",
+        "desc_en": "Parameters fall inside a real wet-lab literature range"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": "NEAR",
+      "html": "/reports/html/micro_sobol_ecoli.html",
+      "json": "/reports/json/micro_sobol_ecoli.json",
+      "docx": "/reports/docx/micro_sobol_ecoli.docx"
+    },
+    {
+      "key": "micro_tessier_ecoli",
+      "domain": "微生物 / micro_tessier_ecoli",
+      "dim": 1,
+      "bounds": [
+        [
+          0.0005,
+          0.5
+        ]
+      ],
+      "published": "Tessier 1956 Arch Mikrobiol 25:102 (Tessier model)",
+      "references": [
+        "Tessier 1956 Arch Mikrobiol 25:102 (Tessier model)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9999,
+      "r2_core": 0.9999,
+      "coverage": 1.0,
+      "rmse_rel": 0.0078,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": true,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/micro_tessier_ecoli.html",
+      "json": "/reports/json/micro_tessier_ecoli.json",
+      "docx": "/reports/docx/micro_tessier_ecoli.docx"
+    },
+    {
+      "key": "micro_thermal_death",
+      "domain": "微生物 / micro_thermal_death",
+      "dim": 1,
+      "bounds": [
+        [
+          60.0,
+          100.0
+        ]
+      ],
+      "published": "Earley 1976 (F-value sterilization)",
+      "references": [
+        "Earley 1976 (F-value sterilization)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 1.0,
+      "r2_core": 1.0,
+      "coverage": 1.0,
+      "rmse_rel": 0.0058,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": "CONTRADICTED",
+      "html": "/reports/html/micro_thermal_death.html",
+      "json": "/reports/json/micro_thermal_death.json",
+      "docx": "/reports/docx/micro_thermal_death.docx"
+    },
+    {
+      "key": "micro_uq_ecoli_monod",
+      "domain": "微生物 / micro_uq_ecoli_monod",
+      "dim": 1,
+      "bounds": [
+        [
+          0.001,
+          5.0
+        ]
+      ],
+      "published": "Svensson 1999 (UQ in bioprocess)",
+      "references": [
+        "Svensson 1999 (UQ in bioprocess)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.997 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9966,
+      "r2_core": 0.9133,
+      "coverage": 1.0,
+      "rmse_rel": 0.0581,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "wet_lab_anchored",
+      "validation_type_label": {
+        "zh": "湿实验锚定",
+        "en": "wet-lab anchored",
+        "desc_zh": "参数落在真实湿实验文献区间内（第二证据链在位）",
+        "desc_en": "Parameters fall inside a real wet-lab literature range"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": "NEAR",
+      "html": "/reports/html/micro_uq_ecoli_monod.html",
+      "json": "/reports/json/micro_uq_ecoli_monod.json",
+      "docx": "/reports/docx/micro_uq_ecoli_monod.docx"
+    },
+    {
+      "key": "microbio_inhibition",
+      "domain": "Microorganisms/Substrate Inhibition (Andrews)",
+      "dim": 1,
+      "bounds": [
+        [
+          0.05,
+          3.0
+        ]
+      ],
+      "published": "Andrews 1968 Substrate Inhibition μ=μmax·S/(Ks+S+S²/Ki), Ki≈1.0 g/L (literature representative values)",
+      "references": [
+        "Andrews J.F. (1968). A mathematical model for the continuous culture of microorganisms utilizing inhibitory substrates. Biotechnol. Bioeng. 10(6):707-723.",
+        "Shuler M.L., Kargi F. (2002). Bioprocess Engineering Principles (2nd ed.). Prentice Hall. (Ki≈1.0 g/L Ethanol Inhibition Representative Value)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=0.975 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9997,
+      "r2_core": 0.9994,
+      "coverage": 0.975,
+      "rmse_rel": 0.0189,
+      "cal_err": 0.025,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": true,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/microbio_inhibition.html",
+      "json": "/reports/json/microbio_inhibition.json",
+      "docx": "/reports/docx/microbio_inhibition.docx"
+    },
+    {
+      "key": "microbio_monod",
+      "domain": "Microorganisms/Growth Kinetics (Monod)",
+      "dim": 1,
+      "bounds": [
+        [
+          0.02,
+          2.0
+        ]
+      ],
+      "published": "Monod 1949: μ(S)=μmax·S/(Ks+S), E.coli μmax=0.81 h⁻¹, Ks=0.22 g/L (literature representative values)",
+      "references": [
+        "Monod J. (1949). The growth of bacterial cultures. Annu. Rev. Microbiol. 3:371-394.",
+        "Shuler M.L., Kargi F. (2002). Bioprocess Engineering Principles (2nd ed.). Prentice Hall. (E. coli μmax≈0.81 h⁻¹, Ks≈0.22 g/L representative values)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9997,
+      "r2_core": 0.9998,
+      "coverage": 1.0,
+      "rmse_rel": 0.0172,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": true,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "微生物生长动力学参数校准、发酵工艺参数扫描的定性排序",
+        "en": "Microbial growth kinetics parameter calibration; fermentation parameter ranking (qualitative)"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接指导真实发酵生产（菌株/菌龄/培养基批次差异远大于模型精度）",
+          "不能替代湿实验确定灭菌/接种参数",
+          "不能用于受监管的制剂或药物工艺决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for direct real-fermentation production guidance (strain/age/media batch variability >> model precision)",
+          "Not a substitute for wet-lab sterilization / inoculation protocols",
+          "Not for regulated pharmaceutical process decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": "CONTRADICTED",
+      "html": "/reports/html/microbio_monod.html",
+      "json": "/reports/json/microbio_monod.json",
+      "docx": "/reports/docx/microbio_monod.docx"
+    },
+    {
+      "key": "mol_esterification_yield",
+      "domain": "chemistry",
+      "dim": 10,
+      "bounds": [
+        [
+          -2.5,
+          2.5
+        ],
+        [
+          -2.5,
+          2.5
+        ],
+        [
+          -2.5,
+          2.5
+        ],
+        [
+          -2.5,
+          2.5
+        ],
+        [
+          -2.5,
+          2.5
+        ],
+        [
+          -2.5,
+          2.5
+        ],
+        [
+          -2.5,
+          2.5
+        ],
+        [
+          -2.5,
+          2.5
+        ],
+        [
+          -2.5,
+          2.5
+        ],
+        [
+          -2.5,
+          2.5
+        ]
+      ],
+      "published": "12 substrate pairs with known yields (Gaussian response surface gold)",
+      "references": [
+        "Pd-catalyzed cross-coupling yield benchmarks",
+        "Fischer esterification yield data"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.965 ≥ 0.9, coverage=0.983 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9647,
+      "r2_core": 0.9918,
+      "coverage": 0.983,
+      "rmse_rel": 0.2024,
+      "cal_err": 0.033,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 60,
+      "n_test": 60,
+      "calibration_scale": 3.3249,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "synthetic_surrogate",
+      "validation_type_label": {
+        "zh": "合成代理基准",
+        "en": "synthetic surrogate",
+        "desc_zh": "无真实生物/化学含义，仅用于优化算法压测",
+        "desc_en": "No real biological/chemical meaning; for optimization benchmarks only"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/mol_esterification_yield.html",
+      "json": "/reports/json/mol_esterification_yield.json",
+      "docx": "/reports/docx/mol_esterification_yield.docx"
+    },
+    {
+      "key": "mol_suzuki_yield",
+      "domain": "chemistry",
+      "dim": 10,
+      "bounds": [
+        [
+          -2.5,
+          2.5
+        ],
+        [
+          -2.5,
+          2.5
+        ],
+        [
+          -2.5,
+          2.5
+        ],
+        [
+          -2.5,
+          2.5
+        ],
+        [
+          -2.5,
+          2.5
+        ],
+        [
+          -2.5,
+          2.5
+        ],
+        [
+          -2.5,
+          2.5
+        ],
+        [
+          -2.5,
+          2.5
+        ],
+        [
+          -2.5,
+          2.5
+        ],
+        [
+          -2.5,
+          2.5
+        ]
+      ],
+      "published": "12 substrate pairs with known yields (Gaussian response surface gold)",
+      "references": [
+        "Pd-catalyzed cross-coupling yield benchmarks",
+        "Fischer esterification yield data"
+      ],
+      "verdict": "REFUTED",
+      "rationale": "R²=0.330 < 0.7（拟合不足）",
+      "r2": 0.3299,
+      "r2_core": 0.9611,
+      "coverage": 0.95,
+      "rmse_rel": 0.8192,
+      "cal_err": 0.0,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 60,
+      "n_test": 60,
+      "calibration_scale": 1.174,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "synthetic_surrogate",
+      "validation_type_label": {
+        "zh": "合成代理基准",
+        "en": "synthetic surrogate",
+        "desc_zh": "无真实生物/化学含义，仅用于优化算法压测",
+        "desc_en": "No real biological/chemical meaning; for optimization benchmarks only"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/mol_suzuki_yield.html",
+      "json": "/reports/json/mol_suzuki_yield.json",
+      "docx": "/reports/docx/mol_suzuki_yield.docx"
+    },
+    {
+      "key": "neuro_hh_spike_amplitude",
+      "domain": "neuroscience",
+      "dim": 7,
+      "bounds": [
+        [
+          0.5,
+          2.0
+        ],
+        [
+          100.0,
+          200.0
+        ],
+        [
+          20.0,
+          60.0
+        ],
+        [
+          0.1,
+          1.0
+        ],
+        [
+          40.0,
+          60.0
+        ],
+        [
+          -90.0,
+          -70.0
+        ],
+        [
+          -70.0,
+          -40.0
+        ]
+      ],
+      "published": "Hodgkin-Huxley 四变量神经元模型，数值积分求解",
+      "references": [
+        "Hodgkin A.L., Huxley A.F. (1952). A quantitative description of membrane current and its application to conduction and excitation in nerve. J. Physiol., 117(4): 500-544."
+      ],
+      "verdict": "MARGINAL",
+      "rationale": "R²=0.975 ≥ 0.7 且 coverage=0.833 ≥ 0.8，但有一项未达 PASS 门槛",
+      "r2": 0.9754,
+      "r2_core": 0.9246,
+      "coverage": 0.833,
+      "rmse_rel": 0.1569,
+      "cal_err": 0.117,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 60,
+      "n_test": 30,
+      "calibration_scale": 2.1403,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/neuro_hh_spike_amplitude.html",
+      "json": "/reports/json/neuro_hh_spike_amplitude.json",
+      "docx": "/reports/docx/neuro_hh_spike_amplitude.docx"
+    },
+    {
+      "key": "neuro_izhikevich_rate",
+      "domain": "neuroscience / Izhikevich 神经元放电频率",
+      "dim": 5,
+      "bounds": [
+        [
+          0.02,
+          0.2
+        ],
+        [
+          0.2,
+          0.3
+        ],
+        [
+          45.0,
+          70.0
+        ],
+        [
+          4.0,
+          8.0
+        ],
+        [
+          0.0,
+          25.0
+        ]
+      ],
+      "published": "Izhikevich (2003) 4 参数二维神经元模型，Euler 积分 1000ms 统计放电数",
+      "references": [
+        "Izhikevich E.M. (2003). Which model to use for cortical spiking neurons? IEEE Trans. Neural Networks 14, 1449-1458."
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.978 ≥ 0.9, coverage=0.933 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.978,
+      "r2_core": 0.9627,
+      "coverage": 0.933,
+      "rmse_rel": 0.1485,
+      "cal_err": 0.017,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 60,
+      "n_test": 60,
+      "calibration_scale": 4.0217,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/neuro_izhikevich_rate.html",
+      "json": "/reports/json/neuro_izhikevich_rate.json",
+      "docx": "/reports/docx/neuro_izhikevich_rate.docx"
+    },
+    {
+      "key": "neuro_lif_fi",
+      "domain": "neuroscience / LIF 神经元 f-I 曲线",
+      "dim": 7,
+      "bounds": [
+        [
+          0.0,
+          10.0
+        ],
+        [
+          5.0,
+          30.0
+        ],
+        [
+          -75.0,
+          -65.0
+        ],
+        [
+          -60.0,
+          -45.0
+        ],
+        [
+          -70.0,
+          -58.0
+        ],
+        [
+          1.0,
+          5.0
+        ],
+        [
+          0.5,
+          5.0
+        ]
+      ],
+      "published": "LIF 稳态放电频率解析解 f=1/[T_ref+τ·ln((V_th−V_rest)/(V_th−V_reset−R·I))]",
+      "references": [
+        "Abbott L.F. van Vreeswijk C. (2000). Activity-dependent changes in intrinsic excitability of cultured neurons. Science 287, 227-230.",
+        "Gerstner W. Kistler R.N. (2002). Spiking Neuron Models. Cambridge University Press, Ch.4."
+      ],
+      "verdict": "MARGINAL",
+      "rationale": "R²=0.794 ≥ 0.7 且 coverage=0.950 ≥ 0.8，但有一项未达 PASS 门槛",
+      "r2": 0.7935,
+      "r2_core": 0.9902,
+      "coverage": 0.95,
+      "rmse_rel": 0.4556,
+      "cal_err": 0.0,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 60,
+      "n_test": 60,
+      "calibration_scale": 1.0452,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/neuro_lif_fi.html",
+      "json": "/reports/json/neuro_lif_fi.json",
+      "docx": "/reports/docx/neuro_lif_fi.docx"
+    },
+    {
+      "key": "ode_lotka_volterra",
+      "domain": "biology",
+      "dim": 2,
+      "bounds": [
+        [
+          0.1,
+          2.0
+        ],
+        [
+          0.1,
+          3.0
+        ]
+      ],
+      "published": "Lotka-Volterra 参数-响应代理（非拟态基准，供 GP 代理练习）",
+      "references": [
+        "Lotka 1925, Volterra 1926"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9995,
+      "r2_core": 0.9997,
+      "coverage": 1.0,
+      "rmse_rel": 0.0216,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/ode_lotka_volterra.html",
+      "json": "/reports/json/ode_lotka_volterra.json",
+      "docx": "/reports/docx/ode_lotka_volterra.docx"
+    },
+    {
+      "key": "opt_ackley2d",
+      "domain": "optimization",
+      "dim": 2,
+      "bounds": [
+        [
+          -32.768,
+          32.768
+        ],
+        [
+          -32.768,
+          32.768
+        ]
+      ],
+      "published": "global min = 0 at x=(0,0)",
+      "references": [
+        "Ackley 1987, A Connectionist Machine for Genetic Hillclimbing"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.978 ≥ 0.9, coverage=0.967 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9781,
+      "r2_core": 0.9582,
+      "coverage": 0.967,
+      "rmse_rel": 0.1479,
+      "cal_err": 0.017,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 4.2429,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/opt_ackley2d.html",
+      "json": "/reports/json/opt_ackley2d.json",
+      "docx": "/reports/docx/opt_ackley2d.docx"
+    },
+    {
+      "key": "opt_gramacylee1d",
+      "domain": "optimization",
+      "dim": 1,
+      "bounds": [
+        [
+          0.5,
+          8.0
+        ]
+      ],
+      "published": "Gramacy & Lee 2012 test function (1D multimodal)",
+      "references": [
+        "Gramacy & Lee 2012, J. Stat. Software"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.997 ≥ 0.9, coverage=0.950 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9973,
+      "r2_core": 0.9959,
+      "coverage": 0.95,
+      "rmse_rel": 0.0519,
+      "cal_err": 0.0,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.2944,
+      "high_freq": true,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/opt_gramacylee1d.html",
+      "json": "/reports/json/opt_gramacylee1d.json",
+      "docx": "/reports/docx/opt_gramacylee1d.docx"
+    },
+    {
+      "key": "opt_hartmann3d",
+      "domain": "optimization",
+      "dim": 3,
+      "bounds": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "published": "global min ≈ -3.86278",
+      "references": [
+        "Hartmann 1972, J. Global Optim."
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9998,
+      "r2_core": 0.9997,
+      "coverage": 1.0,
+      "rmse_rel": 0.0134,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 80,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": true,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/opt_hartmann3d.html",
+      "json": "/reports/json/opt_hartmann3d.json",
+      "docx": "/reports/docx/opt_hartmann3d.docx"
+    },
+    {
+      "key": "opt_levy2d",
+      "domain": "optimization",
+      "dim": 2,
+      "bounds": [
+        [
+          -10.0,
+          10.0
+        ],
+        [
+          -10.0,
+          10.0
+        ]
+      ],
+      "published": "global min = 0 at x=(1,1)",
+      "references": [
+        "Levy & Montalvo 1981, SIAM J. Sci. Stat. Comput."
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.999 ≥ 0.9, coverage=0.967 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9985,
+      "r2_core": 0.999,
+      "coverage": 0.967,
+      "rmse_rel": 0.0382,
+      "cal_err": 0.017,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/opt_levy2d.html",
+      "json": "/reports/json/opt_levy2d.json",
+      "docx": "/reports/docx/opt_levy2d.docx"
+    },
+    {
+      "key": "opt_michalewicz2d",
+      "domain": "optimization",
+      "dim": 2,
+      "bounds": [
+        [
+          0.0,
+          3.141592653589793
+        ],
+        [
+          0.0,
+          3.141592653589793
+        ]
+      ],
+      "published": "approx min = -1.8013 at m=10",
+      "references": [
+        "Michalewicz 1996, Genetic Algorithms + Data Structures = Evolution Programs"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.991 ≥ 0.9, coverage=0.933 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9907,
+      "r2_core": 0.9773,
+      "coverage": 0.933,
+      "rmse_rel": 0.0963,
+      "cal_err": 0.017,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.7669,
+      "high_freq": true,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/opt_michalewicz2d.html",
+      "json": "/reports/json/opt_michalewicz2d.json",
+      "docx": "/reports/docx/opt_michalewicz2d.docx"
+    },
+    {
+      "key": "opt_rastrigin2d",
+      "domain": "optimization",
+      "dim": 2,
+      "bounds": [
+        [
+          -5.12,
+          5.12
+        ],
+        [
+          -5.12,
+          5.12
+        ]
+      ],
+      "published": "global min = 0 at x=(0,0)",
+      "references": [
+        "Rastrigin 1974, Systems of extremal control"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.956 ≥ 0.9, coverage=0.917 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9563,
+      "r2_core": 0.9072,
+      "coverage": 0.917,
+      "rmse_rel": 0.2091,
+      "cal_err": 0.033,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 2.921,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/opt_rastrigin2d.html",
+      "json": "/reports/json/opt_rastrigin2d.json",
+      "docx": "/reports/docx/opt_rastrigin2d.docx"
+    },
+    {
+      "key": "opt_rosenbrock2d",
+      "domain": "optimization",
+      "dim": 2,
+      "bounds": [
+        [
+          -2.0,
+          2.0
+        ],
+        [
+          -1.0,
+          3.0
+        ]
+      ],
+      "published": "global min = 0 at x=(1,1)",
+      "references": [
+        "Rosenbrock 1960, Annals of Mathematical Statistics"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=0.967 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9997,
+      "r2_core": 0.9997,
+      "coverage": 0.967,
+      "rmse_rel": 0.0183,
+      "cal_err": 0.017,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": true,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/opt_rosenbrock2d.html",
+      "json": "/reports/json/opt_rosenbrock2d.json",
+      "docx": "/reports/docx/opt_rosenbrock2d.docx"
+    },
+    {
+      "key": "opt_schwefel2d",
+      "domain": "optimization",
+      "dim": 2,
+      "bounds": [
+        [
+          -500.0,
+          500.0
+        ],
+        [
+          -500.0,
+          500.0
+        ]
+      ],
+      "published": "global min = 0 at x=(420.9687, 420.9687)",
+      "references": [
+        "Schwefel 1981, Evolution and Optimum Seeking"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=0.999 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9993,
+      "r2_core": 0.9981,
+      "coverage": 1.0,
+      "rmse_rel": 0.0256,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": true,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/opt_schwefel2d.html",
+      "json": "/reports/json/opt_schwefel2d.json",
+      "docx": "/reports/docx/opt_schwefel2d.docx"
+    },
+    {
+      "key": "pde_heat1d",
+      "domain": "heat conduction (physics-informed) / 1D 热传导方程解析解",
+      "dim": 1,
+      "bounds": [
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "published": "1D Heat Equation Analytical Solution u=sin(πx)e^{-π²t}",
+      "references": [
+        "Raissi M., Perdikaris P., Karniadakis G.E. (2019). Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations. J. Comput. Phys. 378:686-707.",
+        "Carslaw H.S., Jaeger J.C. (1959). Conduction of Heat in Solids (2nd ed.). Oxford University Press. (Standard Textbook for 1D Heat Equation Analytical Solutions)"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9999,
+      "r2_core": 1.0,
+      "coverage": 1.0,
+      "rmse_rel": 0.0095,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": true,
+      "replication_passed": false,
+      "validation_type": "synthetic_surrogate",
+      "validation_type_label": {
+        "zh": "合成代理基准",
+        "en": "synthetic surrogate",
+        "desc_zh": "无真实生物/化学含义，仅用于优化算法压测",
+        "desc_en": "No real biological/chemical meaning; for optimization benchmarks only"
+      },
+      "applicable_domain": {
+        "zh": "PDE 数值解算法压测、物理信息神经网络训练基线",
+        "en": "PDE numerical-solver benchmarks, PINN training baselines"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能直接迁移到真实物理实验",
+          "不能用它论证 PINN 在工业问题上的表现"
+        ],
+        "en": [
+          "Not directly transferable to real physical experiments",
+          "Not evidence for PINN performance on industrial problems"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/pde_heat1d.html",
+      "json": "/reports/json/pde_heat1d.json",
+      "docx": "/reports/docx/pde_heat1d.docx"
+    },
+    {
+      "key": "quant_bs_call",
+      "domain": "finance",
+      "dim": 5,
+      "bounds": [
+        [
+          50.0,
+          200.0
+        ],
+        [
+          50.0,
+          200.0
+        ],
+        [
+          0.1,
+          1.0
+        ],
+        [
+          0.0,
+          0.1
+        ],
+        [
+          0.1,
+          0.6
+        ]
+      ],
+      "published": "Black-Scholes 看涨期权定价解析公式",
+      "references": [
+        "Black F., Scholes M. (1973). The Pricing of Options and Corporate Liabilities. Journal of Political Economy, 81(3): 637-654."
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9997,
+      "r2_core": 0.9995,
+      "coverage": 1.0,
+      "rmse_rel": 0.0184,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 80,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/quant_bs_call.html",
+      "json": "/reports/json/quant_bs_call.json",
+      "docx": "/reports/docx/quant_bs_call.docx"
+    },
+    {
+      "key": "resp_welch2d",
+      "domain": "optimization",
+      "dim": 2,
+      "bounds": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "published": "Welch et al. 1992 SDOE test function",
+      "references": [
+        "Welch et al. 1992, Technometrics"
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9999,
+      "r2_core": 0.9999,
+      "coverage": 1.0,
+      "rmse_rel": 0.0076,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": true,
+      "replication_passed": false,
+      "validation_type": "published_benchmark",
+      "validation_type_label": {
+        "zh": "发表基准",
+        "en": "published benchmark",
+        "desc_zh": "对照已发表文献/基准数据集（含 DOI 或年份）",
+        "desc_en": "Compared against a published benchmark dataset"
+      },
+      "applicable_domain": {
+        "zh": "定性探索 / 参数敏感性分析",
+        "en": "Qualitative exploration / parameter sensitivity"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于受监管决策",
+          "外推至训练区间之外需按 mirror-run 重验"
+        ],
+        "en": [
+          "Not for regulated decisions",
+          "Extrapolation beyond training bounds requires mirror-run revalidation"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/resp_welch2d.html",
+      "json": "/reports/json/resp_welch2d.json",
+      "docx": "/reports/docx/resp_welch2d.docx"
+    },
+    {
+      "key": "surrogate_branin",
+      "domain": "Surrogate Modeling/Optimization (2D Benchmark)",
+      "dim": 2,
+      "bounds": [
+        [
+          -5.0,
+          10.0
+        ],
+        [
+          0.0,
+          15.0
+        ]
+      ],
+      "published": "Branin min ≈ 0.397887 @ 3 known points",
+      "references": [
+        "Dixon L.C.W., Szego G.P. (1978). The global optimization problem: an introduction. In: Towards Global Optimization 2, North-Holland.",
+        "Surjanovic S., Bingham D. Virtual Library of Simulation Experiments: Branin function (surj.icics.ubc.ca)."
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9999,
+      "r2_core": 0.9998,
+      "coverage": 1.0,
+      "rmse_rel": 0.0122,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 50,
+      "n_test": 60,
+      "calibration_scale": 1.0,
+      "high_freq": false,
+      "replication_passed": false,
+      "validation_type": "synthetic_surrogate",
+      "validation_type_label": {
+        "zh": "合成代理基准",
+        "en": "synthetic surrogate",
+        "desc_zh": "无真实生物/化学含义，仅用于优化算法压测",
+        "desc_en": "No real biological/chemical meaning; for optimization benchmarks only"
+      },
+      "applicable_domain": {
+        "zh": "贝叶斯优化 / 高斯过程代理的算法压测",
+        "en": "Bayesian optimization / GP surrogate algorithm benchmarks"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于任何真实工程或科研决策",
+          "不能与实验测量值对比",
+          "不能用于模型对现实世界的可信度论证"
+        ],
+        "en": [
+          "Not for any real engineering or scientific decision",
+          "Not for comparison against experimental measurements",
+          "Not for credence claims about the real world"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/surrogate_branin.html",
+      "json": "/reports/json/surrogate_branin.json",
+      "docx": "/reports/docx/surrogate_branin.docx"
+    },
+    {
+      "key": "surrogate_forrester",
+      "domain": "Surrogate Modeling/Optimization (Bayesian Optimization Benchmark)",
+      "dim": 1,
+      "bounds": [
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "published": "Forrester et al. 2008: min ≈ -6.0208 @ x≈0.7572",
+      "references": [
+        "Forrester A.I.J., Sobester A., Keane A.J. (2008). Engineering Design via Surrogate Modelling: A Practical Guide. Wiley.",
+        "Forrester J., Sobester A., Keane A. (2006). Optimization using surrogate models and partially converged response surface simulations. AIAA Journal 44(10)."
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9999,
+      "r2_core": 0.9999,
+      "coverage": 1.0,
+      "rmse_rel": 0.0105,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 30,
+      "n_test": 40,
+      "calibration_scale": 1.0,
+      "high_freq": true,
+      "replication_passed": false,
+      "validation_type": "synthetic_surrogate",
+      "validation_type_label": {
+        "zh": "合成代理基准",
+        "en": "synthetic surrogate",
+        "desc_zh": "无真实生物/化学含义，仅用于优化算法压测",
+        "desc_en": "No real biological/chemical meaning; for optimization benchmarks only"
+      },
+      "applicable_domain": {
+        "zh": "贝叶斯优化 / 高斯过程代理的算法压测",
+        "en": "Bayesian optimization / GP surrogate algorithm benchmarks"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于任何真实工程或科研决策",
+          "不能与实验测量值对比",
+          "不能用于模型对现实世界的可信度论证"
+        ],
+        "en": [
+          "Not for any real engineering or scientific decision",
+          "Not for comparison against experimental measurements",
+          "Not for credence claims about the real world"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/surrogate_forrester.html",
+      "json": "/reports/json/surrogate_forrester.json",
+      "docx": "/reports/docx/surrogate_forrester.docx"
+    },
+    {
+      "key": "surrogate_hartmann6",
+      "domain": "Surrogate Modeling/Optimization (6D High-Dimensional Benchmark)",
+      "dim": 6,
+      "bounds": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "published": "Hartmann 6D min ≈ -3.32237",
+      "references": [
+        "Hartmann H. (1972). Algorithm 76: K1—a computer program for the solution of the kinetics of the biochemical BOD test. Comm. ACM 15(10).",
+        "Surjanovic S., Bingham D. Virtual Library of Simulation Experiments: Hartmann 6-D function (surj.icics.ubc.ca)."
+      ],
+      "verdict": "PASS",
+      "rationale": "out-of-sample R²=1.000 ≥ 0.9, coverage=1.000 ≥ 0.9（校准安全，保守亦可）",
+      "r2": 0.9998,
+      "r2_core": 0.9999,
+      "coverage": 1.0,
+      "rmse_rel": 0.0149,
+      "cal_err": 0.05,
+      "kernel": "RBF (ARD)",
+      "lengthscale_source": "auto (marginal-likelihood ARD)",
+      "n_train": 120,
+      "n_test": 80,
+      "calibration_scale": 1.0,
+      "high_freq": true,
+      "replication_passed": true,
+      "validation_type": "synthetic_surrogate",
+      "validation_type_label": {
+        "zh": "合成代理基准",
+        "en": "synthetic surrogate",
+        "desc_zh": "无真实生物/化学含义，仅用于优化算法压测",
+        "desc_en": "No real biological/chemical meaning; for optimization benchmarks only"
+      },
+      "applicable_domain": {
+        "zh": "贝叶斯优化 / 高斯过程代理的算法压测",
+        "en": "Bayesian optimization / GP surrogate algorithm benchmarks"
+      },
+      "forbidden_use": {
+        "zh": [
+          "不能用于任何真实工程或科研决策",
+          "不能与实验测量值对比",
+          "不能用于模型对现实世界的可信度论证"
+        ],
+        "en": [
+          "Not for any real engineering or scientific decision",
+          "Not for comparison against experimental measurements",
+          "Not for credence claims about the real world"
+        ]
+      },
+      "wet_lab_grade": null,
+      "html": "/reports/html/surrogate_hartmann6.html",
+      "json": "/reports/json/surrogate_hartmann6.json",
+      "docx": "/reports/docx/surrogate_hartmann6.docx"
+    }
+  ]
+}

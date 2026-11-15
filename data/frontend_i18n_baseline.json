@@ -1,0 +1,17 @@
+{
+  "summary": {
+    "comma_splice_visible_total": 8,
+    "comma_splice_script_total": 109,
+    "punct_nospace_visible_total": 15,
+    "cjk_in_english_page_total": 0,
+    "missing_meta_description": 0,
+    "missing_canonical": 0,
+    "lang_mismatch": 0,
+    "orphan_core": 0,
+    "orphan_total": 1,
+    "mixed_route_pages": 0,
+    "missing_doctype": 0,
+    "bad_title_count": 0,
+    "long_title_over_120": 12
+  }
+}

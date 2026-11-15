@@ -1,0 +1,613 @@
+{
+  "version": 1,
+  "updated_at": "2026-08-27T13:19:49",
+  "entities": [
+    {
+      "type": "scenario",
+      "name": "opt_ackley2d",
+      "domain": "optimization",
+      "properties": {
+        "coverage": 0.95,
+        "converged": true
+      },
+      "sources": [
+        "autonomous_loop",
+        "autonomous_loop"
+      ],
+      "tags": [],
+      "created_at": "2026-08-20T21:08:39",
+      "updated_at": "2026-08-20T21:11:27"
+    },
+    {
+      "type": "model",
+      "name": "GP-auto",
+      "domain": "optimization",
+      "properties": {
+        "rating": 1600
+      },
+      "sources": [
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop"
+      ],
+      "tags": [],
+      "created_at": "2026-08-20T21:08:39",
+      "updated_at": "2026-08-20T21:11:27"
+    },
+    {
+      "type": "equation",
+      "name": "x0*x1",
+      "domain": "optimization",
+      "properties": {
+        "r2": 0.8
+      },
+      "sources": [
+        "sindy",
+        "sindy"
+      ],
+      "tags": [],
+      "created_at": "2026-08-20T21:08:39",
+      "updated_at": "2026-08-20T21:11:27"
+    },
+    {
+      "type": "scenario",
+      "name": "opt_rastrigin2d",
+      "domain": "optimization",
+      "properties": {
+        "coverage": 0.88,
+        "converged": true
+      },
+      "sources": [
+        "autonomous_loop"
+      ],
+      "tags": [],
+      "created_at": "2026-08-20T21:11:27",
+      "updated_at": "2026-08-20T21:11:27"
+    },
+    {
+      "type": "equation",
+      "name": "x0*x2",
+      "domain": "optimization",
+      "properties": {
+        "r2": 0.8500000000000001
+      },
+      "sources": [
+        "sindy"
+      ],
+      "tags": [],
+      "created_at": "2026-08-20T21:11:27",
+      "updated_at": "2026-08-20T21:11:27"
+    },
+    {
+      "type": "scenario",
+      "name": "opt_rosenbrock2d",
+      "domain": "optimization",
+      "properties": {
+        "coverage": 0,
+        "converged": false
+      },
+      "sources": [
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop"
+      ],
+      "tags": [],
+      "created_at": "2026-08-20T21:11:27",
+      "updated_at": "2026-08-27T13:19:49"
+    },
+    {
+      "type": "equation",
+      "name": "x0*x3",
+      "domain": "optimization",
+      "properties": {
+        "r2": 0.9
+      },
+      "sources": [
+        "sindy"
+      ],
+      "tags": [],
+      "created_at": "2026-08-20T21:11:27",
+      "updated_at": "2026-08-20T21:11:27"
+    },
+    {
+      "type": "scenario",
+      "name": "bio_logistic",
+      "domain": "",
+      "properties": {
+        "coverage": 0,
+        "converged": false
+      },
+      "sources": [
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop"
+      ],
+      "tags": [],
+      "created_at": "2026-08-21T00:12:48",
+      "updated_at": "2026-08-27T13:19:49"
+    },
+    {
+      "type": "scenario",
+      "name": "chem_langmuir",
+      "domain": "",
+      "properties": {
+        "coverage": 0,
+        "converged": false
+      },
+      "sources": [
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop"
+      ],
+      "tags": [],
+      "created_at": "2026-08-21T00:12:48",
+      "updated_at": "2026-08-27T13:19:49"
+    },
+    {
+      "type": "scenario",
+      "name": "llm_scaling",
+      "domain": "",
+      "properties": {
+        "coverage": 0,
+        "converged": false
+      },
+      "sources": [
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop"
+      ],
+      "tags": [],
+      "created_at": "2026-08-21T00:12:48",
+      "updated_at": "2026-08-27T13:19:49"
+    },
+    {
+      "type": "scenario",
+      "name": "microbio_inhibition",
+      "domain": "",
+      "properties": {
+        "coverage": 0,
+        "converged": false
+      },
+      "sources": [
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop"
+      ],
+      "tags": [],
+      "created_at": "2026-08-21T00:12:48",
+      "updated_at": "2026-08-27T13:19:49"
+    },
+    {
+      "type": "scenario",
+      "name": "microbio_monod",
+      "domain": "",
+      "properties": {
+        "coverage": 0,
+        "converged": false
+      },
+      "sources": [
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop"
+      ],
+      "tags": [],
+      "created_at": "2026-08-21T00:12:48",
+      "updated_at": "2026-08-27T13:19:49"
+    },
+    {
+      "type": "scenario",
+      "name": "opt_gramacylee1d",
+      "domain": "",
+      "properties": {
+        "coverage": 0,
+        "converged": false
+      },
+      "sources": [
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop"
+      ],
+      "tags": [],
+      "created_at": "2026-08-21T00:12:48",
+      "updated_at": "2026-08-27T13:19:49"
+    },
+    {
+      "type": "scenario",
+      "name": "opt_hartmann3d",
+      "domain": "",
+      "properties": {
+        "coverage": 0,
+        "converged": false
+      },
+      "sources": [
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop"
+      ],
+      "tags": [],
+      "created_at": "2026-08-21T00:12:48",
+      "updated_at": "2026-08-27T13:19:49"
+    },
+    {
+      "type": "scenario",
+      "name": "pde_heat1d",
+      "domain": "",
+      "properties": {
+        "coverage": 0,
+        "converged": false
+      },
+      "sources": [
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop"
+      ],
+      "tags": [],
+      "created_at": "2026-08-21T00:12:48",
+      "updated_at": "2026-08-27T13:19:49"
+    },
+    {
+      "type": "scenario",
+      "name": "resp_welch2d",
+      "domain": "",
+      "properties": {
+        "coverage": 0,
+        "converged": false
+      },
+      "sources": [
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop"
+      ],
+      "tags": [],
+      "created_at": "2026-08-21T00:12:48",
+      "updated_at": "2026-08-27T13:19:49"
+    },
+    {
+      "type": "scenario",
+      "name": "surrogate_branin",
+      "domain": "",
+      "properties": {
+        "coverage": 0,
+        "converged": false
+      },
+      "sources": [
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop"
+      ],
+      "tags": [],
+      "created_at": "2026-08-21T00:12:48",
+      "updated_at": "2026-08-27T13:19:49"
+    },
+    {
+      "type": "scenario",
+      "name": "surrogate_forrester",
+      "domain": "",
+      "properties": {
+        "coverage": 0,
+        "converged": false
+      },
+      "sources": [
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop"
+      ],
+      "tags": [],
+      "created_at": "2026-08-21T00:12:48",
+      "updated_at": "2026-08-27T13:19:49"
+    },
+    {
+      "type": "scenario",
+      "name": "surrogate_hartmann6",
+      "domain": "",
+      "properties": {
+        "coverage": 0,
+        "converged": false
+      },
+      "sources": [
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop",
+        "autonomous_loop"
+      ],
+      "tags": [],
+      "created_at": "2026-08-21T00:12:48",
+      "updated_at": "2026-08-27T13:19:49"
+    }
+  ],
+  "relations": [
+    {
+      "source": "opt_ackley2d",
+      "target": "GP-auto",
+      "type": "uses_model",
+      "confidence": 0.95,
+      "evidence": "",
+      "created_at": "2026-08-20T21:08:39"
+    },
+    {
+      "source": "opt_ackley2d",
+      "target": "GP-auto",
+      "type": "uses_model",
+      "confidence": 0.95,
+      "evidence": "",
+      "created_at": "2026-08-20T21:08:39"
+    },
+    {
+      "source": "opt_ackley2d",
+      "target": "GP-auto",
+      "type": "uses_model",
+      "confidence": 0.95,
+      "evidence": "",
+      "created_at": "2026-08-20T21:11:27"
+    },
+    {
+      "source": "opt_rastrigin2d",
+      "target": "GP-auto",
+      "type": "uses_model",
+      "confidence": 0.88,
+      "evidence": "",
+      "created_at": "2026-08-20T21:11:27"
+    },
+    {
+      "source": "opt_rosenbrock2d",
+      "target": "GP-auto",
+      "type": "uses_model",
+      "confidence": 0.91,
+      "evidence": "",
+      "created_at": "2026-08-20T21:11:27"
+    }
+  ],
+  "beliefs": [
+    {
+      "hypothesis": "GP surrogate for ackley is reliable",
+      "domain": "optimization",
+      "confidence": 0.95,
+      "evidence": [],
+      "created_at": "2026-08-20T21:08:39",
+      "updated_at": "2026-08-20T21:08:39"
+    },
+    {
+      "hypothesis": "GP surrogate for opt_ackley2d is reliable",
+      "domain": "optimization",
+      "confidence": 0.95,
+      "evidence": [
+        "coverage=0.950",
+        "champion=GP-auto"
+      ],
+      "created_at": "2026-08-20T21:08:39",
+      "updated_at": "2026-08-20T21:11:27"
+    },
+    {
+      "hypothesis": "GP surrogate for opt_rastrigin2d is reliable",
+      "domain": "optimization",
+      "confidence": 0.88,
+      "evidence": [
+        "coverage=0.880",
+        "champion=GP-auto"
+      ],
+      "created_at": "2026-08-20T21:11:27",
+      "updated_at": "2026-08-20T21:11:27"
+    },
+    {
+      "hypothesis": "GP surrogate for opt_rosenbrock2d is reliable",
+      "domain": "optimization",
+      "confidence": 0.91,
+      "evidence": [
+        "coverage=0.910",
+        "champion=GP-auto"
+      ],
+      "created_at": "2026-08-20T21:11:27",
+      "updated_at": "2026-08-20T21:11:27"
+    },
+    {
+      "hypothesis": "GP surrogate for bio_logistic is reliable",
+      "domain": "",
+      "confidence": 0.0,
+      "evidence": [
+        "coverage=0.000",
+        "champion="
+      ],
+      "created_at": "2026-08-21T00:12:48",
+      "updated_at": "2026-08-27T13:19:49"
+    },
+    {
+      "hypothesis": "GP surrogate for chem_langmuir is reliable",
+      "domain": "",
+      "confidence": 0.0,
+      "evidence": [
+        "coverage=0.000",
+        "champion="
+      ],
+      "created_at": "2026-08-21T00:12:48",
+      "updated_at": "2026-08-27T13:19:49"
+    },
+    {
+      "hypothesis": "GP surrogate for llm_scaling is reliable",
+      "domain": "",
+      "confidence": 0.0,
+      "evidence": [
+        "coverage=0.000",
+        "champion="
+      ],
+      "created_at": "2026-08-21T00:12:48",
+      "updated_at": "2026-08-27T13:19:49"
+    },
+    {
+      "hypothesis": "GP surrogate for microbio_inhibition is reliable",
+      "domain": "",
+      "confidence": 0.0,
+      "evidence": [
+        "coverage=0.000",
+        "champion="
+      ],
+      "created_at": "2026-08-21T00:12:48",
+      "updated_at": "2026-08-27T13:19:49"
+    },
+    {
+      "hypothesis": "GP surrogate for microbio_monod is reliable",
+      "domain": "",
+      "confidence": 0.0,
+      "evidence": [
+        "coverage=0.000",
+        "champion="
+      ],
+      "created_at": "2026-08-21T00:12:48",
+      "updated_at": "2026-08-27T13:19:49"
+    },
+    {
+      "hypothesis": "GP surrogate for opt_gramacylee1d is reliable",
+      "domain": "",
+      "confidence": 0.0,
+      "evidence": [
+        "coverage=0.000",
+        "champion="
+      ],
+      "created_at": "2026-08-21T00:12:48",
+      "updated_at": "2026-08-27T13:19:49"
+    },
+    {
+      "hypothesis": "GP surrogate for opt_hartmann3d is reliable",
+      "domain": "",
+      "confidence": 0.0,
+      "evidence": [
+        "coverage=0.000",
+        "champion="
+      ],
+      "created_at": "2026-08-21T00:12:48",
+      "updated_at": "2026-08-27T13:19:49"
+    },
+    {
+      "hypothesis": "GP surrogate for opt_rosenbrock2d is reliable",
+      "domain": "",
+      "confidence": 0.0,
+      "evidence": [
+        "coverage=0.000",
+        "champion="
+      ],
+      "created_at": "2026-08-21T00:12:48",
+      "updated_at": "2026-08-27T13:19:49"
+    },
+    {
+      "hypothesis": "GP surrogate for pde_heat1d is reliable",
+      "domain": "",
+      "confidence": 0.0,
+      "evidence": [
+        "coverage=0.000",
+        "champion="
+      ],
+      "created_at": "2026-08-21T00:12:48",
+      "updated_at": "2026-08-27T13:19:49"
+    },
+    {
+      "hypothesis": "GP surrogate for resp_welch2d is reliable",
+      "domain": "",
+      "confidence": 0.0,
+      "evidence": [
+        "coverage=0.000",
+        "champion="
+      ],
+      "created_at": "2026-08-21T00:12:48",
+      "updated_at": "2026-08-27T13:19:49"
+    },
+    {
+      "hypothesis": "GP surrogate for surrogate_branin is reliable",
+      "domain": "",
+      "confidence": 0.0,
+      "evidence": [
+        "coverage=0.000",
+        "champion="
+      ],
+      "created_at": "2026-08-21T00:12:48",
+      "updated_at": "2026-08-27T13:19:49"
+    },
+    {
+      "hypothesis": "GP surrogate for surrogate_forrester is reliable",
+      "domain": "",
+      "confidence": 0.0,
+      "evidence": [
+        "coverage=0.000",
+        "champion="
+      ],
+      "created_at": "2026-08-21T00:12:48",
+      "updated_at": "2026-08-27T13:19:49"
+    },
+    {
+      "hypothesis": "GP surrogate for surrogate_hartmann6 is reliable",
+      "domain": "",
+      "confidence": 0.0,
+      "evidence": [
+        "coverage=0.000",
+        "champion="
+      ],
+      "created_at": "2026-08-21T00:12:48",
+      "updated_at": "2026-08-27T13:19:49"
+    }
+  ],
+  "observations": []
+}

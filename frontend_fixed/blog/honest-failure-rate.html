@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why we publish our own 8% failure rate · SwarmLabs Insight</title>
+<meta name="description" content="In AI-for-science, everyone shows the wins. We show the 5 models that failed — and explain exactly why. A public, 62-scenario verification suite where REFUTED is a first-class output, not a number to hide.">
+<meta property="og:title" content="Why we publish our own 8% failure rate">
+<meta property="og:description" content="In AI-for-science, everyone shows the wins. We show the 5 models that failed — and explain exactly why. A public, 62-scenario verification suite where REFUTED is a first-class output.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://swarmlabs.tools/blog/honest-failure-rate">
+<meta name="twitter:card" content="Summary">
+<link rel="canonical" href="https://swarmlabs.tools/blog/honest-failure-rate">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Why we publish our own 8% failure rate", "description": "In AI-for-science, everyone shows the wins. We show the 5 models that failed — and explain exactly why. A public, 62-scenario verification suite where REFUTED is a first-class output, not a number to hide.", "datePublished": "2026-09-13", "author": {"@type": "Organization", "name": "SwarmLabs"}, "publisher": {"@type": "Organization", "name": "SwarmLabs"}, "mainEntityOfPage": "https://swarmlabs.tools/blog/honest-failure-rate"}</script>
+<style>
+:root { --bg:#0a0e1a; --bg2:#111827; --ink:#e8ecf4; --muted:#8b95a8; --rule:#1e293b; --accent:#22d3ee; --accent2:#a78bfa; --green:#34d399; --red:#f87171; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; background:var(--bg); color:var(--ink); font-size:16px; line-height:1.85; -webkit-font-smoothing:antialiased; }
+.container { max-width:760px; margin:0 auto; padding:2rem 1.5rem 4rem; }
+.header { text-align:center; padding:2.5rem 0 1.8rem; border-bottom:1px solid var(--rule); margin-bottom:2rem; }
+.header .tag { font-family:'Courier New',monospace; font-size:.7rem; color:var(--accent); letter-spacing:.15em; text-transform:uppercase; margin-bottom:.8rem; }
+.header h1 { font-size:1.7rem; font-weight:700; letter-spacing:-.02em; line-height:1.4; margin-bottom:.6rem; }
+.header .meta { color:var(--muted); font-size:.82rem; }
+h2 { font-size:1.25rem; font-weight:700; margin:2.2rem 0 .9rem; color:var(--accent); }
+h3 { font-size:1.02rem; font-weight:600; margin:1.4rem 0 .7rem; color:var(--accent2); }
+p { margin-bottom:1rem; }
+ul { margin:.4rem 0 1rem 1.4rem; } li { margin-bottom:.35rem; }
+a { color:var(--accent); }
+.takeaways { background:var(--bg2); border-left:3px solid var(--green); border-radius:8px; padding:1rem 1.2rem; margin:1.5rem 0; }
+.takeaways h2 { margin-top:0; color:var(--green); font-size:1.1rem; }
+.faq-block { margin:2rem 0; }
+.faq { background:var(--bg2); border:1px solid var(--rule); border-radius:8px; padding:.9rem 1.1rem; margin-bottom:.8rem; }
+.faq q { font-style:italic; color:var(--accent2); }
+.note { font-size:.82rem; color:var(--muted); border-left:2px solid var(--accent2); padding-left:.8rem; margin:1rem 0; }
+.footer { text-align:center; color:var(--muted); font-size:.8rem; margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--rule); }
+code { background:var(--bg2); padding:.1rem .4rem; border-radius:4px; font-family:'Courier New',monospace; font-size:.85em; }
+.stat { display:flex; gap:1rem; flex-wrap:wrap; margin:1.2rem 0; }
+.stat .box { flex:1; min-width:120px; background:var(--bg2); border:1px solid var(--rule); border-radius:10px; padding:.9rem; text-align:center; }
+.stat .n { font-size:1.7rem; font-weight:700; }
+.stat .l { font-size:.74rem; color:var(--muted); margin-top:.2rem; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="tag">AI × Scientific Research · Verification</div>
+    <h1>Why we publish our own 8% failure rate</h1>
+    <div class="meta">SwarmLabs Insight · 2026-09-13 · Read 7 Minutes</div>
+  </div>
+
+  <p>In AI-for-science, every demo shows the wins. The models that converged, the plots that fit, the benchmarks that beat the baseline. The failures are quietly dropped — or never run at all. We took the opposite stance: we built a public verification suite of 62 scenarios, and we publish the verdict for every single one, including the 5 that failed.</p>
+
+  <div class="stat">
+    <div class="box"><div class="n" style="color:var(--green)">53</div><div class="l">PASS</div></div>
+    <div class="box"><div class="n" style="color:var(--accent)">4</div><div class="l">MARGINAL</div></div>
+    <div class="box"><div class="n" style="color:var(--red)">5</div><div class="l">REFUTED</div></div>
+    <div class="box"><div class="n">0</div><div class="l">ERROR</div></div>
+  </div>
+
+  <h2>One rule: show the verdict for all 62</h2>
+  <p>Every scenario is documented with a 10-chapter Verification &amp; Validation (V&amp;V) report aligned to <strong>ASME V&amp;V 10-2019</strong> and <strong>FDA CM&amp;S</strong> expectations: problem statement, model description, code &amp; data provenance, numerical accuracy, uncertainty quantification, sensitivity, calibration, limitations, and a reproducibility manifest. Each report ends with a single machine-checkable verdict.</p>
+  <p>The verdict is not a vibe. It is computed from out-of-sample <code>R²</code> and a one-sided prediction-interval coverage:</p>
+  <ul>
+    <li><strong>PASS</strong> — <code>R² ≥ 0.90</code> and coverage <code>≥ 0.90</code></li>
+    <li><strong>MARGINAL</strong> — <code>R² ≥ 0.70</code> and coverage <code>≥ 0.80</code></li>
+    <li><strong>REFUTED</strong> — below those bars, i.e. the surrogate does not reproduce the underlying model within the stated uncertainty</li>
+  </ul>
+
+  <h2>The 5 that failed — and what they teach</h2>
+  <p>All five REFUTED scenarios share one root cause: they are <strong>inverse parameter-identification</strong> problems in microbial kinetics, where a Gaussian-Process surrogate is asked to recover parameters it was never given. The reported fits are poor (<code>R²</code> between 0.12 and 0.56), and we keep them visible rather than silently removing them.</p>
+
+  <h3>micro_doe_ecoli_monod — R² = 0.16</h3>
+  <p>2-D Monod kinetics: recover growth rate and half-saturation from sparse design-of-experiments samples. The forward model is smooth, but inverting it from 50 noisy points is ill-conditioned; the GP latches onto the wrong ridge.</p>
+
+  <h3>micro_mle_ecoli_monod — R² = 0.13</h3>
+  <p>Maximum-likelihood Monod fitting in 1-D. Identifiability collapses at low substrate — the classic flat-likelihood problem. Coverage stays high (0.93) only because the uncertainty band is honest enough to admit "I don't know."</p>
+
+  <h3>micro_pirt_ecoli — R² = 0.31</h3>
+  <p>Pirt relationship between growth and product formation. Two coupled rates, one observable; the surrogate cannot separate them from sparse data.</p>
+
+  <h3>micro_competition_2d — R² = 0.56</h3>
+  <p>Two-strain competition. The losing strain is suppressed below the measurement floor, so its dynamics are unobservable — a data-limits problem, not a model bug.</p>
+
+  <h3>micro_competition_ecoli_yeast — R² = 0.44</h3>
+  <p>Cross-species (E. coli / yeast) competition. The interaction term is weakly excited by the training design, leaving the GP with almost no signal to learn.</p>
+
+  <p>None of these are coding errors. They are known-hard inverse problems where <strong>sparse observations simply do not contain the information</strong>. Hiding them would have inflated our pass rate to 100% and made the other 53 numbers meaningless.</p>
+
+  <h2>Three rules that keep the 53 honest</h2>
+  <p>A high pass rate is easy to fake. We adopted three constraints specifically to make cheating harder:</p>
+  <ul>
+    <li><strong>Noise floor stays at 3%.</strong> We do not lower the injected observation noise to make a fit look tighter. The floor is a fixed red line.</li>
+    <li><strong>Coverage is one-sided and conservative.</strong> A prediction interval must actually contain the truth ≥ 90% of the time. Over-confident narrow bands fail, they are not rewarded.</li>
+    <li><strong>Calibration κ only widens uncertainty, never tightens it.</strong> The variance-scaling factor is capped at 40 and can only be raised — the model is never allowed to "discover" that it was secretly more certain than it reported.</li>
+  </ul>
+
+  <h2>Why this matters for AI-for-science</h2>
+  <p>The bottleneck in AI-driven research has shifted. Generating candidate results is now cheap; <strong>deciding whether to trust them is the new constraint.</strong> Credibility is not a bigger model — it is quantified uncertainty plus the ability for an independent party to re-run your verification.</p>
+  <p>Most tools treat a failed run as something to discard. We treat <strong>REFUTED as a first-class output</strong>: it tells a researcher exactly where the surrogate cannot be trusted, which is the most actionable signal a validation layer can give. That is the product — not "we are always right," but "here is precisely where we are not, and why."</p>
+
+  <h2>Even frontier models need a gate</h2>
+  <p>In September 2026, GPT-6 Astra topped Insilico Medicine's DDD antibody-developability benchmark with no plugin and no fine-tuning — a clear signal that general research agents can now <em>generate</em> scientific results. But the same reviews are blunt: these agents are "prone to plausible-but-wrong outputs, weak guardrails," and every deployment needs quantified uncertainty plus an independent checkpoint. Our 62-scenario suite <strong>is that checkpoint</strong>. It does not care whose model produced the prediction — feed it any model's points and it returns an honest R² / coverage / calibration verdict, and a hard <code>BLOCK</code> when the prediction is not trustworthy. Generation got cheap; the scarce asset is the layer that can say <em>no</em>.</p>
+
+  <div class="takeaways">
+    <h2>The bottom line in three sentences:</h2>
+    <p>① We publish all 62 verdicts, including 5 REFUTED — honesty is the feature, not the marketing.</p>
+    <p>② The 5 failures are inverse-parameter-identification limits of sparse data, not bugs; they define the trustworthy boundary.</p>
+    <p>③ In AI4S, the scarce asset is a verification layer you can audit, not another model that claims to be correct.</p>
+  </div>
+
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-block">
+    <div class="faq"><q>Are the 62 scenarios real experiments?</q><p>No — and we are explicit about it. They are physics-informed virtual experiments validated against published analytic solutions and literature benchmarks (e.g. Verhulst logistic growth, Monod kinetics). They are a verification asset, not a substitute for wet-lab measurement. We have not yet run them against our own bench data.</p></div>
+    <div class="faq"><q>Why keep the REFUTED models on display instead of fixing them?</q><p>Because the failure mode is informational, not procedural. Throwing more compute at an ill-conditioned inverse problem does not recover unmeasured parameters. The honest move is to mark the boundary and let users know where not to rely on the surrogate.</p></div>
+    <div class="faq"><q>Can I see the reports?</q><p>Yes. Every scenario has a 10-chapter HTML/JSON/DOCX report and the full suite is indexed at <a href="https://swarmlabs.tools/report-gallery">swarmlabs.tools/report-gallery</a>. The scenario definitions and the REFUTED root-cause analysis are open-sourced at <a href="https://github.com/lm203688/swarmlabs-benchmarks">github.com/lm203688/swarmlabs-benchmarks</a>.</p></div>
+  </div>
+
+  <p class="note">Factual verification: all numbers in this article are taken from the live report index at swarmlabs.tools/v3/report-index on 2026-09-12/13 (PASS 53 / MARGINAL 4 / REFUTED 5 / ERROR 0). The 5 REFUTED figures are the measured out-of-sample R² values from that index. SwarmLabs does not present these virtual-experiment results as wet-lab measurements.</p>
+
+  <div class="footer">SwarmLabs · guarding AI scientific credibility with honest uncertainty quantification · <a href="https://swarmlabs.tools">swarmlabs.tools</a></div>
+</div>
+</body>
+</html>

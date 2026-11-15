@@ -1,0 +1,45 @@
+name: skills
+
+# Three different questions, all must pass:
+#   validate_skills.py   -- is every skill well-formed?
+#   test_loader.py       -- does the serving layer fail closed and stay within
+#                           its resident context budget?
+#   run_task_checks.py   -- does every skill get the right answer?
+# The last one is the one most skill collections do not run.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'skills/agent-skills/**'
+      - '.github/workflows/skills.yml'
+  pull_request:
+    paths:
+      - 'skills/agent-skills/**'
+  workflow_dispatch:
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip && python -m pip install numpy
+
+      - name: Specification conformance
+        run: python skills/agent-skills/tests/validate_skills.py
+
+      - name: Progressive-disclosure loader
+        # Fails closed: refuses to recommend a skill below the match floor, and
+        # fails if the resident index stops fitting its context budget.
+        run: python skills/agent-skills/tests/test_loader.py
+
+      - name: Task-level evaluation
+        # Network-dependent checks skip rather than fail, so an offline runner
+        # does not produce a false red.
+        run: python skills/agent-skills/tests/task_level/run_task_checks.py

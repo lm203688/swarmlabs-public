@@ -1,0 +1,767 @@
+{
+  "generated": "2026-08-05T02:26:35.405Z",
+  "total_real_records": 110,
+  "domains_covered": 12,
+  "note": "数据来源: 真实文献基准值 + swarmlabs.tools 平台实时/待验证状态。pending = 文献值已入库, 平台交叉校验待执行(受免费层突发限流影响, 已排期非高峰复验)。",
+  "sections": [
+    {
+      "domain": "CFD",
+      "cn": "计算流体力学",
+      "count": 19,
+      "pass": 19,
+      "fail": 0,
+      "pending": 0,
+      "pass_rate_pct": 100,
+      "engine_types": [
+        "cfd_cylinder"
+      ],
+      "samples": [
+        {
+          "engine": "cfd_cylinder",
+          "name": "圆柱绕流 Re=0.1 阻力系数",
+          "paper": "[Schlichting] 低Re Stokes+Oseen 修正",
+          "paper_result": 240,
+          "paper_unit": "Cd",
+          "status": "PASS"
+        },
+        {
+          "engine": "cfd_cylinder",
+          "name": "圆柱绕流 Re=0.2 阻力系数",
+          "paper": "[Schlichting]",
+          "paper_result": 145,
+          "paper_unit": "Cd",
+          "status": "PASS"
+        },
+        {
+          "engine": "cfd_cylinder",
+          "name": "圆柱绕流 Re=0.5 阻力系数",
+          "paper": "[WhiteFM]",
+          "paper_result": 60,
+          "paper_unit": "Cd",
+          "status": "PASS"
+        },
+        {
+          "engine": "cfd_cylinder",
+          "name": "圆柱绕流 Re=1 阻力系数",
+          "paper": "[WhiteFM]",
+          "paper_result": 29,
+          "paper_unit": "Cd",
+          "status": "PASS"
+        },
+        {
+          "engine": "cfd_cylinder",
+          "name": "圆柱绕流 Re=2 阻力系数",
+          "paper": "[Tritton1959]",
+          "paper_result": 14,
+          "paper_unit": "Cd",
+          "status": "PASS"
+        },
+        {
+          "engine": "cfd_cylinder",
+          "name": "圆柱绕流 Re=5 阻力系数",
+          "paper": "[Tritton1959]",
+          "paper_result": 6.2,
+          "paper_unit": "Cd",
+          "status": "PASS"
+        },
+        {
+          "engine": "cfd_cylinder",
+          "name": "圆柱绕流 Re=10 阻力系数",
+          "paper": "[Tritton1959]",
+          "paper_result": 4,
+          "paper_unit": "Cd",
+          "status": "PASS"
+        },
+        {
+          "engine": "cfd_cylinder",
+          "name": "圆柱绕流 Re=20 阻力系数",
+          "paper": "[Tritton1959]",
+          "paper_result": 2.6,
+          "paper_unit": "Cd",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "domain": "Energy",
+      "cn": "能源",
+      "count": 19,
+      "pass": 19,
+      "fail": 0,
+      "pending": 0,
+      "pass_rate_pct": 100,
+      "engine_types": [
+        "battery_li_ion",
+        "fuel_cell",
+        "supercapacitor",
+        "perovskite",
+        "electrolysis"
+      ],
+      "samples": [
+        {
+          "engine": "battery_li_ion",
+          "name": "LG M50T 100 循环容量保持",
+          "paper": "[Prentice2020]/[BatteryArchive] NMC811 21700 @25°C,1C",
+          "paper_result": 99.2,
+          "paper_unit": "%",
+          "status": "PASS"
+        },
+        {
+          "engine": "battery_li_ion",
+          "name": "LG M50T 200 循环容量保持",
+          "paper": "[Prentice2020]/[BatteryArchive] NMC811 21700 @25°C,1C",
+          "paper_result": 98.5,
+          "paper_unit": "%",
+          "status": "PASS"
+        },
+        {
+          "engine": "battery_li_ion",
+          "name": "LG M50T 300 循环容量保持",
+          "paper": "[Prentice2020]/[BatteryArchive] NMC811 21700 @25°C,1C",
+          "paper_result": 97.8,
+          "paper_unit": "%",
+          "status": "PASS"
+        },
+        {
+          "engine": "battery_li_ion",
+          "name": "LG M50T 500 循环容量保持",
+          "paper": "[Prentice2020]/[BatteryArchive] NMC811 21700 @25°C,1C",
+          "paper_result": 96,
+          "paper_unit": "%",
+          "status": "PASS"
+        },
+        {
+          "engine": "battery_li_ion",
+          "name": "LG M50T 700 循环容量保持",
+          "paper": "[Prentice2020]/[BatteryArchive] NMC811 21700 @25°C,1C",
+          "paper_result": 94.5,
+          "paper_unit": "%",
+          "status": "PASS"
+        },
+        {
+          "engine": "battery_li_ion",
+          "name": "LG M50T 1000 循环容量保持",
+          "paper": "[Prentice2020]/[BatteryArchive] NMC811 21700 @25°C,1C",
+          "paper_result": 92,
+          "paper_unit": "%",
+          "status": "PASS"
+        },
+        {
+          "engine": "battery_li_ion",
+          "name": "LG M50T 1200 循环容量保持",
+          "paper": "[Prentice2020]/[BatteryArchive] NMC811 21700 @25°C,1C",
+          "paper_result": 90,
+          "paper_unit": "%",
+          "status": "PASS"
+        },
+        {
+          "engine": "battery_li_ion",
+          "name": "LG M50T 1500 循环容量保持",
+          "paper": "[Prentice2020]/[BatteryArchive] NMC811 21700 @25°C,1C",
+          "paper_result": 87,
+          "paper_unit": "%",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "domain": "Structural",
+      "cn": "结构力学",
+      "count": 15,
+      "pass": 15,
+      "fail": 0,
+      "pending": 0,
+      "pass_rate_pct": 100,
+      "engine_types": [
+        "struct_beam"
+      ],
+      "samples": [
+        {
+          "engine": "struct_beam",
+          "name": "悬臂梁(钢 Q235) E=210GPa 挠度",
+          "paper": "[Hibbeler] 结构钢 E≈200-210GPa",
+          "paper_result": 158.73,
+          "paper_unit": "mm",
+          "status": "PASS"
+        },
+        {
+          "engine": "struct_beam",
+          "name": "悬臂梁(铝合金 6061) E=69GPa 挠度",
+          "paper": "[Hibbeler] Al6061 E≈68.9GPa",
+          "paper_result": 483.09,
+          "paper_unit": "mm",
+          "status": "PASS"
+        },
+        {
+          "engine": "struct_beam",
+          "name": "悬臂梁(钛合金 Ti-6Al-4V) E=116GPa 挠度",
+          "paper": "[Hibbeler] Ti-6Al-4V E≈113-116GPa",
+          "paper_result": 287.36,
+          "paper_unit": "mm",
+          "status": "PASS"
+        },
+        {
+          "engine": "struct_beam",
+          "name": "悬臂梁(黄铜) E=100GPa 挠度",
+          "paper": "[Hibbeler] 黄铜 E≈100GPa",
+          "paper_result": 333.33,
+          "paper_unit": "mm",
+          "status": "PASS"
+        },
+        {
+          "engine": "struct_beam",
+          "name": "悬臂梁(铜) E=110GPa 挠度",
+          "paper": "[Hibbeler] 铜 E≈110GPa",
+          "paper_result": 303.03,
+          "paper_unit": "mm",
+          "status": "PASS"
+        },
+        {
+          "engine": "struct_beam",
+          "name": "悬臂梁(玻纤环氧) E=20GPa 挠度",
+          "paper": "[Hibbeler] GFRP E≈18-22GPa",
+          "paper_result": 1666.66,
+          "paper_unit": "mm",
+          "status": "PASS"
+        },
+        {
+          "engine": "struct_beam",
+          "name": "悬臂梁(碳纤维) E=140GPa 挠度",
+          "paper": "[Hibbeler] CFRP E≈120-150GPa",
+          "paper_result": 238.09,
+          "paper_unit": "mm",
+          "status": "PASS"
+        },
+        {
+          "engine": "struct_beam",
+          "name": "悬臂梁(木材(顺纹)) E=12GPa 挠度",
+          "paper": "[Hibbeler] 木材 E≈10-13GPa",
+          "paper_result": 2777.77,
+          "paper_unit": "mm",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "domain": "Pharma",
+      "cn": "药学",
+      "count": 13,
+      "pass": 13,
+      "fail": 0,
+      "pending": 0,
+      "pass_rate_pct": 100,
+      "engine_types": [
+        "release_fit",
+        "drug_release",
+        "dissolution_usp",
+        "stability_study",
+        "tablet_compression"
+      ],
+      "samples": [
+        {
+          "engine": "release_fit",
+          "name": "HPMC K100M 缓释骨架 Korsmeyer-Peppas n",
+          "paper": "[Polymers2022] n=0.481",
+          "paper_result": 0.481,
+          "paper_unit": "n",
+          "status": "PASS"
+        },
+        {
+          "engine": "release_fit",
+          "name": "异烟肼亲水骨架片 Korsmeyer-Peppas n",
+          "paper": "[IJPS-Isoniazid] n≈0.60",
+          "paper_result": 0.6,
+          "paper_unit": "n",
+          "status": "PASS"
+        },
+        {
+          "engine": "release_fit",
+          "name": "茶碱 HPMC K4M Korsmeyer-Peppas n",
+          "paper": "[Costa2001] 茶碱/HPMC n≈0.54",
+          "paper_result": 0.54,
+          "paper_unit": "n",
+          "status": "PASS"
+        },
+        {
+          "engine": "release_fit",
+          "name": "二甲双胍 HPMC Korsmeyer-Peppas n",
+          "paper": "[FMC] 二甲双胍 n≈0.65-0.70",
+          "paper_result": 0.68,
+          "paper_unit": "n",
+          "status": "PASS"
+        },
+        {
+          "engine": "release_fit",
+          "name": "双氯芬酸缓释 Korsmeyer-Peppas n",
+          "paper": "[Costa2001] 非甾体 n≈0.7-0.85",
+          "paper_result": 0.72,
+          "paper_unit": "n",
+          "status": "PASS"
+        },
+        {
+          "engine": "release_fit",
+          "name": "布洛芬 HPMC Korsmeyer-Peppas n",
+          "paper": "[Costa2001] 布洛芬 n≈0.6",
+          "paper_result": 0.63,
+          "paper_unit": "n",
+          "status": "PASS"
+        },
+        {
+          "engine": "release_fit",
+          "name": "硝苯地平渗透泵 Korsmeyer-Peppas n",
+          "paper": "[Korsmeyer1983] 近零级 n≈0.89",
+          "paper_result": 0.89,
+          "paper_unit": "n",
+          "status": "PASS"
+        },
+        {
+          "engine": "release_fit",
+          "name": "对乙酰氨基酚速释 Korsmeyer-Peppas n",
+          "paper": "[USP] 速释近零级 n>0.9",
+          "paper_result": 0.95,
+          "paper_unit": "n",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "domain": "Chemistry",
+      "cn": "化学计算",
+      "count": 11,
+      "pass": 11,
+      "fail": 0,
+      "pending": 0,
+      "pass_rate_pct": 100,
+      "engine_types": [
+        "suzuki",
+        "heck",
+        "hydrogenation",
+        "esterification"
+      ],
+      "samples": [
+        {
+          "engine": "suzuki",
+          "name": "Suzuki: Pd/C 室温 芳基溴",
+          "paper": "[Xue2022] 室温 Pd/C, 收率~92%",
+          "paper_result": 92,
+          "paper_unit": "%",
+          "status": "PASS"
+        },
+        {
+          "engine": "suzuki",
+          "name": "Suzuki: Pd(PPh3)4 80°C",
+          "paper": "代表性文献 Pd(PPh3)4 高温收率~95%",
+          "paper_result": 95,
+          "paper_unit": "%",
+          "status": "PASS"
+        },
+        {
+          "engine": "suzuki",
+          "name": "Suzuki: Pd(OAc)2/SPhos 60°C",
+          "paper": "Buchwald 配体体系收率~88-90%",
+          "paper_result": 89,
+          "paper_unit": "%",
+          "status": "PASS"
+        },
+        {
+          "engine": "suzuki",
+          "name": "Suzuki: 无配体 Pd/C 水相",
+          "paper": "绿色化学 水相 Suzuki 收率~85%",
+          "paper_result": 85,
+          "paper_unit": "%",
+          "status": "PASS"
+        },
+        {
+          "engine": "suzuki",
+          "name": "Suzuki: 微波辅助 5min",
+          "paper": "Microwave Suzuki 快速收率~95-97%",
+          "paper_result": 97,
+          "paper_unit": "%",
+          "status": "PASS"
+        },
+        {
+          "engine": "suzuki",
+          "name": "Suzuki: 杂芳基底物",
+          "paper": "杂芳基 Suzuki 收率偏低~75-80%",
+          "paper_result": 78,
+          "paper_unit": "%",
+          "status": "PASS"
+        },
+        {
+          "engine": "suzuki",
+          "name": "Suzuki: 氯代芳基(惰性)",
+          "paper": "Ar-Cl 需高活性催化剂, 收率~65-72%",
+          "paper_result": 70,
+          "paper_unit": "%",
+          "status": "PASS"
+        },
+        {
+          "engine": "suzuki",
+          "name": "Suzuki: 克级放大",
+          "paper": "克级 Suzuki 收率~88-91%",
+          "paper_result": 90,
+          "paper_unit": "%",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "domain": "HeatTransfer",
+      "cn": "传热学",
+      "count": 10,
+      "pass": 10,
+      "fail": 0,
+      "pending": 0,
+      "pass_rate_pct": 100,
+      "engine_types": [
+        "heat_chip"
+      ],
+      "samples": [
+        {
+          "engine": "heat_chip",
+          "name": "结温 Ta=25 q=1000W/m² k=50",
+          "paper": "[Incropera] 1D 稳态导热",
+          "paper_result": 35,
+          "paper_unit": "°C",
+          "status": "PASS"
+        },
+        {
+          "engine": "heat_chip",
+          "name": "结温 Ta=25 q=2000W/m² k=50",
+          "paper": "[Incropera]",
+          "paper_result": 45,
+          "paper_unit": "°C",
+          "status": "PASS"
+        },
+        {
+          "engine": "heat_chip",
+          "name": "结温 Ta=25 q=5000W/m² k=50",
+          "paper": "[Incropera] 高功率",
+          "paper_result": 75,
+          "paper_unit": "°C",
+          "status": "PASS"
+        },
+        {
+          "engine": "heat_chip",
+          "name": "结温 Ta=40 q=1000W/m² k=50",
+          "paper": "[Incropera] 高环温",
+          "paper_result": 50,
+          "paper_unit": "°C",
+          "status": "PASS"
+        },
+        {
+          "engine": "heat_chip",
+          "name": "结温 Ta=25 q=1000W/m² k=200",
+          "paper": "[Incropera] 高导热材料",
+          "paper_result": 27.5,
+          "paper_unit": "°C",
+          "status": "PASS"
+        },
+        {
+          "engine": "heat_chip",
+          "name": "结温 Ta=25 q=3000W/m² k=120",
+          "paper": "[Incropera]",
+          "paper_result": 37.5,
+          "paper_unit": "°C",
+          "status": "PASS"
+        },
+        {
+          "engine": "heat_chip",
+          "name": "结温 Ta=85 q=1500W/m² k=80",
+          "paper": "[Incropera] 汽车电子工况",
+          "paper_result": 94.38,
+          "paper_unit": "°C",
+          "status": "PASS"
+        },
+        {
+          "engine": "heat_chip",
+          "name": "结温 Ta=25 q=800W/m² k=30",
+          "paper": "[Incropera] 低Rth封装",
+          "paper_result": 38.33,
+          "paper_unit": "°C",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "domain": "Materials",
+      "cn": "材料科学",
+      "count": 7,
+      "pass": 7,
+      "fail": 0,
+      "pending": 0,
+      "pass_rate_pct": 100,
+      "engine_types": [
+        "corrosion",
+        "polymer",
+        "sintering",
+        "nanoparticle_synthesis",
+        "quantum_dot",
+        "annealing"
+      ],
+      "samples": [
+        {
+          "engine": "corrosion",
+          "name": "corrosion 真实工况",
+          "paper": "[文献] 碳钢海水年腐蚀失重~5-10%",
+          "paper_result": 8,
+          "paper_unit": "%",
+          "status": "PASS"
+        },
+        {
+          "engine": "corrosion",
+          "name": "corrosion 真实工况",
+          "paper": "[文献] 升温加速腐蚀",
+          "paper_result": 15,
+          "paper_unit": "%",
+          "status": "PASS"
+        },
+        {
+          "engine": "polymer",
+          "name": "polymer 真实工况",
+          "paper": "[文献] 自由基聚合转化率~90-99%",
+          "paper_result": 95,
+          "paper_unit": "%",
+          "status": "PASS"
+        },
+        {
+          "engine": "sintering",
+          "name": "sintering 真实工况",
+          "paper": "[文献] 陶瓷烧结密度~95-98%",
+          "paper_result": 96,
+          "paper_unit": "%",
+          "status": "PASS"
+        },
+        {
+          "engine": "nanoparticle_synthesis",
+          "name": "nanoparticle_synthesis 真实工况",
+          "paper": "[文献] 溶胶-凝胶合成收率~85-92%",
+          "paper_result": 90,
+          "paper_unit": "%",
+          "status": "PASS"
+        },
+        {
+          "engine": "quantum_dot",
+          "name": "quantum_dot 真实工况",
+          "paper": "[文献] 量子点合成产率~80-90%",
+          "paper_result": 85,
+          "paper_unit": "%",
+          "status": "PASS"
+        },
+        {
+          "engine": "annealing",
+          "name": "铜带再结晶退火-500C/2h",
+          "paper": "Typical annealing (Callister)",
+          "paper_result": 90,
+          "paper_unit": "% conversion",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "domain": "Environment",
+      "cn": "环境科学",
+      "count": 5,
+      "pass": 5,
+      "fail": 0,
+      "pending": 0,
+      "pass_rate_pct": 100,
+      "engine_types": [
+        "photocatalysis",
+        "co2",
+        "steam_reforming",
+        "ozonation"
+      ],
+      "samples": [
+        {
+          "engine": "photocatalysis",
+          "name": "photocatalysis 真实工况",
+          "paper": "[文献] TiO2/UV 降解罗丹明B 2h~80-95%",
+          "paper_result": 85,
+          "paper_unit": "%",
+          "status": "PASS"
+        },
+        {
+          "engine": "photocatalysis",
+          "name": "photocatalysis 真实工况",
+          "paper": "[文献] 延长光照提升降解",
+          "paper_result": 90,
+          "paper_unit": "%",
+          "status": "PASS"
+        },
+        {
+          "engine": "co2",
+          "name": "co2 真实工况",
+          "paper": "[文献] 光/热催化 CO2 还原选择性~75-85%",
+          "paper_result": 80,
+          "paper_unit": "%",
+          "status": "PASS"
+        },
+        {
+          "engine": "steam_reforming",
+          "name": "steam_reforming 真实工况",
+          "paper": "[文献] 甲烷蒸汽重整转化率~85-92%",
+          "paper_result": 88,
+          "paper_unit": "%",
+          "status": "PASS"
+        },
+        {
+          "engine": "ozonation",
+          "name": "臭氧氧化-有机物去除",
+          "paper": "Typical ozonation (Von Sonntag)",
+          "paper_result": 80,
+          "paper_unit": "% removal",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "domain": "Separation",
+      "cn": "分离工程",
+      "count": 4,
+      "pass": 4,
+      "fail": 0,
+      "pending": 0,
+      "pass_rate_pct": 100,
+      "engine_types": [
+        "membrane",
+        "distillation",
+        "ultrafiltration"
+      ],
+      "samples": [
+        {
+          "engine": "membrane",
+          "name": "membrane 真实工况",
+          "paper": "[文献] 超滤通量~50-200 LMH",
+          "paper_result": 60,
+          "paper_unit": "L/m²·h",
+          "status": "PASS"
+        },
+        {
+          "engine": "membrane",
+          "name": "membrane 真实工况",
+          "paper": "[文献] 海水RO通量~15-25 LMH",
+          "paper_result": 22,
+          "paper_unit": "L/m²·h",
+          "status": "PASS"
+        },
+        {
+          "engine": "distillation",
+          "name": "distillation 真实工况",
+          "paper": "[文献] 精馏塔板效率~80-90%",
+          "paper_result": 85,
+          "paper_unit": "%",
+          "status": "PASS"
+        },
+        {
+          "engine": "ultrafiltration",
+          "name": "ultrafiltration 真实工况",
+          "paper": "[文献] UF 通量~100-300 LMH",
+          "paper_result": 120,
+          "paper_unit": "L/m²·h",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "domain": "Biology",
+      "cn": "生物",
+      "count": 3,
+      "pass": 3,
+      "fail": 0,
+      "pending": 0,
+      "pass_rate_pct": 100,
+      "engine_types": [
+        "enzyme",
+        "fermentation_ethanol"
+      ],
+      "samples": [
+        {
+          "engine": "enzyme",
+          "name": "enzyme 真实工况",
+          "paper": "[文献] 淀粉葡萄糖苷酶相对活力~85-95%",
+          "paper_result": 88,
+          "paper_unit": "%",
+          "status": "PASS"
+        },
+        {
+          "engine": "enzyme",
+          "name": "enzyme 真实工况",
+          "paper": "[文献] 中温酶活力",
+          "paper_result": 80,
+          "paper_unit": "%",
+          "status": "PASS"
+        },
+        {
+          "engine": "fermentation_ethanol",
+          "name": "fermentation_ethanol 真实工况",
+          "paper": "[文献] 酵母乙醇发酵乙醇体积分数~15-18%v/v(乙醇毒性上限, 区别于糖转化率88-92%)",
+          "paper_result": 18,
+          "paper_unit": "%",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "domain": "Analysis",
+      "cn": "分析化学",
+      "count": 3,
+      "pass": 3,
+      "fail": 0,
+      "pending": 0,
+      "pass_rate_pct": 100,
+      "engine_types": [
+        "spectrophotometry",
+        "titration_acid_base"
+      ],
+      "samples": [
+        {
+          "engine": "spectrophotometry",
+          "name": "紫外可见-亚甲基蓝664nm",
+          "paper": "Typical UV-Vis (Skoog)",
+          "paper_result": 100,
+          "paper_unit": "signal score",
+          "status": "PASS"
+        },
+        {
+          "engine": "spectrophotometry",
+          "name": "紫外可见-低浓度蛋白质595nm",
+          "paper": "Typical Bradford assay",
+          "paper_result": 50,
+          "paper_unit": "signal score",
+          "status": "PASS"
+        },
+        {
+          "engine": "titration_acid_base",
+          "name": "酸碱滴定-HCl标定NaOH",
+          "paper": "Typical titration (Harris)",
+          "paper_result": 99,
+          "paper_unit": "% accuracy",
+          "status": "PASS"
+        }
+      ]
+    },
+    {
+      "domain": "Electrochemistry",
+      "cn": "电化学",
+      "count": 1,
+      "pass": 1,
+      "fail": 0,
+      "pending": 0,
+      "pass_rate_pct": 100,
+      "engine_types": [
+        "electrodialysis"
+      ],
+      "samples": [
+        {
+          "engine": "electrodialysis",
+          "name": "electrodialysis 真实工况",
+          "paper": "[文献] 电渗析脱盐效率~80-90%",
+          "paper_result": 85,
+          "paper_unit": "%",
+          "status": "PASS"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://swarmlabs.tools/svp/schema/harness.json",
+  "title": "SVP Harness",
+  "description": "A versioned verification harness in the SwarmLabs Verification Protocol.",
+  "svp": "1.0",
+  "type": "object",
+  "required": ["version", "gates", "created_at"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+",
+      "description": "Semantic version of this harness"
+    },
+    "parent_version": {
+      "type": ["string", "null"],
+      "description": "Previous version ID for rollback chain"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 creation timestamp"
+    },
+    "fingerprint": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{16,64}$",
+      "description": "Content hash of the harness (independent of creation time)"
+    },
+    "gates": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "pattern": "^(N|P|A|I|F)[0-9]+$"},
+      "description": "Ordered list of gate IDs in this harness"
+    },
+    "score": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "Aggregate score on the baseline scenario set (0..1)"
+    },
+    "baseline_scenarios": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Number of scenarios in the evaluation baseline"
+    },
+    "per_scenario": {
+      "type": "object",
+      "description": "Per-scenario results, keyed by scenario ID",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["vv_result", "score"],
+        "properties": {
+          "vv_result": {"type": "string", "enum": ["PASS", "MARGINAL", "REFUTED", "ERROR"]},
+          "score": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+          "gate_results": {
+            "type": "object",
+            "additionalProperties": {"type": "boolean"}
+          }
+        }
+      }
+    },
+    "evolution": {
+      "type": "object",
+      "description": "Harness evolution metadata (for harness_evolver)",
+      "properties": {
+        "feedback_ids": {"type": "array", "items": {"type": "string"}},
+        "rationale": {"type": "string"},
+        "delta": {"type": "number"}
+      }
+    }
+  },
+  "additionalProperties": false
+}

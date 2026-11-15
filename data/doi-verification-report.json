@@ -1,0 +1,276 @@
+{
+  "generated_at": "2026-08-05T01:44:26.726Z",
+  "source": "CrossRef REST API (api.crossref.org)",
+  "total": 30,
+  "verified": 23,
+  "unverified": 7,
+  "verified_list": [
+    {
+      "doi": "10.1017/s0022112059000829",
+      "ok": true,
+      "title": "Experiments on the flow past a circular cylinder at low Reynolds numbers",
+      "journal": "Journal of Fluid Mechanics",
+      "year": 1959,
+      "type": "journal-article",
+      "publisher": "Cambridge University Press (CUP)",
+      "citations": 955
+    },
+    {
+      "doi": "10.1017/s0022112061000950",
+      "ok": true,
+      "title": "Experiments on the flow past a circular cylinder at very high Reynolds number",
+      "journal": "Journal of Fluid Mechanics",
+      "year": 1961,
+      "type": "journal-article",
+      "publisher": "Cambridge University Press (CUP)",
+      "citations": 1059
+    },
+    {
+      "doi": "10.1039/d2cc03977j",
+      "ok": true,
+      "title": "Microcracking of Ni-rich layered oxide does not occur at single crystal primary particles even abused at 4.7 V",
+      "journal": "Chemical Communications",
+      "year": 2022,
+      "type": "journal-article",
+      "publisher": "Royal Society of Chemistry (RSC)",
+      "citations": 22
+    },
+    {
+      "doi": "10.3390/polym14163406",
+      "ok": true,
+      "title": "Drug-Polymers Composite Matrix Tablets: Effect of Hydroxypropyl Methylcellulose (HPMC) K-Series on Porosity, Compatibility, and Release Behavior of the Tablet Containing a BCS Class I Drug",
+      "journal": "Polymers",
+      "year": 2022,
+      "type": "journal-article",
+      "publisher": "MDPI AG",
+      "citations": 39
+    },
+    {
+      "doi": "10.1021/acs.chemrev.0c00983",
+      "ok": true,
+      "title": "Structures and General Transport Mechanisms by the Major Facilitator Superfamily (MFS)",
+      "journal": "Chemical Reviews",
+      "year": 2021,
+      "type": "journal-article",
+      "publisher": "American Chemical Society (ACS)",
+      "citations": 487
+    },
+    {
+      "doi": "10.3390/molecules26061687",
+      "ok": true,
+      "title": "TiO2 as a Photocatalyst for Water Splitting—An Experimental and Theoretical Review",
+      "journal": "Molecules",
+      "year": 2021,
+      "type": "journal-article",
+      "publisher": "MDPI AG",
+      "citations": 272
+    },
+    {
+      "doi": "10.1016/j.desal.2011.04.039",
+      "ok": true,
+      "title": "Techniques for characterization of polyamide thin film composite membranes",
+      "journal": "Desalination",
+      "year": 2011,
+      "type": "journal-article",
+      "publisher": "Elsevier BV",
+      "citations": 65
+    },
+    {
+      "doi": "10.1002/admi.202200035",
+      "ok": true,
+      "title": "Enhancing Cycling Stability and Capacity Retention of NMC811 Cathodes by Reengineering Interfaces via Electrochemical Fluorination",
+      "journal": "Advanced Materials Interfaces",
+      "year": 2022,
+      "type": "journal-article",
+      "publisher": "Wiley",
+      "citations": 23
+    },
+    {
+      "doi": "10.3389/fenrg.2022.851377",
+      "ok": true,
+      "title": "Multiscale Modeling and Experimental Characterization for Enhancement in Electrical, Mechanical, and Thermal Performances of Lithium-Ion Battery",
+      "journal": "Frontiers in Energy Research",
+      "year": 2022,
+      "type": "journal-article",
+      "publisher": "Frontiers Media SA",
+      "citations": 1
+    },
+    {
+      "doi": "10.1039/c8ra01381k",
+      "ok": true,
+      "title": "Room-temperature borylation and one-pot two-step borylation/Suzuki–Miyaura cross-coupling reaction of aryl chlorides",
+      "journal": "RSC Advances",
+      "year": 2018,
+      "type": "journal-article",
+      "publisher": "Royal Society of Chemistry (RSC)",
+      "citations": 24
+    },
+    {
+      "doi": "10.1002/ejoc.201200918",
+      "ok": true,
+      "title": "Room‐Temperature Suzuki–Miyaura Coupling of Heteroaryl Chlorides and Tosylates",
+      "journal": "European Journal of Organic Chemistry",
+      "year": 2012,
+      "type": "journal-article",
+      "publisher": "Wiley",
+      "citations": 114
+    },
+    {
+      "doi": "10.1021/acsomega.1c05770",
+      "ok": true,
+      "title": "<i>trans</i>-Dichlorobis(XPhos)palladium(II) Precatalyst for Suzuki–Miyaura Cross-Coupling Reactions of Aryl/Vinyl Sulfonates/Halides: Scope, Mechanistic Study, and Synthetic Applications",
+      "journal": "ACS Omega",
+      "year": 2021,
+      "type": "journal-article",
+      "publisher": "American Chemical Society (ACS)",
+      "citations": 13
+    },
+    {
+      "doi": "10.1016/j.pce.2020.102900",
+      "ok": true,
+      "title": "Effect of TiO2 phase on the photocatalytic degradation of methylene blue dye",
+      "journal": "Physics and Chemistry of the Earth, Parts A/B/C",
+      "year": 2020,
+      "type": "journal-article",
+      "publisher": "Elsevier BV",
+      "citations": 163
+    },
+    {
+      "doi": "10.1038/s41467-019-12385-1",
+      "ok": true,
+      "title": "Photocatalytic water splitting by N-TiO2 on MgO (111) with exceptional quantum efficiencies at elevated temperatures",
+      "journal": "Nature Communications",
+      "year": 2019,
+      "type": "journal-article",
+      "publisher": "Springer Science and Business Media LLC",
+      "citations": 235
+    },
+    {
+      "doi": "10.1038/s41598-021-04168-w",
+      "ok": true,
+      "title": "Modeling of CO2 adsorption capacity by porous metal organic frameworks using advanced decision tree-based models",
+      "journal": "Scientific Reports",
+      "year": 2021,
+      "type": "journal-article",
+      "publisher": "Springer Science and Business Media LLC",
+      "citations": 105
+    },
+    {
+      "doi": "10.1021/ie900665f",
+      "ok": true,
+      "title": "Adsorption and Diffusion of Carbon Dioxide on Metal−Organic Framework (MOF-5)",
+      "journal": "Industrial &amp; Engineering Chemistry Research",
+      "year": 2009,
+      "type": "journal-article",
+      "publisher": "American Chemical Society (ACS)",
+      "citations": 329
+    },
+    {
+      "doi": "10.1038/nature11893",
+      "ok": true,
+      "title": "Porous materials with optimal adsorption thermodynamics and kinetics for CO2 separation",
+      "journal": "Nature",
+      "year": 2013,
+      "type": "journal-article",
+      "publisher": "Springer Science and Business Media LLC",
+      "citations": 2308
+    },
+    {
+      "doi": "10.1038/s41377-024-01461-x",
+      "ok": true,
+      "title": "Achievements, challenges, and future prospects for industrialization of perovskite solar cells",
+      "journal": "Light: Science &amp; Applications",
+      "year": 2024,
+      "type": "journal-article",
+      "publisher": "Springer Science and Business Media LLC",
+      "citations": 363
+    },
+    {
+      "doi": "10.1039/d5ee00189g",
+      "ok": true,
+      "title": "One-stone-two-birds: over 26% efficiency in perovskite solar cells\n                    <i>via</i>\n                    synergistic crystallization &amp; interface regulation",
+      "journal": "Energy &amp; Environmental Science",
+      "year": 2025,
+      "type": "journal-article",
+      "publisher": "Royal Society of Chemistry (RSC)",
+      "citations": 101
+    },
+    {
+      "doi": "10.1016/j.memsci.2008.09.033",
+      "ok": true,
+      "title": "Preparation, structure characteristics and separation properties of thin-film composite polyamide-urethane seawater reverse osmosis membrane",
+      "journal": "Journal of Membrane Science",
+      "year": 2008,
+      "type": "journal-article",
+      "publisher": "Elsevier BV",
+      "citations": 119
+    },
+    {
+      "doi": "10.1016/j.desal.2019.06.018",
+      "ok": true,
+      "title": "Effect of ZnO morphology on GO-ZnO modified polyamide reverse osmosis membranes for desalination",
+      "journal": "Desalination",
+      "year": 2019,
+      "type": "journal-article",
+      "publisher": "Elsevier BV",
+      "citations": 98
+    },
+    {
+      "doi": "10.1007/s10965-016-1167-2",
+      "ok": true,
+      "title": "Highly improved permeation property of thin-film-composite polyamide membrane for water desalination",
+      "journal": "Journal of Polymer Research",
+      "year": 2016,
+      "type": "journal-article",
+      "publisher": "Springer Science and Business Media LLC",
+      "citations": 13
+    },
+    {
+      "doi": "10.3390/polym15173558",
+      "ok": true,
+      "title": "Polymer Tablet Matrix Systems for the Controlled Release of Dry Betula pendula Leaf Extract",
+      "journal": "Polymers",
+      "year": 2023,
+      "type": "journal-article",
+      "publisher": "MDPI AG",
+      "citations": 7
+    }
+  ],
+  "unverified_list": [
+    {
+      "doi": "10.1126/science.abd4017",
+      "ok": false,
+      "reason": "not_found_in_crossref"
+    },
+    {
+      "doi": "10.1021/acs.oprd.1c00123",
+      "ok": false,
+      "reason": "not_found_in_crossref"
+    },
+    {
+      "doi": "10.1016/j.jpowsour.2022.13015",
+      "ok": false,
+      "reason": "not_found_in_crossref"
+    },
+    {
+      "doi": "10.1016/j.jpowsour.2025.235",
+      "ok": false,
+      "reason": "not_found_in_crossref"
+    },
+    {
+      "doi": "10.1016/j.fuel.2023.127028",
+      "ok": false,
+      "reason": "not_found_in_crossref"
+    },
+    {
+      "doi": "10.1038/s41598-025-01990-0",
+      "ok": false,
+      "reason": "not_found_in_crossref"
+    },
+    {
+      "doi": "10.5281/zenodo.7239588",
+      "ok": false,
+      "reason": "not_found_in_crossref"
+    }
+  ]
+}

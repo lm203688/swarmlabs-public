@@ -1,0 +1,2050 @@
+{
+  "generated_at_utc": "2026-09-21T12:54:53+00:00",
+  "total_pass": 79,
+  "total_with_gaps": 79,
+  "by_priority": {
+    "HIGH": 0,
+    "MEDIUM": 47,
+    "LOW": 32
+  },
+  "gaps": [
+    {
+      "scenario": "micro_chemostat_cerevisiae",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.5,
+      "domain": "微生物 / 酿酒酵母 Chemostat 稳态（稀释率+进料浓度→生物量）",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_chemostat_cerevisiae",
+          "reason": "基础场景 micro_chemostat_cerevisiae 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_immobilized_cell",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.5,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_immobilized_cell",
+          "reason": "基础场景 micro_immobilized_cell 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "opt_michalewicz2d",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.5,
+      "domain": "optimization",
+      "recommendations": [
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        }
+      ]
+    },
+    {
+      "scenario": "bio_logistic",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "Biology/Population Dynamics",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "种群动力学/酶动力学参数的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        }
+      ]
+    },
+    {
+      "scenario": "chem_langmuir",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "Chemical/Adsorption Isotherm (Langmuir 1916)",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Langmuir/Freundlich 吸附常数、反应速率常数的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        }
+      ]
+    },
+    {
+      "scenario": "chem_reactor_conversion",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "Chemistry / First-Order Reactor Conversion (Arrhenius Kinetics, 2D)",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Langmuir/Freundlich 吸附常数、反应速率常数的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        }
+      ]
+    },
+    {
+      "scenario": "cheminfo_hydration",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "cheminformatics",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Langmuir/Freundlich 吸附常数、反应速率常数的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        }
+      ]
+    },
+    {
+      "scenario": "cheminfo_logD",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "cheminformatics",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Langmuir/Freundlich 吸附常数、反应速率常数的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        }
+      ]
+    },
+    {
+      "scenario": "energy_ccpp_output",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "energy",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "电池/电化学动力学参数的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        }
+      ]
+    },
+    {
+      "scenario": "llm_scaling",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "LLM/Scaling Law (Kaplan 2020)",
+      "recommendations": [
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_acetobacter_acetate",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "微生物 / 醋酸杆菌醋酸利用（温度效应 + Monod）",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_acetobacter_acetate",
+          "reason": "基础场景 micro_acetobacter_acetate 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_antibiotic_2d",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_antibiotic_2d",
+          "reason": "基础场景 micro_antibiotic_2d 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_antibiotic_timekill",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_antibiotic_timekill",
+          "reason": "基础场景 micro_antibiotic_timekill 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_biofilm_ecoli",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_biofilm_ecoli",
+          "reason": "基础场景 micro_biofilm_ecoli 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_chemostat_transient",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_chemostat_transient",
+          "reason": "基础场景 micro_chemostat_transient 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_coculture_mutualism",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_coculture_mutualism",
+          "reason": "基础场景 micro_coculture_mutualism 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_competition_ecoli_yeast",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_competition_ecoli_yeast",
+          "reason": "基础场景 micro_competition_ecoli_yeast 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_crabtree_2d",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_crabtree_2d",
+          "reason": "基础场景 micro_crabtree_2d 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_diauxic_ecoli",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_diauxic_ecoli",
+          "reason": "基础场景 micro_diauxic_ecoli 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_fba_flux",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_fba_flux",
+          "reason": "基础场景 micro_fba_flux 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_fedbatch_ecoli",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_fedbatch_ecoli",
+          "reason": "基础场景 micro_fedbatch_ecoli 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_foam_dynamics",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_foam_dynamics",
+          "reason": "基础场景 micro_foam_dynamics 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_haldane_2d",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_haldane_2d",
+          "reason": "基础场景 micro_haldane_2d 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_haldane_putida",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_haldane_putida",
+          "reason": "基础场景 micro_haldane_putida 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_osmotic_ecoli",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_osmotic_ecoli",
+          "reason": "基础场景 micro_osmotic_ecoli 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_oxygen_2d",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_oxygen_2d",
+          "reason": "基础场景 micro_oxygen_2d 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_oxygen_ecoli",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_oxygen_ecoli",
+          "reason": "基础场景 micro_oxygen_ecoli 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_phage_infection",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_phage_infection",
+          "reason": "基础场景 micro_phage_infection 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_quorum_ecoli",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_quorum_ecoli",
+          "reason": "基础场景 micro_quorum_ecoli 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_scaleup_kla",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_scaleup_kla",
+          "reason": "基础场景 micro_scaleup_kla 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_secondary_metabolite",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_secondary_metabolite",
+          "reason": "基础场景 micro_secondary_metabolite 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_sensor_fusion",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_sensor_fusion",
+          "reason": "基础场景 micro_sensor_fusion 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_thermal_death",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_thermal_death",
+          "reason": "基础场景 micro_thermal_death 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "microbio_inhibition",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "Microorganisms/Substrate Inhibition (Andrews)",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "该域教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        }
+      ]
+    },
+    {
+      "scenario": "microbio_monod",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "Microorganisms/Growth Kinetics (Monod)",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "该域教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        }
+      ]
+    },
+    {
+      "scenario": "mol_esterification_yield",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "chemistry",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Langmuir/Freundlich 吸附常数、反应速率常数的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        }
+      ]
+    },
+    {
+      "scenario": "ode_lotka_volterra",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        }
+      ]
+    },
+    {
+      "scenario": "opt_ackley2d",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "optimization",
+      "recommendations": [
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        }
+      ]
+    },
+    {
+      "scenario": "opt_gramacylee1d",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "optimization",
+      "recommendations": [
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        }
+      ]
+    },
+    {
+      "scenario": "opt_levy2d",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "optimization",
+      "recommendations": [
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        }
+      ]
+    },
+    {
+      "scenario": "pde_heat1d",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "Heat Conduction (Physics-Informed/PDE)",
+      "recommendations": [
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        }
+      ]
+    },
+    {
+      "scenario": "quant_bs_call",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "finance",
+      "recommendations": [
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        }
+      ]
+    },
+    {
+      "scenario": "resp_welch2d",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "optimization",
+      "recommendations": [
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        }
+      ]
+    },
+    {
+      "scenario": "surrogate_branin",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "Surrogate Modeling/Optimization (2D Benchmark)",
+      "recommendations": [
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        }
+      ]
+    },
+    {
+      "scenario": "surrogate_forrester",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "replication",
+        "sensitivity"
+      ],
+      "coverage": 0.55,
+      "domain": "Surrogate Modeling/Optimization (Bayesian Optimization Benchmark)",
+      "recommendations": [
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_crabtree_cerevisiae",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.6667,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_crabtree_cerevisiae",
+          "reason": "基础场景 micro_crabtree_cerevisiae 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "opt_rastrigin2d",
+      "priority": "MEDIUM",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.6667,
+      "domain": "optimization",
+      "recommendations": []
+    },
+    {
+      "scenario": "cheminfo_logS",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "cheminformatics",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Langmuir/Freundlich 吸附常数、反应速率常数的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        }
+      ]
+    },
+    {
+      "scenario": "cheminfo_pIC50",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "cheminformatics",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Langmuir/Freundlich 吸附常数、反应速率常数的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_cerevisiae_ethanol",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "微生物 / 酿酒酵母乙醇发酵（Monod + 乙醇产物抑制）",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_cerevisiae_ethanol",
+          "reason": "基础场景 micro_cerevisiae_ethanol 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_chemostat_ecoli",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "微生物 / E. coli Chemostat 稳态（稀释率→生物量）",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_chemostat_ecoli",
+          "reason": "基础场景 micro_chemostat_ecoli 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_competition_2d",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_competition_2d",
+          "reason": "基础场景 micro_competition_2d 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_contois_ecoli",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_contois_ecoli",
+          "reason": "基础场景 micro_contois_ecoli 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_dead_volume",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_dead_volume",
+          "reason": "基础场景 micro_dead_volume 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_diauxic_2d",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_diauxic_2d",
+          "reason": "基础场景 micro_diauxic_2d 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_ecoli_glucose",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "微生物 / E. coli 批次培养（Monod, 文献参数）",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_ecoli_glucose",
+          "reason": "基础场景 micro_ecoli_glucose 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_fedbatch_2d",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_fedbatch_2d",
+          "reason": "基础场景 micro_fedbatch_2d 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_fedbatch_3d",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_fedbatch_3d",
+          "reason": "基础场景 micro_fedbatch_3d 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_gene_expression",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_gene_expression",
+          "reason": "基础场景 micro_gene_expression 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_heavy_metal_ecoli",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_heavy_metal_ecoli",
+          "reason": "基础场景 micro_heavy_metal_ecoli 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_lactococcus_lactose",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "微生物 / 乳酸乳球菌乳酸发酵（pH 效应 + 底物抑制）",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_lactococcus_lactose",
+          "reason": "基础场景 micro_lactococcus_lactose 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_lag_ecoli",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_lag_ecoli",
+          "reason": "基础场景 micro_lag_ecoli 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_lifecycle_ecoli",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_lifecycle_ecoli",
+          "reason": "基础场景 micro_lifecycle_ecoli 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_methanobacterium_methane",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "微生物 / 产甲烷古菌甲烷利用（低 μmax 极端场景）",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_methanobacterium_methane",
+          "reason": "基础场景 micro_methanobacterium_methane 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_mixed_substrate",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_mixed_substrate",
+          "reason": "基础场景 micro_mixed_substrate 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_oxidative_stress",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_oxidative_stress",
+          "reason": "基础场景 micro_oxidative_stress 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_ph_control",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_ph_control",
+          "reason": "基础场景 micro_ph_control 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_pirt_ecoli",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_pirt_ecoli",
+          "reason": "基础场景 micro_pirt_ecoli 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_plasmid_stability",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_plasmid_stability",
+          "reason": "基础场景 micro_plasmid_stability 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_putida_toluene",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "微生物 / 假单胞菌甲苯降解（Andrews 底物抑制）",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_putida_toluene",
+          "reason": "基础场景 micro_putida_toluene 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_tessier_ecoli",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "sensitivity",
+          "action": "build variant",
+          "method": "sobol",
+          "suggested_key": "micro_sobol_tessier_ecoli",
+          "reason": "基础场景 micro_tessier_ecoli 无灵敏度变体，建议按 sobol 方法构建"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_uq_ecoli_monod",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "replication"
+      ],
+      "coverage": 0.7167,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        },
+        {
+          "dimension": "replication",
+          "action": "independent recomputation",
+          "reason": "场景无独立复算；建议用不同实现路径（如手搓解析解 vs 数值）验证一致性",
+          "note": "ablation_plan 已检查 published=True 的场景有 oracle，但缺独立复算"
+        }
+      ]
+    },
+    {
+      "scenario": "opt_hartmann3d",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "optimization",
+      "recommendations": []
+    },
+    {
+      "scenario": "opt_rosenbrock2d",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "optimization",
+      "recommendations": []
+    },
+    {
+      "scenario": "opt_schwefel2d",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "optimization",
+      "recommendations": []
+    },
+    {
+      "scenario": "surrogate_hartmann6",
+      "priority": "LOW",
+      "missing": [
+        "anchor",
+        "sensitivity"
+      ],
+      "coverage": 0.7167,
+      "domain": "Surrogate Modeling/Optimization (6D High-Dimensional Benchmark)",
+      "recommendations": []
+    },
+    {
+      "scenario": "micro_doe_ecoli_monod",
+      "priority": "LOW",
+      "missing": [
+        "anchor"
+      ],
+      "coverage": 0.8833,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_mle_ecoli_monod",
+      "priority": "LOW",
+      "missing": [
+        "anchor"
+      ],
+      "coverage": 0.8833,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        }
+      ]
+    },
+    {
+      "scenario": "micro_sobol_ecoli",
+      "priority": "LOW",
+      "missing": [
+        "anchor"
+      ],
+      "coverage": 0.8833,
+      "domain": "biology",
+      "recommendations": [
+        {
+          "dimension": "anchor",
+          "action": "find literature interval",
+          "hint": "Monod/Michaelis-Menten 动力学常数（μmax, Ks, Y）的教科书区间",
+          "reason": "场景有物理对应物但无文献锚定；建议查找教科书区间（需人工确认）",
+          "warning": "UNANCHORED 不是失败——多数场景是无物理对应物的量纲/数学测试函数"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3835 @@
+{
+  "schema_version": "1.0",
+  "source": "swarm_agent_topology_motifs.json (MaleCNS v1.0 derived)",
+  "topologies": {
+    "inhibitory_hub": {
+      "pattern": "inhibitory_hub",
+      "nodes": [
+        {
+          "id": "coordinator",
+          "role": "guardrail",
+          "source": "APL(body 10540)"
+        },
+        {
+          "id": "worker_12569",
+          "role": "worker",
+          "ref_body": 12569,
+          "ref_type": "DPM"
+        },
+        {
+          "id": "worker_519371",
+          "role": "worker",
+          "ref_body": 519371,
+          "ref_type": "MBON05"
+        },
+        {
+          "id": "worker_10013",
+          "role": "worker",
+          "ref_body": 10013,
+          "ref_type": "MBON01"
+        },
+        {
+          "id": "worker_12690",
+          "role": "worker",
+          "ref_body": 12690,
+          "ref_type": "MBON06"
+        },
+        {
+          "id": "worker_11402",
+          "role": "worker",
+          "ref_body": 11402,
+          "ref_type": "MBON11"
+        },
+        {
+          "id": "worker_18540",
+          "role": "worker",
+          "ref_body": 18540,
+          "ref_type": "KCg-s1"
+        },
+        {
+          "id": "worker_11001",
+          "role": "worker",
+          "ref_body": 11001,
+          "ref_type": "LHMB1"
+        },
+        {
+          "id": "worker_10176",
+          "role": "worker",
+          "ref_body": 10176,
+          "ref_type": "DM1_lPN"
+        },
+        {
+          "id": "worker_36723",
+          "role": "worker",
+          "ref_body": 36723,
+          "ref_type": "KCg-d"
+        },
+        {
+          "id": "worker_520206",
+          "role": "worker",
+          "ref_body": 520206,
+          "ref_type": "KCg-d"
+        },
+        {
+          "id": "worker_14182",
+          "role": "worker",
+          "ref_body": 14182,
+          "ref_type": "PPL103"
+        },
+        {
+          "id": "worker_519373",
+          "role": "worker",
+          "ref_body": 519373,
+          "ref_type": "MBON03"
+        }
+      ],
+      "edges": [
+        {
+          "from": "coordinator",
+          "to": "worker_12569",
+          "weight": -1.0,
+          "kind": "inhibitory",
+          "ref_body": 12569,
+          "ref_type": "DPM"
+        },
+        {
+          "from": "coordinator",
+          "to": "worker_519371",
+          "weight": -0.835,
+          "kind": "inhibitory",
+          "ref_body": 519371,
+          "ref_type": "MBON05"
+        },
+        {
+          "from": "coordinator",
+          "to": "worker_10013",
+          "weight": -0.617,
+          "kind": "inhibitory",
+          "ref_body": 10013,
+          "ref_type": "MBON01"
+        },
+        {
+          "from": "coordinator",
+          "to": "worker_12690",
+          "weight": -0.385,
+          "kind": "inhibitory",
+          "ref_body": 12690,
+          "ref_type": "MBON06"
+        },
+        {
+          "from": "coordinator",
+          "to": "worker_11402",
+          "weight": -0.367,
+          "kind": "inhibitory",
+          "ref_body": 11402,
+          "ref_type": "MBON11"
+        },
+        {
+          "from": "coordinator",
+          "to": "worker_18540",
+          "weight": -0.29,
+          "kind": "inhibitory",
+          "ref_body": 18540,
+          "ref_type": "KCg-s1"
+        },
+        {
+          "from": "coordinator",
+          "to": "worker_11001",
+          "weight": -0.201,
+          "kind": "inhibitory",
+          "ref_body": 11001,
+          "ref_type": "LHMB1"
+        },
+        {
+          "from": "coordinator",
+          "to": "worker_10176",
+          "weight": -0.184,
+          "kind": "inhibitory",
+          "ref_body": 10176,
+          "ref_type": "DM1_lPN"
+        },
+        {
+          "from": "coordinator",
+          "to": "worker_36723",
+          "weight": -0.135,
+          "kind": "inhibitory",
+          "ref_body": 36723,
+          "ref_type": "KCg-d"
+        },
+        {
+          "from": "coordinator",
+          "to": "worker_520206",
+          "weight": -0.134,
+          "kind": "inhibitory",
+          "ref_body": 520206,
+          "ref_type": "KCg-d"
+        },
+        {
+          "from": "coordinator",
+          "to": "worker_14182",
+          "weight": -0.131,
+          "kind": "inhibitory",
+          "ref_body": 14182,
+          "ref_type": "PPL103"
+        },
+        {
+          "from": "coordinator",
+          "to": "worker_519373",
+          "weight": -0.122,
+          "kind": "inhibitory",
+          "ref_body": 519373,
+          "ref_type": "MBON03"
+        }
+      ],
+      "K_workers": 12
+    },
+    "reservoir_smallworld": {
+      "pattern": "reservoir_smallworld",
+      "nodes": [
+        {
+          "id": "r0",
+          "role": "reservoir"
+        },
+        {
+          "id": "r1",
+          "role": "reservoir"
+        },
+        {
+          "id": "r2",
+          "role": "reservoir"
+        },
+        {
+          "id": "r3",
+          "role": "reservoir"
+        },
+        {
+          "id": "r4",
+          "role": "reservoir"
+        },
+        {
+          "id": "r5",
+          "role": "reservoir"
+        },
+        {
+          "id": "r6",
+          "role": "reservoir"
+        },
+        {
+          "id": "r7",
+          "role": "reservoir"
+        },
+        {
+          "id": "r8",
+          "role": "reservoir"
+        },
+        {
+          "id": "r9",
+          "role": "reservoir"
+        },
+        {
+          "id": "r10",
+          "role": "reservoir"
+        },
+        {
+          "id": "r11",
+          "role": "reservoir"
+        },
+        {
+          "id": "r12",
+          "role": "reservoir"
+        },
+        {
+          "id": "r13",
+          "role": "reservoir"
+        },
+        {
+          "id": "r14",
+          "role": "reservoir"
+        },
+        {
+          "id": "r15",
+          "role": "reservoir"
+        },
+        {
+          "id": "r16",
+          "role": "reservoir"
+        },
+        {
+          "id": "r17",
+          "role": "reservoir"
+        },
+        {
+          "id": "r18",
+          "role": "reservoir"
+        },
+        {
+          "id": "r19",
+          "role": "reservoir"
+        },
+        {
+          "id": "r20",
+          "role": "reservoir"
+        },
+        {
+          "id": "r21",
+          "role": "reservoir"
+        },
+        {
+          "id": "r22",
+          "role": "reservoir"
+        },
+        {
+          "id": "r23",
+          "role": "reservoir"
+        },
+        {
+          "id": "r24",
+          "role": "reservoir"
+        },
+        {
+          "id": "r25",
+          "role": "reservoir"
+        },
+        {
+          "id": "r26",
+          "role": "reservoir"
+        },
+        {
+          "id": "r27",
+          "role": "reservoir"
+        },
+        {
+          "id": "r28",
+          "role": "reservoir"
+        },
+        {
+          "id": "r29",
+          "role": "reservoir"
+        },
+        {
+          "id": "r30",
+          "role": "reservoir"
+        },
+        {
+          "id": "r31",
+          "role": "reservoir"
+        },
+        {
+          "id": "r32",
+          "role": "reservoir"
+        },
+        {
+          "id": "r33",
+          "role": "reservoir"
+        },
+        {
+          "id": "r34",
+          "role": "reservoir"
+        },
+        {
+          "id": "r35",
+          "role": "reservoir"
+        },
+        {
+          "id": "r36",
+          "role": "reservoir"
+        },
+        {
+          "id": "r37",
+          "role": "reservoir"
+        },
+        {
+          "id": "r38",
+          "role": "reservoir"
+        },
+        {
+          "id": "r39",
+          "role": "reservoir"
+        },
+        {
+          "id": "r40",
+          "role": "reservoir"
+        },
+        {
+          "id": "r41",
+          "role": "reservoir"
+        },
+        {
+          "id": "r42",
+          "role": "reservoir"
+        },
+        {
+          "id": "r43",
+          "role": "reservoir"
+        },
+        {
+          "id": "r44",
+          "role": "reservoir"
+        },
+        {
+          "id": "r45",
+          "role": "reservoir"
+        },
+        {
+          "id": "r46",
+          "role": "reservoir"
+        },
+        {
+          "id": "r47",
+          "role": "reservoir"
+        },
+        {
+          "id": "r48",
+          "role": "reservoir"
+        },
+        {
+          "id": "r49",
+          "role": "reservoir"
+        },
+        {
+          "id": "r50",
+          "role": "reservoir"
+        },
+        {
+          "id": "r51",
+          "role": "reservoir"
+        },
+        {
+          "id": "r52",
+          "role": "reservoir"
+        },
+        {
+          "id": "r53",
+          "role": "reservoir"
+        },
+        {
+          "id": "r54",
+          "role": "reservoir"
+        },
+        {
+          "id": "r55",
+          "role": "reservoir"
+        },
+        {
+          "id": "r56",
+          "role": "reservoir"
+        },
+        {
+          "id": "r57",
+          "role": "reservoir"
+        },
+        {
+          "id": "r58",
+          "role": "reservoir"
+        },
+        {
+          "id": "r59",
+          "role": "reservoir"
+        },
+        {
+          "id": "r60",
+          "role": "reservoir"
+        },
+        {
+          "id": "r61",
+          "role": "reservoir"
+        },
+        {
+          "id": "r62",
+          "role": "reservoir"
+        },
+        {
+          "id": "r63",
+          "role": "reservoir"
+        }
+      ],
+      "edges": [
+        {
+          "from": "r0",
+          "to": "r53",
+          "weight": 0.73,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r0",
+          "to": "r2",
+          "weight": 0.899,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r0",
+          "to": "r16",
+          "weight": 0.684,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r0",
+          "to": "r32",
+          "weight": 0.472,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r0",
+          "to": "r31",
+          "weight": 0.101,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r0",
+          "to": "r25",
+          "weight": 0.434,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r0",
+          "to": "r50",
+          "weight": 0.611,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r0",
+          "to": "r63",
+          "weight": 0.913,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r0",
+          "to": "r19",
+          "weight": 0.967,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r0",
+          "to": "r30",
+          "weight": 0.477,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r0",
+          "to": "r22",
+          "weight": 0.865,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r0",
+          "to": "r37",
+          "weight": 0.26,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r0",
+          "to": "r13",
+          "weight": 0.805,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r0",
+          "to": "r60",
+          "weight": 0.549,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r0",
+          "to": "r8",
+          "weight": 0.014,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r0",
+          "to": "r18",
+          "weight": 0.72,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r0",
+          "to": "r49",
+          "weight": 0.399,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r0",
+          "to": "r6",
+          "weight": 0.825,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r0",
+          "to": "r39",
+          "weight": 0.668,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r0",
+          "to": "r61",
+          "weight": 0.001,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r0",
+          "to": "r34",
+          "weight": 0.494,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r0",
+          "to": "r38",
+          "weight": 0.868,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r0",
+          "to": "r9",
+          "weight": 0.244,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r0",
+          "to": "r55",
+          "weight": 0.325,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r0",
+          "to": "r46",
+          "weight": 0.87,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r1",
+          "to": "r30",
+          "weight": 0.803,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r1",
+          "to": "r18",
+          "weight": 0.448,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r2",
+          "to": "r62",
+          "weight": 0.109,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r3",
+          "to": "r42",
+          "weight": 0.477,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r3",
+          "to": "r52",
+          "weight": 0.09,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r3",
+          "to": "r59",
+          "weight": 0.758,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r3",
+          "to": "r34",
+          "weight": 0.877,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r3",
+          "to": "r13",
+          "weight": 0.923,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r3",
+          "to": "r51",
+          "weight": 0.842,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r3",
+          "to": "r38",
+          "weight": 0.898,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r3",
+          "to": "r35",
+          "weight": 0.923,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r3",
+          "to": "r37",
+          "weight": 0.541,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r3",
+          "to": "r18",
+          "weight": 0.391,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r3",
+          "to": "r28",
+          "weight": 0.705,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r3",
+          "to": "r5",
+          "weight": 0.276,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r3",
+          "to": "r57",
+          "weight": 0.812,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r3",
+          "to": "r24",
+          "weight": 0.849,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r3",
+          "to": "r20",
+          "weight": 0.895,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r3",
+          "to": "r36",
+          "weight": 0.59,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r3",
+          "to": "r15",
+          "weight": 0.95,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r3",
+          "to": "r54",
+          "weight": 0.58,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r3",
+          "to": "r11",
+          "weight": 0.451,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r3",
+          "to": "r12",
+          "weight": 0.66,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r3",
+          "to": "r45",
+          "weight": 0.996,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r3",
+          "to": "r2",
+          "weight": 0.917,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r3",
+          "to": "r39",
+          "weight": 0.793,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r3",
+          "to": "r16",
+          "weight": 0.082,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r4",
+          "to": "r42",
+          "weight": 0.783,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r4",
+          "to": "r54",
+          "weight": 0.855,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r4",
+          "to": "r12",
+          "weight": 0.219,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r4",
+          "to": "r15",
+          "weight": 0.817,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r4",
+          "to": "r1",
+          "weight": 0.634,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r4",
+          "to": "r46",
+          "weight": 0.937,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r4",
+          "to": "r17",
+          "weight": 0.602,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r4",
+          "to": "r7",
+          "weight": 0.074,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r4",
+          "to": "r45",
+          "weight": 0.124,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r4",
+          "to": "r14",
+          "weight": 0.189,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r4",
+          "to": "r23",
+          "weight": 0.83,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r4",
+          "to": "r50",
+          "weight": 0.12,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r4",
+          "to": "r10",
+          "weight": 0.092,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r4",
+          "to": "r21",
+          "weight": 0.834,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r4",
+          "to": "r27",
+          "weight": 0.116,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r4",
+          "to": "r3",
+          "weight": 0.606,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r4",
+          "to": "r6",
+          "weight": 0.195,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r5",
+          "to": "r61",
+          "weight": 0.596,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r5",
+          "to": "r13",
+          "weight": 0.699,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r5",
+          "to": "r46",
+          "weight": 0.391,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r5",
+          "to": "r51",
+          "weight": 0.26,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r5",
+          "to": "r3",
+          "weight": 0.904,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r5",
+          "to": "r43",
+          "weight": 0.47,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r5",
+          "to": "r1",
+          "weight": 0.902,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r5",
+          "to": "r34",
+          "weight": 0.57,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r5",
+          "to": "r27",
+          "weight": 0.698,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r5",
+          "to": "r39",
+          "weight": 0.203,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r5",
+          "to": "r6",
+          "weight": 0.767,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r5",
+          "to": "r16",
+          "weight": 0.789,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r5",
+          "to": "r4",
+          "weight": 0.158,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r5",
+          "to": "r14",
+          "weight": 0.162,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r5",
+          "to": "r60",
+          "weight": 0.529,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r5",
+          "to": "r41",
+          "weight": 0.117,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r5",
+          "to": "r19",
+          "weight": 0.921,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r5",
+          "to": "r22",
+          "weight": 0.666,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r5",
+          "to": "r55",
+          "weight": 0.013,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r5",
+          "to": "r11",
+          "weight": 0.681,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r5",
+          "to": "r59",
+          "weight": 0.9,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r5",
+          "to": "r32",
+          "weight": 0.875,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r5",
+          "to": "r29",
+          "weight": 0.918,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r5",
+          "to": "r2",
+          "weight": 0.649,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r6",
+          "to": "r19",
+          "weight": 0.458,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r6",
+          "to": "r1",
+          "weight": 0.079,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r7",
+          "to": "r17",
+          "weight": 0.081,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r7",
+          "to": "r15",
+          "weight": 0.595,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r7",
+          "to": "r48",
+          "weight": 0.699,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r7",
+          "to": "r30",
+          "weight": 0.16,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r7",
+          "to": "r22",
+          "weight": 0.223,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r7",
+          "to": "r39",
+          "weight": 0.448,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r7",
+          "to": "r18",
+          "weight": 0.71,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r7",
+          "to": "r43",
+          "weight": 0.674,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r7",
+          "to": "r59",
+          "weight": 0.875,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r7",
+          "to": "r37",
+          "weight": 0.032,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r7",
+          "to": "r40",
+          "weight": 0.872,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r7",
+          "to": "r58",
+          "weight": 0.567,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r7",
+          "to": "r8",
+          "weight": 0.772,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r7",
+          "to": "r45",
+          "weight": 0.709,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r7",
+          "to": "r19",
+          "weight": 0.166,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r7",
+          "to": "r24",
+          "weight": 0.064,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r7",
+          "to": "r47",
+          "weight": 0.702,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r7",
+          "to": "r26",
+          "weight": 0.446,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r7",
+          "to": "r41",
+          "weight": 0.885,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r8",
+          "to": "r0",
+          "weight": 0.95,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r8",
+          "to": "r56",
+          "weight": 0.417,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r8",
+          "to": "r2",
+          "weight": 0.003,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r8",
+          "to": "r31",
+          "weight": 0.014,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r8",
+          "to": "r20",
+          "weight": 0.755,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r8",
+          "to": "r19",
+          "weight": 0.98,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r8",
+          "to": "r53",
+          "weight": 0.676,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r8",
+          "to": "r29",
+          "weight": 0.612,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r8",
+          "to": "r3",
+          "weight": 0.19,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r8",
+          "to": "r51",
+          "weight": 0.608,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r8",
+          "to": "r52",
+          "weight": 0.199,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r8",
+          "to": "r54",
+          "weight": 0.302,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r8",
+          "to": "r26",
+          "weight": 0.689,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r8",
+          "to": "r12",
+          "weight": 0.182,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r8",
+          "to": "r35",
+          "weight": 0.476,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r8",
+          "to": "r40",
+          "weight": 0.923,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r8",
+          "to": "r5",
+          "weight": 0.628,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r8",
+          "to": "r46",
+          "weight": 0.022,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r8",
+          "to": "r63",
+          "weight": 0.914,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r8",
+          "to": "r25",
+          "weight": 0.8,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r9",
+          "to": "r44",
+          "weight": 0.115,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r10",
+          "to": "r5",
+          "weight": 0.558,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r10",
+          "to": "r26",
+          "weight": 0.947,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r10",
+          "to": "r33",
+          "weight": 0.938,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r11",
+          "to": "r63",
+          "weight": 0.871,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r11",
+          "to": "r58",
+          "weight": 0.178,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r11",
+          "to": "r55",
+          "weight": 0.376,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r11",
+          "to": "r47",
+          "weight": 0.291,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r12",
+          "to": "r43",
+          "weight": 0.79,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r13",
+          "to": "r4",
+          "weight": 0.478,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r13",
+          "to": "r2",
+          "weight": 0.24,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r13",
+          "to": "r17",
+          "weight": 0.048,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r13",
+          "to": "r10",
+          "weight": 0.18,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r13",
+          "to": "r9",
+          "weight": 0.523,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r13",
+          "to": "r37",
+          "weight": 0.071,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r13",
+          "to": "r18",
+          "weight": 0.403,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r13",
+          "to": "r23",
+          "weight": 0.329,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r13",
+          "to": "r25",
+          "weight": 0.415,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r13",
+          "to": "r35",
+          "weight": 0.099,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r13",
+          "to": "r8",
+          "weight": 0.909,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r13",
+          "to": "r57",
+          "weight": 0.474,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r13",
+          "to": "r7",
+          "weight": 0.841,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r61",
+          "weight": 0.115,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r7",
+          "weight": 0.822,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r44",
+          "weight": 0.853,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r31",
+          "weight": 0.028,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r27",
+          "weight": 0.526,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r2",
+          "weight": 0.752,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r19",
+          "weight": 0.202,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r21",
+          "weight": 0.497,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r47",
+          "weight": 0.256,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r43",
+          "weight": 0.641,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r9",
+          "weight": 0.997,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r10",
+          "weight": 0.797,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r40",
+          "weight": 0.623,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r36",
+          "weight": 0.105,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r24",
+          "weight": 0.458,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r51",
+          "weight": 0.362,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r5",
+          "weight": 0.827,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r4",
+          "weight": 0.105,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r55",
+          "weight": 0.596,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r12",
+          "weight": 0.488,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r3",
+          "weight": 0.564,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r49",
+          "weight": 0.638,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r0",
+          "weight": 0.423,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r6",
+          "weight": 0.521,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r25",
+          "weight": 0.679,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r35",
+          "weight": 0.888,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r33",
+          "weight": 0.834,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r18",
+          "weight": 0.998,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r28",
+          "weight": 0.635,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r60",
+          "weight": 0.875,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r13",
+          "weight": 0.543,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r59",
+          "weight": 0.931,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r58",
+          "weight": 0.01,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r11",
+          "weight": 0.706,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r62",
+          "weight": 0.747,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r8",
+          "weight": 0.318,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r37",
+          "weight": 0.322,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r41",
+          "weight": 0.525,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r45",
+          "weight": 0.874,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r32",
+          "weight": 0.603,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r39",
+          "weight": 0.156,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r14",
+          "to": "r29",
+          "weight": 0.379,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r15",
+          "to": "r60",
+          "weight": 0.8,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r15",
+          "to": "r8",
+          "weight": 0.517,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r16",
+          "to": "r5",
+          "weight": 0.331,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r16",
+          "to": "r38",
+          "weight": 0.161,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r16",
+          "to": "r1",
+          "weight": 0.149,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r16",
+          "to": "r57",
+          "weight": 0.656,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r17",
+          "to": "r4",
+          "weight": 0.826,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r17",
+          "to": "r36",
+          "weight": 0.482,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r17",
+          "to": "r5",
+          "weight": 0.791,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r17",
+          "to": "r43",
+          "weight": 0.389,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r17",
+          "to": "r50",
+          "weight": 0.586,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r17",
+          "to": "r51",
+          "weight": 0.851,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r17",
+          "to": "r33",
+          "weight": 0.798,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r17",
+          "to": "r48",
+          "weight": 0.657,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r17",
+          "to": "r38",
+          "weight": 0.0,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r17",
+          "to": "r63",
+          "weight": 0.182,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r17",
+          "to": "r47",
+          "weight": 0.507,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r17",
+          "to": "r27",
+          "weight": 0.254,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r17",
+          "to": "r56",
+          "weight": 0.066,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r17",
+          "to": "r13",
+          "weight": 0.86,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r17",
+          "to": "r18",
+          "weight": 0.943,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r17",
+          "to": "r34",
+          "weight": 0.303,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r17",
+          "to": "r55",
+          "weight": 0.408,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r17",
+          "to": "r26",
+          "weight": 0.81,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r18",
+          "to": "r16",
+          "weight": 0.287,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r18",
+          "to": "r30",
+          "weight": 0.83,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r20",
+          "to": "r10",
+          "weight": 0.81,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r20",
+          "to": "r19",
+          "weight": 0.353,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r21",
+          "to": "r58",
+          "weight": 0.101,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r21",
+          "to": "r6",
+          "weight": 0.778,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r23",
+          "to": "r44",
+          "weight": 0.195,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r24",
+          "to": "r14",
+          "weight": 0.757,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r24",
+          "to": "r56",
+          "weight": 0.455,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r24",
+          "to": "r3",
+          "weight": 0.79,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r24",
+          "to": "r39",
+          "weight": 0.075,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r24",
+          "to": "r44",
+          "weight": 0.045,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r24",
+          "to": "r29",
+          "weight": 0.934,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r24",
+          "to": "r60",
+          "weight": 0.486,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r24",
+          "to": "r40",
+          "weight": 0.901,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r24",
+          "to": "r21",
+          "weight": 0.945,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r24",
+          "to": "r41",
+          "weight": 0.667,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r24",
+          "to": "r7",
+          "weight": 0.572,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r24",
+          "to": "r43",
+          "weight": 0.216,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r24",
+          "to": "r45",
+          "weight": 0.093,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r24",
+          "to": "r57",
+          "weight": 0.819,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r24",
+          "to": "r18",
+          "weight": 0.889,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r24",
+          "to": "r8",
+          "weight": 0.779,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r24",
+          "to": "r49",
+          "weight": 0.699,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r24",
+          "to": "r52",
+          "weight": 0.42,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r24",
+          "to": "r53",
+          "weight": 0.305,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r24",
+          "to": "r33",
+          "weight": 0.113,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r24",
+          "to": "r12",
+          "weight": 0.426,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r24",
+          "to": "r2",
+          "weight": 0.566,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r24",
+          "to": "r25",
+          "weight": 0.923,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r24",
+          "to": "r28",
+          "weight": 0.936,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r24",
+          "to": "r23",
+          "weight": 0.416,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r25",
+          "to": "r3",
+          "weight": 0.686,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r25",
+          "to": "r57",
+          "weight": 0.03,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r25",
+          "to": "r55",
+          "weight": 0.919,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r26",
+          "to": "r10",
+          "weight": 0.369,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r26",
+          "to": "r22",
+          "weight": 0.025,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r26",
+          "to": "r4",
+          "weight": 0.605,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r26",
+          "to": "r7",
+          "weight": 0.859,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r26",
+          "to": "r62",
+          "weight": 0.187,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r26",
+          "to": "r44",
+          "weight": 0.112,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r26",
+          "to": "r1",
+          "weight": 0.344,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r26",
+          "to": "r59",
+          "weight": 0.959,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r26",
+          "to": "r56",
+          "weight": 0.13,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r26",
+          "to": "r11",
+          "weight": 0.967,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r26",
+          "to": "r0",
+          "weight": 0.362,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r26",
+          "to": "r14",
+          "weight": 0.473,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r26",
+          "to": "r23",
+          "weight": 0.293,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r26",
+          "to": "r61",
+          "weight": 0.937,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r26",
+          "to": "r38",
+          "weight": 0.958,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r26",
+          "to": "r9",
+          "weight": 0.636,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r26",
+          "to": "r13",
+          "weight": 0.184,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r26",
+          "to": "r53",
+          "weight": 0.993,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r26",
+          "to": "r47",
+          "weight": 0.103,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r26",
+          "to": "r42",
+          "weight": 0.581,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r26",
+          "to": "r43",
+          "weight": 0.156,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r26",
+          "to": "r60",
+          "weight": 0.898,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r26",
+          "to": "r46",
+          "weight": 0.946,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r26",
+          "to": "r18",
+          "weight": 0.804,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r27",
+          "to": "r23",
+          "weight": 0.291,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r30",
+          "to": "r53",
+          "weight": 0.299,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r31",
+          "to": "r54",
+          "weight": 0.085,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r31",
+          "to": "r38",
+          "weight": 0.445,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r31",
+          "to": "r45",
+          "weight": 0.369,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r32",
+          "to": "r52",
+          "weight": 0.204,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r32",
+          "to": "r1",
+          "weight": 0.293,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r32",
+          "to": "r53",
+          "weight": 0.471,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r32",
+          "to": "r41",
+          "weight": 0.95,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r32",
+          "to": "r56",
+          "weight": 0.797,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r33",
+          "to": "r19",
+          "weight": 0.928,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r33",
+          "to": "r57",
+          "weight": 0.185,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r34",
+          "to": "r58",
+          "weight": 0.34,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r35",
+          "to": "r11",
+          "weight": 0.299,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r35",
+          "to": "r30",
+          "weight": 0.769,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r35",
+          "to": "r48",
+          "weight": 0.629,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r35",
+          "to": "r13",
+          "weight": 0.545,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r35",
+          "to": "r18",
+          "weight": 0.156,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r35",
+          "to": "r0",
+          "weight": 0.706,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r35",
+          "to": "r53",
+          "weight": 0.471,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r35",
+          "to": "r44",
+          "weight": 0.678,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r35",
+          "to": "r28",
+          "weight": 0.76,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r35",
+          "to": "r39",
+          "weight": 0.232,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r35",
+          "to": "r29",
+          "weight": 0.762,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r35",
+          "to": "r58",
+          "weight": 0.28,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r35",
+          "to": "r60",
+          "weight": 0.984,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r36",
+          "to": "r5",
+          "weight": 0.398,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r36",
+          "to": "r0",
+          "weight": 0.891,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r36",
+          "to": "r32",
+          "weight": 0.71,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r37",
+          "to": "r45",
+          "weight": 0.871,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r37",
+          "to": "r36",
+          "weight": 0.673,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r38",
+          "to": "r9",
+          "weight": 0.792,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r39",
+          "to": "r31",
+          "weight": 0.891,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r40",
+          "to": "r37",
+          "weight": 0.411,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r40",
+          "to": "r36",
+          "weight": 0.635,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r40",
+          "to": "r17",
+          "weight": 0.403,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r40",
+          "to": "r26",
+          "weight": 0.779,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r40",
+          "to": "r13",
+          "weight": 0.788,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r41",
+          "to": "r17",
+          "weight": 0.157,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r42",
+          "to": "r59",
+          "weight": 0.502,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r42",
+          "to": "r8",
+          "weight": 0.493,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r42",
+          "to": "r35",
+          "weight": 0.958,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r42",
+          "to": "r19",
+          "weight": 0.444,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r42",
+          "to": "r22",
+          "weight": 0.143,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r42",
+          "to": "r40",
+          "weight": 0.496,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r42",
+          "to": "r30",
+          "weight": 0.887,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r42",
+          "to": "r47",
+          "weight": 0.216,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r42",
+          "to": "r26",
+          "weight": 0.355,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r42",
+          "to": "r13",
+          "weight": 0.391,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r42",
+          "to": "r56",
+          "weight": 0.993,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r42",
+          "to": "r31",
+          "weight": 0.846,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r42",
+          "to": "r44",
+          "weight": 0.979,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r43",
+          "to": "r50",
+          "weight": 0.004,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r43",
+          "to": "r0",
+          "weight": 0.27,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r43",
+          "to": "r23",
+          "weight": 0.64,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r43",
+          "to": "r2",
+          "weight": 0.293,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r43",
+          "to": "r7",
+          "weight": 0.901,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r43",
+          "to": "r39",
+          "weight": 0.141,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r44",
+          "to": "r55",
+          "weight": 0.897,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r44",
+          "to": "r29",
+          "weight": 0.435,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r44",
+          "to": "r45",
+          "weight": 0.447,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r44",
+          "to": "r21",
+          "weight": 0.709,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r44",
+          "to": "r24",
+          "weight": 0.524,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r44",
+          "to": "r10",
+          "weight": 0.129,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r44",
+          "to": "r60",
+          "weight": 0.91,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r44",
+          "to": "r26",
+          "weight": 0.444,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r44",
+          "to": "r41",
+          "weight": 0.789,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r45",
+          "to": "r49",
+          "weight": 0.439,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r45",
+          "to": "r28",
+          "weight": 0.204,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r45",
+          "to": "r25",
+          "weight": 0.71,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r46",
+          "to": "r10",
+          "weight": 0.743,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r46",
+          "to": "r23",
+          "weight": 0.677,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r46",
+          "to": "r7",
+          "weight": 0.233,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r47",
+          "to": "r36",
+          "weight": 0.771,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r48",
+          "to": "r6",
+          "weight": 0.215,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r48",
+          "to": "r40",
+          "weight": 0.266,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r48",
+          "to": "r44",
+          "weight": 0.044,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r48",
+          "to": "r33",
+          "weight": 0.163,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r48",
+          "to": "r42",
+          "weight": 0.004,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r48",
+          "to": "r41",
+          "weight": 0.655,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r48",
+          "to": "r35",
+          "weight": 0.14,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r48",
+          "to": "r47",
+          "weight": 0.787,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r48",
+          "to": "r27",
+          "weight": 0.681,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r48",
+          "to": "r37",
+          "weight": 0.971,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r48",
+          "to": "r29",
+          "weight": 0.397,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r48",
+          "to": "r31",
+          "weight": 0.921,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r48",
+          "to": "r16",
+          "weight": 0.454,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r48",
+          "to": "r45",
+          "weight": 0.34,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r48",
+          "to": "r30",
+          "weight": 0.102,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r49",
+          "to": "r41",
+          "weight": 0.872,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r49",
+          "to": "r34",
+          "weight": 0.24,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r49",
+          "to": "r29",
+          "weight": 0.306,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r49",
+          "to": "r57",
+          "weight": 0.552,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r49",
+          "to": "r20",
+          "weight": 0.009,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r49",
+          "to": "r16",
+          "weight": 0.495,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r49",
+          "to": "r1",
+          "weight": 0.438,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r49",
+          "to": "r33",
+          "weight": 0.917,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r49",
+          "to": "r2",
+          "weight": 0.412,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r49",
+          "to": "r12",
+          "weight": 0.494,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r49",
+          "to": "r23",
+          "weight": 0.44,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r49",
+          "to": "r5",
+          "weight": 0.086,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r49",
+          "to": "r13",
+          "weight": 0.241,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r49",
+          "to": "r56",
+          "weight": 0.826,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r49",
+          "to": "r22",
+          "weight": 0.154,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r49",
+          "to": "r54",
+          "weight": 0.884,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r49",
+          "to": "r48",
+          "weight": 0.213,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r49",
+          "to": "r58",
+          "weight": 0.613,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r49",
+          "to": "r43",
+          "weight": 0.818,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r49",
+          "to": "r19",
+          "weight": 0.559,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r49",
+          "to": "r44",
+          "weight": 0.887,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r49",
+          "to": "r50",
+          "weight": 0.394,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r49",
+          "to": "r24",
+          "weight": 0.959,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r49",
+          "to": "r46",
+          "weight": 0.25,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r49",
+          "to": "r30",
+          "weight": 0.22,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r50",
+          "to": "r45",
+          "weight": 0.711,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r50",
+          "to": "r20",
+          "weight": 0.777,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r50",
+          "to": "r27",
+          "weight": 0.514,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r50",
+          "to": "r6",
+          "weight": 0.462,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r50",
+          "to": "r35",
+          "weight": 0.634,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r50",
+          "to": "r57",
+          "weight": 0.273,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r50",
+          "to": "r18",
+          "weight": 0.017,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r50",
+          "to": "r39",
+          "weight": 0.615,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r50",
+          "to": "r34",
+          "weight": 0.712,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r50",
+          "to": "r12",
+          "weight": 0.173,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r51",
+          "to": "r0",
+          "weight": 0.742,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r52",
+          "to": "r15",
+          "weight": 0.118,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r52",
+          "to": "r49",
+          "weight": 0.737,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r52",
+          "to": "r34",
+          "weight": 0.359,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r53",
+          "to": "r36",
+          "weight": 0.367,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r53",
+          "to": "r14",
+          "weight": 0.635,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r53",
+          "to": "r47",
+          "weight": 0.812,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r53",
+          "to": "r57",
+          "weight": 0.877,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r53",
+          "to": "r15",
+          "weight": 0.155,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r53",
+          "to": "r4",
+          "weight": 0.177,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r53",
+          "to": "r33",
+          "weight": 0.991,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r53",
+          "to": "r19",
+          "weight": 0.136,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r53",
+          "to": "r43",
+          "weight": 0.207,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r53",
+          "to": "r20",
+          "weight": 0.915,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r53",
+          "to": "r62",
+          "weight": 0.497,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r53",
+          "to": "r23",
+          "weight": 0.767,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r53",
+          "to": "r40",
+          "weight": 0.969,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r53",
+          "to": "r30",
+          "weight": 0.235,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r53",
+          "to": "r18",
+          "weight": 0.132,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r53",
+          "to": "r37",
+          "weight": 0.234,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r53",
+          "to": "r10",
+          "weight": 0.385,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r53",
+          "to": "r8",
+          "weight": 0.608,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r53",
+          "to": "r0",
+          "weight": 0.133,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r53",
+          "to": "r35",
+          "weight": 0.498,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r53",
+          "to": "r32",
+          "weight": 0.918,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r53",
+          "to": "r60",
+          "weight": 0.616,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r54",
+          "to": "r62",
+          "weight": 0.309,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r54",
+          "to": "r58",
+          "weight": 0.959,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r55",
+          "to": "r63",
+          "weight": 0.848,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r55",
+          "to": "r51",
+          "weight": 0.259,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r55",
+          "to": "r61",
+          "weight": 0.604,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r55",
+          "to": "r47",
+          "weight": 0.703,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r55",
+          "to": "r30",
+          "weight": 0.822,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r55",
+          "to": "r34",
+          "weight": 0.785,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r55",
+          "to": "r20",
+          "weight": 0.384,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r55",
+          "to": "r45",
+          "weight": 0.059,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r56",
+          "to": "r31",
+          "weight": 0.863,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r56",
+          "to": "r43",
+          "weight": 0.668,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r57",
+          "to": "r44",
+          "weight": 0.63,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r57",
+          "to": "r42",
+          "weight": 0.353,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r57",
+          "to": "r10",
+          "weight": 0.491,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r57",
+          "to": "r19",
+          "weight": 0.061,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r57",
+          "to": "r1",
+          "weight": 0.241,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r57",
+          "to": "r22",
+          "weight": 0.012,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r57",
+          "to": "r36",
+          "weight": 0.946,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r57",
+          "to": "r34",
+          "weight": 0.327,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r57",
+          "to": "r3",
+          "weight": 0.821,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r57",
+          "to": "r46",
+          "weight": 0.345,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r58",
+          "to": "r27",
+          "weight": 0.649,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r58",
+          "to": "r28",
+          "weight": 0.728,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r58",
+          "to": "r63",
+          "weight": 0.785,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r58",
+          "to": "r9",
+          "weight": 0.409,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r58",
+          "to": "r22",
+          "weight": 0.01,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r58",
+          "to": "r19",
+          "weight": 0.891,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r58",
+          "to": "r11",
+          "weight": 0.534,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r48",
+          "weight": 0.71,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r2",
+          "weight": 0.615,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r36",
+          "weight": 0.04,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r58",
+          "weight": 0.34,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r7",
+          "weight": 0.738,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r26",
+          "weight": 0.377,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r24",
+          "weight": 0.626,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r10",
+          "weight": 0.889,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r0",
+          "weight": 0.496,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r32",
+          "weight": 0.358,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r8",
+          "weight": 0.672,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r39",
+          "weight": 0.458,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r42",
+          "weight": 0.507,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r53",
+          "weight": 0.162,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r46",
+          "weight": 0.753,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r44",
+          "weight": 0.338,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r9",
+          "weight": 0.803,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r5",
+          "weight": 0.944,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r21",
+          "weight": 0.015,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r15",
+          "weight": 0.53,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r11",
+          "weight": 0.288,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r43",
+          "weight": 0.469,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r1",
+          "weight": 0.035,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r55",
+          "weight": 0.532,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r35",
+          "weight": 0.552,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r51",
+          "weight": 0.934,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r45",
+          "weight": 0.038,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r27",
+          "weight": 0.395,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r6",
+          "weight": 0.12,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r59",
+          "to": "r29",
+          "weight": 0.347,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r60",
+          "to": "r4",
+          "weight": 0.254,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r61",
+          "to": "r37",
+          "weight": 0.331,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r61",
+          "to": "r43",
+          "weight": 0.747,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r61",
+          "to": "r48",
+          "weight": 0.009,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r61",
+          "to": "r13",
+          "weight": 0.816,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r61",
+          "to": "r33",
+          "weight": 0.565,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r61",
+          "to": "r58",
+          "weight": 0.952,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r61",
+          "to": "r21",
+          "weight": 0.363,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r61",
+          "to": "r24",
+          "weight": 0.626,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r61",
+          "to": "r53",
+          "weight": 0.323,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r61",
+          "to": "r16",
+          "weight": 0.783,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r61",
+          "to": "r60",
+          "weight": 0.601,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r61",
+          "to": "r7",
+          "weight": 0.987,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r61",
+          "to": "r36",
+          "weight": 0.001,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r61",
+          "to": "r56",
+          "weight": 0.141,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r61",
+          "to": "r15",
+          "weight": 0.044,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r61",
+          "to": "r63",
+          "weight": 0.126,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r61",
+          "to": "r62",
+          "weight": 0.929,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r61",
+          "to": "r34",
+          "weight": 0.949,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r61",
+          "to": "r46",
+          "weight": 0.48,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r61",
+          "to": "r22",
+          "weight": 0.947,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r61",
+          "to": "r10",
+          "weight": 0.818,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r61",
+          "to": "r9",
+          "weight": 0.779,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r62",
+          "to": "r54",
+          "weight": 0.639,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r62",
+          "to": "r17",
+          "weight": 0.58,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r62",
+          "to": "r60",
+          "weight": 0.942,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r62",
+          "to": "r53",
+          "weight": 0.632,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r62",
+          "to": "r11",
+          "weight": 0.543,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r62",
+          "to": "r33",
+          "weight": 0.385,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r62",
+          "to": "r10",
+          "weight": 0.435,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r62",
+          "to": "r4",
+          "weight": 0.311,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r62",
+          "to": "r42",
+          "weight": 0.014,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r63",
+          "to": "r35",
+          "weight": 0.637,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r63",
+          "to": "r60",
+          "weight": 0.798,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r63",
+          "to": "r16",
+          "weight": 0.76,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r63",
+          "to": "r34",
+          "weight": 0.9,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r63",
+          "to": "r33",
+          "weight": 0.362,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r63",
+          "to": "r20",
+          "weight": 0.982,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r63",
+          "to": "r21",
+          "weight": 0.159,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r63",
+          "to": "r12",
+          "weight": 0.195,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r63",
+          "to": "r45",
+          "weight": 0.354,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r63",
+          "to": "r50",
+          "weight": 0.7,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r63",
+          "to": "r27",
+          "weight": 0.019,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r63",
+          "to": "r53",
+          "weight": 0.735,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r63",
+          "to": "r9",
+          "weight": 0.572,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r63",
+          "to": "r0",
+          "weight": 0.242,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r63",
+          "to": "r48",
+          "weight": 0.185,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r63",
+          "to": "r32",
+          "weight": 0.758,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r63",
+          "to": "r51",
+          "weight": 0.42,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r63",
+          "to": "r42",
+          "weight": 0.573,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r63",
+          "to": "r44",
+          "weight": 0.237,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r63",
+          "to": "r36",
+          "weight": 0.714,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r63",
+          "to": "r24",
+          "weight": 0.864,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r63",
+          "to": "r23",
+          "weight": 0.895,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r63",
+          "to": "r29",
+          "weight": 0.81,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r63",
+          "to": "r2",
+          "weight": 0.1,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r63",
+          "to": "r58",
+          "weight": 0.188,
+          "kind": "reservoir"
+        },
+        {
+          "from": "r63",
+          "to": "r26",
+          "weight": 0.44,
+          "kind": "reservoir"
+        }
+      ],
+      "K_workers": 64
+    },
+    "recurrent_feedback": {
+      "pattern": "recurrent_feedback",
+      "nodes": [
+        {
+          "id": "mod_ol_intrinsic",
+          "role": "module",
+          "ref_superclass": "ol_intrinsic"
+        },
+        {
+          "id": "mod_cb_intrinsic",
+          "role": "module",
+          "ref_superclass": "cb_intrinsic"
+        },
+        {
+          "id": "mod_vnc_intrinsic",
+          "role": "module",
+          "ref_superclass": "vnc_intrinsic"
+        },
+        {
+          "id": "mod_visual_projection",
+          "role": "module",
+          "ref_superclass": "visual_projection"
+        },
+        {
+          "id": "mod_ascending_neuron",
+          "role": "module",
+          "ref_superclass": "ascending_neuron"
+        },
+        {
+          "id": "mod_descending_neuron",
+          "role": "module",
+          "ref_superclass": "descending_neuron"
+        },
+        {
+          "id": "mod_vnc_sensory",
+          "role": "module",
+          "ref_superclass": "vnc_sensory"
+        },
+        {
+          "id": "mod_cb_sensory",
+          "role": "module",
+          "ref_superclass": "cb_sensory"
+        }
+      ],
+      "edges": [
+        {
+          "from": "mod_ol_intrinsic",
+          "to": "mod_ol_intrinsic",
+          "weight": 0.287,
+          "kind": "recurrent"
+        },
+        {
+          "from": "mod_cb_intrinsic",
+          "to": "mod_cb_intrinsic",
+          "weight": 0.277,
+          "kind": "recurrent"
+        },
+        {
+          "from": "mod_vnc_intrinsic",
+          "to": "mod_vnc_intrinsic",
+          "weight": 0.089,
+          "kind": "recurrent"
+        },
+        {
+          "from": "mod_visual_projection",
+          "to": "mod_visual_projection",
+          "weight": 0.013,
+          "kind": "recurrent"
+        },
+        {
+          "from": "mod_ascending_neuron",
+          "to": "mod_ascending_neuron",
+          "weight": 0.005,
+          "kind": "recurrent"
+        },
+        {
+          "from": "mod_descending_neuron",
+          "to": "mod_descending_neuron",
+          "weight": 0.005,
+          "kind": "recurrent"
+        },
+        {
+          "from": "mod_vnc_sensory",
+          "to": "mod_vnc_sensory",
+          "weight": 0.003,
+          "kind": "recurrent"
+        },
+        {
+          "from": "mod_cb_sensory",
+          "to": "mod_cb_sensory",
+          "weight": 0.002,
+          "kind": "recurrent"
+        }
+      ],
+      "K_workers": 8
+    }
+  }
+}

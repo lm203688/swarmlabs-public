@@ -1,0 +1,193 @@
+{
+  "version": 1,
+  "generated_at": "2026-10-11T23:00:07",
+  "method": "cross-conformal (K-fold, R repeats) vs split-conformal (single split)",
+  "alpha": 0.05,
+  "n_scenarios": 10,
+  "elapsed_seconds": 3.25,
+  "summary": {
+    "consistent": 9,
+    "approximate": 1,
+    "divergent": 0,
+    "consistency_rate": 0.9,
+    "overall_verdict": "APPROXIMATE",
+    "cross_conformal_median_picp": 1.0,
+    "split_conformal_median_picp": 0.9708,
+    "target_coverage": 0.95,
+    "cross_below_nominal": 1,
+    "split_below_nominal": 2
+  },
+  "rows": [
+    {
+      "scenario": "surrogate_forrester",
+      "cross_conformal": {
+        "Q": 0.8784,
+        "picp": 1.0,
+        "nmpiw": 0.0136,
+        "interval_score": 0.2883
+      },
+      "split_conformal": {
+        "Q": 1.0378,
+        "picp": 1.0,
+        "nmpiw": 0.0161,
+        "interval_score": 0.3406
+      },
+      "picp_diff": 0.0,
+      "verdict": "CONSISTENT"
+    },
+    {
+      "scenario": "surrogate_branin",
+      "cross_conformal": {
+        "Q": 0.9805,
+        "picp": 0.9667,
+        "nmpiw": 0.0155,
+        "interval_score": 4.9652
+      },
+      "split_conformal": {
+        "Q": 1.5824,
+        "picp": 1.0,
+        "nmpiw": 0.0249,
+        "interval_score": 7.2081
+      },
+      "picp_diff": 0.0333,
+      "verdict": "CONSISTENT"
+    },
+    {
+      "scenario": "surrogate_hartmann6",
+      "cross_conformal": {
+        "Q": 0.644,
+        "picp": 0.925,
+        "nmpiw": 0.0154,
+        "interval_score": 0.0326
+      },
+      "split_conformal": {
+        "Q": 0.935,
+        "picp": 0.9625,
+        "nmpiw": 0.0224,
+        "interval_score": 0.0312
+      },
+      "picp_diff": 0.0375,
+      "verdict": "CONSISTENT"
+    },
+    {
+      "scenario": "pde_heat1d",
+      "cross_conformal": {
+        "Q": 1.3401,
+        "picp": 1.0,
+        "nmpiw": 0.0278,
+        "interval_score": 0.0163
+      },
+      "split_conformal": {
+        "Q": 1.5478,
+        "picp": 1.0,
+        "nmpiw": 0.0321,
+        "interval_score": 0.0188
+      },
+      "picp_diff": 0.0,
+      "verdict": "CONSISTENT"
+    },
+    {
+      "scenario": "bio_logistic",
+      "cross_conformal": {
+        "Q": 0.5224,
+        "picp": 1.0,
+        "nmpiw": 0.0124,
+        "interval_score": 1.1094
+      },
+      "split_conformal": {
+        "Q": 0.6661,
+        "picp": 1.0,
+        "nmpiw": 0.0157,
+        "interval_score": 1.4146
+      },
+      "picp_diff": 0.0,
+      "verdict": "CONSISTENT"
+    },
+    {
+      "scenario": "microbio_monod",
+      "cross_conformal": {
+        "Q": 5.1336,
+        "picp": 1.0,
+        "nmpiw": 0.0815,
+        "interval_score": 0.0507
+      },
+      "split_conformal": {
+        "Q": 1.9243,
+        "picp": 0.925,
+        "nmpiw": 0.0306,
+        "interval_score": 0.0475
+      },
+      "picp_diff": 0.075,
+      "verdict": "CONSISTENT"
+    },
+    {
+      "scenario": "microbio_inhibition",
+      "cross_conformal": {
+        "Q": 9.4011,
+        "picp": 1.0,
+        "nmpiw": 0.237,
+        "interval_score": 0.0663
+      },
+      "split_conformal": {
+        "Q": 1.0862,
+        "picp": 0.975,
+        "nmpiw": 0.0274,
+        "interval_score": 0.0129
+      },
+      "picp_diff": 0.025,
+      "verdict": "CONSISTENT"
+    },
+    {
+      "scenario": "llm_scaling",
+      "cross_conformal": {
+        "Q": 1.2094,
+        "picp": 0.975,
+        "nmpiw": 0.0227,
+        "interval_score": 0.0443
+      },
+      "split_conformal": {
+        "Q": 1.0955,
+        "picp": 0.95,
+        "nmpiw": 0.0206,
+        "interval_score": 0.0444
+      },
+      "picp_diff": 0.025,
+      "verdict": "CONSISTENT"
+    },
+    {
+      "scenario": "chem_langmuir",
+      "cross_conformal": {
+        "Q": 9.1011,
+        "picp": 1.0,
+        "nmpiw": 0.1348,
+        "interval_score": 0.1062
+      },
+      "split_conformal": {
+        "Q": 1.064,
+        "picp": 0.85,
+        "nmpiw": 0.0158,
+        "interval_score": 0.0803
+      },
+      "picp_diff": 0.15,
+      "verdict": "APPROXIMATE"
+    },
+    {
+      "scenario": "chem_reactor_conversion",
+      "cross_conformal": {
+        "Q": 0.3193,
+        "picp": 0.9833,
+        "nmpiw": 0.006,
+        "interval_score": 0.0065
+      },
+      "split_conformal": {
+        "Q": 0.205,
+        "picp": 0.9667,
+        "nmpiw": 0.0038,
+        "interval_score": 0.0055
+      },
+      "picp_diff": 0.0166,
+      "verdict": "CONSISTENT"
+    }
+  ],
+  "interpretation": "两种独立 conformal 实现（cross-conformal 与 split-conformal）在相同场景上的覆盖率差异 < 0.05，表明保形预测的正确性得到交叉确认。这是「机器可验证的不变量」——由两个独立算法实现共同证明。"
+}

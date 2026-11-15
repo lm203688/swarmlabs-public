@@ -1,0 +1,16 @@
+{
+  "goal": "跨域桥接：将 Surrogate 优化经验应用到化学-微生物动力学建模，识别三个不同物理域中的共性规律",
+  "scenarios": [
+    "surrogate_forrester",
+    "chem_langmuir",
+    "microbio_monod"
+  ],
+  "max_scenarios": 3,
+  "top_n": 5,
+  "allow_correction": true,
+  "thresholds": {
+    "rel_converged": 0.05,
+    "cov_min": 0.8,
+    "cal_max": 0.08
+  }
+}

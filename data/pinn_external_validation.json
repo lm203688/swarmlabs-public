@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "generated_at": "2026-10-13T01:31:19Z",
+  "module": "engine/pinn.py (PINN1D)",
+  "criteria": {
+    "PDE: u'' = -sin(x)": "max_abs_error < 0.05",
+    "Thermal: u'' = 0": "max_abs_error < 0.01",
+    "Quadratic: u'' = -2x": "max_abs_error < 0.02"
+  },
+  "summary": {
+    "pass": 3,
+    "fail": 0,
+    "error": 0,
+    "total_elapsed_sec": 1.0
+  },
+  "results": [
+    {
+      "problem": "u'' = -sin(x), u(0)=0, u(1)=1",
+      "exact_solution": "sin(x) + (1-sin(1))*x",
+      "max_abs_error": 3.8e-05,
+      "pinn_report": {
+        "max_pde_residual": 0.00883,
+        "final_loss": 1e-05,
+        "hidden": 20
+      },
+      "pass": true,
+      "elapsed_sec": 0.27
+    },
+    {
+      "problem": "u'' = 0, u(0)=0, u(1)=1",
+      "exact_solution": "x",
+      "max_abs_error": 5.5e-05,
+      "pinn_report": {
+        "max_pde_residual": 0.00223,
+        "final_loss": 0.0,
+        "hidden": 20
+      },
+      "pass": true,
+      "elapsed_sec": 0.32
+    },
+    {
+      "problem": "u'' = -2x, u(0)=0, u(1)=1",
+      "exact_solution": "4x/3 - x^3/3",
+      "max_abs_error": 5.7e-05,
+      "pinn_report": {
+        "max_pde_residual": 0.02189,
+        "final_loss": 2e-05,
+        "hidden": 20
+      },
+      "pass": true,
+      "elapsed_sec": 0.42
+    }
+  ]
+}

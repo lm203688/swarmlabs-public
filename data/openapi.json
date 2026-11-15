@@ -1,0 +1,233 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "SwarmLabs API",
+    "version": "3.0.0",
+    "description": "SwarmLabs 虚拟实验平台 API（GP+UQ+物理门控）"
+  },
+  "servers": [
+    {
+      "url": "https://swarmlabs.tools/api"
+    }
+  ],
+  "paths": {
+    "/v3/health": {
+      "get": {
+        "summary": "健康检查",
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/v3/openapi": {
+      "get": {
+        "summary": "返回本 OpenAPI 规范",
+        "responses": {
+          "200": {
+            "description": "openapi spec"
+          }
+        }
+      }
+    },
+    "/v3/scenarios": {
+      "get": {
+        "summary": "全部科学场景",
+        "responses": {
+          "200": {
+            "description": "list[scenario]"
+          }
+        }
+      }
+    },
+    "/v3/strains": {
+      "get": {
+        "summary": "菌株注册表",
+        "parameters": [
+          {
+            "name": "genus",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "phylum",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "substrate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "list[strain]"
+          }
+        }
+      }
+    },
+    "/v3/strain/{id}": {
+      "get": {
+        "summary": "单条菌株",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "strain"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
+      }
+    },
+    "/v3/media": {
+      "get": {
+        "summary": "培养基数据库",
+        "responses": {
+          "200": {
+            "description": "list[media]"
+          }
+        }
+      }
+    },
+    "/v3/predict": {
+      "post": {
+        "summary": "GP 代理预测",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "train_x",
+                  "train_y",
+                  "query_x"
+                ],
+                "properties": {
+                  "train_x": {
+                    "type": "array"
+                  },
+                  "train_y": {
+                    "type": "array"
+                  },
+                  "query_x": {
+                    "type": "array"
+                  },
+                  "noise_rel": {
+                    "type": "number",
+                    "default": 0.03
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "prediction"
+          }
+        }
+      }
+    },
+    "/v3/fit": {
+      "post": {
+        "summary": "数据导入+自动拟合",
+        "description": "上传 OD600/time 数据，自动拟合 Monod/Andrews/Haldane/Logistic，返回最佳模型参数+R²+置信区间",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "data"
+                ],
+                "properties": {
+                  "data": {
+                    "type": "array",
+                    "description": "CSV rows: [[time, OD600],...]"
+                  },
+                  "models": {
+                    "type": "array",
+                    "default": [
+                      "monod",
+                      "logistic",
+                      "andrews",
+                      "haldane"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "fit results with r2 ranking"
+          }
+        }
+      }
+    },
+    "/v3/guard": {
+      "post": {
+        "summary": "VirtualLab Guard 门禁",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "train_x",
+                  "train_y",
+                  "query_x",
+                  "scenario"
+                ],
+                "properties": {
+                  "train_x": {
+                    "type": "array"
+                  },
+                  "train_y": {
+                    "type": "array"
+                  },
+                  "query_x": {
+                    "type": "array"
+                  },
+                  "scenario": {
+                    "type": "string"
+                  },
+                  "physics_params": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "gate results"
+          }
+        }
+      }
+    }
+  }
+}

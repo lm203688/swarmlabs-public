@@ -1,0 +1,439 @@
+{
+  "schema": "swarmlabs.extrapolation-stress.v1",
+  "generated_at": "2026-10-15T14:59:35Z",
+  "denominators": {
+    "n_registry": 95,
+    "n_tested": 82,
+    "n_axis_verdicts": 771,
+    "quick_subset_tested": 18
+  },
+  "quick_subset": {
+    "source": "data/generalization_bench.json",
+    "n_scenarios": 18,
+    "counts": {
+      "PASS": 0,
+      "MARGINAL": 0,
+      "REFUTED": 13,
+      "N/A": 5
+    },
+    "per_scenario": [
+      {
+        "key": "bio_logistic",
+        "verdict": "REFUTED",
+        "g1_ok": false,
+        "g1_na": false,
+        "g1_reason": "外推/内插 = 1046.41× (> 2.0×)",
+        "g2_ok": false,
+        "g2_na": false,
+        "g2_reason": "",
+        "g3_ok": false,
+        "g3_na": true,
+        "g3_reason": "G3 is evaluated at discipline level, not per scenario"
+      },
+      {
+        "key": "eco_lv_peak_ratio",
+        "verdict": "N/A",
+        "g1_ok": false,
+        "g1_na": true,
+        "g1_reason": "不适用：内插 rel=0.2099 > 0.2（模型连内插都没拟合好，外推/内插比值不携带信息）",
+        "g2_ok": false,
+        "g2_na": true,
+        "g2_reason": "不适用：内插 rel=0.5789 > 0.2（内插都没拟合好）",
+        "g3_ok": false,
+        "g3_na": true,
+        "g3_reason": "G3 is evaluated at discipline level, not per scenario"
+      },
+      {
+        "key": "llm_scaling",
+        "verdict": "REFUTED",
+        "g1_ok": false,
+        "g1_na": false,
+        "g1_reason": "外推/内插 = 45.89× (> 2.0×)",
+        "g2_ok": false,
+        "g2_na": false,
+        "g2_reason": "",
+        "g3_ok": false,
+        "g3_na": true,
+        "g3_reason": "G3 is evaluated at discipline level, not per scenario"
+      },
+      {
+        "key": "micro_chemostat_cerevisiae",
+        "verdict": "N/A",
+        "g1_ok": false,
+        "g1_na": true,
+        "g1_reason": "不适用：内插 rel=0.6745 > 0.2（模型连内插都没拟合好，外推/内插比值不携带信息）",
+        "g2_ok": false,
+        "g2_na": true,
+        "g2_reason": "不适用：内插 rel=0.3627 > 0.2（内插都没拟合好）",
+        "g3_ok": false,
+        "g3_na": true,
+        "g3_reason": "G3 is evaluated at discipline level, not per scenario"
+      },
+      {
+        "key": "micro_chemostat_ecoli",
+        "verdict": "REFUTED",
+        "g1_ok": false,
+        "g1_na": true,
+        "g1_reason": "不适用：内插 rel=0.9384 > 0.2（模型连内插都没拟合好，外推/内插比值不携带信息）",
+        "g2_ok": false,
+        "g2_na": false,
+        "g2_reason": "",
+        "g3_ok": false,
+        "g3_na": true,
+        "g3_reason": "G3 is evaluated at discipline level, not per scenario"
+      },
+      {
+        "key": "micro_chemostat_transient",
+        "verdict": "REFUTED",
+        "g1_ok": false,
+        "g1_na": false,
+        "g1_reason": "外推/内插 = 105.56× (> 2.0×)",
+        "g2_ok": false,
+        "g2_na": true,
+        "g2_reason": "不适用：内插 rel=0.6550 > 0.2（内插都没拟合好）",
+        "g3_ok": false,
+        "g3_na": true,
+        "g3_reason": "G3 is evaluated at discipline level, not per scenario"
+      },
+      {
+        "key": "micro_competition_2d",
+        "verdict": "REFUTED",
+        "g1_ok": false,
+        "g1_na": true,
+        "g1_reason": "不适用：内插 rel=0.5995 > 0.2（模型连内插都没拟合好，外推/内插比值不携带信息）",
+        "g2_ok": false,
+        "g2_na": false,
+        "g2_reason": "",
+        "g3_ok": false,
+        "g3_na": true,
+        "g3_reason": "G3 is evaluated at discipline level, not per scenario"
+      },
+      {
+        "key": "micro_competition_ecoli_yeast",
+        "verdict": "REFUTED",
+        "g1_ok": false,
+        "g1_na": true,
+        "g1_reason": "不适用：内插 rel=0.8540 > 0.2（模型连内插都没拟合好，外推/内插比值不携带信息）",
+        "g2_ok": false,
+        "g2_na": false,
+        "g2_reason": "",
+        "g3_ok": false,
+        "g3_na": true,
+        "g3_reason": "G3 is evaluated at discipline level, not per scenario"
+      },
+      {
+        "key": "micro_lag_ecoli",
+        "verdict": "REFUTED",
+        "g1_ok": false,
+        "g1_na": false,
+        "g1_reason": "外推/内插 = 149.01× (> 2.0×)",
+        "g2_ok": false,
+        "g2_na": false,
+        "g2_reason": "",
+        "g3_ok": false,
+        "g3_na": true,
+        "g3_reason": "G3 is evaluated at discipline level, not per scenario"
+      },
+      {
+        "key": "mol_suzuki_yield",
+        "verdict": "N/A",
+        "g1_ok": false,
+        "g1_na": true,
+        "g1_reason": "不适用：内插 rel=0.3939 > 0.2（模型连内插都没拟合好，外推/内插比值不携带信息）",
+        "g2_ok": false,
+        "g2_na": true,
+        "g2_reason": "不适用：内插 rel=1.6922 > 0.2（内插都没拟合好）",
+        "g3_ok": false,
+        "g3_na": true,
+        "g3_reason": "G3 is evaluated at discipline level, not per scenario"
+      },
+      {
+        "key": "neuro_hh_spike_amplitude",
+        "verdict": "REFUTED",
+        "g1_ok": false,
+        "g1_na": false,
+        "g1_reason": "外推/内插 = 369.27× (> 2.0×)",
+        "g2_ok": false,
+        "g2_na": true,
+        "g2_reason": "不适用：内插 rel=1.3422 > 0.2（内插都没拟合好）",
+        "g3_ok": false,
+        "g3_na": true,
+        "g3_reason": "G3 is evaluated at discipline level, not per scenario"
+      },
+      {
+        "key": "ode_lotka_volterra",
+        "verdict": "REFUTED",
+        "g1_ok": false,
+        "g1_na": false,
+        "g1_reason": "外推/内插 = 68.20× (> 2.0×)",
+        "g2_ok": false,
+        "g2_na": true,
+        "g2_reason": "不适用：内插 rel=0.4045 > 0.2（内插都没拟合好）",
+        "g3_ok": false,
+        "g3_na": true,
+        "g3_reason": "G3 is evaluated at discipline level, not per scenario"
+      },
+      {
+        "key": "opt_ackley2d",
+        "verdict": "N/A",
+        "g1_ok": false,
+        "g1_na": true,
+        "g1_reason": "不适用：内插 rel=0.8379 > 0.2（模型连内插都没拟合好，外推/内插比值不携带信息）",
+        "g2_ok": false,
+        "g2_na": true,
+        "g2_reason": "不适用：内插 rel=0.8657 > 0.2（内插都没拟合好）",
+        "g3_ok": false,
+        "g3_na": true,
+        "g3_reason": "G3 is evaluated at discipline level, not per scenario"
+      },
+      {
+        "key": "opt_rastrigin2d",
+        "verdict": "N/A",
+        "g1_ok": false,
+        "g1_na": true,
+        "g1_reason": "不适用：内插 rel=0.7117 > 0.2（模型连内插都没拟合好，外推/内插比值不携带信息）",
+        "g2_ok": false,
+        "g2_na": true,
+        "g2_reason": "不适用：内插 rel=1.1850 > 0.2（内插都没拟合好）",
+        "g3_ok": false,
+        "g3_na": true,
+        "g3_reason": "G3 is evaluated at discipline level, not per scenario"
+      },
+      {
+        "key": "pde_heat1d",
+        "verdict": "REFUTED",
+        "g1_ok": false,
+        "g1_na": false,
+        "g1_reason": "外推/内插 = 112.68× (> 2.0×)",
+        "g2_ok": false,
+        "g2_na": false,
+        "g2_reason": "",
+        "g3_ok": false,
+        "g3_na": true,
+        "g3_reason": "G3 is evaluated at discipline level, not per scenario"
+      },
+      {
+        "key": "resp_welch2d",
+        "verdict": "REFUTED",
+        "g1_ok": false,
+        "g1_na": false,
+        "g1_reason": "外推/内插 = 140.43× (> 2.0×)",
+        "g2_ok": false,
+        "g2_na": false,
+        "g2_reason": "留出维 0：外推/内插 = 32.45× (> 3.0×)",
+        "g3_ok": false,
+        "g3_na": true,
+        "g3_reason": "G3 is evaluated at discipline level, not per scenario"
+      },
+      {
+        "key": "surrogate_branin",
+        "verdict": "REFUTED",
+        "g1_ok": false,
+        "g1_na": false,
+        "g1_reason": "外推/内插 = 47.18× (> 2.0×)",
+        "g2_ok": false,
+        "g2_na": false,
+        "g2_reason": "留出维 0：外推/内插 = 7.88× (> 3.0×)",
+        "g3_ok": false,
+        "g3_na": true,
+        "g3_reason": "G3 is evaluated at discipline level, not per scenario"
+      },
+      {
+        "key": "surrogate_forrester",
+        "verdict": "REFUTED",
+        "g1_ok": false,
+        "g1_na": false,
+        "g1_reason": "外推/内插 = 294.89× (> 2.0×)",
+        "g2_ok": false,
+        "g2_na": false,
+        "g2_reason": "",
+        "g3_ok": false,
+        "g3_na": true,
+        "g3_reason": "G3 is evaluated at discipline level, not per scenario"
+      }
+    ],
+    "g3_discipline_summary": [
+      {
+        "discipline": "biology",
+        "ok": false,
+        "n_held": 2,
+        "n_other": 93,
+        "reason": "留出 2 场景（1D×1场景, 2D×1场景）/ 训练 93 学科场景：mean rel=2.0596, worst=2.2532 (有场景 >0.05)",
+        "mean_rel": 2.0596,
+        "worst_key": "ode_lotka_volterra",
+        "worst_rel": 2.2532
+      },
+      {
+        "discipline": "chemical",
+        "ok": false,
+        "n_held": 3,
+        "n_other": 92,
+        "reason": "留出 3 场景（1D×1场景, 3D×1场景, 4D×1场景）/ 训练 92 学科场景：mean rel=2.8289, worst=5.3868 (有场景 >0.05)",
+        "mean_rel": 2.8289,
+        "worst_key": "chem_langmuir",
+        "worst_rel": 5.3868
+      },
+      {
+        "discipline": "cheminformatics",
+        "ok": false,
+        "n_held": 4,
+        "n_other": 91,
+        "reason": "留出 4 场景（7D×2场景, 8D×1场景）/ 训练 91 学科场景：mean rel=14.5990, worst=17.1937 (有场景 >0.05)",
+        "mean_rel": 14.599,
+        "worst_key": "cheminfo_logD",
+        "worst_rel": 17.1937
+      },
+      {
+        "discipline": "chemistry",
+        "ok": false,
+        "n_held": 3,
+        "n_other": 92,
+        "reason": "留出 3 场景（2D×1场景）/ 训练 92 学科场景：mean rel=4.1523, worst=4.1523 (有场景 >0.05)",
+        "mean_rel": 4.1523,
+        "worst_key": "chem_reactor_conversion",
+        "worst_rel": 4.1523
+      },
+      {
+        "discipline": "ecology",
+        "ok": false,
+        "n_held": 3,
+        "n_other": 92,
+        "reason": "留出 3 场景（3D×1场景, 4D×1场景, 5D×1场景）/ 训练 92 学科场景：mean rel=7.5252, worst=18.9475 (有场景 >0.05)",
+        "mean_rel": 7.5252,
+        "worst_key": "eco_lv_peak_ratio",
+        "worst_rel": 18.9475
+      },
+      {
+        "discipline": "energy",
+        "ok": false,
+        "n_held": 3,
+        "n_other": 92,
+        "reason": "留出 3 场景（4D×2场景, 5D×1场景）/ 训练 92 学科场景：mean rel=6.0083, worst=15.4248 (有场景 >0.05)",
+        "mean_rel": 6.0083,
+        "worst_key": "energy_rankine_efficiency",
+        "worst_rel": 15.4248
+      },
+      {
+        "discipline": "finance",
+        "ok": false,
+        "n_held": 2,
+        "n_other": 93,
+        "reason": "留出 2 场景（5D×1场景, 6D×1场景）/ 训练 93 学科场景：mean rel=1.5624, worst=1.5710 (有场景 >0.05)",
+        "mean_rel": 1.5624,
+        "worst_key": "quant_bs_call",
+        "worst_rel": 1.571
+      },
+      {
+        "discipline": "heat conduction (physics-informed)",
+        "ok": false,
+        "n_held": 3,
+        "n_other": 92,
+        "reason": "留出 3 场景（1D×1场景, 4D×1场景, 8D×1场景）/ 训练 92 学科场景：mean rel=1.8055, worst=2.6971 (有场景 >0.05)",
+        "mean_rel": 1.8055,
+        "worst_key": "pde_heat1d",
+        "worst_rel": 2.6971
+      },
+      {
+        "discipline": "llm",
+        "ok": false,
+        "n_held": 3,
+        "n_other": 92,
+        "reason": "留出 3 场景（1D×1场景, 2D×2场景）/ 训练 92 学科场景：mean rel=3.8593, worst=4.9473 (有场景 >0.05)",
+        "mean_rel": 3.8593,
+        "worst_key": "llm_scaling",
+        "worst_rel": 4.9473
+      },
+      {
+        "discipline": "microorganisms",
+        "ok": false,
+        "n_held": 2,
+        "n_other": 93,
+        "reason": "留出 2 场景（1D×2场景）/ 训练 93 学科场景：mean rel=4.7788, worst=5.3236 (有场景 >0.05)",
+        "mean_rel": 4.7788,
+        "worst_key": "microbio_inhibition",
+        "worst_rel": 5.3236
+      },
+      {
+        "discipline": "neuroscience",
+        "ok": false,
+        "n_held": 3,
+        "n_other": 92,
+        "reason": "留出 3 场景（5D×1场景, 7D×2场景）/ 训练 92 学科场景：mean rel=348.9581, worst=1041.8553 (有场景 >0.05)",
+        "mean_rel": 348.9581,
+        "worst_key": "neuro_izhikevich_rate",
+        "worst_rel": 1041.8553
+      },
+      {
+        "discipline": "optimization",
+        "ok": false,
+        "n_held": 9,
+        "n_other": 86,
+        "reason": "留出 9 场景（1D×1场景, 2D×7场景, 3D×1场景）/ 训练 86 学科场景：mean rel=2.9759, worst=8.8474 (有场景 >0.05)",
+        "mean_rel": 2.9759,
+        "worst_key": "resp_welch2d",
+        "worst_rel": 8.8474
+      },
+      {
+        "discipline": "surrogate modeling",
+        "ok": false,
+        "n_held": 3,
+        "n_other": 92,
+        "reason": "留出 3 场景（1D×1场景, 2D×1场景, 6D×1场景）/ 训练 92 学科场景：mean rel=1.3513, worst=1.7714 (有场景 >0.05)",
+        "mean_rel": 1.3513,
+        "worst_key": "surrogate_branin",
+        "worst_rel": 1.7714
+      },
+      {
+        "discipline": "微生物",
+        "ok": false,
+        "n_held": 52,
+        "n_other": 43,
+        "reason": "留出 52 场景（1D×29场景, 2D×22场景, 3D×1场景）/ 训练 43 学科场景：mean rel=146.4242, worst=1843.5423 (有场景 >0.05)",
+        "mean_rel": 146.4242,
+        "worst_key": "micro_diauxic_2d",
+        "worst_rel": 1843.5423
+      }
+    ],
+    "g3_note": "G3 is measured per-discipline (held-one-discipline-out), not per-scenario. All disciplines show G3=0% (ok=False) — this is the canonical evidence behind 'G3 generalisation floor'."
+  },
+  "full_run_82": {
+    "source": "reports/upgrade/extrapolation_stress_73_of_95_narrative.md",
+    "n_scenarios": 82,
+    "counts": {
+      "PASS": 3,
+      "MARGINAL": 6,
+      "REFUTED": 73
+    },
+    "provenance": "narrative markdown, not per-scenario re-run",
+    "note": "The 82-scenario full run is documented in the narrative but its per-scenario results are not stored as machine-readable data. This script reconciles the narrative counts with the quick-subset machine data to produce a canonical output. A future version should persist the full-run per-scenario results to data/extrapolation_stress_full.json."
+  },
+  "headline": {
+    "scenario_level_refuted": 73,
+    "scenario_level_refutation_rate": 0.890244,
+    "axis_level_refuted": 73,
+    "axis_level_verdicts": 771,
+    "axis_level_refutation_rate": 0.094682,
+    "note": "73 of 82 tested scenarios (89.0%) refuted at scenario level; 73 of 771 axis verdicts (9.47%) refuted at axis level. Both figures share the same numerator (73) but different denominators — the paper must cite both denominators explicitly (see paper-1 v2.1 and paper-2 v2.1, 2026-10-15)."
+  },
+  "provenance": {
+    "sources": [
+      {
+        "path": "data/generalization_bench.json",
+        "role": "quick-subset per-scenario G1/G2/G3 results"
+      },
+      {
+        "path": "data/trust_surface.json",
+        "role": "95-scenario registry aggregate"
+      },
+      {
+        "path": "reports/upgrade/extrapolation_stress_73_of_95_narrative.md",
+        "role": "82-scenario full-run narrative"
+      },
+      {
+        "path": "data/g3_aligned_benchmark.json",
+        "role": "G3 discipline-level detailed alignment results"
+      }
+    ],
+    "recomputation_note": "This script reconciles historical artifacts rather than re-running 82 GP fits from scratch. To truly recompute, run the full extrapolation pipeline via scripts/run_*.py for each scenario and re-aggregate. The SimplexUQ reproducibility bar requires persisting per-scenario machine-readable outputs, which this script does for the 18-scenario quick subset."
+  }
+}

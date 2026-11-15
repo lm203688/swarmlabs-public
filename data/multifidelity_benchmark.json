@@ -1,0 +1,24 @@
+{
+  "method": "Kennedy-O'Hagan autoregressive cokriging (latent PCA + 残差GP)",
+  "n_lf": 200,
+  "n_hf": 12,
+  "n_test": 30,
+  "mf_rmse": 0.0149,
+  "pure_lf_rmse": 0.0627,
+  "pure_hf_rmse": 0.2685,
+  "improvement_vs_lf": 4.2,
+  "improvement_vs_hf": 18.01,
+  "pure_hf_breakeven_sweep": {
+    "12": 0.2685,
+    "25": 0.1689,
+    "50": 0.1084,
+    "100": 0.094,
+    "150": 0.0481,
+    "200": 0.0298,
+    "300": 0.0275,
+    "400": 0.0253,
+    "500": 0.0209
+  },
+  "hf_points_to_match_mf": ">500",
+  "hf_evals_saved": ">488"
+}

@@ -1,0 +1,16 @@
+{
+  "paper_key": "summary",
+  "scenario": "summary",
+  "timestamp": "2026-10-13T09:43:14.130702",
+  "metrics": {
+    "total": 17,
+    "pass_plus": 5,
+    "pass": 2,
+    "marginal": 10,
+    "fail": 0,
+    "avg_rmse": 4.579030856193357,
+    "avg_corr": 0.9214804291906481,
+    "avg_mape": 106.44560222574043,
+    "accuracy_target": "理论公式 r≥0.98; 复杂动力学 r≥0.95; MAPE<15%"
+  }
+}

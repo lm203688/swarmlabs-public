@@ -1,0 +1,2 @@
+{"test": true, "val": 42, "_written_at": "2026-08-26T23:27:48"}
+{"type": "validate_full", "total": 2, "converged": 0, "coverage_rate": 0.0, "avg_rmse": 0.07322570854244008, "_written_at": "2026-08-26T23:27:48"}

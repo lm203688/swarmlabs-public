@@ -1,0 +1,618 @@
+{
+ "schema": "svp.generalization-bench.v1.g3-aligned.v1",
+ "generated_at": 1791299607,
+ "seed": 4242,
+ "n_train": 30,
+ "latent_k": 8,
+ "n_grid": 40,
+ "eligible_disciplines": 14,
+ "skipped_disciplines": [],
+ "baseline": {
+  "passed": 0,
+  "total": 14,
+  "pass_rate": 0.0,
+  "results": [
+   {
+    "discipline": "biology",
+    "n_held": 2,
+    "n_other": 93,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 2 场景（1D×1场景, 2D×1场景）/ 训练 93 学科场景：mean rel=2.0596, worst=2.2532 (有场景 >0.05)",
+    "dims_shared": "1D×1场景, 2D×1场景",
+    "mean_rel": 2.0596,
+    "worst_key": "ode_lotka_volterra",
+    "worst_rel": 2.2532,
+    "per_scenario": {
+     "bio_logistic": 1.866,
+     "ode_lotka_volterra": 2.2532
+    }
+   },
+   {
+    "discipline": "chemical",
+    "n_held": 3,
+    "n_other": 92,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 3 场景（1D×1场景, 3D×1场景, 4D×1场景）/ 训练 92 学科场景：mean rel=2.8289, worst=5.3868 (有场景 >0.05)",
+    "dims_shared": "1D×1场景, 3D×1场景, 4D×1场景",
+    "mean_rel": 2.8289,
+    "worst_key": "chem_langmuir",
+    "worst_rel": 5.3868,
+    "per_scenario": {
+     "chem_langmuir": 5.3868,
+     "chem_freundlich": 1.3543,
+     "chem_bet": 1.7457
+    }
+   },
+   {
+    "discipline": "cheminformatics",
+    "n_held": 4,
+    "n_other": 91,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 4 场景（7D×2场景, 8D×1场景）/ 训练 91 学科场景：mean rel=14.5990, worst=17.1937 (有场景 >0.05)",
+    "dims_shared": "7D×2场景, 8D×1场景",
+    "mean_rel": 14.599,
+    "worst_key": "cheminfo_logD",
+    "worst_rel": 17.1937,
+    "per_scenario": {
+     "cheminfo_pIC50": 11.6558,
+     "cheminfo_hydration": 14.9475,
+     "cheminfo_logD": 17.1937
+    }
+   },
+   {
+    "discipline": "chemistry",
+    "n_held": 3,
+    "n_other": 92,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 3 场景（2D×1场景）/ 训练 92 学科场景：mean rel=4.1523, worst=4.1523 (有场景 >0.05)",
+    "dims_shared": "2D×1场景",
+    "mean_rel": 4.1523,
+    "worst_key": "chem_reactor_conversion",
+    "worst_rel": 4.1523,
+    "per_scenario": {
+     "chem_reactor_conversion": 4.1523
+    }
+   },
+   {
+    "discipline": "ecology",
+    "n_held": 3,
+    "n_other": 92,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 3 场景（3D×1场景, 4D×1场景, 5D×1场景）/ 训练 92 学科场景：mean rel=7.5252, worst=18.9475 (有场景 >0.05)",
+    "dims_shared": "3D×1场景, 4D×1场景, 5D×1场景",
+    "mean_rel": 7.5252,
+    "worst_key": "eco_lv_peak_ratio",
+    "worst_rel": 18.9475,
+    "per_scenario": {
+     "eco_ricker_population": 1.9519,
+     "eco_lv_peak_ratio": 18.9475,
+     "eco_nicholson_bailey": 1.6762
+    }
+   },
+   {
+    "discipline": "energy",
+    "n_held": 3,
+    "n_other": 92,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 3 场景（4D×2场景, 5D×1场景）/ 训练 92 学科场景：mean rel=6.0083, worst=15.4248 (有场景 >0.05)",
+    "dims_shared": "4D×2场景, 5D×1场景",
+    "mean_rel": 6.0083,
+    "worst_key": "energy_rankine_efficiency",
+    "worst_rel": 15.4248,
+    "per_scenario": {
+     "energy_ccpp_output": 0.9571,
+     "energy_rankine_efficiency": 15.4248,
+     "energy_isothermal_work": 1.643
+    }
+   },
+   {
+    "discipline": "finance",
+    "n_held": 2,
+    "n_other": 93,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 2 场景（5D×1场景, 6D×1场景）/ 训练 93 学科场景：mean rel=1.5624, worst=1.5710 (有场景 >0.05)",
+    "dims_shared": "5D×1场景, 6D×1场景",
+    "mean_rel": 1.5624,
+    "worst_key": "quant_bs_call",
+    "worst_rel": 1.571,
+    "per_scenario": {
+     "quant_bs_call": 1.571,
+     "fin_merton_call_div": 1.5538
+    }
+   },
+   {
+    "discipline": "heat conduction (physics-informed)",
+    "n_held": 3,
+    "n_other": 92,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 3 场景（1D×1场景, 4D×1场景, 8D×1场景）/ 训练 92 学科场景：mean rel=1.8055, worst=2.6971 (有场景 >0.05)",
+    "dims_shared": "1D×1场景, 4D×1场景, 8D×1场景",
+    "mean_rel": 1.8055,
+    "worst_key": "pde_heat1d",
+    "worst_rel": 2.6971,
+    "per_scenario": {
+     "pde_heat1d": 2.6971,
+     "heat_radiation_flux": 1.1898,
+     "heat_series_resistance": 1.5297
+    }
+   },
+   {
+    "discipline": "llm",
+    "n_held": 3,
+    "n_other": 92,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 3 场景（1D×1场景, 2D×2场景）/ 训练 92 学科场景：mean rel=3.8593, worst=4.9473 (有场景 >0.05)",
+    "dims_shared": "1D×1场景, 2D×2场景",
+    "mean_rel": 3.8593,
+    "worst_key": "llm_scaling",
+    "worst_rel": 4.9473,
+    "per_scenario": {
+     "llm_scaling": 4.9473,
+     "llm_chinchilla_loss": 3.8431,
+     "llm_compute_optimal_ratio": 2.7875
+    }
+   },
+   {
+    "discipline": "microorganisms",
+    "n_held": 2,
+    "n_other": 93,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 2 场景（1D×2场景）/ 训练 93 学科场景：mean rel=4.7788, worst=5.3236 (有场景 >0.05)",
+    "dims_shared": "1D×2场景",
+    "mean_rel": 4.7788,
+    "worst_key": "microbio_inhibition",
+    "worst_rel": 5.3236,
+    "per_scenario": {
+     "microbio_monod": 4.2339,
+     "microbio_inhibition": 5.3236
+    }
+   },
+   {
+    "discipline": "neuroscience",
+    "n_held": 3,
+    "n_other": 92,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 3 场景（5D×1场景, 7D×2场景）/ 训练 92 学科场景：mean rel=348.9581, worst=1041.8553 (有场景 >0.05)",
+    "dims_shared": "5D×1场景, 7D×2场景",
+    "mean_rel": 348.9581,
+    "worst_key": "neuro_izhikevich_rate",
+    "worst_rel": 1041.8553,
+    "per_scenario": {
+     "neuro_izhikevich_rate": 1041.8553,
+     "neuro_hh_spike_amplitude": 3.8737,
+     "neuro_lif_fi": 1.1452
+    }
+   },
+   {
+    "discipline": "optimization",
+    "n_held": 9,
+    "n_other": 86,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 9 场景（1D×1场景, 2D×7场景, 3D×1场景）/ 训练 86 学科场景：mean rel=2.9759, worst=8.8474 (有场景 >0.05)",
+    "dims_shared": "1D×1场景, 2D×7场景, 3D×1场景",
+    "mean_rel": 2.9759,
+    "worst_key": "resp_welch2d",
+    "worst_rel": 8.8474,
+    "per_scenario": {
+     "opt_gramacylee1d": 2.3401,
+     "opt_schwefel2d": 2.5254,
+     "opt_ackley2d": 5.1322,
+     "opt_rastrigin2d": 2.4561,
+     "opt_rosenbrock2d": 1.1584,
+     "opt_levy2d": 1.4984,
+     "opt_michalewicz2d": 1.1977,
+     "resp_welch2d": 8.8474,
+     "opt_hartmann3d": 1.6272
+    }
+   },
+   {
+    "discipline": "surrogate modeling",
+    "n_held": 3,
+    "n_other": 92,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 3 场景（1D×1场景, 2D×1场景, 6D×1场景）/ 训练 92 学科场景：mean rel=1.3513, worst=1.7714 (有场景 >0.05)",
+    "dims_shared": "1D×1场景, 2D×1场景, 6D×1场景",
+    "mean_rel": 1.3513,
+    "worst_key": "surrogate_branin",
+    "worst_rel": 1.7714,
+    "per_scenario": {
+     "surrogate_forrester": 1.0105,
+     "surrogate_branin": 1.7714,
+     "surrogate_hartmann6": 1.2721
+    }
+   },
+   {
+    "discipline": "微生物",
+    "n_held": 52,
+    "n_other": 43,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 52 场景（1D×29场景, 2D×22场景, 3D×1场景）/ 训练 43 学科场景：mean rel=146.4242, worst=1843.5423 (有场景 >0.05)",
+    "dims_shared": "1D×29场景, 2D×22场景, 3D×1场景",
+    "mean_rel": 146.4242,
+    "worst_key": "micro_diauxic_2d",
+    "worst_rel": 1843.5423,
+    "per_scenario": {
+     "micro_ecoli_glucose": 18.0196,
+     "micro_putida_toluene": 2.9441,
+     "micro_methanobacterium_methane": 5.8194,
+     "micro_chemostat_ecoli": 7.5889,
+     "micro_lag_ecoli": 2.1325,
+     "micro_lifecycle_ecoli": 2.2675,
+     "micro_diauxic_ecoli": 1118.6777,
+     "micro_fedbatch_ecoli": 1.6082,
+     "micro_competition_ecoli_yeast": 748.5123,
+     "micro_crabtree_cerevisiae": 2.8801,
+     "micro_haldane_putida": 6.4213,
+     "micro_contois_ecoli": 45.7072,
+     "micro_tessier_ecoli": 3.4615,
+     "micro_pirt_ecoli": 248.8017,
+     "micro_oxygen_ecoli": 6.3675,
+     "micro_antibiotic_timekill": 1712.087,
+     "micro_osmotic_ecoli": 2.012,
+     "micro_biofilm_ecoli": 6.0219,
+     "micro_scaleup_kla": 40.855,
+     "micro_mle_ecoli_monod": 378.458,
+     "micro_sobol_ecoli": 181.6973,
+     "micro_uq_ecoli_monod": 145.0608,
+     "micro_coculture_mutualism": 2.4726,
+     "micro_quorum_ecoli": 2.7953,
+     "micro_heavy_metal_ecoli": 37.2195,
+     "micro_competition_2d": 894.0568,
+     "micro_secondary_metabolite": 13.0447,
+     "micro_thermal_death": 2.0063,
+     "micro_oxidative_stress": 1.3744,
+     "micro_cerevisiae_ethanol": 1.3399,
+     "micro_lactococcus_lactose": 1.0028,
+     "micro_acetobacter_acetate": 1.2822,
+     "micro_chemostat_cerevisiae": 2.0385,
+     "micro_doe_ecoli_monod": 52.9093,
+     "micro_diauxic_2d": 1843.5423,
+     "micro_fedbatch_2d": 1.9114,
+     "micro_crabtree_2d": 1.9845,
+     "micro_haldane_2d": 1.4509,
+     "micro_oxygen_2d": 4.4117,
+     "micro_antibiotic_2d": 15.142,
+     "micro_immobilized_cell": 1.3302,
+     "micro_plasmid_stability": 2.2428,
+     "micro_phage_infection": 3.628,
+     "micro_gene_expression": 3.7894,
+     "micro_chemostat_transient": 2.7726,
+     "micro_mixed_substrate": 6.1241,
+     "micro_ph_control": 2.0404,
+     "micro_fba_flux": 2.288,
+     "micro_dead_volume": 14.3761,
+     "micro_foam_dynamics": 4.1145,
+     "micro_sensor_fusion": 2.5853,
+     "micro_fedbatch_3d": 1.3787
+    }
+   }
+  ]
+ },
+ "aligned": {
+  "passed": 0,
+  "total": 14,
+  "pass_rate": 0.0,
+  "results": [
+   {
+    "discipline": "biology",
+    "n_held": 2,
+    "n_other": 93,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 2 场景（1D×1场景, 2D×1场景）/ 训练 93 学科场景：mean rel=1.9809, worst=2.1027 (有场景 >0.05)",
+    "dims_shared": "1D×1场景, 2D×1场景",
+    "mean_rel": 1.9809,
+    "worst_key": "ode_lotka_volterra",
+    "worst_rel": 2.1027,
+    "per_scenario": {
+     "bio_logistic": 1.8591,
+     "ode_lotka_volterra": 2.1027
+    }
+   },
+   {
+    "discipline": "chemical",
+    "n_held": 3,
+    "n_other": 92,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 3 场景（1D×1场景, 3D×1场景, 4D×1场景）/ 训练 92 学科场景：mean rel=2.8697, worst=5.5180 (有场景 >0.05)",
+    "dims_shared": "1D×1场景, 3D×1场景, 4D×1场景",
+    "mean_rel": 2.8697,
+    "worst_key": "chem_langmuir",
+    "worst_rel": 5.518,
+    "per_scenario": {
+     "chem_langmuir": 5.518,
+     "chem_freundlich": 1.3424,
+     "chem_bet": 1.7488
+    }
+   },
+   {
+    "discipline": "cheminformatics",
+    "n_held": 4,
+    "n_other": 91,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 4 场景（7D×2场景, 8D×1场景）/ 训练 91 学科场景：mean rel=17.2376, worst=25.3924 (有场景 >0.05)",
+    "dims_shared": "7D×2场景, 8D×1场景",
+    "mean_rel": 17.2376,
+    "worst_key": "cheminfo_pIC50",
+    "worst_rel": 25.3924,
+    "per_scenario": {
+     "cheminfo_pIC50": 25.3924,
+     "cheminfo_hydration": 8.4022,
+     "cheminfo_logD": 17.9181
+    }
+   },
+   {
+    "discipline": "chemistry",
+    "n_held": 3,
+    "n_other": 92,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 3 场景（2D×1场景）/ 训练 92 学科场景：mean rel=3.8897, worst=3.8897 (有场景 >0.05)",
+    "dims_shared": "2D×1场景",
+    "mean_rel": 3.8897,
+    "worst_key": "chem_reactor_conversion",
+    "worst_rel": 3.8897,
+    "per_scenario": {
+     "chem_reactor_conversion": 3.8897
+    }
+   },
+   {
+    "discipline": "ecology",
+    "n_held": 3,
+    "n_other": 92,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 3 场景（3D×1场景, 4D×1场景, 5D×1场景）/ 训练 92 学科场景：mean rel=6.7093, worst=16.4997 (有场景 >0.05)",
+    "dims_shared": "3D×1场景, 4D×1场景, 5D×1场景",
+    "mean_rel": 6.7093,
+    "worst_key": "eco_lv_peak_ratio",
+    "worst_rel": 16.4997,
+    "per_scenario": {
+     "eco_ricker_population": 1.9519,
+     "eco_lv_peak_ratio": 16.4997,
+     "eco_nicholson_bailey": 1.6763
+    }
+   },
+   {
+    "discipline": "energy",
+    "n_held": 3,
+    "n_other": 92,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 3 场景（4D×2场景, 5D×1场景）/ 训练 92 学科场景：mean rel=5.8238, worst=14.5048 (有场景 >0.05)",
+    "dims_shared": "4D×2场景, 5D×1场景",
+    "mean_rel": 5.8238,
+    "worst_key": "energy_rankine_efficiency",
+    "worst_rel": 14.5048,
+    "per_scenario": {
+     "energy_ccpp_output": 1.3236,
+     "energy_rankine_efficiency": 14.5048,
+     "energy_isothermal_work": 1.643
+    }
+   },
+   {
+    "discipline": "finance",
+    "n_held": 2,
+    "n_other": 93,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 2 场景（5D×1场景, 6D×1场景）/ 训练 93 学科场景：mean rel=1.5482, worst=1.5573 (有场景 >0.05)",
+    "dims_shared": "5D×1场景, 6D×1场景",
+    "mean_rel": 1.5482,
+    "worst_key": "quant_bs_call",
+    "worst_rel": 1.5573,
+    "per_scenario": {
+     "quant_bs_call": 1.5573,
+     "fin_merton_call_div": 1.5391
+    }
+   },
+   {
+    "discipline": "heat conduction (physics-informed)",
+    "n_held": 3,
+    "n_other": 92,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 3 场景（1D×1场景, 4D×1场景, 8D×1场景）/ 训练 92 学科场景：mean rel=1.9312, worst=3.0740 (有场景 >0.05)",
+    "dims_shared": "1D×1场景, 4D×1场景, 8D×1场景",
+    "mean_rel": 1.9312,
+    "worst_key": "pde_heat1d",
+    "worst_rel": 3.074,
+    "per_scenario": {
+     "pde_heat1d": 3.074,
+     "heat_radiation_flux": 1.1898,
+     "heat_series_resistance": 1.5297
+    }
+   },
+   {
+    "discipline": "llm",
+    "n_held": 3,
+    "n_other": 92,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 3 场景（1D×1场景, 2D×2场景）/ 训练 92 学科场景：mean rel=3.9908, worst=5.2794 (有场景 >0.05)",
+    "dims_shared": "1D×1场景, 2D×2场景",
+    "mean_rel": 3.9908,
+    "worst_key": "llm_scaling",
+    "worst_rel": 5.2794,
+    "per_scenario": {
+     "llm_scaling": 5.2794,
+     "llm_chinchilla_loss": 3.9029,
+     "llm_compute_optimal_ratio": 2.7902
+    }
+   },
+   {
+    "discipline": "microorganisms",
+    "n_held": 2,
+    "n_other": 93,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 2 场景（1D×2场景）/ 训练 93 学科场景：mean rel=5.6909, worst=7.1244 (有场景 >0.05)",
+    "dims_shared": "1D×2场景",
+    "mean_rel": 5.6909,
+    "worst_key": "microbio_inhibition",
+    "worst_rel": 7.1244,
+    "per_scenario": {
+     "microbio_monod": 4.2574,
+     "microbio_inhibition": 7.1244
+    }
+   },
+   {
+    "discipline": "neuroscience",
+    "n_held": 3,
+    "n_other": 92,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 3 场景（5D×1场景, 7D×2场景）/ 训练 92 学科场景：mean rel=358.4065, worst=1041.8682 (有场景 >0.05)",
+    "dims_shared": "5D×1场景, 7D×2场景",
+    "mean_rel": 358.4065,
+    "worst_key": "neuro_izhikevich_rate",
+    "worst_rel": 1041.8682,
+    "per_scenario": {
+     "neuro_izhikevich_rate": 1041.8682,
+     "neuro_hh_spike_amplitude": 3.8854,
+     "neuro_lif_fi": 29.466
+    }
+   },
+   {
+    "discipline": "optimization",
+    "n_held": 9,
+    "n_other": 86,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 9 场景（1D×1场景, 2D×7场景, 3D×1场景）/ 训练 86 学科场景：mean rel=3.2592, worst=9.2146 (有场景 >0.05)",
+    "dims_shared": "1D×1场景, 2D×7场景, 3D×1场景",
+    "mean_rel": 3.2592,
+    "worst_key": "resp_welch2d",
+    "worst_rel": 9.2146,
+    "per_scenario": {
+     "opt_gramacylee1d": 2.8077,
+     "opt_schwefel2d": 2.5256,
+     "opt_ackley2d": 5.1453,
+     "opt_rastrigin2d": 2.4586,
+     "opt_rosenbrock2d": 1.1587,
+     "opt_levy2d": 1.4961,
+     "opt_michalewicz2d": 1.6885,
+     "resp_welch2d": 9.2146,
+     "opt_hartmann3d": 2.8376
+    }
+   },
+   {
+    "discipline": "surrogate modeling",
+    "n_held": 3,
+    "n_other": 92,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 3 场景（1D×1场景, 2D×1场景, 6D×1场景）/ 训练 92 学科场景：mean rel=1.5882, worst=1.9706 (有场景 >0.05)",
+    "dims_shared": "1D×1场景, 2D×1场景, 6D×1场景",
+    "mean_rel": 1.5882,
+    "worst_key": "surrogate_hartmann6",
+    "worst_rel": 1.9706,
+    "per_scenario": {
+     "surrogate_forrester": 1.0212,
+     "surrogate_branin": 1.7727,
+     "surrogate_hartmann6": 1.9706
+    }
+   },
+   {
+    "discipline": "微生物",
+    "n_held": 52,
+    "n_other": 43,
+    "n_constant_excluded": 0,
+    "ok": false,
+    "reason": "留出 52 场景（1D×29场景, 2D×22场景, 3D×1场景）/ 训练 43 学科场景：mean rel=629.8057, worst=29990.4988 (有场景 >0.05)",
+    "dims_shared": "1D×29场景, 2D×22场景, 3D×1场景",
+    "mean_rel": 629.8057,
+    "worst_key": "micro_diauxic_2d",
+    "worst_rel": 29990.4988,
+    "per_scenario": {
+     "micro_ecoli_glucose": 21.4918,
+     "micro_putida_toluene": 3.9567,
+     "micro_methanobacterium_methane": 7.8991,
+     "micro_chemostat_ecoli": 7.3685,
+     "micro_lag_ecoli": 1.2637,
+     "micro_lifecycle_ecoli": 1.989,
+     "micro_diauxic_ecoli": 65.4897,
+     "micro_fedbatch_ecoli": 1.6036,
+     "micro_competition_ecoli_yeast": 498.5177,
+     "micro_crabtree_cerevisiae": 1.7599,
+     "micro_haldane_putida": 6.0285,
+     "micro_contois_ecoli": 3.7245,
+     "micro_tessier_ecoli": 2.7237,
+     "micro_pirt_ecoli": 280.4136,
+     "micro_oxygen_ecoli": 6.9058,
+     "micro_antibiotic_timekill": 200.7216,
+     "micro_osmotic_ecoli": 1.8056,
+     "micro_biofilm_ecoli": 1.9051,
+     "micro_scaleup_kla": 20.9729,
+     "micro_mle_ecoli_monod": 341.9626,
+     "micro_sobol_ecoli": 168.0195,
+     "micro_uq_ecoli_monod": 131.0432,
+     "micro_coculture_mutualism": 1.9651,
+     "micro_quorum_ecoli": 2.0471,
+     "micro_heavy_metal_ecoli": 43.8673,
+     "micro_competition_2d": 558.2538,
+     "micro_secondary_metabolite": 8.9371,
+     "micro_thermal_death": 1.9185,
+     "micro_oxidative_stress": 1.3819,
+     "micro_cerevisiae_ethanol": 14.0916,
+     "micro_lactococcus_lactose": 8.2506,
+     "micro_acetobacter_acetate": 3.1384,
+     "micro_chemostat_cerevisiae": 2.2242,
+     "micro_doe_ecoli_monod": 63.9621,
+     "micro_diauxic_2d": 29990.4988,
+     "micro_fedbatch_2d": 1.9657,
+     "micro_crabtree_2d": 2.0007,
+     "micro_haldane_2d": 6.3885,
+     "micro_oxygen_2d": 7.4857,
+     "micro_antibiotic_2d": 205.5329,
+     "micro_immobilized_cell": 1.1758,
+     "micro_plasmid_stability": 2.2439,
+     "micro_phage_infection": 3.6308,
+     "micro_gene_expression": 4.7489,
+     "micro_chemostat_transient": 2.7761,
+     "micro_mixed_substrate": 6.1793,
+     "micro_ph_control": 2.1215,
+     "micro_fba_flux": 2.2869,
+     "micro_dead_volume": 14.5637,
+     "micro_foam_dynamics": 4.1753,
+     "micro_sensor_fusion": 2.5813,
+     "micro_fedbatch_3d": 1.9352
+    }
+   }
+  ]
+ },
+ "comparison": {
+  "baseline_pass_rate": 0.0,
+  "aligned_pass_rate": 0.0,
+  "delta": 0.0,
+  "conclusion": "对齐无改善"
+ },
+ "alignment_metrics": {
+  "cross_discipline_alignment": 0.9245561011167438,
+  "intra_discipline_alignment": 0.166455337108114,
+  "cross_discipline_centroid_distance_mean": 0.4011262167536226,
+  "intra_discipline_centroid_distance_mean": 0.0,
+  "latent_dim": 8,
+  "latent_explained_variance": 0.9274378822960767,
+  "signature_dim": 21,
+  "n_disciplines": 14,
+  "n_aligned_scenarios": 95
+ },
+ "elapsed_sec": 62.0
+}

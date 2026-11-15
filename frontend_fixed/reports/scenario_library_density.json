@@ -1,0 +1,953 @@
+{
+  "generated_at": "2026-10-08T02:03:23.714486+00:00",
+  "total_scenarios_loaded": 95,
+  "core_cross_domain": 95,
+  "micro_scenarios": 0,
+  "categories": {
+    "optimization": {
+      "count": 12,
+      "dim_min": 1,
+      "dim_max": 6,
+      "dim_mean": 2.25,
+      "log10_volume_mean": 1.64,
+      "verdict": "dense"
+    },
+    "pde": {
+      "count": 1,
+      "dim_min": 1,
+      "dim_max": 1,
+      "dim_mean": 1.0,
+      "log10_volume_mean": 0.0,
+      "verdict": "sparse"
+    },
+    "biology": {
+      "count": 56,
+      "dim_min": 1,
+      "dim_max": 3,
+      "dim_mean": 1.45,
+      "log10_volume_mean": 1.198,
+      "verdict": "dense"
+    },
+    "llm": {
+      "count": 1,
+      "dim_min": 1,
+      "dim_max": 1,
+      "dim_mean": 1.0,
+      "log10_volume_mean": 0.602,
+      "verdict": "sparse"
+    },
+    "chemistry": {
+      "count": 2,
+      "dim_min": 1,
+      "dim_max": 2,
+      "dim_mean": 1.5,
+      "log10_volume_mean": 1.747,
+      "verdict": "thin"
+    },
+    "finance": {
+      "count": 1,
+      "dim_min": 5,
+      "dim_max": 5,
+      "dim_mean": 5.0,
+      "log10_volume_mean": 3.005,
+      "verdict": "sparse"
+    },
+    "neuroscience": {
+      "count": 1,
+      "dim_min": 7,
+      "dim_max": 7,
+      "dim_mean": 7.0,
+      "log10_volume_mean": 7.812,
+      "verdict": "sparse"
+    },
+    "ecology": {
+      "count": 1,
+      "dim_min": 4,
+      "dim_max": 4,
+      "dim_mean": 4.0,
+      "log10_volume_mean": 1.16,
+      "verdict": "sparse"
+    },
+    "cheminformatics": {
+      "count": 4,
+      "dim_min": 7,
+      "dim_max": 9,
+      "dim_mean": 7.75,
+      "log10_volume_mean": 0.0,
+      "verdict": "thin"
+    },
+    "energy": {
+      "count": 1,
+      "dim_min": 4,
+      "dim_max": 4,
+      "dim_mean": 4.0,
+      "log10_volume_mean": -0.852,
+      "verdict": "sparse"
+    },
+    "molecular": {
+      "count": 2,
+      "dim_min": 10,
+      "dim_max": 10,
+      "dim_mean": 10.0,
+      "log10_volume_mean": 6.99,
+      "verdict": "thin"
+    },
+    "science": {
+      "count": 13,
+      "dim_min": 2,
+      "dim_max": 8,
+      "dim_mean": 4.46,
+      "log10_volume_mean": 6.373,
+      "verdict": "dense"
+    }
+  },
+  "coverage_bar": [
+    {
+      "category": "Biology",
+      "internal": "biology",
+      "validated_scenarios": 56,
+      "pending_engines": 6,
+      "verdict": "dense"
+    },
+    {
+      "category": "Chemistry",
+      "internal": "chemistry",
+      "validated_scenarios": 2,
+      "pending_engines": 11,
+      "verdict": "thin"
+    },
+    {
+      "category": "Energy/PDE",
+      "internal": "pde",
+      "validated_scenarios": 1,
+      "pending_engines": 12,
+      "verdict": "sparse"
+    },
+    {
+      "category": "Optimization",
+      "internal": "optimization",
+      "validated_scenarios": 12,
+      "pending_engines": 0,
+      "verdict": "dense"
+    },
+    {
+      "category": "LLM",
+      "internal": "llm",
+      "validated_scenarios": 1,
+      "pending_engines": 0,
+      "verdict": "sparse"
+    },
+    {
+      "category": "Environment",
+      "internal": null,
+      "validated_scenarios": 0,
+      "pending_engines": 18,
+      "verdict": "gap"
+    },
+    {
+      "category": "Materials",
+      "internal": null,
+      "validated_scenarios": 0,
+      "pending_engines": 24,
+      "verdict": "gap"
+    },
+    {
+      "category": "Separation",
+      "internal": null,
+      "validated_scenarios": 0,
+      "pending_engines": 31,
+      "verdict": "gap"
+    },
+    {
+      "category": "Analysis",
+      "internal": null,
+      "validated_scenarios": 0,
+      "pending_engines": 8,
+      "verdict": "gap"
+    },
+    {
+      "category": "Pharma",
+      "internal": null,
+      "validated_scenarios": 0,
+      "pending_engines": 24,
+      "verdict": "gap"
+    },
+    {
+      "category": "Electrochemistry",
+      "internal": null,
+      "validated_scenarios": 0,
+      "pending_engines": 4,
+      "verdict": "gap"
+    },
+    {
+      "category": "NeuroRobotics",
+      "internal": null,
+      "validated_scenarios": 0,
+      "pending_engines": 0,
+      "verdict": "gap"
+    }
+  ],
+  "dim_x_volume": [
+    {
+      "key": "surrogate_forrester",
+      "category": "optimization",
+      "dimension": 1,
+      "log10_volume": 0.0,
+      "domain": "Surrogate Modeling/Optimization (Bayesian Optimization Benchmark)"
+    },
+    {
+      "key": "surrogate_branin",
+      "category": "optimization",
+      "dimension": 2,
+      "log10_volume": 2.352,
+      "domain": "Surrogate Modeling/Optimization (2D Benchmark)"
+    },
+    {
+      "key": "surrogate_hartmann6",
+      "category": "optimization",
+      "dimension": 6,
+      "log10_volume": 0.0,
+      "domain": "Surrogate Modeling/Optimization (6D High-Dimensional Benchmark)"
+    },
+    {
+      "key": "pde_heat1d",
+      "category": "pde",
+      "dimension": 1,
+      "log10_volume": 0.0,
+      "domain": "heat conduction (physics-informed) / 1D 热传导方程解析解"
+    },
+    {
+      "key": "bio_logistic",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 1.0,
+      "domain": "Biology/Population Dynamics"
+    },
+    {
+      "key": "microbio_monod",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 0.297,
+      "domain": "Microorganisms/Growth Kinetics (Monod)"
+    },
+    {
+      "key": "microbio_inhibition",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 0.47,
+      "domain": "Microorganisms/Substrate Inhibition (Andrews)"
+    },
+    {
+      "key": "llm_scaling",
+      "category": "llm",
+      "dimension": 1,
+      "log10_volume": 0.602,
+      "domain": "LLM/Scaling Law (Kaplan 2020)"
+    },
+    {
+      "key": "chem_langmuir",
+      "category": "chemistry",
+      "dimension": 1,
+      "log10_volume": 0.996,
+      "domain": "Chemical/Adsorption Isotherm (Langmuir 1916)"
+    },
+    {
+      "key": "chem_reactor_conversion",
+      "category": "chemistry",
+      "dimension": 2,
+      "log10_volume": 2.498,
+      "domain": "Chemistry / First-Order Reactor Conversion (Arrhenius Kinetics, 2D)"
+    },
+    {
+      "key": "micro_ecoli_glucose",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 1.0,
+      "domain": "微生物 / E. coli 批次培养（Monod, 文献参数）"
+    },
+    {
+      "key": "micro_cerevisiae_ethanol",
+      "category": "biology",
+      "dimension": 2,
+      "log10_volume": 3.0,
+      "domain": "微生物 / 酿酒酵母乙醇发酵（Monod + 乙醇产物抑制）"
+    },
+    {
+      "key": "micro_putida_toluene",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 0.699,
+      "domain": "微生物 / 假单胞菌甲苯降解（Andrews 底物抑制）"
+    },
+    {
+      "key": "micro_lactococcus_lactose",
+      "category": "biology",
+      "dimension": 2,
+      "log10_volume": 1.602,
+      "domain": "微生物 / 乳酸乳球菌乳酸发酵（pH 效应 + 底物抑制）"
+    },
+    {
+      "key": "micro_acetobacter_acetate",
+      "category": "biology",
+      "dimension": 2,
+      "log10_volume": 2.176,
+      "domain": "微生物 / 醋酸杆菌醋酸利用（温度效应 + Monod）"
+    },
+    {
+      "key": "micro_methanobacterium_methane",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": -1.004,
+      "domain": "微生物 / 产甲烷古菌甲烷利用（低 μmax 极端场景）"
+    },
+    {
+      "key": "micro_chemostat_ecoli",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": -0.131,
+      "domain": "微生物 / E. coli Chemostat 稳态（稀释率→生物量）"
+    },
+    {
+      "key": "micro_chemostat_cerevisiae",
+      "category": "biology",
+      "dimension": 2,
+      "log10_volume": 0.929,
+      "domain": "微生物 / 酿酒酵母 Chemostat 稳态（稀释率+进料浓度→生物量）"
+    },
+    {
+      "key": "micro_lag_ecoli",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 1.301,
+      "domain": "微生物 / micro_lag_ecoli"
+    },
+    {
+      "key": "micro_lifecycle_ecoli",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 1.681,
+      "domain": "微生物 / micro_lifecycle_ecoli"
+    },
+    {
+      "key": "micro_diauxic_ecoli",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 1.38,
+      "domain": "微生物 / micro_diauxic_ecoli"
+    },
+    {
+      "key": "micro_fedbatch_ecoli",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 0.69,
+      "domain": "微生物 / micro_fedbatch_ecoli"
+    },
+    {
+      "key": "micro_competition_ecoli_yeast",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 1.29,
+      "domain": "微生物 / micro_competition_ecoli_yeast"
+    },
+    {
+      "key": "micro_crabtree_cerevisiae",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 1.556,
+      "domain": "微生物 / micro_crabtree_cerevisiae"
+    },
+    {
+      "key": "micro_haldane_putida",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 0.699,
+      "domain": "微生物 / micro_haldane_putida"
+    },
+    {
+      "key": "micro_contois_ecoli",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 1.301,
+      "domain": "微生物 / micro_contois_ecoli"
+    },
+    {
+      "key": "micro_tessier_ecoli",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": -0.301,
+      "domain": "微生物 / micro_tessier_ecoli"
+    },
+    {
+      "key": "micro_pirt_ecoli",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 1.0,
+      "domain": "微生物 / micro_pirt_ecoli"
+    },
+    {
+      "key": "micro_oxygen_ecoli",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 0.903,
+      "domain": "微生物 / micro_oxygen_ecoli"
+    },
+    {
+      "key": "micro_antibiotic_timekill",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 2.299,
+      "domain": "微生物 / micro_antibiotic_timekill"
+    },
+    {
+      "key": "micro_osmotic_ecoli",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": -1.0,
+      "domain": "微生物 / micro_osmotic_ecoli"
+    },
+    {
+      "key": "micro_biofilm_ecoli",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 1.681,
+      "domain": "微生物 / micro_biofilm_ecoli"
+    },
+    {
+      "key": "micro_scaleup_kla",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 3.0,
+      "domain": "微生物 / micro_scaleup_kla"
+    },
+    {
+      "key": "micro_doe_ecoli_monod",
+      "category": "biology",
+      "dimension": 2,
+      "log10_volume": 2.301,
+      "domain": "微生物 / micro_doe_ecoli_monod"
+    },
+    {
+      "key": "micro_mle_ecoli_monod",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 0.699,
+      "domain": "微生物 / micro_mle_ecoli_monod"
+    },
+    {
+      "key": "micro_sobol_ecoli",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 0.699,
+      "domain": "微生物 / micro_sobol_ecoli"
+    },
+    {
+      "key": "micro_uq_ecoli_monod",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 0.699,
+      "domain": "微生物 / micro_uq_ecoli_monod"
+    },
+    {
+      "key": "micro_coculture_mutualism",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 1.681,
+      "domain": "微生物 / micro_coculture_mutualism"
+    },
+    {
+      "key": "micro_quorum_ecoli",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 1.681,
+      "domain": "微生物 / micro_quorum_ecoli"
+    },
+    {
+      "key": "micro_heavy_metal_ecoli",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 1.0,
+      "domain": "微生物 / micro_heavy_metal_ecoli"
+    },
+    {
+      "key": "micro_diauxic_2d",
+      "category": "biology",
+      "dimension": 2,
+      "log10_volume": 1.955,
+      "domain": "微生物 / micro_diauxic_2d"
+    },
+    {
+      "key": "micro_fedbatch_2d",
+      "category": "biology",
+      "dimension": 2,
+      "log10_volume": 1.256,
+      "domain": "微生物 / micro_fedbatch_2d"
+    },
+    {
+      "key": "micro_competition_2d",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 1.279,
+      "domain": "微生物 / micro_competition_2d"
+    },
+    {
+      "key": "micro_crabtree_2d",
+      "category": "biology",
+      "dimension": 2,
+      "log10_volume": 2.602,
+      "domain": "微生物 / micro_crabtree_2d"
+    },
+    {
+      "key": "micro_fedbatch_3d",
+      "category": "biology",
+      "dimension": 3,
+      "log10_volume": 3.035,
+      "domain": "微生物 / micro_fedbatch_3d"
+    },
+    {
+      "key": "micro_haldane_2d",
+      "category": "biology",
+      "dimension": 2,
+      "log10_volume": 1.875,
+      "domain": "微生物 / micro_haldane_2d"
+    },
+    {
+      "key": "micro_oxygen_2d",
+      "category": "biology",
+      "dimension": 2,
+      "log10_volume": 1.903,
+      "domain": "微生物 / micro_oxygen_2d"
+    },
+    {
+      "key": "micro_antibiotic_2d",
+      "category": "biology",
+      "dimension": 2,
+      "log10_volume": 3.922,
+      "domain": "微生物 / micro_antibiotic_2d"
+    },
+    {
+      "key": "micro_secondary_metabolite",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 1.415,
+      "domain": "微生物 / micro_secondary_metabolite"
+    },
+    {
+      "key": "micro_thermal_death",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 1.602,
+      "domain": "微生物 / micro_thermal_death"
+    },
+    {
+      "key": "micro_immobilized_cell",
+      "category": "biology",
+      "dimension": 2,
+      "log10_volume": -2.356,
+      "domain": "微生物 / micro_immobilized_cell"
+    },
+    {
+      "key": "micro_plasmid_stability",
+      "category": "biology",
+      "dimension": 2,
+      "log10_volume": 0.243,
+      "domain": "微生物 / micro_plasmid_stability"
+    },
+    {
+      "key": "micro_phage_infection",
+      "category": "biology",
+      "dimension": 2,
+      "log10_volume": 2.74,
+      "domain": "微生物 / micro_phage_infection"
+    },
+    {
+      "key": "micro_gene_expression",
+      "category": "biology",
+      "dimension": 2,
+      "log10_volume": 1.051,
+      "domain": "微生物 / micro_gene_expression"
+    },
+    {
+      "key": "micro_oxidative_stress",
+      "category": "biology",
+      "dimension": 1,
+      "log10_volume": 0.477,
+      "domain": "微生物 / micro_oxidative_stress"
+    },
+    {
+      "key": "micro_chemostat_transient",
+      "category": "biology",
+      "dimension": 2,
+      "log10_volume": -0.201,
+      "domain": "微生物 / micro_chemostat_transient"
+    },
+    {
+      "key": "micro_mixed_substrate",
+      "category": "biology",
+      "dimension": 2,
+      "log10_volume": 1.699,
+      "domain": "微生物 / micro_mixed_substrate"
+    },
+    {
+      "key": "micro_ph_control",
+      "category": "biology",
+      "dimension": 2,
+      "log10_volume": 1.903,
+      "domain": "微生物 / micro_ph_control"
+    },
+    {
+      "key": "micro_fba_flux",
+      "category": "biology",
+      "dimension": 2,
+      "log10_volume": -0.092,
+      "domain": "微生物 / micro_fba_flux"
+    },
+    {
+      "key": "micro_dead_volume",
+      "category": "biology",
+      "dimension": 2,
+      "log10_volume": 2.124,
+      "domain": "微生物 / micro_dead_volume"
+    },
+    {
+      "key": "micro_foam_dynamics",
+      "category": "biology",
+      "dimension": 2,
+      "log10_volume": -0.022,
+      "domain": "微生物 / micro_foam_dynamics"
+    },
+    {
+      "key": "micro_sensor_fusion",
+      "category": "biology",
+      "dimension": 2,
+      "log10_volume": 1.644,
+      "domain": "微生物 / micro_sensor_fusion"
+    },
+    {
+      "key": "opt_schwefel2d",
+      "category": "optimization",
+      "dimension": 2,
+      "log10_volume": 6.0,
+      "domain": "optimization"
+    },
+    {
+      "key": "opt_ackley2d",
+      "category": "optimization",
+      "dimension": 2,
+      "log10_volume": 3.633,
+      "domain": "optimization"
+    },
+    {
+      "key": "opt_rastrigin2d",
+      "category": "optimization",
+      "dimension": 2,
+      "log10_volume": 2.021,
+      "domain": "optimization"
+    },
+    {
+      "key": "opt_rosenbrock2d",
+      "category": "optimization",
+      "dimension": 2,
+      "log10_volume": 1.204,
+      "domain": "optimization"
+    },
+    {
+      "key": "opt_levy2d",
+      "category": "optimization",
+      "dimension": 2,
+      "log10_volume": 2.602,
+      "domain": "optimization"
+    },
+    {
+      "key": "opt_michalewicz2d",
+      "category": "optimization",
+      "dimension": 2,
+      "log10_volume": 0.994,
+      "domain": "optimization"
+    },
+    {
+      "key": "opt_hartmann3d",
+      "category": "optimization",
+      "dimension": 3,
+      "log10_volume": 0.0,
+      "domain": "optimization"
+    },
+    {
+      "key": "opt_gramacylee1d",
+      "category": "optimization",
+      "dimension": 1,
+      "log10_volume": 0.875,
+      "domain": "optimization"
+    },
+    {
+      "key": "resp_welch2d",
+      "category": "optimization",
+      "dimension": 2,
+      "log10_volume": 0.0,
+      "domain": "optimization"
+    },
+    {
+      "key": "ode_lotka_volterra",
+      "category": "biology",
+      "dimension": 2,
+      "log10_volume": 0.741,
+      "domain": "biology"
+    },
+    {
+      "key": "quant_bs_call",
+      "category": "finance",
+      "dimension": 5,
+      "log10_volume": 3.005,
+      "domain": "finance"
+    },
+    {
+      "key": "neuro_hh_spike_amplitude",
+      "category": "neuroscience",
+      "dimension": 7,
+      "log10_volume": 7.812,
+      "domain": "neuroscience"
+    },
+    {
+      "key": "eco_lv_peak_ratio",
+      "category": "ecology",
+      "dimension": 4,
+      "log10_volume": 1.16,
+      "domain": "ecology"
+    },
+    {
+      "key": "cheminfo_pIC50",
+      "category": "cheminformatics",
+      "dimension": 7,
+      "log10_volume": 0.0,
+      "domain": "cheminformatics"
+    },
+    {
+      "key": "cheminfo_logD",
+      "category": "cheminformatics",
+      "dimension": 8,
+      "log10_volume": 0.0,
+      "domain": "cheminformatics"
+    },
+    {
+      "key": "cheminfo_logS",
+      "category": "cheminformatics",
+      "dimension": 9,
+      "log10_volume": 0.0,
+      "domain": "cheminformatics"
+    },
+    {
+      "key": "cheminfo_hydration",
+      "category": "cheminformatics",
+      "dimension": 7,
+      "log10_volume": 0.0,
+      "domain": "cheminformatics"
+    },
+    {
+      "key": "energy_ccpp_output",
+      "category": "energy",
+      "dimension": 4,
+      "log10_volume": -0.852,
+      "domain": "energy"
+    },
+    {
+      "key": "mol_suzuki_yield",
+      "category": "molecular",
+      "dimension": 10,
+      "log10_volume": 6.99,
+      "domain": "chemistry"
+    },
+    {
+      "key": "mol_esterification_yield",
+      "category": "molecular",
+      "dimension": 10,
+      "log10_volume": 6.99,
+      "domain": "chemistry"
+    },
+    {
+      "key": "heat_series_resistance",
+      "category": "science",
+      "dimension": 8,
+      "log10_volume": 6.691,
+      "domain": "heat conduction (physics-informed) / 串联热阻稳态导热"
+    },
+    {
+      "key": "heat_radiation_flux",
+      "category": "science",
+      "dimension": 4,
+      "log10_volume": 6.674,
+      "domain": "heat conduction (physics-informed) / Stefan-Boltzmann 净辐射换热"
+    },
+    {
+      "key": "llm_chinchilla_loss",
+      "category": "science",
+      "dimension": 2,
+      "log10_volume": 21.0,
+      "domain": "llm / Chinchilla 计算最优训练损失"
+    },
+    {
+      "key": "llm_compute_optimal_ratio",
+      "category": "science",
+      "dimension": 2,
+      "log10_volume": 10.176,
+      "domain": "llm / Chinchilla 最优 D/N 比"
+    },
+    {
+      "key": "chem_freundlich",
+      "category": "science",
+      "dimension": 3,
+      "log10_volume": 1.855,
+      "domain": "chemical / Freundlich 经验吸附等温线"
+    },
+    {
+      "key": "chem_bet",
+      "category": "science",
+      "dimension": 4,
+      "log10_volume": 8.165,
+      "domain": "chemical / BET 多层吸附等温线"
+    },
+    {
+      "key": "fin_merton_call_div",
+      "category": "science",
+      "dimension": 6,
+      "log10_volume": 2.139,
+      "domain": "finance / Merton 连续红利欧式看涨"
+    },
+    {
+      "key": "eco_nicholson_bailey",
+      "category": "science",
+      "dimension": 5,
+      "log10_volume": 3.884,
+      "domain": "ecology / Nicholson-Bailey 宿主-寄生物平衡"
+    },
+    {
+      "key": "eco_ricker_population",
+      "category": "science",
+      "dimension": 3,
+      "log10_volume": 8.175,
+      "domain": "ecology / Ricker 种群调控（10 代）"
+    },
+    {
+      "key": "neuro_izhikevich_rate",
+      "category": "science",
+      "dimension": 5,
+      "log10_volume": 1.653,
+      "domain": "neuroscience / Izhikevich 神经元放电频率"
+    },
+    {
+      "key": "neuro_lif_fi",
+      "category": "science",
+      "dimension": 7,
+      "log10_volume": 6.908,
+      "domain": "neuroscience / LIF 神经元 f-I 曲线"
+    },
+    {
+      "key": "energy_isothermal_work",
+      "category": "science",
+      "dimension": 5,
+      "log10_volume": 1.569,
+      "domain": "energy / 等温可逆膨胀功"
+    },
+    {
+      "key": "energy_rankine_efficiency",
+      "category": "science",
+      "dimension": 4,
+      "log10_volume": 3.96,
+      "domain": "energy / Rankine 循环实际效率与 Carnot 之比"
+    }
+  ],
+  "grid": {
+    "biology": {
+      "1": 32,
+      "2": 23,
+      "3": 1
+    },
+    "cheminformatics": {
+      "7": 2,
+      "8": 1,
+      "9": 1
+    },
+    "chemistry": {
+      "1": 1,
+      "2": 1
+    },
+    "ecology": {
+      "4": 1
+    },
+    "energy": {
+      "4": 1
+    },
+    "finance": {
+      "5": 1
+    },
+    "llm": {
+      "1": 1
+    },
+    "molecular": {
+      "10": 2
+    },
+    "neuroscience": {
+      "7": 1
+    },
+    "optimization": {
+      "1": 2,
+      "2": 8,
+      "3": 1,
+      "6": 1
+    },
+    "pde": {
+      "1": 1
+    },
+    "science": {
+      "2": 2,
+      "3": 2,
+      "4": 3,
+      "5": 3,
+      "6": 1,
+      "7": 1,
+      "8": 1
+    }
+  },
+  "max_dim": 10,
+  "pending_categories": {
+    "Chemistry": 11,
+    "Environment": 18,
+    "Energy": 12,
+    "Materials": 24,
+    "Biology": 6,
+    "Separation": 31,
+    "Analysis": 8,
+    "Pharma": 24,
+    "Electrochemistry": 4,
+    "NeuroRobotics": 0
+  },
+  "density_summary": {
+    "dense_categories": [
+      "optimization",
+      "biology",
+      "science"
+    ],
+    "thin_categories": [
+      "chemistry",
+      "cheminformatics",
+      "molecular"
+    ],
+    "sparse_categories": [
+      "pde",
+      "llm",
+      "finance",
+      "neuroscience",
+      "ecology",
+      "energy"
+    ],
+    "gap_categories": [
+      "Environment",
+      "Materials",
+      "Separation",
+      "Analysis",
+      "Pharma"
+    ],
+    "total_gap_pending_engines": 105
+  },
+  "note": "Density measured in log10 of parameter-space volume so that 1-D and 6-D scenarios are comparable. PENDING counts come verbatim from engine.domains.PENDING_CATEGORIES. Empty cells in the grid are known gaps, not noise.",
+  "source_notes": [],
+  "registry_fingerprint": "2561cd94cfdb672c6d91c967fb8535e6eb87750ad8d8a13ae591376516cad8ff"
+}

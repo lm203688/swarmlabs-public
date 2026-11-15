@@ -1,0 +1,531 @@
+{
+  "schema": "swarmlabs-synthetic-anchors/1.0",
+  "generated_at_utc": "2026-09-22T05:35:33Z",
+  "anchor_class": "synthetic",
+  "note": "Pre-validation triage only. `anchor_class=synthetic` never promotes to literature anchoring; promoting requires the `anchor_intake` three-layer screening (verifiability → dimension → named confirmer). This file is deliberately kept separate from wet_lab_anchors.json.",
+  "counts": {
+    "scanned": 80,
+    "with_synthetic_anchor": 18,
+    "skipped_no_published": 60,
+    "skipped_non_pass": 2,
+    "prevalidation": {
+      "CLEAN": 9,
+      "NEEDS_REVIEW": 9,
+      "REJECTED": 0
+    },
+    "with_citation_year": 11
+  },
+  "anchors": [
+    {
+      "schema": "swarmlabs-synthetic-anchor/1.0",
+      "scenario": "micro_acetobacter_acetate",
+      "anchor_class": "synthetic",
+      "domain": "微生物 / 醋酸杆菌醋酸利用（温度效应 + Monod）",
+      "verdict": "PASS",
+      "r2": 0.9995,
+      "parameters": [
+        {
+          "name": "Ks",
+          "value": 0.03,
+          "unit": "g/L",
+          "unit_declared": true
+        },
+        {
+          "name": "T_opt",
+          "value": 37.0,
+          "unit": "°C",
+          "unit_declared": true
+        }
+      ],
+      "citations": [
+        "19"
+      ],
+      "has_year": true,
+      "unquantified": 0,
+      "prevalidation": {
+        "outcome": "CLEAN",
+        "reason": "all parameters carry a declared unit and are finite and non-negative",
+        "flags": []
+      },
+      "not_a_validation": "SYNTHETIC anchor: extracted verbatim from the scenario's own `published` field. It self-checks unit/number consistency only. It is NOT evidence, NOT literature-anchored, and it does NOT enter frontend_fixed/reports/wet_lab_anchors.json. Pre-validation passing means the scenario carries quotable parameters — nothing more."
+    },
+    {
+      "schema": "swarmlabs-synthetic-anchor/1.0",
+      "scenario": "micro_cerevisiae_ethanol",
+      "anchor_class": "synthetic",
+      "domain": "微生物 / 酿酒酵母乙醇发酵（Monod + 乙醇产物抑制）",
+      "verdict": "PASS",
+      "r2": 0.9999,
+      "parameters": [
+        {
+          "name": "Ks",
+          "value": 0.025,
+          "unit": "g/L",
+          "unit_declared": true
+        }
+      ],
+      "citations": [
+        "19"
+      ],
+      "has_year": true,
+      "unquantified": 0,
+      "prevalidation": {
+        "outcome": "CLEAN",
+        "reason": "all parameters carry a declared unit and are finite and non-negative",
+        "flags": []
+      },
+      "not_a_validation": "SYNTHETIC anchor: extracted verbatim from the scenario's own `published` field. It self-checks unit/number consistency only. It is NOT evidence, NOT literature-anchored, and it does NOT enter frontend_fixed/reports/wet_lab_anchors.json. Pre-validation passing means the scenario carries quotable parameters — nothing more."
+    },
+    {
+      "schema": "swarmlabs-synthetic-anchor/1.0",
+      "scenario": "micro_chemostat_cerevisiae",
+      "anchor_class": "synthetic",
+      "domain": "微生物 / 酿酒酵母 Chemostat 稳态（稀释率+进料浓度→生物量）",
+      "verdict": "PASS",
+      "r2": 0.954,
+      "parameters": [
+        {
+          "name": "S_f",
+          "value": 20.0,
+          "unit": "g/L",
+          "unit_declared": true
+        }
+      ],
+      "citations": [
+        "19"
+      ],
+      "has_year": true,
+      "unquantified": 0,
+      "prevalidation": {
+        "outcome": "CLEAN",
+        "reason": "all parameters carry a declared unit and are finite and non-negative",
+        "flags": []
+      },
+      "not_a_validation": "SYNTHETIC anchor: extracted verbatim from the scenario's own `published` field. It self-checks unit/number consistency only. It is NOT evidence, NOT literature-anchored, and it does NOT enter frontend_fixed/reports/wet_lab_anchors.json. Pre-validation passing means the scenario carries quotable parameters — nothing more."
+    },
+    {
+      "schema": "swarmlabs-synthetic-anchor/1.0",
+      "scenario": "micro_chemostat_ecoli",
+      "anchor_class": "synthetic",
+      "domain": "微生物 / E. coli Chemostat 稳态（稀释率→生物量）",
+      "verdict": "PASS",
+      "r2": 0.9959,
+      "parameters": [
+        {
+          "name": "S_f",
+          "value": 10.0,
+          "unit": "g/L",
+          "unit_declared": true
+        }
+      ],
+      "citations": [
+        "19"
+      ],
+      "has_year": true,
+      "unquantified": 0,
+      "prevalidation": {
+        "outcome": "CLEAN",
+        "reason": "all parameters carry a declared unit and are finite and non-negative",
+        "flags": []
+      },
+      "not_a_validation": "SYNTHETIC anchor: extracted verbatim from the scenario's own `published` field. It self-checks unit/number consistency only. It is NOT evidence, NOT literature-anchored, and it does NOT enter frontend_fixed/reports/wet_lab_anchors.json. Pre-validation passing means the scenario carries quotable parameters — nothing more."
+    },
+    {
+      "schema": "swarmlabs-synthetic-anchor/1.0",
+      "scenario": "micro_ecoli_glucose",
+      "anchor_class": "synthetic",
+      "domain": "微生物 / E. coli 批次培养（Monod, 文献参数）",
+      "verdict": "PASS",
+      "r2": 0.9922,
+      "parameters": [
+        {
+          "name": "Ks",
+          "value": 0.004,
+          "unit": "g/L",
+          "unit_declared": true
+        }
+      ],
+      "citations": [
+        "19",
+        "20"
+      ],
+      "has_year": true,
+      "unquantified": 0,
+      "prevalidation": {
+        "outcome": "CLEAN",
+        "reason": "all parameters carry a declared unit and are finite and non-negative",
+        "flags": []
+      },
+      "not_a_validation": "SYNTHETIC anchor: extracted verbatim from the scenario's own `published` field. It self-checks unit/number consistency only. It is NOT evidence, NOT literature-anchored, and it does NOT enter frontend_fixed/reports/wet_lab_anchors.json. Pre-validation passing means the scenario carries quotable parameters — nothing more."
+    },
+    {
+      "schema": "swarmlabs-synthetic-anchor/1.0",
+      "scenario": "micro_lactococcus_lactose",
+      "anchor_class": "synthetic",
+      "domain": "微生物 / 乳酸乳球菌乳酸发酵（pH 效应 + 底物抑制）",
+      "verdict": "PASS",
+      "r2": 0.9998,
+      "parameters": [
+        {
+          "name": "Ks",
+          "value": 0.3,
+          "unit": "g/L",
+          "unit_declared": true
+        }
+      ],
+      "citations": [
+        "19"
+      ],
+      "has_year": true,
+      "unquantified": 0,
+      "prevalidation": {
+        "outcome": "CLEAN",
+        "reason": "all parameters carry a declared unit and are finite and non-negative",
+        "flags": []
+      },
+      "not_a_validation": "SYNTHETIC anchor: extracted verbatim from the scenario's own `published` field. It self-checks unit/number consistency only. It is NOT evidence, NOT literature-anchored, and it does NOT enter frontend_fixed/reports/wet_lab_anchors.json. Pre-validation passing means the scenario carries quotable parameters — nothing more."
+    },
+    {
+      "schema": "swarmlabs-synthetic-anchor/1.0",
+      "scenario": "micro_methanobacterium_methane",
+      "anchor_class": "synthetic",
+      "domain": "微生物 / 产甲烷古菌甲烷利用（低 μmax 极端场景）",
+      "verdict": "PASS",
+      "r2": 0.9998,
+      "parameters": [
+        {
+          "name": "Ks",
+          "value": 0.02,
+          "unit": "g/L",
+          "unit_declared": true
+        }
+      ],
+      "citations": [
+        "19"
+      ],
+      "has_year": true,
+      "unquantified": 0,
+      "prevalidation": {
+        "outcome": "CLEAN",
+        "reason": "all parameters carry a declared unit and are finite and non-negative",
+        "flags": []
+      },
+      "not_a_validation": "SYNTHETIC anchor: extracted verbatim from the scenario's own `published` field. It self-checks unit/number consistency only. It is NOT evidence, NOT literature-anchored, and it does NOT enter frontend_fixed/reports/wet_lab_anchors.json. Pre-validation passing means the scenario carries quotable parameters — nothing more."
+    },
+    {
+      "schema": "swarmlabs-synthetic-anchor/1.0",
+      "scenario": "micro_putida_toluene",
+      "anchor_class": "synthetic",
+      "domain": "微生物 / 假单胞菌甲苯降解（Andrews 底物抑制）",
+      "verdict": "PASS",
+      "r2": 0.9999,
+      "parameters": [
+        {
+          "name": "Ks",
+          "value": 0.02,
+          "unit": "g/L",
+          "unit_declared": true
+        }
+      ],
+      "citations": [
+        "19"
+      ],
+      "has_year": true,
+      "unquantified": 0,
+      "prevalidation": {
+        "outcome": "CLEAN",
+        "reason": "all parameters carry a declared unit and are finite and non-negative",
+        "flags": []
+      },
+      "not_a_validation": "SYNTHETIC anchor: extracted verbatim from the scenario's own `published` field. It self-checks unit/number consistency only. It is NOT evidence, NOT literature-anchored, and it does NOT enter frontend_fixed/reports/wet_lab_anchors.json. Pre-validation passing means the scenario carries quotable parameters — nothing more."
+    },
+    {
+      "schema": "swarmlabs-synthetic-anchor/1.0",
+      "scenario": "microbio_monod",
+      "anchor_class": "synthetic",
+      "domain": "Microorganisms/Growth Kinetics (Monod)",
+      "verdict": "PASS",
+      "r2": 0.9997,
+      "parameters": [
+        {
+          "name": "Ks",
+          "value": 0.22,
+          "unit": "g/L",
+          "unit_declared": true
+        }
+      ],
+      "citations": [
+        "19"
+      ],
+      "has_year": true,
+      "unquantified": 0,
+      "prevalidation": {
+        "outcome": "CLEAN",
+        "reason": "all parameters carry a declared unit and are finite and non-negative",
+        "flags": []
+      },
+      "not_a_validation": "SYNTHETIC anchor: extracted verbatim from the scenario's own `published` field. It self-checks unit/number consistency only. It is NOT evidence, NOT literature-anchored, and it does NOT enter frontend_fixed/reports/wet_lab_anchors.json. Pre-validation passing means the scenario carries quotable parameters — nothing more."
+    },
+    {
+      "schema": "swarmlabs-synthetic-anchor/1.0",
+      "scenario": "bio_logistic",
+      "anchor_class": "synthetic",
+      "domain": "Biology/Population Dynamics",
+      "verdict": "PASS",
+      "r2": 1.0,
+      "parameters": [
+        {
+          "name": "K",
+          "value": 100.0,
+          "unit": "",
+          "unit_declared": false
+        },
+        {
+          "name": "r",
+          "value": 0.6,
+          "unit": "",
+          "unit_declared": false
+        },
+        {
+          "name": "A",
+          "value": 19.0,
+          "unit": "",
+          "unit_declared": false
+        }
+      ],
+      "citations": [],
+      "has_year": false,
+      "unquantified": 0,
+      "prevalidation": {
+        "outcome": "NEEDS_REVIEW",
+        "reason": "K: no unit declared; r: no unit declared; A: no unit declared",
+        "flags": [
+          "K: no unit declared",
+          "r: no unit declared",
+          "A: no unit declared"
+        ]
+      },
+      "not_a_validation": "SYNTHETIC anchor: extracted verbatim from the scenario's own `published` field. It self-checks unit/number consistency only. It is NOT evidence, NOT literature-anchored, and it does NOT enter frontend_fixed/reports/wet_lab_anchors.json. Pre-validation passing means the scenario carries quotable parameters — nothing more."
+    },
+    {
+      "schema": "swarmlabs-synthetic-anchor/1.0",
+      "scenario": "chem_reactor_conversion",
+      "anchor_class": "synthetic",
+      "domain": "Chemistry / First-Order Reactor Conversion (Arrhenius Kinetics, 2D)",
+      "verdict": "PASS",
+      "r2": 1.0,
+      "parameters": [
+        {
+          "name": "X",
+          "value": 1.0,
+          "unit": "",
+          "unit_declared": false
+        }
+      ],
+      "citations": [
+        "19"
+      ],
+      "has_year": true,
+      "unquantified": 0,
+      "prevalidation": {
+        "outcome": "NEEDS_REVIEW",
+        "reason": "X: no unit declared",
+        "flags": [
+          "X: no unit declared"
+        ]
+      },
+      "not_a_validation": "SYNTHETIC anchor: extracted verbatim from the scenario's own `published` field. It self-checks unit/number consistency only. It is NOT evidence, NOT literature-anchored, and it does NOT enter frontend_fixed/reports/wet_lab_anchors.json. Pre-validation passing means the scenario carries quotable parameters — nothing more."
+    },
+    {
+      "schema": "swarmlabs-synthetic-anchor/1.0",
+      "scenario": "llm_scaling",
+      "anchor_class": "synthetic",
+      "domain": "LLM/Scaling Law (Kaplan 2020)",
+      "verdict": "PASS",
+      "r2": 1.0,
+      "parameters": [
+        {
+          "name": "N_c",
+          "value": 6.4,
+          "unit": "",
+          "unit_declared": false
+        }
+      ],
+      "citations": [
+        "20"
+      ],
+      "has_year": true,
+      "unquantified": 0,
+      "prevalidation": {
+        "outcome": "NEEDS_REVIEW",
+        "reason": "N_c: no unit declared",
+        "flags": [
+          "N_c: no unit declared"
+        ]
+      },
+      "not_a_validation": "SYNTHETIC anchor: extracted verbatim from the scenario's own `published` field. It self-checks unit/number consistency only. It is NOT evidence, NOT literature-anchored, and it does NOT enter frontend_fixed/reports/wet_lab_anchors.json. Pre-validation passing means the scenario carries quotable parameters — nothing more."
+    },
+    {
+      "schema": "swarmlabs-synthetic-anchor/1.0",
+      "scenario": "opt_ackley2d",
+      "anchor_class": "synthetic",
+      "domain": "optimization",
+      "verdict": "PASS",
+      "r2": 0.9781,
+      "parameters": [
+        {
+          "name": "min",
+          "value": 0.0,
+          "unit": "",
+          "unit_declared": false
+        }
+      ],
+      "citations": [],
+      "has_year": false,
+      "unquantified": 0,
+      "prevalidation": {
+        "outcome": "NEEDS_REVIEW",
+        "reason": "min: no unit declared",
+        "flags": [
+          "min: no unit declared"
+        ]
+      },
+      "not_a_validation": "SYNTHETIC anchor: extracted verbatim from the scenario's own `published` field. It self-checks unit/number consistency only. It is NOT evidence, NOT literature-anchored, and it does NOT enter frontend_fixed/reports/wet_lab_anchors.json. Pre-validation passing means the scenario carries quotable parameters — nothing more."
+    },
+    {
+      "schema": "swarmlabs-synthetic-anchor/1.0",
+      "scenario": "opt_levy2d",
+      "anchor_class": "synthetic",
+      "domain": "optimization",
+      "verdict": "PASS",
+      "r2": 0.9985,
+      "parameters": [
+        {
+          "name": "min",
+          "value": 0.0,
+          "unit": "",
+          "unit_declared": false
+        }
+      ],
+      "citations": [],
+      "has_year": false,
+      "unquantified": 0,
+      "prevalidation": {
+        "outcome": "NEEDS_REVIEW",
+        "reason": "min: no unit declared",
+        "flags": [
+          "min: no unit declared"
+        ]
+      },
+      "not_a_validation": "SYNTHETIC anchor: extracted verbatim from the scenario's own `published` field. It self-checks unit/number consistency only. It is NOT evidence, NOT literature-anchored, and it does NOT enter frontend_fixed/reports/wet_lab_anchors.json. Pre-validation passing means the scenario carries quotable parameters — nothing more."
+    },
+    {
+      "schema": "swarmlabs-synthetic-anchor/1.0",
+      "scenario": "opt_michalewicz2d",
+      "anchor_class": "synthetic",
+      "domain": "optimization",
+      "verdict": "PASS",
+      "r2": 0.9907,
+      "parameters": [
+        {
+          "name": "m",
+          "value": 10.0,
+          "unit": "",
+          "unit_declared": false
+        }
+      ],
+      "citations": [],
+      "has_year": false,
+      "unquantified": 0,
+      "prevalidation": {
+        "outcome": "NEEDS_REVIEW",
+        "reason": "m: no unit declared",
+        "flags": [
+          "m: no unit declared"
+        ]
+      },
+      "not_a_validation": "SYNTHETIC anchor: extracted verbatim from the scenario's own `published` field. It self-checks unit/number consistency only. It is NOT evidence, NOT literature-anchored, and it does NOT enter frontend_fixed/reports/wet_lab_anchors.json. Pre-validation passing means the scenario carries quotable parameters — nothing more."
+    },
+    {
+      "schema": "swarmlabs-synthetic-anchor/1.0",
+      "scenario": "opt_rastrigin2d",
+      "anchor_class": "synthetic",
+      "domain": "optimization",
+      "verdict": "PASS",
+      "r2": 0.9563,
+      "parameters": [
+        {
+          "name": "min",
+          "value": 0.0,
+          "unit": "",
+          "unit_declared": false
+        }
+      ],
+      "citations": [],
+      "has_year": false,
+      "unquantified": 0,
+      "prevalidation": {
+        "outcome": "NEEDS_REVIEW",
+        "reason": "min: no unit declared",
+        "flags": [
+          "min: no unit declared"
+        ]
+      },
+      "not_a_validation": "SYNTHETIC anchor: extracted verbatim from the scenario's own `published` field. It self-checks unit/number consistency only. It is NOT evidence, NOT literature-anchored, and it does NOT enter frontend_fixed/reports/wet_lab_anchors.json. Pre-validation passing means the scenario carries quotable parameters — nothing more."
+    },
+    {
+      "schema": "swarmlabs-synthetic-anchor/1.0",
+      "scenario": "opt_rosenbrock2d",
+      "anchor_class": "synthetic",
+      "domain": "optimization",
+      "verdict": "PASS",
+      "r2": 0.9997,
+      "parameters": [
+        {
+          "name": "min",
+          "value": 0.0,
+          "unit": "",
+          "unit_declared": false
+        }
+      ],
+      "citations": [],
+      "has_year": false,
+      "unquantified": 0,
+      "prevalidation": {
+        "outcome": "NEEDS_REVIEW",
+        "reason": "min: no unit declared",
+        "flags": [
+          "min: no unit declared"
+        ]
+      },
+      "not_a_validation": "SYNTHETIC anchor: extracted verbatim from the scenario's own `published` field. It self-checks unit/number consistency only. It is NOT evidence, NOT literature-anchored, and it does NOT enter frontend_fixed/reports/wet_lab_anchors.json. Pre-validation passing means the scenario carries quotable parameters — nothing more."
+    },
+    {
+      "schema": "swarmlabs-synthetic-anchor/1.0",
+      "scenario": "opt_schwefel2d",
+      "anchor_class": "synthetic",
+      "domain": "optimization",
+      "verdict": "PASS",
+      "r2": 0.9993,
+      "parameters": [
+        {
+          "name": "min",
+          "value": 0.0,
+          "unit": "",
+          "unit_declared": false
+        }
+      ],
+      "citations": [],
+      "has_year": false,
+      "unquantified": 0,
+      "prevalidation": {
+        "outcome": "NEEDS_REVIEW",
+        "reason": "min: no unit declared",
+        "flags": [
+          "min: no unit declared"
+        ]
+      },
+      "not_a_validation": "SYNTHETIC anchor: extracted verbatim from the scenario's own `published` field. It self-checks unit/number consistency only. It is NOT evidence, NOT literature-anchored, and it does NOT enter frontend_fixed/reports/wet_lab_anchors.json. Pre-validation passing means the scenario carries quotable parameters — nothing more."
+    }
+  ]
+}

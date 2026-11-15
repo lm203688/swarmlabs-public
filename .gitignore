@@ -1,0 +1,228 @@
+# 依赖与本地缓存
+node_modules/
+package-lock.json
+
+# 调试残留（2026-10-08 清理后新增，防再次堆积）
+.tmp_*
+.expand_run*
+.gh_*.py
+.seo_batch.log
+chem_tune.log
+deploy_full.log
+.del_nul.log
+.tmp_batch_results.txt
+.tmp_batch_test.py
+.tmp_probe/
+SCENARIOS_SCHEDULER_SUMMARY.md
+# Windows 保留设备名文件（非真垃圾但会被目录列表显示）
+nul
+
+# push 命令的临时清单（本次清理前遗留）
+push_all.txt
+push_final.txt
+push_filtered.txt
+push_candidates.txt
+
+# 部署缓存
+.wrangler/
+frontend_fixed/.wrangler/
+frontend_fixed/.build-check/
+
+# M1 真实数据集原始文件（体积大、可由 manifest 里的 URL 重新下载）
+# 只保留 manifest.json（记录 DOI + sha256 + URL），原始二进制不入 git
+data/raw/*
+!data/raw/manifest.json
+
+# 凭证/密钥一律禁止提交
+*.env
+.env
+.env.local
+**/secrets/*
+
+# JWKS 私钥目录（2026-09-22）：签名密钥本地保管，绝不入库。
+# 公开端点 .well-known/jwks.json 是公钥，可入库；
+# 私钥在 .well-known/keys/*.key，必须被此规则挡住。
+# 验证方式：`git check-ignore -v .well-known/keys/xxx.key` 应返回此规则。
+.well-known/keys/
+
+# 本地智能体记忆/状态（含记忆与可能的本地凭证，严禁入库）
+.workbuddy/
+
+# 本地运维日志/报告（含测试 token 与运行产物，严禁入库）
+reports/
+deploy-verify-report.json
+# 例外（2026-09-21）：阶段锚点的**来源产物摘要**必须入库，否则
+# `scripts/build_phase_anchor.py` 的 all_digest 只是本机私有指纹——
+# 第三方 clone 后既复算不了、也看不到这些来源存在，「可追溯」就是空话。
+# 已入库的 5 个摘要文件：index.json / gate_ledger.json / heldout_index.json /
+# wet_lab_anchors.json / scenario_library_density.json。
+# 注意：这里**不能**写 `!frontend_fixed/reports/xxx.json` 反否定规则——父目录
+# 被 `reports/` 排除后，git 不允许再放行其下的文件。它们是用 `git add -f`
+# 单独加进去的，且由锚点的 `fingerprint.in_git` 字段持续守着：一旦有人在
+# 新 clone 里重建却漏了这些文件，phase-anchor-gate 会立刻红。
+# Agent 运行产物（trace/audit/result，不入库）
+agentteams/runs/
+
+# 工具共享缓存/上传
+.trae-html-share-packages/
+.uploads/
+.wrangler/
+
+# 构建产物：V&V 归档包可由 scripts/build_vv_package.py 一条命令重建，
+# 不入库（避免每次重建都在仓库留下 7MB 二进制差异）。
+# 注意：不可写成 *.zip —— 仓库里有 10 个合法入库的 zip（赛事作品包/数据集），
+# 通配会静默挡住它们后续的更新。
+dist/
+
+# Zenodo 存档包：可由 scripts/build_zenodo_package.py 一条命令重建（含 MANIFEST.json
+# sha256 全量清单），供用户侧上传 DOI；454 文件/7.6MB 派生产物不入库。
+archives/
+
+# 代理模型二进制：可由 scripts/train_chem_surrogates.py 从入库数据集重建，
+# 不入库（133MB 二进制差异）。数据集本身入库，不受此规则影响。
+# 只限定本目录，勿写成全局 *.pkl / *.pt。README.md 与 *.json 仍入库。
+data/ml_models/**/*.pkl
+data/ml_models/**/*.pt
+
+# 操作系统
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 编辑器
+.vscode/
+.idea/
+# 整理产生的隔离区(确认后可删)
+_cleanup_pending/
+
+# 运行时垃圾/状态(不应入库)
+*.log
+command-center/**/creem-heartbeat-state.json
+knowledge/experience-db.json
+command-center/05-decision/experience-db-*.json
+
+# 早期项目临时导入目录(已融合, 防误提交)
+_early_import/
+
+# 独立 demo 子仓库(嵌套 .git, 克隆会丢; 可单独开源)
+demo_fermentation/
+engine-kit/
+
+# 临时助手/脚本(不入库)
+.camp_scratch/
+.gh_*.py
+
+# 本地推送/部署批处理产物（2026-09-22 大批量推送后新增）：
+# _gen_push_list.py / _gen_batches.py 生成的清单与批次文件，
+# push_files_atomic.py / deploy_pages.py 的输出与 preview 结果。
+# 前缀下划线 + .txt 组合，与已有 .gh_*.py 模式一致，避免污染仓库。
+_gen_*.py
+_push_batch_*.txt
+_push_preview.txt
+_push_result.txt
+_push_batch*.txt
+_files_to_push.txt
+_git_status.txt
+_batch*_result.txt
+_deploy_result.txt
+.tmp_batch_*.txt
+.tmp_batch_*.py
+.tmp_*.txt
+.tmp_*.py
+.tmp_*.log
+.tmp_probe/
+_backup_*.js
+.tmp_report_test.txt
+.tmp_test_out.txt
+.tmp_test_report.py
+.tmp_test_results.txt
+.tmp_verify_push.py
+.tmp_verify_r6.py
+.tmp_verify_results.txt
+
+# 历史遗留（2026-09-22 收尾）：桌面整理遗留的备份快照
+# - backups/ 是 2026-09-17 桌面整理的隔离区，非主线资产，不入库。
+backups/
+
+# Agent 批量测试输入样例（2026-09-22 收尾）：
+# scripts/_selftest_*.py 与 agentteams/ 生成的 _bench_* / _e2e_batch_* / _bio_adv_*
+# case JSON 每个 ~270 bytes，共 30 个。是脚本运行时的临时输入，不是资产，
+# 不入库；需要时可以靠 scripts/ 里的自检脚本重新生成。
+agentteams/samples/_bench_*.json
+agentteams/samples/_e2e_batch_*.json
+agentteams/samples/_bio_adv_*.json
+
+# 本地 LLM/编辑器工具目录（不是主线资产）
+.opencode/
+
+# 本地平台运营副本(与仓库根目录已融合的重复/备份, 不入库)
+_platform/
+
+# 注入脚本产生的时间戳备份(本地保留, 不入库)
+*.bak-*
+*.bak
+
+# 整理/回收目录(本地保留, 不入库)
+_trash_*/
+_consolidate_backup/
+_retired/
+archive/
+
+# 商业/融资文档(二进制, 含敏感财务内容, 严禁入库)
+*.docx
+
+# 运营指挥中心(内部运营面板/财务/增长, 非开源引擎主体)
+command-center/
+
+# 内部商业/战投/审计文档(含战略与竞品分析, 不公开)
+docs/*战投*
+docs/*投资人*
+docs/*推广落地方案*
+docs/*转化系统*
+docs/*audit*
+docs/*brain_report*
+docs/*integration_audit*
+
+# Python 缓存
+__pycache__/
+*.pyc
+/nul
+
+# VLab CI 运行产物（工作单 job / 交付物副本）。
+# 刻意用仓库内固定目录而非 /tmp：/tmp 在 Windows 原生 Python 下不可达，
+# 用仓库内路径才能让 CI 与本地逐字复现同一条命令。
+.vlab-ci/
+
+# VLab 服务运行时产物：客户工作单产物、调用留痕、服务 token。
+# 留痕文件含调用方标识，token 是凭证 —— 都不入库。
+# 例外（刻意入库）：data/vlab/work-orders/ 下的**样例**工作单。
+data/vlab/jobs/
+data/vlab/calls.jsonl
+data/vlab/server_token
+
+# Local Lean toolchain attempt (2026-09-27): 800MB+ downloads, unreliable on TLS-intercepting proxy
+tools/
+
+# AOCI agent host integration (machine-bound; do not commit)
+opencode.json
+opencode.json.backup.*
+
+# ── 竞对/商业情报敏感文件（2026-11-15 公开仓库前移除；git 历史保留，工作树文件隔离）──
+# 不进入公开提交：含真实竞品 GitHub 星数/机构、竞品对标、投资/收购策略、威胁/切入窗口分析。
+agentteams/agents/leader.py
+data/blog_cross_index.json
+data/competitor_intel.json
+data/competitor_report_2026-08-15.md
+data/competitor_report_2026-08-22.md
+data/competitor_report_2026-08-23.md
+data/uq_leaderboard.json
+docs/competitor-benchmark-2026.md
+docs/competitor-landscape.md
+docs/competitor_comparison_matrix.md
+docs/competitor_swarmlabs_positioning_2026-09-12.md
+docs/competitors/au-fofno-analysis.md
+docs/competitors/frontieragent-analysis.md
+docs/competitors/openclaw-grasp-analysis.md
+
+# ── 本地 AI 工作日志（内部决策/评估记录，不入公开仓库）──
+.workbuddy-ai/

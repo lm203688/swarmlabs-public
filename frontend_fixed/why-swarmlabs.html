@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How SwarmLabs differs from AI research assistants</title>
+<link rel="canonical" href="https://swarmlabs.tools/why-swarmlabs">
+<meta name="description" content="The field is converging on verification. SwarmLabs fills the specific gap the others leave: math-backed uncertainty (coverage + OOD guard), not rubric scores or audit trails. An honest, evidence-based comparison.">
+<style>
+:root{--bg:#0a0e1a;--bg2:#111827;--ink:#e8ecf4;--muted:#8b95a8;--rule:#1e293b;--accent:#22d3ee;
+--green:#34d399;--amber:#fbbf24;--red:#f87171;--violet:#a78bfa;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6;}
+.wrap{max-width:1040px;margin:0 auto;padding:2.6rem 1.5rem 4rem;}
+h1{font-size:1.9rem;margin-bottom:.5rem;line-height:1.2;}
+.sub{color:var(--muted);margin-bottom:2rem;font-size:.95rem;max-width:760px;}
+.sub a{color:var(--accent);}
+h2{font-size:1.2rem;margin:2.4rem 0 1rem;border-left:3px solid var(--accent);padding-left:.7rem;}
+p.lead{color:var(--muted);margin-bottom:1.2rem;font-size:.92rem;}
+.tbl{width:100%;border-collapse:collapse;font-size:.86rem;margin-bottom:1.5rem;}
+.tbl th,.tbl td{text-align:left;padding:.7rem .8rem;border-bottom:1px solid var(--rule);vertical-align:top;}
+.tbl thead th{color:var(--muted);font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;}
+.tbl tbody tr:hover{background:#0d1426;}
+.tbl td.cap{font-weight:600;color:var(--ink);width:22%;}
+.y{color:var(--green);font-weight:600;}
+.n{color:var(--red);font-weight:600;}
+.p{color:var(--amber);font-weight:600;}
+.cell{color:var(--muted);}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.9rem;margin:1.2rem 0 2rem;}
+.card{background:var(--bg2);border:1px solid var(--rule);border-radius:12px;padding:1rem 1.1rem;}
+.card .h{font-weight:700;font-size:.95rem;margin-bottom:.3rem;color:var(--accent);}
+.card .b{font-size:.8rem;color:var(--muted);}
+.note{background:#0b1220;border:1px solid #143a4a;border-radius:10px;padding:1rem 1.2rem;margin:1.5rem 0;font-size:.85rem;color:#c7d0e0;}
+.note b{color:var(--ink);}
+.cta{text-align:center;margin-top:2.5rem;padding:1.8rem;border:1px solid rgba(52,211,153,.3);border-radius:14px;background:linear-gradient(135deg,rgba(52,211,153,.06),rgba(34,211,238,.04));}
+.cta a{display:inline-block;margin:.4rem .5rem;padding:10px 22px;border-radius:9px;font-weight:700;text-decoration:none;font-size:.9rem;}
+.cta .p1{background:var(--accent);color:#04141a;}
+.cta .p2{border:1px solid var(--rule);color:var(--ink);}
+.foot{text-align:center;color:var(--muted);font-size:.78rem;margin-top:3rem;}
+.foot a{color:var(--muted);}
+/* 站点导航（2026-09-21 加）：本页此前无任何站内链接，从搜索/GEO 进来的读者
+   走到这里就没有出口 —— 而它正是「我们与通用 AI 助手有何不同」的定位页。 */
+.sl-nav{display:flex;flex-wrap:wrap;gap:1.1rem;align-items:center;max-width:960px;margin:0 auto;
+  padding:1rem 1.5rem;border-bottom:1px solid var(--rule);font-size:.85rem;}
+.sl-nav .sl-logo{font-weight:700;color:var(--ink);text-decoration:none;}
+.sl-nav a{color:var(--muted);text-decoration:none;}
+.sl-nav a:hover{color:var(--accent);}
+.sl-nav a.active{color:var(--accent);font-weight:600;}
+</style>
+</head>
+<body>
+<nav class="sl-nav">
+  <a class="sl-logo" href="/">🐝 SwarmLabs</a>
+  <a href="/workbench">Workbench</a>
+  <a href="/report-gallery">V&amp;V Reports</a>
+  <a href="/verify">Verify</a>
+  <a href="/trust-dashboard">Trust Surface</a>
+  <a href="/failure-cases">Failure Cases</a>
+  <a href="/grants-radar">Grants Radar</a><a href="/why-swarmlabs" class="active">Why SwarmLabs</a>
+  <a href="/pricing">Pricing</a>
+</nav>
+<div class="wrap">
+  <h1>How SwarmLabs differs from AI research assistants</h1>
+  <p class="sub">The field is converging on <b>verification</b>. AMiner DeepDive, the K-Dense scientific-agent
+  skills, AERS, and Imbad0202's research-skills collection all now use the word. SwarmLabs fills the specific
+  gap the others leave open: <b>verification backed by computation</b> &mdash; calibrated uncertainty intervals and
+  an out-of-distribution guard &mdash; not a rubric score or an audit trail. This page is an honest, evidence-based
+  comparison. See the proof at <a href="/verify">the verification ledger</a>.</p>
+
+  <h2>The comparison</h2>
+  <p class="lead">"Typical research assistant" aggregates what the leading public projects actually ship today
+  (AMiner DeepDive, K-Dense scientific-agent-skills, AERS, Imbad0202 academic-research-skills, anthropics
+  knowledge-work-plugins, and others). Where a capability is shared, we note it plainly.</p>
+  <table class="tbl">
+    <thead><tr><th>Capability</th><th>SwarmLabs</th><th>Typical research assistant</th></tr></thead>
+    <tbody>
+      <tr><td class="cap">Literature search</td><td><span class="y">Yes</span> &mdash; OpenAlex / Crossref API</td><td><span class="y">Yes</span> &mdash; often far broader (AMiner indexes 100M+ papers)</td></tr>
+      <tr><td class="cap">AI speed-read</td><td><span class="y">Yes</span> &mdash; background / method / result / figure</td><td><span class="y">Yes</span> &mdash; AMiner ~60s per paper</td></tr>
+      <tr><td class="cap">Provenance / citation tree</td><td><span class="y">Yes</span> &mdash; each node carries a verification state</td><td><span class="y">Yes</span> &mdash; citation links, but no verification per node</td></tr>
+      <tr><td class="cap">Verification wording</td><td>Math-backed: coverage + OOD guard</td><td>Rubric scoring (AERS) or audit/evidence trail (Imbad0202) &mdash; the word, not the math</td></tr>
+      <tr><td class="cap">Uncertainty quantification</td><td><span class="y">Yes</span> &mdash; coverage-audited 95% intervals</td><td><span class="n">No</span> &mdash; none ship calibrated intervals</td></tr>
+      <tr><td class="cap">Out-of-distribution guard</td><td><span class="y">Yes</span> &mdash; explicit pass / controlled / reject</td><td><span class="n">No</span> &mdash; none delimit where a model stops being valid</td></tr>
+      <tr><td class="cap">Virtual experiment</td><td><span class="y">Yes</span> &mdash; GP surrogate + active learning, 95 validated scenarios</td><td><span class="n">No</span> &mdash; literature&rarr;write&rarr;review only</td></tr>
+      <tr><td class="cap">Installable agent skills</td><td><span class="y">Yes</span> &mdash; 8 skills, MIT</td><td><span class="y">Yes</span> &mdash; K-Dense ships 165, others 20&ndash;80</td></tr>
+      <tr><td class="cap">License</td><td>MIT</td><td>MIT (most)</td></tr>
+    </tbody>
+  </table>
+
+  <h2>What we are deliberately not</h2>
+  <div class="cards">
+    <div class="card"><div class="h">Not a literature search engine</div><div class="b">AMiner's 100M+ paper index beats anything we would build. We consume search APIs; we do not compete on breadth.</div></div>
+    <div class="card"><div class="h">Not the only one "verifying"</div><div class="b">AERS and Imbad0202 use the word. We are specific about <i>how</i>: computed coverage and OOD boundaries, not scores.</div></div>
+    <div class="card"><div class="h">Not a writing service</div><div class="b">Review and report generation are table stakes across the field. Our value is the number with the error bar.</div></div>
+    <div class="card"><div class="h">Not claiming zero failures</div><div class="b">Of 18 public benchmarks, 10 are MARGINAL and 7 sit in the OOD red zone. Reported, not hidden.</div></div>
+  </div>
+
+  <h2>The specific gap we fill</h2>
+  <p class="lead">Every competitor above can tell you <b>what a paper claimed</b> and <b>whether it was cited</b>.
+  None of them tells you <b>how confident the number is</b> or <b>where the model breaks down</b>. That is the
+  SwarmLabs layer:</p>
+  <div class="note">
+    <b>Confidence, not adjectives.</b> A claim is graded by its 95% interval coverage against held-out data &mdash;
+    if the interval covers only 40% of points, the model is <b>overconfident</b>, and we say so. A proposed
+    condition is graded <b>pass / controlled / reject</b> by whether it falls inside the region we actually
+    measured. A <code>reject</code> is a refusal to predict, not a low-confidence guess &mdash; because shipping a
+    rejected number anyway is exactly how bad results reach papers.<br><br>
+    The noise floor is normalized to 3% and never lowered to make intervals look prettier. That constraint is the
+    whole point: manufactured confidence is worse than honest doubt.
+  </div>
+
+  <h2>Where the others lead (and we borrow)</h2>
+  <div class="cards">
+    <div class="card"><div class="h">Literature breadth</div><div class="b">AMiner's knowledge graph is the gold standard. We link out; we do not rebuild it.</div></div>
+    <div class="card"><div class="h">Skill ecosystems</div><div class="b">K-Dense's 165 skills set the bar for coverage. We ship 8 deep, math-backed ones instead of many shallow.</div></div>
+    <div class="card"><div class="h">Anti-repeat memory</div><div class="b">Borrowed from ARIS: the daily loop records what it already explored so it stops re-suggesting it.</div></div>
+    <div class="card"><div class="h">Audit trails</div><div class="b">Imbad0202's ISO/IEC 42001-style evidence record is the right instinct. Ours adds the uncertainty math on top.</div></div>
+  </div>
+
+  <div class="cta">
+    <div style="font-size:1.05rem;font-weight:700;margin-bottom:.3rem">Don't take our word for it</div>
+    <div style="color:var(--muted);font-size:.88rem;margin-bottom:.6rem">Every claim on this page is re-run through the engine. 18 benchmarks, 7 in the red zone &mdash; published, not filtered.</div>
+    <a class="p1" href="/verify">Open the verification ledger &rarr;</a>
+    <a class="p2" href="/pricing">Get the engine</a>
+  </div>
+
+  <div class="foot">SwarmLabs &middot; <a href="https://swarmlabs.tools">swarmlabs.tools</a> &middot; <a href="/">Home</a> &middot; <a href="/verify">Verification</a> &middot; <a href="/api-reference">API reference</a></div>
+</div>
+</body>
+</html>

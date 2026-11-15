@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://swarmlabs.tools/svp/schema/scenario.json",
+  "title": "SVP Scenario",
+  "description": "A verifiable experimental scenario in the SwarmLabs Verification Protocol.",
+  "svp": "1.0",
+  "type": "object",
+  "required": ["id", "domain", "discipline", "goal", "decision_relevant"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$",
+      "description": "Unique scenario identifier (lowercase with underscores)"
+    },
+    "domain": {
+      "type": "string",
+      "description": "High-level domain classification",
+      "examples": ["microbiology", "molecular", "chemistry", "materials", "physics", "genomics"]
+    },
+    "discipline": {
+      "type": "string",
+      "description": "Specific research discipline within the domain"
+    },
+    "goal": {
+      "type": "object",
+      "required": ["quantity", "unit"],
+      "properties": {
+        "quantity": {"type": "string", "description": "Target physical quantity name"},
+        "unit": {"type": "string", "description": "SI or domain-specific unit"}
+      }
+    },
+    "design_space": {
+      "type": "object",
+      "description": "Parameter ranges for the scenario's design space",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["lo", "hi", "unit"],
+        "properties": {
+          "lo": {"type": "number"},
+          "hi": {"type": "number"},
+          "unit": {"type": "string"},
+          "step": {"type": "number"}
+        }
+      }
+    },
+    "published": {
+      "type": "boolean",
+      "description": "Whether the scenario references a public literature source",
+      "default": false
+    },
+    "decision_relevant": {
+      "type": "boolean",
+      "description": "Whether this scenario affects a downstream decision"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Optional metadata for scenario-specific context",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

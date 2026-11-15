@@ -1,0 +1,74 @@
+{
+  "method": "跨场景共享 latent + 全局先验 GP + 目标残差自适应 (MAML-lite)",
+  "n_source": 6,
+  "n_src_per_scene": 40,
+  "n_target": 40,
+  "related_ws": [
+    0.18,
+    0.26,
+    0.34,
+    0.42
+  ],
+  "ood_w": 2.0,
+  "related_target": {
+    "2": {
+      "scratch_rmse": 0.3377,
+      "meta_rmse": 0.0433,
+      "transfer_gain": 7.81
+    },
+    "4": {
+      "scratch_rmse": 0.3267,
+      "meta_rmse": 0.0422,
+      "transfer_gain": 7.73
+    },
+    "8": {
+      "scratch_rmse": 0.2798,
+      "meta_rmse": 0.0413,
+      "transfer_gain": 6.77
+    },
+    "16": {
+      "scratch_rmse": 0.2053,
+      "meta_rmse": 0.0371,
+      "transfer_gain": 5.53
+    }
+  },
+  "ood_target": {
+    "2": {
+      "scratch_rmse": 0.4044,
+      "meta_rmse": 0.1625,
+      "transfer_gain": 2.49
+    },
+    "4": {
+      "scratch_rmse": 0.397,
+      "meta_rmse": 0.1597,
+      "transfer_gain": 2.49
+    },
+    "8": {
+      "scratch_rmse": 0.3578,
+      "meta_rmse": 0.1361,
+      "transfer_gain": 2.63
+    },
+    "16": {
+      "scratch_rmse": 0.2724,
+      "meta_rmse": 0.0966,
+      "transfer_gain": 2.82
+    }
+  },
+  "source_ablation_k4": {
+    "2": {
+      "scratch_rmse": 0.3011,
+      "meta_rmse": 0.0616,
+      "transfer_gain": 4.89
+    },
+    "4": {
+      "scratch_rmse": 0.3011,
+      "meta_rmse": 0.036,
+      "transfer_gain": 8.36
+    },
+    "6": {
+      "scratch_rmse": 0.3011,
+      "meta_rmse": 0.0467,
+      "transfer_gain": 6.45
+    }
+  }
+}

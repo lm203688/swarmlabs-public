@@ -1,0 +1,80 @@
+# SwarmLabs
+
+> AI4S 可信验证层——面向生物工艺（发酵 / 微生物 / 酶催化）的可信代理建模与实验设计层。每个结论附带**校准区间**与**适用域边界**，越界自动阻断（fail-closed）；输出不是预测值，而是**下一个最该做的实验**。定位已收缩：**不做跨学科通用验证**——自测三级泛化基准 G3（留一学科）实测 0/14 学科通过，95 场景外推压力测试 **3 PASS / 6 MARGINAL / 73 REFUTED**，本项目把 73/95 判负当作主要论文产出叙事，而非隐藏。全部代码开源、纯 numpy CPU、零付费 API，任何人可独立复算。
+
+## Documentation
+
+- [README](https://swarmlabs.tools/README.md): 项目定位、快速开始、诚实边界表、模块索引。
+- [AXIOM_AUDIT](https://swarmlabs.tools/AXIOM_AUDIT.md): A1–A15 共 15 条已证明的失效模式与适用域边界（含 A15 GP 外推不可达之定义性质）。
+- [HONEST_BOUNDARIES](https://swarmlabs.tools/HONEST_BOUNDARIES.md): 主张 vs 实测状态对照表（跨学科泛化未达成、73/95 REFUTED 明示）。
+- [SECURITY](https://swarmlabs.tools/SECURITY.md): 威胁模型与安全边界（bus factor 1 / pre-revenue 明示）。
+- [AUTOMATION_README](https://swarmlabs.tools/AUTOMATION_README.md): 自动化任务单一入口说明。
+- [AGENT_ENTRY](https://swarmlabs.tools/AGENT_ENTRY.md): AI Agent 接入项目的工作流入口。
+- [CONTRIBUTING](https://swarmlabs.tools/CONTRIBUTING.md): 贡献指南与评审规则。
+
+## Honest Boundaries
+
+- Project-Scope: 生物过程代理建模 + 实验设计层（**不做跨学科通用验证**）。
+- Zero-Cost-Constraints: 纯 numpy + CPU，零 GPU、零付费 API、内容决定论。
+- Formal-Verification: Lean + Z3 + Python 三通道 + CI 集成（Lean 0 `sorry` / 0 `admit` / 0 `axiom`，非「147 个定理」式虚标）。
+- G3-Extrapolation: 0/14 学科通过（平均相对误差 206%–1459%）——已证伪，不主张跨学科通用。
+- Extrapolation-Stress: 73/95 REFUTED（3 PASS / 6 MARGINAL）——作为**旗舰论文产出**对外叙事，非隐藏。
+- Truth-Data: 0/95 场景有真实实验真值（95 场景全部为已发表模型的 GP 代理）。
+- Reference-Quality: 95/95 有文献字符串，但**仅 1 篇为同行评审 DOI**，94 篇为教材/网络资源。
+- Molecular-Dep: 分子场景需 rdkit；缺失时 2 个分子场景（Suzuki coupling + esterification yield）**静默跳过**（已知 P0 硬伤，独立不变量层会捕获）。
+- Safe-BO-Clarification: 项目内 `engine/optimization/` **不是严格 safe BO**；对外表述已更正为「约束推荐 + 拒绝理由」。
+
+## V&V Gate & Trust
+
+- [gate_ledger.json](https://swarmlabs.tools/data/gate_ledger.json): 95 场景的验证闸门台账（PASS / MARGINAL / REFUTED / BLOCKED）。
+- [trust_surface.json](https://swarmlabs.tools/data/trust_surface.json): 可信度评分与文献溯源质量（诚实性度量：0/95 有真实实验真值）。
+- [validation-dashboard](https://swarmlabs.tools/blog/validation-dashboard): 实时验证仪表盘（评委可查证，同源同算法）。
+- 内容决定论可复现证书（`core/trust_layer.py`）：签名与签发时间无关，第三方独立复算一致。
+- 对抗性探针 3/3 通过：阈值 fail-closed、数据投毒检出（1011× 误差放大）、OOD 守卫。
+
+## Generalization Benchmarks
+
+- [generalization_bench.json](https://swarmlabs.tools/data/generalization_bench.json): G1 参数外推基准（27.8% 通过）。
+- [g3_aligned_benchmark.json](https://swarmlabs.tools/data/g3_aligned_benchmark.json): G3 留一学科基准（0/14 学科通过）。
+- [heldout_index.json](https://swarmlabs.tools/frontend_fixed/reports/heldout_index.json): 95 场景外推压力测试完整台账。
+- [extrapolation-bench](https://swarmlabs.tools/benchmarks/extrapolation-bench/BENCHMARK.json): 73/95 外推压力测试的独立可复现负结果子仓库（板块 12 P0，2026-10-14 从主仓库抽出）。
+- [reports/improvement/](https://swarmlabs.tools/reports/improvement/): 泛化基准的改进复盘与后续路线。
+
+## Scenarios & Knowledge
+
+- 95 个验证场景（10 个规范学科全部 ≥2 场景，`scenario_registry.disciplines()` 归并口径），底层为可调用的解析物理/生物/化学模型：Monod 生长、Arrhenius、Lotka-Volterra、Hodgkin-Huxley、Black-Scholes 等，**非示意性占位值**。
+- 结构化科研实体库 **157,859 条**（works / authors / concepts / references），来源 Crossref + arXiv，零成本、免鉴权。
+- [public_facts.json](https://swarmlabs.tools/data/public_facts.json): 上述科研实体的公开入口。
+- [research-knowledge-graph](https://swarmlabs.tools/blog/geo-research-knowledge-graph): 科研知识图谱：21,141 篇文献与 115 个 engine modules 的结构化洞察。
+
+## GEO Authority Content
+
+- [物理信息机器学习（PIML）是什么：定义、原理与科研实验应用](https://swarmlabs.tools/blog/geo-piml-definition)
+- [PINN vs 代理模型 vs 高斯过程：科研实验优化该怎么选](https://swarmlabs.tools/blog/geo-pinn-vs-surrogate-vs-gp)
+- [SwarmLabs 科研知识图谱：21,141 篇文献与 115 个 engine modules 的结构化洞察](https://swarmlabs.tools/blog/geo-research-knowledge-graph)
+- [通用近似定理与交叉注意力：SwarmLabs 代理模型的理论与架构基石](https://swarmlabs.tools/blog/geo-methods-mathematical-backbone)
+- [BM25 Upgrade Report](https://swarmlabs.tools/reports/upgrade/bm25_upgrade_report.md): 纯 numpy BM25 替换 TF-IDF 的诚实负结果报告（Jaccard=1.0 相同排序，avg_score 11.2× 提升）。
+- [Blog Index](https://swarmlabs.tools/blog): 洞察列表。
+
+## Product & Community
+
+- [SwarmLabs 首页](https://swarmlabs.tools/): 物理信息机器学习驱动的科研实验自动化平台。
+- [实验台 /lab](https://swarmlabs.tools/lab): 提交实验、获取可解释 PIML 预测、回填真实结果回流训练集。
+- GitHub 仓库：<https://github.com/lm203688/swarmlabs>（private；对外审计走 CI 生成的静态快照）。
+- 学术主页：<https://scholar.google.com/citations?user=9YX4Z74AAAAJ>
+- 联系方式：contact@swarmlabs.tools
+- 作者：Li Xing（个人项目，bus factor 1 / pre-revenue，尚未注册公司实体）。
+
+## What We Explicitly Do NOT Claim
+
+- ❌ 跨学科通用验证（G3 实测 0/14，已证伪）。
+- ❌ LLM 假设生成 / 文献辩论（定位是**验证层**，不是创意层）。
+- ❌ 参数军备竞赛（纯 numpy + CPU，零 GPU、零付费 API）。
+- ❌ 「替代一切真实实验」（仅在生物过程域、且在适用域边界内成立）。
+- ❌ 「147 个 Lean 定理」式虚标（Lean 层 0 `sorry` / 0 `admit` / 0 `axiom`，数量以仓库 `verif/` 为准）。
+
+---
+
+Last updated: 2026-10-14
+Locale: zh-CN
+Spec: [llms.txt v2](https://llmstxt.org/)

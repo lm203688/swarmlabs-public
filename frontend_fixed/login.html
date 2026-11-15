@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="sVDRxZ2mmwJOS2VpGY5CAa">
+<head data-page-node-id="cA39MkTR8jFpL14ohoHSYz">
+<meta charset="UTF-8" data-page-node-id="F2E1iSkjGYvcT0hs95Q4lT">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="eDIODfkZQNCWH47s3BYvct">
+<meta name="description" content="Sign in to SwarmLabs — math-backed verification for AI science. A virtual accelerator lab for trustworthy research automation with honest uncertainty quantification." data-page-node-id="fU1HiAr2DslkPNhXQB3LiZ">
+<title>SwarmLabs · Sign in</title>
+<link rel="canonical" href="https://swarmlabs.tools/login">
+<link rel="stylesheet" href="/assets/shared.css" data-page-node-id="UVhcSOVmcegmRDOHczSZ1P">
+<style>
+body { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.login-box { max-width: 420px; width: 100%; }
+.login-header { text-align: center; margin-bottom: 28px; }
+.login-header h1 { font-size: 24px; font-weight: 700; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.login-header p { color: var(--muted); font-size: 13px; margin-top: 6px; }
+.field { margin-bottom: 16px; }
+.field label { display: block; color: var(--muted); font-size: 13px; margin-bottom: 6px; }
+.field input { width: 100%; }
+.btn { width: 100%; justify-content: center; margin-top: 8px; }
+.info-box { margin-top: 20px; padding: 16px; background: rgba(59,130,246,0.08); border-radius: var(--radius-sm); border: 1px dashed rgba(59,130,246,0.3); }
+.info-box h3 { color: var(--accent); font-size: 13px; margin-bottom: 8px; }
+.info-box p { color: var(--muted); font-size: 12px; line-height: 1.8; }
+.guide { margin-top: 16px; padding: 16px; background: var(--bg); border-radius: var(--radius-sm); }
+.guide h3 { color: var(--accent2); font-size: 13px; margin-bottom: 8px; }
+.guide ol { color: var(--muted); font-size: 12px; line-height: 1.8; padding-left: 20px; }
+.register-link { text-align: center; margin-top: 16px; font-size: 13px; color: var(--muted); }
+.register-link a { color: var(--accent); text-decoration: none; cursor: pointer; }
+.stats { text-align: center; color: var(--muted); font-size: 12px; margin-top: 20px; }
+.stats b { color: var(--accent); }
+.login-error-count { font-size: 11px; color: var(--orange); margin-top: 4px; text-align: center; }
+</style>
+</head>
+<body data-page-node-id="vGYyvdc4K5T8kgtJL6K6vI">
+<div class="login-box card" data-page-node-id="pPaLLqBmk7sCtGGXNs5BAH">
+  <div class="login-header" data-page-node-id="HHD3dozsSDquU6n41Q0D47">
+    <h1 data-page-node-id="G8Rg5iFUJzmU1kE0qFXjZE">🐝 SwarmLabs <span class="beta-badge" data-page-node-id="CQYCgEHMTEaWq6xliMqXzK">Beta</span></h1>
+    <p data-page-node-id="XTBh0GGFiWGBBFQWaKWrAH">AI-powered virtual accelerator lab</p>
+  </div>
+  <form id="loginForm" onsubmit="return doLogin(event)" data-page-node-id="OeAHBV1MbAMfJll94tsyt0">
+    <div class="field" data-page-node-id="0xUlca5hc8czROdf1zbqpT">
+      <label for="username" data-page-node-id="bADbnCkErgsSF2KtSxt2Zp">Username / email</label>
+      <input type="text" id="username" autocomplete="username" placeholder="Enter username or email" data-page-node-id="u3bEaP3UIM1x6PObvCWeD7">
+    </div>
+    <div class="field" data-page-node-id="67OC8cC0H5i4Abc3atALOK">
+      <label for="password" data-page-node-id="HnvL31fwTIdDdh7uCMgo1w">Password</label>
+      <input type="password" id="password" autocomplete="current-password" placeholder="Enter password" data-page-node-id="MNIWYYKWcHJTLvbSlhI0gu">
+    </div>
+    <div class="remember-me" data-page-node-id="T7xNffWRuoB2aFi5RDZtz4">
+      <input type="checkbox" id="rememberMe" data-page-node-id="IrQHk3DMGPbPGRqayM00r7">
+      <label for="rememberMe" data-page-node-id="m5CkAkbaU1mAUFrj9EAnMB">Keep me signed in (up to 7 days)</label>
+    </div>
+    <button type="submit" class="btn btn-primary" id="loginBtn" data-page-node-id="8P70cZAXDeztwlTf1CLDSO">Sign in</button>
+    <div class="login-error-count" id="errorCount" style="display:none" data-page-node-id="uJNZZhjEipT5juNknKkjQ6"></div>
+  </form>
+  <div class="info-box" data-page-node-id="lo8RFJql98PBZJeZxXOSwG">
+    <h3 data-page-node-id="FBggir5ECDyW00KAba4ZR3">🔑 Demo access</h3>
+    <p data-page-node-id="rHIwCYw7czJo5AFIxDZQWZ">Email: <code style="color:var(--accent3)" data-page-node-id="nSrUklwGOuuvur8D9yIsP0">demo@swarmlabs.tools</code></p>
+    <p data-page-node-id="n5OO75qDW8kZhLVLpOaGAH">Password: <code style="color:var(--accent3)" data-page-node-id="hDBYQVRoKiiCvUEd5rWiBH">swarmlabs2026</code></p>
+    <p style="font-size:11px;color:var(--muted);margin-top:6px" data-page-node-id="TwL1AJhQfXkdCf0O8D6WT1">We are in open beta — use the demo account to explore every feature.</p>
+  </div>
+  <div class="register-link" data-page-node-id="j0dysuRv2FjKDewnma9jep">
+    New here? <a onclick="showRegister()" data-page-node-id="Z4V4xLLrqQgTLi1j85CGhq">Create an account</a>
+  </div>
+  <div class="guide" data-page-node-id="MJ9nKExDmy9p7BGGuK8xhZ">
+    <h3 data-page-node-id="KPWPJAfbSTmEPMLrUMg6uf">📋 Quick start</h3>
+    <ol data-page-node-id="LLlHIZKKy3VN1WNPE1OPqN">
+      <li data-page-node-id="JmpphSJFHG0ZEt476xELJa">Sign in → open your research workbench</li>
+      <li data-page-node-id="Ze75UxQaPwAKScc2hdPRUq">Literature review → generate hypotheses</li>
+      <li data-page-node-id="6lbxpOLktLpZ2GScaoQgW6">Pick an engine → run virtual experiments</li>
+      <li data-page-node-id="X0KuTGaXVMQaDBxSX400Gy">AI optimization → peer review → report generation</li>
+    </ol>
+  </div>
+  <div class="stats" data-page-node-id="Tckr4GY2SMdnkWDDwy0io5">
+    <b data-page-node-id="g0vaQvO7VDwn3i9NAypI3B">validated scenarios · <b data-page-node-id="VMhkfHa6v8cGihXJiAOqwU">54</b> engine modules · <b data-page-node-id="JbOBAlfNylD7qCGBARjfaT">7</b>-step research loop
+  </div>
+</div>
+
+<!-- Registration modal -->
+<div class="modal-overlay" id="registerModal" data-page-node-id="voCCm9WsjBpI6xcliZmpS9">
+  <div class="modal-box" data-page-node-id="swBLiBeHoiqzIxJxeGXZRG">
+    <h3 data-page-node-id="zfjZIoYQGSmNWUP6KrTocq">Create an account</h3>
+    <p style="color:var(--muted);font-size:14px;margin-bottom:16px" data-page-node-id="K35Q5yteJXtIgtvLhUC509">
+      Sign up and get <strong style="color:var(--green)" data-page-node-id="ZpPv62RjhGI58mRniwa8Ht">50 starter credits</strong> to begin your virtual experiments.
+    </p>
+    <div class="field" data-page-node-id="llmY7La6oiAL0BRracSAkm">
+      <input type="email" id="waitlistEmail" placeholder="your@email.com" style="width:100%" data-page-node-id="saS4lJnEGea0r1ESBvyp07">
+    </div>
+    <div class="field" style="margin-top:10px" data-page-node-id="6KVQJcon2LhtF8JqU0q9EE">
+      <input type="password" id="registerPassword" placeholder="Set a password (at least 6 characters)" style="width:100%" data-page-node-id="JRFPBTLlBZWfXcxIjDJGHY">
+    </div>
+    <div class="modal-actions" data-page-node-id="OeLkppyoa49V64AJUFLAtU">
+      <button class="btn btn-ghost" onclick="closeRegister()" data-page-node-id="HR9lX1BCAEDOyY7BspRZ08">Close</button>
+      <button class="btn btn-primary" id="registerSubmitBtn" onclick="submitRegister()" data-page-node-id="a60BBq1gS6oNgqaZSOuARM">Create account</button>
+    </div>
+    <p style="font-size:11px;color:var(--muted);margin-top:12px;text-align:center" data-page-node-id="uKXQXucT7VT0L2C61pdjxp">
+      After signing up you can spend credits on experiments, or just explore with the demo account
+    </p>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer" data-page-node-id="m3mEfPMfFRNOM4dk444BTz"></div>
+
+<script>
+// FIX-06: failed-login counter
+var loginErrorCount = 0;
+
+// ===== Toast notification system (replaces alert) =====
+function showToast(msg, type) {
+  type = type || 'info';
+  var container = document.getElementById('toastContainer');
+  var toast = document.createElement('div');
+  toast.className = 'toast ' + type;
+  toast.textContent = msg;
+  container.appendChild(toast);
+  setTimeout(function() {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateX(20px)';
+    toast.style.transition = 'all 0.3s';
+    setTimeout(function() { toast.remove(); }, 300);
+  }, 4000);
+}
+
+// ===== Login logic =====
+function doLogin(e) {
+  e.preventDefault();
+  var u = document.getElementById('username').value.trim();
+  var p = document.getElementById('password').value;
+  var btn = document.getElementById('loginBtn');
+  var remember = document.getElementById('rememberMe').checked;
+
+  if (!u) { showToast('Please enter a username', 'error'); return false; }
+  if (!p) { showToast('Please enter a password', 'error'); return false; }
+
+  btn.disabled = true;
+  btn.textContent = 'Signing in...';
+
+  // Try the v2 credit-account auth endpoint first
+  fetch('/api/v2/auth/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: u, password: p })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (data.status === 'success' && data.token) {
+      // v2 login succeeded
+      var storage = remember ? localStorage : sessionStorage;
+      storage.setItem('swarmlabs_token', data.token);
+      storage.setItem('swarmlabs_key', data.token);
+      storage.setItem('swarmlabs_user', u);
+      storage.setItem('swarmlabs_plan', data.user ? data.user.plan : 'free');
+      showToast('Signed in! Credit balance: ' + (data.user ? data.user.credits : '?'), 'success');
+      setTimeout(function() { window.location.href = '/lab'; }, 800);
+    } else if (data.error === 'invalid_credentials') {
+      // v2 auth failed, fall back to demo mode
+      demoLogin(u, p, btn, remember);
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Sign in';
+      showToast(data.message || 'Login failed', 'error');
+    }
+  })
+  .catch(function(err) {
+    // v2 API unavailable, fall back to legacy logic
+    legacyLogin(u, p, btn, remember);
+  });
+  return false;
+}
+
+// Legacy login logic (fallback)
+function legacyLogin(u, p, btn, remember) {
+  // Attempt backend auth API
+  fetch('/api/v1/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username: u, password: p, action: 'login' })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    // Check backend response
+    if (data.api_key || data.token) {
+      // Real auth succeeded
+      var storage = remember ? localStorage : sessionStorage;
+      storage.setItem('swarmlabs_key', data.api_key || data.token);
+      storage.setItem('swarmlabs_user', u);
+      storage.setItem('swarmlabs_plan', 'pro');
+      showToast('Signed in! Redirecting...', 'success');
+      setTimeout(function() { window.location.href = '/lab'; }, 800);
+    } else if (data.message && data.message.indexOf('Backend unavailable') >= 0) {
+      // Backend unavailable, use demo mode
+      demoLogin(u, p, btn, remember);
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Sign in';
+      showToast(data.error || 'Login failed, please check your credentials', 'error');
+    }
+  })
+  .catch(function(err) {
+    // Network error, try demo mode
+    demoLogin(u, p, btn, remember);
+  });
+}
+
+// Demo-mode login (fallback when backend unavailable)
+function demoLogin(u, p, btn, remember) {
+  setTimeout(function() {
+    // Demo mode: accept specific credentials
+    if (p === 'swarmlabs2026') {
+      // Generate a session token (raw API key is never stored)
+      var sessionToken = 'swarmlabs_session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 8);
+      var storage = remember ? localStorage : sessionStorage;
+      storage.setItem('swarmlabs_key', sessionToken);
+      storage.setItem('swarmlabs_user', u);
+      storage.setItem('swarmlabs_plan', 'demo');
+      showToast('Signed in (demo mode)!', 'success');
+      setTimeout(function() { window.location.href = '/lab'; }, 800);
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Sign in';
+      // FIX-06: no longer leak the demo password; use a generic error
+      loginErrorCount++;
+      var errEl = document.getElementById('errorCount');
+      if (loginErrorCount >= 3) {
+        // After 3 failures, auto-fill the demo password
+        document.getElementById('password').value = 'swarmlabs2026';
+        errEl.style.display = 'block';
+        errEl.textContent = 'We filled in the demo password for you — just click Sign in';
+        errEl.style.color = 'var(--green)';
+        showToast('Multiple attempts failed; demo password has been filled in', 'info');
+      } else {
+        errEl.style.display = 'block';
+        errEl.textContent = 'Incorrect username or password (attempt ' + loginErrorCount + '/3)';
+        showToast('Incorrect username or password, please try again', 'error');
+      }
+    }
+  }, 600);
+}
+
+// FIX-04: registration modal
+function showRegister() {
+  document.getElementById('registerModal').classList.add('show');
+}
+
+function closeRegister() {
+  document.getElementById('registerModal').classList.remove('show');
+}
+
+function submitRegister() {
+  var email = document.getElementById('waitlistEmail').value.trim();
+  var password = document.getElementById('registerPassword').value;
+  if (!email || email.indexOf('@') < 0) {
+    showToast('Please enter a valid email address', 'error');
+    return;
+  }
+  if (!password || password.length < 6) {
+    showToast('Password must be at least 6 characters', 'error');
+    return;
+  }
+
+  // FIX-2026-0909-D: 原写法 `event ? event.target : null` 依赖全局 window.event，
+  // Firefox / Safari（以及严格模式）下该引用直接抛 ReferenceError，函数在发起请求前
+  // 就中断 —— 现象正是"点了 Create account 毫无反应、也不跳转"。改为按 id 取按钮。
+  var btn = document.getElementById('registerSubmitBtn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Creating...'; }
+
+  fetch('/api/v2/auth/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email, password: password })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (data.status === 'success' && data.token) {
+      // Registered successfully, save token
+      sessionStorage.setItem('swarmlabs_token', data.token);
+      sessionStorage.setItem('swarmlabs_key', data.token);
+      sessionStorage.setItem('swarmlabs_user', email);
+      sessionStorage.setItem('swarmlabs_plan', data.user ? data.user.plan : 'free');
+      closeRegister();
+      showToast('Account created! You earned 50 starter credits — redirecting...', 'success');
+      setTimeout(function() { window.location.href = '/lab'; }, 1000);
+    } else if (data.error === 'email_exists') {
+      // FIX-2026-0909-D: 已注册时给出可执行的下一步。此前只弹一句英文提示后仍停在弹窗里，
+      // 用户不知道该干什么，表现为"创建完卡住"。
+      if (btn) { btn.disabled = false; btn.textContent = 'Create account'; }
+      closeRegister();
+      var nameEl = document.getElementById('username');
+      if (nameEl) nameEl.value = email;
+      showToast('This email is already registered. We filled it in — enter your password and sign in.', 'info');
+      var pwEl = document.getElementById('password');
+      if (pwEl) pwEl.focus();
+    } else {
+      if (btn) { btn.disabled = false; btn.textContent = 'Create account'; }
+      showToast(data.message || data.error || 'Registration failed', 'error');
+    }
+  })
+  .catch(function(err) {
+    if (btn) { btn.disabled = false; btn.textContent = 'Create account'; }
+    showToast('Registration request failed, please try again later', 'error');
+  });
+}
+
+// Check whether already signed in (checks sessionStorage and localStorage)
+var savedKey = sessionStorage.getItem('swarmlabs_key') || localStorage.getItem('swarmlabs_key');
+if (savedKey) {
+  // Signed in, prefill username
+  var savedUser = sessionStorage.getItem('swarmlabs_user') || localStorage.getItem('swarmlabs_user');
+  document.getElementById('username').value = savedUser || 'demo@swarmlabs.tools';
+  document.getElementById('rememberMe').checked = !!localStorage.getItem('swarmlabs_key');
+} else {
+  // Not signed in, prefill demo account
+  document.getElementById('username').value = 'demo@swarmlabs.tools';
+}
+</script>
+</body>
+</html>

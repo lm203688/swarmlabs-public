@@ -1,0 +1,27 @@
+{
+  "date": "2026-08-27",
+  "new": 20,
+  "total": 213,
+  "sources_status": {
+    "arxiv:cs.CL/LLM": 200,
+    "arxiv:cs.LG/LLM": 200,
+    "arxiv:cs.AI/LM": 200,
+    "github:topic:llm": 200,
+    "github:topic:large-language-models": 200,
+    "github:llm in:name,description,readme": 200
+  },
+  "arxiv_ok": true,
+  "arxiv_fail_streak": 0,
+  "sample_new": [
+    "arxiv:2608.24842",
+    "arxiv:2608.24747",
+    "arxiv:2608.24662",
+    "arxiv:2608.24615",
+    "arxiv:2608.24492",
+    "arxiv:2608.24350",
+    "arxiv:2608.24327",
+    "arxiv:2608.24304",
+    "arxiv:2608.24763",
+    "arxiv:2608.24696"
+  ]
+}

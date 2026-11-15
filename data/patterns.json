@@ -1,0 +1,74 @@
+{
+  "basic": {
+    "total": 5,
+    "success": 5,
+    "avg_time": 0.13071484565734864,
+    "common_models": {
+      "gen15": 4
+    },
+    "model_success_rates": {
+      "gen15": {
+        "success": 1,
+        "total": 1
+      }
+    },
+    "common_keywords": {
+      "系统测试任务": 1
+    },
+    "recent_trend": [
+      {
+        "success": true,
+        "model": "gen15",
+        "time": 1787564281.1182892
+      }
+    ]
+  },
+  "test": {
+    "total": 1,
+    "success": 1,
+    "failure": 0,
+    "avg_time": 0.0,
+    "model_success_rates": {
+      "gen15": {
+        "success": 1,
+        "total": 1
+      }
+    },
+    "common_keywords": {
+      "test": 1,
+      "task": 1
+    },
+    "recent_trend": [
+      {
+        "success": true,
+        "model": "gen15",
+        "time": 1787576105.9924853
+      }
+    ]
+  },
+  "smoke_test": {
+    "total": 1,
+    "success": 1,
+    "failure": 0,
+    "avg_time": 0.0,
+    "model_success_rates": {
+      "bm25_regression": {
+        "success": 1,
+        "total": 1
+      }
+    },
+    "common_keywords": {
+      "bm25": 1,
+      "upgrade": 1,
+      "regression": 1,
+      "test": 1
+    },
+    "recent_trend": [
+      {
+        "success": true,
+        "model": "bm25_regression",
+        "time": 1791929307.3867953
+      }
+    ]
+  }
+}

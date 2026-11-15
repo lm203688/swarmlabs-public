@@ -1,0 +1,16 @@
+{
+  "$schema": "https://www.anthropic.com/schema/marketplace.json",
+  "name": "lm203688-science-plugins",
+  "owner": "lm203688",
+  "metadata": {
+    "description": "SwarmLabs offline science-compute skills for AI agents. Backed by 47,566+ structured science entities.",
+    "homepage": "https://swarmlabs.tools"
+  },
+  "plugins": [
+    {
+      "name": "swarmlabs-science-compute",
+      "source": ".",
+      "description": "4 offline science-compute skills: UQ coverage audit, OOD guard, paper claim grading, kinetic model selection."
+    }
+  ]
+}

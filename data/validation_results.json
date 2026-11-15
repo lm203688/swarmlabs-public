@@ -1,0 +1,684 @@
+{
+  "database_info": {
+    "name": "Paper Validation Results DB",
+    "version": "1.0.0",
+    "engine": "SwarmLabs Microbiology Engine",
+    "description": "结构化论文实验数据验证结果，覆盖 Monod/Andrews/Contois/Haldane/Pirt/Luedeking-Piret/Tessier/Baranyi/Fed-batch/Chemostat/Thiele/Antibiotic/Thermal 共 13 种动力学模型 + 端到端闭环"
+  },
+  "stats": {
+    "total_benchmarks": 18,
+    "pass": 3,
+    "marginal": 10,
+    "fail": 0,
+    "total_data_points": 130
+  },
+  "results": [
+    {
+      "paper_id": "paper_monod_1949",
+      "benchmark_key": "paper_monod_1949",
+      "paper_title": "Monod 1949: E. coli 葡萄糖生长动力学",
+      "paper_citation": "Monod J. (1949). The growth of bacterial cultures. J Gen Microbiol 3:371-394.",
+      "domain": "生长动力学（Monod）",
+      "model_type": "monod_1949",
+      "n_points": 8,
+      "unit": "",
+      "predicted": [
+        0.09720000000000001,
+        0.17357142857142857,
+        0.28588235294117653,
+        0.4050000000000001,
+        0.5225806451612904,
+        0.6352941176470589,
+        0.7063953488372093,
+        0.7546583850931677
+      ],
+      "actual": [
+        0.05,
+        0.11,
+        0.22,
+        0.405,
+        0.62,
+        0.75,
+        0.78,
+        0.8
+      ],
+      "error_metrics": {
+        "rmse": 0.071354,
+        "mae": 0.063466,
+        "mape_pct": 0,
+        "r_squared": 0.983369,
+        "coverage_95": 0.75
+      },
+      "status": "PASS+",
+      "timestamp": "2026-08-26T21:50:22.472423"
+    },
+    {
+      "paper_id": "paper_monod_1949_batch",
+      "benchmark_key": "paper_monod_1949_batch",
+      "paper_title": "Monod 1949: E. coli 批次培养时序（24h）",
+      "paper_citation": "Monod J. (1949). J Gen Microbiol 3:371-394, Fig.2",
+      "domain": "生长动力学（批次培养）",
+      "model_type": "monod_1949_batch",
+      "n_points": 10,
+      "unit": "",
+      "predicted": [
+        0.1,
+        0.103962779229166,
+        0.49153605744495393,
+        2.3041109911684563,
+        5.037763829830795,
+        5.037763829830795,
+        5.037763829830795,
+        5.037763829830795,
+        5.037763829830795,
+        5.037763829830795
+      ],
+      "actual": [
+        0.1,
+        0.25,
+        0.62,
+        1.3,
+        2.5,
+        4.0,
+        5.5,
+        6.6,
+        6.85,
+        6.9
+      ],
+      "error_metrics": {
+        "rmse": 1.340509,
+        "mae": 1.055308,
+        "mape_pct": 0,
+        "r_squared": 0.760361,
+        "coverage_95": 0.4
+      },
+      "status": "MARGINAL",
+      "timestamp": "2026-08-26T21:50:22.474027"
+    },
+    {
+      "paper_id": "paper_andrews_1968",
+      "benchmark_key": "paper_andrews_1968",
+      "paper_title": "Andrews 1968: Pseudomonas 苯酚抑制动力学",
+      "paper_citation": "Andrews J.F. (1968). Measurement of saturated substrate inhibition. Biotech Bioeng 10:707-723.",
+      "domain": "底物抑制（Andrews）",
+      "model_type": "andrews_1968",
+      "n_points": 9,
+      "unit": "",
+      "predicted": [
+        0.18216699801192843,
+        0.2877424982554082,
+        0.43832784096949085,
+        0.5241990846681922,
+        0.5661609226966909,
+        0.5473570328678383,
+        0.4785356172968456,
+        0.373718651717981,
+        0.30530819466589
+      ],
+      "actual": [
+        0.35,
+        0.5,
+        0.63,
+        0.65,
+        0.62,
+        0.5,
+        0.32,
+        0.15,
+        0.08
+      ],
+      "error_metrics": {
+        "rmse": 0.168942,
+        "mae": 0.156258,
+        "mape_pct": 0,
+        "r_squared": 0.285107,
+        "coverage_95": 0.2222
+      },
+      "status": "MARGINAL",
+      "timestamp": "2026-08-26T21:50:22.474190"
+    },
+    {
+      "paper_id": "paper_contois_1959",
+      "benchmark_key": "paper_contois_1959",
+      "paper_title": "Contois 1959: 细胞密度依赖生长",
+      "paper_citation": "Contois D.E. (1959). Kinetics of bacterial growth. J Bacteriol 77:158-168.",
+      "domain": "生长动力学（Contois）",
+      "model_type": "contois_1959",
+      "n_points": 6,
+      "unit": "",
+      "predicted": [
+        0.19999999999999996,
+        0.3499999999999999,
+        0.46666666666666656,
+        0.5599999999999999,
+        0.6222222222222221,
+        0.6588235294117646
+      ],
+      "actual": [
+        0.03,
+        0.07,
+        0.12,
+        0.19,
+        0.28,
+        0.38
+      ],
+      "error_metrics": {
+        "rmse": 0.305297,
+        "mae": 0.297952,
+        "mape_pct": 0,
+        "r_squared": 0.855538,
+        "coverage_95": 0.0
+      },
+      "status": "MARGINAL",
+      "timestamp": "2026-08-26T21:50:22.474323"
+    },
+    {
+      "paper_id": "paper_haldane_1955",
+      "benchmark_key": "paper_haldane_1955",
+      "paper_title": "Haldane 1955: 高浓度底物抑制",
+      "paper_citation": "Haldane J.B.S. (1955). Enzymes (3rd ed.). Longmans.",
+      "domain": "底物抑制（Haldane）",
+      "model_type": "haldane_1955",
+      "n_points": 8,
+      "unit": "",
+      "predicted": [
+        0.08314855875831485,
+        0.1648351648351648,
+        0.24193548387096775,
+        0.3260869565217391,
+        0.3191489361702128,
+        0.2830188679245283,
+        0.24193548387096772,
+        0.2097902097902098
+      ],
+      "actual": [
+        0.08,
+        0.2,
+        0.33,
+        0.4,
+        0.35,
+        0.25,
+        0.17,
+        0.11
+      ],
+      "error_metrics": {
+        "rmse": 0.062889,
+        "mae": 0.054486,
+        "mape_pct": 0,
+        "r_squared": 0.68281,
+        "coverage_95": 0.5
+      },
+      "status": "MARGINAL",
+      "timestamp": "2026-08-26T21:50:22.474450"
+    },
+    {
+      "paper_id": "paper_pirt_1965",
+      "benchmark_key": "paper_pirt_1965",
+      "paper_title": "Pirt 1965: 维护系数（E. coli 葡萄糖）",
+      "paper_citation": "Pirt S.J. (1965). Principles of microbe and cell cultivation. Biochem J 96:443.",
+      "domain": "底物消耗（Pirt 维护）",
+      "model_type": "pirt_1965",
+      "n_points": 8,
+      "unit": "",
+      "predicted": [
+        0.045,
+        0.07,
+        0.12000000000000001,
+        0.16999999999999998,
+        0.22,
+        0.27,
+        0.32,
+        0.37
+      ],
+      "actual": [
+        0.06,
+        0.08,
+        0.12,
+        0.16,
+        0.2,
+        0.24,
+        0.28,
+        0.32
+      ],
+      "error_metrics": {
+        "rmse": 0.026984,
+        "mae": 0.021875,
+        "mape_pct": 0,
+        "r_squared": 1.0,
+        "coverage_95": 0.75
+      },
+      "status": "PASS+",
+      "timestamp": "2026-08-26T21:50:22.474586"
+    },
+    {
+      "paper_id": "paper_luedeking_piret_1959",
+      "benchmark_key": "paper_luedeking_piret_1959",
+      "paper_title": "Luedeking-Piret 1959: 次级代谢产物时序（青霉素）",
+      "paper_citation": "Luedeking E., Piret J. (1959). AIChE J 5:255.",
+      "domain": "产物形成动力学（Luedeking-Piret）",
+      "model_type": "luedeking_piret_1959",
+      "n_points": 9,
+      "unit": "",
+      "predicted": [
+        3.2967995396436067,
+        5.506710358827784,
+        6.988057880877978,
+        7.981034820053447,
+        8.646647167633873,
+        9.092820467105875,
+        9.59237796021634,
+        9.816843611112658,
+        9.9177025295098
+      ],
+      "actual": [
+        0.3,
+        0.8,
+        1.5,
+        2.5,
+        3.6,
+        4.5,
+        5.6,
+        6.5,
+        7.2
+      ],
+      "error_metrics": {
+        "rmse": 4.373958,
+        "mae": 4.259888,
+        "mape_pct": 0,
+        "r_squared": 0.824797,
+        "coverage_95": 0.0
+      },
+      "status": "MARGINAL",
+      "timestamp": "2026-08-26T21:50:22.474708"
+    },
+    {
+      "paper_id": "paper_tessier_1957",
+      "benchmark_key": "paper_tessier_1957",
+      "paper_title": "Tessier 1957: 对数-线性生长动力学",
+      "paper_citation": "Tessier J. (1957). Bact Rev 21:160.",
+      "domain": "生长动力学（Tessier）",
+      "model_type": "tessier_1957",
+      "n_points": 8,
+      "unit": "",
+      "predicted": [
+        0.018392058019029302,
+        0.08467632101842743,
+        0.15672232497824484,
+        0.3,
+        0.44327767502175514,
+        0.5507402908669405,
+        0.5816079419809707,
+        0.5933659668133523
+      ],
+      "actual": [
+        0.03,
+        0.11,
+        0.2,
+        0.33,
+        0.43,
+        0.53,
+        0.57,
+        0.59
+      ],
+      "error_metrics": {
+        "rmse": 0.023188,
+        "mae": 0.0199,
+        "mape_pct": 0,
+        "r_squared": 0.994937,
+        "coverage_95": 1.0
+      },
+      "status": "PASS+",
+      "timestamp": "2026-08-26T21:50:22.474819"
+    },
+    {
+      "paper_id": "paper_baranyi_1994",
+      "benchmark_key": "paper_baranyi_1994",
+      "paper_title": "Baranyi & Roberts 1994: 细菌滞后相模型",
+      "paper_citation": "Baranyi J., Roberts T.A. (1994). Int J Food Microbiol 23:277-284.",
+      "domain": "滞后相动力学（Baranyi-Roberts）",
+      "model_type": "baranyi_1994",
+      "n_points": 10,
+      "unit": "",
+      "predicted": [
+        0.1,
+        0.1,
+        0.1,
+        0.1201514687322891,
+        0.17632628778451687,
+        0.26304791096034447,
+        0.39242137023358376,
+        0.8733498206699365,
+        1.9436757707925,
+        4.3257299796178525
+      ],
+      "actual": [
+        0.1,
+        0.11,
+        0.13,
+        0.17,
+        0.25,
+        0.38,
+        0.58,
+        0.95,
+        1.5,
+        2.2
+      ],
+      "error_metrics": {
+        "rmse": 0.69132,
+        "mae": 0.311411,
+        "mape_pct": 0,
+        "r_squared": 0.92716,
+        "coverage_95": 0.7
+      },
+      "status": "MARGINAL",
+      "timestamp": "2026-08-26T21:50:22.475059"
+    },
+    {
+      "paper_id": "paper_fedbatch_fick",
+      "benchmark_key": "paper_fedbatch_fick",
+      "paper_title": "Fick & Bader 2013: 葡萄糖限流 Fed-batch",
+      "paper_citation": "Fick G., Bader R. (2013). Fed-batch fermentation principles.",
+      "domain": "发酵动力学（Fed-batch）",
+      "model_type": "fedbatch_fick",
+      "n_points": 7,
+      "unit": "",
+      "predicted": [
+        0.5,
+        3.6149540743751305,
+        26.076818125348613,
+        67.34853748945972,
+        100.0,
+        99.99999999999999,
+        100.0
+      ],
+      "actual": [
+        0.5,
+        1.8,
+        4.2,
+        7.0,
+        9.8,
+        12.5,
+        14.8
+      ],
+      "error_metrics": {
+        "rmse": 62.307034,
+        "mae": 49.562901,
+        "mape_pct": 0,
+        "r_squared": 0.912301,
+        "coverage_95": 0.1429
+      },
+      "status": "MARGINAL",
+      "timestamp": "2026-08-26T21:50:22.476011"
+    },
+    {
+      "paper_id": "paper_chemostat_shuler",
+      "benchmark_key": "paper_chemostat_shuler",
+      "paper_title": "Shuler & Kargi 2002: E. coli Chemostat 稳态",
+      "paper_citation": "Shuler M.L., Kargi F. (2002). Bioprocess Engineering Principles (2nd ed.).",
+      "domain": "Chemostat 稳态",
+      "model_type": "chemostat_shuler",
+      "n_points": 8,
+      "unit": "",
+      "predicted": [
+        4.984507042253521,
+        4.963934426229509,
+        4.935294117647059,
+        4.892682926829268,
+        4.82258064516129,
+        4.685714285714286,
+        4.300000000000001,
+        3.625000000000001
+      ],
+      "actual": [
+        4.985,
+        4.964,
+        4.935,
+        4.893,
+        4.823,
+        4.686,
+        4.3,
+        3.625
+      ],
+      "error_metrics": {
+        "rmse": 0.000294,
+        "mae": 0.000234,
+        "mape_pct": 0,
+        "r_squared": 1.0,
+        "coverage_95": 1.0
+      },
+      "status": "PASS",
+      "timestamp": "2026-08-26T21:50:22.476247"
+    },
+    {
+      "paper_id": "paper_immobilized_shuler",
+      "benchmark_key": "paper_immobilized_shuler",
+      "paper_title": "Shuler & Kargi 2002: 固定化细胞 Thiele 模数",
+      "paper_citation": "Shuler M.L., Kargi F. (2002). Bioprocess Engineering Principles (2nd ed.)",
+      "domain": "固定化细胞反应器",
+      "model_type": "immobilized_shuler",
+      "n_points": 7,
+      "unit": "",
+      "predicted": [
+        0.8762494526316906,
+        0.671636489980356,
+        0.4166728109167716,
+        0.29629630644961624,
+        0.18666666666670412,
+        0.11979166666666667,
+        0.09666666666666668
+      ],
+      "actual": [
+        0.95,
+        0.86,
+        0.6,
+        0.44,
+        0.27,
+        0.18,
+        0.14
+      ],
+      "error_metrics": {
+        "rmse": 0.123997,
+        "mae": 0.11086,
+        "mape_pct": 0,
+        "r_squared": 0.970987,
+        "coverage_95": 0.5714
+      },
+      "status": "PASS",
+      "timestamp": "2026-08-26T21:50:22.476369"
+    },
+    {
+      "paper_id": "paper_antibiotic_kill",
+      "benchmark_key": "paper_antibiotic_kill",
+      "paper_title": "Andrews 2001: 抗生素时间杀伤曲线（E. coli + 氨苄西林）",
+      "paper_citation": "Andrews J.M. (2001). J Antimicrob Chemother",
+      "domain": "抗生素杀伤动力学",
+      "model_type": "antibiotic_kill",
+      "n_points": 8,
+      "unit": "",
+      "predicted": [
+        9.0,
+        8.28,
+        7.5600000000000005,
+        6.84,
+        6.12,
+        4.68,
+        2.5200000000000005,
+        0.35999999999999943
+      ],
+      "actual": [
+        9.0,
+        8.5,
+        7.8,
+        6.8,
+        5.5,
+        3.8,
+        2.0,
+        0.5
+      ],
+      "error_metrics": {
+        "rmse": 0.441078,
+        "mae": 0.3325,
+        "mape_pct": 0,
+        "r_squared": 0.982566,
+        "coverage_95": 1.0
+      },
+      "status": "PASS+",
+      "timestamp": "2026-08-26T21:50:22.476480"
+    },
+    {
+      "paper_id": "paper_jfoodeng_2012",
+      "benchmark_key": "paper_jfoodeng_2012",
+      "paper_title": "J Food Eng 2012: 乳制品发酵细菌热致死",
+      "paper_citation": "J Food Eng 2012, 109(3):354-359 (DOI: 10.1016/j.jfoodeng.2011.12.031)",
+      "domain": "热致死动力学（Arrhenius）",
+      "model_type": "jfoodeng_2012",
+      "n_points": 4,
+      "unit": "",
+      "predicted": [
+        84.87420218802067,
+        67.73695762216244,
+        40.580857249462035,
+        13.034270543275225
+      ],
+      "actual": [
+        85.0,
+        65.0,
+        45.0,
+        25.0
+      ],
+      "error_metrics": {
+        "rmse": 6.523309,
+        "mae": 4.811907,
+        "mape_pct": 0,
+        "r_squared": 0.989341,
+        "coverage_95": 0.75
+      },
+      "status": "PASS+",
+      "timestamp": "2026-08-26T21:50:22.476590"
+    },
+    {
+      "paper_id": "paper_crabtree_effect",
+      "benchmark_key": "paper_crabtree_effect",
+      "paper_title": "Shuler & Kargi 2002: S. cerevisiae Crabtree 效应",
+      "paper_citation": "Shuler M.L., Kargi F. (2002). Bioprocess Engineering Principles (2nd ed.)",
+      "domain": "发酵动力学（Crabtree）",
+      "model_type": "crabtree_effect",
+      "n_points": 6,
+      "unit": "",
+      "predicted": [
+        0.41333333333333333,
+        0.5166666666666667,
+        0.5636363636363636,
+        0.5904761904761905,
+        0.6048780487804878,
+        0.6098360655737706
+      ],
+      "actual": [
+        0.15,
+        0.3,
+        0.45,
+        0.55,
+        0.58,
+        0.59
+      ],
+      "error_metrics": {
+        "rmse": 0.148241,
+        "mae": 0.113138,
+        "mape_pct": 0,
+        "r_squared": 0.964399,
+        "coverage_95": 0.5
+      },
+      "status": "MARGINAL",
+      "timestamp": "2026-08-26T21:50:22.476697"
+    },
+    {
+      "paper_id": "paper_contois_highdensity",
+      "benchmark_key": "paper_contois_highdensity",
+      "paper_title": "Contois 1959: 高密度细胞（μ vs X）",
+      "paper_citation": "Contois D.E. (1959). J Bacteriol 77:158-168.",
+      "domain": "生长动力学（Contois 高密度）",
+      "model_type": "contois_highdensity",
+      "n_points": 7,
+      "unit": "",
+      "predicted": [
+        0.6222222222222221,
+        0.5599999999999999,
+        0.46666666666666656,
+        0.3499999999999999,
+        0.23333333333333328,
+        0.17499999999999996,
+        0.13999999999999999
+      ],
+      "actual": [
+        0.35,
+        0.28,
+        0.2,
+        0.14,
+        0.08,
+        0.06,
+        0.05
+      ],
+      "error_metrics": {
+        "rmse": 0.211306,
+        "mae": 0.198175,
+        "mape_pct": 0,
+        "r_squared": 0.970539,
+        "coverage_95": 0.0
+      },
+      "status": "MARGINAL",
+      "timestamp": "2026-08-26T21:50:22.476805"
+    },
+    {
+      "paper_id": "paper_competition_tilman",
+      "benchmark_key": "paper_competition_tilman",
+      "paper_title": "Tilman 1982: 多物种竞争（两种菌共享底物）",
+      "paper_citation": "Tilman D. (1982). Resource Competition and Community Structure.",
+      "domain": "多物种竞争",
+      "model_type": "competition_tilman",
+      "n_points": 7,
+      "unit": "",
+      "predicted": [
+        1.0,
+        1.4000000000000001,
+        1.5999999999999999,
+        1.76,
+        1.866666666666667,
+        1.9294117647058822,
+        1.9636363636363638
+      ],
+      "actual": [
+        0.12,
+        0.22,
+        0.4,
+        0.75,
+        1.3,
+        2.1,
+        3.5
+      ],
+      "error_metrics": {
+        "rmse": 1.023825,
+        "mae": 0.934803,
+        "mape_pct": 0,
+        "r_squared": 0.568714,
+        "coverage_95": 0.1429
+      },
+      "status": "MARGINAL",
+      "timestamp": "2026-08-26T21:50:22.476916"
+    },
+    {
+      "paper_id": "closed_loop_validation",
+      "benchmark_key": "closed_loop",
+      "paper_title": "端到端闭环验证（GP代理→预测→UQ→主动学习）",
+      "n_train": 30,
+      "n_test": 60,
+      "n_active": 5,
+      "error_metrics": {
+        "rmse_before": 5.025485,
+        "rmse_after": 1.114739,
+        "rmse_improvement_pct": 77.82,
+        "uq_coverage_before": 0.0167
+      },
+      "status": "PASS",
+      "timestamp": "2026-08-26T21:50:22.490942"
+    }
+  ]
+}

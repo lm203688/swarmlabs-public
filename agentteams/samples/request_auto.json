@@ -1,0 +1,6 @@
+{
+  "goal": "由上一轮 AgentLoop 飞轮自动决定本轮验证哪些场景（不指定场景，检验闭环自驱动能力）",
+  "max_scenarios": 3,
+  "top_n": 3,
+  "allow_correction": true
+}

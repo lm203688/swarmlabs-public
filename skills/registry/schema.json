@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://swarmlabs.tools/schemas/skill.schema.json",
+  "title": "SwarmLabs Skill Definition",
+  "description": "SwarmLabs 科研 Agent Infra 的可复用 Skill 注册表条目格式。每个 Skill 是科研工作流中的一个可组合能力单元，由某个职能 Agent（Planner/Executor/Verifier）调用。",
+  "type": "object",
+  "required": ["name", "version", "purpose", "input_schema", "output_schema", "invocation_condition", "depend_tools", "failure_handling", "safety_boundary", "reuse_value", "multi_agent_role"],
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Skill 唯一标识（snake_case），也是注册表文件名（不含 .json）。",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "version": {
+      "type": "string",
+      "description": "语义化版本，如 1.0.0。",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "purpose": {
+      "type": "string",
+      "description": "一句话用途说明。"
+    },
+    "input_schema": {
+      "type": "object",
+      "description": "输入参数 JSON Schema（最小可用集）。",
+      "required": ["type"],
+      "properties": {
+        "type": { "const": "object" },
+        "properties": { "type": "object" },
+        "required": { "type": "array", "items": { "type": "string" } },
+        "examples": { "type": "array" }
+      }
+    },
+    "output_schema": {
+      "type": "object",
+      "description": "输出结构 JSON Schema。强烈建议包含 evidence/confidence 字段，见 agent_output_contract.md。",
+      "required": ["type"],
+      "properties": {
+        "type": { "const": "object" },
+        "properties": { "type": "object" },
+        "required": { "type": "array", "items": { "type": "string" } },
+        "examples": { "type": "array" }
+      }
+    },
+    "invocation_condition": {
+      "type": "string",
+      "description": "何时被调用（前置条件）。"
+    },
+    "depend_tools": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "依赖的底层工具/引擎/MCP（如 SwarmLabs v2/run/{engine}、ENGINE_CATEGORIES）。"
+    },
+    "failure_handling": {
+      "type": "string",
+      "description": "失败/边界情况的降级与纠错策略。"
+    },
+    "safety_boundary": {
+      "type": "string",
+      "description": "安全边界：只读/不可变外部状态、不记录敏感参数等。"
+    },
+    "reuse_value": {
+      "type": "string",
+      "description": "可被哪些 Agent/场景复用，以及覆盖广度（如覆盖 163 个学科引擎）。"
+    },
+    "multi_agent_role": {
+      "type": "string",
+      "enum": ["PlannerAgent", "ExecutorAgent", "VerifierAgent", "any"],
+      "description": "在 Planner/Executor/Verifier 多 Agent 流程中的角色与上下游关系。"
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "可选分类标签，便于注册表检索。"
+    }
+  }
+}

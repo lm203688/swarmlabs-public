@@ -1,0 +1,1738 @@
+{
+  "history": {
+    "microbio_monod": [
+      {
+        "ts": 1789705124,
+        "rel": 0.0432,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789705125,
+        "rel": 0.0432,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789705126,
+        "rel": 0.0432,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789705127,
+        "rel": 0.0432,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789705128,
+        "rel": 0.0432,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789705128,
+        "rel": 0.0432,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789705129,
+        "rel": 0.0432,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789705130,
+        "rel": 0.0432,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789705131,
+        "rel": 0.0432,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789705132,
+        "rel": 0.0432,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789705133,
+        "rel": 0.0432,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789705134,
+        "rel": 0.0432,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789705135,
+        "rel": 0.0432,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789705136,
+        "rel": 0.0432,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1790138688,
+        "rel": 0.0432,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1790225553,
+        "rel": 0.0432,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1790311594,
+        "rel": 0.0432,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1790657552,
+        "rel": 0.0432,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1792039485,
+        "rel": 0.0007,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1792558008,
+        "rel": 0.0007,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      }
+    ],
+    "microbio_inhibition": [
+      {
+        "ts": 1789628693,
+        "rel": 0.0232,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789628715,
+        "rel": 0.0232,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789628715,
+        "rel": 0.0232,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789628754,
+        "rel": 0.0232,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789628755,
+        "rel": 0.0232,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789654294,
+        "rel": 0.0232,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789654295,
+        "rel": 0.0232,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789655065,
+        "rel": 0.0232,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789655069,
+        "rel": 0.0232,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789655192,
+        "rel": 0.0232,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789655209,
+        "rel": 0.0232,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789655231,
+        "rel": 0.0232,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789655233,
+        "rel": 0.0232,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789655234,
+        "rel": 0.0232,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789793030,
+        "rel": 0.0232,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1791088900,
+        "rel": 0.0022,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1791175298,
+        "rel": 0.0022,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1791694371,
+        "rel": 0.0022,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1792819174,
+        "rel": 0.0022,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1793422262,
+        "rel": 0.0022,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      }
+    ],
+    "chem_reactor_conversion": [
+      {
+        "ts": 1788538066,
+        "rel": 0.0049,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1788583606,
+        "rel": 0.0049,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789067579,
+        "rel": 0.0049,
+        "coverage": 0.967,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789067688,
+        "rel": 0.0049,
+        "coverage": 0.967,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789101535,
+        "rel": 0.0049,
+        "coverage": 0.967,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789338013,
+        "rel": 0.0049,
+        "coverage": 0.967,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789620043,
+        "rel": 0.0049,
+        "coverage": 0.967,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789657836,
+        "rel": 0.0049,
+        "coverage": 0.967,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789657848,
+        "rel": 0.0049,
+        "coverage": 0.967,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789657858,
+        "rel": 0.0049,
+        "coverage": 0.967,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789657938,
+        "rel": 0.0049,
+        "coverage": 0.967,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789658918,
+        "rel": 0.0049,
+        "coverage": 0.967,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789658926,
+        "rel": 0.0049,
+        "coverage": 0.967,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789658935,
+        "rel": 0.0049,
+        "coverage": 0.967,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789658944,
+        "rel": 0.0049,
+        "coverage": 0.967,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1790657552,
+        "rel": 0.0049,
+        "coverage": 0.967,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1791002447,
+        "rel": 0.0049,
+        "coverage": 0.967,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1793076876,
+        "rel": 0.0049,
+        "coverage": 0.967,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1793476133,
+        "rel": 0.0049,
+        "coverage": 0.967,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1793508701,
+        "rel": 0.0049,
+        "coverage": 0.967,
+        "maturity": "已收敛"
+      }
+    ],
+    "surrogate_branin": [
+      {
+        "ts": 1787329649,
+        "rel": 0.0098,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1787373495,
+        "rel": 0.0098,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1788105990,
+        "rel": 0.0098,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1788150859,
+        "rel": 0.0098,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1788192494,
+        "rel": 0.0098,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1788223151,
+        "rel": 0.0098,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1788223239,
+        "rel": 0.0098,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1788237299,
+        "rel": 0.0098,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1788808368,
+        "rel": 0.0098,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1788842517,
+        "rel": 0.0098,
+        "coverage": 0.967,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1788854569,
+        "rel": 0.0098,
+        "coverage": 0.967,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1788981146,
+        "rel": 0.0098,
+        "coverage": 0.967,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789015750,
+        "rel": 0.0098,
+        "coverage": 0.967,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789793030,
+        "rel": 0.0098,
+        "coverage": 0.967,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789965615,
+        "rel": 0.0098,
+        "coverage": 0.967,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1791435156,
+        "rel": 0.0184,
+        "coverage": 0.933,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1792212586,
+        "rel": 0.0184,
+        "coverage": 0.933,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1792558008,
+        "rel": 0.0184,
+        "coverage": 0.933,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1792990251,
+        "rel": 0.0184,
+        "coverage": 0.933,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1793076876,
+        "rel": 0.0184,
+        "coverage": 0.933,
+        "maturity": "已收敛"
+      }
+    ],
+    "pde_heat1d": [
+      {
+        "ts": 1789101535,
+        "rel": 0.0091,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789241259,
+        "rel": 0.0091,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789277619,
+        "rel": 0.0091,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789657836,
+        "rel": 0.0091,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789657848,
+        "rel": 0.0091,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789657858,
+        "rel": 0.0091,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789657938,
+        "rel": 0.0091,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789658083,
+        "rel": 0.0091,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789658085,
+        "rel": 0.0091,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789658918,
+        "rel": 0.0091,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789658926,
+        "rel": 0.0091,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789658935,
+        "rel": 0.0091,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789658944,
+        "rel": 0.0091,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789658970,
+        "rel": 0.0091,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789658973,
+        "rel": 0.0091,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1790138688,
+        "rel": 0.0091,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1791348650,
+        "rel": 0.0,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1792126025,
+        "rel": 0.0,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1792385308,
+        "rel": 0.0,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1792903565,
+        "rel": 0.0,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      }
+    ],
+    "llm_scaling": [
+      {
+        "ts": 1787805446,
+        "rel": 0.0192,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1787808069,
+        "rel": 0.0192,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1787933293,
+        "rel": 0.0192,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1787978078,
+        "rel": 0.0192,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789695907,
+        "rel": 0.0192,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789695908,
+        "rel": 0.0192,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789695910,
+        "rel": 0.0192,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789695911,
+        "rel": 0.0192,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789695913,
+        "rel": 0.0192,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789695914,
+        "rel": 0.0192,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789695916,
+        "rel": 0.0192,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789695917,
+        "rel": 0.0192,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789695919,
+        "rel": 0.0192,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789695920,
+        "rel": 0.0192,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789695922,
+        "rel": 0.0192,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789695923,
+        "rel": 0.0192,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1790570498,
+        "rel": 0.0192,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1791002447,
+        "rel": 0.0192,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1792212586,
+        "rel": 0.0,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1792385308,
+        "rel": 0.0,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      }
+    ],
+    "chem_langmuir": [
+      {
+        "ts": 1789695633,
+        "rel": 0.0599,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695634,
+        "rel": 0.0599,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695636,
+        "rel": 0.0599,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695637,
+        "rel": 0.0599,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695639,
+        "rel": 0.0599,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695889,
+        "rel": 0.0599,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695890,
+        "rel": 0.0599,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695892,
+        "rel": 0.0599,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695893,
+        "rel": 0.0599,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695895,
+        "rel": 0.0599,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695896,
+        "rel": 0.0599,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695898,
+        "rel": 0.0599,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695899,
+        "rel": 0.0599,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695901,
+        "rel": 0.0599,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695902,
+        "rel": 0.0599,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695904,
+        "rel": 0.0599,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695905,
+        "rel": 0.0599,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1790052287,
+        "rel": 0.0599,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1790829646,
+        "rel": 0.0599,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1792298985,
+        "rel": 0.0029,
+        "coverage": 0.9,
+        "maturity": "已收敛"
+      }
+    ],
+    "bio_logistic": [
+      {
+        "ts": 1787891764,
+        "rel": 0.0019,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789695925,
+        "rel": 0.0019,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789695927,
+        "rel": 0.0019,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789695928,
+        "rel": 0.0019,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789695929,
+        "rel": 0.0019,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789695931,
+        "rel": 0.0019,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789695933,
+        "rel": 0.0019,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789695934,
+        "rel": 0.0019,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789695936,
+        "rel": 0.0019,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789695937,
+        "rel": 0.0019,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789695939,
+        "rel": 0.0019,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789695940,
+        "rel": 0.0019,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789695942,
+        "rel": 0.0019,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789706930,
+        "rel": 0.0019,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789965615,
+        "rel": 0.0019,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1790484562,
+        "rel": 0.0019,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1791694371,
+        "rel": 0.0001,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1791953097,
+        "rel": 0.0001,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1792039485,
+        "rel": 0.0001,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1793595002,
+        "rel": 0.0001,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      }
+    ],
+    "surrogate_hartmann6": [
+      {
+        "ts": 1789499727,
+        "rel": 0.0108,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789533692,
+        "rel": 0.0108,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789620043,
+        "rel": 0.0108,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789657836,
+        "rel": 0.0108,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789657848,
+        "rel": 0.0108,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789657858,
+        "rel": 0.0108,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789657938,
+        "rel": 0.0108,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789658918,
+        "rel": 0.0108,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789658926,
+        "rel": 0.0108,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789658935,
+        "rel": 0.0108,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789658944,
+        "rel": 0.0108,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789879181,
+        "rel": 0.0108,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1790311594,
+        "rel": 0.0108,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1790383187,
+        "rel": 0.0108,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1790398247,
+        "rel": 0.0108,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1790743466,
+        "rel": 0.0108,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1791175298,
+        "rel": 0.0108,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1791521592,
+        "rel": 0.0108,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1792471553,
+        "rel": 0.0108,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1792903565,
+        "rel": 0.0108,
+        "coverage": 0.95,
+        "maturity": "已收敛"
+      }
+    ],
+    "surrogate_forrester": [
+      {
+        "ts": 1789705112,
+        "rel": 0.0061,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789705113,
+        "rel": 0.0061,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789705114,
+        "rel": 0.0061,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789705115,
+        "rel": 0.0061,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789705116,
+        "rel": 0.0061,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789705117,
+        "rel": 0.0061,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789705118,
+        "rel": 0.0061,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789705118,
+        "rel": 0.0061,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789705119,
+        "rel": 0.0061,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789705120,
+        "rel": 0.0061,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789705121,
+        "rel": 0.0061,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789705122,
+        "rel": 0.0061,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1790484562,
+        "rel": 0.0061,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1790829646,
+        "rel": 0.0061,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1791348650,
+        "rel": 0.001,
+        "coverage": 0.9,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1791521592,
+        "rel": 0.001,
+        "coverage": 0.9,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1792644208,
+        "rel": 0.001,
+        "coverage": 0.9,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1793422262,
+        "rel": 0.001,
+        "coverage": 0.9,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1793476133,
+        "rel": 0.001,
+        "coverage": 0.9,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1793508701,
+        "rel": 0.001,
+        "coverage": 0.9,
+        "maturity": "已收敛"
+      }
+    ],
+    "micro_competition_ecoli_yeast": [
+      {
+        "ts": 1789658985,
+        "rel": 0.9412,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789658987,
+        "rel": 0.9412,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789684051,
+        "rel": 0.9412,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789684052,
+        "rel": 0.9412,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789684053,
+        "rel": 0.9412,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789684054,
+        "rel": 0.9412,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789684055,
+        "rel": 0.9412,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789684056,
+        "rel": 0.9412,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789695964,
+        "rel": 0.9412,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789695965,
+        "rel": 0.9412,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789695967,
+        "rel": 0.9412,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789695968,
+        "rel": 0.9412,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789695970,
+        "rel": 0.9412,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789695972,
+        "rel": 0.9412,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789695973,
+        "rel": 0.9412,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789695975,
+        "rel": 0.9412,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789695976,
+        "rel": 0.9412,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789695978,
+        "rel": 0.9412,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789695979,
+        "rel": 0.9412,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789695981,
+        "rel": 0.9412,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      }
+    ],
+    "micro_antibiotic_timekill": [
+      {
+        "ts": 1789657861,
+        "rel": 0.6058,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789657864,
+        "rel": 0.6058,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789657867,
+        "rel": 0.6058,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789657941,
+        "rel": 0.6058,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789658104,
+        "rel": 0.6058,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789658107,
+        "rel": 0.6058,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789658946,
+        "rel": 0.6058,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789658949,
+        "rel": 0.6058,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789658951,
+        "rel": 0.6058,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789658954,
+        "rel": 0.6058,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789658989,
+        "rel": 0.6058,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789658991,
+        "rel": 0.6058,
+        "coverage": 0.95,
+        "maturity": "需数据/校准"
+      }
+    ],
+    "micro_tessier_ecoli": [
+      {
+        "ts": 1789657861,
+        "rel": 0.0028,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789657864,
+        "rel": 0.0028,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789657867,
+        "rel": 0.0028,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789657941,
+        "rel": 0.0028,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789658109,
+        "rel": 0.0028,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789658112,
+        "rel": 0.0028,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789658946,
+        "rel": 0.0028,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789658949,
+        "rel": 0.0028,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789658951,
+        "rel": 0.0028,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789658954,
+        "rel": 0.0028,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789658994,
+        "rel": 0.0028,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      },
+      {
+        "ts": 1789658996,
+        "rel": 0.0028,
+        "coverage": 1.0,
+        "maturity": "已收敛"
+      }
+    ],
+    "micro_ecoli_glucose": [
+      {
+        "ts": 1789658088,
+        "rel": 1.0337,
+        "coverage": 0.9,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789658091,
+        "rel": 1.0337,
+        "coverage": 0.9,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789658975,
+        "rel": 1.0337,
+        "coverage": 0.9,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789658977,
+        "rel": 1.0337,
+        "coverage": 0.9,
+        "maturity": "需数据/校准"
+      }
+    ],
+    "micro_fedbatch_ecoli": [
+      {
+        "ts": 1789658980,
+        "rel": 0.0727,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789658983,
+        "rel": 0.0727,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789684057,
+        "rel": 0.0727,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789684058,
+        "rel": 0.0727,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789684059,
+        "rel": 0.0727,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789684061,
+        "rel": 0.0727,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789684062,
+        "rel": 0.0727,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789684063,
+        "rel": 0.0727,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695943,
+        "rel": 0.0727,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695945,
+        "rel": 0.0727,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695947,
+        "rel": 0.0727,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695949,
+        "rel": 0.0727,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695950,
+        "rel": 0.0727,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695952,
+        "rel": 0.0727,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695954,
+        "rel": 0.0727,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695955,
+        "rel": 0.0727,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695957,
+        "rel": 0.0727,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695959,
+        "rel": 0.0727,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695961,
+        "rel": 0.0727,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      },
+      {
+        "ts": 1789695962,
+        "rel": 0.0727,
+        "coverage": 1.0,
+        "maturity": "收敛中"
+      }
+    ],
+    "micro_crabtree_cerevisiae": [
+      {
+        "ts": 1789658115,
+        "rel": 0.4208,
+        "coverage": 1.0,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789658117,
+        "rel": 0.4208,
+        "coverage": 1.0,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789658999,
+        "rel": 0.4208,
+        "coverage": 1.0,
+        "maturity": "需数据/校准"
+      },
+      {
+        "ts": 1789659001,
+        "rel": 0.4208,
+        "coverage": 1.0,
+        "maturity": "需数据/校准"
+      }
+    ]
+  },
+  "next_priority": [
+    "bio_logistic"
+  ],
+  "updated_at": "2026-11-02T12:50:01",
+  "trend": {
+    "microbio_monod": {
+      "delta_rel": 0.0,
+      "direction": "flat"
+    },
+    "microbio_inhibition": {
+      "delta_rel": 0.0,
+      "direction": "flat"
+    },
+    "chem_reactor_conversion": {
+      "delta_rel": 0.0,
+      "direction": "flat"
+    },
+    "surrogate_branin": {
+      "delta_rel": 0.0,
+      "direction": "flat"
+    },
+    "pde_heat1d": {
+      "delta_rel": 0.0,
+      "direction": "flat"
+    },
+    "llm_scaling": {
+      "delta_rel": 0.0,
+      "direction": "flat"
+    },
+    "chem_langmuir": {
+      "delta_rel": -0.057,
+      "direction": "improving"
+    },
+    "bio_logistic": {
+      "delta_rel": 0.0,
+      "direction": "flat"
+    },
+    "surrogate_hartmann6": {
+      "delta_rel": 0.0,
+      "direction": "flat"
+    },
+    "surrogate_forrester": {
+      "delta_rel": 0.0,
+      "direction": "flat"
+    },
+    "micro_competition_ecoli_yeast": {
+      "delta_rel": 0.0,
+      "direction": "flat"
+    },
+    "micro_antibiotic_timekill": {
+      "delta_rel": 0.0,
+      "direction": "flat"
+    },
+    "micro_tessier_ecoli": {
+      "delta_rel": 0.0,
+      "direction": "flat"
+    },
+    "micro_ecoli_glucose": {
+      "delta_rel": 0.0,
+      "direction": "flat"
+    },
+    "micro_fedbatch_ecoli": {
+      "delta_rel": 0.0,
+      "direction": "flat"
+    },
+    "micro_crabtree_cerevisiae": {
+      "delta_rel": 0.0,
+      "direction": "flat"
+    }
+  }
+}

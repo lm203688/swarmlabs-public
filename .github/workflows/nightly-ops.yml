@@ -1,0 +1,136 @@
+name: SwarmLabs 夜间自动运维
+# 解决闭环断点：无人值守监控+部署+自动升级工单
+# 供应流程: 自动健康检查(一套 validate+deploy_verify+perf) -> 失败自动部署刷新 -> 失败自动开issue
+# 信息流闭合成: 监测 -> 修复刷新 -> 回归验证 -> 失败升级为人可处理的issue
+
+on:
+  schedule:
+    - cron: '30 22 * * *'   # 06:30 GMT+8 每日自动运维闭环
+    - cron: '30 13 * * *'   # 21:30 GMT+8 每日第二次巡检
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: nightly-ops
+  cancel-in-progress: false
+
+jobs:
+  health-monitor:
+    name: 自动健康监控与上线
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 模型回归验证 (24个模型)
+        id: model
+        run: |
+          cd scripts && node validate_models.js &> model.log
+          tail -5 model.log
+        continue-on-error: true
+
+      - name: 部署验证 (9 GAP 场景)
+        id: deploy
+        env:
+          BASE_URL: https://swarmlabs.tools/api
+        run: |
+          cd scripts && python deploy_verify.py 2>&1 | tail -20
+        continue-on-error: true
+
+      - name: 性能基线 (10 核心端点)
+        id: perf
+        env:
+          BASE_URL: https://swarmlabs.tools/api
+        run: |
+          cd scripts && python perf_baseline.py 2>&1 | tail -15
+        continue-on-error: true
+
+      # === 自动化闭环: T2 基线重建 -> T3 自愈修复 -> T4 部署守门人 ===
+      # === P0-A: 给 honesty 块配编制（2026-10-17 新增）===
+      #
+      # 背景：夜间重建曾多次（10-12 / 10-17）静默丢弃 data/trust_surface.json
+      # 的 overall.honesty 块。根因不是"忘了跑补丁"，而是补丁脚本
+      # patch_trust_surface_honesty.py 没有编制——全仓唯一写 honesty 的脚本
+      # 从不在任何流水线上运行。
+      #
+      # 本步骤把三步流水线（patch_honesty → build_public_facts →
+      # build_gate_ledger）串成一条链，作为每日巡检的**开场步骤**：
+      # 任何 nightly 触发时先把数据面重建到最新，再跑健康检查。
+      #
+      # 兜底：下游 ci-cd.yml 的 data-contract-gate 把 overall.honesty
+      # 列为必填字段（scripts/check_data_contracts.py）。若本步骤被移除
+      # 或静默失败，下一次 push 触发的 CI 会硬失败并明确指向 honesty。
+      - name: P0-A 诚实链重建（honesty 编制）
+        if: always()
+        run: |
+          python scripts/rebuild_trust_chain.py --json 2>&1 | tail -40
+          # 硬断言：honesty 块必须存在，否则本 job exit 1
+          python -c "import json; d=json.load(open('data/trust_surface.json')); assert 'honesty' in d.get('overall',{}), 'overall.honesty missing'"
+
+      - name: T2 基线回归构建器
+        if: always()
+        run: |
+          cd scripts && node build_baseline.js 2>&1 | tail -10
+        continue-on-error: true
+
+      - name: T3 自愈修复器 (生成 deploy-queue)
+        if: always()
+        run: |
+          cd scripts && node self_heal.js 2>&1 | tail -15
+        continue-on-error: true
+
+      - name: T4 部署守门人 (测试→部署→复验→关单)
+        if: always()
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          BASE_URL: https://swarmlabs.tools/api
+        run: |
+          cd scripts && node deploy_gate.js 2>&1 | tail -20
+        continue-on-error: true
+
+      # === 自动升级工单: 任何核心环节失败 => 自动创建/更新issue ===
+      - name: 失败自动升级工单
+        if: steps.model.outcome == 'failure' || steps.deploy.outcome == 'failure' || steps.perf.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const today = new Date().toISOString().slice(0, 10);
+            const failed = [];
+            if ('${{ steps.model.outcome }}' === 'failure') failed.push('模型回归验证');
+            if ('${{ steps.deploy.outcome }}' === 'failure') failed.push('部署验证(9 GAP)');
+            if ('${{ steps.perf.outcome }}' === 'failure') failed.push('性能基线');
+            const title = 'AUTO-' + today + ' 自动健康检查异常: ' + failed.join('/');
+            const lines = [
+              '## 自动运维告警',
+              '',
+              '自动滚动检查发现故障，自动部署刷新已尝试。请人工介入。',
+              '失败项: ' + failed.join(' , '),
+              '说明: 夜间无人值守脚本在' + today + '检测到 ' + failed.length + ' 项失败，已尝试自动部署。若仍失败需排查。',
+              '请查看运行日志确认原因，修复后 push 触发 CI/CD 自动部署验证。'
+            ];
+            const body = lines.join('\n');
+            const res = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, state: 'open' });
+            const existing = res.data.find((i) => i.title.includes(title));
+            if (existing) {
+              await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: existing.number, body: body });
+            } else {
+              await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo, title: title, body: body, labels: ['auto-alert'] });
+            }
+      - name: 上传每日验证报告
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nightly-health
+          path: |
+            reports/*.json
+            reports/issues/*.json

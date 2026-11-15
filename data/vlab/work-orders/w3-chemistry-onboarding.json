@@ -1,0 +1,32 @@
+{
+  "schema": "swarmlabs-vlab-work-order/1.0",
+  "submitted_by": "example-client-chemistry",
+  "discipline": "Chemistry",
+  "goal": {
+    "quantity": "reaction yield",
+    "unit": "%",
+    "direction": "maximize",
+    "plausible_range": [0.0, 100.0]
+  },
+  "design_space": {
+    "variables": [
+      {"name": "T", "unit": "degC", "lo": 40, "hi": 120},
+      {"name": "c_cat", "unit": "mol/L", "lo": 0.001, "hi": 0.05},
+      {"name": "time", "unit": "min", "lo": 5, "hi": 240}
+    ]
+  },
+  "method": {"family": "auto"},
+  "cost_of_error": 3.0,
+  "scenario_key": "",
+  "_comment": [
+    "示例 2：专业「Chemistry」在 registry 里是 AWAITING_GOLD（taxonomy 有分类，",
+    "但尚无「可解析 gold + 账本内内核场景」）。按既有纪律**不得给出裁决**——",
+    "编一个 verdict 才是真正的不诚实。流水线应返回 NEEDS_ONBOARDING 并附上",
+    "可复用的接入清单（scripts/vlab.py checklist Chemistry）。",
+    "这条也演示了「能力缺口 ≠ 请求非法」：工作单本身合法，缺的是我们这边的覆盖。"
+  ],
+  "corroboration": {
+    "as_input": false,
+    "points": []
+  }
+}

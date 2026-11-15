@@ -1,0 +1,23 @@
+{
+  "paper_key": "closed_loop",
+  "scenario": "closed_loop",
+  "timestamp": "2026-10-13T09:43:14.131008",
+  "metrics": {
+    "n_train": 30,
+    "n_test": 60,
+    "n_active": 5,
+    "rmse_before": 5.025484921274636,
+    "rmse_after": 1.1147387903654136,
+    "rmse_improvement_pct": 77.81828404963798,
+    "uq_coverage_before": 0.016666666666666666,
+    "uq_coverage_after": 0.2,
+    "converged": true,
+    "active_points": [
+      24.0,
+      23.593220338983052,
+      23.186440677966104,
+      22.779661016949156,
+      22.372881355932204
+    ]
+  }
+}

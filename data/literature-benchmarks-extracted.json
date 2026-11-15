@@ -1,0 +1,1576 @@
+{
+ "meta": {
+  "generated_at": "2026-08-05T02:44:41.289Z",
+  "principle": "数值逐字取自 CrossRef 摘要原文并保留 context 原句；low 置信度（区间端点）已排除；未经人工编造或推断。",
+  "confidence_note": "high=绝对指标强语境; medium=含 approximately/up to 等模糊词。二者均可溯源至原文。"
+ },
+ "stats": {
+  "papers": 61,
+  "metrics": 117,
+  "by_domain": {
+   "Chemistry": 3,
+   "Environment": 12,
+   "Energy": 4,
+   "Materials": 10,
+   "Biology": 6,
+   "Separation": 14,
+   "Analysis": 3,
+   "Pharma": 7,
+   "Electrochemistry": 1,
+   "CFD": 1
+  }
+ },
+ "benchmarks": [
+  {
+   "doi": "10.3390/molecules19068402",
+   "engine": "heck",
+   "domain": "Chemistry",
+   "title": "Palladium Catalyzed Heck Arylation of 2,3-Dihydrofuran—Effect of the Palladium Precursor",
+   "journal": "Molecules",
+   "year": 2014,
+   "citations": 10,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 59.2,
+     "unit": "%",
+     "confidence": "medium",
+     "context": "the reactions 2-phenyl-2,3-dihydrofuran (3) was obtained as the main product with a yield of up to 59.2%. The highest conversions of iodobenzene were achieved for the [PdCl(allyl)]2 precursor. Format"
+    }
+   ]
+  },
+  {
+   "doi": "10.1055/s-0037-1612256",
+   "engine": "buchwald",
+   "domain": "Chemistry",
+   "title": "Synthesis of Acridones by Palladium-Catalyzed Buchwald–Hartwig Amination",
+   "journal": "Synlett",
+   "year": 2019,
+   "citations": 14,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 95,
+     "unit": "%",
+     "confidence": "medium",
+     "context": "ix-membered ring. With the described method, a number of derivatives have been synthesized in up to 95% yield by using a variety of anilines as well as benzylic and aliphatic amines."
+    }
+   ]
+  },
+  {
+   "doi": "10.1002/kin.21167",
+   "engine": "esterification",
+   "domain": "Chemistry",
+   "title": "Homogeneous and Heterogeneous Catalyzed Esterification of Acrylic Acid with Ethanol: Reaction Kinetics and Modeling",
+   "journal": "International Journal of Chemical Kinetics",
+   "year": 2018,
+   "citations": 60,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 63.2,
+     "unit": "%",
+     "confidence": "high",
+     "context": "and entropy, and activation energy were determined. The conversion of acrylic acid was obtained as 63.2%, 61.02%, 53.3%, 21.4%, 34.96%, and 14.84% for H 2 SO 4 , p ‐TSA, HCl, HI, Dowex 50WX, and Ambe"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 61.02,
+     "unit": "%",
+     "confidence": "high",
+     "context": "tropy, and activation energy were determined. The conversion of acrylic acid was obtained as 63.2%, 61.02%, 53.3%, 21.4%, 34.96%, and 14.84% for H 2 SO 4 , p ‐TSA, HCl, HI, Dowex 50WX, and Amberlyst 1"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 53.3,
+     "unit": "%",
+     "confidence": "high",
+     "context": "nd activation energy were determined. The conversion of acrylic acid was obtained as 63.2%, 61.02%, 53.3%, 21.4%, 34.96%, and 14.84% for H 2 SO 4 , p ‐TSA, HCl, HI, Dowex 50WX, and Amberlyst 15, respe"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 21.4,
+     "unit": "%",
+     "confidence": "high",
+     "context": "vation energy were determined. The conversion of acrylic acid was obtained as 63.2%, 61.02%, 53.3%, 21.4%, 34.96%, and 14.84% for H 2 SO 4 , p ‐TSA, HCl, HI, Dowex 50WX, and Amberlyst 15, respectively"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 34.96,
+     "unit": "%",
+     "confidence": "high",
+     "context": "energy were determined. The conversion of acrylic acid was obtained as 63.2%, 61.02%, 53.3%, 21.4%, 34.96%, and 14.84% for H 2 SO 4 , p ‐TSA, HCl, HI, Dowex 50WX, and Amberlyst 15, respectively, under"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 14.84,
+     "unit": "%",
+     "confidence": "high",
+     "context": "determined. The conversion of acrylic acid was obtained as 63.2%, 61.02%, 53.3%, 21.4%, 34.96%, and 14.84% for H 2 SO 4 , p ‐TSA, HCl, HI, Dowex 50WX, and Amberlyst 15, respectively, under process tem"
+    },
+    {
+     "metric": "temperature_c",
+     "value": 70,
+     "unit": "degC",
+     "confidence": "high",
+     "context": "2 SO 4 , p ‐TSA, HCl, HI, Dowex 50WX, and Amberlyst 15, respectively, under process temperature of 70°C, reactant molar ratio of 1:1, and catalyst concentration of 2% (v/v) for homogeneous and 2.17 g"
+    }
+   ]
+  },
+  {
+   "doi": "10.1016/j.porgcoat.2020.105856",
+   "engine": "photolysis",
+   "domain": "Environment",
+   "title": "Benchmarking of photocatalytic coatings performance and their activation towards pollutants degradation",
+   "journal": "Progress in Organic Coatings",
+   "year": 2020,
+   "citations": 8,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 100,
+     "unit": "%",
+     "confidence": "medium",
+     "context": "in UV-irradiation tests. After the first 50−60 min of UV exposure a significant increase (up to 70−100%) in the apparent rate constant for methylene blue photo-degradation sets in for the photocataly"
+    }
+   ]
+  },
+  {
+   "doi": "10.1103/physrevapplied.10.064059",
+   "engine": "photoelectrochemical",
+   "domain": "Environment",
+   "title": "Photocorrosion-Limited Maximum Efficiency of Solar Photoelectrochemical Water Splitting",
+   "journal": "Physical Review Applied",
+   "year": 2018,
+   "citations": 73,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 8,
+     "unit": "%",
+     "confidence": "medium",
+     "context": "ion (OER) potential at 1.23 V vs NHE reduces the maximum STH conversion efficiency to approximately 8% for long-term stable single-bandgap PEC water splitting cells. Based on this understanding, we su"
+    }
+   ]
+  },
+  {
+   "doi": "10.1007/s13157-020-01327-z",
+   "engine": "wetland",
+   "domain": "Environment",
+   "title": "The Nutrient Removal Ability and Microbial Communities in a Pilot-Scale Horizontal Subsurface Flow Constructed Wetland Fed by Slightly Polluted Lake Water",
+   "journal": "Wetlands",
+   "year": 2020,
+   "citations": 12,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 36.7,
+     "unit": "%",
+     "confidence": "high",
+     "context": "irises (Iris tectorum Maxim), was operated for 227 days. The mean removal efficiency of NH₄⁺-N was 36.7%, of total nitrogen (TN) 70.2%, of total phosphorus 75.3%, of permanganate index (CODMₙ) 35.8%,"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 70.2,
+     "unit": "%",
+     "confidence": "high",
+     "context": "was operated for 227 days. The mean removal efficiency of NH₄⁺-N was 36.7%, of total nitrogen (TN) 70.2%, of total phosphorus 75.3%, of permanganate index (CODMₙ) 35.8%, and of Chlorophyll a 70.0%. T"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 75.3,
+     "unit": "%",
+     "confidence": "high",
+     "context": "The mean removal efficiency of NH₄⁺-N was 36.7%, of total nitrogen (TN) 70.2%, of total phosphorus 75.3%, of permanganate index (CODMₙ) 35.8%, and of Chlorophyll a 70.0%. The effluent concentrations"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 98,
+     "unit": "%",
+     "confidence": "high",
+     "context": "d was closely related to the temperature (r² = 0.91). The HFCW had a water production efficiency of 98%–99% over the entire operational period, which suggests that it did not block easily. Results fro"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 99,
+     "unit": "%",
+     "confidence": "high",
+     "context": "s closely related to the temperature (r² = 0.91). The HFCW had a water production efficiency of 98%–99% over the entire operational period, which suggests that it did not block easily. Results from 16"
+    }
+   ]
+  },
+  {
+   "doi": "10.1016/j.fuel.2021.122055",
+   "engine": "catalytic_cracking",
+   "domain": "Environment",
+   "title": "Kinetic modeling for the catalytic cracking of tires pyrolysis oil",
+   "journal": "Fuel",
+   "year": 2022,
+   "citations": 27,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 90,
+     "unit": "%",
+     "confidence": "high",
+     "context": "and coke. It should be highlighted the high yield of naphtha obtained (48 wt%) for a conversion of 90% at 530 °C. It is also remarkable the low deactivation level by coke deposition, since the coke f"
+    }
+   ]
+  },
+  {
+   "doi": "10.1016/j.ijhydene.2020.08.284",
+   "engine": "steam_reforming",
+   "domain": "Environment",
+   "title": "Improvement of steam methane reforming via in-situ CO2 sorption over a nickel-calcium composite catalyst",
+   "journal": "International Journal of Hydrogen Energy",
+   "year": 2021,
+   "citations": 40,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 18,
+     "unit": "%",
+     "confidence": "high",
+     "context": "reveal that there are significant differences in CH4 conversion between the SMR and the SESMR from 18% to 108%; this conversion strongly depended on the reaction conditions. High-purity H2 products ("
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 98.9,
+     "unit": "%",
+     "confidence": "high",
+     "context": "18% to 108%; this conversion strongly depended on the reaction conditions. High-purity H2 products (98.9%) with"
+    }
+   ]
+  },
+  {
+   "doi": "10.1016/j.watres.2019.115362",
+   "engine": "electrocoagulation",
+   "domain": "Environment",
+   "title": "Boron removal by electrocoagulation: Removal mechanism, adsorption models and factors influencing removal",
+   "journal": "Water Research",
+   "year": 2020,
+   "citations": 111,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 50,
+     "unit": "%",
+     "confidence": "medium",
+     "context": "s (river water and oilfield produced water) spiked with B were treated using EC, resulting in up to 50% B removal from river water (C0 = 10 mg/L, current = 0.2 A) in 2 h, and 80% B removal from produc"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 80,
+     "unit": "%",
+     "confidence": "high",
+     "context": "g EC, resulting in up to 50% B removal from river water (C0 = 10 mg/L, current = 0.2 A) in 2 h, and 80% B removal from produced water (C0 = 50 mg/L, current = 1.0 A) in 2 h."
+    }
+   ]
+  },
+  {
+   "doi": "10.1515/ijcre-2021-0095",
+   "engine": "electrocoagulation",
+   "domain": "Environment",
+   "title": "Unification electrocoagulation-adsorption treatment for removal of COD and surfactant from automobile wastewater",
+   "journal": "International Journal of Chemical Reactor Engineering",
+   "year": 2021,
+   "citations": 5,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 71.58,
+     "unit": "%",
+     "confidence": "high",
+     "context": "ally obtained at ECA time of 25 min, mixing speed of 465 rpm, and adsorbent dosage of 1.81 mg/L for 71.58% COD removal and 77.91% surfactant removal. The outcomes show that the experimental results of"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 77.91,
+     "unit": "%",
+     "confidence": "high",
+     "context": "me of 25 min, mixing speed of 465 rpm, and adsorbent dosage of 1.81 mg/L for 71.58% COD removal and 77.91% surfactant removal. The outcomes show that the experimental results of this investigation wer"
+    }
+   ]
+  },
+  {
+   "doi": "10.1038/s41598-025-07929-z",
+   "engine": "electrocoagulation",
+   "domain": "Environment",
+   "title": "Integrated electrodes for the nutrient removal from municipal wastewater using electrocoagulation technology",
+   "journal": "Scientific Reports",
+   "year": 2025,
+   "citations": 9,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 95.59,
+     "unit": "%",
+     "confidence": "high",
+     "context": "t efficiency occurred at an operating time of 90 min and 80 A/m2 current density, which resulted in 95.59% nitrate nitrogen, 97.56% ammonia nitrogen, and 96.74% orthophosphate for the Al-Al electrode;"
+    }
+   ]
+  },
+  {
+   "doi": "10.3390/cleantechnol6040074",
+   "engine": "electrocoagulation",
+   "domain": "Environment",
+   "title": "Hybrid Electrocoagulation–Adsorption Process for Montelukast Sodium Removal from Water",
+   "journal": "Clean Technologies",
+   "year": 2024,
+   "citations": 5,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 99.5,
+     "unit": "%",
+     "confidence": "high",
+     "context": "ed optimal results at a pH of 3 and a contact time of 120 min, with a maximum removal efficiency of 99.5% for a starting MS concentration of 50 mg/L using Calcium Ferric Oxide–Silica Sand (CFO-SS) ads"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 97,
+     "unit": "%",
+     "confidence": "high",
+     "context": "/L using Calcium Ferric Oxide–Silica Sand (CFO-SS) adsorbent. The electrocoagulation phase showed a 97% removal efficiency with a pH of 11, a current density of 20 mA, and a 5 mm electrode distance, a"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 74,
+     "unit": "%",
+     "confidence": "high",
+     "context": "-A process, with the pH of residual water adjusted to 3, further enhanced the removal efficiency to 74%, highlighting the method’s potential for pharmaceutical contaminant removal. These findings unde"
+    }
+   ]
+  },
+  {
+   "doi": "10.15517/ri.v30i2.39236",
+   "engine": "ozonation",
+   "domain": "Environment",
+   "title": "Heterogeneous Catalytic Ozonation of Phenol over Iron-based Catalysts in a Trickle Bed Reactor",
+   "journal": "Revista Ingeniería",
+   "year": 2020,
+   "citations": 0,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 16,
+     "unit": "%",
+     "confidence": "high",
+     "context": "rsion and high flow distribution. Just the Fe-diatomite pellets showed important phenol adsorption (16 %). Degradation experiments demonstrated that phenol conversion was substantial when using both c"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 7,
+     "unit": "%",
+     "confidence": "medium",
+     "context": "experiments demonstrated that phenol conversion was substantial when using both catalysts, up to 19,7 % pollutant conversion with liquid-phase space times of just 6 s. Compared to direct ozonation, th"
+    }
+   ]
+  },
+  {
+   "doi": "10.1080/10473289.1994.10467328",
+   "engine": "biofilter",
+   "domain": "Environment",
+   "title": "Biofiltration Control of Hydrogen Sulfide 2. Kinetics, Biofilter Performance, and Maintenance",
+   "journal": "Air &amp; Waste",
+   "year": 1994,
+   "citations": 59,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 99.9,
+     "unit": "%",
+     "confidence": "medium",
+     "context": "gas flow rate and pollutant (H2S) loading impacts. Hydrogen sulfide removal efficiencies exceeding 99.9% were consistently observed. System acidification and sulfate accumulation were identified as i"
+    }
+   ]
+  },
+  {
+   "doi": "10.1007/s11270-016-3194-3",
+   "engine": "biofilter",
+   "domain": "Environment",
+   "title": "Biofiltration of Chloroform in a Trickle Bed Air Biofilter Under Acidic Conditions",
+   "journal": "Water, Air, &amp; Soil Pollution",
+   "year": 2016,
+   "citations": 16,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 69.6,
+     "unit": "%",
+     "confidence": "high",
+     "context": "y with an increase in the cometabolite concentration. The carbon recovery from the TBAB amounted to 69.6% of the total carbon input. It is postulated that the remaining carbon contributed to excess bi"
+    }
+   ]
+  },
+  {
+   "doi": "10.1002/adfm.202521740",
+   "engine": "battery_solid_state",
+   "domain": "Energy",
+   "title": "Deciphering Solid‐State Battery Interface Failure: Plasma‐Assisted Bulk‐Interface Lithium Diffusion Kinetics Regulation",
+   "journal": "Advanced Functional Materials",
+   "year": 2025,
+   "citations": 1,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 85.16,
+     "unit": "%",
+     "confidence": "high",
+     "context": "terfacial‐contact degradation. Following delithiation to 3.0 mAh cm −2 , this configuration retains 85.16% interfacial‐contact integrity—significantly surpassing the mere 10.49% retention observed in"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 10.49,
+     "unit": "%",
+     "confidence": "high",
+     "context": ", this configuration retains 85.16% interfacial‐contact integrity—significantly surpassing the mere 10.49% retention observed in unmodified lithium‐anodes. The enhanced interfacial‐stability of this s"
+    }
+   ]
+  },
+  {
+   "doi": "10.1016/j.ssi.2018.12.008",
+   "engine": "battery_solid_state",
+   "domain": "Energy",
+   "title": "Cathode/electrolyte interface engineering via wet coating and hot pressing for all-solid-state lithium battery",
+   "journal": "Solid State Ionics",
+   "year": 2019,
+   "citations": 41,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "capacity_mahg",
+     "value": 151.6,
+     "unit": "mAh/g",
+     "confidence": "high",
+     "context": "ibit desirable cycling performance at 60 °C, which deliver a maximum discharge specific capacity of 151.6 mAh·g−1 at 0.1C and maintain 97.8% of the capacity after 50 cycles."
+    }
+   ]
+  },
+  {
+   "doi": "10.3390/en14123383",
+   "engine": "perovskite",
+   "domain": "Energy",
+   "title": "Device Optimization of a Lead-Free Perovskite/Silicon Tandem Solar Cell with 24.4% Power Conversion Efficiency",
+   "journal": "Energies",
+   "year": 2021,
+   "citations": 47,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 24.4,
+     "unit": "%",
+     "confidence": "high",
+     "context": "e tandem cell, yielding a large open-circuit voltage of 1.76 V and a power conversion efficiency of 24.4% for the whole cell. Finally, the effect of the working temperature was evaluated, and the resu"
+    },
+    {
+     "metric": "grain_size_nm",
+     "value": 380,
+     "unit": "nm",
+     "confidence": "high",
+     "context": "e field (BSF) layer of the silicon sub-cell. As a result of this optimization phase, thicknesses of 380 nm and 20 µm for the top and bottom sub-cells, respectively, and a doping concentration of 1022"
+    }
+   ]
+  },
+  {
+   "doi": "10.1016/j.solener.2020.08.003",
+   "engine": "perovskite",
+   "domain": "Energy",
+   "title": "Numerical simulation of highly efficient lead-free all-perovskite tandem solar cell",
+   "journal": "Solar Energy",
+   "year": 2020,
+   "citations": 230,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 26.72,
+     "unit": "%",
+     "confidence": "high",
+     "context": "eV) perovskite layer is considered for the first time which shows the optimal device efficiency of 26.72%. The present work studies the effect of the different electron transport layer, perovskite ab"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 84.39,
+     "unit": "%",
+     "confidence": "high",
+     "context": "voltage (VOC) = 1.07 Volts, short circuit current density (JSC) = 28.36 mA/cm2, fill factor (FF) = 84.39% and efficiency (η) = 26.72%."
+    },
+    {
+     "metric": "current_density",
+     "value": 28.36,
+     "unit": "mA/cm2",
+     "confidence": "high",
+     "context": "aic parameters i.e., open circuit voltage (VOC) = 1.07 Volts, short circuit current density (JSC) = 28.36 mA/cm2, fill factor (FF) = 84.39% and efficiency (η) = 26.72%."
+    }
+   ]
+  },
+  {
+   "doi": "10.1002/cvde.201004294",
+   "engine": "deposition_cvd",
+   "domain": "Materials",
+   "title": "Fluorine‐Mediated Crystallization of Silicon in Plasma‐Enhanced CVD",
+   "journal": "Chemical Vapor Deposition",
+   "year": 2011,
+   "citations": 0,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "temperature_c",
+     "value": 400,
+     "unit": "degC",
+     "confidence": "high",
+     "context": "e without an intentional hydrogen dilution. The crystal growth took place at the temperatures above 400°C, and both crystallinity and growth rate were increased with an addition of SiF 4 . Optical emi"
+    }
+   ]
+  },
+  {
+   "doi": "10.1111/j.1151-2916.1963.tb14607.x",
+   "engine": "sintering",
+   "domain": "Materials",
+   "title": "Diffusion Sintering: II, Initial Sintering Kinetics of Alumina",
+   "journal": "Journal of the American Ceramic Society",
+   "year": 1963,
+   "citations": 93,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "temperature_c",
+     "value": 1600,
+     "unit": "degC",
+     "confidence": "high",
+     "context": "an best be described by a grain‐boundary vacancy diffusion model for the temperature range 1200° to 1600°C. The behavior of the compacts is consistent with the model after an initial shrinkage has occ"
+    }
+   ]
+  },
+  {
+   "doi": "10.1021/acsmacrolett.6b00326",
+   "engine": "annealing",
+   "domain": "Materials",
+   "title": "Flow-Induced Crystallization of PEEK: Isothermal Crystallization Kinetics and Lifetime of Flow-Induced Precursors during Isothermal Annealing",
+   "journal": "ACS Macro Letters",
+   "year": 2016,
+   "citations": 51,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "temperature_c",
+     "value": 350,
+     "unit": "degC",
+     "confidence": "high",
+     "context": "ation (FIC) for poly(ether ether ketone) PEEK was investigated by melt rheology and calorimetry. At 350 °C, just above the melting temperature of PEEK ( T m ), a critical shear rate to initiate the fo"
+    }
+   ]
+  },
+  {
+   "doi": "10.4028/www.scientific.net/msf.318-320.673",
+   "engine": "annealing",
+   "domain": "Materials",
+   "title": "Effect of Nitrogen Content on Precipitation during Isothermal Annealing of P/M High Nitrogen Austenitic Stainless Steels",
+   "journal": "Materials Science Forum",
+   "year": 1999,
+   "citations": 10,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "temperature_c",
+     "value": 450,
+     "unit": "degC",
+     "confidence": "medium",
+     "context": "eactions in nitrogen alloyed austenitic stainless steels during isothermal annealing up to 500 h at 450 °C and up to 72 h at 750 °C. The studied steels were P/M austenitic stainless steels with the no"
+    },
+    {
+     "metric": "temperature_c",
+     "value": 750,
+     "unit": "degC",
+     "confidence": "medium",
+     "context": "yed austenitic stainless steels during isothermal annealing up to 500 h at 450 °C and up to 72 h at 750 °C. The studied steels were P/M austenitic stainless steels with the nominal composition of 24Cr"
+    }
+   ]
+  },
+  {
+   "doi": "10.1016/j.mineng.2020.106279",
+   "engine": "calcination",
+   "domain": "Materials",
+   "title": "Kinetics of calcination of natural carbonate minerals",
+   "journal": "Minerals Engineering",
+   "year": 2020,
+   "citations": 34,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "temperature_c",
+     "value": 400,
+     "unit": "degC",
+     "confidence": "high",
+     "context": "astnaesite happens at much lower temperatures than the gangues. Bastnaesite decomposition starts at 400 °C while gangue minerals decompose above 500 °C. So, the selectivity of REO production should be"
+    }
+   ]
+  },
+  {
+   "doi": "10.29303/ipr.v5i3.174",
+   "engine": "calcination",
+   "domain": "Materials",
+   "title": "SYNTHESIS OF CALCIUM CARBONATE (CaCO3) FROM EGGSHELL BY CALCINATION METHOD",
+   "journal": "Indonesian Physical Review",
+   "year": 2022,
+   "citations": 15,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "temperature_c",
+     "value": 250,
+     "unit": "degC",
+     "confidence": "high",
+     "context": "calcination method, in which the egg shells were first soaked in sodium hypochlorite, then dried at 250°C for 10 minutes, and CaCO3 powder was obtained. Then the powder was characterized by XRD, FTIR,"
+    }
+   ]
+  },
+  {
+   "doi": "10.1023/a:1016237509740",
+   "engine": "extrusion",
+   "domain": "Materials",
+   "title": "Physico-Mechanical Characterization of the Extrusion-Spheronization Process. Part II: Rheological Determinants for Successful Extrusion and Spheronization",
+   "journal": "Pharmaceutical Research",
+   "year": 1995,
+   "citations": 56,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 60,
+     "unit": "%",
+     "confidence": "high",
+     "context": "chanical variables within which pellets having desirable criteria such as yield of 18/25 mesh cut > 60%, a shape factor > 0.85, etc., can be prepared. Screen pressure was shown to be the most critical"
+    }
+   ]
+  },
+  {
+   "doi": "10.3390/met16070710",
+   "engine": "forging",
+   "domain": "Materials",
+   "title": "Simulation and Experimental Study on Stress–Strain Behavior and Microstructure Evolution of 38MnVS6 Steel Piston During Hot Forging",
+   "journal": "Metals",
+   "year": 2026,
+   "citations": 0,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "activation_energy",
+     "value": 335.99,
+     "unit": "kJ/mol",
+     "confidence": "high",
+     "context": "ve equation is established based on peak stress data, yielding a deformation activation energy Q of 335.99 kJ·mol−1, which accurately represents the flow stress variation under different hot deformati"
+    }
+   ]
+  },
+  {
+   "doi": "10.1016/j.promfg.2020.08.147",
+   "engine": "forging",
+   "domain": "Materials",
+   "title": "Effect of forging steps on microstructure evolution and mechanical properties of Ti-6Al-4V alloy during multidirectional isothermal forging",
+   "journal": "Procedia Manufacturing",
+   "year": 2020,
+   "citations": 13,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "tensile_mpa",
+     "value": 859,
+     "unit": "MPa",
+     "confidence": "high",
+     "context": ". The microhardness of the sample was 323 HV. The yield strength and ultimate tensile strength were 859 MPa and 907 MPa, respectively. After three steps forging, the lamellar α structures were globula"
+    },
+    {
+     "metric": "tensile_mpa",
+     "value": 907,
+     "unit": "MPa",
+     "confidence": "high",
+     "context": "ardness of the sample was 323 HV. The yield strength and ultimate tensile strength were 859 MPa and 907 MPa, respectively. After three steps forging, the lamellar α structures were globularized comple"
+    },
+    {
+     "metric": "tensile_mpa",
+     "value": 900,
+     "unit": "MPa",
+     "confidence": "medium",
+     "context": "of the sample increased to 335 HV. The yield strength and ultimate tensile strength increased up to 900 MPa and 921 MPa, respectively. The homogeneity of microstructure and mechanical properties were"
+    },
+    {
+     "metric": "tensile_mpa",
+     "value": 921,
+     "unit": "MPa",
+     "confidence": "medium",
+     "context": "e increased to 335 HV. The yield strength and ultimate tensile strength increased up to 900 MPa and 921 MPa, respectively. The homogeneity of microstructure and mechanical properties were improved wit"
+    },
+    {
+     "metric": "hardness_hv",
+     "value": 323,
+     "unit": "HV",
+     "confidence": "high",
+     "context": "kinked and globularized due to the change of loading direction. The microhardness of the sample was 323 HV. The yield strength and ultimate tensile strength were 859 MPa and 907 MPa, respectively. Aft"
+    },
+    {
+     "metric": "hardness_hv",
+     "value": 335,
+     "unit": "HV",
+     "confidence": "high",
+     "context": "d completely, a homogeneous microstructure was formed. The microhardness of the sample increased to 335 HV. The yield strength and ultimate tensile strength increased up to 900 MPa and 921 MPa, respec"
+    }
+   ]
+  },
+  {
+   "doi": "10.4028/www.scientific.net/amr.721.164",
+   "engine": "smelting",
+   "domain": "Materials",
+   "title": "Experimental Investigation on Reduction Kinetics of Stainless Steel-Making Slag in Iron Bath Smelting Reduction",
+   "journal": "Advanced Materials Research",
+   "year": 2013,
+   "citations": 1,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "temperature_c",
+     "value": 1500,
+     "unit": "degC",
+     "confidence": "high",
+     "context": "kinetics of stainless steel slag in iron bath smelting reduction was studied at the temperature of 1500°C ~ 1650°C. It was concluded that the reduction process consisted of two parts. That is to say"
+    },
+    {
+     "metric": "temperature_c",
+     "value": 1650,
+     "unit": "degC",
+     "confidence": "high",
+     "context": "of stainless steel slag in iron bath smelting reduction was studied at the temperature of 1500°C ~ 1650°C. It was concluded that the reduction process consisted of two parts. That is to say smelting"
+    }
+   ]
+  },
+  {
+   "doi": "10.3390/fermentation8090421",
+   "engine": "fermentation_ethanol",
+   "domain": "Biology",
+   "title": "Application of Cool Fermentation Temperatures to Encourage Non-Saccharomyces Yeasts to Yield Lower Ethanol Concentrations in Wines",
+   "journal": "Fermentation",
+   "year": 2022,
+   "citations": 8,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 0.8,
+     "unit": "%",
+     "confidence": "high",
+     "context": ". Ethanol reduction by Mt. pulcherrima was not observed in wines fermented under II but was by III (0.8% v/v). In contrast, musts inoculated with My. guilliermondii yielded wines with ethanol concentr"
+    },
+    {
+     "metric": "temperature_c",
+     "value": 25,
+     "unit": "degC",
+     "confidence": "high",
+     "context": "erevisiae. For control fermentations, S. cerevisiae was inoculated with maximum temperatures set to 25 °C (temperature regime I) while those with Mt. pulcherrima or My. guilliermondii were initially s"
+    },
+    {
+     "metric": "temperature_c",
+     "value": 15,
+     "unit": "degC",
+     "confidence": "high",
+     "context": "(temperature regime I) while those with Mt. pulcherrima or My. guilliermondii were initially set to 15 °C (temperature regime II) or 17.5 °C (temperature regime III) before increasing to 25 °C after a"
+    },
+    {
+     "metric": "temperature_c",
+     "value": 17.5,
+     "unit": "degC",
+     "confidence": "high",
+     "context": "e with Mt. pulcherrima or My. guilliermondii were initially set to 15 °C (temperature regime II) or 17.5 °C (temperature regime III) before increasing to 25 °C after adding S. cerevisiae. Once ferment"
+    }
+   ]
+  },
+  {
+   "doi": "10.3390/fermentation6010037",
+   "engine": "fermentation_lactic",
+   "domain": "Biology",
+   "title": "Production of Lactic Acid from Seaweed Hydrolysates via Lactic Acid Bacteria Fermentation",
+   "journal": "Fermentation",
+   "year": 2020,
+   "citations": 83,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "temperature_c",
+     "value": 30,
+     "unit": "degC",
+     "confidence": "high",
+     "context": "ters, such as cell inoculum, agitation, and temperature, were determined to be 6% (v/v), 0 rpm, and 30 °C, respectively. Gracilaria sp. hydrolysates fermented by lactic acid bacteria at optimal condit"
+    }
+   ]
+  },
+  {
+   "doi": "10.3390/fermentation6010001",
+   "engine": "fermentation_lactic",
+   "domain": "Biology",
+   "title": "Production of D-Lactic Acid by the Fermentation of Orange Peel Waste Hydrolysate by Lactic Acid Bacteria",
+   "journal": "Fermentation",
+   "year": 2019,
+   "citations": 58,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 84,
+     "unit": "%",
+     "confidence": "medium",
+     "context": "w that Lactobacillus delbrueckii ssp. bulgaricus CECT 5037 had the best performance with a yield of 84% w/w for D-LA production and up to 95% (e.e.)."
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 95,
+     "unit": "%",
+     "confidence": "medium",
+     "context": "bulgaricus CECT 5037 had the best performance with a yield of 84% w/w for D-LA production and up to 95% (e.e.)."
+    }
+   ]
+  },
+  {
+   "doi": "10.15376/biores.6.1.317-328",
+   "engine": "enzymatic_hydrolysis",
+   "domain": "Biology",
+   "title": "Effect of lignin content on enzymatic hydrolysis of furfural residues",
+   "journal": "BioResources",
+   "year": 2010,
+   "citations": 44,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 96.8,
+     "unit": "%",
+     "confidence": "high",
+     "context": "ed that the glucose yield was improved by increasing the lignin removal. A maximum glucose yield of 96.8% was obtained when the residue with a lignin removal of 51.4% was hydrolyzed for 108 h at an en"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 51.4,
+     "unit": "%",
+     "confidence": "high",
+     "context": "in removal. A maximum glucose yield of 96.8% was obtained when the residue with a lignin removal of 51.4% was hydrolyzed for 108 h at an enzyme loading of 25 FPU/g cellulose. However, further lignin r"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 90,
+     "unit": "%",
+     "confidence": "high",
+     "context": "enzymatic hydrolysis was also explored in this work. It was concluded that a high glucose yield of 90% was achieved when the enzyme dosage was reduced from 25 to 15 FPU/g cellulose, which was cost-ef"
+    }
+   ]
+  },
+  {
+   "doi": "10.3390/polym17233148",
+   "engine": "enzymatic_hydrolysis",
+   "domain": "Biology",
+   "title": "Low-Alkali Assisted Instant Catapult Steam Explosion Enhances Enzymatic Hydrolysis of Corn Stover by Alleviating Anti-Enzymatic Hydrolysis Factors Through Lignin Structural Rearrangement",
+   "journal": "Polymers",
+   "year": 2025,
+   "citations": 1,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 98,
+     "unit": "%",
+     "confidence": "high",
+     "context": "ly enhanced glucose yield. Under 4–5% NaOH conditions, washed samples achieved glucose yields above 98%. At 4% NaOH, the glucose yields of washed and unwashed groups were 98.88% and 56.34%, respective"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 4,
+     "unit": "%",
+     "confidence": "high",
+     "context": "ced glucose yield. Under 4–5% NaOH conditions, washed samples achieved glucose yields above 98%. At 4% NaOH, the glucose yields of washed and unwashed groups were 98.88% and 56.34%, respectively, indi"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 98.88,
+     "unit": "%",
+     "confidence": "high",
+     "context": "chieved glucose yields above 98%. At 4% NaOH, the glucose yields of washed and unwashed groups were 98.88% and 56.34%, respectively, indicating that washing removed soluble inhibitors. LC-MS analysis"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 56.34,
+     "unit": "%",
+     "confidence": "high",
+     "context": "cose yields above 98%. At 4% NaOH, the glucose yields of washed and unwashed groups were 98.88% and 56.34%, respectively, indicating that washing removed soluble inhibitors. LC-MS analysis identified"
+    }
+   ]
+  },
+  {
+   "doi": "10.1016/j.chemosphere.2019.06.162",
+   "engine": "leaching_bio",
+   "domain": "Biology",
+   "title": "Ni-Fe layered double hydroxides catalized ozonation of synthetic wastewater containing Bisphenol A and municipal secondary effluent",
+   "journal": "Chemosphere",
+   "year": 2019,
+   "citations": 48,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 56,
+     "unit": "%",
+     "confidence": "high",
+     "context": "hest affinity for ozone. Under the optimized conditions, the final TOC and COD removal achieved was 56% and 68%, respectively. BPA in the secondary effluent could be removed completely by Ni3-Fe LDH c"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 68,
+     "unit": "%",
+     "confidence": "high",
+     "context": "inity for ozone. Under the optimized conditions, the final TOC and COD removal achieved was 56% and 68%, respectively. BPA in the secondary effluent could be removed completely by Ni3-Fe LDH catalyzed"
+    },
+    {
+     "metric": "rate_mmol",
+     "value": 28.2,
+     "unit": "mmol",
+     "confidence": "high",
+     "context": "yl radicals (OH). In this research the accumulative ·OH in the reaction system was determined to be 28.2 μmol at the reaction time of 60 min. The free active radicals were mostly generated through the"
+    }
+   ]
+  },
+  {
+   "doi": "10.1016/j.memsci.2020.118365",
+   "engine": "membrane",
+   "domain": "Separation",
+   "title": "Pore structure design of NFES PTFE membrane for membrane emulsification",
+   "journal": "Journal of Membrane Science",
+   "year": 2020,
+   "citations": 49,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 94.4,
+     "unit": "%",
+     "confidence": "high",
+     "context": "nes, M-1 membrane showed the highest oil flux (33.4 L m-2 h-1, -0.02 MPa) and water rejection rate (94.4%) in the separation of water-in-oil emulsion formed by membrane emulsification process."
+    },
+    {
+     "metric": "flux_lmh",
+     "value": 33.4,
+     "unit": "L/m2h",
+     "confidence": "high",
+     "context": "ion performance. Compared with other NFES PTFE membranes, M-1 membrane showed the highest oil flux (33.4 L m-2 h-1, -0.02 MPa) and water rejection rate (94.4%) in the separation of water-in-oil emulsi"
+    }
+   ]
+  },
+  {
+   "doi": "10.1007/s12221-023-00206-8",
+   "engine": "membrane",
+   "domain": "Separation",
+   "title": "PTFE/PVA-PVDF Conjugated Electrospun Nanofiber Membrane with Triboelectric Effect Used in Face Mask",
+   "journal": "Fibers and Polymers",
+   "year": 2023,
+   "citations": 19,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 95,
+     "unit": "%",
+     "confidence": "high",
+     "context": "esistance and longer service life. The initial filtration efficiency of the fiber membrane is above 95%, the filtration efficiency is near to 100% after 24 times of cyclic filtration, the filtration r"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 100,
+     "unit": "%",
+     "confidence": "high",
+     "context": "tial filtration efficiency of the fiber membrane is above 95%, the filtration efficiency is near to 100% after 24 times of cyclic filtration, the filtration resistance is about 110 Pa, the air permeab"
+    }
+   ]
+  },
+  {
+   "doi": "10.1016/j.desal.2020.114583",
+   "engine": "reverse_osmosis",
+   "domain": "Separation",
+   "title": "Forward osmosis and pressure retarded osmosis process modeling for integration with seawater reverse osmosis desalination",
+   "journal": "Desalination",
+   "year": 2020,
+   "citations": 66,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 75,
+     "unit": "%",
+     "confidence": "medium",
+     "context": "charge configuration can increase the specific energy recovery of pressure retarded osmosis by over 75%. The multi-stage recharge design is found to be not only advantageous but may be also necessary"
+    }
+   ]
+  },
+  {
+   "doi": "10.1016/j.envres.2023.117702",
+   "engine": "adsorption",
+   "domain": "Separation",
+   "title": "Adsorption of trace heavy metals through organic compounds enriched biochar using isotherm adsorption and kinetic models",
+   "journal": "Environmental Research",
+   "year": 2024,
+   "citations": 66,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 21,
+     "unit": "%",
+     "confidence": "high",
+     "context": "ed by 21% and 30% for Cu and Ni, respectively compared to the SBC. It was also noticed that GBC was 21% more efficient for % removal efficiency than the CBC. The study's findings supported that organi"
+    }
+   ]
+  },
+  {
+   "doi": "10.1016/j.jhazmat.2020.124462",
+   "engine": "absorption_chemical",
+   "domain": "Separation",
+   "title": "The absorption of SO2 by morpholine cyclic amines with sulfolane as the solvent for flue gas",
+   "journal": "Journal of Hazardous Materials",
+   "year": 2021,
+   "citations": 25,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "adsorption_mgg",
+     "value": 192.18,
+     "unit": "mg/g",
+     "confidence": "high",
+     "context": "y of HEM-SUL-40 (40 wt% of HEM and 60 wt% of SUL) to absorb 8580 mg/m3 SO2 (the remainder is N2) is 192.18 mg/g at 293.15 K. The absorption capacity of the second cycle is 97.5% of the first absorptio"
+    }
+   ]
+  },
+  {
+   "doi": "10.1016/j.supflu.2019.04.005",
+   "engine": "supercritical_extraction",
+   "domain": "Separation",
+   "title": "Extraction of vetiver (Chrysopogon zizanioides) root oil by supercritical CO2, pressurized-liquid, and ultrasound-assisted methods and modeling of supercritical extraction kinetics",
+   "journal": "The Journal of Supercritical Fluids",
+   "year": 2019,
+   "citations": 41,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 2.23,
+     "unit": "%",
+     "confidence": "high",
+     "context": "t techniques. The highest yields by supercritical CO2 extraction were obtained at 60 °C and 20 MPa, 2.23% (m/m), and 2.66% (m/m) with 5% (V/V) of ethanol cosolvent, while PLE and UAE methods allowed a"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 2.66,
+     "unit": "%",
+     "confidence": "high",
+     "context": "highest yields by supercritical CO2 extraction were obtained at 60 °C and 20 MPa, 2.23% (m/m), and 2.66% (m/m) with 5% (V/V) of ethanol cosolvent, while PLE and UAE methods allowed a reduction of the"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 83,
+     "unit": "%",
+     "confidence": "medium",
+     "context": "vent, while PLE and UAE methods allowed a reduction of the time and solvent volume, obtaining up to 83% and 70% of the Soxhlet yields, respectively. The main identified compound in the oil (supercriti"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 70,
+     "unit": "%",
+     "confidence": "medium",
+     "context": "ile PLE and UAE methods allowed a reduction of the time and solvent volume, obtaining up to 83% and 70% of the Soxhlet yields, respectively. The main identified compound in the oil (supercritical extr"
+    }
+   ]
+  },
+  {
+   "doi": "10.1016/s0896-8446(97)00040-5",
+   "engine": "supercritical_extraction",
+   "domain": "Separation",
+   "title": "Supercritical carbon dioxide extraction of Angelica archangelica L. root oil",
+   "journal": "The Journal of Supercritical Fluids",
+   "year": 1998,
+   "citations": 40,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "temperature_c",
+     "value": 40,
+     "unit": "degC",
+     "confidence": "high",
+     "context": "stem. Throughout the extraction process the pressure and temperature were maintained at 120 bar and 40 °C respectively. A 1 h static extraction step was followed by a 2 h dynamic extraction conducted"
+    }
+   ]
+  },
+  {
+   "doi": "10.1080/07373937.2017.1416626",
+   "engine": "spray_drying",
+   "domain": "Separation",
+   "title": "Single droplet drying of milk in air and superheated steam: Particle formation and wettability",
+   "journal": "Drying Technology",
+   "year": 2018,
+   "citations": 15,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "temperature_c",
+     "value": 110,
+     "unit": "degC",
+     "confidence": "high",
+     "context": "ng technique in a superheated steam environment and a hot air environment at a fixed temperature of 110°C. The wettability of the dried single particle was examined using contact angle measurements. T"
+    }
+   ]
+  },
+  {
+   "doi": "10.2166/wqrj.2020.120",
+   "engine": "coagulation",
+   "domain": "Separation",
+   "title": "Treatment of highly turbid water in disaster conditions using coagulation-flocculation process: modeling and optimization",
+   "journal": "Water Quality Research Journal",
+   "year": 2020,
+   "citations": 8,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 99.14,
+     "unit": "%",
+     "confidence": "high",
+     "context": "turbidity. Moreover, the results of the present study revealed that the highest turbidity removal (99.14%) was observed at pH (9), alum dosage (50 mg/L), initial turbidity (350 NTU), rapid mixing (28"
+    }
+   ]
+  },
+  {
+   "doi": "10.4028/www.scientific.net/amr.664.383",
+   "engine": "coagulation",
+   "domain": "Separation",
+   "title": "Optimization of Operating Conditions on Ceramic Printing Wastewater Treatment with Coagulation and Sedimentation Method",
+   "journal": "Advanced Materials Research",
+   "year": 2013,
+   "citations": 2,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 86.9,
+     "unit": "%",
+     "confidence": "high",
+     "context": "n. On this condition, ceramic printing wastewater treatment of effluent decolorization rate reached 86.9%, turbidity removal rate reached 92.5%, conductivity is 2.05 x 10 3 s/cm."
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 92.5,
+     "unit": "%",
+     "confidence": "high",
+     "context": "wastewater treatment of effluent decolorization rate reached 86.9%, turbidity removal rate reached 92.5%, conductivity is 2.05 x 10 3 s/cm."
+    }
+   ]
+  },
+  {
+   "doi": "10.1016/j.watres.2020.116517",
+   "engine": "coagulation",
+   "domain": "Separation",
+   "title": "Characterisation and performance of three Kenaf coagulation products under different operating conditions",
+   "journal": "Water Research",
+   "year": 2021,
+   "citations": 22,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 90,
+     "unit": "%",
+     "confidence": "high",
+     "context": "P storage time, was completed. Turbidity removal performance for HxKP and StKP was very good with > 90% removal recorded for HTW and MTW, respectively, at pH seven within 2 hours retention time. Image"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 1,
+     "unit": "%",
+     "confidence": "medium",
+     "context": "a negligibly different particle removal as MO. StKP turbidity removal performance was below HxKP by 1% for HTW and LTW and 2% for MTW but performed higher than the CrKP by 5% and 7% in HTW and MTW, re"
+    }
+   ]
+  },
+  {
+   "doi": "10.1007/s13201-014-0182-x",
+   "engine": "coagulation",
+   "domain": "Separation",
+   "title": "Ultrasonic removal of pyridine from wastewater: optimization of the operating conditions",
+   "journal": "Applied Water Science",
+   "year": 2014,
+   "citations": 30,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 25,
+     "unit": "%",
+     "confidence": "high",
+     "context": "hree times larger than that degraded at 10 mg/L. The optimal pH was found to be 9 which resulted in 25 % pyridine removal after 180 min ultrasound radiation. By observing the change of pH value with t"
+    }
+   ]
+  },
+  {
+   "doi": "10.21660/2018.50.ijcst14",
+   "engine": "flash_distillation",
+   "domain": "Separation",
+   "title": "COMPARISON PRODUCTION BIOETHANOL FROM CELLULOSE USING BATCH DISTILLATION AND FLASH DISTILLATION PROCESS",
+   "journal": "International Journal of GEOMATE",
+   "year": 2018,
+   "citations": 3,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 95,
+     "unit": "%",
+     "confidence": "medium",
+     "context": "llation, with variable timing and temperature. Bioethanol achieved with the levels of approximately 95%, of the process of batch distillation bioethanol yield obtained is smaller, longer time and high"
+    }
+   ]
+  },
+  {
+   "doi": "10.3390/molecules24030483",
+   "engine": "steam_distillation",
+   "domain": "Separation",
+   "title": "Chemical Composition and Antimicrobial Activities of Artemisia argyi Lévl. et Vant Essential Oils Extracted by Simultaneous Distillation-Extraction, Subcritical Extraction and Hydrodistillation",
+   "journal": "Molecules",
+   "year": 2019,
+   "citations": 73,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 0.5,
+     "unit": "%",
+     "confidence": "high",
+     "context": "to extract A. argyi essential oil. Compared with subcritical extraction (1%) and hydrodistillation (0.5%), SDE gave a higher yield (1.2%). Components of the essential oils were analysed with gas chrom"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 1.2,
+     "unit": "%",
+     "confidence": "high",
+     "context": "l. Compared with subcritical extraction (1%) and hydrodistillation (0.5%), SDE gave a higher yield (1.2%). Components of the essential oils were analysed with gas chromatography-mass spectrometry (GC-"
+    }
+   ]
+  },
+  {
+   "doi": "10.1186/s43094-025-00930-3",
+   "engine": "chromatography",
+   "domain": "Analysis",
+   "title": "Rapid RP-HPLC optimization for efficient determination of nebivolol hydrochloride in bulk and tablet dosage form: application of Box-Behnken design",
+   "journal": "Future Journal of Pharmaceutical Sciences",
+   "year": 2026,
+   "citations": 0,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "temperature_c",
+     "value": 40,
+     "unit": "degC",
+     "confidence": "high",
+     "context": "Milli-Q water. The flow rate was programmed at 1 mL/min, and the column oven temperature was set at 40 °C ± 1 °C. Here, measurement was performed at 282 nm, with a retention time (Rt) of 5.41 min. Ana"
+    }
+   ]
+  },
+  {
+   "doi": "10.1002/bmc.70247",
+   "engine": "chromatography",
+   "domain": "Analysis",
+   "title": "Box–Behnken Design–Based Development and Validation of RP‐HPLC Method for Determination of Related Substances in Nitrofurantoin Formulations",
+   "journal": "Biomedical Chromatography",
+   "year": 2025,
+   "citations": 5,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "temperature_c",
+     "value": 30,
+     "unit": "degC",
+     "confidence": "high",
+     "context": "3 C18 column (250 mm × 4.6 mm, 5 μm), with detection at 285 nm and column temperature maintained at 30°C. The method was validated according to ICH and USP &lt;1225&gt; guidelines. This is demonstrate"
+    }
+   ]
+  },
+  {
+   "doi": "10.1016/j.jchromb.2014.06.011",
+   "engine": "affinity_chromatography",
+   "domain": "Analysis",
+   "title": "Protein A affinity precipitation of human immunoglobulin G",
+   "journal": "Journal of Chromatography B",
+   "year": 2014,
+   "citations": 6,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 65,
+     "unit": "%",
+     "confidence": "medium",
+     "context": "ance. In summary, Eudragit-SpA was successfully applied to capture hIgG from a protein mixture with 65% antibody yield in the elution step. Nearly 96% purity and a purification factor of 12.4 were ach"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 96,
+     "unit": "%",
+     "confidence": "medium",
+     "context": "applied to capture hIgG from a protein mixture with 65% antibody yield in the elution step. Nearly 96% purity and a purification factor of 12.4 were achieved. The Eudragit-SpA conjugate showed a stab"
+    }
+   ]
+  },
+  {
+   "doi": "10.1139/m91-103",
+   "engine": "pasteurization",
+   "domain": "Pharma",
+   "title": "Thermal susceptibility of <i>Streptococcus faecium</i> strains isolated from frankfurters",
+   "journal": "Canadian Journal of Microbiology",
+   "year": 1991,
+   "citations": 21,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "temperature_c",
+     "value": 55,
+     "unit": "degC",
+     "confidence": "high",
+     "context": "ic order of death at all three heating temperatures. An initial slow period of death was evident at 55 °C and a resistant tail of organisms was observed at 55, 63, and 68 °C. The D 55 D 63 , and, D 68"
+    }
+   ]
+  },
+  {
+   "doi": "10.1016/j.ijpharm.2010.10.045",
+   "engine": "emulsification",
+   "domain": "Pharma",
+   "title": "Effect of process parameters on nanoemulsion droplet size and distribution in SPG membrane emulsification",
+   "journal": "International Journal of Pharmaceutics",
+   "year": 2011,
+   "citations": 85,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "temperature_c",
+     "value": 25,
+     "unit": "degC",
+     "confidence": "high",
+     "context": "ne at an agitator speed of 300 rpm, a feed pressure of 15 kPa and a continuous phase temperature of 25 °C. Our results indicated that these conditions led to relatively uniform emulsion droplets with"
+    }
+   ]
+  },
+  {
+   "doi": "10.1016/s0168-8510(00)00137-8",
+   "engine": "screening",
+   "domain": "Pharma",
+   "title": "Assessing efficiency in the UK breast screening programme: does size of screening unit make a difference?",
+   "journal": "Health Policy",
+   "year": 2001,
+   "citations": 9,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 91,
+     "unit": "%",
+     "confidence": "high",
+     "context": "ected using a national survey and routinely collected data. The overall median efficiency score was 91%, 39 units were inefficient. Variation in efficiency scores was wide. Large units had a median ef"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 100,
+     "unit": "%",
+     "confidence": "high",
+     "context": "inefficient. Variation in efficiency scores was wide. Large units had a median efficiency score of 100% and 12 units were inefficient. Smaller units had a median efficiency score of 95% and 19 were i"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 95,
+     "unit": "%",
+     "confidence": "high",
+     "context": "iciency score of 100% and 12 units were inefficient. Smaller units had a median efficiency score of 95% and 19 were inefficient. This difference was not statistically significant (Mann-Whitney, P=0.07"
+    }
+   ]
+  },
+  {
+   "doi": "10.1016/j.jfoodeng.2011.12.031",
+   "engine": "drying",
+   "domain": "Pharma",
+   "title": "Drying kinetics and survival studies of dairy fermentation bacteria in convective air drying environment using single droplet drying",
+   "journal": "Journal of Food Engineering",
+   "year": 2012,
+   "citations": 52,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "temperature_c",
+     "value": 65,
+     "unit": "degC",
+     "confidence": "high",
+     "context": "hile evaporative cooling kept the drop temperature relatively low. At higher droplet temperatures (⩾65°C) the bacterial cultures were inactivated by both dehydration and thermal stresses. At lower dro"
+    },
+    {
+     "metric": "temperature_c",
+     "value": 55,
+     "unit": "degC",
+     "confidence": "high",
+     "context": "cultures were inactivated by both dehydration and thermal stresses. At lower droplet temperatures (⩽55°C) the rate of change in droplet moisture content had much stronger effect on the bacterial survi"
+    }
+   ]
+  },
+  {
+   "doi": "10.26656/fr.2017.4(3).399",
+   "engine": "stability_study",
+   "domain": "Pharma",
+   "title": "Shelf-life prediction for Indian mango roll using accelerated shelf-life testing (ASLT) shelf-life plot approach",
+   "journal": "Food Research",
+   "year": 2020,
+   "citations": 1,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "temperature_c",
+     "value": 35,
+     "unit": "degC",
+     "confidence": "high",
+     "context": "in 30 g stand up aluminum foil with polyethylene liner were stored at three different temperatures, 35°C and 45°C for temperature acceleration, and 30°C for the actual temperature for one hundred eigh"
+    },
+    {
+     "metric": "temperature_c",
+     "value": 45,
+     "unit": "degC",
+     "confidence": "high",
+     "context": "tand up aluminum foil with polyethylene liner were stored at three different temperatures, 35°C and 45°C for temperature acceleration, and 30°C for the actual temperature for one hundred eighty (180)"
+    },
+    {
+     "metric": "temperature_c",
+     "value": 30,
+     "unit": "degC",
+     "confidence": "high",
+     "context": "liner were stored at three different temperatures, 35°C and 45°C for temperature acceleration, and 30°C for the actual temperature for one hundred eighty (180) days. The storage of Indian mango roll"
+    }
+   ]
+  },
+  {
+   "doi": "10.31031/apdv.2017.01.000524",
+   "engine": "stability_study",
+   "domain": "Pharma",
+   "title": "Complete Khoya Replacement in Mango Burfi to Increase Shelf Life: A Case Study",
+   "journal": "Approaches in Poultry, Dairy &amp; Veterinary Sciences",
+   "year": 2017,
+   "citations": 0,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "temperature_c",
+     "value": 100,
+     "unit": "degC",
+     "confidence": "medium",
+     "context": "ainer rotation. Albumin and globulins are coagulated below 100 °C, while casein is coagulated above 100 °C. The factors that influence the heat coagulation are temperature and hold up time, concentrat"
+    }
+   ]
+  },
+  {
+   "doi": "10.1067/mcp.2000.112341",
+   "engine": "pk_modeling",
+   "domain": "Pharma",
+   "title": "Pharmacokinetic and pharmacodynamic modeling of mizolastine in healthy volunteers with an indirect response model",
+   "journal": "Clinical Pharmacology &amp; Therapeutics",
+   "year": 2000,
+   "citations": 14,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "efficiency_pct",
+     "value": 32,
+     "unit": "%",
+     "confidence": "high",
+     "context": "imum attainable inhibition of the effect production were 14.1 cm2/h (coefficient of variation [CV], 32%), 0.68 h(-1) (CV, 24%), 21.1 ng/mL (CV, 77%), and 0.92 (CV, 8%), respectively, for the flare and"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 24,
+     "unit": "%",
+     "confidence": "high",
+     "context": "tion of the effect production were 14.1 cm2/h (coefficient of variation [CV], 32%), 0.68 h(-1) (CV, 24%), 21.1 ng/mL (CV, 77%), and 0.92 (CV, 8%), respectively, for the flare and 1.9 cm2/h (CV, 64%),"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 77,
+     "unit": "%",
+     "confidence": "high",
+     "context": "duction were 14.1 cm2/h (coefficient of variation [CV], 32%), 0.68 h(-1) (CV, 24%), 21.1 ng/mL (CV, 77%), and 0.92 (CV, 8%), respectively, for the flare and 1.9 cm2/h (CV, 64%), 0.63 h-1 (CV, 39%), 43"
+    },
+    {
+     "metric": "efficiency_pct",
+     "value": 8,
+     "unit": "%",
+     "confidence": "high",
+     "context": "2/h (coefficient of variation [CV], 32%), 0.68 h(-1) (CV, 24%), 21.1 ng/mL (CV, 77%), and 0.92 (CV, 8%), respectively, for the flare and 1.9 cm2/h (CV, 64%), 0.63 h-1 (CV, 39%), 43.9 ng/mL (CV, 68%),"
+    }
+   ]
+  },
+  {
+   "doi": "10.3390/membranes14040073",
+   "engine": "electrodialysis",
+   "domain": "Electrochemistry",
+   "title": "Separation of Chloride and Sulfate Ions from Desulfurization Wastewater Using Monovalent Anions Selective Electrodialysis",
+   "journal": "Membranes",
+   "year": 2024,
+   "citations": 17,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "current_density",
+     "value": 25,
+     "unit": "mA/cm2",
+     "confidence": "high",
+     "context": "ate than that of Cl−, resulting in an increase in permselectivity. When the current density reaches 25 mA/cm2, the permselectivity reaches a maximum of 50.4. The increase in NaCl concentration leads t"
+    }
+   ]
+  },
+  {
+   "doi": "10.3390/app122211711",
+   "engine": "cfd_lid_cavity",
+   "domain": "CFD",
+   "title": "Numerical Study of Lid-Driven Square Cavity Flow with Embedded Circular Obstacles Using Spectral/hp Element Methods",
+   "journal": "Applied Sciences",
+   "year": 2022,
+   "citations": 8,
+   "source": "CrossRef abstract (machine-extracted, context preserved)",
+   "metrics": [
+    {
+     "metric": "reynolds",
+     "value": 100,
+     "unit": "Re",
+     "confidence": "high",
+     "context": "the lower right, upper left and upper right positions of the circular obstacle when Reynolds number Re = 100 and Re = 5000, which is not observed in the lattice Boltzmann method. The current data and"
+    },
+    {
+     "metric": "reynolds",
+     "value": 5000,
+     "unit": "Re",
+     "confidence": "high",
+     "context": "ht, upper left and upper right positions of the circular obstacle when Reynolds number Re = 100 and Re = 5000, which is not observed in the lattice Boltzmann method. The current data and figures are i"
+    }
+   ]
+  }
+ ]
+}

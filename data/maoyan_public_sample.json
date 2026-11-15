@@ -1,0 +1,15 @@
+{
+  "_note": "演示用「公开趋势页」样例条目。本文件不是真实猫眼课题宝数据，仅为证明数据飞轮管线可端到端运行。生产环境须替换为合规抓取的公开免费页内容（基金查询/热点趋势），并严格遵守其 robots/ToS，不破付费墙、不登录、不抓私有数据。",
+  "entries": [
+    {"type": "research_gap", "title": "面向农业机器人的低功耗边缘视觉感知研究不足", "domain": "农业机器人", "signal": 7},
+    {"type": "research_gap", "title": "微生物发酵动力学的高保真数字孪生标定缺口", "domain": "合成生物学", "signal": 9},
+    {"type": "research_gap", "title": "面向半导体量测的小样本缺陷检测可解释性薄弱", "domain": "半导体量测", "signal": 6},
+    {"type": "trend", "title": "可解释机器学习在医疗影像中的立项热度上升", "domain": "医学影像", "signal": 12},
+    {"type": "trend", "title": "科研实验自动化（lab automation）获资助趋势走强", "domain": "实验自动化", "signal": 15},
+    {"type": "trend", "title": "基于物理信息神经网络（PINN）的工艺优化受关注", "domain": "工艺优化", "signal": 10},
+    {"type": "cross_domain_bridge", "title": "将蛋白质结构预测方法迁移至材料分子设计的跨域机会", "domain": "AI4Science", "signal": 8},
+    {"type": "cross_domain_bridge", "title": "把金融时序异常检测用于科研仪器故障预警的桥接", "domain": "智能运维", "signal": 5},
+    {"type": "research_gap", "title": "面向罕见病的小样本临床试验虚拟对照设计缺口", "domain": "罕见病", "signal": 4},
+    {"type": "trend", "title": "科研数据可信共享与溯源（含 UQ 标注）需求上升", "domain": "科研数据治理", "signal": 11}
+  ]
+}

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SwarmLabs — math-backed verification for AI science. A multi-agent virtual lab that fits GP surrogates, quantifies uncertainty with coverage-audited intervals, marks out-of-distribution boundaries, and refuses to answer where the model has no data. Built for researchers worldwide.">
+<meta property="og:locale" content="en_US">
+<title>SwarmLabs · Virtual Lab for Trustworthy AI Science</title>
+<link rel="canonical" href="https://swarmlabs.tools/">
+<link rel="stylesheet" href="/assets/shared.css">
+<style>
+/* ===== Home page styles ===== */
+.hero {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 40px 24px;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(59,130,246,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(139,92,246,0.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(6,182,212,0.08) 0%, transparent 60%);
+  z-index: 0;
+}
+.hero-content { position: relative; z-index: 1; max-width: 760px; }
+.hero h1 {
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero h1 .grad {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero .subtitle {
+  font-size: 18px;
+  color: var(--muted);
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+.hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+.hero-cta .btn { font-size: 15px; padding: 12px 28px; }
+.hero-stats {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.hero-stat { text-align: center; }
+.hero-stat .num {
+  font-size: 32px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent), var(--accent3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-stat .label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+/* ===== Features ===== */
+.features { max-width: 1080px; margin: 0 auto; padding: 80px 24px; }
+.section-title { text-align: center; margin-bottom: 48px; }
+.section-title h2 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+.section-title p { color: var(--muted); font-size: 15px; }
+.feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.feature-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  transition: var(--transition);
+}
+.feature-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: var(--shadow); }
+.feature-card .icon { font-size: 32px; margin-bottom: 14px; }
+.feature-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+.feature-card p { color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+/* ===== Workflow ===== */
+.workflow { max-width: 1080px; margin: 0 auto; padding: 60px 24px 80px; }
+.workflow-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-top: 32px; }
+.workflow-step {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 16px;
+  text-align: center;
+  position: relative;
+}
+.workflow-step .step-num {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700;
+  margin: 0 auto 10px;
+}
+.workflow-step .step-icon { font-size: 24px; margin-bottom: 6px; }
+.workflow-step h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.workflow-step p { font-size: 12px; color: var(--muted); }
+
+/* ===== CTA ===== */
+.cta-section { max-width: 760px; margin: 0 auto; padding: 60px 24px; text-align: center; }
+.cta-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px;
+}
+.cta-box h2 { font-size: 24px; font-weight: 700; margin-bottom: 10px; }
+.cta-box p { color: var(--muted); margin-bottom: 24px; }
+
+@media(max-width:768px) {
+  .hero h1 { font-size: 28px; }
+  .hero .subtitle { font-size: 15px; }
+  .hero-stats { gap: 20px; }
+  .hero-stat .num { font-size: 24px; }
+  .features, .workflow, .cta-section { padding: 40px 16px; }
+}
+.card-link{display:inline-block;margin-top:.6rem;color:var(--accent);font-size:.82rem;font-weight:600;text-decoration:none;}
+.card-link:hover{text-decoration:underline;}
+.verify-band{max-width:960px;margin:8px auto;padding:28px 24px;border:1px solid rgba(52,211,153,.3);border-radius:14px;background:linear-gradient(135deg,rgba(52,211,153,.06),rgba(34,211,238,.04));text-align:center;}
+.verify-band h2{font-size:1.25rem;margin-bottom:.4rem;}
+.verify-band p{color:var(--muted);font-size:.9rem;margin-bottom:1rem;}
+.verify-band .vbtns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.verify-band .vbtn{display:inline-block;padding:10px 20px;border-radius:9px;font-weight:700;font-size:.88rem;text-decoration:none;}
+.verify-band .vbtn.primary{background:var(--accent);color:#04141a;}
+.verify-band .vbtn.ghost{border:1px solid var(--rule);color:var(--ink);}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="nav-bar">
+  <a href="/" class="nav-logo">🐝 <span>SwarmLabs</span> <span class="beta-badge">Beta</span></a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">☰</button>
+  <ul class="nav-links">
+    <li><a href="#features">Capabilities</a></li>
+    <li><a href="#workflow">Workflow</a></li>
+    <li><a href="/mission">Mission</a></li>
+    <li><a href="/kpi-dashboard">KPI</a></li>
+    <li><a href="/pilot-reference">Pilot</a></li>
+    <li><a href="/phase2-scaffolds">Phase 2</a><a href="/phase2-roadmap" style="color:var(--muted);font-size:13px;text-decoration:none">Roadmap</a></li>
+    <li><a href="/vocabulary">Vocabulary</a></li>
+    <li><a href="/pricing">Pricing</a><a href="/grants-radar" style="color:var(--muted);font-size:13px;text-decoration:none">Grants Radar</a>
+      </li>
+    <li><a href="/blog">Insights</a></li>
+    <li><a href="/workbench">Workbench</a></li>
+    <li><a href="/gpu.html">⚡ WebGPU</a></li>
+    <li><a href="/report-gallery">V&amp;V Reports</a></li>
+    <li><a href="/failure-cases">Failure Cases</a></li>
+    <li><a href="/investors">For investors</a></li>
+    <li><a href="/login">Sign in</a></li>
+    <li><a href="/login" class="btn btn-primary" style="color:#fff">Get started</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1 data-i18n-html="hero_title_1"><span data-i18n="hero_title_1">The uncertainty layer</span><br><span class="grad" data-i18n="hero_title_2">for trustworthy AI science</span></h1>
+    <p class="subtitle" data-i18n="hero_subtitle">A multi-agent virtual lab that fits GP surrogates, quantifies uncertainty with coverage-audited intervals, and draws the line where a model stops being valid. Other tools ask <em>did it reproduce?</em> — SwarmLabs answers <strong>how confident, and where does it break?</strong></p>
+    <div class="hero-cta">
+      <a href="/login" class="btn btn-primary">🚀 <span data-i18n="hero_cta">Start experimenting →</span></a>
+      <a href="#workflow" class="btn btn-ghost">See how it works</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">95</div><div class="label" data-i18n="hero_stats_1_label">实验场景</div></div>
+      <div class="hero-stat"><div class="num">10</div><div class="label" data-i18n="hero_stats_2_label">学科覆盖</div></div>
+      <div class="hero-stat"><div class="num">19</div><div class="label" data-i18n="hero_stats_3_label">湿实验室锚点</div></div>
+      <div class="hero-stat"><div class="num">91/3/1</div><div class="label">PASS/MARGINAL/REFUTED</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Core capabilities -->
+<section class="features" id="features">
+  <div class="section-title">
+    <h2>Core capabilities</h2>
+    <p>Four pillars of the virtual acceleration lab</p>
+  </div>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="icon">🔬</div>
+      <h3>Physics-model prediction</h3>
+      <p>Engines built on the Arrhenius equation and reaction kinetics — no random-number generation. Each is calibrated against published benchmark values: <!-- {{STORE_POINTS}} -->269<!-- /{{STORE_POINTS}} --> stored calibration points across <!-- {{SCENARIOS_VALIDATED}} -->95<!-- /{{SCENARIOS_VALIDATED}} --> validated scenarios, ~5% calibration error. Extrapolation stress test: <!-- {{EXT_PASS}} -->3<!-- /{{EXT_PASS}} --> PASS / <!-- {{EXT_MARGINAL}} -->6<!-- /{{EXT_MARGINAL}} --> MARGINAL / <!-- {{EXT_REFUTED}} -->73<!-- /{{EXT_REFUTED}} --> REFUTED — the fail-closed gate blocks autonomous action on out-of-domain scenarios.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">🤖</div>
+      <h3>Multi-agent collaboration</h3>
+      <p>Eight specialized Bee Agents share knowledge through a blackboard pattern, covering literature search, hypothesis generation, experiment design, analysis, and peer review.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">📚</div>
+      <h3>DOI traceability</h3>
+      <p>Connected to Crossref / PubMed / arXiv. Every prediction traces back to its source paper — transparent and auditable.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">⚡</div>
+      <h3>Bayesian optimization</h3>
+      <p>AI searches for optimal experiment parameters with physics-guided grid search and local refinement, converging to the global optimum within 100 iterations.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">🛡️</div>
+      <h3>Math-backed verification</h3>
+      <p>Not a rubric score or an audit trail. Every claim carries a computed number: coverage against nominal, or an explicit <code>pass / controlled / reject</code> boundary. 18 literature benchmarks — including the 7 in the red zone — are published, not filtered.</p>
+      <a href="/verify" class="card-link">See every claim verified &rarr;</a>
+    </div>
+    <div class="feature-card">
+      <div class="icon">📄</div>
+      <h3>Automated reports</h3>
+      <p>Generates standard research reports from results and validation data, with abstract, methods, results, and data-availability statements.</p>
+      <a href="/reports" class="card-link">Browse the V&amp;V report library &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- Differentiators -->
+<section class="features" id="differentiators" style="background:linear-gradient(180deg, transparent 0%, rgba(59,130,246,0.04) 50%, transparent 100%);">
+  <div class="section-title">
+    <h2>Why not just use a general-purpose AI?</h2>
+    <p>What SwarmLabs delivers that Claude, ChatGPT and other general AIs cannot</p>
+  </div>
+  <div class="feature-grid">
+    <div class="feature-card" style="border-color:rgba(16,185,129,0.3)">
+      <div class="icon">🛡️</div>
+      <h3>V&V credibility checks</h3>
+      <p>Built on ASME V&V 10-2019(R2025) and Sandia's 16 SciML recommendations. Every prediction is scored on fidelity / simplicity / stability / coverage. General AIs cannot offer a physics audit.</p>
+    </div>
+    <div class="feature-card" style="border-color:rgba(139,92,246,0.3)">
+      <div class="icon">🎨</div>
+      <h3>WebGPU visualization</h3>
+      <p>Browser-side molecular-orbital rendering of 10^6 grid points in ~100 ms, benchmarked against MOrbVis (ACS Omega 2026). Zero install, pure web.</p>
+    </div>
+    <div class="feature-card" style="border-color:rgba(251,146,60,0.3)">
+      <div class="icon">💡</div>
+      <h3>Explainable AI</h3>
+      <p>SHAP-style parameter attribution with a physical rationale for every recommendation. Explainable Bayesian optimization (XBO) shows *why*, not just *what*.</p>
+    </div>
+    <div class="feature-card" style="border-color:rgba(248,113,113,0.3)">
+      <div class="icon">🔒</div>
+      <h3>Data ownership & compliance</h3>
+      <p>You own your data; we never train on it. Transparent pricing at a fraction of enterprise lab platforms.</p>
+    </div>
+    <div class="feature-card" style="border-color:rgba(34,211,238,0.3)">
+      <div class="icon">🔬</div>
+      <h3>Domain-engine depth</h3>
+      <p><!-- {{SCENARIOS_VALIDATED}} -->95<!-- /{{SCENARIOS_VALIDATED}} --> validated scenarios (10 disciplines) with calibrated uncertainty intervals (PICP≥0.90), plus <!-- {{ENGINE_MODULES}} -->115<!-- /{{ENGINE_MODULES}} --> engine modules. 73/95 scenarios REFUTED — honestly reported, not hidden. General AIs cannot match domain depth or transparency.</p>
+    </div>
+    <div class="feature-card" style="border-color:rgba(52,211,153,0.3)">
+      <div class="icon">📊</div>
+      <h3>Proprietary data moat</h3>
+      <p>157,836 structured research entities form an experiment parameter–result knowledge graph. Physics from explicit equations and published benchmark values, not statistical guesses from web text.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Workflow -->
+<section class="workflow" id="workflow">
+  <div class="section-title">
+    <h2>The 7-step research loop</h2>
+    <p>From literature to report — the full research workflow in one place</p>
+  </div>
+  <div class="workflow-steps">
+    <div class="workflow-step">
+      <div class="step-num">1</div>
+      <div class="step-icon">📖</div>
+      <h4>Literature</h4>
+      <p>Real academic search via Crossref</p>
+    </div>
+    <div class="workflow-step">
+      <div class="step-num">2</div>
+      <div class="step-icon">💡</div>
+      <h4>Hypotheses</h4>
+      <p>AI generates hypotheses from literature</p>
+    </div>
+    <div class="workflow-step">
+      <div class="step-num">3</div>
+      <div class="step-icon">📐</div>
+      <h4>Design</h4>
+      <p>Pick engine & parameters</p>
+    </div>
+    <div class="workflow-step">
+      <div class="step-num">4</div>
+      <div class="step-icon">⚗️</div>
+      <h4>Virtual run</h4>
+      <p>Run the physics-model prediction</p>
+    </div>
+    <div class="workflow-step">
+      <div class="step-num">5</div>
+      <div class="step-icon">📊</div>
+      <h4>Analysis</h4>
+      <p>Uncertainty & confidence assessment</p>
+    </div>
+    <div class="workflow-step">
+      <div class="step-num">6</div>
+      <div class="step-icon">🔍</div>
+      <h4>Peer review</h4>
+      <p>Eight automated review checks</p>
+    </div>
+    <div class="workflow-step">
+      <div class="step-num">7</div>
+      <div class="step-icon">📄</div>
+      <h4>Report</h4>
+      <p>Standard-format research report</p>
+    </div>
+  </div>
+</section>
+
+<!-- Verification proof band -->
+<section class="verify-band-wrap">
+  <div class="verify-band">
+    <h2>Proof, not promises</h2>
+    <p>Every published claim on this site was re-run through the SwarmLabs virtual-experiment engine. 18 literature benchmarks, 7 in the OOD red zone — all published, none filtered. Try the live OOD guard yourself.</p>
+    <div class="vbtns">
+      <a href="/verify" class="vbtn primary">Open the verification ledger &rarr;</a>
+      <a href="/pricing" class="vbtn ghost">Get the engine</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-box">
+    <h2>Start your virtual experiment</h2>
+    <p>A demo account is ready — experience the full loop from literature to report.</p>
+    <a href="/login" class="btn btn-primary" style="font-size:16px;padding:14px 32px">🚀 Enter the lab</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="background:var(--bg2);border-top:1px solid var(--border);padding:32px 24px;margin-top:0">
+  <div style="max-width:960px;margin:0 auto;text-align:center">
+    <div style="margin-bottom:16px">
+      <a href="/" style="font-size:16px;font-weight:700;color:var(--text);text-decoration:none">🐝 SwarmLabs</a>
+      <span class="beta-badge">Beta</span>
+    </div>
+    <p style="color:var(--muted);font-size:13px;margin-bottom:16px" data-i18n="hero_subtitle">Virtual acceleration lab for AI science · multi-agent research automation</p>
+    <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:16px">
+      <a href="/" style="color:var(--muted);font-size:13px;text-decoration:none">Home</a>
+      <a href="/mission" style="color:var(--muted);font-size:13px;text-decoration:none">Mission</a>
+      <a href="/vocabulary" style="color:var(--muted);font-size:13px;text-decoration:none">Vocabulary</a>
+      <a href="/lab" style="color:var(--muted);font-size:13px;text-decoration:none">Lab</a>
+      <a href="/workbench" style="color:var(--muted);font-size:13px;text-decoration:none">My workbench</a>
+      <a href="/report-gallery" style="color:var(--muted);font-size:13px;text-decoration:none">V&amp;V reports</a>
+      <a href="/trust-dashboard" style="color:var(--muted);font-size:13px;text-decoration:none">Trust surface</a>
+      <a href="/failure-cases" style="color:var(--muted);font-size:13px;text-decoration:none">Failure cases</a>
+      <a href="/verify" style="color:var(--muted);font-size:13px;text-decoration:none">Verification</a>
+      <a href="/gpu.html" style="color:var(--muted);font-size:13px;text-decoration:none">⚡ WebGPU Local Inference</a>
+      <a href="https://arxiv.org/abs/TBD" style="color:var(--muted);font-size:13px;text-decoration:none" target="_blank">Paper 1: Applied Intelligence</a>
+      <a href="https://ieeexplore.ieee.org/document/TBD" style="color:var(--muted);font-size:13px;text-decoration:none" target="_blank">Paper 2: IEEE TCYB</a>
+      <a href="/api-reference" style="color:var(--muted);font-size:13px;text-decoration:none">API reference</a>
+      <a href="/why-swarmlabs" style="color:var(--muted);font-size:13px;text-decoration:none">Why us</a>
+      <a href="/au-vs-us" style="color:var(--muted);font-size:13px;text-decoration:none">AU comparison</a>
+      <a href="/investors" style="color:var(--muted);font-size:13px;text-decoration:none">For investors</a>
+      <a href="/pricing" style="color:var(--muted);font-size:13px;text-decoration:none">Pricing</a>
+      <a href="/privacy" style="color:var(--muted);font-size:13px;text-decoration:none">Privacy</a>
+      <a href="/terms" style="color:var(--muted);font-size:13px;text-decoration:none">Terms</a>
+    </div>
+    <div style="color:var(--muted);font-size:12px">
+      Contact: <a href="mailto:contact@swarmlabs.tools" style="color:var(--accent);text-decoration:none">contact@swarmlabs.tools</a>
+      · Privacy: <a href="mailto:privacy@swarmlabs.tools" style="color:var(--accent);text-decoration:none">privacy@swarmlabs.tools</a>
+    </div>
+    <p style="color:var(--muted);font-size:12px;margin-top:12px">© 2026 SwarmLabs. All rights reserved.</p>
+  </div>
+</footer>
+
+<div class="toast-container" id="toastContainer"></div>
+<script>
+// If already logged in, jump straight to the workbench
+if (sessionStorage.getItem('swarmlabs_key')) {
+  // Logged-in user on home page: prompt to enter directly
+  setTimeout(function() {
+    var c = document.getElementById('toastContainer');
+    var t = document.createElement('div');
+    t.className = 'toast info';
+    t.innerHTML = 'Signed in. <a href="/lab" style="color:inherit;text-decoration:underline">Enter workbench</a>';
+    c.appendChild(t);
+  }, 500);
+}
+</script>
+<script src="/static/i18n.js"></script>
+</body>
+</html>

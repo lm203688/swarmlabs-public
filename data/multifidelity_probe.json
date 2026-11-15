@@ -1,0 +1,1581 @@
+{
+  "generated_at": "2026-09-08T22:39:51",
+  "summary": {
+    "scenarios": 62,
+    "skipped_dim_gt2": 2,
+    "adopted_multifidelity": 14,
+    "nmpiw_median": [
+      0.0710598095080813,
+      0.058692824034664234
+    ],
+    "nmpiw_mean": [
+      35.26664877586063,
+      35.008713253321645
+    ],
+    "rel_rmse_median": [
+      0.2600729313558312,
+      0.08196267387139147
+    ],
+    "over_wide_gt2": [
+      8,
+      6
+    ],
+    "under_cover_lt085": [
+      3,
+      4
+    ],
+    "elapsed_s": 11.1
+  },
+  "rows": [
+    {
+      "key": "surrogate_forrester",
+      "dim": 1,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.005891920311331416,
+        "coverage": 1.0,
+        "nmpiw": 0.22166453628703744,
+        "q": 0.733300039884007
+      },
+      "chosen": {
+        "rel_rmse": 0.005891920311331416,
+        "coverage": 1.0,
+        "nmpiw": 0.22166453628703744,
+        "q": 0.733300039884007
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 恶化 0.0982→0.4615，coverage 1.000→0.265）",
+        "base_rmse": 0.09823576384130174,
+        "mf_rmse": 0.46148072935579854,
+        "base_cov": 1.0,
+        "mf_cov": 0.2647058823529412
+      }
+    },
+    {
+      "key": "surrogate_branin",
+      "dim": 2,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.0059568562088619685,
+        "coverage": 1.0,
+        "nmpiw": 4.4938831211188806,
+        "q": 1.024176872633407
+      },
+      "chosen": {
+        "rel_rmse": 0.0059568562088619685,
+        "coverage": 1.0,
+        "nmpiw": 4.4938831211188806,
+        "q": 1.024176872633407
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 恶化 0.9606→1.0682，coverage 1.000→0.903）",
+        "base_rmse": 0.9605733289734948,
+        "mf_rmse": 1.068247413054272,
+        "base_cov": 1.0,
+        "mf_cov": 0.9032258064516129
+      }
+    },
+    {
+      "key": "surrogate_hartmann6",
+      "dim": 6,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.002988867742907387,
+        "coverage": 1.0,
+        "nmpiw": 0.015688245887971998,
+        "q": 0.5663304149487616
+      },
+      "chosen": {
+        "rel_rmse": 0.002988867742907387,
+        "coverage": 1.0,
+        "nmpiw": 0.015688245887971998,
+        "q": 0.5663304149487616
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "dim>2 或低保真非有限 → 不适用",
+        "base_rmse": null,
+        "mf_rmse": null,
+        "base_cov": null,
+        "mf_cov": null
+      }
+    },
+    {
+      "key": "pde_heat1d",
+      "dim": 1,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.003575964919865779,
+        "coverage": 1.0,
+        "nmpiw": 0.0038170826787034063,
+        "q": 0.31716581589169235
+      },
+      "chosen": {
+        "rel_rmse": 0.003575964919865779,
+        "coverage": 1.0,
+        "nmpiw": 0.0038170826787034063,
+        "q": 0.31716581589169235
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 恶化 0.0012→0.0020，coverage 1.000→0.140）",
+        "base_rmse": 0.001210214553380189,
+        "mf_rmse": 0.0020132426785036905,
+        "base_cov": 1.0,
+        "mf_cov": 0.14
+      }
+    },
+    {
+      "key": "bio_logistic",
+      "dim": 1,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.0013599526204172477,
+        "coverage": 1.0,
+        "nmpiw": 0.25787594037528805,
+        "q": 0.12416207201367835
+      },
+      "chosen": {
+        "rel_rmse": 0.0013599526204172477,
+        "coverage": 1.0,
+        "nmpiw": 0.25787594037528805,
+        "q": 0.12416207201367835
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 恶化 0.0818→0.1428，coverage 1.000→0.150）",
+        "base_rmse": 0.08182500140221399,
+        "mf_rmse": 0.14284389411989495,
+        "base_cov": 1.0,
+        "mf_cov": 0.15
+      }
+    },
+    {
+      "key": "microbio_monod",
+      "dim": 1,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.038575545289344135,
+        "coverage": 1.0,
+        "nmpiw": 0.033558948089751156,
+        "q": 3.837072194671389
+      },
+      "chosen": {
+        "rel_rmse": 0.038575545289344135,
+        "coverage": 1.0,
+        "nmpiw": 0.033558948089751156,
+        "q": 3.837072194671389
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 恶化 0.0103→0.0112，coverage 0.595→0.238）",
+        "base_rmse": 0.010327991002775636,
+        "mf_rmse": 0.011236126744484215,
+        "base_cov": 0.5952380952380952,
+        "mf_cov": 0.23809523809523808
+      }
+    },
+    {
+      "key": "microbio_inhibition",
+      "dim": 1,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.014455139900679976,
+        "coverage": 1.0,
+        "nmpiw": 0.010359933416305344,
+        "q": 1.5360249994600086
+      },
+      "chosen": {
+        "rel_rmse": 0.014455139900679976,
+        "coverage": 1.0,
+        "nmpiw": 0.010359933416305344,
+        "q": 1.5360249994600086
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 改善 0.0108→0.0056，coverage 0.976→0.707）",
+        "base_rmse": 0.010807233939767654,
+        "mf_rmse": 0.005601998790707182,
+        "base_cov": 0.975609756097561,
+        "mf_cov": 0.7073170731707317
+      }
+    },
+    {
+      "key": "llm_scaling",
+      "dim": 1,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.015974372775636052,
+        "coverage": 1.0,
+        "nmpiw": 0.02961376647083641,
+        "q": 1.0069509595126416
+      },
+      "chosen": {
+        "rel_rmse": 0.015974372775636052,
+        "coverage": 1.0,
+        "nmpiw": 0.02961376647083641,
+        "q": 1.0069509595126416
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 改善 0.0117→0.0005，coverage 1.000→0.000）",
+        "base_rmse": 0.011730317957019346,
+        "mf_rmse": 0.0005493563871203167,
+        "base_cov": 1.0,
+        "mf_cov": 0.0
+      }
+    },
+    {
+      "key": "chem_langmuir",
+      "dim": 1,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.026438285862841117,
+        "coverage": 1.0,
+        "nmpiw": 0.028526677210452666,
+        "q": 3.0188296410426867
+      },
+      "chosen": {
+        "rel_rmse": 0.026438285862841117,
+        "coverage": 1.0,
+        "nmpiw": 0.028526677210452666,
+        "q": 3.0188296410426867
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 恶化 0.0114→0.0185，coverage 0.651→0.372）",
+        "base_rmse": 0.011447661388924052,
+        "mf_rmse": 0.0185444842483323,
+        "base_cov": 0.6511627906976745,
+        "mf_cov": 0.37209302325581395
+      }
+    },
+    {
+      "key": "chem_reactor_conversion",
+      "dim": 2,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.0033251629487472145,
+        "coverage": 0.9666666666666667,
+        "nmpiw": 0.004218857169370887,
+        "q": 0.29608100633701373
+      },
+      "chosen": {
+        "rel_rmse": 0.0033251629487472145,
+        "coverage": 0.9666666666666667,
+        "nmpiw": 0.004218857169370887,
+        "q": 0.29608100633701373
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 恶化 0.0011→0.0012，coverage 1.000→0.547）",
+        "base_rmse": 0.0011311949751070425,
+        "mf_rmse": 0.0011673454599497337,
+        "base_cov": 1.0,
+        "mf_cov": 0.546875
+      }
+    },
+    {
+      "key": "micro_ecoli_glucose",
+      "dim": 1,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 1.0335750750099133,
+        "coverage": 0.8,
+        "nmpiw": 0.17764868636997416,
+        "q": 46.117430283749464
+      },
+      "chosen": {
+        "rel_rmse": 1.0335750750099133,
+        "coverage": 0.8,
+        "nmpiw": 0.17764868636997416,
+        "q": 46.117430283749464
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 恶化 0.0499→0.0689，coverage 0.100→0.067）",
+        "base_rmse": 0.04994703525067822,
+        "mf_rmse": 0.0689202474065562,
+        "base_cov": 0.1,
+        "mf_cov": 0.06666666666666667
+      }
+    },
+    {
+      "key": "micro_cerevisiae_ethanol",
+      "dim": 2,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.9048872510992548,
+        "coverage": 0.9,
+        "nmpiw": 0.13379601911244382,
+        "q": 43.10360358844757
+      },
+      "chosen": {
+        "rel_rmse": 0.9048872510992548,
+        "coverage": 0.9,
+        "nmpiw": 0.13379601911244382,
+        "q": 43.10360358844757
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 恶化 0.0420→0.0430，coverage 0.040→0.060）",
+        "base_rmse": 0.041951910148713766,
+        "mf_rmse": 0.0430181709728452,
+        "base_cov": 0.04,
+        "mf_cov": 0.06
+      }
+    },
+    {
+      "key": "micro_putida_toluene",
+      "dim": 1,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 1.2582560476069418,
+        "coverage": 0.65,
+        "nmpiw": 0.18411305892237106,
+        "q": 38.41412607523659
+      },
+      "chosen": {
+        "rel_rmse": 1.2582560476069418,
+        "coverage": 0.65,
+        "nmpiw": 0.18411305892237106,
+        "q": 38.41412607523659
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 恶化 0.0612→0.0626，coverage 0.067→0.133）",
+        "base_rmse": 0.06123636222654721,
+        "mf_rmse": 0.06262152937247203,
+        "base_cov": 0.06666666666666667,
+        "mf_cov": 0.13333333333333333
+      }
+    },
+    {
+      "key": "micro_lactococcus_lactose",
+      "dim": 2,
+      "source": "multifidelity",
+      "base": {
+        "rel_rmse": 1.259885085937644,
+        "coverage": 0.9666666666666667,
+        "nmpiw": 0.18119830616015392,
+        "q": 74.05625308656693
+      },
+      "chosen": {
+        "rel_rmse": 1.2271059162197229,
+        "coverage": 0.9666666666666667,
+        "nmpiw": 0.18942645027905963,
+        "q": 53.24245159276005
+      },
+      "decision": {
+        "adopted": true,
+        "reason": "误差更优且校准不降级 → 采纳低保真先验",
+        "base_rmse": 0.041931352752177166,
+        "mf_rmse": 0.04097490037033776,
+        "base_cov": 0.06,
+        "mf_cov": 0.08
+      }
+    },
+    {
+      "key": "micro_acetobacter_acetate",
+      "dim": 2,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.34740193185982676,
+        "coverage": 0.9333333333333333,
+        "nmpiw": 0.24352626580154485,
+        "q": 21.336378009592906
+      },
+      "chosen": {
+        "rel_rmse": 0.34740193185982676,
+        "coverage": 0.9333333333333333,
+        "nmpiw": 0.24352626580154485,
+        "q": 21.336378009592906
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 恶化 0.0648→0.0667，coverage 0.140→0.060）",
+        "base_rmse": 0.06478042511251898,
+        "mf_rmse": 0.0666551250746622,
+        "base_cov": 0.14,
+        "mf_cov": 0.06
+      }
+    },
+    {
+      "key": "micro_methanobacterium_methane",
+      "dim": 1,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 1.5188243965720114,
+        "coverage": 0.25,
+        "nmpiw": 0.0671948665928415,
+        "q": 13.130238145144192
+      },
+      "chosen": {
+        "rel_rmse": 1.5188243965720114,
+        "coverage": 0.25,
+        "nmpiw": 0.0671948665928415,
+        "q": 13.130238145144192
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 恶化 0.0670→0.0721，coverage 0.233→0.267）",
+        "base_rmse": 0.06702586429976679,
+        "mf_rmse": 0.07208761693118548,
+        "base_cov": 0.23333333333333334,
+        "mf_cov": 0.26666666666666666
+      }
+    },
+    {
+      "key": "micro_chemostat_ecoli",
+      "dim": 1,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 1.1754247066113592,
+        "coverage": 0.85,
+        "nmpiw": 2.0687959633057407,
+        "q": 59.736403259466314
+      },
+      "chosen": {
+        "rel_rmse": 1.1754247066113592,
+        "coverage": 0.85,
+        "nmpiw": 2.0687959633057407,
+        "q": 59.736403259466314
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 恶化 0.6776→0.7160，coverage 0.033→0.000）",
+        "base_rmse": 0.6776282747854349,
+        "mf_rmse": 0.7160430755857863,
+        "base_cov": 0.03333333333333333,
+        "mf_cov": 0.0
+      }
+    },
+    {
+      "key": "micro_chemostat_cerevisiae",
+      "dim": 2,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.437073276206681,
+        "coverage": 0.8666666666666667,
+        "nmpiw": 1.1092076348527256,
+        "q": 19.740646348815492
+      },
+      "chosen": {
+        "rel_rmse": 0.437073276206681,
+        "coverage": 0.8666666666666667,
+        "nmpiw": 1.1092076348527256,
+        "q": 19.740646348815492
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 改善 0.4043→0.3960，coverage 0.340→0.100）",
+        "base_rmse": 0.4043481286069881,
+        "mf_rmse": 0.39604014247798563,
+        "base_cov": 0.34,
+        "mf_cov": 0.1
+      }
+    },
+    {
+      "key": "micro_lag_ecoli",
+      "dim": 1,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.4980913414984358,
+        "coverage": 0.95,
+        "nmpiw": 2135.0472646435537,
+        "q": 30.704837677674064
+      },
+      "chosen": {
+        "rel_rmse": 0.4980913414984358,
+        "coverage": 0.95,
+        "nmpiw": 2135.0472646435537,
+        "q": 30.704837677674064
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 改善 1022.8746→189.8753，coverage 0.100→0.067）",
+        "base_rmse": 1022.8745850934789,
+        "mf_rmse": 189.87526789932537,
+        "base_cov": 0.1,
+        "mf_cov": 0.06666666666666667
+      }
+    },
+    {
+      "key": "micro_lifecycle_ecoli",
+      "dim": 1,
+      "source": "multifidelity",
+      "base": {
+        "rel_rmse": 0.004649236454634385,
+        "coverage": 1.0,
+        "nmpiw": 0.2254146044470775,
+        "q": 0.622986019870313
+      },
+      "chosen": {
+        "rel_rmse": 2.754440906271576e-16,
+        "coverage": 0.9,
+        "nmpiw": 6.890183119239706e-15,
+        "q": 0.00011030020330413591
+      },
+      "decision": {
+        "adopted": true,
+        "reason": "误差更优且校准不降级 → 采纳低保真先验",
+        "base_rmse": 0.042717409479023936,
+        "mf_rmse": 1.4262873492362695e-15,
+        "base_cov": 1.0,
+        "mf_cov": 1.0
+      }
+    },
+    {
+      "key": "micro_diauxic_ecoli",
+      "dim": 1,
+      "source": "multifidelity",
+      "base": {
+        "rel_rmse": 0.46454192595568417,
+        "coverage": 1.0,
+        "nmpiw": 0.01779374714225869,
+        "q": 57.109524415194926
+      },
+      "chosen": {
+        "rel_rmse": 0.11236947684000712,
+        "coverage": 1.0,
+        "nmpiw": 0.012015278546464217,
+        "q": 212.55230174692645
+      },
+      "decision": {
+        "adopted": true,
+        "reason": "误差更优且校准不降级 → 采纳低保真先验",
+        "base_rmse": 0.002664663423116555,
+        "mf_rmse": 0.0008804905861126856,
+        "base_cov": 0.1,
+        "mf_cov": 0.1
+      }
+    },
+    {
+      "key": "micro_fedbatch_ecoli",
+      "dim": 1,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.07271132072005025,
+        "coverage": 0.95,
+        "nmpiw": 13.493108067679088,
+        "q": 6.01742756330308
+      },
+      "chosen": {
+        "rel_rmse": 0.07271132072005025,
+        "coverage": 0.95,
+        "nmpiw": 13.493108067679088,
+        "q": 6.01742756330308
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 改善 3.4891→1.0735，coverage 0.767→0.233）",
+        "base_rmse": 3.4890963969393654,
+        "mf_rmse": 1.073514222856634,
+        "base_cov": 0.7666666666666667,
+        "mf_cov": 0.23333333333333334
+      }
+    },
+    {
+      "key": "micro_competition_ecoli_yeast",
+      "dim": 1,
+      "source": "multifidelity",
+      "base": {
+        "rel_rmse": 0.9402217740096677,
+        "coverage": 0.95,
+        "nmpiw": 0.018164914787244864,
+        "q": 36.714529904856825
+      },
+      "chosen": {
+        "rel_rmse": 0.38834313942183973,
+        "coverage": 1.0,
+        "nmpiw": 0.38639250105164524,
+        "q": 1647.8551868826348
+      },
+      "decision": {
+        "adopted": true,
+        "reason": "误差更优且校准不降级 → 采纳低保真先验",
+        "base_rmse": 0.006725037098904043,
+        "mf_rmse": 0.0034939211236671053,
+        "base_cov": 0.06666666666666667,
+        "mf_cov": 0.06666666666666667
+      }
+    },
+    {
+      "key": "micro_crabtree_cerevisiae",
+      "dim": 1,
+      "source": "multifidelity",
+      "base": {
+        "rel_rmse": 0.420812708212954,
+        "coverage": 0.95,
+        "nmpiw": 5.364869921508115,
+        "q": 26.266077433848253
+      },
+      "chosen": {
+        "rel_rmse": 0.03901029741676607,
+        "coverage": 0.95,
+        "nmpiw": 0.5580434127831511,
+        "q": 58.5796646909904
+      },
+      "decision": {
+        "adopted": true,
+        "reason": "误差更优且校准不降级 → 采纳低保真先验",
+        "base_rmse": 1.505275211370274,
+        "mf_rmse": 0.15394315545192402,
+        "base_cov": 0.03333333333333333,
+        "mf_cov": 0.06666666666666667
+      }
+    },
+    {
+      "key": "micro_haldane_putida",
+      "dim": 1,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.08375404237718993,
+        "coverage": 1.0,
+        "nmpiw": 0.04025680716195903,
+        "q": 11.072136618338446
+      },
+      "chosen": {
+        "rel_rmse": 0.08375404237718993,
+        "coverage": 1.0,
+        "nmpiw": 0.04025680716195903,
+        "q": 11.072136618338446
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 改善 0.0069→0.0022，coverage 0.567→0.333）",
+        "base_rmse": 0.006877766442546947,
+        "mf_rmse": 0.0021933393131245843,
+        "base_cov": 0.5666666666666667,
+        "mf_cov": 0.3333333333333333
+      }
+    },
+    {
+      "key": "micro_contois_ecoli",
+      "dim": 1,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.20937547095829148,
+        "coverage": 0.95,
+        "nmpiw": 0.09322301705812855,
+        "q": 15.440107243291811
+      },
+      "chosen": {
+        "rel_rmse": 0.20937547095829148,
+        "coverage": 0.95,
+        "nmpiw": 0.09322301705812855,
+        "q": 15.440107243291811
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 改善 0.0234→0.0057，coverage 0.467→0.333）",
+        "base_rmse": 0.023431970686254616,
+        "mf_rmse": 0.005667014694739507,
+        "base_cov": 0.4666666666666667,
+        "mf_cov": 0.3333333333333333
+      }
+    },
+    {
+      "key": "micro_tessier_ecoli",
+      "dim": 1,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.002836479081110163,
+        "coverage": 1.0,
+        "nmpiw": 0.010221378453223665,
+        "q": 0.968858689996215
+      },
+      "chosen": {
+        "rel_rmse": 0.002836479081110163,
+        "coverage": 1.0,
+        "nmpiw": 0.010221378453223665,
+        "q": 0.968858689996215
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 改善 0.0131→0.0011，coverage 1.000→0.033）",
+        "base_rmse": 0.013102848819223028,
+        "mf_rmse": 0.0011024409554719233,
+        "base_cov": 1.0,
+        "mf_cov": 0.03333333333333333
+      }
+    },
+    {
+      "key": "micro_pirt_ecoli",
+      "dim": 1,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.994253661458842,
+        "coverage": 0.9,
+        "nmpiw": 0.01593070976725787,
+        "q": 11.098552115672419
+      },
+      "chosen": {
+        "rel_rmse": 0.994253661458842,
+        "coverage": 0.9,
+        "nmpiw": 0.01593070976725787,
+        "q": 11.098552115672419
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 恶化 0.0134→0.0295，coverage 0.433→0.233）",
+        "base_rmse": 0.01342019013093919,
+        "mf_rmse": 0.029484022500384066,
+        "base_cov": 0.43333333333333335,
+        "mf_cov": 0.23333333333333334
+      }
+    },
+    {
+      "key": "micro_oxygen_ecoli",
+      "dim": 1,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.31077039175337096,
+        "coverage": 0.95,
+        "nmpiw": 0.13148481466512438,
+        "q": 25.17006355274652
+      },
+      "chosen": {
+        "rel_rmse": 0.31077039175337096,
+        "coverage": 0.95,
+        "nmpiw": 0.13148481466512438,
+        "q": 25.17006355274652
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 改善 0.0269→0.0103，coverage 0.300→0.200）",
+        "base_rmse": 0.0269230615927135,
+        "mf_rmse": 0.010342782357739673,
+        "base_cov": 0.3,
+        "mf_cov": 0.2
+      }
+    },
+    {
+      "key": "micro_antibiotic_timekill",
+      "dim": 1,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.6138893333778688,
+        "coverage": 0.95,
+        "nmpiw": 0.004775605278821822,
+        "q": 42.45869076808838
+      },
+      "chosen": {
+        "rel_rmse": 0.6138893333778688,
+        "coverage": 0.95,
+        "nmpiw": 0.004775605278821822,
+        "q": 42.45869076808838
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 改善 0.0011→0.0002，coverage 0.167→0.067）",
+        "base_rmse": 0.001052013645346648,
+        "mf_rmse": 0.00021653164040417224,
+        "base_cov": 0.16666666666666666,
+        "mf_cov": 0.06666666666666667
+      }
+    },
+    {
+      "key": "micro_osmotic_ecoli",
+      "dim": 1,
+      "source": "multifidelity",
+      "base": {
+        "rel_rmse": 0.5250909945790372,
+        "coverage": 1.0,
+        "nmpiw": 0.3157652581986736,
+        "q": 1.4356361112815115
+      },
+      "chosen": {
+        "rel_rmse": 0.014714847630513346,
+        "coverage": 0.95,
+        "nmpiw": 0.013707096531807239,
+        "q": 1.8546909792994124
+      },
+      "decision": {
+        "adopted": true,
+        "reason": "误差更优且校准不降级 → 采纳低保真先验",
+        "base_rmse": 0.15371219962500435,
+        "mf_rmse": 0.005321003029197701,
+        "base_cov": 0.9333333333333333,
+        "mf_cov": 0.9333333333333333
+      }
+    },
+    {
+      "key": "micro_biofilm_ecoli",
+      "dim": 1,
+      "source": "multifidelity",
+      "base": {
+        "rel_rmse": 0.005042426112816163,
+        "coverage": 1.0,
+        "nmpiw": 0.027124597271586753,
+        "q": 0.6258072588879675
+      },
+      "chosen": {
+        "rel_rmse": 2.0571538117739242e-16,
+        "coverage": 0.85,
+        "nmpiw": 1.328202217415099e-16,
+        "q": 2.124354135830386e-06
+      },
+      "decision": {
+        "adopted": true,
+        "reason": "误差更优且校准不降级 → 采纳低保真先验",
+        "base_rmse": 0.0048100988902210935,
+        "mf_rmse": 4.534236667437392e-17,
+        "base_cov": 1.0,
+        "mf_cov": 1.0
+      }
+    },
+    {
+      "key": "micro_scaleup_kla",
+      "dim": 1,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.7357935495468855,
+        "coverage": 0.95,
+        "nmpiw": 0.043928471446534896,
+        "q": 53.12783162839341
+      },
+      "chosen": {
+        "rel_rmse": 0.7357935495468855,
+        "coverage": 0.95,
+        "nmpiw": 0.043928471446534896,
+        "q": 53.12783162839341
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 恶化 0.0093→0.0162，coverage 0.100→0.133）",
+        "base_rmse": 0.009288944826575295,
+        "mf_rmse": 0.016188453311648022,
+        "base_cov": 0.1,
+        "mf_cov": 0.13333333333333333
+      }
+    },
+    {
+      "key": "micro_doe_ecoli_monod",
+      "dim": 2,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 1.2109467104333163,
+        "coverage": 0.9666666666666667,
+        "nmpiw": 0.012996444372916482,
+        "q": 67.79922938433963
+      },
+      "chosen": {
+        "rel_rmse": 1.2109467104333163,
+        "coverage": 0.9666666666666667,
+        "nmpiw": 0.012996444372916482,
+        "q": 67.79922938433963
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 恶化 0.0115→0.1157，coverage 0.060→0.060）",
+        "base_rmse": 0.011502062950119676,
+        "mf_rmse": 0.11573980737348331,
+        "base_cov": 0.06,
+        "mf_cov": 0.06
+      }
+    },
+    {
+      "key": "micro_mle_ecoli_monod",
+      "dim": 1,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 3.2045336124154744,
+        "coverage": 0.85,
+        "nmpiw": 0.03788985300867553,
+        "q": 111.54951385920646
+      },
+      "chosen": {
+        "rel_rmse": 3.2045336124154744,
+        "coverage": 0.85,
+        "nmpiw": 0.03788985300867553,
+        "q": 111.54951385920646
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 恶化 0.0284→0.0482，coverage 0.133→0.267）",
+        "base_rmse": 0.028370909293093948,
+        "mf_rmse": 0.048192654226854884,
+        "base_cov": 0.13333333333333333,
+        "mf_cov": 0.26666666666666666
+      }
+    },
+    {
+      "key": "micro_sobol_ecoli",
+      "dim": 1,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.8444144518575879,
+        "coverage": 0.9,
+        "nmpiw": 0.010531467697018796,
+        "q": 11.399135504029342
+      },
+      "chosen": {
+        "rel_rmse": 0.8444144518575879,
+        "coverage": 0.9,
+        "nmpiw": 0.010531467697018796,
+        "q": 11.399135504029342
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 恶化 0.0062→0.0328，coverage 0.467→0.233）",
+        "base_rmse": 0.006206086797828485,
+        "mf_rmse": 0.03275109153254593,
+        "base_cov": 0.4666666666666667,
+        "mf_cov": 0.23333333333333334
+      }
+    },
+    {
+      "key": "micro_uq_ecoli_monod",
+      "dim": 1,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.8190111024441165,
+        "coverage": 0.95,
+        "nmpiw": 0.010881736746893616,
+        "q": 15.371787657061805
+      },
+      "chosen": {
+        "rel_rmse": 0.8190111024441165,
+        "coverage": 0.95,
+        "nmpiw": 0.010881736746893616,
+        "q": 15.371787657061805
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 恶化 0.0026→0.0283，coverage 0.467→0.133）",
+        "base_rmse": 0.002560440070341267,
+        "mf_rmse": 0.02831950617403113,
+        "base_cov": 0.4666666666666667,
+        "mf_cov": 0.13333333333333333
+      }
+    },
+    {
+      "key": "micro_coculture_mutualism",
+      "dim": 1,
+      "source": "multifidelity",
+      "base": {
+        "rel_rmse": 0.5386239024376946,
+        "coverage": 0.9,
+        "nmpiw": 7.092884378501786,
+        "q": 28.554764783486533
+      },
+      "chosen": {
+        "rel_rmse": 0.0792687836157132,
+        "coverage": 0.95,
+        "nmpiw": 2.010197431850384,
+        "q": 86.9583917899208
+      },
+      "decision": {
+        "adopted": true,
+        "reason": "误差更优且校准不降级 → 采纳低保真先验",
+        "base_rmse": 2.2780634698666438,
+        "mf_rmse": 0.38953488738040554,
+        "base_cov": 0.06666666666666667,
+        "mf_cov": 0.16666666666666666
+      }
+    },
+    {
+      "key": "micro_quorum_ecoli",
+      "dim": 1,
+      "source": "multifidelity",
+      "base": {
+        "rel_rmse": 0.4589313050618724,
+        "coverage": 1.0,
+        "nmpiw": 6.838351696050329,
+        "q": 27.21315488224217
+      },
+      "chosen": {
+        "rel_rmse": 0.047927605852550334,
+        "coverage": 1.0,
+        "nmpiw": 1.1826761051745789,
+        "q": 84.63654838828215
+      },
+      "decision": {
+        "adopted": true,
+        "reason": "误差更优且校准不降级 → 采纳低保真先验",
+        "base_rmse": 2.0705220681931755,
+        "mf_rmse": 0.23215462775535828,
+        "base_cov": 0.1,
+        "mf_cov": 0.1
+      }
+    },
+    {
+      "key": "micro_heavy_metal_ecoli",
+      "dim": 1,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.010459611144079551,
+        "coverage": 1.0,
+        "nmpiw": 0.0008685273732803144,
+        "q": 1.0749975760826607
+      },
+      "chosen": {
+        "rel_rmse": 0.010459611144079551,
+        "coverage": 1.0,
+        "nmpiw": 0.0008685273732803144,
+        "q": 1.0749975760826607
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 改善 0.0002→0.0000，coverage 1.000→0.067）",
+        "base_rmse": 0.00015442799072254928,
+        "mf_rmse": 4.442242900097159e-06,
+        "base_cov": 1.0,
+        "mf_cov": 0.06666666666666667
+      }
+    },
+    {
+      "key": "micro_diauxic_2d",
+      "dim": 2,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.4576864813568812,
+        "coverage": 0.9666666666666667,
+        "nmpiw": 3.53281955459634e-05,
+        "q": 27.32958313260621
+      },
+      "chosen": {
+        "rel_rmse": 0.4576864813568812,
+        "coverage": 0.9666666666666667,
+        "nmpiw": 3.53281955459634e-05,
+        "q": 27.32958313260621
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 改善 0.0000→0.0000，coverage 0.140→0.120）",
+        "base_rmse": 9.697893328132871e-06,
+        "mf_rmse": 7.122549834633281e-06,
+        "base_cov": 0.14,
+        "mf_cov": 0.12
+      }
+    },
+    {
+      "key": "micro_fedbatch_2d",
+      "dim": 2,
+      "source": "multifidelity",
+      "base": {
+        "rel_rmse": 0.0029265536062793715,
+        "coverage": 0.9666666666666667,
+        "nmpiw": 0.008421379193648814,
+        "q": 0.2254591470284449
+      },
+      "chosen": {
+        "rel_rmse": 2.2754147346247014e-16,
+        "coverage": 0.8,
+        "nmpiw": 4.439552040784353e-16,
+        "q": 6.863146112349274e-06
+      },
+      "decision": {
+        "adopted": true,
+        "reason": "误差更优且校准不降级 → 采纳低保真先验",
+        "base_rmse": 0.0029668912144813955,
+        "mf_rmse": 1.14647505743769e-16,
+        "base_cov": 1.0,
+        "mf_cov": 1.0
+      }
+    },
+    {
+      "key": "micro_competition_2d",
+      "dim": 1,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.7636415620044851,
+        "coverage": 0.95,
+        "nmpiw": 0.026060280488623216,
+        "q": 39.24683838019695
+      },
+      "chosen": {
+        "rel_rmse": 0.7636415620044851,
+        "coverage": 0.95,
+        "nmpiw": 0.026060280488623216,
+        "q": 39.24683838019695
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 改善 0.0077→0.0022，coverage 0.100→0.067）",
+        "base_rmse": 0.00767196338668395,
+        "mf_rmse": 0.0022117770626595,
+        "base_cov": 0.1,
+        "mf_cov": 0.06666666666666667
+      }
+    },
+    {
+      "key": "micro_crabtree_2d",
+      "dim": 2,
+      "source": "multifidelity",
+      "base": {
+        "rel_rmse": 0.006189771073617958,
+        "coverage": 0.9666666666666667,
+        "nmpiw": 0.059830010896029726,
+        "q": 0.42027868464115287
+      },
+      "chosen": {
+        "rel_rmse": 1.677672980406243e-16,
+        "coverage": 0.9,
+        "nmpiw": 1.780342946907137e-15,
+        "q": 2.8887355910116215e-05
+      },
+      "decision": {
+        "adopted": true,
+        "reason": "误差更优且校准不降级 → 采纳低保真先验",
+        "base_rmse": 0.017865376077621817,
+        "mf_rmse": 3.374685947410192e-16,
+        "base_cov": 1.0,
+        "mf_cov": 1.0
+      }
+    },
+    {
+      "key": "micro_fedbatch_3d",
+      "dim": 3,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.01532758342792317,
+        "coverage": 1.0,
+        "nmpiw": 0.04051968830459785,
+        "q": 1.136505546710609
+      },
+      "chosen": {
+        "rel_rmse": 0.01532758342792317,
+        "coverage": 1.0,
+        "nmpiw": 0.04051968830459785,
+        "q": 1.136505546710609
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "dim>2 或低保真非有限 → 不适用",
+        "base_rmse": null,
+        "mf_rmse": null,
+        "base_cov": null,
+        "mf_cov": null
+      }
+    },
+    {
+      "key": "micro_haldane_2d",
+      "dim": 2,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.32778318554223823,
+        "coverage": 0.9666666666666667,
+        "nmpiw": 0.09908552232689825,
+        "q": 18.316599147680186
+      },
+      "chosen": {
+        "rel_rmse": 0.32778318554223823,
+        "coverage": 0.9666666666666667,
+        "nmpiw": 0.09908552232689825,
+        "q": 18.316599147680186
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 改善 0.0315→0.0078，coverage 0.080→0.040）",
+        "base_rmse": 0.03149420303321967,
+        "mf_rmse": 0.007794401341894365,
+        "base_cov": 0.08,
+        "mf_cov": 0.04
+      }
+    },
+    {
+      "key": "micro_oxygen_2d",
+      "dim": 2,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.36391763004147243,
+        "coverage": 0.9666666666666667,
+        "nmpiw": 0.08325992559662516,
+        "q": 15.517525755307911
+      },
+      "chosen": {
+        "rel_rmse": 0.36391763004147243,
+        "coverage": 0.9666666666666667,
+        "nmpiw": 0.08325992559662516,
+        "q": 15.517525755307911
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 恶化 0.0263→0.0555，coverage 0.280→0.160）",
+        "base_rmse": 0.026337733924267758,
+        "mf_rmse": 0.055463830911669364,
+        "base_cov": 0.28,
+        "mf_cov": 0.16
+      }
+    },
+    {
+      "key": "micro_antibiotic_2d",
+      "dim": 2,
+      "source": "multifidelity",
+      "base": {
+        "rel_rmse": 0.6029786486290213,
+        "coverage": 0.9333333333333333,
+        "nmpiw": 0.0038407740417948644,
+        "q": 33.94256088146897
+      },
+      "chosen": {
+        "rel_rmse": 0.28555234573250565,
+        "coverage": 1.0,
+        "nmpiw": 0.0023822741066802317,
+        "q": 51.619422155701656
+      },
+      "decision": {
+        "adopted": true,
+        "reason": "误差更优且校准不降级 → 采纳低保真先验",
+        "base_rmse": 0.0010565685529107353,
+        "mf_rmse": 0.0005287014787147627,
+        "base_cov": 0.08,
+        "mf_cov": 0.06
+      }
+    },
+    {
+      "key": "micro_secondary_metabolite",
+      "dim": 1,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.09936073626561405,
+        "coverage": 0.95,
+        "nmpiw": 0.5211703843384121,
+        "q": 8.840133704919275
+      },
+      "chosen": {
+        "rel_rmse": 0.09936073626561405,
+        "coverage": 0.95,
+        "nmpiw": 0.5211703843384121,
+        "q": 8.840133704919275
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 改善 0.0860→0.0050，coverage 0.500→0.133）",
+        "base_rmse": 0.08604623892067616,
+        "mf_rmse": 0.004971060308201922,
+        "base_cov": 0.5,
+        "mf_cov": 0.13333333333333333
+      }
+    },
+    {
+      "key": "micro_thermal_death",
+      "dim": 1,
+      "source": "multifidelity",
+      "base": {
+        "rel_rmse": 0.008775677475623602,
+        "coverage": 1.0,
+        "nmpiw": 0.05510724350405347,
+        "q": 0.8479126388671858
+      },
+      "chosen": {
+        "rel_rmse": 1.2076090272438273e-16,
+        "coverage": 0.95,
+        "nmpiw": 8.922592764611155e-16,
+        "q": 1.4199393595929506e-05
+      },
+      "decision": {
+        "adopted": true,
+        "reason": "误差更优且校准不降级 → 采纳低保真先验",
+        "base_rmse": 0.012048150756409883,
+        "mf_rmse": 2.445570474987897e-16,
+        "base_cov": 1.0,
+        "mf_cov": 1.0
+      }
+    },
+    {
+      "key": "micro_immobilized_cell",
+      "dim": 2,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.9143806148577411,
+        "coverage": 0.9333333333333333,
+        "nmpiw": 3.5813171837484323,
+        "q": 2.0569841675346128
+      },
+      "chosen": {
+        "rel_rmse": 0.9143806148577411,
+        "coverage": 0.9333333333333333,
+        "nmpiw": 3.5813171837484323,
+        "q": 2.0569841675346128
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 改善 1.0508→0.7373，coverage 0.940→0.900）",
+        "base_rmse": 1.0508401652878827,
+        "mf_rmse": 0.7373331466143768,
+        "base_cov": 0.94,
+        "mf_cov": 0.9
+      }
+    },
+    {
+      "key": "micro_plasmid_stability",
+      "dim": 2,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.005358514885944634,
+        "coverage": 0.9666666666666667,
+        "nmpiw": 0.054808190882671345,
+        "q": 0.30675555632232043
+      },
+      "chosen": {
+        "rel_rmse": 0.005358514885944634,
+        "coverage": 0.9666666666666667,
+        "nmpiw": 0.054808190882671345,
+        "q": 0.30675555632232043
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 恶化 0.0187→0.0441，coverage 1.000→0.060）",
+        "base_rmse": 0.018672245320563344,
+        "mf_rmse": 0.04406861733009524,
+        "base_cov": 1.0,
+        "mf_cov": 0.06
+      }
+    },
+    {
+      "key": "micro_phage_infection",
+      "dim": 2,
+      "source": "multifidelity",
+      "base": {
+        "rel_rmse": 0.016078929241512687,
+        "coverage": 0.9666666666666667,
+        "nmpiw": 0.13807611603846678,
+        "q": 1.168863995713346
+      },
+      "chosen": {
+        "rel_rmse": 4.865060096735616e-16,
+        "coverage": 0.9,
+        "nmpiw": 3.575488688999564e-15,
+        "q": 5.839210994747059e-05
+      },
+      "decision": {
+        "adopted": true,
+        "reason": "误差更优且校准不降级 → 采纳低保真先验",
+        "base_rmse": 0.03737457850829829,
+        "mf_rmse": 1.1460599492142568e-15,
+        "base_cov": 1.0,
+        "mf_cov": 1.0
+      }
+    },
+    {
+      "key": "micro_gene_expression",
+      "dim": 2,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.028193432597318213,
+        "coverage": 0.9333333333333333,
+        "nmpiw": 0.01778768630052991,
+        "q": 1.7149999363710409
+      },
+      "chosen": {
+        "rel_rmse": 0.028193432597318213,
+        "coverage": 0.9333333333333333,
+        "nmpiw": 0.01778768630052991,
+        "q": 1.7149999363710409
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 恶化 0.0050→0.0084，coverage 0.960→0.080）",
+        "base_rmse": 0.004982503966182198,
+        "mf_rmse": 0.008445488349238509,
+        "base_cov": 0.96,
+        "mf_cov": 0.08
+      }
+    },
+    {
+      "key": "micro_oxidative_stress",
+      "dim": 1,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.003373212292113241,
+        "coverage": 1.0,
+        "nmpiw": 0.14360187914875355,
+        "q": 0.4064664659854178
+      },
+      "chosen": {
+        "rel_rmse": 0.003373212292113241,
+        "coverage": 1.0,
+        "nmpiw": 0.14360187914875355,
+        "q": 0.4064664659854178
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 改善 0.1501→0.0231，coverage 1.000→0.000）",
+        "base_rmse": 0.15011008170466986,
+        "mf_rmse": 0.023086622936509246,
+        "base_cov": 1.0,
+        "mf_cov": 0.0
+      }
+    },
+    {
+      "key": "micro_chemostat_transient",
+      "dim": 2,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.008921036863558404,
+        "coverage": 0.9666666666666667,
+        "nmpiw": 0.0749247524233211,
+        "q": 0.4312864321440578
+      },
+      "chosen": {
+        "rel_rmse": 0.008921036863558404,
+        "coverage": 0.9666666666666667,
+        "nmpiw": 0.0749247524233211,
+        "q": 0.4312864321440578
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 改善 0.0607→0.0201，coverage 1.000→0.320）",
+        "base_rmse": 0.06071432562720663,
+        "mf_rmse": 0.020128415447557675,
+        "base_cov": 1.0,
+        "mf_cov": 0.32
+      }
+    },
+    {
+      "key": "micro_mixed_substrate",
+      "dim": 2,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.5563256428775354,
+        "coverage": 0.9333333333333333,
+        "nmpiw": 0.4817930729114572,
+        "q": 15.044845498717523
+      },
+      "chosen": {
+        "rel_rmse": 0.5563256428775354,
+        "coverage": 0.9333333333333333,
+        "nmpiw": 0.4817930729114572,
+        "q": 15.044845498717523
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 恶化 0.1510→0.2212，coverage 0.440→0.260）",
+        "base_rmse": 0.15097139070280638,
+        "mf_rmse": 0.22117789221615694,
+        "base_cov": 0.44,
+        "mf_cov": 0.26
+      }
+    },
+    {
+      "key": "micro_ph_control",
+      "dim": 2,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.15375282026611228,
+        "coverage": 0.9666666666666667,
+        "nmpiw": 1.9035850393237688,
+        "q": 9.591191264181482
+      },
+      "chosen": {
+        "rel_rmse": 0.15375282026611228,
+        "coverage": 0.9666666666666667,
+        "nmpiw": 1.9035850393237688,
+        "q": 9.591191264181482
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 改善 0.5284→0.3774，coverage 0.400→0.060）",
+        "base_rmse": 0.528423138213609,
+        "mf_rmse": 0.37738869170412515,
+        "base_cov": 0.4,
+        "mf_cov": 0.06
+      }
+    },
+    {
+      "key": "micro_fba_flux",
+      "dim": 2,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.0042104721861468755,
+        "coverage": 1.0,
+        "nmpiw": 0.06257745718665712,
+        "q": 0.36339563366841393
+      },
+      "chosen": {
+        "rel_rmse": 0.0042104721861468755,
+        "coverage": 1.0,
+        "nmpiw": 0.06257745718665712,
+        "q": 0.36339563366841393
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 恶化 0.0223→0.0740，coverage 1.000→0.720）",
+        "base_rmse": 0.022318869887968336,
+        "mf_rmse": 0.07401929853835863,
+        "base_cov": 1.0,
+        "mf_cov": 0.72
+      }
+    },
+    {
+      "key": "micro_dead_volume",
+      "dim": 2,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.35319638535014525,
+        "coverage": 0.9666666666666667,
+        "nmpiw": 0.7355450830858392,
+        "q": 20.716972929591286
+      },
+      "chosen": {
+        "rel_rmse": 0.35319638535014525,
+        "coverage": 0.9666666666666667,
+        "nmpiw": 0.7355450830858392,
+        "q": 20.716972929591286
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 改善 0.2158→0.1957，coverage 0.200→0.160）",
+        "base_rmse": 0.21582548636595839,
+        "mf_rmse": 0.19574210317719304,
+        "base_cov": 0.2,
+        "mf_cov": 0.16
+      }
+    },
+    {
+      "key": "micro_foam_dynamics",
+      "dim": 2,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.080171305365593,
+        "coverage": 0.9666666666666667,
+        "nmpiw": 0.23709882942552005,
+        "q": 4.22483429234633
+      },
+      "chosen": {
+        "rel_rmse": 0.080171305365593,
+        "coverage": 0.9666666666666667,
+        "nmpiw": 0.23709882942552005,
+        "q": 4.22483429234633
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 改善 0.0689→0.0515，coverage 0.700→0.140）",
+        "base_rmse": 0.06891498054704849,
+        "mf_rmse": 0.051544766605026986,
+        "base_cov": 0.7,
+        "mf_cov": 0.14
+      }
+    },
+    {
+      "key": "micro_sensor_fusion",
+      "dim": 2,
+      "source": "gp_only",
+      "base": {
+        "rel_rmse": 0.021637049968451477,
+        "coverage": 0.8666666666666667,
+        "nmpiw": 0.08535970400514138,
+        "q": 1.0513808272684455
+      },
+      "chosen": {
+        "rel_rmse": 0.021637049968451477,
+        "coverage": 0.8666666666666667,
+        "nmpiw": 0.08535970400514138,
+        "q": 1.0513808272684455
+      },
+      "decision": {
+        "adopted": false,
+        "reason": "门控未通过（rmse 改善 0.0272→0.0134，coverage 0.980→0.080）",
+        "base_rmse": 0.02724105039329512,
+        "mf_rmse": 0.013400630015500535,
+        "base_cov": 0.98,
+        "mf_cov": 0.08
+      }
+    }
+  ]
+}

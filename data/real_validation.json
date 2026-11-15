@@ -1,0 +1,239 @@
+{
+  "generated_at": "2026-08-18T15:39:56",
+  "sections": {
+    "pinn": {
+      "task": "1D Poisson: u'' = -pi^2*sin(pi*x), u(0)=u(1)=0; analytical solution u=sin(pi*x)",
+      "max_pde_residual": 0.02769,
+      "final_loss": 1e-05,
+      "rmse_vs_exact": 2e-05,
+      "note": "PINN never sees the analytical solution - it learns from PDE + boundary conditions only, on CPU"
+    },
+    "neural_operator": {
+      "task": "Viscous Burgers equation u_t+u*u_x=nu*u_xx (spectral-method numerical solution = ground truth)",
+      "operator": "Initial field u0(x) maps to the field u(x) at t=0.5",
+      "train_sec_cpu": 3.4,
+      "n_train_pairs": 256,
+      "n_grid": 64,
+      "rmse": 0.18763,
+      "coverage": 0.936,
+      "mean_std": 0.18189,
+      "note": "Hand-written Adam in pure numpy, no GPU needed; deep neural operator genuinely trained"
+    },
+    "real_datasets": {
+      "yacht": {
+        "dataset": "yacht",
+        "citation": "Gerritsma 1981 towing-tank data, UCI#243",
+        "desc": "Real ship-model towing-tank residual resistance experiment (308 records)",
+        "n_total": 308,
+        "n_features": 6,
+        "lengthscale_cv": 0.8,
+        "noise_rel_calibrated": 0.139,
+        "final": {
+          "phase": "al_step",
+          "n_real": 247,
+          "rmse_rel": 0.2631,
+          "coverage": 0.836,
+          "mean_std": 0.1583
+        },
+        "experiments_saved_pct": 19.8,
+        "history": [
+          {
+            "phase": "seed",
+            "n_real": 20,
+            "rmse_rel": 0.7258,
+            "coverage": 0.836,
+            "mean_std": 0.3701
+          },
+          {
+            "phase": "al_step",
+            "n_real": 40,
+            "rmse_rel": 0.5689,
+            "coverage": 0.525,
+            "mean_std": 0.2151
+          },
+          {
+            "phase": "al_step",
+            "n_real": 80,
+            "rmse_rel": 0.3692,
+            "coverage": 0.672,
+            "mean_std": 0.1748
+          },
+          {
+            "phase": "al_step",
+            "n_real": 120,
+            "rmse_rel": 0.3276,
+            "coverage": 0.721,
+            "mean_std": 0.1656
+          },
+          {
+            "phase": "al_step",
+            "n_real": 160,
+            "rmse_rel": 0.2892,
+            "coverage": 0.787,
+            "mean_std": 0.1615
+          },
+          {
+            "phase": "al_step",
+            "n_real": 200,
+            "rmse_rel": 0.2832,
+            "coverage": 0.82,
+            "mean_std": 0.1592
+          },
+          {
+            "phase": "al_step",
+            "n_real": 247,
+            "rmse_rel": 0.2631,
+            "coverage": 0.836,
+            "mean_std": 0.1583
+          }
+        ],
+        "note": "Using only 247 real experiment points, predicts 61 un-tested runs with relative RMSE 0.2631 and 95% CI coverage 0.836"
+      },
+      "ccpp": {
+        "dataset": "ccpp",
+        "citation": "Kaya et al. 2012 (Tübingen), UCI#294",
+        "desc": "Real combined-cycle power-plant output (9,568 operating records)",
+        "n_total": 9568,
+        "n_features": 4,
+        "lengthscale_cv": 0.2,
+        "noise_rel_calibrated": 0.2822,
+        "final": {
+          "phase": "al_step",
+          "n_real": 250,
+          "rmse_rel": 0.2575,
+          "coverage": 0.99,
+          "mean_std": 0.3547
+        },
+        "experiments_saved_pct": 97.4,
+        "history": [
+          {
+            "phase": "seed",
+            "n_real": 20,
+            "rmse_rel": 0.6863,
+            "coverage": 0.996,
+            "mean_std": 0.878
+          },
+          {
+            "phase": "al_step",
+            "n_real": 40,
+            "rmse_rel": 0.3132,
+            "coverage": 0.998,
+            "mean_std": 0.6136
+          },
+          {
+            "phase": "al_step",
+            "n_real": 80,
+            "rmse_rel": 0.286,
+            "coverage": 0.996,
+            "mean_std": 0.484
+          },
+          {
+            "phase": "al_step",
+            "n_real": 120,
+            "rmse_rel": 0.2544,
+            "coverage": 0.996,
+            "mean_std": 0.4251
+          },
+          {
+            "phase": "al_step",
+            "n_real": 160,
+            "rmse_rel": 0.2643,
+            "coverage": 0.994,
+            "mean_std": 0.3914
+          },
+          {
+            "phase": "al_step",
+            "n_real": 200,
+            "rmse_rel": 0.2572,
+            "coverage": 0.992,
+            "mean_std": 0.3691
+          },
+          {
+            "phase": "al_step",
+            "n_real": 250,
+            "rmse_rel": 0.2575,
+            "coverage": 0.99,
+            "mean_std": 0.3547
+          }
+        ],
+        "note": "Using only 250 real experiment points, predicts 9,318 un-tested runs with relative RMSE 0.2575 and 95% CI coverage 0.99"
+      },
+      "airfoil": {
+        "dataset": "airfoil",
+        "citation": "NASA APS noise data (Brooks, Pope & Marcolini 1989), UCI#291",
+        "desc": "NASA wind-tunnel airfoil self-noise measurements (real acoustic experiment, 1,503 records)",
+        "n_total": 1503,
+        "n_features": 5,
+        "lengthscale_cv": 0.2,
+        "noise_rel_calibrated": 0.4479,
+        "final": {
+          "phase": "al_step",
+          "n_real": 250,
+          "rmse_rel": 0.6535,
+          "coverage": 0.927,
+          "mean_std": 0.5798
+        },
+        "experiments_saved_pct": 83.4,
+        "history": [
+          {
+            "phase": "seed",
+            "n_real": 20,
+            "rmse_rel": 0.9929,
+            "coverage": 0.957,
+            "mean_std": 1.0132
+          },
+          {
+            "phase": "al_step",
+            "n_real": 40,
+            "rmse_rel": 0.8905,
+            "coverage": 0.977,
+            "mean_std": 0.9162
+          },
+          {
+            "phase": "al_step",
+            "n_real": 80,
+            "rmse_rel": 0.8049,
+            "coverage": 0.95,
+            "mean_std": 0.7721
+          },
+          {
+            "phase": "al_step",
+            "n_real": 120,
+            "rmse_rel": 0.7754,
+            "coverage": 0.923,
+            "mean_std": 0.6914
+          },
+          {
+            "phase": "al_step",
+            "n_real": 160,
+            "rmse_rel": 0.7603,
+            "coverage": 0.917,
+            "mean_std": 0.639
+          },
+          {
+            "phase": "al_step",
+            "n_real": 200,
+            "rmse_rel": 0.7231,
+            "coverage": 0.91,
+            "mean_std": 0.6088
+          },
+          {
+            "phase": "al_step",
+            "n_real": 250,
+            "rmse_rel": 0.6535,
+            "coverage": 0.927,
+            "mean_std": 0.5798
+          }
+        ],
+        "note": "Using only 250 real experiment points, predicts 1,253 un-tested runs with relative RMSE 0.6535 and 95% CI coverage 0.927"
+      }
+    },
+    "remote_lab": {
+      "dataset": "airfoil",
+      "backend": "DatasetOracle (real published experiment datasets)",
+      "n_observed": 10,
+      "readback_rmse": 0.0,
+      "note": "RemoteLab submit-and-fetch closed loop is wired to real data; observe returns the nearest real measured value"
+    }
+  }
+}

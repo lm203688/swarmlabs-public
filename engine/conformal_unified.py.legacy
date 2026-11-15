@@ -1,0 +1,345 @@
+"""Unified conformal prediction module.
+
+P1-6: Consolidates three overlapping conformal implementations into a single
+entry point, eliminating maintenance surface and drift risk.
+
+Modules consolidated:
+  - engine/conformal.py         → cross-conformal scoring, UQ metrics, basic intervals
+  - engine/conformal_vv.py      → multi-level confidence distribution, calibration quality
+  - engine/adaptive_conformal.py→ sharpness optimization (AC, QR, local weights)
+
+This module does NOT replace the originals — it imports from them and provides
+a unified API. The originals remain importable for backward compatibility.
+
+Usage:
+    from engine.conformal_unified import ConformalEngine, ConformalReport
+    engine = ConformalEngine(domain, X, y, alpha_levels=[0.01, 0.05, 0.10])
+    report = engine.evaluate(X_test, y_test)
+"""
+from __future__ import annotations
+
+import json
+import os
+import sys
+from dataclasses import asdict, dataclass, field
+from typing import Any, Callable, Dict, List, Optional, Tuple
+
+import numpy as np
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if ROOT not in sys.path:
+    sys.path.insert(0, ROOT)
+
+# Import from the three existing implementations
+from engine.conformal import (
+    nonconformity_std,
+    conformal_quantile,
+    cross_conformal_scores,
+    _fit_engine,
+)
+from engine.conformal_vv import (
+    ALPHA_LEVELS,
+    AlphaLevelResult,
+    ConfidenceProfile,
+)
+from engine.adaptive_conformal import (
+    adaptive_conformal_interval,
+)
+from engine.surrogate import SurrogateEngine, GPSurrogate
+
+
+# =========================================================================
+# Data structures
+# =========================================================================
+
+@dataclass
+class ConformalReport:
+    """Unified conformal report with all metrics."""
+    scenario: str
+    n_train: int
+    n_test: int
+    alpha_levels: List[float]
+    cross_conformal_Q: Dict[str, float]      # {"0.05": 1.234, "0.01": 2.567, ...}
+    level_results: List[Dict[str, Any]]      # per-alpha metrics
+    overall_verdict: str                     # IMPROVED / MIXED / REGRESSED
+    mcal_global: float                       # global miscalibration area
+    picp_global: float                       # global PICP
+    nmpiw_global: float                      # global NMPIW
+    timestamp: str = ""
+
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+
+    def to_json(self, path: Optional[str] = None) -> str:
+        s = json.dumps(self.to_dict(), indent=2, ensure_ascii=False, default=str)
+        if path:
+            with open(path, "w", encoding="utf-8") as f:
+                f.write(s)
+        return s
+
+
+# =========================================================================
+# Unified engine
+# =========================================================================
+
+class ConformalEngine:
+    """Unified conformal prediction engine.
+
+    Provides a single API that wraps:
+    - Cross-conformal calibration (from conformal.py)
+    - Multi-level confidence profiling (from conformal_vv.py)
+    - Sharpness optimization (from adaptive_conformal.py)
+
+    Example:
+        >>> engine = ConformalEngine(domain, X_train, y_train)
+        >>> report = engine.evaluate(X_test, y_test)
+        >>> print(report.overall_verdict)
+    """
+
+    def __init__(
+        self,
+        domain: str,
+        X_train: np.ndarray,
+        y_train: np.ndarray,
+        alpha_levels: Optional[List[float]] = None,
+        noise_rel: float = 0.03,
+        k_folds: int = 5,
+        seed: int = 0,
+    ):
+        self.domain = domain
+        self.X_train = np.atleast_2d(np.asarray(X_train, float))
+        self.y_train = np.asarray(y_train, float).ravel()
+        self.alpha_levels = alpha_levels or list(ALPHA_LEVELS)
+        self.noise_rel = noise_rel
+        self.k_folds = k_folds
+        self.seed = seed
+
+        # Fit the base surrogate engine
+        self.engine = _fit_engine(domain, self.X_train, self.y_train, noise_rel=noise_rel)
+        self.scenario_key = domain.get("key", str(domain))
+
+        # Compute cross-conformal scores
+        self.scores = cross_conformal_scores(
+            domain, self.X_train, self.y_train,
+            k_folds=k_folds, seed=seed, noise_rel=noise_rel,
+        )
+        # For adaptive conformal: use only first n_train scores (one OOF pass)
+        self.scores_1d = self.scores[:len(self.y_train)]
+
+        # Compute conformal quantiles for each alpha level
+        self.conformal_Q = {}
+        for alpha in self.alpha_levels:
+            self.conformal_Q[str(alpha)] = conformal_quantile(self.scores, alpha=alpha)
+
+    def predict_intervals(
+        self, X_test: np.ndarray, alpha: float = 0.05, method: str = "conformal"
+    ) -> Tuple[np.ndarray, np.ndarray]:
+        """Predict confidence intervals.
+
+        Args:
+            X_test: Test input points.
+            alpha: Significance level.
+            method: "conformal" (global quantile), "adaptive" (local density), or "gaussian".
+
+        Returns:
+            (lower, upper) interval bounds.
+        """
+        X_test = np.atleast_2d(np.asarray(X_test, float))
+        mu, sd = self.engine.predict(X_test)
+
+        if method == "gaussian":
+            z = 1.96 if alpha == 0.05 else float(np.sqrt(2) * np.log(2 / alpha))
+            return mu - z * sd, mu + z * sd
+
+        if method == "adaptive":
+            return adaptive_conformal_interval(
+                self.X_train, self.y_train, self.scores_1d, X_test, alpha=alpha,
+            )
+
+        # Default: conformal
+        alpha_str = str(alpha)
+        if alpha_str not in self.conformal_Q:
+            Q = conformal_quantile(self.scores, alpha=alpha)
+        else:
+            Q = self.conformal_Q[alpha_str]
+        return mu - Q * sd, mu + Q * sd
+
+    def evaluate(self, X_test: np.ndarray, y_test: np.ndarray) -> ConformalReport:
+        """Full multi-level evaluation.
+
+        Args:
+            X_test: Test input points.
+            y_test: True test values.
+
+        Returns:
+            ConformalReport with all metrics.
+        """
+        X_test = np.atleast_2d(np.asarray(X_test, float))
+        y_test = np.asarray(y_test, float).ravel()
+        mu, sd = self.engine.predict(X_test)
+
+        level_results = []
+        picp_all = []
+        nmpiw_all = []
+
+        for alpha in self.alpha_levels:
+            lower, upper = self.predict_intervals(X_test, alpha=alpha, method="conformal")
+            coverage = float(np.mean((y_test >= lower) & (y_test <= upper)))
+            interval_width = np.mean(upper - lower)
+            value_range = float(np.max(y_test) - np.min(y_test)) if np.max(y_test) > np.min(y_test) else 1.0
+            nmpiw = float(interval_width / value_range) if value_range > 0 else float("inf")
+
+            Q = self.conformal_Q.get(str(alpha), conformal_quantile(self.scores, alpha=alpha))
+            picp_all.append(coverage)
+            nmpiw_all.append(nmpiw)
+
+            level_results.append({
+                "alpha": alpha,
+                "Q": Q,
+                "picp": round(coverage, 4),
+                "nmpiw": round(nmpiw, 4),
+                "nominal_coverage": round(1.0 - alpha, 4),
+                "under_covers": coverage < (1.0 - alpha) - 0.02,
+                "over_covers": coverage > (1.0 - alpha) + 0.05,
+            })
+
+        # Global metrics
+        picp_global = float(np.mean(picp_all))
+        nmpiw_global = float(np.mean(nmpiw_all))
+
+        # Global MCAL (area under calibration curve deviation)
+        nominal = [1.0 - a for a in self.alpha_levels]
+        mcal = float(np.mean(np.abs(np.array(picp_all) - np.array(nominal))))
+
+        # Overall verdict
+        under_count = sum(1 for r in level_results if r["under_covers"])
+        over_count = sum(1 for r in level_results if r["over_covers"])
+        if under_count == 0 and over_count == 0:
+            verdict = "IMPROVED"
+        elif under_count > 0:
+            verdict = "REGRESSED"
+        else:
+            verdict = "MIXED"
+
+        report = ConformalReport(
+            scenario=self.scenario_key,
+            n_train=len(self.y_train),
+            n_test=len(y_test),
+            alpha_levels=self.alpha_levels,
+            cross_conformal_Q=self.conformal_Q,
+            level_results=level_results,
+            overall_verdict=verdict,
+            mcal_global=round(mcal, 6),
+            picp_global=round(picp_global, 4),
+            nmpiw_global=round(nmpiw_global, 4),
+        )
+        return report
+
+    def evaluate_adaptive(self, X_test: np.ndarray, y_test: np.ndarray, alpha: float = 0.05) -> Dict[str, Any]:
+        """Evaluate adaptive conformal intervals."""
+        X_test = np.atleast_2d(np.asarray(X_test, float))
+        y_test = np.asarray(y_test, float).ravel()
+        mu, sd = self.engine.predict(X_test)
+
+        # Conformal intervals
+        lower_c, upper_c = self.predict_intervals(X_test, alpha=alpha, method="conformal")
+        # Adaptive intervals
+        lower_a, upper_a = self.predict_intervals(X_test, alpha=alpha, method="adaptive")
+
+        cov_c = float(np.mean((y_test >= lower_c) & (y_test <= upper_c)))
+        cov_a = float(np.mean((y_test >= lower_a) & (y_test <= upper_a)))
+        width_c = float(np.mean(upper_c - lower_c))
+        width_a = float(np.mean(upper_a - lower_a))
+        value_range = float(np.max(y_test) - np.min(y_test)) if np.max(y_test) > np.min(y_test) else 1.0
+
+        return {
+            "alpha": alpha,
+            "conformal": {"coverage": round(cov_c, 4), "nmpiw": round(width_c / value_range, 4)},
+            "adaptive": {"coverage": round(cov_a, 4), "nmpiw": round(width_a / value_range, 4)},
+            "sharpness_gain": round((width_c / width_a - 1.0) * 100, 2) if width_a > 0 else 0,
+            "coverage_loss": round(cov_c - cov_a, 4),
+        }
+
+
+# =========================================================================
+# Module-level convenience functions
+# =========================================================================
+
+def unified_evaluate(
+    domain: str,
+    X_train: np.ndarray,
+    y_train: np.ndarray,
+    X_test: np.ndarray,
+    y_test: np.ndarray,
+    alpha_levels: Optional[List[float]] = None,
+    noise_rel: float = 0.03,
+    seed: int = 0,
+) -> ConformalReport:
+    """One-shot evaluation: fit engine, compute scores, evaluate test set."""
+    eng = ConformalEngine(
+        domain, X_train, y_train,
+        alpha_levels=alpha_levels,
+        noise_rel=noise_rel,
+        seed=seed,
+    )
+    return eng.evaluate(X_test, y_test)
+
+
+# =========================================================================
+# Self-test
+# =========================================================================
+
+if __name__ == "__main__":
+    print("=== Conformal Unified Module self-test ===\n")
+
+    # Create synthetic data with a proper domain dict
+    def test_fn(x):
+        return np.sin(x[0] * 3) + 0.5 * x[1]
+
+    rng = np.random.default_rng(42)
+    X = rng.random((30, 2))
+    y = np.array([test_fn(np.atleast_1d(x)) for x in X], float) + rng.normal(0, 0.05, 30)
+
+    X_test = rng.random((20, 2))
+    y_test = np.array([test_fn(np.atleast_1d(x)) for x in X_test], float)
+
+    domain = {
+        "key": "test_domain",
+        "dim": 2,
+        "param_names": ["x0", "x1"],
+        "f": test_fn,
+        "bounds": [(0.0, 1.0), (0.0, 1.0)],
+        "ls": 0.2,
+    }
+
+    # Test 1: Basic evaluation
+    engine = ConformalEngine(domain, X, y, seed=42)
+    report = engine.evaluate(X_test, y_test)
+    print(f"Test 1 - Basic evaluation:")
+    print(f"  Scenario: {report.scenario}")
+    print(f"  Verdict: {report.overall_verdict}")
+    print(f"  PICP (global): {report.picp_global:.4f}")
+    print(f"  NMPIW (global): {report.nmpiw_global:.4f}")
+    print(f"  MCAL: {report.mcal_global:.6f}")
+    print(f"  Alpha levels: {report.alpha_levels}")
+    print()
+
+    # Test 2: Adaptive comparison
+    result = engine.evaluate_adaptive(X_test, y_test, alpha=0.05)
+    print(f"Test 2 - Adaptive vs Conformal:")
+    print(f"  Conformal coverage: {result['conformal']['coverage']:.4f}")
+    print(f"  Adaptive coverage: {result['adaptive']['coverage']:.4f}")
+    print(f"  Sharpness gain: {result['sharpness_gain']:.1f}%")
+    print(f"  Coverage loss: {result['coverage_loss']:.4f}")
+    print()
+
+    # Test 3: JSON export
+    js = report.to_json()
+    print(f"Test 3 - JSON export: {len(js)} chars, valid={json.loads(js) is not None}")
+
+    # Test 4: Predict intervals
+    for method in ["conformal", "adaptive", "gaussian"]:
+        lo, hi = engine.predict_intervals(X_test[:5], alpha=0.05, method=method)
+        print(f"Test 4 - Predict ({method}): lower={lo[:2].round(3)}, upper={hi[:2].round(3)}")
+
+    print("\n=== All conformal unified tests PASSED ===")

@@ -1,0 +1,79 @@
+{
+  "test_environment": {
+    "name": "Claude Triple Model Test Environment",
+    "description": "测试环境配置"
+  },
+  "test_cases": {
+    "triple_model": {
+      "basic_task": {
+        "type": "basic",
+        "description": "基础任务测试",
+        "complexity": 0.2,
+        "expected_model": "gen15"
+      },
+      "innovative_task": {
+        "type": "innovative",
+        "description": "创新任务测试",
+        "complexity": 0.5,
+        "expected_model": "mythos"
+      },
+      "stable_task": {
+        "type": "stable",
+        "description": "稳定任务测试",
+        "complexity": 0.8,
+        "expected_model": "opus"
+      },
+      "critical_task": {
+        "type": "critical",
+        "description": "关键任务测试",
+        "complexity": 0.9,
+        "expected_model": "opus_mythos"
+      }
+    },
+    "experience_store": {
+      "record_test": {
+        "task": {"type": "basic", "description": "测试任务"},
+        "model_used": "gen15",
+        "result": {"success": true, "confidence": 0.9},
+        "metadata": {"test": true}
+      }
+    },
+    "tech_radar": {
+      "add_item_test": {
+        "name": "Python",
+        "category": "languages",
+        "maturity": "mature",
+        "risk_score": 0.1,
+        "adoption_rate": 0.9,
+        "trend": "stable"
+      }
+    },
+    "scheduler": {
+      "add_task_test": {
+        "name": "测试任务",
+        "task_type": "basic",
+        "schedule": "3600",
+        "priority": "medium"
+      }
+    }
+  },
+  "performance_benchmarks": {
+    "triple_model": {
+      "max_latency_ms": 5000,
+      "min_throughput_rps": 10,
+      "max_memory_mb": 1024
+    },
+    "experience_store": {
+      "max_query_time_ms": 100,
+      "max_storage_size_mb": 100
+    },
+    "tech_radar": {
+      "max_analysis_time_ms": 5000,
+      "max_items_count": 1000
+    },
+    "scheduler": {
+      "max_task_execution_time_s": 300,
+      "max_concurrent_tasks": 10
+    }
+  }
+}

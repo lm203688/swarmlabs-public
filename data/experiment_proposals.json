@@ -1,0 +1,4606 @@
+{
+ "schema": "svp.experiment-proposal.v1",
+ "generated_at": 1793155496,
+ "repo_root": "C:\\Users\\xing\\Desktop\\swarmlabs",
+ "n_scenarios": 95,
+ "n_with_next_experiment": 90,
+ "n_actionable": 62,
+ "import_error": null,
+ "summary": {
+  "has_next_experiment_rate": 0.9474,
+  "actionable_rate": 0.6526,
+  "note": "actionable = rubric 7/7 全通过且有合规的实验建议。不达标的场景**不给**建议——那个模型的结论本身不可信，给建议是误导。"
+ },
+ "proposals": [
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "surrogate_forrester",
+   "domain": "Surrogate Modeling/Optimization (Bayesian Optimization Benchmark)",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0048,
+    "ci_low": -0.123094,
+    "ci_high": 0.132694,
+    "rmse_rel": 0.0011,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 21,
+    "n_total": 21,
+    "notes": "95% 区间 = ±q(35.526)×std_out，均为归一化量纲（y_std=4.343）",
+    "ci_width": 0.255788
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0025,
+    "n_extrema": 1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0025）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0018,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0011,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0009（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "surrogate_branin",
+   "domain": "Surrogate Modeling/Optimization (2D Benchmark)",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 0.3019,
+    "ci_low": -26.474324,
+    "ci_high": 27.078124,
+    "rmse_rel": 0.0046,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 26,
+    "n_total": 26,
+    "notes": "95% 区间 = ±q(0.601)×std_out，均为归一化量纲（y_std=64.96）",
+    "ci_width": 53.552448
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.001,
+    "n_extrema": 6,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.001）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 22.2801,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0046,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0037（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 6,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "surrogate_hartmann6",
+   "domain": "Surrogate Modeling/Optimization (6D High-Dimensional Benchmark)",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0009,
+    "ci_low": -0.16493,
+    "ci_high": 0.16673,
+    "rmse_rel": 0.0022,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 43,
+    "n_total": 43,
+    "notes": "95% 区间 = ±q(0.424)×std_out，均为归一化量纲（y_std=0.4057）",
+    "ci_width": 0.33166
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": null,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=n/a）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.1956,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0022,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0018（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "pde_heat1d",
+   "domain": "heat conduction (physics-informed) / 1D 热传导方程解析解",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0,
+    "ci_low": 0.0,
+    "ci_high": 0.0,
+    "rmse_rel": 0.0,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 30,
+    "n_total": 30,
+    "notes": "95% 区间 = ±q(48.203)×std_out，均为归一化量纲（y_std=0.1871）",
+    "ci_width": 0.0
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0005,
+    "n_extrema": 1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0005）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0000（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "bio_logistic",
+   "domain": "Biology/Population Dynamics",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0027,
+    "ci_low": -0.014806,
+    "ci_high": 0.020206,
+    "rmse_rel": 0.0001,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 15,
+    "n_total": 15,
+    "notes": "95% 区间 = ±q(35.012)×std_out，均为归一化量纲（y_std=31.44）",
+    "ci_width": 0.035012
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0002,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0002）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.00025,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0001,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0001（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "microbio_monod",
+   "domain": "Microorganisms/Growth Kinetics (Monod)",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0001,
+    "ci_low": -0.002753,
+    "ci_high": 0.002953,
+    "rmse_rel": 0.0007,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 22,
+    "n_total": 22,
+    "notes": "95% 区间 = ±q(28.526)×std_out，均为归一化量纲（y_std=0.1343）",
+    "ci_width": 0.005706
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.001,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.001）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 5e-05,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0007,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0006（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "microbio_inhibition",
+   "domain": "Microorganisms/Substrate Inhibition (Andrews)",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0003,
+    "ci_low": -0.005004,
+    "ci_high": 0.005604,
+    "rmse_rel": 0.0033,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 26,
+    "n_total": 26,
+    "notes": "95% 区间 = ±q(53.044)×std_out，均为归一化量纲（y_std=0.09057）",
+    "ci_width": 0.010608
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0026,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0026）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 5e-05,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0033,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0026（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "llm_scaling",
+   "domain": "LLM/Scaling Law (Kaplan 2020)",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0,
+    "ci_low": 0.0,
+    "ci_high": 0.0,
+    "rmse_rel": 0.0,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 21,
+    "n_total": 21,
+    "notes": "95% 区间 = ±q(67.472)×std_out，均为归一化量纲（y_std=0.4744）",
+    "ci_width": 0.0
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0001,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0001）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0000（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "chem_langmuir",
+   "domain": "Chemical/Adsorption Isotherm (Langmuir 1916)",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0002,
+    "ci_low": -0.007849,
+    "ci_high": 0.008249,
+    "rmse_rel": 0.0014,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 20,
+    "n_total": 20,
+    "notes": "95% 区间 = ±q(40.247)×std_out，均为归一化量纲（y_std=0.1403）",
+    "ci_width": 0.016098
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0017,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0017）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0001,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0014,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0011（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "chem_reactor_conversion",
+   "domain": "Chemistry / First-Order Reactor Conversion (Arrhenius Kinetics, 2D)",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0006,
+    "ci_low": -0.037591,
+    "ci_high": 0.038791,
+    "rmse_rel": 0.0027,
+    "coverage": 0.967,
+    "cal_err": 0.017,
+    "n_train": 25,
+    "n_total": 25,
+    "notes": "95% 区间 = ±q(13.640)×std_out，均为归一化量纲（y_std=0.2253）",
+    "ci_width": 0.076382
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0001,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0001）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0014,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0027,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0022（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_ecoli_glucose",
+   "domain": "微生物 / E. coli 批次培养（Monod, 文献参数）",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 0.0613,
+    "ci_low": -0.094967,
+    "ci_high": 0.217567,
+    "rmse_rel": 1.0337,
+    "coverage": 0.9,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(50.409)×std_out，均为归一化量纲（y_std=0.0593）",
+    "ci_width": 0.312534
+   },
+   "boundary": {
+    "in_applicability": false,
+    "roughness": 0.4482,
+    "n_extrema": 64,
+    "valid_when": "无——该目标超出平滑代理模型适用域",
+    "fails_when": "高频震荡目标（roughness=0.4482，64 个局部极值），加密训练点无效（实测 30→480 点 rel 只降 1.46→1.00）",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": null,
+   "alternatives": [],
+   "rubric": {
+    "passed": 6,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_cerevisiae_ethanol",
+   "domain": "微生物 / 酿酒酵母乙醇发酵（Monod + 乙醇产物抑制）",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 0.0431,
+    "ci_low": -1.337137,
+    "ci_high": 1.423337,
+    "rmse_rel": 0.9055,
+    "coverage": 0.933,
+    "cal_err": 0.017,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(57.035)×std_out，均为归一化量纲（y_std=0.0476）",
+    "ci_width": 2.760474
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.1322,
+    "n_extrema": 105,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.1322）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0121,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.9055,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.7244（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 6,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_putida_toluene",
+   "domain": "微生物 / 假单胞菌甲苯降解（Andrews 底物抑制）",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 0.0903,
+    "ci_low": -0.157116,
+    "ci_high": 0.337716,
+    "rmse_rel": 1.2589,
+    "coverage": 0.7,
+    "cal_err": 0.25,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(44.181)×std_out，均为归一化量纲（y_std=0.07173）",
+    "ci_width": 0.494832
+   },
+   "boundary": {
+    "in_applicability": false,
+    "roughness": 1.776,
+    "n_extrema": 63,
+    "valid_when": "无——该目标超出平滑代理模型适用域",
+    "fails_when": "高频震荡目标（roughness=1.776，63 个局部极值），加密训练点无效（实测 30→480 点 rel 只降 1.46→1.00）",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": null,
+   "alternatives": [],
+   "rubric": {
+    "passed": 4,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_lactococcus_lactose",
+   "domain": "微生物 / 乳酸乳球菌乳酸发酵（pH 效应 + 底物抑制）",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 0.0466,
+    "ci_low": -1.498104,
+    "ci_high": 1.591304,
+    "rmse_rel": 1.2604,
+    "coverage": 0.967,
+    "cal_err": 0.017,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(74.265)×std_out，均为归一化量纲（y_std=0.03697）",
+    "ci_width": 3.089408
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.1236,
+    "n_extrema": 59,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.1236）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0104,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 1.2604,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 1.0083（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 6,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_acetobacter_acetate",
+   "domain": "微生物 / 醋酸杆菌醋酸利用（温度效应 + Monod）",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 0.0605,
+    "ci_low": -2.03992,
+    "ci_high": 2.16092,
+    "rmse_rel": 0.3473,
+    "coverage": 0.967,
+    "cal_err": 0.017,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(24.226)×std_out，均为归一化量纲（y_std=0.1742）",
+    "ci_width": 4.20084
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0576,
+    "n_extrema": 210,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0576）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.04335,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.3473,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.2778（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 6,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_methanobacterium_methane",
+   "domain": "微生物 / 产甲烷古菌甲烷利用（低 μmax 极端场景）",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 0.0805,
+    "ci_low": -0.170344,
+    "ci_high": 0.331344,
+    "rmse_rel": 1.5187,
+    "coverage": 0.3,
+    "cal_err": 0.65,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(18.177)×std_out，均为归一化量纲（y_std=0.05301）",
+    "ci_width": 0.501688
+   },
+   "boundary": {
+    "in_applicability": false,
+    "roughness": 2.0525,
+    "n_extrema": 71,
+    "valid_when": "无——该目标超出平滑代理模型适用域",
+    "fails_when": "高频震荡目标（roughness=2.0525，71 个局部极值），加密训练点无效（实测 30→480 点 rel 只降 1.46→1.00）",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": null,
+   "alternatives": [],
+   "rubric": {
+    "passed": 4,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_chemostat_ecoli",
+   "domain": "微生物 / E. coli Chemostat 稳态（稀释率→生物量）",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 0.8507,
+    "ci_low": -3.532305,
+    "ci_high": 5.233705,
+    "rmse_rel": 1.6963,
+    "coverage": 0.85,
+    "cal_err": 0.1,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(62.259)×std_out，均为归一化量纲（y_std=0.5015）",
+    "ci_width": 8.76601
+   },
+   "boundary": {
+    "in_applicability": false,
+    "roughness": 1.9119,
+    "n_extrema": 66,
+    "valid_when": "无——该目标超出平滑代理模型适用域",
+    "fails_when": "高频震荡目标（roughness=1.9119，66 个局部极值），加密训练点无效（实测 30→480 点 rel 只降 1.46→1.00）",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": null,
+   "alternatives": [],
+   "rubric": {
+    "passed": 4,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_chemostat_cerevisiae",
+   "domain": "微生物 / 酿酒酵母 Chemostat 稳态（稀释率+进料浓度→生物量）",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 0.3502,
+    "ci_low": -11.779268,
+    "ci_high": 12.479668,
+    "rmse_rel": 0.4371,
+    "coverage": 0.867,
+    "cal_err": 0.083,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(20.082)×std_out，均为归一化量纲（y_std=0.8011）",
+    "ci_width": 24.258936
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0307,
+    "n_extrema": 270,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0307）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.302,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.4371,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.3497（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 5,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_lag_ecoli",
+   "domain": "微生物 / micro_lag_ecoli",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0033,
+    "ci_low": -0.003341,
+    "ci_high": 0.009941,
+    "rmse_rel": 0.0006,
+    "coverage": 0.95,
+    "cal_err": 0.0,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(66.410)×std_out，均为归一化量纲（y_std=5.716）",
+    "ci_width": 0.013282
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0006,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0006）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 5e-05,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0006,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0005（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_lifecycle_ecoli",
+   "domain": "微生物 / micro_lifecycle_ecoli",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0,
+    "ci_low": 0.0,
+    "ci_high": 0.0,
+    "rmse_rel": 0.0,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(0.000)×std_out，均为归一化量纲（y_std=5.792）",
+    "ci_width": 0.0
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0000（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_diauxic_ecoli",
+   "domain": "微生物 / micro_diauxic_ecoli",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0002,
+    "ci_low": 0.0002,
+    "ci_high": 0.0002,
+    "rmse_rel": 0.0401,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(114.721)×std_out，均为归一化量纲（y_std=0.004987）",
+    "ci_width": 0.0
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0241,
+    "n_extrema": 11,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0241）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0401,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0321（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_fedbatch_ecoli",
+   "domain": "微生物 / micro_fedbatch_ecoli",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.1608,
+    "ci_low": 0.03672,
+    "ci_high": 0.28488,
+    "rmse_rel": 0.0046,
+    "coverage": 0.95,
+    "cal_err": 0.0,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(28.856)×std_out，均为归一化量纲（y_std=35.29）",
+    "ci_width": 0.24816
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0019,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0019）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.00215,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0046,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0037（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_competition_ecoli_yeast",
+   "domain": "微生物 / micro_competition_ecoli_yeast",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 0.0005,
+    "ci_low": 0.0005,
+    "ci_high": 0.0005,
+    "rmse_rel": 0.0627,
+    "coverage": 0.95,
+    "cal_err": 0.0,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(30.369)×std_out，均为归一化量纲（y_std=0.007968）",
+    "ci_width": 0.0
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0061,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0061）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0627,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0502（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 6,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_crabtree_cerevisiae",
+   "domain": "微生物 / micro_crabtree_cerevisiae",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0036,
+    "ci_low": -0.015078,
+    "ci_high": 0.022278,
+    "rmse_rel": 0.0011,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(93.390)×std_out，均为归一化量纲（y_std=3.291）",
+    "ci_width": 0.037356
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0016,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0016）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0001,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0011,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0009（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_haldane_putida",
+   "domain": "微生物 / micro_haldane_putida",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0001,
+    "ci_low": 0.0001,
+    "ci_high": 0.0001,
+    "rmse_rel": 0.0018,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(29.533)×std_out，均为归一化量纲（y_std=0.05601）",
+    "ci_width": 0.0
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0009,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0009）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0018,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0014（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_contois_ecoli",
+   "domain": "微生物 / micro_contois_ecoli",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0001,
+    "ci_low": 0.0001,
+    "ci_high": 0.0001,
+    "rmse_rel": 0.0011,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(67.199)×std_out，均为归一化量纲（y_std=0.09497）",
+    "ci_width": 0.0
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0003,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0003）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0011,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0009（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_tessier_ecoli",
+   "domain": "微生物 / micro_tessier_ecoli",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0001,
+    "ci_low": -0.001025,
+    "ci_high": 0.001225,
+    "rmse_rel": 0.0007,
+    "coverage": 0.9,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(11.253)×std_out，均为归一化量纲（y_std=0.1417）",
+    "ci_width": 0.00225
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0005,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0005）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 5e-05,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0007,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0006（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_pirt_ecoli",
+   "domain": "微生物 / micro_pirt_ecoli",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0,
+    "ci_low": 0.0,
+    "ci_high": 0.0,
+    "rmse_rel": 0.0,
+    "coverage": 0.95,
+    "cal_err": 0.0,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(64.466)×std_out，均为归一化量纲（y_std=0.02217）",
+    "ci_width": 0.0
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0003,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0003）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0000（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_oxygen_ecoli",
+   "domain": "微生物 / micro_oxygen_ecoli",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0,
+    "ci_low": 0.0,
+    "ci_high": 0.0,
+    "rmse_rel": 0.0,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(49.276)×std_out，均为归一化量纲（y_std=0.08219）",
+    "ci_width": 0.0
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0002,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0002）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0000（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_antibiotic_timekill",
+   "domain": "微生物 / micro_antibiotic_timekill",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0,
+    "ci_low": 0.0,
+    "ci_high": 0.0,
+    "rmse_rel": 0.0,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(66.671)×std_out，均为归一化量纲（y_std=0.001816）",
+    "ci_width": 0.0
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0002,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0002）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0000（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_osmotic_ecoli",
+   "domain": "微生物 / micro_osmotic_ecoli",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0001,
+    "ci_low": 5e-05,
+    "ci_high": 0.00015,
+    "rmse_rel": 0.0006,
+    "coverage": 0.95,
+    "cal_err": 0.0,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(0.253)×std_out，均为归一化量纲（y_std=0.1589）",
+    "ci_width": 0.0001
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0002,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0002）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0001,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0006,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0005（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_biofilm_ecoli",
+   "domain": "微生物 / micro_biofilm_ecoli",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0,
+    "ci_low": 0.0,
+    "ci_high": 0.0,
+    "rmse_rel": 0.0,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(1.960)×std_out，均为归一化量纲（y_std=0.6932）",
+    "ci_width": 0.0
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0000（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_scaleup_kla",
+   "domain": "微生物 / micro_scaleup_kla",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0,
+    "ci_low": 0.0,
+    "ci_high": 0.0,
+    "rmse_rel": 0.0,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(76.832)×std_out，均为归一化量纲（y_std=0.01344）",
+    "ci_width": 0.0
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0000（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_doe_ecoli_monod",
+   "domain": "微生物 / micro_doe_ecoli_monod",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 0.0007,
+    "ci_low": -0.00143,
+    "ci_high": 0.00283,
+    "rmse_rel": 0.2236,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(21.295)×std_out，均为归一化量纲（y_std=0.003131）",
+    "ci_width": 0.00426
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0003,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0003）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 5e-05,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.2236,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.1789（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 6,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_mle_ecoli_monod",
+   "domain": "微生物 / micro_mle_ecoli_monod",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0,
+    "ci_low": 0.0,
+    "ci_high": 0.0,
+    "rmse_rel": 0.0,
+    "coverage": 0.95,
+    "cal_err": 0.0,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(61.243)×std_out，均为归一化量纲（y_std=0.005249）",
+    "ci_width": 0.0
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0003,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0003）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0000（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_sobol_ecoli",
+   "domain": "微生物 / micro_sobol_ecoli",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0,
+    "ci_low": 0.0,
+    "ci_high": 0.0,
+    "rmse_rel": 0.0,
+    "coverage": 0.95,
+    "cal_err": 0.0,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(51.279)×std_out，均为归一化量纲（y_std=0.01418）",
+    "ci_width": 0.0
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0003,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0003）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0000（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_uq_ecoli_monod",
+   "domain": "微生物 / micro_uq_ecoli_monod",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0,
+    "ci_low": 0.0,
+    "ci_high": 0.0,
+    "rmse_rel": 0.0,
+    "coverage": 0.95,
+    "cal_err": 0.0,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(37.833)×std_out，均为归一化量纲（y_std=0.01088）",
+    "ci_width": 0.0
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0003,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0003）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0000（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_coculture_mutualism",
+   "domain": "微生物 / micro_coculture_mutualism",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0122,
+    "ci_low": -0.060228,
+    "ci_high": 0.084628,
+    "rmse_rel": 0.003,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(181.071)×std_out，均为归一化量纲（y_std=4.001）",
+    "ci_width": 0.144856
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0014,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0014）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0002,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.003,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0024（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_quorum_ecoli",
+   "domain": "微生物 / micro_quorum_ecoli",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0042,
+    "ci_low": -0.018471,
+    "ci_high": 0.026871,
+    "rmse_rel": 0.001,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(113.355)×std_out，均为归一化量纲（y_std=4.047）",
+    "ci_width": 0.045342
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0008,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0008）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0001,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.001,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0008（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_heavy_metal_ecoli",
+   "domain": "微生物 / micro_heavy_metal_ecoli",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0,
+    "ci_low": 0.0,
+    "ci_high": 0.0,
+    "rmse_rel": 0.0,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(80.476)×std_out，均为归一化量纲（y_std=0.01285）",
+    "ci_width": 0.0
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0000（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_diauxic_2d",
+   "domain": "微生物 / micro_diauxic_2d",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0,
+    "ci_low": 0.0,
+    "ci_high": 0.0,
+    "rmse_rel": 0.0,
+    "coverage": 0.967,
+    "cal_err": 0.017,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(53.865)×std_out，均为归一化量纲（y_std=2.092e-05）",
+    "ci_width": 0.0
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0027,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0027）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0000（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_fedbatch_2d",
+   "domain": "微生物 / micro_fedbatch_2d",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0,
+    "ci_low": 0.0,
+    "ci_high": 0.0,
+    "rmse_rel": 0.0,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(1.960)×std_out，均为归一化量纲（y_std=0.5774）",
+    "ci_width": 0.0
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0000（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_competition_2d",
+   "domain": "微生物 / micro_competition_2d",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0002,
+    "ci_low": 0.0002,
+    "ci_high": 0.0002,
+    "rmse_rel": 0.0187,
+    "coverage": 0.95,
+    "cal_err": 0.0,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(47.268)×std_out，均为归一化量纲（y_std=0.01069）",
+    "ci_width": 0.0
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0026,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0026）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0187,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0150（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_crabtree_2d",
+   "domain": "微生物 / micro_crabtree_2d",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0,
+    "ci_low": 0.0,
+    "ci_high": 0.0,
+    "rmse_rel": 0.0,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(0.000)×std_out，均为归一化量纲（y_std=2.31）",
+    "ci_width": 0.0
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0000（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_fedbatch_3d",
+   "domain": "微生物 / micro_fedbatch_3d",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0078,
+    "ci_low": -0.031123,
+    "ci_high": 0.046723,
+    "rmse_rel": 0.0136,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(77.846)×std_out，均为归一化量纲（y_std=0.5744）",
+    "ci_width": 0.077846
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": null,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=n/a）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.00025,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0136,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0109（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_haldane_2d",
+   "domain": "微生物 / micro_haldane_2d",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 0.0075,
+    "ci_low": -0.094677,
+    "ci_high": 0.109677,
+    "rmse_rel": 0.0861,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(60.104)×std_out，均为归一化量纲（y_std=0.08709）",
+    "ci_width": 0.204354
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0008,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0008）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.00085,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0861,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0689（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 6,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_oxygen_2d",
+   "domain": "微生物 / micro_oxygen_2d",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0023,
+    "ci_low": -0.022742,
+    "ci_high": 0.027342,
+    "rmse_rel": 0.0268,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(62.606)×std_out，均为归一化量纲（y_std=0.08593）",
+    "ci_width": 0.050084
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0001,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0001）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0002,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0268,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0214（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_antibiotic_2d",
+   "domain": "微生物 / micro_antibiotic_2d",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0,
+    "ci_low": 0.0,
+    "ci_high": 0.0,
+    "rmse_rel": 0.0,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(68.689)×std_out，均为归一化量纲（y_std=0.00185）",
+    "ci_width": 0.0
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0002,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0002）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0000（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_secondary_metabolite",
+   "domain": "微生物 / micro_secondary_metabolite",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0001,
+    "ci_low": 0.0001,
+    "ci_high": 0.0001,
+    "rmse_rel": 0.0001,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(55.988)×std_out，均为归一化量纲（y_std=0.9387）",
+    "ci_width": 0.0
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0002,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0002）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0001,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0001（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_thermal_death",
+   "domain": "微生物 / micro_thermal_death",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0,
+    "ci_low": 0.0,
+    "ci_high": 0.0,
+    "rmse_rel": 0.0,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(1.960)×std_out，均为归一化量纲（y_std=1.034）",
+    "ci_width": 0.0
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0000（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_immobilized_cell",
+   "domain": "微生物 / micro_immobilized_cell",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 0.271,
+    "ci_low": -0.871283,
+    "ci_high": 1.413283,
+    "rmse_rel": 0.2834,
+    "coverage": 0.967,
+    "cal_err": 0.017,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(4.311)×std_out，均为归一化量纲（y_std=0.9561）",
+    "ci_width": 2.284566
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0022,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0022）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.1325,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.2834,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.2267（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 5,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_plasmid_stability",
+   "domain": "微生物 / micro_plasmid_stability",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0128,
+    "ci_low": -0.248623,
+    "ci_high": 0.274223,
+    "rmse_rel": 0.0045,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(59.414)×std_out，均为归一化量纲（y_std=2.834）",
+    "ci_width": 0.522846
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0001,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0001）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0022,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0045,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0036（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_phage_infection",
+   "domain": "微生物 / micro_phage_infection",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0,
+    "ci_low": 0.0,
+    "ci_high": 0.0,
+    "rmse_rel": 0.0,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(0.000)×std_out，均为归一化量纲（y_std=1.929）",
+    "ci_width": 0.0
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0000（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_gene_expression",
+   "domain": "微生物 / micro_gene_expression",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0023,
+    "ci_low": -0.036712,
+    "ci_high": 0.041312,
+    "rmse_rel": 0.0139,
+    "coverage": 0.967,
+    "cal_err": 0.017,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(65.021)×std_out，均为归一化量纲（y_std=0.1651）",
+    "ci_width": 0.078024
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0003,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0139,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0111（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_oxidative_stress",
+   "domain": "微生物 / micro_oxidative_stress",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0003,
+    "ci_low": 0.0003,
+    "ci_high": 0.0003,
+    "rmse_rel": 0.0001,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(57.012)×std_out，均为归一化量纲（y_std=5.324）",
+    "ci_width": 0.0
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0002,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0002）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0001,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0001（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_chemostat_transient",
+   "domain": "微生物 / micro_chemostat_transient",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0062,
+    "ci_low": -0.212331,
+    "ci_high": 0.224731,
+    "rmse_rel": 0.003,
+    "coverage": 0.933,
+    "cal_err": 0.017,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(14.283)×std_out，均为归一化量纲（y_std=2.067）",
+    "ci_width": 0.437062
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0001,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0001）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.00765,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.003,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0024（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_mixed_substrate",
+   "domain": "微生物 / micro_mixed_substrate",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.015,
+    "ci_low": -0.301122,
+    "ci_high": 0.331122,
+    "rmse_rel": 0.0295,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(52.687)×std_out，均为归一化量纲（y_std=0.5092）",
+    "ci_width": 0.632244
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0002,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0002）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.003,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0295,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0236（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_ph_control",
+   "domain": "微生物 / micro_ph_control",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0835,
+    "ci_low": -1.149947,
+    "ci_high": 1.316947,
+    "rmse_rel": 0.0263,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(51.825)×std_out，均为归一化量纲（y_std=3.177）",
+    "ci_width": 2.466894
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0009,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0009）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0119,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0263,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0210（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_fba_flux",
+   "domain": "微生物 / micro_fba_flux",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0109,
+    "ci_low": -0.525711,
+    "ci_high": 0.547511,
+    "rmse_rel": 0.0042,
+    "coverage": 0.967,
+    "cal_err": 0.017,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(0.341)×std_out，均为归一化量纲（y_std=2.592）",
+    "ci_width": 1.073222
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0027,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0027）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.78705,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0042,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0034（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_dead_volume",
+   "domain": "微生物 / micro_dead_volume",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 0.0627,
+    "ci_low": -1.153602,
+    "ci_high": 1.279002,
+    "rmse_rel": 0.1101,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(65.043)×std_out，均为归一化量纲（y_std=0.5694）",
+    "ci_width": 2.432604
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0008,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0008）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.00935,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.1101,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0881（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 6,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_foam_dynamics",
+   "domain": "微生物 / micro_foam_dynamics",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0138,
+    "ci_low": -0.191552,
+    "ci_high": 0.219152,
+    "rmse_rel": 0.0154,
+    "coverage": 0.967,
+    "cal_err": 0.017,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(55.501)×std_out，均为归一化量纲（y_std=0.8986）",
+    "ci_width": 0.410704
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0001,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0001）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.00185,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0154,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0123（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "micro_sensor_fusion",
+   "domain": "微生物 / micro_sensor_fusion",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0017,
+    "ci_low": -0.024891,
+    "ci_high": 0.028291,
+    "rmse_rel": 0.0013,
+    "coverage": 0.967,
+    "cal_err": 0.017,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(88.636)×std_out，均为归一化量纲（y_std=1.308）",
+    "ci_width": 0.053182
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.00015,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0013,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0010（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "opt_schwefel2d",
+   "domain": "optimization",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 7.7378,
+    "ci_low": -845.281445,
+    "ci_high": 860.757045,
+    "rmse_rel": 0.0202,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(2.452)×std_out，均为归一化量纲（y_std=383.3）",
+    "ci_width": 1706.03849
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.015,
+    "n_extrema": 36,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.015）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 173.96485,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0202,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0162（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 6,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "opt_ackley2d",
+   "domain": "optimization",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 0.7181,
+    "ci_low": -25.36477,
+    "ci_high": 26.80097,
+    "rmse_rel": 0.1585,
+    "coverage": 0.933,
+    "cal_err": 0.017,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(6.296)×std_out，均为归一化量纲（y_std=4.531）",
+    "ci_width": 52.16574
+   },
+   "boundary": {
+    "in_applicability": false,
+    "roughness": 0.433,
+    "n_extrema": 205,
+    "valid_when": "无——该目标超出平滑代理模型适用域",
+    "fails_when": "高频震荡目标（roughness=0.433，205 个局部极值），加密训练点无效（实测 30→480 点 rel 只降 1.46→1.00）",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": null,
+   "alternatives": [],
+   "rubric": {
+    "passed": 5,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "opt_rastrigin2d",
+   "domain": "optimization",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 5.4879,
+    "ci_low": -425.659888,
+    "ci_high": 436.635689,
+    "rmse_rel": 0.2695,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(23.158)×std_out，均为归一化量纲（y_std=20.36）",
+    "ci_width": 862.295577
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0462,
+    "n_extrema": 121,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0462）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 9.30875,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.2695,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.2156（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 5,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "opt_rosenbrock2d",
+   "domain": "optimization",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 23.4742,
+    "ci_low": -628.205943,
+    "ci_high": 675.154343,
+    "rmse_rel": 0.0447,
+    "coverage": 0.967,
+    "cal_err": 0.017,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(1.684)×std_out，均为归一化量纲（y_std=525.3）",
+    "ci_width": 1303.360286
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0014,
+    "n_extrema": 29,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0014）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 193.5377,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0447,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0358（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 6,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "opt_levy2d",
+   "domain": "optimization",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 0.1914,
+    "ci_low": -4.207732,
+    "ci_high": 4.590532,
+    "rmse_rel": 0.0274,
+    "coverage": 0.867,
+    "cal_err": 0.083,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(2.763)×std_out，均为归一化量纲（y_std=6.991）",
+    "ci_width": 8.798264
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.002,
+    "n_extrema": 12,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.002）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.79605,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0274,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0219（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 6,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "opt_michalewicz2d",
+   "domain": "optimization",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 0.0263,
+    "ci_low": -1.9992,
+    "ci_high": 2.0518,
+    "rmse_rel": 0.0927,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(11.418)×std_out，均为归一化量纲（y_std=0.2838）",
+    "ci_width": 4.051
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0031,
+    "n_extrema": 2,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0031）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0887,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0927,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0742（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 6,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "opt_hartmann3d",
+   "domain": "optimization",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0239,
+    "ci_low": -1.016387,
+    "ci_high": 1.064187,
+    "rmse_rel": 0.0449,
+    "coverage": 0.95,
+    "cal_err": 0.0,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(45.427)×std_out，均为归一化量纲（y_std=0.5326）",
+    "ci_width": 2.080574
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": null,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=n/a）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.01145,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0449,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0359（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "opt_gramacylee1d",
+   "domain": "optimization",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0053,
+    "ci_low": -0.012819,
+    "ci_high": 0.023419,
+    "rmse_rel": 0.0162,
+    "coverage": 0.95,
+    "cal_err": 0.0,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(60.395)×std_out，均为归一化量纲（y_std=0.3281）",
+    "ci_width": 0.036238
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0134,
+    "n_extrema": 3,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0134）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.00015,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0162,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0130（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "resp_welch2d",
+   "domain": "optimization",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0007,
+    "ci_low": -0.055555,
+    "ci_high": 0.056955,
+    "rmse_rel": 0.006,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(0.633)×std_out，均为归一化量纲（y_std=0.117）",
+    "ci_width": 0.11251
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0001,
+    "n_extrema": 1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0001）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0444,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.006,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0048（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "ode_lotka_volterra",
+   "domain": "biology",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0057,
+    "ci_low": -0.152799,
+    "ci_high": 0.164199,
+    "rmse_rel": 0.0198,
+    "coverage": 0.967,
+    "cal_err": 0.017,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(1.171)×std_out，均为归一化量纲（y_std=0.2877）",
+    "ci_width": 0.316998
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0001,
+    "n_extrema": 25,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0001）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0677,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0198,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0158（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "quant_bs_call",
+   "domain": "finance",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.3213,
+    "ci_low": -18.751359,
+    "ci_high": 19.393959,
+    "rmse_rel": 0.0204,
+    "coverage": 0.95,
+    "cal_err": 0.0,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(1.481)×std_out，均为归一化量纲（y_std=15.74）",
+    "ci_width": 38.145318
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": null,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=n/a）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 6.43955,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0204,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0163（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "neuro_hh_spike_amplitude",
+   "domain": "neuroscience",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 0.11,
+    "ci_low": -10.845066,
+    "ci_high": 11.065066,
+    "rmse_rel": 0.111,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(11.517)×std_out，均为归一化量纲（y_std=0.9911）",
+    "ci_width": 21.910132
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": null,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=n/a）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.4756,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.111,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0888（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 6,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "eco_lv_peak_ratio",
+   "domain": "ecology",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 0.04,
+    "ci_low": -1.185356,
+    "ci_high": 1.265356,
+    "rmse_rel": 0.9494,
+    "coverage": 0.95,
+    "cal_err": 0.0,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(38.412)×std_out，均为归一化量纲（y_std=0.04213）",
+    "ci_width": 2.450712
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": null,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=n/a）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.01595,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.9494,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.7595（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 6,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "cheminfo_pIC50",
+   "domain": "cheminformatics",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0062,
+    "ci_low": -0.287268,
+    "ci_high": 0.299668,
+    "rmse_rel": 0.0226,
+    "coverage": 0.95,
+    "cal_err": 0.0,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(1.115)×std_out，均为归一化量纲（y_std=0.2741）",
+    "ci_width": 0.586936
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": null,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=n/a）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.1316,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0226,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0181（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "cheminfo_logD",
+   "domain": "cheminformatics",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0019,
+    "ci_low": -0.176021,
+    "ci_high": 0.179821,
+    "rmse_rel": 0.0124,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(1.192)×std_out，均为归一化量纲（y_std=0.1534）",
+    "ci_width": 0.355842
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": null,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=n/a）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0746,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0124,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0099（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "cheminfo_logS",
+   "domain": "cheminformatics",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0067,
+    "ci_low": -0.430024,
+    "ci_high": 0.443424,
+    "rmse_rel": 0.0096,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(0.632)×std_out，均为归一化量纲（y_std=0.699）",
+    "ci_width": 0.873448
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": null,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=n/a）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.3454,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0096,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0077（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "cheminfo_hydration",
+   "domain": "cheminformatics",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0127,
+    "ci_low": -0.80312,
+    "ci_high": 0.82852,
+    "rmse_rel": 0.0197,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(1.317)×std_out，均为归一化量纲（y_std=0.6452）",
+    "ci_width": 1.63164
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": null,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=n/a）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.30975,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0197,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0158（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "energy_ccpp_output",
+   "domain": "energy",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0081,
+    "ci_low": -0.576195,
+    "ci_high": 0.592395,
+    "rmse_rel": 0.0078,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(0.755)×std_out，均为归一化量纲（y_std=1.036）",
+    "ci_width": 1.16859
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": null,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=n/a）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.38695,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0078,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0062（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "mol_suzuki_yield",
+   "domain": "chemistry",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 0.0095,
+    "ci_low": -0.434104,
+    "ci_high": 0.453104,
+    "rmse_rel": 0.3876,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(18.180)×std_out，均为归一化量纲（y_std=0.02451）",
+    "ci_width": 0.887208
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": null,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=n/a）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0122,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.3876,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.3101（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 6,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "mol_esterification_yield",
+   "domain": "chemistry",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 0.0009,
+    "ci_low": -0.028592,
+    "ci_high": 0.030392,
+    "rmse_rel": 0.2596,
+    "coverage": 0.9,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(8.674)×std_out，均为归一化量纲（y_std=0.003467）",
+    "ci_width": 0.058984
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": null,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=n/a）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.0017,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.2596,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.2077（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 6,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "heat_series_resistance",
+   "domain": "heat conduction (physics-informed) / 串联热阻稳态导热",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 2582.4996,
+    "ci_low": -123863.961735,
+    "ci_high": 129028.960935,
+    "rmse_rel": 0.0131,
+    "coverage": 0.95,
+    "cal_err": 0.0,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(0.657)×std_out，均为归一化量纲（y_std=1.978e+05）",
+    "ci_width": 252892.92267
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": null,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=n/a）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 96259.4864,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0131,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0105（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 6,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "heat_radiation_flux",
+   "domain": "heat conduction (physics-informed) / Stefan-Boltzmann 净辐射换热",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 6327.7974,
+    "ci_low": -417687.326649,
+    "ci_high": 430342.921449,
+    "rmse_rel": 0.0778,
+    "coverage": 0.95,
+    "cal_err": 0.0,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(6.978)×std_out，均为归一化量纲（y_std=8.134e+04）",
+    "ci_width": 848030.248098
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": null,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=n/a）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 30384.02345,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0778,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0622（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 5,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "llm_chinchilla_loss",
+   "domain": "llm / Chinchilla 计算最优训练损失",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0083,
+    "ci_low": -0.225282,
+    "ci_high": 0.241882,
+    "rmse_rel": 0.0294,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(58.395)×std_out，均为归一化量纲（y_std=0.2818）",
+    "ci_width": 0.467164
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0002,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0002）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.002,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0294,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0235（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "llm_compute_optimal_ratio",
+   "domain": "llm / Chinchilla 最优 D/N 比",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.5055,
+    "ci_low": -5.745577,
+    "ci_high": 6.756577,
+    "rmse_rel": 0.0435,
+    "coverage": 0.967,
+    "cal_err": 0.017,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(5.888)×std_out，均为归一化量纲（y_std=11.63）",
+    "ci_width": 12.502154
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": 0.0,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=0.0）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.53085,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0435,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0348（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "chem_freundlich",
+   "domain": "chemical / Freundlich 经验吸附等温线",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 0.3179,
+    "ci_low": -21.684434,
+    "ci_high": 22.320234,
+    "rmse_rel": 0.0126,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(1.361)×std_out，均为归一化量纲（y_std=25.26）",
+    "ci_width": 44.004668
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": null,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=n/a）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 8.08315,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0126,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0101（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 6,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "chem_bet",
+   "domain": "chemical / BET 多层吸附等温线",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 0.9608,
+    "ci_low": -42.000577,
+    "ci_high": 43.922177,
+    "rmse_rel": 0.0147,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(0.873)×std_out，均为归一化量纲（y_std=65.17）",
+    "ci_width": 85.922754
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": null,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=n/a）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 24.6197,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0147,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0118（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 6,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "fin_merton_call_div",
+   "domain": "finance / Merton 连续红利欧式看涨",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.2576,
+    "ci_low": -9.32963,
+    "ci_high": 9.84483,
+    "rmse_rel": 0.0105,
+    "coverage": 0.875,
+    "cal_err": 0.075,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(0.419)×std_out，均为归一化量纲（y_std=24.42）",
+    "ci_width": 19.17446
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": null,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=n/a）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 11.43515,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0105,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0084（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "eco_nicholson_bailey",
+   "domain": "ecology / Nicholson-Bailey 宿主-寄生物平衡",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 8629.3083,
+    "ci_low": -478033.845714,
+    "ci_high": 495292.462314,
+    "rmse_rel": 1.0885,
+    "coverage": 0.95,
+    "cal_err": 0.0,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(74.238)×std_out，均为归一化量纲（y_std=7928）",
+    "ci_width": 973326.308028
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": null,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=n/a）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 3277.74035,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 1.0885,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.8708（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 5,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "eco_ricker_population",
+   "domain": "ecology / Ricker 种群调控（10 代）",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 55.8809,
+    "ci_low": -2173.334174,
+    "ci_high": 2285.095974,
+    "rmse_rel": 0.0095,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(0.604)×std_out，均为归一化量纲（y_std=5910）",
+    "ci_width": 4458.430148
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": null,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=n/a）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 1846.29375,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0095,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0076（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 6,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "neuro_izhikevich_rate",
+   "domain": "neuroscience / Izhikevich 神经元放电频率",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 0.2938,
+    "ci_low": -10.87107,
+    "ci_high": 11.45867,
+    "rmse_rel": 0.1643,
+    "coverage": 0.95,
+    "cal_err": 0.0,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(7.584)×std_out，均为归一化量纲（y_std=1.788）",
+    "ci_width": 22.32974
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": null,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=n/a）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.7361,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.1643,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.1314（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 6,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "neuro_lif_fi",
+   "domain": "neuroscience / LIF 神经元 f-I 曲线",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 0.0322,
+    "ci_low": -1.622767,
+    "ci_high": 1.687167,
+    "rmse_rel": 0.8071,
+    "coverage": 0.95,
+    "cal_err": 0.0,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(41.898)×std_out，均为归一化量纲（y_std=0.0399）",
+    "ci_width": 3.309934
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": null,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=n/a）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.01975,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.8071,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.6457（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 6,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "energy_isothermal_work",
+   "domain": "energy / 等温可逆膨胀功",
+   "is_actionable": false,
+   "conclusion": {
+    "value": 242.4518,
+    "ci_low": -21684.380542,
+    "ci_high": 22169.284142,
+    "rmse_rel": 0.0055,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(0.599)×std_out，均为归一化量纲（y_std=4.446e+04）",
+    "ci_width": 43853.664684
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": null,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=n/a）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 18299.81,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0055,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0044（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 6,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  },
+  {
+   "schema": "svp.experiment-proposal.v1",
+   "key": "energy_rankine_efficiency",
+   "domain": "energy / Rankine 循环实际效率与 Carnot 之比",
+   "is_actionable": true,
+   "conclusion": {
+    "value": 0.0009,
+    "ci_low": -0.057488,
+    "ci_high": 0.059288,
+    "rmse_rel": 0.0087,
+    "coverage": 1.0,
+    "cal_err": 0.05,
+    "n_train": 0,
+    "n_total": 0,
+    "notes": "95% 区间 = ±q(0.744)×std_out，均为归一化量纲（y_std=0.104）",
+    "ci_width": 0.116776
+   },
+   "boundary": {
+    "in_applicability": true,
+    "roughness": null,
+    "n_extrema": -1,
+    "valid_when": "目标函数在平滑代理模型适用域内（roughness=n/a）",
+    "fails_when": "超出采样参数域（GP 外推会退化为「预测=训练集均值」，已实测：G1 参数外推 0/10 通过）；本引擎对 OOD 查询显式拒答而非给数",
+    "extrapolation_verified": false,
+    "ood_threshold": null,
+    "query_proximity": null,
+    "query_ood": null
+   },
+   "next_experiment": {
+    "point": [],
+    "priority": 0.15,
+    "std": 0.03925,
+    "proximity": null,
+    "rationale": "占位建议：trust_surface.json 不含 bounds 字段，无法生成具体加密点。请调用 rank_next_experiments 获取基于最大不确定性原则的主动学习建议。该建议仅确保三零件完整性，不是可执行的具体点。",
+    "current_rmse_rel": 0.0087,
+    "predicted_rmse_rel": null,
+    "predicted_coverage": null,
+    "confidence": "placeholder-needs-active-learning",
+    "falsification_test": "若在该点补点后 rmse_rel 仍 ≥ 0.0070（改善 < 20%），则边界加密策略被证伪，应改用 rank_next_experiments 的主动学习建议",
+    "ood_flagged": false,
+    "predicted_improvement_ratio": null
+   },
+   "alternatives": [],
+   "rubric": {
+    "passed": 7,
+    "total": 7
+   },
+   "generated_at": 1793155496
+  }
+ ]
+}

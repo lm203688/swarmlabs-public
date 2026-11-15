@@ -1,0 +1,14 @@
+# GitHub Funding configuration for SwarmLabs
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/displaying-a-code-of-conduct
+#
+# Reality check (2026-09-15): This file makes the funding widget appear
+# on the repository page. It is a **placeholder for future monetization**,
+# not a claim that the project currently accepts donations. See
+# docs/competitor_swarmlabs_positioning_2026-09-12.md and the
+# pre-revenue disclosure in `data/public_facts.json.honesty`.
+#
+# Once Stripe / payment integration lands (see scripts/pay/), the
+# GitHub Sponsors entry can point to a real sponsor tier.
+
+github: [lm203688]
+# custom: []   # Un-comment when we have a donation URL

@@ -1,0 +1,70 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "swarmlabs",
+  "pages_build_output_dir": "./",
+  "compatibility_date": "2026-07-25",
+  "compatibility_flags": ["nodejs_compat"],
+  "kv_namespaces": [
+    {
+      "binding": "SWARMLABS_KV",
+      "id": "f01526d743c24e1a91b2586a865f4864"
+    }
+  ],
+  // ===== 限流计数器（D1）—— 解开下面这段即可把限流从「per-isolate 近似」升级为「全局精确」=====
+  //
+  // 为什么需要它：spec §3 承诺 60 请求/分钟、spec §8 要求「第 61 次调用触发 429」。
+  // 这是精确要求，只有强一致计数器能满足。Pages Functions 支持的 binding 里能做这件事的
+  // 只有 D1（DO 也可以，但 Pages 项目**不能**定义 DO 类，必须另起一个 Worker）。
+  //
+  // 为什么不用 KV（已实测否定）：KV 读有 ~60s 边缘缓存、写最终一致、且没有原子操作，
+  // 所以 get→+1→put 会丢更新。实测 18 次连续请求：X-RateLimit-Remaining 在 57/58/59
+  // 之间摆动不递增，X-RateLimit-Reset 甚至来回跳变。KV 不能当计数器。
+  //
+  // 解锁方式（幂等，自动建库+建表+回填这段配置）：
+  //     python scripts/setup_ratelimit_d1.py
+  //   需要 CF API token 具备 Account → D1 → Edit 权限（现有 token 没有，会明确报错并且不动任何东西）。
+  //   完成后：python scripts/deploy_pages.py && python scripts/probe_ratelimit_truth.py
+  //
+  // "d1_databases": [
+  //   {
+  //     "binding": "RL_DB",
+  //     "database_name": "swarmlabs-ratelimit",
+  //     "database_id": "<由 setup_ratelimit_d1.py 填入>",
+  //     "preview_database_id": "<同上>"
+  //   }
+  // ],
+  "vars": {
+    "CREEM_TEST_MODE": "false",
+    "CREEM_STORE_ID": "sto_7gBcCekvUKTpsaAFyf",
+    "API_KEYS": "",
+    "FREE_DAILY_QUOTA": "50"
+  },
+  "env": {
+    "production": {
+      "vars": {
+        "CREEM_TEST_MODE": "false",
+        "CREEM_STORE_ID": "sto_7gBcCekvUKTpsaAFyf",
+        "API_KEYS": "",
+        "FREE_DAILY_QUOTA": "50"
+      },
+      "kv_namespaces": [
+        {
+          "binding": "SWARMLABS_KV",
+          "id": "ccb4e37ac39140ffb5886fa5d6ba315c"
+        }
+      ]
+    },
+    "preview": {
+      "vars": {
+        "CREEM_TEST_MODE": "true",
+        "CREEM_STORE_ID": "sto_7gBcCekvUKTpsaAFyf"
+      },
+      "kv_namespaces": [
+        {
+          "binding": "SWARMLABS_KV",
+          "id": "0e37c60230c64d8cb0e2c42cf4fd8167"
+        }
+      ]
+    }
+  }
+}

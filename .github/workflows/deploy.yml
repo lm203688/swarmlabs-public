@@ -1,0 +1,47 @@
+# swarmlabs.tools 的部署 —— 已迁出 CI（2026-09-17）
+#
+# 这个 workflow 以前用 cloudflare/wrangler-action 在每次 push 到 main 时部署。
+# **已停用**。原因见 .github/workflows/ci-cd.yml 里同名 job 的注释，简要版：
+#
+#   CI 的部署树 = actions/checkout 的 git 树，而 .gitignore 含 `reports/`。
+#   远端 main 里只有一部分 reports/*.json（早期提交遗留），所以每次 push 都会用
+#   一份结构性残缺的树覆盖完整部署。实测一次这样的部署只有 62/348 个资产正确，
+#   并让 /api/entities/search、/api/gaps、/api/papers/<id> 集体 500
+#   （"failed to parse entities.json" —— 取件层拿回的是 SPA 兜底页）。
+#   而它每次报 success。典型的「绿着的破坏」。
+#
+# 部署唯一入口（在本机，那里有全部生成物；逐文件字节比对 + 缺件自动重部署）：
+#     python scripts/deploy_pages.py
+#   单跑门禁：
+#     python scripts/deploy_pages.py --gate-only https://<deployment>.swarmlabs-dnh.pages.dev
+#
+# 恢复 CI 部署的前置条件：让 CI 也能产出完整站点 ——
+#   要么把 reports/ 移出 .gitignore，要么在 CI 里把生成管线跑完。
+#
+# 本 workflow 保留为「所有权声明」：它不再部署，也刻意不做线上验收
+# （线上验收由 ci-cd.yml 的 deploy job 单独负责，避免两套跑重复的探测）。
+#
+# --- 凭证说明（2026-09-17 更正）---------------------------------------------
+# 这里原本在注释里写着一个 CLOUDFLARE_API_TOKEN 的明文，属"凭证入 git"的硬违规。
+# 已删除。CI 需要的凭证一律只放 GitHub repo secrets
+# （Settings → Secrets and variables → Actions），不写进任何被跟踪的文件。
+# 本机部署凭证在 ~/.workbuddy/secrets/swarmlabs_cf.json，也在 git 之外。
+# 若那个曾被写进注释的 token 仍在 CF 侧有效，**应当直接吊销重建**。
+name: Deploy swarmlabs.tools
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy-ownership:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: 声明：CI 不再部署，部署走本机门禁脚本
+        run: |
+          echo "::notice::CI no longer deploys swarmlabs.tools - see the header of .github/workflows/deploy.yml"
+          echo "::notice::deploy with: python scripts/deploy_pages.py"
+          echo "::notice::live contract guard runs in ci-cd.yml (deploy job) via scripts/verify_partner_spec.py"

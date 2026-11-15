@@ -1,0 +1,26 @@
+# Tier-A English-rewrite targets for #291 (high-value, public-facing).
+# Excludes: Chinese GEO/templated "X-cost" series (kept live per hybrid decision),
+# competition application docs (goai_2026*/qianfan*/huoshan*/aigrant*/kaggle*),
+# internal analysis/eval/ops docs, and auto-generated validation-dashboard.html.
+# The 3 pilots (ai-research-uncertainty, physics-ai-uq-credibility, au-credibility-vacuum)
+# are already handled separately.
+frontend_fixed/blog/llm-landscape.html
+frontend_fixed/blog/llm-scaling.html
+frontend_fixed/blog/grant-proposal-validation.html
+frontend_fixed/blog/index.html
+frontend_fixed/blog/bio-experiments.html
+frontend_fixed/blog/chemostat-s288c-ypd.html
+frontend_fixed/blog/chemostat-bl21-m9.html
+frontend_fixed/blog/crabtree-w303-BYPG.html
+frontend_fixed/blog/crabtree-w303-yptg.html
+frontend_fixed/blog/fed-batch-dhb5-m9.html
+frontend_fixed/blog/toluene-putida-andrews.html
+frontend_fixed/blog/plasmid-dhb5-kanamycin.html
+frontend_fixed/blog/ampicillin-ecoli-mic.html
+frontend_fixed/blog/pa01-biofilm-pso.html
+frontend_fixed/blog/bsubtilis-thermal-death.html
+frontend_fixed/blog/multispecies-lotka-volterra.html
+frontend_fixed/blog/lactococcus-contois-MRS_broth.html
+frontend_fixed/blog/lactococcus-contois-mrp.html
+frontend_fixed/blog/streptomyces-luedeking-piret.html
+docs/insights/fluctuation-theorem-convexbody.md

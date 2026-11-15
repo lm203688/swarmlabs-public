@@ -1,0 +1,62 @@
+{
+  "schema": "swarmlabs-vlab-work-order/1.0",
+  "submitted_by": "example-client-microbio",
+  "discipline": "Biology",
+  "goal": {
+    "quantity": "biomass yield",
+    "unit": "g/L",
+    "direction": "characterize",
+    "plausible_range": [0.0, 200.0]
+  },
+  "design_space": {
+    "variables": [
+      {"name": "T", "unit": "degC", "lo": 20, "hi": 40},
+      {"name": "S0", "unit": "g/L", "lo": 1, "hi": 20}
+    ]
+  },
+  "method": {"family": "auto"},
+  "cost_of_error": 2.0,
+  "scenario_key": "micro_ecoli_glucose",
+  "_comment": [
+    "示例 1：走已接入的内核场景。裁决来自门禁账本（在收到本工作单之前",
+    "已算好），客户端数据只在流水线最后一步做事后作证。",
+    "corroboration.points 的 4 条刻意覆盖筛选的四档，用来演示防垃圾进：",
+    "  1) 齐全     -> ACCEPTED",
+    "  2) 缺确认人 -> NEEDS_HUMAN（机械全过也不自动采纳）",
+    "  3) 单位错   -> REJECTED（35 degC 不是 g/L，量纲不符）",
+    "  4) 引用是涂鸦 -> REJECTED（无年份/DOI，不可核验）"
+  ],
+  "corroboration": {
+    "as_input": false,
+    "points": [
+      {
+        "x": {"T": 30, "S0": 10},
+        "y": 1.23,
+        "unit": "g/L",
+        "citation": "Client internal lab log 2026-08, run #7",
+        "confirmed_by": "client-lab-lead",
+        "conditions": "batch, 30 degC, 10 g/L initial glucose"
+      },
+      {
+        "x": {"T": 32, "S0": 10},
+        "y": 0.98,
+        "unit": "g/L",
+        "citation": "Client internal lab log 2026-08, run #8",
+        "conditions": "not yet countersigned by the lab lead"
+      },
+      {
+        "x": {"T": 30, "S0": 10},
+        "y": 35,
+        "unit": "degC",
+        "citation": "Instrument readout 2026-08 (wrong column pasted)",
+        "confirmed_by": "client-lab-lead"
+      },
+      {
+        "x": {"T": 31, "S0": 12},
+        "y": 2.1,
+        "unit": "g/L",
+        "citation": "unlabeled scribble on the whiteboard"
+      }
+    ]
+  }
+}

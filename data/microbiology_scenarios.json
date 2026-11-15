@@ -1,0 +1,951 @@
+{
+ "count": 52,
+ "scenarios": [
+  {
+   "key": "micro_ecoli_glucose",
+   "domain": "微生物 / E. coli 批次培养（Monod, 文献参数）",
+   "category": "biology",
+   "bounds": [
+    [
+     0.001,
+     10.0
+    ]
+   ],
+   "dim": 1,
+   "ls": 0.5,
+   "noise": 0.05,
+   "published": "E. coli K-12: μmax=0.81 h⁻¹, Ks=0.004 g/L (Monod 1949; Shuler & Kargi 2002)",
+   "references": [
+    "Monod J. (1949) Annu. Rev. Microbiol. 3:371",
+    "Shuler M.L., Kargi F. (2002) Bioprocess Engineering Principles"
+   ]
+  },
+  {
+   "key": "micro_cerevisiae_ethanol",
+   "domain": "微生物 / 酿酒酵母乙醇发酵（Monod + 乙醇产物抑制）",
+   "category": "biology",
+   "bounds": [
+    [
+     0.001,
+     20.0
+    ],
+    [
+     0.0,
+     50.0
+    ]
+   ],
+   "dim": 2,
+   "ls": 0.4,
+   "noise": 0.06,
+   "published": "S. cerevisiae: μmax=0.42 h⁻¹, Ks=0.025 g/L, Ki(ethanol)=40 g/L (Dussaut & Cooney 1980)",
+   "references": [
+    "Dussaut L., Cooney C.L. (1980) Chem Eng Commun 7:251",
+    "Shuler M.L., Kargi F. (2002)"
+   ]
+  },
+  {
+   "key": "micro_putida_toluene",
+   "domain": "微生物 / 假单胞菌甲苯降解（Andrews 底物抑制）",
+   "category": "biology",
+   "bounds": [
+    [
+     0.001,
+     5.0
+    ]
+   ],
+   "dim": 1,
+   "ls": 0.3,
+   "noise": 0.08,
+   "published": "P. putida MT-2: μmax=0.35 h⁻¹, Ks=0.02 g/L, Ki(toluene)=2.5 g/L (Rothman et al. 1993)",
+   "references": [
+    "Rothman D., et al. (1993) Biochem J 288:701"
+   ]
+  },
+  {
+   "key": "micro_lactococcus_lactose",
+   "domain": "微生物 / 乳酸乳球菌乳酸发酵（pH 效应 + 底物抑制）",
+   "category": "biology",
+   "bounds": [
+    [
+     0.01,
+     10.0
+    ],
+    [
+     4.5,
+     8.5
+    ]
+   ],
+   "dim": 2,
+   "ls": 0.35,
+   "noise": 0.08,
+   "published": "L. lactis NZ9000: μmax=0.55 h⁻¹, Ks=0.3 g/L, Ki(lactose)=80 g/L (Luedtke & Schlegel 1973)",
+   "references": [
+    "Luedtke K.A., Schlegel H.G. (1973) J Bacteriol 113:293"
+   ]
+  },
+  {
+   "key": "micro_acetobacter_acetate",
+   "domain": "微生物 / 醋酸杆菌醋酸利用（温度效应 + Monod）",
+   "category": "biology",
+   "bounds": [
+    [
+     0.001,
+     5.0
+    ],
+    [
+     20.0,
+     50.0
+    ]
+   ],
+   "dim": 2,
+   "ls": 0.4,
+   "noise": 0.07,
+   "published": "A. calcoaceticus: μmax=0.78 h⁻¹, Ks=0.03 g/L, T_opt=37°C (Rogness et al. 1961)",
+   "references": [
+    "Rogness J., et al. (1961) Biotech Bioeng 3:1"
+   ]
+  },
+  {
+   "key": "micro_methanobacterium_methane",
+   "domain": "微生物 / 产甲烷古菌甲烷利用（低 μmax 极端场景）",
+   "category": "biology",
+   "bounds": [
+    [
+     0.001,
+     0.1
+    ]
+   ],
+   "dim": 1,
+   "ls": 0.05,
+   "noise": 0.06,
+   "published": "M. trichosporium OB3b: μmax=0.08 h⁻¹, Ks=0.02 g/L (Whitmanet al. 1995)",
+   "references": [
+    "Whitman W.B., et al. (1995) J Bacteriol 177:1112"
+   ]
+  },
+  {
+   "key": "micro_chemostat_ecoli",
+   "domain": "微生物 / E. coli Chemostat 稳态（稀释率→生物量）",
+   "category": "biology",
+   "bounds": [
+    [
+     0.01,
+     0.75
+    ]
+   ],
+   "dim": 1,
+   "ls": 0.2,
+   "noise": 0.1,
+   "published": "Chemostat E. coli K-12, S_f=10 g/L glucose (Rogness et al. 1961)",
+   "references": [
+    "Rogness J., et al. (1961) Biotech Bioeng 3:1"
+   ]
+  },
+  {
+   "key": "micro_chemostat_cerevisiae",
+   "domain": "微生物 / 酿酒酵母 Chemostat 稳态（稀释率+进料浓度→生物量）",
+   "category": "biology",
+   "bounds": [
+    [
+     0.01,
+     0.35
+    ],
+    [
+     5.0,
+     30.0
+    ]
+   ],
+   "dim": 2,
+   "ls": 0.2,
+   "noise": 0.1,
+   "published": "Chemostat S. cerevisiae, S_f=20 g/L glucose (Dussaut & Cooney 1980)",
+   "references": [
+    "Dussaut L., Cooney C.L. (1980) Chem Eng Commun 7:251"
+   ]
+  },
+  {
+   "key": "micro_lag_ecoli",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.0,
+     20.0
+    ]
+   ],
+   "dim": 1,
+   "ls": 2.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_lifecycle_ecoli",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.0,
+     48.0
+    ]
+   ],
+   "dim": 1,
+   "ls": 3.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_diauxic_ecoli",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.0,
+     24.0
+    ]
+   ],
+   "dim": 1,
+   "ls": 3.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_fedbatch_ecoli",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     1.0,
+     100.0
+    ]
+   ],
+   "dim": 1,
+   "ls": 10.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_competition_ecoli_yeast",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.5,
+     20.0
+    ]
+   ],
+   "dim": 1,
+   "ls": 5.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_crabtree_cerevisiae",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.0,
+     36.0
+    ]
+   ],
+   "dim": 1,
+   "ls": 5.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_haldane_putida",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.001,
+     5.0
+    ]
+   ],
+   "dim": 1,
+   "ls": 0.5,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_contois_ecoli",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.01,
+     20.0
+    ]
+   ],
+   "dim": 1,
+   "ls": 1.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_tessier_ecoli",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.001,
+     50.0
+    ]
+   ],
+   "dim": 1,
+   "ls": 2.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_pirt_ecoli",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.001,
+     10.0
+    ]
+   ],
+   "dim": 1,
+   "ls": 0.5,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_oxygen_ecoli",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.01,
+     8.0
+    ]
+   ],
+   "dim": 1,
+   "ls": 1.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_antibiotic_timekill",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     1.0,
+     200.0
+    ]
+   ],
+   "dim": 1,
+   "ls": 10.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_osmotic_ecoli",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.9,
+     1.0
+    ]
+   ],
+   "dim": 1,
+   "ls": 0.01,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_biofilm_ecoli",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.0,
+     48.0
+    ]
+   ],
+   "dim": 1,
+   "ls": 3.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_scaleup_kla",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.1,
+     1000.0
+    ]
+   ],
+   "dim": 1,
+   "ls": 50.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_doe_ecoli_monod",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.001,
+     10.0
+    ],
+    [
+     25.0,
+     45.0
+    ]
+   ],
+   "dim": 2,
+   "ls": 10.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_mle_ecoli_monod",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.001,
+     5.0
+    ]
+   ],
+   "dim": 1,
+   "ls": 0.5,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_sobol_ecoli",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.001,
+     5.0
+    ]
+   ],
+   "dim": 1,
+   "ls": 0.5,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_uq_ecoli_monod",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.001,
+     5.0
+    ]
+   ],
+   "dim": 1,
+   "ls": 0.5,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_coculture_mutualism",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.0,
+     48.0
+    ]
+   ],
+   "dim": 1,
+   "ls": 5.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_quorum_ecoli",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.0,
+     48.0
+    ]
+   ],
+   "dim": 1,
+   "ls": 5.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_heavy_metal_ecoli",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.0,
+     10.0
+    ]
+   ],
+   "dim": 1,
+   "ls": 2.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_diauxic_2d",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.5,
+     10.0
+    ],
+    [
+     0.5,
+     10.0
+    ]
+   ],
+   "dim": 2,
+   "ls": 3.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_fedbatch_2d",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.01,
+     0.2
+    ],
+    [
+     5.0,
+     100.0
+    ]
+   ],
+   "dim": 2,
+   "ls": 0.5,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_competition_2d",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     1.0,
+     20.0
+    ]
+   ],
+   "dim": 1,
+   "ls": 5.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_crabtree_2d",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     5.0,
+     25.0
+    ],
+    [
+     20.0,
+     40.0
+    ]
+   ],
+   "dim": 2,
+   "ls": 4.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_fedbatch_3d",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     12.0,
+     72.0
+    ],
+    [
+     0.01,
+     0.2
+    ],
+    [
+     5.0,
+     100.0
+    ]
+   ],
+   "dim": 3,
+   "ls": 10.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_haldane_2d",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.001,
+     5.0
+    ],
+    [
+     25.0,
+     40.0
+    ]
+   ],
+   "dim": 2,
+   "ls": 2.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_oxygen_2d",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.001,
+     10.0
+    ],
+    [
+     0.01,
+     8.0
+    ]
+   ],
+   "dim": 2,
+   "ls": 1.5,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_antibiotic_2d",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     1.0,
+     200.0
+    ],
+    [
+     6.0,
+     48.0
+    ]
+   ],
+   "dim": 2,
+   "ls": 20.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_secondary_metabolite",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     10.0,
+     36.0
+    ]
+   ],
+   "dim": 1,
+   "ls": 2.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_thermal_death",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     60.0,
+     100.0
+    ]
+   ],
+   "dim": 1,
+   "ls": 2.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_immobilized_cell",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.01,
+     0.5
+    ],
+    [
+     0.001,
+     0.01
+    ]
+   ],
+   "dim": 2,
+   "ls": 0.005,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_plasmid_stability",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     5.0,
+     40.0
+    ],
+    [
+     0.0,
+     0.05
+    ]
+   ],
+   "dim": 2,
+   "ls": 1.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_phage_infection",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.0,
+     100.0
+    ],
+    [
+     0.5,
+     6.0
+    ]
+   ],
+   "dim": 2,
+   "ls": 10.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_gene_expression",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.5,
+     5.0
+    ],
+    [
+     0.5,
+     3.0
+    ]
+   ],
+   "dim": 2,
+   "ls": 1.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_oxidative_stress",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.0,
+     3.0
+    ]
+   ],
+   "dim": 1,
+   "ls": 0.3,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_chemostat_transient",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.0,
+     0.9
+    ],
+    [
+     0.5,
+     1.2
+    ]
+   ],
+   "dim": 2,
+   "ls": 0.1,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_mixed_substrate",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.001,
+     5.0
+    ],
+    [
+     0.001,
+     10.0
+    ]
+   ],
+   "dim": 2,
+   "ls": 1.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_ph_control",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     25.0,
+     45.0
+    ],
+    [
+     4.5,
+     8.5
+    ]
+   ],
+   "dim": 2,
+   "ls": 1.5,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_fba_flux",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.1,
+     1.0
+    ],
+    [
+     0.1,
+     1.0
+    ]
+   ],
+   "dim": 2,
+   "ls": 0.3,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_dead_volume",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     1.0,
+     20.0
+    ],
+    [
+     1.0,
+     8.0
+    ]
+   ],
+   "dim": 2,
+   "ls": 1.5,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_foam_dynamics",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     0.1,
+     2.0
+    ],
+    [
+     0.0,
+     0.5
+    ]
+   ],
+   "dim": 2,
+   "ls": 1.5,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  },
+  {
+   "key": "micro_sensor_fusion",
+   "domain": "",
+   "category": "biology",
+   "bounds": [
+    [
+     1.0,
+     10.0
+    ],
+    [
+     0.1,
+     5.0
+    ]
+   ],
+   "dim": 2,
+   "ls": 2.0,
+   "noise": 0.05,
+   "published": "",
+   "references": []
+  }
+ ]
+}

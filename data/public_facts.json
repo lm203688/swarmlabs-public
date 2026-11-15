@@ -1,0 +1,268 @@
+{
+  "name": "SwarmLabs public facts — 公开页数字的单一真源",
+  "generated_at_utc": "2026-11-03T01:45:28Z",
+  "sources": {
+    "reports_index": {
+      "path": "frontend_fixed/reports/index.json",
+      "sha256_12": "415c5cdf20d5",
+      "generated_at_utc": "2026-11-02T19:08:32Z"
+    },
+    "gate_ledger": {
+      "path": "frontend_fixed/reports/gate_ledger.json",
+      "sha256_12": "c965fe539a8d",
+      "generated_at_utc": "2026-11-02T19:13:08Z"
+    },
+    "trust_surface": {
+      "path": "data/trust_surface.json",
+      "sha256_12": "3fd239ba7497",
+      "generated_at": "2026-11-03T03:01:32"
+    },
+    "heldout_index": {
+      "path": "frontend_fixed/reports/heldout_index.json",
+      "sha256_12": "539e93d4bef4",
+      "generated_at_utc": null
+    },
+    "wet_lab_anchors": {
+      "path": "frontend_fixed/reports/wet_lab_anchors.json",
+      "sha256_12": "1eb63fb99387",
+      "generated_at_utc": "2026-11-02T19:13:08Z"
+    },
+    "scenario_density": {
+      "path": "frontend_fixed/reports/scenario_library_density.json",
+      "sha256_12": "ad129ad44472",
+      "generated_at": "2026-10-08T02:03:23.714486+00:00"
+    },
+    "entity_store": {
+      "path": "data/entity_store.json",
+      "sha256_12": "5564165f3192",
+      "built_at": "2026-11-02T19:03:38.510733+00:00"
+    },
+    "generalization_bench": {
+      "path": "data/generalization_bench.json",
+      "sha256_12": "366ca353f972",
+      "generated_at": 1791522538
+    }
+  },
+  "facts": {
+    "validated_scenarios": {
+      "value": 95,
+      "unit": "scenarios",
+      "source": "frontend_fixed/reports/index.json#total",
+      "note": "报告库中已生成 10 章 V&V 报告的场景总数——对外只能引用这个数"
+    },
+    "verdict_pass": {
+      "value": 91,
+      "unit": "scenarios",
+      "source": "frontend_fixed/reports/index.json#counts.PASS",
+      "note": ""
+    },
+    "verdict_marginal": {
+      "value": 3,
+      "unit": "scenarios",
+      "source": "frontend_fixed/reports/index.json#counts.MARGINAL",
+      "note": ""
+    },
+    "verdict_refuted": {
+      "value": 1,
+      "unit": "scenarios",
+      "source": "frontend_fixed/reports/index.json#counts.REFUTED",
+      "note": ""
+    },
+    "verdict_error": {
+      "value": 0,
+      "unit": "scenarios",
+      "source": "frontend_fixed/reports/index.json#counts.ERROR",
+      "note": ""
+    },
+    "cross_domain_scenarios": {
+      "value": 10,
+      "unit": "scenarios",
+      "source": "data/trust_surface.json#overall.coverage_scope.cross_domain",
+      "note": ""
+    },
+    "microbio_scenarios": {
+      "value": 52,
+      "unit": "scenarios",
+      "source": "data/trust_surface.json#overall.coverage_scope.microbio_registered",
+      "note": "仅在页面上同时出现「microbial / 微生物」字样时才可引用此子集口径"
+    },
+    "rubric_full_pass": {
+      "value": 62,
+      "unit": "scenarios",
+      "source": "data/trust_surface.json#overall.rubric_full_pass",
+      "note": "七项 rubric 全通过数（注意：≠ verdict PASS 数）"
+    },
+    "validated_scenarios_by_domain": {
+      "value": {
+        "Surrogate Modeling": 3,
+        "heat conduction (physics-informed)": 3,
+        "Biology": 1,
+        "Microorganisms": 54,
+        "LLM": 1,
+        "Chemical": 1,
+        "Chemistry": 1,
+        "optimization": 9,
+        "biology": 1,
+        "finance": 2,
+        "neuroscience": 3,
+        "ecology": 3,
+        "cheminformatics": 4,
+        "energy": 3,
+        "chemistry": 2,
+        "llm": 2,
+        "chemical": 2
+      },
+      "unit": "scenarios per domain",
+      "source": "histogram_alias(data/trust_surface.json#rows[].domain, {\"微生物\": \"Microorganisms\"})",
+      "note": "按 domain 首段机械归类（别名表就写在 source 里，校验器按同一张表重算），用于博客/行业页按领域引用；求和应等于 validated_scenarios。此前 source 只写 `rows[].domain`（聚合语义、无法求值）⇒ 这条事实永远不参与陈旧性检查，正是 57→64 那类盲区"
+    },
+    "store_points_total": {
+      "value": 269,
+      "unit": "points",
+      "source": "sum(data/trust_surface.json#rows[].n_store)",
+      "note": "全部场景的校准用存储点数合计——这是唯一可辩护的「数据量」口径，远低于任何「百万级验证数据点」的说法"
+    },
+    "heldout_robustness_refuted": {
+      "value": 10,
+      "unit": "scenarios",
+      "source": "frontend_fixed/reports/heldout_index.json#robustness_heldout.counts.REFUTED",
+      "note": "鲁棒性留出集下被判 REFUTED 的场景数"
+    },
+    "extrapolation_stress_refuted": {
+      "value": 73,
+      "unit": "scenarios",
+      "source": "frontend_fixed/reports/heldout_index.json#extrapolation_stress.counts.REFUTED",
+      "note": "外推压力测试下被判 REFUTED 的场景数——「诚实失败」的真正证据在这里，不在 62 场景的主账本里（后者为 0）"
+    },
+    "wet_lab_anchors": {
+      "value": 19,
+      "unit": "anchors",
+      "source": "count(frontend_fixed/reports/wet_lab_anchors.json#anchors)",
+      "note": "有物理对应物、可对照文献区间的锚点；UNANCHORED 非失败（见该文件 note）。来源写成 count(...)：裸指针指向数组时无法与标量比较，会被静默跳过"
+    },
+    "experimental_ground_truth": {
+      "value": 0,
+      "unit": "scenarios",
+      "source": "data/trust_surface.json#overall.honesty.experimental_ground_truth_count",
+      "note": "evidence_type 取值集合 = ['simulated']；0 = 尚无湿实验真值，这与门禁中「pre-revenue / bus factor=1」并列，属主动披露项。来源必须指向 honesty 块（脚本写入的真值），不能指向 rows[].evidence_type——补丁缺失时那个投影会 KeyError，值也就永远算不出来"
+    },
+    "engine_modules": {
+      "value": 115,
+      "unit": "modules",
+      "source": "count(engine/*.py excluding __init__.py)",
+      "note": "engine/ 下的 Python 模块数。若对外要用「引擎」一词，只能写「engine modules」并说明它计数的是模块而非已验证场景。来源写成 count(...) 而非裸 glob：裸 glob 会被口径门禁整条跳过，于是这条事实**永远不参与陈旧性检查**（2026-09-21 实测：引擎 57→64，事实表与前端 5 处仍写 57，门禁却报 0 违规）。**L-01 修复（2026-10-17）**：真源统一到 scripts/engine_module_count.py，排除 __init__.py，与 build_frontend_metrics.ENGINE_MODULES 严格一致。"
+    },
+    "defined_scenarios": {
+      "value": 95,
+      "unit": "scenarios",
+      "source": "frontend_fixed/reports/scenario_library_density.json#total_scenarios_loaded",
+      "note": "代码注册表里存在但**尚未发布 V&V 报告**的场景总数。对外不可当作「已验证场景数」引用——会多算若干个"
+    },
+    "pending_engines_by_domain": {
+      "value": {
+        "Chemistry": 11,
+        "Environment": 18,
+        "Energy": 12,
+        "Materials": 24,
+        "Biology": 6,
+        "Separation": 31,
+        "Analysis": 8,
+        "Pharma": 24,
+        "Electrochemistry": 4,
+        "NeuroRobotics": 0
+      },
+      "unit": "engines per domain",
+      "source": "frontend_fixed/reports/scenario_library_density.json#pending_categories",
+      "note": "engine.domains.PENDING_CATEGORIES 的积压项。这些引擎**尚未实现**；引用时必须紧邻「pending / 计划中」字样"
+    },
+    "pending_engines_total": {
+      "value": 138,
+      "unit": "engines",
+      "source": "sum(frontend_fixed/reports/scenario_library_density.json#pending_categories)",
+      "note": "待实现引擎总数。引用时必须写 pending，且不得与 engine_modules 相加"
+    },
+    "pending_engines_gap": {
+      "value": 105,
+      "unit": "engines",
+      "source": "frontend_fixed/reports/scenario_library_density.json#density_summary.total_gap_pending_engines",
+      "note": "只统计「零已验证场景」类目里的待实现引擎——小于 pending_engines_total，因为后者还包含已有验证场景的类目（如 Chemistry 11）。引用时须说明是 gap 口径"
+    },
+    "knowledge_graph_entities": {
+      "value": 157868,
+      "unit": "entities",
+      "source": "data/entity_store.json#counts.TOTAL_ENTITIES",
+      "note": "结构化科研实体库总量（works/authors/institutions/concepts/venues/references/trends/research_gaps/cross_domain_bridges/coauthor_insights）。这是知识图谱规模，**不是**验证数据点，不得写成 validation data points"
+    },
+    "knowledge_graph_works": {
+      "value": 21141,
+      "unit": "works",
+      "source": "data/entity_store.json#counts.works",
+      "note": ""
+    },
+    "knowledge_graph_references": {
+      "value": 64927,
+      "unit": "references",
+      "source": "data/entity_store.json#counts.references",
+      "note": ""
+    },
+    "generalization_g1_pass": {
+      "value": 0.0,
+      "unit": "fraction (pass / (pass+fail, na 除外))",
+      "source": "data/generalization_bench.json#overall.g1",
+      "note": "G1 参数外推通过率。当前实测 0.0——不是数字好看的问题，而是「当前架构只支持设计域内插值验证」的诚实声明。"
+    },
+    "generalization_g2_pass": {
+      "value": 0.0,
+      "unit": "fraction",
+      "source": "data/generalization_bench.json#overall.g2",
+      "note": "G2 留一维通过率。当前实测 0.0。"
+    },
+    "generalization_g3_pass": {
+      "value": 0.0,
+      "unit": "fraction",
+      "source": "data/generalization_bench.json#overall.g3",
+      "note": "G3 留一学科通过率。当前实测 0.0——跨学科外推在 GP 方法下不可达，是 A15 硬约束的直接量化证据。任何非 0 的对外声称都需要新证据支撑。"
+    },
+    "generalization_g3_na": {
+      "value": 0,
+      "unit": "scenarios (na)",
+      "source": "data/generalization_bench.json#overall.g3_na",
+      "note": "G3 中 na（不适用）的场景数。na 不算失败也不算通过。"
+    },
+    "engines": {
+      "value": null,
+      "unit": "UNSOURCED",
+      "source": null,
+      "note": "没有任何产物生成「已交付引擎数量」。index/lab/login/pricing/terms 五处手写的 143（以及外部评审读到的 155）均无来源。合法替代：engine_modules（模块数）、validated_scenarios（已验证场景数）、pending_engines_total（待实现数，须标 pending）。"
+    },
+    "validation_data_points": {
+      "value": null,
+      "unit": "UNSOURCED",
+      "source": null,
+      "note": "index.html / login.html 宣称 900k+ validation data points，无产物支撑；可辩护的同类量是 store_points_total 与 knowledge_graph_entities，且两者语义不同（校准用点数 vs 知识图谱实体），不得互换。"
+    }
+  },
+  "undefined_claims": {
+    "engines": {
+      "reason": "没有任何产物生成「已交付引擎数量」。index/lab/login/pricing/terms 五处手写的 143（以及外部评审读到的 155）均无来源。合法替代：engine_modules（模块数）、validated_scenarios（已验证场景数）、pending_engines_total（待实现数，须标 pending）。",
+      "page_hits_2026_09_20": [
+        "frontend_fixed/index.html",
+        "frontend_fixed/lab.html",
+        "frontend_fixed/login.html",
+        "frontend_fixed/pricing.html",
+        "frontend_fixed/terms.html"
+      ]
+    },
+    "validation_data_points": {
+      "reason": "index.html / login.html 宣称 900k+ validation data points，无产物支撑；可辩护的同类量是 store_points_total 与 knowledge_graph_entities，且两者语义不同（校准用点数 vs 知识图谱实体），不得互换。",
+      "page_hits_2026_09_20": [
+        "frontend_fixed/index.html",
+        "frontend_fixed/login.html"
+      ]
+    }
+  },
+  "build": {
+    "script": "scripts/build_public_facts.py",
+    "seed": 42
+  }
+}
