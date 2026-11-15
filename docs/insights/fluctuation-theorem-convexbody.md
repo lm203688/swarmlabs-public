@@ -1,1 +1,0 @@
-Biphasic synthesis kinetics of growth-associated versus non-growth-associated products
