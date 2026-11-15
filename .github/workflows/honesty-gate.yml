@@ -118,4 +118,34 @@ jobs:
         run: |
           python -m pip install --quiet numpy scipy
           python -c "import numpy, scipy; print('deps OK numpy', numpy.__version__, 'scipy', scipy.__version__)"
+          python - <<'PYEOF' || true
+          import json, subprocess, sys
+          # 先打逐来源装配诊断（看哪个来源缩水）
+          diag = subprocess.run([sys.executable, '-c',
+              "import sys; sys.path.insert(0,'.'); from engine.scenario_registry import load_registry, HEADLINE_SCENARIO_COUNT;"
+              "reg=load_registry();"
+              "print('DIAG source_counts=', dict(reg.source_counts));"
+              "print('DIAG total=', len(reg), 'headline=', HEADLINE_SCENARIO_COUNT);"
+              "print('DIAG degraded=', list(reg.degraded)[:200] if hasattr(reg,'degraded') else 'n/a')"],
+              capture_output=True, text=True)
+          print(diag.stdout)
+          if diag.stderr:
+              print('DIAG stderr:', diag.stderr[:1500])
+          # 跑真实检查 --json，把 fatal findings 注入 annotations
+          r = subprocess.run([sys.executable, 'scripts/check_scenario_registry.py', '--json'],
+                             capture_output=True, text=True)
+          print(r.stdout)
+          if r.stderr:
+              print('CHECK stderr:', r.stderr[:2000], file=sys.stderr)
+          if r.returncode != 0:
+              try:
+                  d = json.loads(r.stdout)
+                  for f in d.get('findings', []):
+                      if f.get('kind') != 'DEGRADED':
+                          why = (f.get('why') or '')[:400]
+                          print(f"::error file=.github/workflows/honesty-gate.yml,line=121::{f.get('kind')}: {why}")
+              except Exception as e:
+                  print(f"::error::JSON parse failed: {e}; raw={r.stdout[:500]}")
+          sys.exit(r.returncode)
+          PYEOF
           python scripts/check_scenario_registry.py
